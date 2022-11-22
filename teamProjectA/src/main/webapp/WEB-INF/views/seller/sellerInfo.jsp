@@ -1,5 +1,16 @@
+<%@page import="team.projectA.vo.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%
+	UserVO vo = (UserVO)request.getAttribute("vo");
+%>
+<%
+	LodgingVO vo2 = (LodgingVO)request.getAttribute("vo2");
+%>
+
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,7 +19,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="<%=request.getContextPath() %>/resources/css/seller_css/sellerInfo.css" rel="stylesheet"/>
+    <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
+    <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script>
+	  //사업장이름         
+      $(document).ready(function(){    
+        $("#nameFn").on("click", function(){
+        	 alert("변경이 완료되었습니다");
+                var frm = document.nameform;
+              // alert(frm.lodgingname.value);
+                frm.action = "sellerInfo2.do";
+                frm.method = "POST";
+                frm.submit();
+                
+                console.log("성공");
+        })
+      }); 
+      
+      //주소
+      $(document).ready(function(){    
+          $("#addrFn").on("click", function(){
+          	 alert("변경이 완료되었습니다");
+                  var frm = document.nameform;
+                // alert(frm.lodgingname.value);
+                  frm.action = "sellerInfo2.do";
+                  frm.method = "POST";
+                  frm.submit();
+                  
+                  console.log("성공");
+          })
+        }); 
+      
+      //이메일
+      $(document).ready(function(){    
+          $("#mailFn").on("click", function(){
+          	 alert("변경이 완료되었습니다");
+                  var frm = document.nameform;
+                  //alert(frm.userEmail.value);
+                  frm.action = "sellerInfo1.do";
+                  frm.method = "POST";
+                  frm.submit();
+                  
+                  console.log("성공");
+          })
+        }); 
+      
+      //전화번호
+      $(document).ready(function(){    
+          $("#phoneFn").on("click", function(){
+          	 alert("변경이 완료되었습니다");
+                  var frm = document.nameform;
+                // alert(frm.lodgingname.value);
+                  frm.action = "sellerInfo1.do";
+                  frm.method = "POST";
+                  frm.submit();
+                  
+                  console.log("성공");
+          })
+        }); 
+      
+      //비밀번호
+       $(document).ready(function(){    
+          $("#pwdFn").on("click", function(){
+          	 alert("변경이 완료되었습니다");
+                  var frm = document.nameform;
+                // alert(frm.lodgingname.value);
+                  frm.action = "sellerInfo1.do";
+                  frm.method = "POST";
+                  frm.submit();
+                  
+                  console.log("성공");
+          })
+        });  
+        
+      
+      //비밀번호 체크
+     
+
+      
+      
+        
+</script>
 </head>
+
 <body style="overflow-x: hidden">
 	<header>
 	    <div id="header">
@@ -31,46 +124,68 @@
                 <li><a href="#">내정보</a></li>
             </div>
         </nav>
-        <hr>
-        <form>
-            <table id="info_Area">
+
+        	<form method="post" id="nameForm" name="nameform">
+           	 <table id="info_Area">
+          		<input type='hidden' name='uidx'  value=<%=vo.getUidx() %>>
+        		<input type='hidden' name='lidx' value=<%=vo.getLidx()%>>	
+        	   <%--  <input type='hidden' name='userPassword' value=<%=vo.getUserPassword()%>> --%>
+
+   
+        		
                 <tr>
                     <td>아이디</td>
-                    <td>홍길동</td>
+                    <td><%=vo.getUserID()%></td>
                     <td></td>
                 </tr>
+       		        <hr>
+     		
                 <tr>
                     <td>사업장명</td>
-                    <td>전주더베이호텔</td>
-                    <td><button onclick="location.href='sellerLodgingModify.do'" class="btn_size">상세변경</button></td>
-                </tr>
+                    <td><input type='text' name="lodgingname" value='${vo.lodgingname}' id="lodgingname"></td>
+                    
+                    <td><button type="submit" id="nameFn" value="상세변경" class="btn_size">변경</button></td> 
+                </tr>   
+     	
+
+<!--                <tr>
+                    <td>비밀번호변경</td>
+                    <td><input type='password' name="userpassword2"></td>
+                    <td></td>
+                </tr> -->
+            
                 <tr>
                     <td>비밀번호변경</td>
-                    <td>********</td>
-                    <td></td>
+                    <td><input type='password' name='userPassword' value=<%=vo.getUserPassword() %> autoComplete="off"></td>
+                    <td><button type="submit" class="btn_size" id="pwdFn">변경</td>
                 </tr>
-                <tr>
-                    <td>비밀번호확인</td>
-                    <td>********</td>
-                    <td><button type="submit" class="btn_size">변경</button></td>
-                </tr>
+                
+               		
+
                 <tr>
                     <td>이메일</td>
-                    <td>honggildong@naver.com</td>
-                    <td><button type="submit" class="btn_size">변경</button></td>
+                    <td><input type='text' name="userEmail" value=<%=vo.getUserEmail()%> autoComplete="off"></td>
+                    <td><button type="submit" class="btn_size" id="mailFn">변경</button></td>
+ 
                 </tr>
+         
+  
                 <tr>
                     <td>전화번호</td>
-                    <td>010-0000-0000</td>
-                    <td><button type="submit" class="btn_size">변경</button></td>
+                    <td><input type='text' name="userPhone" value='${vo.userPhone}'></td>
+                    <td><button type="submit" class="btn_size" id="phoneFn">변경</button></td>
                 </tr>
+       
+
                 <tr>
                     <td>주소</td>
-                    <td>전주시 덕진구 금암동</td>
-                    <td><button type="submit" class="btn_size">변경</button></td>
+                    <td><input type='text' name="lodgingaddr" value='${vo.lodgingaddr}'></td>
+                    <td><button type="submit" class="btn_size" id="addrFn">변경</button></td>
                 </tr>
+           
             </table>
-        </form>
+		</form>
+		
     </main>
     <footer>
         <div id="foot">
