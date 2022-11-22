@@ -43,7 +43,7 @@
                     <td>
                         <select class="frm_select">
                             <option value="id">아이디</option>
-                            <option value="nickname">닉네임</option>
+                            <option value="nickname">이름</option>
                         </select>
                     </td>
                     <td>
@@ -59,41 +59,41 @@
             <thead>
                 <tr style="text-align:center;">
                     <th>ID</th>
-                    <th>닉네임</th>
+                    <th>이름</th>
                     <th>전화번호</th>
                     <th>이메일</th>
                 </tr>
             </thead>
             <tbody>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>test</td>
-                    <td>010-0000-0000</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>test</td>
-                    <td>010-0011-1200</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>test</td>
-                    <td>010-4400-1200</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>test</td>
-                    <td>010-2311-1111</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>test</td>
-                    <td>010-1414-1313</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
@@ -136,34 +136,34 @@
             </thead>
             <tbody>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>A호텔</td>
-                    <td>010-0000-0000</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>A모텔</td>
-                    <td>010-0011-1200</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>B펜션</td>
-                    <td>010-4400-1200</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>C풀빌라</td>
-                    <td>010-2311-1111</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">test</a></td>
-                    <td>D펜션</td>
-                    <td>010-1414-1313</td>
-                    <td>daadasa@naver.com</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
@@ -182,7 +182,7 @@
                 <tr>
                     <td>
                         <select class="frm_select">
-                            <option value="id">닉네임</option>
+                            <option value="id">아이디</option>
                             <option value="nickname">예약번호</option>
                         </select>
                     </td>
@@ -198,7 +198,7 @@
         <table>
             <thead>
                 <tr style="text-align:center;">
-                    <th>닉네임</th>
+                    <th>ID</th>
                     <th>예약장소</th>
                     <th>예약번호</th>
                     <th>예약날짜</th>
@@ -207,39 +207,39 @@
             </thead>
             <tbody>
                 <tr style="text-align:center;">
-                    <td>test</td>
-                    <td>A호텔</td>
-                    <td>202210271028</td>
-                    <td>2022-10-27~2022-10-28</td>
-                    <td>150,000원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td>test</td>
-                    <td>A모텔</td>
-                    <td>202210251026</td>
-                    <td>2022-10-25~2022-10-26</td>
-                    <td>70,000원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td>test</td>
-                    <td>B펜션</td>
-                    <td>202210231024</td>
-                    <td>2022-10-23~2022-10~24</td>
-                    <td>280,000원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td>test</td>
-                    <td>C풀빌라</td>
-                    <td>202210211022</td>
-                    <td>2022-10-21~2022-10-22</td>
-                    <td>400,000원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td>test</td>
-                    <td>D펜션</td>
-                    <td>202210101011</td>
-                    <td>2022-10-10~2022-10-11</td>
-                    <td>250,000원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
@@ -283,33 +283,33 @@
             <tbody>
                 <tr style="text-align:center;">
                     <td><a href="">문의</a></td>
-                    <td>test6/2022-10-29</td>
-                    <td>처리중</td>
-                    <td>업체회원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">알려죠</a></td>
-                    <td>test4/2022-10-26</td>
-                    <td>처리중</td>
-                    <td>일반회원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">몰라요</a></td>
-                    <td>test3/2022-10-24</td>
-                    <td>처리완료</td>
-                    <td>일반회원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">얼마에요</a></td>
-                    <td>test1/2022-10-23</td>
-                    <td>처리완료</td>
-                    <td>일반회원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">빨리알려죠</a></td>
-                    <td>test/2022-10-13</td>
-                    <td>처리완료</td>
-                    <td>일반회원</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
