@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="team.projectA.vo.*" %>
+<%
+	List<LodgingVO> list1 = (List<LodgingVO>)request.getAttribute("list1");
+	List<RoomVO> list2 = (List<RoomVO>)request.getAttribute("list2");
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -633,122 +641,58 @@ function count(type)  {
             <li><button type="button" onclick = "change_btn2(event)" href = '#' id="up5" class="btnbox2">리뷰많은순</button></li>
            </ul>
            <h2>인기추천</h2 >
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>홍대 롬바드 게스트하우스 </h3>
-                                    <p>
-                                  	   만족도
-                                    </p>
-                                    <p>
-                                       	 서울특별시 마포구 서교동 466-6 4F
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>30,900원</div>
-                    </div>
-                   <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/seoul_1.jpg">
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>연남 소풍 더 어반 게스트하우스</h3>
-                                    <p>
-                                    	 만족도
-                                    </p>
-                                    <p>
-                                     	   서울 마포구 연남동 227-17 마포구 연남동 227-17
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>           
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>270,000원</div>
-                    </div>
-                   <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/seoul_2.jpg">
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>야코리아 호스텔 동대문점</h3>
-                                    <p>
-                                  	   만족도
-                                    </p>
-                                    <p>
-                                    	    서울특별시 중구 신당동 308-5
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>16,000원</div>
-                    </div>
-                   <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/seoul_3.jpg">
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>이태원 G 게스트하우스</h3>
-                                    <p>
-                                   	  만족도
-                                    </p>
-                                    <p> 
-                                    	    서울특별시 용산구 이태원동 131-11
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>21,900원</div>
-                    </div>
-                   <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/seoul_4.jpg">
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>서울숲스테이(Seoul Forest)</h3>
-                                    <p>
-                                	     만족도
-                                    </p>
-                                    <p>
-                                       	 서울특별시 성동구 성수동1가 656-1066 2, 3층 서울숲 스테이
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>15,000원</div>
-                    </div>
-                   <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/seoul_5.jpg">
-                </div>
-            </a>
+           <c:forEach var="vo1" items="${list1}" varStatus="status">
+           <c:set var="doneLoop" value="false"/>	<!-- break를 위한 boolean변수 doneLoop 선언 -->
+          		<c:forEach var="vo2" items="${list2}" varStatus="status">
+          			<c:if test="${doneLoop ne true}"> 	<!-- doneLoop 논리값이 반대가 되면 break -->
+          			<c:if test="${vo1.lidx == vo2.lidx && vo2.rnum > 0}">
+			            <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo2.lidx}">
+			                <div class="imgbor">
+			            		<div class="img_left">
+			                        <ul>
+			                            <li class="up_img">    
+			                            	<h3>${vo1.lodgingname}</h3>
+			                            	<p>${vo1.satis}</p>
+			                            	<p>${vo1.lodgingaddr}</p>
+			                            </li>			                        
+			                        </ul>
+			                    </div>
+			                    <div class="img_right">
+			                        <div>남은객실${vo2.rnum}개</div>
+			                        <div><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</div>
+			                    </div>
+			                	<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo1.limagename}"> 
+			                </div>
+			            </a>
+				        <c:set var="doneLoop" value="true"/> 	<!-- doneLoop 논리값 반대 설정 = break -->
+   					</c:if>
+	           		</c:if>	           		
+           		</c:forEach>
+        	</c:forEach>
+           <%-- <%for(LodgingVO vo1 : list1){%>
+          		<%for(RoomVO vo2 : list2){%>
+          			<%if(vo1.getLidx().equals(vo2.getLidx()) && vo2.getRnum()>0){ %>
+			            <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=<%=vo2.getLidx() %>">
+			                <div class="imgbor" >
+			                    <div class="img_left">
+			                        <ul>
+			                            <li class="up_img">    
+			                    			<h3> <%=vo1.getLodgingname() %></h3>
+			                       			<p><%=vo1.getSatis() %></p>
+											<p><%=vo1.getLodgingaddr() %></p>
+			                            </li>
+			                        </ul>
+			                    </div>
+			                    <div class="img_right">
+			                        <div>남은객실수 <%=vo2.getRnum() %></div>
+			                        <div><%=vo2.getRprice() %>원</div>
+			                    </div>
+			                   <img src="<%=request.getContextPath()%>/resources/images/lodging_images/<%=vo1.getLimagename() %>"> 
+			                </div>
+			            </a>
+	           		<%break; } %>
+           		<%} %>
+            <%} %> --%>
          </div>
 
 

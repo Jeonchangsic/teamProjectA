@@ -1,5 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="team.projectA.vo.*" %>
+<%
+	LodgingVO vo = (LodgingVO)request.getAttribute("vo");
+	List<RoomVO> list = (List<RoomVO>)request.getAttribute("list");
+	//숙소 슬라이더에 객실 이미지 삽입하기 (for문 및 배열 사용) //for문으로 모든 이미지 담기
+	String total_img = vo.getLimagename(); 
+	for(int i=0; i<list.size(); i++){
+		String imgss = list.get(i).getRimage1()+","
+						+list.get(i).getRimage2()+","
+						+list.get(i).getRimage3()+","
+						+list.get(i).getRimage4()+","
+						+list.get(i).getRimage5();
+		
+		total_img = total_img +","+ imgss.replaceAll(",null", "");
+	}
+	//out.println(total_img);
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,73 +100,29 @@
             <div class="lodging_slider box1">
                 <!-- Swiper -->
                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper">                        
+                    <%	//배열 선언해서 배열값 for문으로 가져오기
+                    String[] strArray = total_img.split(",");                    	
+                    for(int i=0; i<strArray.length; i++){
+                    	//out.println(strArray[i]);
+                    %>
                         <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
+                            <img src="<%= request.getContextPath() %>/resources/images/lodging_images/<%=strArray[i] %>" alt="숙소 이미지">
                         </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
+                    <%} %>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
                 <div thumbsSlider="" class="swiper mySwiper">
                     <div class="swiper-wrapper">
+                    <%		                                     	
+	                    for(int i=0; i<strArray.length; i++){                    	
+                    %>
                         <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
+                            <img src="<%= request.getContextPath() %>/resources/images/lodging_images/<%=strArray[i] %>" alt="숙소 이미지">
                         </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="숙소 이미지">
-                        </div>
+                    <%} %>
                     </div>
                 </div>
                 <!-- Swiper JS -->
@@ -176,8 +152,8 @@
             </div><!--//lodging_slider-->
             <div class="right">
                 <div class="lodging_info">
-                    <h2>슈퍼 울트라 그레잇 호텔</h2>
-                    <p class="lodging_address">전라북도 전주시 완산구</p>
+                    <h2><%=vo.getLodgingname() %></h2>
+                    <p class="lodging_address"><%=vo.getLodgingaddr() %></p>
                 </div><!--//lodging_info-->
                 <div class="lodging_intro">
                     <h4>숙소 소개</h4>
@@ -212,291 +188,88 @@
                 </div>
             </div><!--//btn_datePsn-->
 
-            <div class="room_list">
-                <div class="room">
-                    <div class="room_slider box2">
-                        <!-- Swiper -->
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    
-                        <!-- Swiper JS -->
-                        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-                    
-                        <!-- Initialize Swiper -->
-                        <script>
-                            var swiper = new Swiper(".box2 .mySwiper", {
-                            pagination: {
-                                el: ".swiper-pagination",
-                                type: "fraction",
-                            },
-                            navigation: {
-                                nextEl: ".box2 .swiper-button-next",
-                                prevEl: ".box2 .swiper-button-prev",
-                            },
-                            });
-                        </script>
-                    </div><!--//room_slider-->
-                    <div class="room_name">객실 이름</div>
-                    <div class="room_price">
-                        <p>가격</p>
-                        <div> 
-                            <p class="room_amount">남은 객실 수</p>
-                            <p>199,000</p>
-                        </div>
-                    </div><!--//room_price-->
-                    <div class="modal">
-                        <div class="modal_body">
-                            <h3>객실 이용 안내</h3>
-                            <div class="modal_close"><i class="xi-close"></i></div>
-                            <div class="modal_info">
-                                <div>
-                                    <h4>기본정보</h4>
-                                        <ul>
-                                            <li>2인 기준 최대 2인</li>
-                                            <li>더블 베드 1개</li>
-                                        </ul>                
-                                </div>  
-                                <div>      
-                                    <h4>편의시설</h4>
-                                        <ul>
-                                            <li>침대, TV, 냉장고, 에어컨, 테이블, 의자, 목욕가운, 욕실용품, 슬리퍼</li>
-                                        </ul>
-                                </div>      
-                                <div>
-                                    <h4>추가정보</h4>
-                                        <ul>
-                                            <li>퇴실시간</li>
-                                        </ul>                
-                                </div>    
-                            </div>
-                        </div>
-                    </div><!--//modal-->
-                    <button type="button" class="room_info">객실 이용 안내</button>
-                    <button type="button" onclick="location" class="room_booking">예약</button>
-                </div><!--//room1-->
-                <div class="room">
-                    <div class="room_slider box2">
-                        <!-- Swiper -->
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>                        
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    
-                        <!-- Swiper JS -->
-                        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-                    
-                        <!-- Initialize Swiper -->
-                        <script>
-                            var swiper = new Swiper(".box2 .mySwiper", {
-                            pagination: {
-                                el: ".swiper-pagination",
-                                type: "fraction",
-                            },
-                            navigation: {
-                                nextEl: ".box2 .swiper-button-next",
-                                prevEl: ".box2 .swiper-button-prev",
-                            },
-                            });
-                        </script>
-                    </div><!--//room_slider-->
-                    <div class="room_name">객실 이름</div>
-                    <div class="room_price">
-                        <p>가격</p>
-                        <div> 
-                            <p class="room_amount">남은 객실 수</p>
-                            <p>199,000</p>
-                        </div>
-                    </div><!--//room_price-->
-                    <div class="modal">
-                        <div class="modal_body">
-                            <h3>객실 이용 안내</h3>
-                            <div class="modal_close"><i class="xi-close"></i></div>
-                            <div class="modal_info">
-                                <div>
-                                    <h4>기본정보</h4>
-                                        <ul>
-                                            <li>2인 기준 최대 2인</li>
-                                            <li>더블 베드 1개</li>
-                                        </ul>                
-                                </div>  
-                                <div>      
-                                    <h4>편의시설</h4>
-                                        <ul>
-                                            <li>침대, TV, 냉장고, 에어컨, 테이블, 의자, 목욕가운, 욕실용품, 슬리퍼</li>
-                                        </ul>
-                                </div>      
-                                <div>
-                                    <h4>추가정보</h4>
-                                        <ul>
-                                            <li>퇴실시간</li>
-                                        </ul>                
-                                </div>    
-                            </div>
-                        </div>
-                    </div><!--//modal-->
-                    <button type="button" class="room_info">객실 이용 안내</button>
-                    <button type="button" onclick="" class="room_booking">예약</button>
-                </div><!--//room2-->
-                <div class="room">
-                    <div class="room_slider box2">
-                        <!-- Swiper -->
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>                        
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    
-                        <!-- Swiper JS -->
-                        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-                    
-                        <!-- Initialize Swiper -->
-                        <script>
-                            var swiper = new Swiper(".box2 .mySwiper", {
-                            pagination: {
-                                el: ".swiper-pagination",
-                                type: "fraction",
-                            },
-                            navigation: {
-                                nextEl: ".box2 .swiper-button-next",
-                                prevEl: ".box2 .swiper-button-prev",
-                            },
-                            });
-                        </script>
-                    </div><!--//room_slider-->
-                    <div class="room_name">객실 이름</div>
-                    <div class="room_price">
-                        <p>가격</p>
-                        <div> 
-                            <p class="room_amount">남은 객실 수</p>
-                            <p>199,000</p>
-                        </div>
-                    </div><!--//room_price-->
-                    <div class="modal">
-                        <div class="modal_body">
-                            <h3>객실 이용 안내</h3>
-                            <div class="modal_close"><i class="xi-close"></i></div>
-                            <div class="modal_info">
-                                <div>
-                                    <h4>기본정보</h4>
-                                        <ul>
-                                            <li>2인 기준 최대 2인</li>
-                                            <li>더블 베드 1개</li>
-                                        </ul>                
-                                </div>  
-                                <div>      
-                                    <h4>편의시설</h4>
-                                        <ul>
-                                            <li>침대, TV, 냉장고, 에어컨, 테이블, 의자, 목욕가운, 욕실용품, 슬리퍼</li>
-                                        </ul>
-                                </div>      
-                                <div>
-                                    <h4>추가정보</h4>
-                                        <ul>
-                                            <li>퇴실시간</li>
-                                        </ul>                
-                                </div>    
-                            </div>
-                        </div>
-                    </div><!--//modal-->
-                    <button type="button" class="room_info">객실 이용 안내</button>
-                    <button type="button" onclick="" class="room_booking">예약</button>
-                </div><!--//room3-->
-                <div class="room">
-                    <div class="room_slider box2">
-                        <!-- Swiper -->
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>
-                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/lodging_image.jpg" alt="객실 이미지"></div>                        
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    
-                        <!-- Swiper JS -->
-                        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-                    
-                        <!-- Initialize Swiper -->
-                        <script>
-                            var swiper = new Swiper(".box2 .mySwiper", {
-                            pagination: {
-                                el: ".swiper-pagination",
-                                type: "fraction",
-                            },
-                            navigation: {
-                                nextEl: ".box2 .swiper-button-next",
-                                prevEl: ".box2 .swiper-button-prev",
-                            },
-                            });
-                        </script>
-                    </div><!--//room_slider-->
-                    <div class="room_name">객실 이름</div>
-                    <div class="room_price">
-                        <p>가격</p>
-                        <div> 
-                            <p class="room_amount">남은 객실 수</p>
-                            <p>199,000</p>
-                        </div>
-                    </div><!--//room_price-->
-                    <div class="modal">
-                        <div class="modal_body">
-                            <h3>객실 이용 안내</h3>
-                            <div class="modal_close"><i class="xi-close"></i></div>
-                            <div class="modal_info">
-                                <div>
-                                    <h4>기본정보</h4>
-                                        <ul>
-                                            <li>2인 기준 최대 2인</li>
-                                            <li>더블 베드 1개</li>
-                                        </ul>                
-                                </div>  
-                                <div>      
-                                    <h4>편의시설</h4>
-                                        <ul>
-                                            <li>침대, TV, 냉장고, 에어컨, 테이블, 의자, 목욕가운, 욕실용품, 슬리퍼</li>
-                                        </ul>
-                                </div>      
-                                <div>
-                                    <h4>추가정보</h4>
-                                        <ul>
-                                            <li>퇴실시간</li>
-                                        </ul>                
-                                </div>    
-                            </div>
-                        </div>
-                    </div><!--//modal-->
-                    <button type="button" class="room_info">객실 이용 안내</button>
-                    <button type="button" onclick="" class="room_booking">예약</button>
-                </div><!--//room4-->
+            <div class="room_list">            
+                <c:forEach var="vo2" items="${list}" varStatus="status">
+	                <div class="room">
+	                    <div class="room_slider box2">
+	                        <!-- Swiper -->
+	                        <div class="swiper mySwiper">
+                        		<div class="swiper-wrapper">
+	                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage1}" alt="객실 이미지"></div>
+	                                <c:if test="${vo2.rimage2 != null}">
+	                                	<div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage2}" alt="객실 이미지"></div>
+	                                </c:if>
+	                                <c:if test="${vo2.rimage3 != null}">
+		                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage3}" alt="객실 이미지"></div>
+		                            </c:if>
+		                            <c:if test="${vo2.rimage4 != null}">
+		                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage4}" alt="객실 이미지"></div>
+		                            </c:if>
+		                            <c:if test="${vo2.rimage5 != null}">
+		                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage5}" alt="객실 이미지"></div>                        
+	                            	</c:if>
+	                            </div>
+	                            <div class="swiper-button-next"></div>
+	                            <div class="swiper-button-prev"></div>
+	                            <div class="swiper-pagination"></div>
+	                        </div>
+	                    
+	                        <!-- Swiper JS -->
+	                        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+	                    
+	                        <!-- Initialize Swiper -->
+	                        <script>
+	                            var swiper = new Swiper(".box2 .mySwiper", {
+	                            pagination: {
+	                                el: ".swiper-pagination",
+	                                type: "fraction",
+	                            },
+	                            navigation: {
+	                                nextEl: ".box2 .swiper-button-next",
+	                                prevEl: ".box2 .swiper-button-prev",
+	                            },
+	                            });
+	                        </script>
+	                    </div><!--//room_slider-->
+	                    <div class="room_name">${vo2.rtype}</div>
+	                    <div class="room_price">
+	                        <p>가격</p>
+	                        <div> 
+	                            <p class="room_amount">남은 객실${vo2.rnum}개</p>
+	                            <p><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</p>
+	                        </div>
+	                    </div><!--//room_price-->
+	                    <div class="modal">
+	                        <div class="modal_body">
+	                            <h3>객실 이용 안내</h3>
+	                            <div class="modal_close"><i class="xi-close"></i></div>
+	                            <div class="modal_info">
+	                                <div>
+	                                    <h4>기본정보</h4>
+	                                        <ul>
+	                                            <li>2인 기준 최대 2인</li>
+	                                            <li>더블 베드 1개</li>
+	                                        </ul>                
+	                                </div>  
+	                                <div>      
+	                                    <h4>편의시설</h4>
+	                                        <ul>
+	                                            <li>침대, TV, 냉장고, 에어컨, 테이블, 의자, 목욕가운, 욕실용품, 슬리퍼</li>
+	                                        </ul>
+	                                </div>      
+	                                <div>
+	                                    <h4>추가정보</h4>
+	                                        <ul>
+	                                            <li>퇴실시간</li>
+	                                        </ul>                
+	                                </div>    
+	                            </div>
+	                        </div>
+	                    </div><!--//modal-->
+	                    <button type="button" class="room_info">객실 이용 안내</button>
+	                    <button type="button" onclick="" class="room_booking">예약</button>
+	                </div><!--//room-->
+                </c:forEach>
             </div><!--//room_list-->
         </article><!--//room_contents-->
    

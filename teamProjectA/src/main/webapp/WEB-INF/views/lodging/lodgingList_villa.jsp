@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="team.projectA.vo.*" %>
+<%
+	List<LodgingVO> list1 = (List<LodgingVO>)request.getAttribute("list1");
+	List<RoomVO> list2 = (List<RoomVO>)request.getAttribute("list2");
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -627,123 +635,58 @@ function count(type)  {
             <li><button type="button" onclick = "change_btn2(event)" href = '#' id="up5" class="btnbox2">리뷰많은순</button></li>
            </ul>
            <h2>인기추천</h2 >
-          <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>해운대 마린케이풀빌라펜션</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        부산 해운대구 송정동 159-5
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>120,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/busan_1.jpg"></a>
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>부산 뷰먼드풀빌라</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        부산 수영구 광안동 201-9
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-
-                    
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>225,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/busan_2.jpg"></a>
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>부산 타이드어웨이 풀빌라</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        부산 기장군 기장읍 시랑리 615-5
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>220,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/busan_3.jpg"></a>
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>해운대 송정 오셔너스</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        부산 해운대구 송정동 437-1
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>45,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/busan_4.jpg"></a>
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>부산 씨앤트리풀빌라</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        부산 기장군 일광읍 문동리 4
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>150,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/busan_5.jpg"></a>
-                </div>
-            </a>
+          <c:forEach var="vo1" items="${list1}" varStatus="status">
+           <c:set var="doneLoop" value="false"/>	<!-- break를 위한 boolean변수 doneLoop 선언 -->
+          		<c:forEach var="vo2" items="${list2}" varStatus="status">
+          			<c:if test="${doneLoop ne true}"> 	<!-- doneLoop 논리값이 반대가 되면 break -->
+          			<c:if test="${vo1.lidx == vo2.lidx && vo2.rnum > 0}">
+			            <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo2.lidx}">
+			                <div class="imgbor">
+			            		<div class="img_left">
+			                        <ul>
+			                            <li class="up_img">    
+			                            	<h3>${vo1.lodgingname}</h3>
+			                            	<p>${vo1.satis}</p>
+			                            	<p>${vo1.lodgingaddr}</p>
+			                            </li>			                        
+			                        </ul>
+			                    </div>
+			                    <div class="img_right">
+			                        <div>남은객실${vo2.rnum}개</div>
+			                        <div><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</div>
+			                    </div>
+			                	<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo1.limagename}"> 
+			                </div>
+			            </a>
+				        <c:set var="doneLoop" value="true"/> 	<!-- doneLoop 논리값 반대 설정 = break -->
+   					</c:if>
+	           		</c:if>	           		
+           		</c:forEach>
+        	</c:forEach>
+           <%-- <%for(LodgingVO vo1 : list1){%>
+          		<%for(RoomVO vo2 : list2){%>
+          			<%if(vo1.getLidx().equals(vo2.getLidx()) && vo2.getRnum()>0){ %>
+			            <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=<%=vo2.getLidx() %>">
+			                <div class="imgbor" >
+			                    <div class="img_left">
+			                        <ul>
+			                            <li class="up_img">    
+			                    			<h3> <%=vo1.getLodgingname() %></h3>
+			                       			<p><%=vo1.getSatis() %></p>
+											<p><%=vo1.getLodgingaddr() %></p>
+			                            </li>
+			                        </ul>
+			                    </div>
+			                    <div class="img_right">
+			                        <div>남은객실수 <%=vo2.getRnum() %></div>
+			                        <div><%=vo2.getRprice() %>원</div>
+			                    </div>
+			                   <img src="<%=request.getContextPath()%>/resources/images/lodging_images/<%=vo1.getLimagename() %>"> 
+			                </div>
+			            </a>
+	           		<%break; } %>
+           		<%} %>
+            <%} %> --%>
          </div>
 
 

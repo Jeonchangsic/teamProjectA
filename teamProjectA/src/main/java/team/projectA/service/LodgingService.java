@@ -1,5 +1,13 @@
 package team.projectA.service;
 
-public interface LodgingService {
+import java.util.List;
 
+import team.projectA.vo.LodgingVO;
+import team.projectA.vo.RoomVO;
+
+public interface LodgingService {
+	List<LodgingVO> selectList1(String lodgingkind);
+	List<RoomVO> selectList2(RoomVO vo);
+	LodgingVO selectLodging(String lidx); 
+	List<RoomVO> selectRoomList(String lidx); 
 }

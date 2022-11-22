@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="team.projectA.vo.*" %>
+<%
+	List<LodgingVO> list1 = (List<LodgingVO>)request.getAttribute("list1");
+	List<RoomVO> list2 = (List<RoomVO>)request.getAttribute("list2");
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -628,121 +636,58 @@ function count(type)  {
             <li><button type="button" onclick = "change_btn2(event)" href = '#' id="up5" class="btnbox2">리뷰많은순</button></li>
            </ul>
            <h2>인기추천</h2 >
-           <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>제주 노블레스 관광호텔</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        제주특별자치도 제주시 용담이동 2761    
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>70,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/jeju_3.jpg"></a>
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>제주 퓨어스테이</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        제주특별자치도 제주시 연동 301-3   
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>45,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/jeju_4.jpg"></a>
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>전주 메이드-HOTEL MADE</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        전북 전주시 덕진구 산정동 871-2    
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>40,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/jeolla_1.jpg"></a>
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>군산 HOTEL PM</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        전북 군산시 나운동 850-6   
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>50,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/jeolla_2.jpg"></a>
-                </div>
-            </a>
-            <a href="#">
-                <div class="imgbor" >
-                    <div class="img_left">
-                        <ul>
-                            <li class="up_img">    
-                                <h3>익산 HOTEL G7</h3>
-                                    <p>
-                                     만족도
-                                    </p>
-                                    <p>
-                                        전북 익산시 인화동1가 168-3   
-                                    </p>
-                            </li>
-                        
-                        </ul>
-                    </div>
-                    <div class="img_right">
-                        <div>남은객실수</div>
-                        <div>50,000원</div>
-                    </div>
-                        <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/jeolla_3.jpg"></a>
-                </div>
-            </a>
+           <c:forEach var="vo1" items="${list1}" varStatus="status">
+           <c:set var="doneLoop" value="false"/>	<!-- break를 위한 boolean변수 doneLoop 선언 -->
+          		<c:forEach var="vo2" items="${list2}" varStatus="status">
+          			<c:if test="${doneLoop ne true}"> 	<!-- doneLoop 논리값이 반대가 되면 break -->
+          			<c:if test="${vo1.lidx == vo2.lidx && vo2.rnum > 0}">
+			            <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo2.lidx}">
+			                <div class="imgbor">
+			            		<div class="img_left">
+			                        <ul>
+			                            <li class="up_img">    
+			                            	<h3>${vo1.lodgingname}</h3>
+			                            	<p>${vo1.satis}</p>
+			                            	<p>${vo1.lodgingaddr}</p>
+			                            </li>			                        
+			                        </ul>
+			                    </div>
+			                    <div class="img_right">
+			                        <div>남은객실${vo2.rnum}개</div>
+			                        <div><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</div>
+			                    </div>
+			                	<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo1.limagename}"> 
+			                </div>
+			            </a>
+				        <c:set var="doneLoop" value="true"/> 	<!-- doneLoop 논리값 반대 설정 = break -->
+   					</c:if>
+	           		</c:if>	           		
+           		</c:forEach>
+        	</c:forEach>
+           <%-- <%for(LodgingVO vo1 : list1){%>
+          		<%for(RoomVO vo2 : list2){%>
+          			<%if(vo1.getLidx().equals(vo2.getLidx()) && vo2.getRnum()>0){ %>
+			            <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=<%=vo2.getLidx() %>">
+			                <div class="imgbor" >
+			                    <div class="img_left">
+			                        <ul>
+			                            <li class="up_img">    
+			                    			<h3> <%=vo1.getLodgingname() %></h3>
+			                       			<p><%=vo1.getSatis() %></p>
+											<p><%=vo1.getLodgingaddr() %></p>
+			                            </li>
+			                        </ul>
+			                    </div>
+			                    <div class="img_right">
+			                        <div>남은객실수 <%=vo2.getRnum() %></div>
+			                        <div><%=vo2.getRprice() %>원</div>
+			                    </div>
+			                   <img src="<%=request.getContextPath()%>/resources/images/lodging_images/<%=vo1.getLimagename() %>"> 
+			                </div>
+			            </a>
+	           		<%break; } %>
+           		<%} %>
+            <%} %> --%>
          </div>
 
 
