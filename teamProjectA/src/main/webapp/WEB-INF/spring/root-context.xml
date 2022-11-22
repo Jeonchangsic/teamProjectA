@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+		<!-- 오라클과 연결하는 객체 -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+			<property name="username" value="c##study1"></property>
+			<property name="password" value="1234"></property>
+		</bean>
+		
+		<!-- 마이바티스와 소통할 객체 (마이바티스 연결) getConnection 역할--> <!-- close open 역할 -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"></property>  <!-- 위 오라클 연결 객체를 넣음 -->
+			<property name="configLocation" value="classpath:mybatis-config.xml"></property> <!-- src/main/resources 위치에. -->
+			<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property><!-- 맵퍼의 집합. 오라클 구문의 집합 --><!-- Mapper.xml로 끝나는 애들은 모두 맵퍼의 집합이다 라고 정의함. -->
+		</bean>
+		<!--  쿼리 실행하는 객체 -->       <!-- 실제 쿼리 실행 -->
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache"> <!--  -->
+			<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+			
+		</bean>
+</beans>

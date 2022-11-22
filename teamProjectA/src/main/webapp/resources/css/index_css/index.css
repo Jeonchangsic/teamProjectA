@@ -1,0 +1,214 @@
+@charset "utf-8";
+
+
+            /*리셋코드*/
+* {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{text-decoration:none; color: inherit;}
+UL,li{list-style:none;}
+            /*리셋코드*/
+
+
+
+body{background-color:aliceblue;}
+i{font-size:50px}
+
+/*header */
+
+header .inner{ width:1024px; height:100%; margin:0 auto; position:relative;}header{position:fixed; top:0; left:0; width:100%; height: 100px; background-color:rgb(86, 19, 241); z-index:999;} /*헤더 상단 고정을 위해 줬음*/
+header h1 { float: left; margin-top: 10px; }
+header h1 img{width:130px; height:80px;}
+header ul{float:right; display: flex; align-items: center;  height: 100%;}  
+header ul li:first-child{padding-right:20px;}
+header li:not(:first-child){ margin-left: 20px;}  
+header li a{color:white; font-size:22px; font-weight:bold;}
+
+.inner > ul > li:first-child {
+    position: relative;
+   
+}
+.search_bar {
+    height: 40px; width: 220px;
+    position: absolute;
+    left: -230px;
+    transition: all .4s;
+    transform: scaleX(0);
+    transform-origin: RIGHT;
+}
+.search_bar.view {
+    transform: scaleX(1);
+}
+header .search{font-size:30px; color:rgba(255,255,255,0.8);}   
+header .search:hover{color:white;} 
+header #login{color:rgba(255,255,255,0.8);}    
+header #login:hover{color:white;}   
+header #logout{color:rgba(255,255,255,0.8);}  
+header #logout:hover{color:white;}
+header #mypage{color:rgba(255,255,255,0.8);}  
+header #mypage:hover{color:white;}
+            /*end header */
+
+            /*main*/
+main .description:hover{
+      color:blue;
+      
+}
+main{width:1024px; margin: 0 auto; background-color:white;}
+main .white{height:10px; background-color:aliceblue;}
+main nav{ HEIGHT: 120PX; padding-top:100px;}
+main nav UL {DISPLAY: FLEX; WIDTH: 100%; HEIGHT: 100%; ALIGN-ITEMS: CENTER; JUSTIFY-CONTENT: SPACE-BETWEEN;} /*display:flex를 주면 수평정렬. align-items는 수평위치 /justify는 수직위치.*/
+main nav li{PADDING:0 50PX; text-align: center; }
+main nav i{color:rgb(86, 19, 241);}
+main nav p{font-weight:bold; font-size:18px; color:black;}
+main #main_img{height:500px;}
+main #main_img img{height:500px; width:1024px;}
+#gnb a { display: inline-block; position: relative;}
+#gnb a::after{content:''; display:block; background:rgb(86, 19, 241); width:100%; height:0; transition:all .2s ease-out; position: absolute;}
+#gnb p:hover{color:rgb(86, 19, 241);}
+#gnb a:hover::after{height:4px;}
+
+main #slide_list{margin-top:10px; padding-bottom: 50px;}
+main #slide_list h4{display:inline-block; border-bottom:5px solid rgb(86, 19, 241); margin:20px; padding-bottom: 7px;font-size:25px;}
+main #slide_list img{width:270px; height:180px;}
+main #slide_list ul{display:flex; align-items:center; JUSTIFY-CONTENT: SPACE-BETWEEN; flex-wrap:wrap;}
+main #slide_list li{width:50%; padding-left: 120px; box-sizing:border-box; padding-bottom: 30px;}
+/*main #slide_list a{padding-bottom:20px; }*/
+main #slide_list .lod_name{ font-size:16px; line-height:2em; text-align: left;}
+main #slide_list .lod_price{ font-size:22px; font-weight:bold; text-align: left;} 
+/* main #bg_w1{height:97px;}   */
+main .slide_list{margin-top:10px; padding-bottom: 20px;}
+/*main .slide_list:not(last-child){}*/
+main .slide_list h4{display:inline-block; border-bottom:5px solid rgb(86, 19, 241); margin:20px; font-size:25px; padding-bottom:10px;}
+main .slide_list img{width:230px; height:180px;}
+main .slide_list ul{display:flex; align-items:center; JUSTIFY-CONTENT: SPACE-BETWEEN;}
+main .slide_list li{padding: 0 50px;}
+main .slide_list a{padding-bottom:20px;}
+main .slide_list .lod_name{ font-size:18px; line-height:2em;}
+main .slide_list .lod_price{ font-size:15px; font-weight:bold; line-height:2em;}
+
+ 
+main .border{border-right:1px solid rgba(0,0,0,0.15);}
+/* main #bg_w2{height:100px;}  */
+                /*end main*/
+
+                /*footer*/
+footer{height:100%; width:100%; background-color:rgba(0,0,0,0.15);}
+footer #foot{margin: 0 auto; width:1024px; height:100%;}
+footer #copy{color:#919191;}
+                /*end footer*/
+
+
+/*스와이퍼*/
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /*border-top:1px solid rgba(0,0,0,0.15);*/
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*end 스와이퍼*/
+
+
+/* 수정 내용 */
+
+.lod_price .sale {
+    font-size: 22px;
+    color: rgb(199, 38, 38);
+    margin-right: 10px;
+}
+.lod_price .sale i {
+    font-size: 15px;
+    
+}
+.lod_price .price i {
+    font-size: 15px;
+    font-style: normal;
+}
+
+.promotion {
+    text-align: left;
+    margin: 10px 0 5px ;
+}
+.promotion span {
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgb(226, 44, 44);
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    
+}
+#festival_content .swiper-slide,
+#best_item .swiper-slide {
+    padding-bottom: 30px;
+}

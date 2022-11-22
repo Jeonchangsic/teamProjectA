@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+		<mapper namespace="team.projectA.mapper.UserMapper">
+		<insert id="userInsert" parameterType="userVO">
+			INSERT INTO ausertb(
+						  uidx
+						, userID
+						, userPassword
+						, userName
+						, userEmail
+						, userPhone
+						, userGender
+						, userBirth
+						) VALUES(
+						  auidx_seq.nextval
+						, #{userID}
+						, #{userPassword}
+						, #{userName}
+						, #{userEmail}
+						, #{userPhone}
+						, #{userGender}
+						, #{userBirth}
+						)
+		</insert>
+		
+		<!-- 아이디 중복확인 -->
+		<select id="userForm" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT COUNT(userID) 
+				FROM ausertb 
+				WHERE userID = #{userID} 
+			]]>
+		</select>
+		<!-- 로그인 -->
+		<select id="login" parameterType="userVO" resultType="userVO">
+			SELECT uidx
+					,userID
+					,userName
+					,userEmail
+					,userPhone
+					,userBirth
+					,userPassword
+					FROM ausertb
+					WHERE userID = #{userID}
+					AND userPassword = #{userPassword}
+		</select>
+		
+		<!-- 회원탈퇴 -->
+		<delete id="userDt">
+			DELETE FROM ausertb
+				WHERE userID = #{userID}
+				AND userPassword = #{userPassword}
+		</delete>
+</mapper>

@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+
+            /*리셋코드*/
+* {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{text-decoration:none; color: inherit;}
+UL,li{list-style:none;}
+            /*리셋코드*/
+
+                             
+                  /*header*/
+header h2{
+    width:1024px; margin: 0 auto;
+    text-align: center;
+    font-size:30px;
+    font-weight: bold;
+    padding-top:50px;
+}
+
+            /*main*/
+main #table1{
+     margin:0 auto;
+    text-align:center;
+}
+main .contentsArea{
+    padding-top:30px;
+}   
+main .inputArea{
+    width:170px;
+    height:25px;
+    padding: 0 5px 0 20px;
+}
+main #clearBtn{
+    
+    width:60px;
+    height:30px;
+}
+main #emailBtn{
+    width:100px;
+    height:25px;
+}
+main #man{
+    
+    margin-right:20px;
+}
+main #table2{
+    margin:25px auto;
+    
+}
+main #join{
+    padding-right:30px;
+}
+main .footBtn{
+    width:70px;
+    height:30px; 
+}
+main #provisionArea{
+    width:80px;
+    height:20px;
+    margin-left:50px;
+    border:1px solid #000;
+}             

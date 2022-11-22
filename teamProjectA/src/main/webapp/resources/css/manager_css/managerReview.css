@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+*{margin:0; padding:0;}
+li{list-style:none;}
+img,iframe{vertical-align:top;}
+
+.clearfix::after{content:""; display:block; clear:both;}
+.inner{width:1024px; margin:0 auto; height:750px;}
+#header{ margin:0 auto;
+        height: 100px;
+        overflow: hidden;
+        background-color: rgb(86,19,241);}
+#header h3{color:white; 
+            float:left; 
+            font-size: 30px;
+            margin:30px 30px 30px;}
+#header #manager{color:white;}
+#header #manager li{display: inline-block; 
+                    margin:40px 150px 40px;}
+
+                    .top li a{text-decoration: none;
+                        color:white;}
+              .nav{width:100vw;
+                          height: 30px;
+                             list-style: none;
+                             display: flex;
+                             margin-top:80px;}
+              .nav li a{
+                               font-size: 20px;
+                               text-decoration:none;
+                               margin-right: 40px;
+                             color:black;
+                             position:relative;}
+               .nav li a::before{content:'';
+                             height:5px;
+                             width:0px;
+                             background-color: rgb(86,19,241);
+                             border-radius: 10px;
+                             transition:0.3s;
+                             position:absolute;
+                             bottom: 0;
+                             left:0;}
+              .nav li a:hover::before{width:100%;}
+              main div h3{font-weight: bold;
+                  font-size: 20px;
+                  margin-top:120px;
+                  margin-bottom: 20px;}
+              form{margin-top:10px;}
+              select{width:88px;
+                  height:31px;}
+              form input{width:259px;height:27px;}
+              .btn{width:58px;
+                  height:38px;
+                  border-radius: 10px;
+                  border:1px solid grey;}
+              hr{width:1020px;
+                  margin:16px 0px;
+                  opacity: .25;}
+              table{margin-top:10px;}
+              thead{font-weight: bold;
+                  height:30px;
+                  border-bottom:1px solid#000;
+                  }
+              thead th{width:300px; }
+              
+              table td{padding:9px;}
+              tbody td{border-bottom: 1px solid rgb(214, 214, 214);}
+              
+              ul{text-align: center;
+                  margin-top:10px;}
