@@ -61,7 +61,7 @@
                     <th>ID</th>
                     <th>닉네임</th>
                     <th>전화번호</th>
-                    <th>가입일</th>
+                    <th>이메일</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,31 +69,31 @@
                     <td><a href="">test</a></td>
                     <td>test</td>
                     <td>010-0000-0000</td>
-                    <td>2022-10-27</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">test</a></td>
                     <td>test</td>
                     <td>010-0011-1200</td>
-                    <td>2022-10-25</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">test</a></td>
                     <td>test</td>
                     <td>010-4400-1200</td>
-                    <td>2022-10-23</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">test</a></td>
                     <td>test</td>
                     <td>010-2311-1111</td>
-                    <td>2022-10-21</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">test</a></td>
                     <td>test</td>
                     <td>010-1414-1313</td>
-                    <td>2022-10-10</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
             </tbody>
         </table>
@@ -131,7 +131,7 @@
                     <th>ID</th>
                     <th>업체명</th>
                     <th>전화번호</th>
-                    <th>가입일</th>
+                    <th>이메일</th>
                 </tr>
             </thead>
             <tbody>
@@ -139,31 +139,31 @@
                     <td><a href="">test</a></td>
                     <td>A호텔</td>
                     <td>010-0000-0000</td>
-                    <td>2022-10-27</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">test</a></td>
                     <td>A모텔</td>
                     <td>010-0011-1200</td>
-                    <td>2022-10-25</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">test</a></td>
                     <td>B펜션</td>
                     <td>010-4400-1200</td>
-                    <td>2022-10-23</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">test</a></td>
                     <td>C풀빌라</td>
                     <td>010-2311-1111</td>
-                    <td>2022-10-21</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
                 <tr style="text-align:center;">
                     <td><a href="">test</a></td>
                     <td>D펜션</td>
                     <td>010-1414-1313</td>
-                    <td>2022-10-10</td>
+                    <td>daadasa@naver.com</td>
                 </tr>
             </tbody>
         </table>
@@ -258,7 +258,6 @@
                 <tr>
                     <td>
                         <select class="frm_select">
-                            <option value="id">닉네임</option>
                             <option value="nickname">일반회원</option>
                             <option value="nickname">업체회원</option>
                         </select>
@@ -275,7 +274,6 @@
         <table>
             <thead>
                 <tr style="text-align:center;">
-                    <th>닉네임</th>
                     <th>제목</th>
                     <th>작성자/작성일</th>
                     <th>상태</th>
@@ -284,35 +282,30 @@
             </thead>
             <tbody>
                 <tr style="text-align:center;">
-                    <td>test</td>
                     <td><a href="">문의</a></td>
                     <td>test6/2022-10-29</td>
                     <td>처리중</td>
                     <td>업체회원</td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td>test</td>
                     <td><a href="">알려죠</a></td>
                     <td>test4/2022-10-26</td>
                     <td>처리중</td>
                     <td>일반회원</td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td>test</td>
                     <td><a href="">몰라요</a></td>
                     <td>test3/2022-10-24</td>
                     <td>처리완료</td>
                     <td>일반회원</td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td>test</td>
                     <td><a href="">얼마에요</a></td>
                     <td>test1/2022-10-23</td>
                     <td>처리완료</td>
                     <td>일반회원</td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td>test</td>
                     <td><a href="">빨리알려죠</a></td>
                     <td>test/2022-10-13</td>
                     <td>처리완료</td>

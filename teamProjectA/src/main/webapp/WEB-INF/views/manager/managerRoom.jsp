@@ -15,7 +15,7 @@
             <h3>관리자페이지</h3>
             <div id="manager">
                 <ul>
-                    <li><a href="">home</a></li>
+                    <li><a href="<%=%>">home</a></li>
                     <li><a href="">회원관리</a></li>
                     <li><a href="">숙소관리</a></li>
                     <li><a href="">리뷰관리</a></li>
@@ -38,47 +38,47 @@
                 <tr style="text-align:center;">
                     <th>이미지</th>
                     <th>숙소명</th>
-                    <th>가격</th>
+                    <th>구분</th>
                     <th>상세관리</th>
                 </tr>
             </thead>
             <tbody>
                 <tr style="text-align:center;">
-                    <td><img src="../jquery/호텔엔트라 강남.jpg" alt=""></td>
-                    <td>호텔엔트라 강남</td>
-                    <td>100,000~500,000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <input type="button"value="삭제" onclick="deletFn()">
                     </td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><img src="../jquery/파크하얏트서울.jpg" alt=""></td>
-                    <td>파크하얏트 서울</td>
-                    <td>50,000~800,000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <input type="button"value="삭제" onclick="deletFn()">
                     </td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><img src="../jquery/신라스테이역삼.jpg" alt=""></td>
-                    <td>신라스테이 역삼</td>
-                    <td>70,000~300,000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <input type="button"value="삭제" onclick="deletFn()">
                     </td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><img src="../jquery/리베라.jpg" alt=""></td>
-                    <td>리베라</td>
-                    <td>60,000~250,000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <input type="button"value="삭제" onclick="deletFn()">
                     </td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><img src="../jquery/호텔인나인 강남.jpg" alt=""></td>
-                    <td>호텔인나인 강남</td>
-                    <td>60,000~300,000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <input type="button"value="삭제" onclick="deletFn()">
                     </td>

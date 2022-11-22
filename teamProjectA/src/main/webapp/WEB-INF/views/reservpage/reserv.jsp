@@ -7,12 +7,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약화면</title>
-   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/reserv_css/reset.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/reserv_css/reserv.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/reserv_css/reset.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/reserv_css/reserv.css">
     <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> <!--XE아이콘-->
+	 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
+  <script>
+        
+    IMP.init("imp07081518"); 
 
+    function requestPay() {
+        IMP.request_pay({
+            pg : 'html5_inicis',
+            pay_method : 'card',
+            merchant_uid: "57008833-33004", 
+            name : '호텔 크레센도',
+            amount : '150000',
+            buyer_email : 'Iamport@chai.finance',
+            buyer_name : '아임포트 기술지원팀',
+            buyer_tel : '010-1234-5678',
+            buyer_addr : '서울특별시 강남구 삼성동',
+            buyer_postcode : '123-456'
+        }, function (rsp) { // callback
+            if (rsp.success) {
+                console.log(rsp);
+            } else {
+                console.log(rsp);
+            }
+        });
+    }
+</script>
     <script>
         $(document).ready(function(){
             $(".search_btn").click(function(){
@@ -33,12 +58,39 @@
                 keyboard: true,
             });
         });
+
+        //약관동의
+        $(document).ready(function() {
+			$("#checkall").click(function() {
+				if($("#checkall").is(":checked")) $("input[name=check]").prop("checked", true);
+				else $("input[name=check]").prop("checked", false);
+			});
+			
+			$("input[name=check]").click(function() {
+				var total = $("input[name=check]").length;
+				var checked = $("input[name=check]:checked").length;
+				
+				if(total != checked) $("#checkall").prop("checked", false);
+				else $("checkall").prop("checked", true); 
+			});
+		});
+        function check(){
+         if($("#checkall").is(":checked")) $("#nofont").css("display","none");
+            else $("#nofont").show()       
+         if($("#checkall").is(":checked")) $("#nofont1").css("display","none");
+            else $("#nofont1").show() 
+         if($("#checkall").is(":checked")) $("#nofont2").css("display","none");
+            else $("#nofont2").show() 
+         if($("#checkall").is(":checked")) $("#nofont3").css("display","none");
+         else $("#nofont3").show() 
+        }              
     </script>
+   
 </head>
 <body>
     <header>
         <div class="inner">
-            <h1><a href="#"><img src="../jquery/logo.svg" alt="저긴어때"></a></h1>        
+            <h1><a href="#"><img src="<%=request.getContextPath() %>/resources/images/login_images/logo.svg" alt="저긴어때" ></a></h1>        
             <ul>
                 <li>
                     <input type="search" class="search_bar">
@@ -51,50 +103,38 @@
         <div class="left">
             <h2>예약자 정보</h2>
             <p>예약자 이름</p>
-            <input type="text" placeholder="체크인시 필요한 정보입니다">
+            <input type="text" placeholder="체크인시 필요한 정보입니다" >
             <p>휴대폰 번호<p>
-            <input type="text" placeholder="체크인시 필요한 정보입니다">
+            <input type="text" placeholder="체크인시 필요한 정보입니다 -를 빼고입력해주세요" >
             
             <div class="login">
-                <a>로그인 후 이용가능합니다
-                <br>
-                <span>로그인></span>
-                </a>
+                <a>예약자정보 입력은 필수 입니다</a>
             </div> 
-            <div class="pay">
-                <h3>결제수단 선택</h3>
-                <select id="payselect">
-                    <option>카카오페이</option>
-                    <option>토스</option>
-                    <option>신용/체크카드</option>
-                    <option>네이버페이</option>
-                    <option>계좌이체</option>
-                </select>
-            </div>  
+            <h3>약관동의</h3>
             <table class="agree">
                  <tr>
-                     <td><input type="checkbox"></td>
+                     <td><input type="checkbox" id="checkall" onclick="check()"></td>
                      <td>전체동의</td>
                 </tr>
                 <tr>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" name="check" onclick="check()"></td>
                     <td>숙소이용규칙 및 취소/환불규정동의</td>
-                    <td>필수</td>
+                    <td id="nofont">필수!</td>
                </tr>
                <tr>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" name="check" onclick="check()"></td>
                     <td>개인정보 수집 및 이용 동의</td>
-                    <td>필수</td>
+                    <td id="nofont1">필수!</td>
                </tr>
                <tr>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" name="check" onclick="check()"></td>
                     <td>개인정보 제 3자 제공 동의</td>
-                    <td>필수</td>
+                    <td id="nofont2">필수!</td>
                </tr>
                <tr>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" name="check" onclick="check()"></td>
                     <td>만 14세 이상 확인</td>
-                    <td>필수</td>
+                    <td id="nofont3">필수!</td>
                </tr>
             </table>
         </div>
@@ -133,7 +173,7 @@
                     </li>
                 </ul>
             </section>
-            <button>결제하기</button>
+            <button onclick="requestPay()">결제하기</button> 
         </div>
     </main>
     <footer>
