@@ -98,7 +98,7 @@ body #inner2 .imgbor img{width:720px; height:300px;
 body #inner2 .img_left{ position:absolute; z-index: 2;
                         margin-left:10px;}
 body #inner2 .img_right{ position:absolute; margin-left:500px; z-index: 2;}
-body #inner2 .img_left h3{padding:170px 0 20px 18px; font-size:28px; font-weight:bold;
+body #inner2 .img_left h3{padding:190px 0 20px 18px; font-size:28px; font-weight:bold;
     color:white; padding-bottom:10px;}
 body #inner2 .img_left p:nth-child(2){padding-left:20px;
         color:rgb(168, 206, 231); font-weight:bold;
@@ -107,9 +107,9 @@ body #inner2 .img_left p:nth-child(3){color:white;
         padding-left:20px;
         font-size:20px;}
 body #inner2 .img_right div{font-size:25px; color:white;
-        margin-right:20px; padding-bottom:20px; float:right;}
-body #inner2 .img_right div:nth-child(1){margin-top:200px; font-size:20px;}
-body #inner2 .img_right div:nth-child(2){font-weight:bold;}
+        margin-right:20px; padding-bottom:7px; float:right;}
+body #inner2 .img_right div:nth-child(1){margin-top:230px; font-size:18px;}
+body #inner2 .img_right div:nth-child(2){font-weight:bold; padding-bottom:12px;}
 
 #select_left .open_menu{display:none;}
 #select_right .open_menu{display:none;}

@@ -314,7 +314,7 @@ function count(type)  {
                
                 <div class="select_under"> <a href="#">
                     <div>제주</div>
-                    <img src="../select_img/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
                  </div> 
                  <ul class="open_menu">
                     <li class="c3"><a href="#">제주 전체</a></li>
@@ -658,7 +658,7 @@ function count(type)  {
 			                        </ul>
 			                    </div>
 			                    <div class="img_right">
-			                        <div>남은객실${vo2.rnum}개</div>
+			                        <div>남은 객실 ${vo2.rnum}개</div>
 			                        <div><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</div>
 			                    </div>
 			                	<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo1.limagename}"> 
