@@ -305,7 +305,7 @@ function count(type)  {
                     <li class="c1"><a href="#">영등포역</a></li>
                     <li class="c1"><a href="#">서초/교대/사당</a></li>
                     <li class="c1"><a href="#">건대입구/성수/왕십리</a></li>
-                </ul>      
+                </ul>     
                
                 <div class="select_under"> <a href="#">
                     <div>제주</div>

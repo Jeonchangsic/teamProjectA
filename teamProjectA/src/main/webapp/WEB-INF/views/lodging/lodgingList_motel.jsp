@@ -289,7 +289,7 @@ function count(type)  {
                     <li class="c1"><a href="#">여수</a></li>
                     <li class="c1"><a href="#">순천/광양/담양/보성/화순</a></li>
                     <li class="c1"><a href="#">목포/신안/영광/진도/고흥/영암/완도</a></li>
-                </ul>       
+                </ul>      
 
               </div>
                <div id="select_right" >
