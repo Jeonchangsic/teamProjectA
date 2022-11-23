@@ -81,6 +81,19 @@ public class LodgingController {
 		return "lodging/lodgingList_villa"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
 	}
 	
+	@RequestMapping(value = "/lodgingList_search.do", method = RequestMethod.GET) // value : 가상경로  // "/":메인페이지(웰컴파일)
+	public String list_search(Locale locale, RoomVO vo, Model model) {
+		
+		List<LodgingVO> listSearch= lodgingService.selectListSearch(vo);
+		
+		List<RoomVO> list2= lodgingService.selectList2(vo);
+		
+		model.addAttribute("listSearch",listSearch);
+		model.addAttribute("list2",list2);
+		
+		return "lodging/lodgingList_search"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
+	}
+	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
 	public String lodgingView(Locale locale, String lidx, Model model) {
 			

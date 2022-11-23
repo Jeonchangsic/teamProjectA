@@ -20,6 +20,10 @@ public class LodgingServiceImpl implements LodgingService {
 		return lodgingDAO.selectList1(lodgingkind);
 	}
 	@Override
+	public List<LodgingVO> selectListSearch(LodgingVO vo) {
+		return lodgingDAO.selectListSearch(vo);
+	}
+	@Override
 	public List<RoomVO> selectList2(RoomVO vo) {		
 		return lodgingDAO.selectList2(vo);
 	}

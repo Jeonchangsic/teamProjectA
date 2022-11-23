@@ -19,6 +19,10 @@ public class LodgingDAO {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectList1",lodgingkind);
 	}
 	
+	public List<LodgingVO> selectListSearch(LodgingVO vo){
+		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectListSearch",vo);
+	}
+	
 	public List<RoomVO> selectList2(RoomVO vo){
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectList2",vo);
 	}

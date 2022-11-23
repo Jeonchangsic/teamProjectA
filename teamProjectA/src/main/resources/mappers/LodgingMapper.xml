@@ -21,6 +21,10 @@
 		SELECT * FROM lodgingtb
 		 WHERE lodgingkind = #{lodgingkind}
 	</select>
+	
+	<select id="selectListSearch" parameterType="lodgingVO" resultType="lodgingVO">
+		SELECT * FROM lodgingtb
+	</select>
 	<select id="selectList2" parameterType="roomVO" resultType="roomVO">
 		SELECT * FROM roomtb
 	</select>
