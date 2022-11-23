@@ -64,13 +64,21 @@
 
     	  $(".c1").click(function(){
         	  var jbText = $(this).text();
-          $("#select_main").text(jbText);
+          $("#select_main p").text(jbText);
+          $("#reselect_btn").css("display","inline-block");
     	  });
       });
 
-     
-     
-     
+     //지역전체메뉴 접었다 폈다 하는 기능  
+      	$(document).ready(function(){
+            $("#reselect_btn").click(function(){
+            	if($(".selectBoth").is(":visible")){
+        			$(".selectBoth").css("display", "none");
+        		}else{
+        			$(".selectBoth").css("display", "block");
+        		}
+            });
+        });
      
      
      //검색기능
@@ -235,126 +243,131 @@ function count(type)  {
     <section id="body_inner" class="fixedclear">
         <section id="inner" class="fixedclear" >
             <div id="select" class="fixedclear">
-              <div id="select_main">지역선택</div>
+              <div id="select_main">
+              		<p>지역선택</p>
+	              	<div id="reselect_btn">
+	              		<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
+	              	</div>
+              </div>
                <div class="selectBoth">
                 <div id="select_left">
-                 <div class="select_under"><a href="#">
+                 <div class="select_under">
                     <div>인기지역</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                   </div>
                 <ul class="open_menu">
-                    <li class="c1" onclick="statusChange(this)"><a href="#">부산 전체</a></li>
-                    <li class="c1"><a href="#">전라 전체</a></li>
-                    <li class="c1""><a href="#">제주 전체</a></li>
+                   <li class="c1" onclick="statusChange(this)">부산 전체</li>
+                    <li class="c1">전라 전체</li>
+                    <li class="c1">제주 전체</li>
                 </ul>  
-                 <div class="select_under"><a href="#">
+                 <div class="select_under">
                     <div>부산</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div> 
                  <ul class="open_menu">
-                    <li class="c1"><a href="#">부산 전체</a></li>
-                    <li class="c1"><a href="#">해운대/마린시티</a></li>
-                    <li class="c1"><a href="#">광안리/경성대</a></li>
-                    <li class="c1"><a href="#">부산역</a></li>
-                    <li class="c1"><a href="#">송정/기장</a></li>
-                    <li class="c1"><a href="#">자갈치/남포동/영도</a></li>
+                    <li class="c1">부산 전체</li>
+                    <li class="c1">해운대/마린시티</li>
+                    <li class="c1">광안리/경성대</li>
+                    <li class="c1">부산역</li>
+                    <li class="c1">송정/기장</li>
+                    <li class="c1">자갈치/남포동/영도</li>
                 </ul>    
-                 <div class="select_under"><a href="#"> 
+                 <div class="select_under">
                     <div>경기</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div> 
                  <ul class="open_menu">
-                    <li class="c1"><a href="#">경기 전체</a></li>
-                    <li class="c1"><a href="#">수원/화성</a></li>
-                    <li class="c1"><a href="#">남양주/구리/성남/분당</a></li>
-                    <li class="c1"><a href="#">용인/동탄</a></li>
-                    <li class="c1"><a href="#">이천/광주/여주/하남</a></li>
-                    <li class="c1"><a href="#">가평/청평/양평</a></li>
-                    <li class="c1"><a href="#">부천/광명/시흥/안산</a></li>
+                    <li class="c1">경기 전체</li>
+                    <li class="c1">수원/화성</li>
+                    <li class="c1">남양주/구리/성남/분당</li>
+                    <li class="c1">용인/동탄</li>
+                    <li class="c1">이천/광주/여주/하남</li>
+                    <li class="c1">가평/청평/양평</li>
+                    <li class="c1">부천/광명/시흥/안산</li>
                 </ul>     
-                 <div class="select_under"><a href="#">
+                 <div class="select_under">
                     <div>강원</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div> 
                  <ul class="open_menu">
-                    <li class="c1"><a href="#">강원 전체</a></li>
-                    <li class="c1"><a href="#">속초/양양/고성</a></li>
-                    <li class="c1"><a href="#">강릉</a></li>
-                    <li class="c1"><a href="#">평창/정선/영월</a></li>
-                    <li class="c1"><a href="#">동해/삼척/태백</a></li>
+                    <li class="c1">강원 전체</li>
+                    <li class="c1">속초/양양/고성</li>
+                    <li class="c1">강릉</li>
+                    <li class="c1">평창/정선/영월</li>
+                    <li class="c1">동해/삼척/태백</li>
                 </ul>        
-                 <div class="select_under"><a href="#">
+                 <div class="select_under">
                     <div>전라</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div>
                  <ul class="open_menu">
-                    <li class="c1"><a href="#">전라 전체</a></li>
-                    <li class="c1"><a href="#">전주/완주</a></li>
-                    <li class="c1"><a href="#">광주/나주</a></li>
-                    <li class="c1"><a href="#">여수</a></li>
-                    <li class="c1"><a href="#">순천/광양/담양/보성/화순</a></li>
-                    <li class="c1"><a href="#">목포/신안/영광/진도/고흥/영암/완도</a></li>
-                </ul>      
+                    <li class="c1">전라 전체</li>
+                    <li class="c1">전주/완주</li>
+                    <li class="c1">광주/나주</li>
+                    <li class="c1">여수</li>
+                    <li class="c1">순천/광양/담양/보성/화순</li>
+                    <li class="c1">목포/신안/영광/진도/고흥/영암/완도</li>
+                </ul>       
 
               </div>
                <div id="select_right" >
-                <div class="select_under"><a href="#">
+                <div class="select_under">
                     <div>서울</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div>
                  <ul class="open_menu">
-                    <li class="c1"><a href="#">서울 전체</a></li>
-                    <li class="c1"><a href="#">강남/역삼/삼성</a></li>
-                    <li class="c1"><a href="#">서울역/이태원/용산</a></li>
-                    <li class="c1"><a href="#">여의도</a></li>
-                    <li class="c1"><a href="#">영등포역</a></li>
-                    <li class="c1"><a href="#">서초/교대/사당</a></li>
-                    <li class="c1"><a href="#">건대입구/성수/왕십리</a></li>
-                </ul>      
+                    <li class="c1">서울 전체</li>
+                    <li class="c1">강남/역삼/삼성</li>
+                    <li class="c1">서울역/이태원/용산</li>
+                    <li class="c1">여의도</li>
+                    <li class="c1">영등포역</li>
+                    <li class="c1">서초/교대/사당</li>
+                    <li class="c1">건대입구/성수/왕십리</li>
+                </ul>     
                
-                <div class="select_under"> <a href="#">
+                <div class="select_under">
                     <div>제주</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div> 
                  <ul class="open_menu">
-                    <li class="c3"><a href="#">제주 전체</a></li>
-                    <li class="c1"><a href="#">제주시/제주국제공항</a></li>
-                    <li class="c1"><a href="#">서귀포시</a></li>
-                    <li class="c1"><a href="#">애월/한림/협재</a></li>
+                    <li class="c1">제주 전체</li>
+                    <li class="c1">제주시/제주국제공항</li>
+                    <li class="c1">서귀포시</li>
+                    <li class="c1">애월/한림/협재</li>
                 </ul>      
-                <div class="select_under"><a href="#">
+                <div class="select_under">
                     <div>인천</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div> 
                  <ul class="open_menu">
-                    <li class="c1"><a href="#">인천 전체</a></li>
-                    <li class="c1"><a href="#">송도/소래포구</a></li>
-                    <li class="c1"><a href="#">구읍뱃터/월미도</a></li>
-                    <li class="c1"><a href="#">인천국제공항/강화/을왕리/영종</a></li>
-                    <li class="c1"><a href="#">청라/계양/부평</a></li>
+                    <li class="c1">인천 전체</li>
+                    <li class="c1">송도/소래포구</li>
+                    <li class="c1">구읍뱃터/월미</li>
+                    <li class="c1">인천국제공항/강화/을왕리/영종</li>
+                    <li class="c1">청라/계양/부평</li>
                 </ul>      
-                <div class="select_under">  <a href="#">
+                <div class="select_under">
                     <div>경상</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div> 
                  <ul class="open_menu">
-                    <li class="c1"><a href="#">경상 전체</a></li>
-                    <li class="c1"><a href="#">경주</a></li>
-                    <li class="c1"><a href="#">울산/양산</a></li>
-                    <li class="c1"><a href="#">거제/통영</a></li>
-                    <li class="c1"><a href="#">포항/영덕/울진/청송</a></li>
-                    <li class="c1"><a href="#">창원/마산/진해/김해</a></li>
+                    <li class="c1">경상 전체</li>
+                    <li class="c1">경주</li>
+                    <li class="c1">울산/양산</li>
+                    <li class="c1">거제/통영</li>
+                    <li class="c1">포항/영덕/울진/청송</li>
+                    <li class="c1">창원/마산/진해/김해</li>
                 </ul>      
-                <div class="select_under"> <a href="#">
+                <div class="select_under">
                     <div>충청</div>
-                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png"></a>
+                    <img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
                  </div> 
                  <ul class="open_menu">
-                    <li class="c1"><a href="#">충청 전체</a></li>
-                    <li class="c1"><a href="#">대전/세종</a></li>
-                    <li class="c1"><a href="#">천안/아산/도고</a></li>
-                    <li class="c1"><a href="#">보령/대천/부여/공주/금산</a></li>
-                    <li class="c1"><a href="#">청주/음성/진천</a></li>
+                    <li class="c1">충청 전체</li>
+                    <li class="c1">대전/세종</li>
+                    <li class="c1">천안/아산/도고</li>
+                    <li class="c1">보령/대천/부여/공주/금산</li>
+                    <li class="c1">청주/음성/진천</li>
                 </ul>      
               </div>
              </div>
