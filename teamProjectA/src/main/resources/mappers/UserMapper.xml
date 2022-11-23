@@ -52,6 +52,12 @@
 				WHERE userID = #{userID}
 				AND userPassword = #{userPassword}
 		</delete>
-		
+		<!-- 회원리스트 -->
+		<select id="userlist" parameterType="userVO" resultType="userVO">
+			SELECT * FROM  AUSERTB
+			
+			
+			
+		</select>
 		
 </mapper>

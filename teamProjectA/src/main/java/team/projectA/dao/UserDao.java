@@ -1,5 +1,7 @@
 package team.projectA.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,4 +29,9 @@ public class UserDao {
 	public int userDt(UserVO vo) {
 		return sqlsession.delete("team.projectA.mapper.UserMapper.userDt", vo);
 	}
+	//회원리스트
+		public List<UserVO> userList(UserVO vo){
+			return sqlsession.selectList("team.projectA.mapper.UserMapper.userlist",vo);
+			
+		}
 }

@@ -1,10 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="java.util.*" %>
+ <%@ page import="team.projectA.vo.*" %>
+<% 
+
+List<UserVO> list = (List<UserVO>)request.getAttribute("list");
+
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>관리자회원관리</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerUser.css">
 <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
@@ -27,7 +36,6 @@
         <nav>
             <div class="nav">
                 <li id="user_list" onclick="click()">회원리스트</li>
-                <li id="user2_list" onclick="click()">업체회원리스트</li>
                 <li id="reserv_list" onclick="click()">예약내역</li>
                 <li id="qna_list" onclick="click()">문의내역</li>
             </div>
@@ -44,6 +52,7 @@
                         <select class="frm_select">
                             <option value="id">아이디</option>
                             <option value="nickname">이름</option>
+                            <option value="type">구분</option>
                         </select>
                     </td>
                     <td>
@@ -62,117 +71,31 @@
                     <th>이름</th>
                     <th>전화번호</th>
                     <th>이메일</th>
+                    <th>구분</th>
                 </tr>
             </thead>
             <tbody>
+            <%for(UserVO vo : list) {%>
                 <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><%=vo.getUserID() %></td>
+                    <td><%=vo.getUserName() %></td>
+                    <td><%=vo.getUserPhone() %></td>
+                    <td><%=vo.getUserEmail() %></td>
+                    <td><%=vo.getUserType() %></td>
                 </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+              <%} %>  
             </tbody>
         </table>
-        <ul>
-            <li>
-                <a href="">1</a>
-            </li>
-        </ul>
+        	<div class="w3-center w3-border">
+			  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
+			  <a href="#" class="w3-bar-item w3-button">1</a>
+			  <a href="#" class="w3-bar-item w3-button">2</a>
+			  <a href="#" class="w3-bar-item w3-button">3</a>
+			  <a href="#" class="w3-bar-item w3-button">4</a>
+			  <a href="#" class="w3-bar-item w3-button">&raquo;</a>
+			</div>
        </div>
-        <div id="user2_section">
-            <h3>업체회원목록</h3>
-             
-        <hr/>
-        <form>
-            <tbody>
-                <tr>
-                    <td>
-                        <select class="frm_select">
-                            <option value="id">아이디</option>
-                            <option value="nickname">업체명</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="keyword" size="30">
-                    </td>
-                    <td>
-                        <button class="btn" type="submit" name="submit">검색</button>
-                    </td>
-                </tr>
-            </tbody>
-        </form>
-        <table>
-            <thead>
-                <tr style="text-align:center;">
-                    <th>ID</th>
-                    <th>업체명</th>
-                    <th>전화번호</th>
-                    <th>이메일</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        <ul>
-            <li>
-                <a href="">1</a>
-            </li>
-        </ul>
-    </div>
+
         <div id="reserv_section">
             <h3>예약내역</h3>
              
@@ -243,11 +166,14 @@
                 </tr>
             </tbody>
         </table>
-        <ul>
-            <li>
-                <a href="">1</a>
-            </li>
-        </ul>
+        <div class="w3-center w3-border">
+			  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
+			  <a href="#" class="w3-bar-item w3-button">1</a>
+			  <a href="#" class="w3-bar-item w3-button">2</a>
+			  <a href="#" class="w3-bar-item w3-button">3</a>
+			  <a href="#" class="w3-bar-item w3-button">4</a>
+			  <a href="#" class="w3-bar-item w3-button">&raquo;</a>
+		</div>
     </div>
         <div id="qna_section">
             <h3>문의내역</h3>
@@ -313,11 +239,14 @@
                 </tr>
             </tbody>
         </table>
-        <ul>
-            <li>
-                <a href="">1</a>
-            </li>
-        </ul>
+        <div class="w3-center w3-border">
+			  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
+			  <a href="#" class="w3-bar-item w3-button">1</a>
+			  <a href="#" class="w3-bar-item w3-button">2</a>
+			  <a href="#" class="w3-bar-item w3-button">3</a>
+			  <a href="#" class="w3-bar-item w3-button">4</a>
+			  <a href="#" class="w3-bar-item w3-button">&raquo;</a>
+		</div>
     </div>
     </main>
     <footer>
