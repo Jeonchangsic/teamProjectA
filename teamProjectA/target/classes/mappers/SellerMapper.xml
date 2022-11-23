@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.projectA.mapper.sellerMapper">
+
+
+	
+	<select id = "SellerOne" resultType="UserVO" parameterType = "int">
+	
+			SELECT
+				 u.uidx
+				, u.userID
+				, u.userName
+				, u.userPassword
+				, u.userEmail
+				, u.userPhone
+				, u.userType
+				, l.lodgingname
+				, l.lodgingaddr
+				, l.lidx
+ 				FROM AUSERTB u, LODGINGTB l
+ 				WHERE u.uidx = l.uidx
+				AND u.uidx = #{uidx}
+	</select>
+	
+	
+	<update id = "sellerUpdate" parameterType = "UserVO">
+			UPDATE ausertb 
+			SET userPhone = #{userPhone},
+				userPassword = #{userPassword},
+				userEmail = #{userEmail}
+			WHERE uidx = #{uidx}
+		
+	</update>
+	
+	<update id = "sellerUpdate2" parameterType = "LodgingVO">
+			UPDATE lodgingtb
+			SET lodgingname = #{lodgingname},
+			lodgingaddr = #{lodgingaddr}
+			WHERE lidx = #{lidx}
+	
+    <!--부적합한 열유형 떠서 jdbcType=VARCHAR 추가함  -->
+	</update>
+
+	
+</mapper>
+
+
+
+
+
+

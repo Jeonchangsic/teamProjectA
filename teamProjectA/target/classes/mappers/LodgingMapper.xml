@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" 
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-		<mapper namespace="team.projectA.mapper.LodgingMapper">
-		
+<mapper namespace="team.projectA.mapper.lodgingMapper">
+
+	<!-- <select id="selectList" parameterType="String" resultType="lodgingVO">
+		SELECT l.lidx
+			 , l.lodgingname
+			 , l.lodgingaddr
+			 , l.satis			
+			 , r.ridx
+			 , r.rnum
+			 , r.rprice
+		FROM lodgingtb l, roomtb r
+		WHERE l.lidx = r.lidx
+		  AND lodgingkind = #{lodgingkind} 
+	</select> -->
+	
+	<!-- 숙소리스트 -->
+	<select id="selectList1" parameterType="String" resultType="lodgingVO">
+		SELECT * FROM lodgingtb
+		 WHERE lodgingkind = #{lodgingkind}
+	</select>
+	
+	<select id="selectListSearch" parameterType="lodgingVO" resultType="lodgingVO">
+		SELECT * FROM lodgingtb
+	</select>
+	<select id="selectList2" parameterType="roomVO" resultType="roomVO">
+		SELECT * FROM roomtb
+	</select>
+	<!-- 숙소상세 -->
+	<select id="selectLodging" parameterType="String" resultType="lodgingVO">
+		SELECT lidx
+			 , limagename
+			 , lodgingname
+			 , lodgingaddr
+			 , satis
+			 , reviewnum			
+		 FROM lodgingtb
+		WHERE lidx = #{lidx}
+	</select>
+	<select id="selectRoomList" parameterType="String" resultType="roomVO">
+		SELECT ridx
+			 , rtype
+			 , rnum
+			 , rprice
+			 , rimage1
+			 , rimage2
+			 , rimage3
+			 , rimage4
+			 , rimage5
+		 FROM roomtb
+		WHERE lidx = #{lidx}
+	</select>
 	
 </mapper>

@@ -6,6 +6,8 @@
 	<typeAliases>
 		<typeAlias type="team.projectA.vo.UserVO" alias="userVO"/> 
 		<typeAlias type="team.projectA.vo.LodgingVO" alias="lodgingVO"/>
+		<typeAlias type="team.projectA.vo.RoomVO" alias="roomVO"/>
+		<typeAlias type="team.projectA.vo.QnaVO" alias="qnaVO"/>
     
 	
 		<!-- <typeAlias type="edu.board.vo.BoardVO" alias="boardVO"/>

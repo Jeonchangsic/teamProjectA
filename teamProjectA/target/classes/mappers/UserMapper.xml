@@ -52,4 +52,6 @@
 				WHERE userID = #{userID}
 				AND userPassword = #{userPassword}
 		</delete>
+		
+		
 </mapper>
