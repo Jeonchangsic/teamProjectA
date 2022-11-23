@@ -71,7 +71,7 @@ header li a{color:white; font-size:22px; font-weight:bold;}
     position: relative;
    
 }
-.search_bar {
+/* .search_bar {
     height: 40px; width: 220px;
     position: absolute;
     left: -230px;
@@ -81,7 +81,7 @@ header li a{color:white; font-size:22px; font-weight:bold;}
 }
 .search_bar.view {
     transform: scaleX(1);
-}
+} */
 header .search{font-size:30px; color:rgba(255,255,255,0.8);}   
 header .search:hover{color:white;} 
 header #login{color:rgba(255,255,255,0.8);}    
@@ -90,6 +90,10 @@ header #logout{color:rgba(255,255,255,0.8);}
 header #logout:hover{color:white;}
 header #mypage{color:rgba(255,255,255,0.8);}  
 header #mypage:hover{color:white;}
+header #seller{color:rgba(255,255,255,0.8);}  
+header #seller:hover{color:white;}
+header #manager{color:rgba(255,255,255,0.8);}  
+header #manager:hover{color:white;}
             /*end header */
 
             /*main*/

@@ -39,13 +39,8 @@
         <table id="table2">
             <tr>
                 <td>
-                    <a href="#" id="kakao">  <!--카카오 로그인 링크-->
-                        <img src="<%=request.getContextPath() %>/resources/images/login_images/kakao.svg" width="45">
-                    </a>
-                </td>
-                <td>
-                    <a href="#"> <!-- 네이버 로그인 링크-->
-                        <img src="<%=request.getContextPath() %>/resources/images/login_images/naver.svg" width="46">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=227a905a07d7faec4ff2683045c19574&redirect_uri=http://localhost:8080/A/auth/kakao/callback&response_type=code" id="kakao" style="margin-left:5px;">  <!--카카오 로그인 링크-->
+                        <img src="<%=request.getContextPath() %>/resources/images/login_images/kakao_login_medium_narrow.png" width="250" height="45" >
                     </a>
                 </td>
             </tr>

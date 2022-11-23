@@ -41,6 +41,7 @@
 					,userPhone
 					,userBirth
 					,userPassword
+					,userType
 					FROM ausertb
 					WHERE userID = #{userID}
 					AND userPassword = #{userPassword}
