@@ -56,9 +56,25 @@
 		<!-- 회원리스트 -->
 		<select id="userlist" parameterType="userVO" resultType="userVO">
 			SELECT * FROM  AUSERTB
-			
-			
-			
+	
 		</select>
+		<!-- 총 리스트 갯수 출력 
+		<select id="countUserList" resultType="userVO">
+			SELECT COUNT(*) FROM AUSERTB
+		</select>
+		 페이징 처리 후 리스트 조회 
+		<select id="selectUserList" resultType="userVO">
+			SELECT * 
+				FROM (
+					SELECT ROWNUM RN, A.* 
+						FROM (
+								SELECT * 
+								FROM AUSERTB 
+								ORDER BY SEQ DESC 
+								) A
+						)
+			WHERE RN BETWEEN #{start} AND #{end}
+		</select> -->
 		
+
 </mapper>

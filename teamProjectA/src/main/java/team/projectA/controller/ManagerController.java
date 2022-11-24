@@ -12,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import team.projectA.service.UserService;
+import team.projectA.vo.PagingVO;
 import team.projectA.vo.UserVO;
 
 @RequestMapping(value="/manager")
@@ -25,7 +27,23 @@ public class ManagerController {
 	@Autowired
 	private UserService userService;
 	@RequestMapping(value = "/managerUser.do", method = RequestMethod.GET)
-	public String user(Model model,UserVO vo) {
+	public String user(Model model,UserVO vo , PagingVO vo1 ,UserVO vo2
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage){
+			
+//	int total = userService.countUser(vo2);
+//		if(nowPage == null && cntPerPage == null) {
+//			nowPage = "1";
+//			cntPerPage = "5";
+//		} else if (nowPage == null) {
+//			nowPage= "1";
+//		}else if (cntPerPage == null) {
+//			cntPerPage = "5";
+//		}
+//		vo1 = new PagingVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+//		model.addAttribute("Paging",vo1);
+//		model.addAttribute("viewAll",userService.selectUserList(vo1));
+		
 		List<UserVO> list = userService.userList(vo);
 		model.addAttribute("list",list);
 		
@@ -35,27 +53,13 @@ public class ManagerController {
 	}
 	@RequestMapping(value = "/managerRoom.do", method = RequestMethod.GET)
 	public String Room(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "manager/managerRoom";
 	}
 	@RequestMapping(value = "/managerReview.do", method = RequestMethod.GET)
 	public String Review(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
+	
 		
 		return "manager/managerReview";
 	}

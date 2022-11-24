@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ page import="java.util.*" %>
  <%@ page import="team.projectA.vo.*" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% 
 
 List<UserVO> list = (List<UserVO>)request.getAttribute("list");
@@ -18,6 +19,12 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerUser.css">
 <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
 </head>
+<script>
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="managerUser?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+</script>
 <body style="overflow-x: hidden">
     <div id="header">
         <div class="top">
@@ -86,14 +93,24 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
               <%} %>  
             </tbody>
         </table>
-        	<div class="w3-center w3-border">
-			  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
-			  <a href="#" class="w3-bar-item w3-button">1</a>
-			  <a href="#" class="w3-bar-item w3-button">2</a>
-			  <a href="#" class="w3-bar-item w3-button">3</a>
-			  <a href="#" class="w3-bar-item w3-button">4</a>
-			  <a href="#" class="w3-bar-item w3-button">&raquo;</a>
-			</div>
+        	<div style="display: block; text-align: center;">		
+		<c:if test="${paging.startPage != 1 }">
+			<a href="/managerUser?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="/managerUser?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="/managerUser?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
        </div>
 
         <div id="reserv_section">
