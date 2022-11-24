@@ -89,7 +89,8 @@
 			 , lodgingname
 			 , lodgingaddr
 			 , satis
-			 , reviewnum			
+			 , reviewnum
+			 , uidx		
 		 FROM lodgingtb
 		WHERE lidx = #{lidx}
 	</select>
