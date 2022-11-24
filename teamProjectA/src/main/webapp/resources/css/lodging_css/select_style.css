@@ -42,7 +42,7 @@ body #select{width:1024px;  margin:0 auto; margin-top:140px; }
 body #select_main{ font-size:28px; font-weight:bold; margin-top:25px; border-bottom:1px solid black;
                     padding-left:30px; padding-bottom:20px; line-height:1.5;}
 #select_main p {display:inline-block;}
-#select #reselect_btn {width:20px; height:20px; display:none; margin:0 0 4px 20px;
+#select #reselect_btn {width:20px; height:20px; display:inline-block; margin:0 0 4px 20px;
      				background-color:rgba(0, 0, 0, 0.326); padding:7px; vertical-align: bottom;}
      #reselect_btn img {width:20px; height:20px;}
 body #select #select_left {float:left; margin-top:20px; margin-left:50px;}

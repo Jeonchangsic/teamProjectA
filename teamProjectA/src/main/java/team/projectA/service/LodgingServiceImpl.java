@@ -15,17 +15,24 @@ public class LodgingServiceImpl implements LodgingService {
 	@Autowired
 	private LodgingDAO lodgingDAO; 
 	
-	@Override
+/*	@Override
 	public List<LodgingVO> selectList1(String lodgingkind) {
 		return lodgingDAO.selectList1(lodgingkind);
 	}
+	
 	@Override
-	public List<LodgingVO> selectListSearch(LodgingVO vo) {
-		return lodgingDAO.selectListSearch(vo);
+	public List<RoomVO> selectList2(String gubun) {		
+		return lodgingDAO.selectList2(gubun);
 	}
+*/
 	@Override
-	public List<RoomVO> selectList2(RoomVO vo) {		
-		return lodgingDAO.selectList2(vo);
+	public List<RoomVO> selectLodgingList(String lodgingkind, String type) {
+		return lodgingDAO.selectLodgingList(lodgingkind, type);
+	}
+
+	@Override
+	public List<RoomVO> selectListSearch(String type) {
+		return lodgingDAO.selectListSearch(type);
 	}
 	
 	@Override
@@ -37,6 +44,7 @@ public class LodgingServiceImpl implements LodgingService {
 		return lodgingDAO.selectRoomList(lidx);
 	}
 
+	
 	
 
 	

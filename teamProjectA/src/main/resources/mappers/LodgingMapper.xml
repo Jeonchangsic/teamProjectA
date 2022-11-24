@@ -14,19 +14,73 @@
 		FROM lodgingtb l, roomtb r
 		WHERE l.lidx = r.lidx
 		  AND lodgingkind = #{lodgingkind} 
-	</select> -->
-	
-	<!-- 숙소리스트 -->
+	</select> 
 	<select id="selectList1" parameterType="String" resultType="lodgingVO">
 		SELECT * FROM lodgingtb
 		 WHERE lodgingkind = #{lodgingkind}
+	</select>	
+	<select id="selectList2" parameterType="String" resultType="roomVO">
+		SELECT * FROM roomtb
+		<choose>
+			<when test = " value!= null and value=='2'">
+				order by lidx, rprice
+			</when>
+			<when test = "value!= null and value=='3'">
+				order by rprice desc
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>-->
+	
+	<!-- 숙소리스트 -->
+	<select id="selectLodgingList" parameterType="HashMap" resultType="roomVO">
+		SELECT *
+ 		  FROM lodgingtb lg, roomtb r
+ 		 WHERE lg.lidx = r.lidx
+  		   AND ridx IN (SELECT MIN(a.ridx)
+						 FROM (SELECT r.*
+								 FROM lodgingtb lg, roomtb r
+								WHERE lg.lidx = r.lidx
+								  AND lg.lodgingkind = #{lodgingkind}
+								  AND r.rnum > 0
+							 order BY r.ridx	   
+							  ) a
+					 GROUP BY a.lidx)
+		<choose>
+			<when test ="type == 2">
+				order by rprice
+			</when>
+			<when test ="type == 3">
+				order by rprice desc
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>	
 	</select>
 	
-	<select id="selectListSearch" parameterType="lodgingVO" resultType="lodgingVO">
-		SELECT * FROM lodgingtb
-	</select>
-	<select id="selectList2" parameterType="roomVO" resultType="roomVO">
-		SELECT * FROM roomtb
+	<select id="selectListSearch" parameterType="String" resultType="RoomVO">
+		SELECT *
+ 		  FROM lodgingtb lg, roomtb r
+ 		 WHERE lg.lidx = r.lidx
+  		   AND ridx IN (SELECT MIN(a.ridx)
+						 FROM (SELECT r.*
+								 FROM lodgingtb lg, roomtb r
+								WHERE lg.lidx = r.lidx
+								  AND r.rnum > 0
+							 order BY r.ridx	   
+							  ) a
+					 GROUP BY a.lidx)
+		<choose>
+			<when test ="value != null and value == 2">
+				order by rprice
+			</when>
+			<when test ="value != null and value == 3">
+				order by rprice desc
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
 	</select>
 	<!-- 숙소상세 -->
 	<select id="selectLodging" parameterType="String" resultType="lodgingVO">

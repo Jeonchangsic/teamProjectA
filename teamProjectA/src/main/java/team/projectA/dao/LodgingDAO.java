@@ -1,5 +1,6 @@
 package team.projectA.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,16 +16,25 @@ public class LodgingDAO {
 	@Autowired
 	private SqlSession sqlSession; 
 	
-	public List<LodgingVO> selectList1(String lodgingkind){
+/*	public List<LodgingVO> selectList1(String lodgingkind){
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectList1",lodgingkind);
 	}
 	
-	public List<LodgingVO> selectListSearch(LodgingVO vo){
-		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectListSearch",vo);
+	public List<RoomVO> selectList2(String gubun){
+		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectList2", gubun);
+	}
+*/	
+	public List<RoomVO> selectLodgingList(String lodgingkind, String type){
+		
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("lodgingkind",lodgingkind);
+		hm.put("type", type);		
+		
+		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectLodgingList",hm);
 	}
 	
-	public List<RoomVO> selectList2(RoomVO vo){
-		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectList2",vo);
+	public List<RoomVO> selectListSearch(String type){
+		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectListSearch",type);
 	}
 	
 	public LodgingVO selectLodging(String lidx) {
