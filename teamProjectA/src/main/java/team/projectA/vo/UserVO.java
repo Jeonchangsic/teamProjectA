@@ -1,6 +1,8 @@
 package team.projectA.vo;
 
-public class UserVO extends LodgingVO{
+import java.util.List;
+
+public class UserVO{
 	private int uidx;
 	private String userID;
 	private String userPassword;
@@ -10,6 +12,8 @@ public class UserVO extends LodgingVO{
 	private String userGender;
 	private String userBirth;
 	private String userType;
+	
+	private List<QnaVO> userqnaList;
 	
 	
 	
@@ -67,6 +71,12 @@ public class UserVO extends LodgingVO{
 	}
 	public void setUserBirth(String userBirth) {
 		this.userBirth = userBirth;
+	}
+	public List<QnaVO> getUserqnaList() {
+		return userqnaList;
+	}
+	public void setUserqnaList(List<QnaVO> userqnaList) {
+		this.userqnaList = userqnaList;
 	}
 	
 }
