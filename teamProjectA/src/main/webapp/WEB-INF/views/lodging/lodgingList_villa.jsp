@@ -36,7 +36,7 @@
 	
 		});
 		
-		//전체메뉴숨기기
+		/* //전체메뉴숨기기
 		$("#select ul li").click(function() {
 			if ($(".selectBoth").is(":visible")) {
 				$(".selectBoth").css("display", "none");
@@ -50,8 +50,14 @@
 			var jbText = $(this).text();
 			$("#select_main p").text(jbText);
 			$("#reselect_btn").css("display", "inline-block");
-		});
-	
+		}); */
+		
+		//지역 선택시 전체메뉴 접기 
+		var area ='${area}';
+		
+		if(area != ''){
+			$(".selectBoth").css("display", "none");			
+		}
 		//지역전체메뉴 접었다 폈다 하는 기능 
 		$("#reselect_btn").click(function() {
 			if ($(".selectBoth").is(":visible")) {
@@ -219,10 +225,15 @@
 		<section id="inner" class="fixedclear">
 			<div id="select" class="fixedclear">
 				<div id="select_main">
-					<p>지역선택</p>
-					<div id="reselect_btn">
-						<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
-					</div>
+					<p>
+						<c:if test="${area ne null and area ne ''}">
+							${area}
+							<div id="reselect_btn">
+								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/down_icon.png">
+							</div>
+						</c:if>
+						<c:if test="${area eq null or area eq ''}">지역선택</c:if>
+					</p>
 				</div>
 				<div class="selectBoth">
 					<div id="select_left">
@@ -232,13 +243,13 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=부산 전체">부산 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=부산 전체">부산 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=전라 전체">전라 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=전라 전체">전라 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=제주 전체">제주 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=제주 전체">제주 전체</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -247,22 +258,22 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=부산 전체">부산 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=부산 전체">부산 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=해운대/마린시티">해운대/마린시티</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=해운대/마린시티">해운대/마린시티</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=광안리/경성대">광안리/경성대</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=광안리/경성대">광안리/경성대</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=부산역">부산역</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=부산역">부산역</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=송정/기장">송정/기장</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=송정/기장">송정/기장</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=자갈치/남포동/영도">자갈치/남포동/영도</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=자갈치/남포동/영도">자갈치/남포동/영도</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -271,25 +282,25 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=경기 전체">경기 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=경기 전체">경기 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=수원/화성">수원/화성</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=수원/화성">수원/화성</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=남양주/구리/성남/분당">남양주/구리/성남/분당</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=남양주/구리/성남/분당">남양주/구리/성남/분당</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=용인/동탄">용인/동탄</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=용인/동탄">용인/동탄</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=이천/광주/여주/하남">이천/광주/여주/하남</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=이천/광주/여주/하남">이천/광주/여주/하남</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=가평/청평/양평">가평/청평/양평</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=가평/청평/양평">가평/청평/양평</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=부천/광명/시흥/안산">부천/광명/시흥/안산</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=부천/광명/시흥/안산">부천/광명/시흥/안산</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -298,19 +309,19 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=강원 전체">강원 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=강원 전체">강원 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=속초/양양/고성">속초/양양/고성</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=속초/양양/고성">속초/양양/고성</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=강릉">강릉</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=강릉">강릉</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=평창/정선/영월">평창/정선/영월</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=평창/정선/영월">평창/정선/영월</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=동해/삼척/태백">동해/삼척/태백</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=동해/삼척/태백">동해/삼척/태백</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -319,22 +330,22 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=전라 전체">전라 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=전라 전체">전라 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=전주/완주">전주/완주</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=전주/완주">전주/완주</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=광주/나주">광주/나주</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=광주/나주">광주/나주</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=여수">여수</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=여수">여수</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=순천/광양/담양/보성/화순">순천/광양/담양/보성/화순</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=순천/광양/담양/보성/화순">순천/광양/담양/보성/화순</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=목포/신안/영광/진도/고흥/영암/완도">목포/신안/영광/진도/고흥/영암/완도</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=목포/신안/영광/진도/고흥/영암/완도">목포/신안/영광/진도/고흥/영암/완도</a>
 							</li>
 						</ul>
 					</div>
@@ -345,25 +356,25 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=서울 전체">서울 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=서울 전체">서울 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=강남/역삼/삼성">강남/역삼/삼성</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=강남/역삼/삼성">강남/역삼/삼성</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=서울역/이태원/용산">서울역/이태원/용산</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=서울역/이태원/용산">서울역/이태원/용산</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=여의도">여의도</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=여의도">여의도</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=영등포역">영등포역</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=영등포역">영등포역</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=서초/교대/사당">서초/교대/사당</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=서초/교대/사당">서초/교대/사당</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=건대입구/성수/왕십리">건대입구/성수/왕십리</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=건대입구/성수/왕십리">건대입구/성수/왕십리</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -372,16 +383,16 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=제주 전체">제주 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=제주 전체">제주 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=제주시/제주국제공항">제주시/제주국제공항</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=제주시/제주국제공항">제주시/제주국제공항</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=서귀포시">서귀포시</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=서귀포시">서귀포시</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=애월/한림/협재">애월/한림/협재</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=애월/한림/협재">애월/한림/협재</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -390,19 +401,19 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=인천 전체">인천 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=인천 전체">인천 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=송도/소래포구">송도/소래포구</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=송도/소래포구">송도/소래포구</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=구읍뱃터/월미">구읍뱃터/월미</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=구읍뱃터/월미">구읍뱃터/월미</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=인천국제공항/강화/을왕리/영종">인천국제공항/강화/을왕리/영종</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=인천국제공항/강화/을왕리/영종">인천국제공항/강화/을왕리/영종</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=청라/계양/부평">청라/계양/부평</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=청라/계양/부평">청라/계양/부평</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -411,22 +422,22 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=경상 전체">경상 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=경상 전체">경상 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=경주">경주</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=경주">경주</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=울산/양산">울산/양산</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=울산/양산">울산/양산</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=거제/통영">거제/통영</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=거제/통영">거제/통영</a>
 							</li>							
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=포항/영덕/울진/청송">포항/영덕/울진/청송</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=포항/영덕/울진/청송">포항/영덕/울진/청송</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=창원/마산/진해/김해">창원/마산/진해/김해</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=창원/마산/진해/김해">창원/마산/진해/김해</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -435,19 +446,19 @@
 						</div>
 						<ul class="open_menu">
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=충청 전체">충청 전체</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=충청 전체">충청 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=대전/세종">대전/세종</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=대전/세종">대전/세종</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=천안/아산/도고">천안/아산/도고</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=천안/아산/도고">천안/아산/도고</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=보령/대천/부여/공주/금산">보령/대천/부여/공주/금산</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=보령/대천/부여/공주/금산">보령/대천/부여/공주/금산</a>
 							</li>							
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=청주/음성/진천">청주/음성/진천</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=청주/음성/진천">청주/음성/진천</a>
 							</li>
 						</ul>
 					</div>
@@ -571,10 +582,10 @@
 						<button type="button" onclick="change_btn2(event,4)" id="up4" class="btnbox2">별점순</button>						
 					</li>
 					<li>
-						<button type="button" onclick="change_btn2(event,3)" id="up3" class="btnbox2">가격높은순</button>
+						<button type="button" onclick="change_btn2(event,3)" id="up3" class="btnbox2 <c:if test="${type eq '3'}">active2</c:if>">가격높은순</button>
 					</li>
 					<li>
-						<button type="button" onclick="change_btn2(event,2)" id="up2" class="btnbox2">가격낮은순</button>
+						<button type="button" onclick="change_btn2(event,2)" id="up2" class="btnbox2  <c:if test="${type eq '2'}">active2</c:if>">가격낮은순</button>
 					</li>
 					<li>						
 						<button type="button" onclick="change_btn2(event,1)" id="up1" class="btnbox2">추천순</button>
