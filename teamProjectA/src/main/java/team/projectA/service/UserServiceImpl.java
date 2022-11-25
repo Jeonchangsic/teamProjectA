@@ -47,21 +47,5 @@ public class UserServiceImpl implements UserService{
 	}
 
 
-	@Override
-	public int countUser(UserVO vo2) {
-
-		return userDao.countUser(vo2);
-	}
-
-
-	@Override
-	public List<UserVO> selectUserList(PagingVO vo1) {
-
-		return userDao.selectUserList(vo1);
-	}
-
-
-	
-
 
 }

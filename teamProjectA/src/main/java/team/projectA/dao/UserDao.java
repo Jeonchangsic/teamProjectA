@@ -35,11 +35,5 @@ public class UserDao {
 			return sqlsession.selectList("team.projectA.mapper.UserMapper.userlist",vo);
 			
 		}
-	public int countUser (UserVO vo2) {
-		return sqlsession.selectOne("team.projectA.mapper.UserMapper.countUserList",vo2);
-	}
-	public List<UserVO> selectUserList(PagingVO vo1){
-		return sqlsession.selectList("team.projectA.mapper.UserMapper.selectUserList",vo1);
-		
-	}
+	
 }
