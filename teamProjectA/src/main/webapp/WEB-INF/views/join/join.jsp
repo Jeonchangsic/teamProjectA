@@ -54,7 +54,49 @@
 	    	};
 	    	};
 	    
+	    	
     </script>
+    
+    <!-- 이메일인증 스크립트 -->
+    <script>
+    var codetemp ="";
+    $(function(){
+    	
+    	$(".mail_check_button").click(function(){
+    		var email = $(".mail_input").val(); //입력한 이메일 값 
+    		var cehckBox = $(".mail_check_input");
+    		var boxWrap = $(".mail_check_input_box");
+    		var code ="";
+    		$.ajax({
+    			
+    			type:"GET",
+    			url:"mailCheck?email="+ email,
+    			success:function(data){
+    				 console.log(data); 
+    				cehckBox.attr("disabled",false); // attr : cehckBox의 속성을 변경
+    				boxWrap.attr("id","mail_check_input_box_true");
+    				codetemp = data; //컨트롤러에서 받은 리턴값(난수)을 변수에 넣는다.
+    				
+    			}
+    		});
+    	});
+    	$(".mail_check_input").blur(function(){
+    		var inputcode = $(".mail_check_input").val(); //입력결과
+    		var checkResult = $("#mail_check_input_box_warn"); //비교결과
+    		
+    		if(inputcode == codetemp){
+    			checkResult.html("인증번호가 일치합니다.");
+    			checkResult.attr("class","correct");
+    		}else{
+    			checkResult.html("인증번호를 다시 확인해주세요.");
+    			checkResult.attr("class","incorrect");
+    		}
+    	});
+    	
+    });
+    </script>
+    
+    
     <!-- 모달 스타일 -->
    <style>
       .modal {
@@ -91,6 +133,12 @@
         box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 
         transform: translateX(-50%) translateY(-50%);
+      }
+      .correct{
+      	color: green;
+      }
+      .incorrect{
+      	color: red;
       }
     </style>
 </head>
@@ -145,10 +193,24 @@
 	                </tr>
 	                <tr>
 	                    <td class="contentsArea">이메일</td>
-	                    <td class="inputArea">
-	                        <input type="text" name="userEmail" id="email" class="inputArea"  placeholder="이메일을 입력하세요." required>
+	                    <td class="inputArea"> 
+	                        <input type="text" name="userEmail" id="email" class="inputArea mail_input" placeholder="이메일을 입력하세요." required><!-- 메일 입력란 -->
 	                    </td>
-	                    <td><button id="emailBtn">이메일인증</button></td>
+	                    <td></td>
+	                </tr>
+	                <tr>
+		                <td></td>
+		                <td class="mail_check_input_box"><!-- 인증번호 입력란 -->
+		                	<input class="mail_check_input" disabled="disabled">
+		                </td>		
+		                <td class="mail_check_button"><!-- 메일 체크 버튼 -->
+		                    	<span>인증번호 전송</span>
+	                    </td>
+	                </tr>
+	                <tr>
+	                	<td></td>
+	                	<td><span id="mail_check_input_box_warn"></span></td>
+	                	<td></td>
 	                </tr>
 	                <tr>
 	                    <td class="contentsArea">휴대전화</td>
