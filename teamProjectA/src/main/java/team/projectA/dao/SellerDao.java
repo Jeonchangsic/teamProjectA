@@ -1,10 +1,14 @@
 package team.projectA.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import team.projectA.vo.LodgingVO; 
+import team.projectA.vo.LodgingVO;
+import team.projectA.vo.QnaVO;
 import team.projectA.vo.UserVO;
 
 @Repository
@@ -14,7 +18,7 @@ public class SellerDao {
 	private SqlSession sqlSession;
 
 
-	public UserVO SellerOne(int uidx) {
+	public LodgingVO SellerOne(String uidx) {
 			return sqlSession.selectOne("team.projectA.mapper.sellerMapper.SellerOne", uidx);
 	}
 	
@@ -27,6 +31,17 @@ public class SellerDao {
 		
 	}
 
+	public List<QnaVO> qnaList(int uidx){
+		return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", uidx);
+		
+	}
 
-
+	public int qnaInsert(QnaVO vo) {
+		return sqlSession.insert("team.projectA.mapper.sellerMapper.qnaInsert", vo);
+			
+	}
+	
+	public QnaVO qnaOne(int uidx) {
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", uidx);
+	}
 }

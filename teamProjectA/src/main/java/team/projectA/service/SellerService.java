@@ -1,14 +1,23 @@
 package team.projectA.service;
 
-import team.projectA.vo.LodgingVO;
+import java.util.List;
+import java.util.Map;
 
+import team.projectA.vo.LodgingVO;
+import team.projectA.vo.QnaVO;
 import team.projectA.vo.UserVO;
 
 public interface SellerService {
 	
-	UserVO SellerOne(int uidx);
+	LodgingVO SellerOne(String uidx);
 	
 	int sellerUpdate(UserVO vo);
 	
 	int sellerUpdate2(LodgingVO vo);
+	
+	List<QnaVO> qnaList(int uidx);
+		
+	int qnaInsert(QnaVO vo);
+	
+	UserVO qnaOne(int uidx);
 }

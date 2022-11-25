@@ -1,5 +1,11 @@
+
+<%@page import="team.projectA.vo.QnaVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<% List<QnaVO> qnaList = (List<QnaVO>)request.getAttribute("qnaList"); %>
+
+ <%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,7 +30,7 @@
         </div>
     </div>
     <main class="inner">
-            <h3>문의하기</h3>
+            <h3>문의내역</h3>
         <hr/>
         <form>
             <tbody>
@@ -53,37 +59,16 @@
                     <th>답변여부</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody>	
+				<%for(QnaVO qna : qnaList) { %>
                 <tr style="text-align:center;">
-                    <td>1</td>
-                    <td><a href="">test</a></td>
-                    <td>2022-10-27</td>
-                    <td>N</td>
+                    <td><%=qna.getQnA_idx()%></td>
+                    <td><a href="<%=request.getContextPath()%>/seller/sellerInquireView.do?uidx=<%=qna.getQnA_idx()%>"><%=qna.getQna_Qcontent()%></a></td>
+                    <td><%=qna.getQna_Qdate()%></td>
+                    <td><%=qna.getQna_Acheck()%></td>
                 </tr>
-                <tr style="text-align:center;">
-                    <td>2</td>
-                    <td><a href="">test</a></td>
-                    <td>2022-10-25</td>
-                    <td>Y</td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td>3</td>
-                    <td><a href="">test</a></td>
-                    <td>2022-10-23</td>
-                    <td>N</td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td>4</td>
-                    <td><a href="">test</a></td>
-                    <td>2022-10-21</td>
-                    <td>N</td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td>5</td>
-                    <td><a href="">test</a></td>
-                    <td>2022-10-10</td>
-                    <td>N</td>
-                </tr>
+               
+             	 <%} %>
             </tbody>
         </table>
         <ul>
@@ -92,6 +77,7 @@
             </li>
         </ul>
         <button onclick="location.href='sellerInquireWrite.do'" id="btn_right">문의쓰기</button>
+
     </main>
     <footer>
         <div id="foot">

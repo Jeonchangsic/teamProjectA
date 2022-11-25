@@ -3,6 +3,10 @@
 		"http://mybatis.org/dtd/mybatis-3-config.dtd" >
 		
 <configuration>
+	<settings>
+		 <setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
+    
 	<typeAliases>
 		<typeAlias type="team.projectA.vo.UserVO" alias="userVO"/> 
 		<typeAlias type="team.projectA.vo.LodgingVO" alias="lodgingVO"/>
@@ -14,4 +18,5 @@
 		<typeAlias type="edu.board.vo.MemberVO" alias="memberVO"/>
 		<typeAlias type="edu.board.vo.SearchVO" alias="searchVO"/> -->
 	</typeAliases>
+
 </configuration>

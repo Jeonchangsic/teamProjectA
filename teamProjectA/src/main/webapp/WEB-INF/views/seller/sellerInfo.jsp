@@ -127,8 +127,8 @@
 
         	<form method="post" id="nameForm" name="nameform">
            	 <table id="info_Area">
-          		<input type='hidden' name='uidx'  value=<%=vo.getUidx() %>>
-        		<input type='hidden' name='lidx' value=<%=vo.getLidx()%>>	
+<%--           		<input type='hidden' name='uidx'  value=<%=vo.getUidx() %>> --%>
+     <%--    		<input type='hidden' name='lidx' value=<%=LodgingVO.%>>	 --%>
         	   <%--  <input type='hidden' name='userPassword' value=<%=vo.getUserPassword()%>> --%>
 
    
@@ -142,7 +142,7 @@
      		
                 <tr>
                     <td>사업장명</td>
-                    <td><input type='text' name="lodgingname" value='${vo.lodgingname}' id="lodgingname"></td>
+                    <td><input type='text' name="lodgingname"  id="lodgingname" name=<%=vo2.getLodgingname()%>> </td>
                     
                     <td><button type="submit" id="nameFn" value="상세변경" class="btn_size">변경</button></td> 
                 </tr>   
@@ -156,7 +156,7 @@
             
                 <tr>
                     <td>비밀번호변경</td>
-                    <td><input type='password' name='userPassword' value=<%=vo.getUserPassword() %> autoComplete="off"></td>
+                    <td><input type='password' name='userPassword' value="${login.userPassword}" autoComplete="off"></td>
                     <td><button type="submit" class="btn_size" id="pwdFn">변경</td>
                 </tr>
                 
@@ -164,7 +164,7 @@
 
                 <tr>
                     <td>이메일</td>
-                    <td><input type='text' name="userEmail" value=<%=vo.getUserEmail()%> autoComplete="off"></td>
+                    <td><input type='text' name="userEmail" value="${login.userEmail}" autoComplete="off"></td>
                     <td><button type="submit" class="btn_size" id="mailFn">변경</button></td>
  
                 </tr>
@@ -172,14 +172,13 @@
   
                 <tr>
                     <td>전화번호</td>
-                    <td><input type='text' name="userPhone" value='${vo.userPhone}'></td>
+                    <td><input type='text' name="userPhone" value="${login.userPhone}"></td>
                     <td><button type="submit" class="btn_size" id="phoneFn">변경</button></td>
                 </tr>
        
-
                 <tr>
                     <td>주소</td>
-                    <td><input type='text' name="lodgingaddr" value='${vo.lodgingaddr}'></td>
+                    <td><input type='text' name="lodgingaddr" value=<%=vo2.getLodgingaddr() %>></td>
                     <td><button type="submit" class="btn_size" id="addrFn">변경</button></td>
                 </tr>
            

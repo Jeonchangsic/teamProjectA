@@ -4,8 +4,8 @@
 <mapper namespace="team.projectA.mapper.sellerMapper">
 
 
-	
-	<select id = "SellerOne" resultType="UserVO" parameterType = "int">
+	<!-- 회원정보 -->
+	<select id = "SellerOne" resultType="LodgingVO" parameterType = "String">
 	
 			SELECT
 				 u.uidx
@@ -23,7 +23,7 @@
 				AND u.uidx = #{uidx}
 	</select>
 	
-	
+	<!--회원정보 수정 update는 inner join이 안되서 두개의 테이블로 함 -->
 	<update id = "sellerUpdate" parameterType = "UserVO">
 			UPDATE ausertb 
 			SET userPhone = #{userPhone},
@@ -32,15 +32,72 @@
 			WHERE uidx = #{uidx}
 		
 	</update>
-	
+	<!--숙소정보 수정  -->
 	<update id = "sellerUpdate2" parameterType = "LodgingVO">
 			UPDATE lodgingtb
 			SET lodgingname = #{lodgingname},
 			lodgingaddr = #{lodgingaddr}
 			WHERE lidx = #{lidx}
-	
-    <!--부적합한 열유형 떠서 jdbcType=VARCHAR 추가함  -->
 	</update>
+	
+	
+	<!-- Qna -->	
+	
+	<!--문의게시판 list -->
+	<select id= "qnaList" resultType="QnaVO" parameterType="int">
+	
+				SELECT a.uidx
+					, q.QnA_idx
+					, q.uidx
+					, q.userType
+					, q.qna_Qcontent
+					, q.qna_Qtitle
+					, q.qna_Qdate 
+					, q.qna_Acheck
+					FROM ausertb a LEFT 
+					OUTER JOIN qnatb q 
+					ON a.uidx = q.uidx 
+					WHERE a.uidx=#{uidx}
+	</select>
+	
+	<!--문의하기 insert  -->
+	<insert id="qnaInsert" parameterType="QnaVO">
+	<![CDATA[
+		INSERT INTO qnatb (
+						 QnA_idx
+						, uidx 
+						, qna_Qcontent
+						, qna_Qtitle
+						, qna_Qdate
+						, qna_Adate
+						, usertype 
+						)
+					 VALUES(
+						 QnA_idx_seq.nextval 
+					    , #{uidx} 
+					    , #{qna_Qcontent}
+						, #{qna_Qtitle}
+					 	, sysdate
+					 	, sysdate
+					 	, #{usertype}
+					 	)	
+	]]>
+	<selectKey order="AFTER" resultType="integer" keyProperty="QnA_idx"> <!-- after:주 쿼리가 실행된 이후에 호출하겠다 -->
+		SELECT MAX(QnA_idx) from qnatb <!--최대값을 구하라 / 최근 입력한 게시글이 가장 최근수=가장큰수  -->
+	</selectKey>
+		 			
+	</insert>
+	
+	<!--문의하기 selectone -->
+	<select id = "qnaOne" resultType="QnaVO" parameterType = "int">
+			SELECT QnA_idx
+					, uidx
+					, qna_Qcontent
+					, qna_Qtitle
+					, qna_Qdate
+					FROM qnatb
+					WHERE uidx=#{uidx}
+	</select>
 
 	
 </mapper>

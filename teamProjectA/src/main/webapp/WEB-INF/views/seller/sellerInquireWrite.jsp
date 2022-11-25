@@ -1,5 +1,7 @@
+<%@page import="team.projectA.vo.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,24 +24,26 @@
     <main>
         
         <div id="contentsArea">
-            <form>
+            <form action = "sellerInquireWrite.do" method="post">
+         	  <input type="text" name="usertype" value="${login.userType}">
                 <table id="table1">
                     <tr>
-                        <td class="margin1">제목</td><td><input type="text" class="info" placeholder="제목을 입력하세요."></td> 
+                        <td class="margin1">제목</td>
+                        <td><input type="text" class="info" name="qna_Qtitle" placeholder="제목을 입력하세요."></td>            
                     </tr>
                     <tr>
                         <td id="margin1">
                             문의 내용
                         </td>
                         <td>
-                            <textarea type="text" id="info"  placeholder="문의를 작성하세요."></textarea>
+                            <textarea type="text" id="info" name="qna_Qcontent" placeholder="문의를 작성하세요."></textarea>
                         </td>
                     </tr>
                 </table>
                 <table id="table2">
                     <tr>
                         <td>
-                            <button type="submit" id="clearBtn">저장</button>
+                            <button id="clearBtn">저장</button>
                         </td>
                     </tr>
                 </table>

@@ -1,0 +1,88 @@
+<%@page import="team.projectA.vo.UserVO"%>
+<%@page import="team.projectA.vo.QnaVO"%>
+<%@page import="java.util.List"%>
+<% QnaVO qnaOne = (QnaVO)request.getAttribute("qnaOne"); %>
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의내용</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/reset.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/sellerInquireView.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+       $(document).ready(function() {
+        $("#button").click(function(){
+            if($(".answer").css("display") == "none"){
+                $(".answer").show();
+            }
+        })
+    });
+   
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div class="top">
+            <h3>판매자페이지</h3>
+            <div id="manager">
+                <ul>
+                    <li><a href="">home</a></li>
+                    <li><a href="">회원관리</a></li>
+                    <li><a href="">숙소관리</a></li>
+                    <li><a href="">리뷰관리</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="uidx">
+    <main  class=inner style="padding-top:115px;">
+    	<form>
+	        <div id="title">
+	            <div id="title_date">
+	                <a><%=qnaOne.getQna_Qcontent()%> </a>
+	                <a> ${login.userName} <%=qnaOne.getQna_Qdate()%></a>
+	            </div>
+	            <hr>
+	            <div id="content">
+	                <a><%=qnaOne.getQna_Qcontent() %></a>
+	            </div>
+	            <hr>
+	            <div id="change">
+	            <span>답변처리중</span>
+	            </div>
+	        </div>
+        </form>
+        <form>
+        </form>
+        <div class="answer" style="display:none;">
+            <input type="text" id="text">
+            <input type="submit" id="insert" value="답변등록" onclick="document.querySelector('span').style.color='blue';
+                document.querySelector('span').innerHTML='답변완료';">
+        </div>
+    </main>
+    <footer>
+        <div class="info">
+            <ul>
+                <li>(주)저긴어때</li>
+                <li>대표 : 홍길동&nbsp;&nbsp;</li>
+                <li>전라북도 전주시 덕진구 금암1동&nbsp;&nbsp;</li>
+                <li>사업자등록번호 : 000-00-00000&nbsp;&nbsp;</li>
+            </ul>
+            <ul>
+                <li>고객센터 : 1588-0000&nbsp;&nbsp;&nbsp;</li>
+                <li>개인정보관리책임자 : 홍길동&nbsp;&nbsp;</li>
+                <li>개인정보보유기간 : 3년</li>
+            </ul>
+            <div class="copyright">
+                <h6>Copyright 2022. Team 저긴어때. all rights reserved.</h6>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

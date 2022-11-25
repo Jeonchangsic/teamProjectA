@@ -38,10 +38,10 @@
                 <h3>판매자페이지</h3>
                 <div id="manager">
                     <ul>
-                        <li><a href="">home</a></li>
-                        <li><a href="">내정보</a></li>
-                        <li><a href="">객실관리</a></li>
-                        <li><a href="">문의</a></li>
+	                    <li><a href="<%=request.getContextPath() %>/index/index.do">home</a></li>
+	                    <li><a href="<%=request.getContextPath() %>/seller/sellerInfo.do">내정보</a></li>
+	                    <li><a href="<%=request.getContextPath() %>/seller/sellerRegi.do">객실관리</a></li>
+	                    <li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do">문의</a></li>
                     </ul>
                 </div>
             </div>
