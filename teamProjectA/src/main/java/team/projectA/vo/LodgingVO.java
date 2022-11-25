@@ -1,6 +1,6 @@
 package team.projectA.vo;
 
-public class LodgingVO { 
+public class LodgingVO extends UserVO{ 
 	
 	private String lidx;
 	private String lodgingkind;
@@ -10,7 +10,6 @@ public class LodgingVO {
 	private int reviewnum;
 	private int local;
 	private String limagename;
-	private int uidx;
 	
 	public String getLidx() {
 		return lidx;
@@ -59,12 +58,6 @@ public class LodgingVO {
 	}
 	public void setLimagename(String limagename) {
 		this.limagename = limagename;
-	}
-	public int getUidx() {
-		return uidx;
-	}
-	public void setUidx(int uidx) {
-		this.uidx = uidx;
 	}
 	
 	
