@@ -92,14 +92,7 @@ public class LodgingController {
 		return "lodging/lodgingList_search"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
 	}
 	
-	@RequestMapping(value = "/lodgingList_filter.do")
-	public String list_filter(Model model, HttpServletRequest req) {
-		
-		String[] arr = req.getParameterValues("roomin");
-		model.addAttribute("arr", arr);
-		
-		return "";
-	}
+	
 	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
 	public String lodgingView(String lidx, Model model, HttpServletRequest req) {
