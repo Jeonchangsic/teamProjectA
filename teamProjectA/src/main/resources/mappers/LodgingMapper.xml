@@ -59,10 +59,7 @@
 		</choose>	
 	</select>
 	
-	<select id="selectListFilter" parameterType="" resultType="">
-		SELECT *
-		
-	</select>
+	
 	
 	<select id="selectListSearch" parameterType="String" resultType="RoomVO">
 		SELECT *
