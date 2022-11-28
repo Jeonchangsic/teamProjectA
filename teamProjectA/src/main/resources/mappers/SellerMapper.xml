@@ -5,22 +5,22 @@
 
 
 	<!-- 회원정보 -->
-	<select id = "SellerOne" resultType="LodgingVO" parameterType = "String">
+	<select id = "SellerOne" resultType="LodgingVO" parameterType = "int">
 	
-			SELECT
-				 u.uidx
-				, u.userID
-				, u.userName
-				, u.userPassword
-				, u.userEmail
-				, u.userPhone
-				, u.userType
-				, l.lodgingname
-				, l.lodgingaddr
-				, l.lidx
- 				FROM AUSERTB u, LODGINGTB l
- 				WHERE u.uidx = l.uidx
-				AND u.uidx = #{uidx}
+				SELECT 	 u.uidx
+						, u.userID
+						, u.userName
+						, u.userPassword
+						, u.userEmail
+						, u.userPhone
+						, u.userType
+						, l.lodgingname
+						, l.lodgingaddr
+						, l.lidx
+					FROM ausertb u
+					LEFT OUTER JOIN lodgingtb l
+					ON u.uidx = l.uidx 
+					WHERE u.uidx= #{uidx}
 	</select>
 	
 	<!--회원정보 수정 update는 inner join이 안되서 두개의 테이블로 함 -->
@@ -54,10 +54,13 @@
 					, q.qna_Qtitle
 					, q.qna_Qdate 
 					, q.qna_Acheck
-					FROM ausertb a LEFT 
-					OUTER JOIN qnatb q 
+					FROM ausertb a
+					LEFT OUTER JOIN qnatb q 
 					ON a.uidx = q.uidx 
 					WHERE a.uidx=#{uidx}
+					
+					
+
 	</select>
 	
 	<!--문의하기 insert  -->
@@ -89,14 +92,14 @@
 	</insert>
 	
 	<!--문의하기 selectone -->
-	<select id = "qnaOne" resultType="QnaVO" parameterType = "int">
-			SELECT QnA_idx
+	<select id = "qnaOne" resultType="QnaVO" parameterType = "integer">
+   					SELECT QnA_idx
 					, uidx
 					, qna_Qcontent
 					, qna_Qtitle
 					, qna_Qdate
 					FROM qnatb
-					WHERE uidx=#{uidx}
+					WHERE QnA_idx = #{QnA_idx}
 	</select>
 
 	

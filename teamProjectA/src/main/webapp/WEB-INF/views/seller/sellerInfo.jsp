@@ -5,7 +5,7 @@
 	UserVO vo = (UserVO)request.getAttribute("vo");
 %>
 <%
-	LodgingVO vo2 = (LodgingVO)request.getAttribute("vo2");
+	LodgingVO lodging = (LodgingVO)request.getAttribute("lodging");
 %>
 
 
@@ -126,13 +126,7 @@
         </nav>
 
         	<form method="post" id="nameForm" name="nameform">
-           	 <table id="info_Area">
-<%--           		<input type='hidden' name='uidx'  value=<%=vo.getUidx() %>> --%>
-     <%--    		<input type='hidden' name='lidx' value=<%=LodgingVO.%>>	 --%>
-        	   <%--  <input type='hidden' name='userPassword' value=<%=vo.getUserPassword()%>> --%>
-
-   
-        		
+           	 <table id="info_Area">     		
                 <tr>
                     <td>아이디</td>
                     <td><%=vo.getUserID()%></td>
@@ -142,7 +136,7 @@
      		
                 <tr>
                     <td>사업장명</td>
-                    <td><input type='text' name="lodgingname"  id="lodgingname" name=<%=vo2.getLodgingname()%>> </td>
+                    <td><input type='text' name="lodgingname"  id="lodgingname" value="<%=lodging.getLodgingname()%>"> </td>
                     
                     <td><button type="submit" id="nameFn" value="상세변경" class="btn_size">변경</button></td> 
                 </tr>   
@@ -157,7 +151,7 @@
                 <tr>
                     <td>비밀번호변경</td>
                     <td><input type='password' name='userPassword' value="${login.userPassword}" autoComplete="off"></td>
-                    <td><button type="submit" class="btn_size" id="pwdFn">변경</td>
+                    <td><button type="submit" class="btn_size" id="pwdFn">변경</button></td>
                 </tr>
                 
                		
@@ -178,7 +172,7 @@
        
                 <tr>
                     <td>주소</td>
-                    <td><input type='text' name="lodgingaddr" value=<%=vo2.getLodgingaddr() %>></td>
+                    <td><input type='text' name="lodgingaddr" value="<%=lodging.getLodgingaddr() %>"></td>
                     <td><button type="submit" class="btn_size" id="addrFn">변경</button></td>
                 </tr>
            

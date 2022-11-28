@@ -27,7 +27,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import team.projectA.service.SellerService;
 import team.projectA.vo.LodgingVO;
@@ -53,42 +53,39 @@ public class SellerController {
 	 * Simply selects the home view to render by returning its name.
 	 * @param sellerService 
 	 */
-	@RequestMapping(value = "/sellerInfo.do", method = RequestMethod.GET)
-														 //session 불러내기 위해서 필요 
-	public String sellerInfo(Locale locale, Model model,  HttpServletRequest req, LodgingVO vo, String uidx) {
-		
-		
-		
-		//session 선언
-		HttpSession session = req.getSession();
-		//로그인한 uidx값만 넘어오게 만들기
-		UserVO login = (UserVO) session.getAttribute("login");
-		vo.setUidx(login.getUidx());
-		model.addAttribute("vo", login);
-		
 	
-		
-		LodgingVO vo2 = (LodgingVO)sellerService.SellerOne(uidx);
-		model.addAttribute("vo2", vo);
+	//회원정보화면
+	@RequestMapping(value = "/sellerInfo.do", method = RequestMethod.GET)														 //session 불러내기 위해서 필요 
+	public String sellerInfo(Locale locale, Model model,  HttpServletRequest req) {
+
+		  //session 선언
+		  HttpSession session = req.getSession(); //로그인한 uidx값만 넘어오게 만들기 UserVO login =
+		  UserVO login = (UserVO) session.getAttribute("login"); 
+		  model.addAttribute("vo", login);
+		 
+		  
+		  LodgingVO lodging = sellerService.SellerOne(login.getUidx());
+		  model.addAttribute("lodging",lodging);
 		
 
-		
-		System.out.println(vo);
-		
-		
+
 		
 		return "seller/sellerInfo";
 	}
 	
     //정보수정1 회원정보
 	@RequestMapping (value ="/sellerInfo1.do", method = RequestMethod.POST)
-	public String sellerInfo(UserVO vo, HttpServletResponse res)throws Exception{
+	public String sellerInfo(UserVO vo, Model model, HttpServletRequest req, HttpServletResponse res)throws Exception{
 	
+		HttpSession session = req.getSession();
+		sellerService.sellerUpdate(vo);
 
-		 sellerService.sellerUpdate(vo);
-
+	    UserVO login = (UserVO) session.getAttribute("login"); 		 
+		  
+		LodgingVO lodging = sellerService.SellerOne(login.getUidx());
+		model.addAttribute("lodging",lodging);
 		 
-		 PrintWriter pw = res.getWriter();
+		PrintWriter pw = res.getWriter();
 
 			
 		
@@ -98,12 +95,13 @@ public class SellerController {
 
 	//정보수정2  숙소정보
 	@RequestMapping (value ="/sellerInfo2.do", method = RequestMethod.POST)
-	public String sellerInfo(LodgingVO vo, HttpServletResponse res)throws Exception{
+	public String sellerInfo(LodgingVO vo, HttpServletRequest req, HttpServletResponse res)throws Exception{
 		
 		
+		HttpSession session = req.getSession();
 		sellerService.sellerUpdate2(vo);
 		
-		
+
 		
 		PrintWriter pw = res.getWriter();
 		 
@@ -119,13 +117,14 @@ public class SellerController {
 		
 		//session 선언
 		HttpSession session = req.getSession();
-		//로그인한 uidx값만 넘어오게 만들기
+		//로그인한 uidx값을 받고
 		UserVO login = (UserVO) session.getAttribute("login");
 	
-			
+	    //qnaList에 매개변수로 loing한 사람의 uidx를 걸어줌 
+		//== 화면에 들어온 uidx에 해당하는 사람의 qanList만 보여준다
 		List<QnaVO> qnaList = sellerService.qnaList(login.getUidx()); 
 		model.addAttribute("qnaList", qnaList);
-		
+	
 
 		
 		return "seller/sellerInquire";
@@ -133,11 +132,16 @@ public class SellerController {
 	
 	//문의내용
 	@RequestMapping(value="/sellerInquireView.do", method = RequestMethod.GET)
-	public String sellerInquireView(Locale locale, Model model, int uidx) {
+	public String sellerInquireView(Locale locale, Model model, int QnA_idx) {
 		
-		QnaVO qnaOne = (QnaVO)sellerService.qnaOne(uidx);
-		model.addAttribute("qnaOne", qnaOne);
-
+		
+		
+			QnaVO vo = (QnaVO)sellerService.qnaOne(QnA_idx);
+			model.addAttribute("vo",vo);
+		/*
+		 * QnaVO qnaOne = (QnaVO)sellerService.qnaOne(QnA_idx);
+		 * model.addAttribute("qnaOne", qnaOne);
+		 */
 		
 		
 		return "seller/sellerInquireView";
@@ -162,7 +166,7 @@ public class SellerController {
 		//session을 불러옴 
 		HttpSession session = req.getSession();
 		
-		//login변수에  session에 넣어져있던(userController) "login"을 저장함
+		//login변수에  session에 넣어져있던(userController) "login"을 꺼내서 저장함
 		UserVO login = (UserVO)session.getAttribute("login");
 		
 		

@@ -9,7 +9,7 @@ import team.projectA.vo.UserVO;
 
 public interface SellerService {
 	
-	LodgingVO SellerOne(String uidx);
+	LodgingVO SellerOne(int uidx);
 	
 	int sellerUpdate(UserVO vo);
 	
@@ -19,5 +19,5 @@ public interface SellerService {
 		
 	int qnaInsert(QnaVO vo);
 	
-	UserVO qnaOne(int uidx);
+	UserVO qnaOne(int QnA_idx);
 }

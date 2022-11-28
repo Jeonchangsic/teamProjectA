@@ -18,7 +18,7 @@ public class SellerServiceImpl implements SellerService{
 	private SellerDao SellerDao;
 
 	@Override
-	public LodgingVO SellerOne(String uidx) {
+	public LodgingVO SellerOne(int uidx) {
 		
 		return SellerDao.SellerOne(uidx);
 	}
@@ -50,9 +50,9 @@ public class SellerServiceImpl implements SellerService{
 	}
 
 	@Override
-	public UserVO qnaOne(int uidx) {
+	public UserVO qnaOne(int QnA_idx) {
 
-		return SellerDao.qnaOne(uidx);
+		return SellerDao.qnaOne(QnA_idx);
 	}
 
 

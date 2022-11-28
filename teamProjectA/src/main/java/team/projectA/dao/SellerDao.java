@@ -18,8 +18,8 @@ public class SellerDao {
 	private SqlSession sqlSession;
 
 
-	public LodgingVO SellerOne(String uidx) {
-			return sqlSession.selectOne("team.projectA.mapper.sellerMapper.SellerOne", uidx);
+	public LodgingVO SellerOne(int uidx) {
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.SellerOne", uidx);
 	}
 	
 	public int sellerUpdate(UserVO vo) {
@@ -41,7 +41,8 @@ public class SellerDao {
 			
 	}
 	
-	public QnaVO qnaOne(int uidx) {
-		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", uidx);
+	//qna글 눌렀을 경우 그 글 게시판으로 이동
+	public QnaVO qnaOne(int QnA_idx) {
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", QnA_idx);
 	}
 }

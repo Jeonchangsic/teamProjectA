@@ -1,7 +1,7 @@
 <%@page import="team.projectA.vo.UserVO"%>
 <%@page import="team.projectA.vo.QnaVO"%>
 <%@page import="java.util.List"%>
-<% QnaVO qnaOne = (QnaVO)request.getAttribute("qnaOne"); %>
+<% QnaVO qnaOne = (QnaVO)request.getAttribute("vo"); %>
 
 
 <!DOCTYPE html>
@@ -41,6 +41,7 @@
         </div>
     </div>
     <input type="hidden" name="uidx">
+    <input type="hidden" name="QnA_idx">
     <main  class=inner style="padding-top:115px;">
     	<form>
 	        <div id="title">
