@@ -2,16 +2,17 @@ package team.projectA.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.projectA.dao.UserDao;
-import team.projectA.vo.PagingVO;
 import team.projectA.vo.UserVO;
 
 @Service
 public class UserServiceImpl implements UserService{
-	
+
 	@Autowired
 	private UserDao userDao;
 	
@@ -45,23 +46,6 @@ public class UserServiceImpl implements UserService{
 		
 		return userDao.userList(vo);
 	}
-
-
-	@Override
-	public int countUser(UserVO vo2) {
-
-		return userDao.countUser(vo2);
-	}
-
-
-	@Override
-	public List<UserVO> selectUserList(PagingVO vo1) {
-
-		return userDao.selectUserList(vo1);
-	}
-
-
-	
 
 
 }

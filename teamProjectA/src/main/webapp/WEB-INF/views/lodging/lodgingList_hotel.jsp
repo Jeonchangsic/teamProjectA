@@ -36,7 +36,7 @@
 	
 		});
 		
-		//전체메뉴숨기기
+		/* //전체메뉴숨기기
 		$("#select ul li").click(function() {
 			if ($(".selectBoth").is(":visible")) {
 				$(".selectBoth").css("display", "none");
@@ -50,24 +50,22 @@
 			var jbText = $(this).text();
 			$("#select_main p").text(jbText);
 			$("#reselect_btn").css("display", "inline-block");
-		});
+		}); */
 	
 		//지역 선택됐을때 전체메뉴 접기 기능		
 		var area = '${area}';
 		
+		if(area != ''){
+			$(".selectBoth").css("display", "none");
+		}		
+		// 지역 선택됐을때 전체메뉴 접었다 폈다 하는 기능			
 		$("#reselect_btn").click(function() {
-			if(area != ''){
-				$(".selectBoth").css("display", "none");
-			}
-		});
-					
-		/* $("#reselect_btn").click(function() {
 			if ($(".selectBoth").is(":visible")) {
 				$(".selectBoth").css("display", "none");
 			} else {
 				$(".selectBoth").css("display", "block");
 			}
-		}); */
+		});
 		
 		//검색기능
 		$(".search_btn").click(function() {
@@ -584,10 +582,10 @@
 						<button type="button" onclick="change_btn2(event,4)" id="up4" class="btnbox2">별점순</button>						
 					</li>
 					<li>
-						<button type="button" onclick="change_btn2(event,3)" id="up3" class="btnbox2">가격높은순</button>
+						<button type="button" onclick="change_btn2(event,3)" id="up3" class="btnbox2 <c:if test="${type eq '3'}">active2</c:if>">가격높은순</button>
 					</li>
 					<li>
-						<button type="button" onclick="change_btn2(event,2)" id="up2" class="btnbox2">가격낮은순</button>
+						<button type="button" onclick="change_btn2(event,2)" id="up2" class="btnbox2  <c:if test="${type eq '2'}">active2</c:if>">가격낮은순</button>
 					</li>
 					<li>						
 						<button type="button" onclick="change_btn2(event,1)" id="up1" class="btnbox2">추천순</button>

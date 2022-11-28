@@ -19,22 +19,28 @@
 
     function requestPay() {
         IMP.request_pay({
-            pg : 'html5_inicis',
-            pay_method : 'card',
-            merchant_uid: "57008833-33004", 
-            name : '호텔 크레센도',
-            amount : '150000',
+            pg : 'html5_inicis',  // PG사 선택
+            pay_method : 'card', // 지불 수단
+            merchant_uid: "57008833-33008", 
+            name : '호텔 크레센', // 상품명
+            amount : '1000', // 가격 ,제외
             buyer_email : 'Iamport@chai.finance',
-            buyer_name : '아임포트 기술지원팀',
-            buyer_tel : '010-1234-5678',
-            buyer_addr : '서울특별시 강남구 삼성동',
-            buyer_postcode : '123-456'
+            buyer_name : '아임포트 기술지원팀', // 구매자 이름
+            buyer_tel : '010-1234-5678', // 구매자 연락처 
+            buyer_addr : '서울특별시 강남구 삼성동', // 구매자 주소지
+            buyer_postcode : '123-456' // 구매자 우편번호
         }, function (rsp) { // callback
             if (rsp.success) {
-                console.log(rsp);
+            	var msg = '결제가 완료되었습니다.';
+            	 msg += '고유ID : ' + rsp.imp_uid;
+                 msg += '상점 거래ID : ' + rsp.merchant_uid;
+                 msg += '결제 금액 : ' + rsp.paid_amount;
+                 msg += '카드 승인번호 : ' + rsp.apply_num;
             } else {
-                console.log(rsp);
+            	 var msg = '결제에 실패하였습니다.';
+                 msg += '에러내용 : ' + rsp.error_msg;
             }
+            alert(msg);
         });
     }
 </script>
@@ -142,26 +148,26 @@
             <section class="info">
                 <p class="name">
                     <strong>숙소이름</strong><br>
-                    호텔 크레센도 서울 
+                    <a>ㅇㅇㅇㅇㅇㅇㅇㅇㅇ</a>
                 </p>
                 <p>
                     <strong>객실타입/기간</strong><br>
-                    더블 / 1박 
+                    <a>adadadada</a>
                 </p>
                 <p>
                     <strong>체크인</strong><br>
-                    10.25 화 15:00 
+                    <a>adadsdaada</a>
                 </p>
                 <p>
                     <strong>체크아웃</strong><br>
-                    10.26 수 12:00 
+                    <a>dasdasdsadd</a>
                 </p>
             </section>
             <hr>
             <section class="total">
                 <p>
                     <strong><b>총 결제금액</b>(VAT)포함</strong>
-                    <span class="in_price">150,000원</span>
+                    <span class="in_price"><a>1500000</a></span>
                 </p>
                 <ul>
                     <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>

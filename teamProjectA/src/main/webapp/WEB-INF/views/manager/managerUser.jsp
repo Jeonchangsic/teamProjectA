@@ -14,27 +14,21 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
 <head>
 <meta charset="UTF-8">
 <title>관리자회원관리</title>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerUser.css">
 <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
 </head>
-<script>
-	function selChange() {
-		var sel = document.getElementById('cntPerPage').value;
-		location.href="managerUser?nowPage=${paging.nowPage}&cntPerPage="+sel;
-	}
-</script>
+
 <body style="overflow-x: hidden">
     <div id="header">
         <div class="top">
             <h3>관리자페이지</h3>
             <div id="manager">
                 <ul>
-                    <li>home</li>
-                    <li>회원관리</li>
-                    <li>숙소관리</li>
-                    <li>리뷰관리</li>
+                    <li><a href="<%=request.getContextPath() %>/index/index.do">home</a></li>
+                    <li><a href="<%=request.getContextPath() %>/manager/managerUser.do">회원관리</a></li>
+                    <li><a href="<%=request.getContextPath() %>/manager/managerRoom.do">숙소관리</a></li>
+                    <li><a href="<%=request.getContextPath() %>/manager/managerReview.do">리뷰관리</a></li>
                 </ul>
             </div>
         </div>
@@ -93,26 +87,7 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
               <%} %>  
             </tbody>
         </table>
-        	<div style="display: block; text-align: center;">		
-		<c:if test="${paging.startPage != 1 }">
-			<a href="/managerUser?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-		</c:if>
-		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
-			<c:choose>
-				<c:when test="${p == paging.nowPage }">
-					<b>${p }</b>
-				</c:when>
-				<c:when test="${p != paging.nowPage }">
-					<a href="/managerUser?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-				</c:when>
-			</c:choose>
-		</c:forEach>
-		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="/managerUser?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-		</c:if>
-	</div>
        </div>
-
         <div id="reserv_section">
             <h3>예약내역</h3>
              
@@ -183,14 +158,6 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
                 </tr>
             </tbody>
         </table>
-        <div class="w3-center w3-border">
-			  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
-			  <a href="#" class="w3-bar-item w3-button">1</a>
-			  <a href="#" class="w3-bar-item w3-button">2</a>
-			  <a href="#" class="w3-bar-item w3-button">3</a>
-			  <a href="#" class="w3-bar-item w3-button">4</a>
-			  <a href="#" class="w3-bar-item w3-button">&raquo;</a>
-		</div>
     </div>
         <div id="qna_section">
             <h3>문의내역</h3>
@@ -225,45 +192,38 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
             </thead>
             <tbody>
                 <tr style="text-align:center;">
-                    <td><a href="">문의</a></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td><a href="">알려죠</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">몰라요</a></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td><a href="">얼마에요</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr style="text-align:center;">
-                    <td><a href="">빨리알려죠</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                </tr>
+                <tr style="text-align:center;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style="text-align:center;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
                 </tr>
             </tbody>
         </table>
-        <div class="w3-center w3-border">
-			  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
-			  <a href="#" class="w3-bar-item w3-button">1</a>
-			  <a href="#" class="w3-bar-item w3-button">2</a>
-			  <a href="#" class="w3-bar-item w3-button">3</a>
-			  <a href="#" class="w3-bar-item w3-button">4</a>
-			  <a href="#" class="w3-bar-item w3-button">&raquo;</a>
-		</div>
     </div>
     </main>
     <footer>

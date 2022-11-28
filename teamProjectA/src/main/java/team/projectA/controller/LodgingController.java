@@ -46,6 +46,7 @@ public class LodgingController {
 		 model.addAttribute("list",list);
 		 model.addAttribute("type", type);
 		 model.addAttribute("area", area);
+		 
 		return "lodging/lodgingList_gh"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
 	}
 	
@@ -61,19 +62,23 @@ public class LodgingController {
 	}
 	
 	@RequestMapping(value = "/lodgingList_motel.do", method = RequestMethod.GET) // value : 가상경로  // "/":메인페이지(웰컴파일)
-	public String list_motel(Model model, String type) {
+	public String list_motel(Model model, String type, String area) {
 
 		List<RoomVO> list = lodgingService.selectLodgingList("모텔", type);
 		model.addAttribute("list",list);
+		model.addAttribute("type", type);
+		model.addAttribute("area", area);
 		
 		return "lodging/lodgingList_motel"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
 	}
 	
 	@RequestMapping(value = "/lodgingList_villa.do", method = RequestMethod.GET) // value : 가상경로  // "/":메인페이지(웰컴파일)
-	public String list_villa(Model model, String type) {
+	public String list_villa(Model model, String type, String area) {
 
 		List<RoomVO> list = lodgingService.selectLodgingList("펜션/풀빌라", type);
 		model.addAttribute("list",list);
+		model.addAttribute("type", type);
+		model.addAttribute("area", area);
 		
 		return "lodging/lodgingList_villa"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
 	}

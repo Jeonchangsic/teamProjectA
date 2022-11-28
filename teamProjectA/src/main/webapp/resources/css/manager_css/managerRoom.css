@@ -6,8 +6,9 @@ img,iframe{vertical-align:top;}
 
 .clearfix::after{content:""; display:block; clear:both;}
 .inner{width:1024px; margin:0 auto; height:1200px;}
-#header{margin-top: 0;
+#header{ margin:0 auto;
         height: 100px;
+        overflow: hidden;
         background-color: rgb(86,19,241);}
 #header h3{color:white; 
             float:left; 
