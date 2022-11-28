@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import team.projectA.service.UserService;
-import team.projectA.vo.PagingVO;
 import team.projectA.vo.UserVO;
 
 @RequestMapping(value="/manager")
@@ -28,6 +27,7 @@ public class ManagerController {
 	private UserService userService;
 	@RequestMapping(value = "/managerUser.do", method = RequestMethod.GET)
 	public String user(Model model,UserVO vo ) {
+		
 		List<UserVO> list = userService.userList(vo);
 		model.addAttribute("list",list);
 		
@@ -64,4 +64,5 @@ public class ManagerController {
 		
 		return "manager/managerReview";
 	}
+	
 }

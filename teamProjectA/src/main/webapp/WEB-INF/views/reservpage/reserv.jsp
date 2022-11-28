@@ -148,26 +148,26 @@
             <section class="info">
                 <p class="name">
                     <strong>숙소이름</strong><br>
-                    
+                    <a>ㅇㅇㅇㅇㅇㅇㅇㅇㅇ</a>
                 </p>
                 <p>
                     <strong>객실타입/기간</strong><br>
-                    
+                    <a>adadadada</a>
                 </p>
                 <p>
                     <strong>체크인</strong><br>
-                    
+                    <a>adadsdaada</a>
                 </p>
                 <p>
                     <strong>체크아웃</strong><br>
-                    
+                    <a>dasdasdsadd</a>
                 </p>
             </section>
             <hr>
             <section class="total">
                 <p>
                     <strong><b>총 결제금액</b>(VAT)포함</strong>
-                    <span class="in_price"></span>
+                    <span class="in_price"><a>1500000</a></span>
                 </p>
                 <ul>
                     <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
