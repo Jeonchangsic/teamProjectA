@@ -466,111 +466,113 @@
 			</div>
 			<div id="inner1" class="fixedclear">
 				<div id="main_filter" class="fixedclear">
-					<div class="filter" id="filter_day">날짜</div>
-					<form>
-						<input type="text" name="fromDate" id="fromDate">
-						<input type="text" name="toDate" id="toDate">
+					<form action="lodgingList_filter.do" method="get">
+						<div class="filter" id="filter_day">날짜</div>
+						<div>
+							<input type="text" name="fromDate" id="fromDate">
+							<input type="text" name="toDate" id="toDate">
+						</div>
+						
+						<div class="filter">베드 타입</div>
+						<ul class="btnsBox">
+							<li class="btnbox active" onclick="change_btn(event)">
+								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/single_bed.jpg" alt="single_bed">
+								<p>싱글</p>
+							</li>
+							<li class="btnbox active" onclick="change_btn(event)">
+								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed.jpg" alt="single_bed">
+								<p>더블</p>
+							</li>
+							<li class="btnbox active" onclick="change_btn(event)">
+								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/twin_bed.jpg" alt="single_bed">
+								<p>트윈</p></a>
+							</li>
+							<li class="btnbox active" onclick="change_btn(event)">
+								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/ondol_bed.jpg" alt="single_bed">
+								<p>온돌</p>
+							</li>
+						</ul>
+						<div class="filter" id="filter_num">
+							인원
+							<button type='button' onclick='count("minus")' value='-' class="updown">-</button>
+							<span id='result'>2</span>
+							<button type='button' onclick='count("plus")' value='+' class="updown">+</button>
+						</div>
+						<div id="reset">
+							<input type="reset" name="reset" value="초기화">
+							<input type="submit" name="set" value="적용">
+						</div>
+						<div class="filter">공용시설</div>
+						<div class="public_in" class="fixedclear">
+							<ul id="public_left" class="filter_check">
+								<li><label><input type=checkbox name="public" value=""> 피트니스</label></li>
+								<li><label><input type=checkbox name="public" value=""> 사우나</label></li>
+								<li><label><input type=checkbox name="public" value=""> 레스토랑</label></li>
+								<li><label><input type=checkbox name="public" value=""> 라운지</label></li>
+								<li><label><input type=checkbox name="public" value=""> BBQ</label></li>
+								<li><label><input type=checkbox name="public" value=""> 공용스파</label></li>
+								<li><label><input type=checkbox name="public" value=""> 세미나실</label></li>
+								<li><label><input type=checkbox name="public" value=""> 노래방</label></li>
+								<li><label><input type=checkbox name="public" value=""> 세탁기</label></li>
+								<li><label><input type=checkbox name="public" value=""> 탈수기</label></li>
+								<li><label><input type=checkbox name="public" value=""> 취사가능</label></li>
+								<li><label><input type=checkbox name="public" value=""> 온천</label></li>
+							</ul>
+							<ul id="public_right" class="filter_check">
+								<li><label><input type=checkbox name="public" value=""> 수영장</label></li>
+								<li><label><input type=checkbox name="public" value=""> 골프장</label></li>
+								<li><label><input type=checkbox name="public" value=""> 엘레베이터</label></li>
+								<li><label><input type=checkbox name="public" value=""> 공용PC</label></li>
+								<li><label><input type=checkbox name="public" value=""> 카페</label></li>
+								<li><label><input type=checkbox name="public" value=""> 족구장</label></li>
+								<li><label><input type=checkbox name="public" value=""> 편의점</label></li>
+								<li><label><input type=checkbox name="public" value=""> 주방/식당</label></li>
+								<li><label><input type=checkbox name="public" value=""> 건조기</label></li>
+								<li><label><input type=checkbox name="public" value=""> 주차장</label></li>
+								<li><label><input type=checkbox name="public" value=""> 공용샤워실</label></li>
+								<li><label><input type=checkbox name="public" value=""> 스키장</label></li>
+							</ul>
+						</div>
+	
+						<div id="filter_in" class="filter">객실 내 시설</div>
+						<div class="public_in">
+							<ul id="in_left" class="filter_check">
+								<li><label><input type=checkbox name="roomin" value="spa"> 객실스파</label></li>
+								<li><label><input type=checkbox name="roomin" value="wifi"> 와이파이</label></li>
+								<li><label><input type=checkbox name="roomin" value="tv"> TV</label></li>
+								<li><label><input type=checkbox name="roomin" value="refri"> 냉장고</label></li>
+								<li><label><input type=checkbox name="roomin" value="bath"> 욕조</label></li>
+								<li><label><input type=checkbox name="roomin" value="iron"> 다리미</label></li>
+							</ul>
+							<ul id="in_right" class="filter_check">
+								<li><label><input type=checkbox name="roomin" value="minibar"> 미니바</label></li>
+								<li><label><input type=checkbox name="roomin" value="bathitem"> 욕실용품</label></li>
+								<li><label><input type=checkbox name="roomin" value="aircon"> 에어컨</label></li>
+								<li><label><input type=checkbox name="roomin" value="shower"> 객실샤워실</label></li>
+								<li><label><input type=checkbox name="roomin" value="dryer"> 드라이기</label></li>
+								<li><label><input type=checkbox name="roomin" value="ricecooker"> 전기밥솥</label></li>
+							</ul>
+						</div>
+						<div class="filter" id="odd">기타</div>
+						<div class="public_in">
+							<ul id="odd_left" class="filter_check">
+								<li><label><input type=checkbox name="odd" value=""> 픽업가능</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 프린터사용</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 개인사물함</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 조식포함</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 발렛파킹</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 반려견동반</label></li>
+							</ul>
+							<ul id="odd_right" class="filter_check">
+								<li><label><input type=checkbox name="odd" value=""> 객실내취사</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 짐보관가능</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 무료주차</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 객실내흡연</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 금연</label></li>
+								<li><label><input type=checkbox name="odd" value=""> 카드결제</label></li>
+							</ul>
+						</div>
 					</form>
-					
-					<div class="filter">베드 타입</div>
-					<ul class="btnsBox">
-						<li class="btnbox active" onclick="change_btn(event)">
-							<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/single_bed.jpg" alt="single_bed">
-							<p>싱글</p>
-						</li>
-						<li class="btnbox active" onclick="change_btn(event)">
-							<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed.jpg" alt="single_bed">
-							<p>더블</p>
-						</li>
-						<li class="btnbox active" onclick="change_btn(event)">
-							<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/twin_bed.jpg" alt="single_bed">
-							<p>트윈</p></a>
-						</li>
-						<li class="btnbox active" onclick="change_btn(event)">
-							<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/ondol_bed.jpg" alt="single_bed">
-							<p>온돌</p>
-						</li>
-					</ul>
-					<div class="filter" id="filter_num">
-						인원
-						<button type='button' onclick='count("plus")' value='+' class="updown">+</button>
-						<span id='result'>2</span>
-						<button type='button' onclick='count("minus")' value='-' class="updown">-</button>
-					</div>
-					<div id="reset">
-						<button type="button" onclick="location.href = '#' " name="reset">초기화</button>
-						<button type="button" onclick="location.href = '#' " name="set">적용</button>
-					</div>
-					<div class="filter">공용시설</div>
-					<div class="public_in" class="fixedclear">
-						<ul id="public_left" class="filter_check">
-							<li><input type=checkbox> <label>피트니스</label></li>
-							<li><input type=checkbox> <label>사우나</label></li>
-							<li><input type=checkbox> <label>레스토랑</label></li>
-							<li><input type=checkbox> <label>라운지</label></li>
-							<li><input type=checkbox> <label>BBQ</label></li>
-							<li><input type=checkbox> <label>공용스파</label></li>
-							<li><input type=checkbox> <label>세미나실</label></li>
-							<li><input type=checkbox> <label>노래방</label></li>
-							<li><input type=checkbox> <label>세탁기</label></li>
-							<li><input type=checkbox> <label>탈수기</label></li>
-							<li><input type=checkbox> <label>취사가능</label></li>
-							<li><input type=checkbox> <label>온천</label></li>
-						</ul>
-						<ul id="public_right" class="filter_check">
-							<li><input type=checkbox> <label>수영장</label></li>
-							<li><input type=checkbox> <label>골프장</label></li>
-							<li><input type=checkbox> <label>엘레베이터</label></li>
-							<li><input type=checkbox> <label>공용PC</label></li>
-							<li><input type=checkbox> <label>카페</label></li>
-							<li><input type=checkbox> <label>족구장</label></li>
-							<li><input type=checkbox> <label>편의점</label></li>
-							<li><input type=checkbox> <label>주방/식당</label></li>
-							<li><input type=checkbox> <label>건조기</label></li>
-							<li><input type=checkbox> <label>주차장</label></li>
-							<li><input type=checkbox> <label>공용샤워실</label></li>
-							<li><input type=checkbox> <label>스키장</label></li>
-						</ul>
-					</div>
-
-					<div id="filter_in" class="filter">객실 내 시설</div>
-					<div class="public_in">
-						<ul id="in_left" class="filter_check">
-							<li><input type=checkbox> <label>객실스파</label></li>
-							<li><input type=checkbox> <label>와이파이</label></li>
-							<li><input type=checkbox> <label>TV</label></li>
-							<li><input type=checkbox> <label>냉장고</label></li>
-							<li><input type=checkbox> <label>욕조</label></li>
-							<li><input type=checkbox> <label>다리미</label></li>
-						</ul>
-						<ul id="in_right" class="filter_check">
-							<li><input type=checkbox> <label>미니바</label></li>
-							<li><input type=checkbox> <label>욕실용품</label></li>
-							<li><input type=checkbox> <label>에어컨</label></li>
-							<li><input type=checkbox> <label>객실샤워실</label></li>
-							<li><input type=checkbox> <label>드라이기</label></li>
-							<li><input type=checkbox> <label>전기밥솥</label></li>
-						</ul>
-					</div>
-					<div class="filter" id="odd">기타</div>
-					<div class="public_in">
-						<ul id="odd_left" class="filter_check">
-							<li><input type=checkbox> <label>픽업가능</label></li>
-							<li><input type=checkbox> <label>프린터사용</label></li>
-							<li><input type=checkbox> <label>개인사물함</label></li>
-							<li><input type=checkbox> <label>조식포함</label></li>
-							<li><input type=checkbox> <label>발렛파킹</label></li>
-							<li><input type=checkbox> <label>반려견동반</label></li>
-						</ul>
-						<ul id="odd_right" class="filter_check">
-							<li><input type=checkbox> <label>객실내취사</label></li>
-							<li><input type=checkbox> <label>짐보관가능</label></li>
-							<li><input type=checkbox> <label>무료주차</label></li>
-							<li><input type=checkbox> <label>객실내흡연</label></li>
-							<li><input type=checkbox> <label>금연</label></li>
-							<li><input type=checkbox> <label>카드결제</label></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 			<div id="inner2">

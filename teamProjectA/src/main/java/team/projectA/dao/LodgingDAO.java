@@ -45,6 +45,9 @@ public class LodgingDAO {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectRoomList",lidx);
 	}
 	
+	public RoomVO selectRoom(String ridx) {
+		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectRoom", ridx);
+	}
 	
 	
 	

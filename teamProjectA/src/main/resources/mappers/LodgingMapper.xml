@@ -59,6 +59,11 @@
 		</choose>	
 	</select>
 	
+	<select id="selectListFilter" parameterType="" resultType="">
+		SELECT *
+		
+	</select>
+	
 	<select id="selectListSearch" parameterType="String" resultType="RoomVO">
 		SELECT *
  		  FROM lodgingtb lg, roomtb r
@@ -106,6 +111,14 @@
 			 , rimage5
 		 FROM roomtb
 		WHERE lidx = #{lidx}
+	</select>
+	<select id="selectRoom" parameterType="String" resultType="roomVO">
+		SELECT ridx
+			 , rtype
+			 , rnum
+			 , rprice			
+		 FROM roomtb
+		WHERE ridx = #{ridx}
 	</select>
 	
 </mapper>

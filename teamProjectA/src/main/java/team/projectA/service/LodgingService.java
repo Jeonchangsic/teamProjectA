@@ -13,4 +13,5 @@ public interface LodgingService {
 	List<RoomVO> selectListSearch(String type);
 	LodgingVO selectLodging(String lidx); 
 	List<RoomVO> selectRoomList(String lidx); 
+	RoomVO selectRoom(String ridx);
 }
