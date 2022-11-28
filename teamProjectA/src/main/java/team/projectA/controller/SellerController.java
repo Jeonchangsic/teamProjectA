@@ -65,8 +65,10 @@ public class SellerController {
 		 
 		  
 		  LodgingVO lodging = sellerService.SellerOne(login.getUidx());
+		 
+		  
 		  model.addAttribute("lodging",lodging);
-		
+		  
 
 
 		
@@ -75,37 +77,48 @@ public class SellerController {
 	
     //정보수정1 회원정보
 	@RequestMapping (value ="/sellerInfo1.do", method = RequestMethod.POST)
-	public String sellerInfo(UserVO vo, Model model, HttpServletRequest req, HttpServletResponse res)throws Exception{
-	
-		HttpSession session = req.getSession();
-		sellerService.sellerUpdate(vo);
+	public String sellerInfo(UserVO vo, HttpServletRequest req)throws Exception{
 
-	    UserVO login = (UserVO) session.getAttribute("login"); 		 
-		  
-		LodgingVO lodging = sellerService.SellerOne(login.getUidx());
-		model.addAttribute("lodging",lodging);
+		System.out.println("email"+vo.getUserEmail());
 		 
-		PrintWriter pw = res.getWriter();
-
-			
+		HttpSession session2 = req.getSession();
+		UserVO login = (UserVO)session2.getAttribute("login");
 		
+		vo.setUidx(login.getUidx());
+		
+
+	
+		int result = sellerService.sellerUpdate(vo);
+		
+		
+		
+	//	System.out.println("번호"+login.getUserPhone());
+	//	System.out.println("이메일"+vo.getUserEmail());
+	//	System.out.println("비밀번호"+vo.getUserPassword());
+		
+		
+
+		
+		 
+
 		return "redirect: sellerInfo.do";
 			
 	}
 
 	//정보수정2  숙소정보
 	@RequestMapping (value ="/sellerInfo2.do", method = RequestMethod.POST)
-	public String sellerInfo(LodgingVO vo, HttpServletRequest req, HttpServletResponse res)throws Exception{
+	public String sellerInfo(LodgingVO vo, HttpServletRequest req)throws Exception{
 		
-		
-		HttpSession session = req.getSession();
-		sellerService.sellerUpdate2(vo);
-		
+	
+		HttpSession session2 = req.getSession();
+		UserVO login = (UserVO)session2.getAttribute("login");
+	
+		vo.setUidx(login.getUidx());
+	
+		int result = sellerService.sellerUpdate2(vo);
 
 		
-		PrintWriter pw = res.getWriter();
-		 
-		return "redirect: sellerInfo.do";
+		return "redirect: sellerInfo.do?=uidx"+vo.getUidx();
 		
 	}
 
@@ -169,7 +182,7 @@ public class SellerController {
 		//login변수에  session에 넣어져있던(userController) "login"을 꺼내서 저장함
 		UserVO login = (UserVO)session.getAttribute("login");
 		
-		
+		//vo에 필요한 키값을 넣어주기
 		vo.setUidx(login.getUidx());
 		
 		//result에 sellerService에 있던 qnaInsert를 저장 / 사용안했는데 왜 있지?

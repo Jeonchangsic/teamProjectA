@@ -36,8 +36,8 @@
 	<update id = "sellerUpdate2" parameterType = "LodgingVO">
 			UPDATE lodgingtb
 			SET lodgingname = #{lodgingname},
-			lodgingaddr = #{lodgingaddr}
-			WHERE lidx = #{lidx}
+				lodgingaddr = #{lodgingaddr}
+			WHERE uidx = #{uidx}
 	</update>
 	
 	
