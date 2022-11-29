@@ -62,23 +62,7 @@
 		});
 		
 		//검색기능
-		$(".search_btn").click(function() {
-			$(".search_bar").toggleClass("view");
-		});
-	
-		// swiper slide
-		var swiper = new Swiper(".mySwiper", {
-			// cssMode: true,
-			navigation : {
-				nextEl : ".swiper-button-next",
-				prevEl : ".swiper-button-prev",
-			},
-			pagination : {
-				el : ".swiper-pagination",
-			},
-			// mousewheel: true,
-			keyboard : true,
-		});
+		
 	});
 
 	//캘린더
@@ -197,23 +181,48 @@
 </head>
 <body>
 	<header>
-		<div class="inner" class="fixedclear">
-			<h1>
-				<a href="#"><img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/logo.svg" alt="저긴어때"></a>
-			</h1>
-			<div id="room_val"></div>
-			<ul>
-				<li>
-					<input type="search" class="search_bar"> 
-					<a href="#" class="search_btn"><i class="xi-search xi-1x search"></i></a>
-				</li>
-				<!-- **검색창 구현**-->
-				<li><a href="#" id="login">로그인</a></li>
-				<!-- 폰트 스타일 수정-->
-			</ul>
-
-		</div>
-	</header>
+        <div class="inner">
+            <h1>
+            	<a href="<%=request.getContextPath()%>/index/index.do">
+            		<img src="<%=request.getContextPath() %>/resources/images/index_images/logo.svg" alt="저긴어때">
+            	</a>
+            </h1>        
+            <ul>
+                <li>
+                	<form action="" method="POST">
+                    <select name="searchType" class="search_bar" id="search_bar">
+                     	<option value="lodgingkind">종류</option>
+                     	<option value="lodgingname">숙소명</option>
+                     	<option value="lodgingaddr">지역</option>
+                     </select>
+                     <input type="text" name="keyword"/>
+                     <button>검색</button>
+                     </form>
+                </li>                 
+                
+                <li>
+                	<c:if test="${login == null }">
+                		<a href="<%=request.getContextPath() %>/login/login.do" id="login">로그인</a>
+                	</c:if> 
+                	<c:if test="${login.userType.equals('일반회원')}">
+						<a href="<%=request.getContextPath() %>/logout/logout.do" id="logout" style="font-size:15px;">로그아웃</a>
+						<a href="<%=request.getContextPath() %>/mypage/info.do" id="mypage" style="font-size:15px; border-left:1px solid #fff; padding-left:5px;">마이페이지</a>
+					</c:if> 
+					 <c:if test="${login.userType.equals('판매자')}">
+						<a href="<%=request.getContextPath() %>/logout/logout.do" id="logout" style="font-size:15px;">로그아웃</a>
+						<a href="<%=request.getContextPath() %>/seller/sellerInfo.do" id="seller" style="font-size:15px; border-left:1px solid #fff; padding-left:5px;">판매자페이지</a>
+					</c:if>
+					<c:if test="${login.userType.equals('관리자')}">
+						<a href="<%=request.getContextPath() %>/logout/logout.do" id="logout" style="font-size:15px;">로그아웃</a>
+						<a href="<%=request.getContextPath() %>/manager/managerUser.do" id="manager" style="font-size:15px; border-left:1px solid #fff; padding-left:5px;">관리자페이지</a>
+					</c:if>
+                </li>  
+                                                 <!-- 폰트 스타일 수정-->
+            </ul>
+               
+        </div>
+    </header>
+                <!-- end header-->
 	<!-- end header-->
 	<section id="body_inner" class="fixedclear">
 		<section id="inner" class="fixedclear">

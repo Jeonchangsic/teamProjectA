@@ -8,7 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="<%=request.getContextPath()%>/resources/css/review_css/review.css" rel="stylesheet"/>
-    
+    <!---- jQuery ---->
+     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+     
+     <!-- 리뷰 content영역 글자 제한 js -->
+     <script>
+     	$(document).ready(function(){
+     		$("#info").on("keyup",function(){
+     			$("#content_cnt").html("("+$(this).val().length+"/100)");
+     			
+     			if($(this).val().length > 100){
+     				$(this).val($(this).val().substring(0,100));
+     				$("#content_cnt").html("(100/100)");
+     			}
+     		});
+     	});
+     </script>
 </head>
 <body>
     <header>
@@ -19,27 +34,49 @@
     <main>
         
         <div id="contentsArea">
-            <form>
+            <form name="frm" action="<%=request.getContextPath() %>/review/review.do" method="POST">
                 <table id="table1">
+                	<tr>
+                		<td class="margin1">작성자</td>
+                		<td>
+                			<input type="text" class="info" name="rvWriter" value="${login.userID}" readonly>
+                		</td>
+                	</tr>
                     <tr>
-                        <td class="margin1">제목</td><td><input type="text" class="info" placeholder="제목을 입력하세요."></td> <!--임의로 input으로 했고 이름을 불러와야함.-->
-                    </tr>
-                    <tr>
-                        <td class="margin1">만족도</td><td><input type="text" class="info"  placeholder="1부터9의 만족도를 작성해주세요."></td>
-                    </tr>
-                    <tr>
-                        <td id="margin1">
-                            리뷰 내용
-                        </td>
+                        <td class="margin1">만족도</td>
                         <td>
-                            <textarea type="text" id="info"  placeholder="리뷰를 작성하세요."></textarea>
+                        	<select name="rvSatisfaction">
+                        		<option value="10점">10점</option>
+                        		<option value="20점">20점</option>
+                        		<option value="30점">30점</option>
+                        		<option value="40점">40점</option>
+                        		<option value="50점">50점</option>
+                        		<option value="60점">60점</option>
+                        		<option value="70점">70점</option>
+                        		<option value="80점">80점</option>
+                        		<option value="90점">90점</option>
+                        		<option value="100점">100점</option>
+                        	</select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="margin1">제목</td>
+                        <td>
+                        	<input type="text" class="info" name="rvTitle" placeholder="제목을 입력하세요.">
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td id="margin1">리뷰 내용</td>
+                        <td>
+                            <textarea type="text" id="info" name="rvContent" cols="30" rows="10" placeholder="공백 포함 100자 이내 리뷰를 작성해주세요."></textarea>
+                        	<div id="content_cnt">(0/100)</div>
                         </td>
                     </tr>
                 </table>
                 <table id="table2">
                     <tr>
                         <td>
-                            <button type="submit" id="clearBtn">저장</button>
+                            <input type="submit" id="clearBtn" value="작성"/>
                         </td>
                     </tr>
                 </table>

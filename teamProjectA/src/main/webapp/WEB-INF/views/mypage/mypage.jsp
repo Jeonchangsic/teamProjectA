@@ -28,11 +28,24 @@
      		});
      	})
      </script>
+     <!--  리뷰쓰기 */ -->
+     <script>
+	$(".reply_button_wrap").on("click", function(e){
+		
+		e.preventDefault();			
+
+	});
+	</script>
 </head>
 <body>
     <header>
-    	<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>
-        <h2>마이페이지</h2>
+    	
+        <h2>
+        	<a href="<%=request.getContextPath()%>/index/index.do">
+        		<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg" style="width:150px; margin-bottom:8px;"/>
+        	</a>
+        	<p>마이페이지</p>
+        </h2>
     </header>
                 <!--end header-->
 
@@ -65,7 +78,7 @@
             </form>
         </div>
         <div id="contentsArea">
-            <form>
+            <form action="review.do" method="POST">
                 <table id="table10">
                     <tr class="ta_center tr_border">
                         <th>예약번호</th>
@@ -86,7 +99,9 @@
                         <td>2022-10-31 / 4명</td>
                         <td  class="ta_center">
                             <input type="button" value="예약취소"/>
-                            <a href="<%=request.getContextPath()%>/review/review.do"><input type="button" value="리뷰쓰기"/></a>
+                            <div class="reply_button_wrap">
+                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do'"/>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -99,7 +114,9 @@
                         <td>2022-10-31 / 4명</td>
                         <td class="ta_center">
                             <input type="button" value="예약취소"/>
-                         	<a href="<%=request.getContextPath()%>/review/review.do"><input type="button" value="리뷰쓰기"/></a>
+                            <div class="reply_button_wrap">
+                         	<input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do'"/>
+                         	</div>
                         </td>
                     </tr>
                 </table>

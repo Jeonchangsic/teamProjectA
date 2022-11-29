@@ -54,12 +54,13 @@ public class SellerController {
 	 * @param sellerService 
 	 */
 	
-	//회원정보화면
+	
 	@RequestMapping(value = "/sellerInfo.do", method = RequestMethod.GET)														 //session 불러내기 위해서 필요 
 	public String sellerInfo(Locale locale, Model model,  HttpServletRequest req) {
 
-		  //session 선언
-		  HttpSession session = req.getSession(); //로그인한 uidx값만 넘어오게 만들기 UserVO login =
+			//session 선언
+		  HttpSession session = req.getSession(); 
+		  //session 불러내기 위해서 필요 
 		  UserVO login = (UserVO) session.getAttribute("login"); 
 		  model.addAttribute("vo", login);
 		 
@@ -75,7 +76,7 @@ public class SellerController {
 		return "seller/sellerInfo";
 	}
 	
-    //정보수정1 회원정보
+	//정보수정1 회원정보
 	@RequestMapping (value ="/sellerInfo1.do", method = RequestMethod.POST)
 	public String sellerInfo(UserVO vo, HttpServletRequest req)throws Exception{
 
@@ -92,9 +93,9 @@ public class SellerController {
 		
 		
 		
-	//	System.out.println("번호"+login.getUserPhone());
-	//	System.out.println("이메일"+vo.getUserEmail());
-	//	System.out.println("비밀번호"+vo.getUserPassword());
+	//	System.out.println("踰덊샇"+login.getUserPhone());
+	//	System.out.println("�씠硫붿씪"+vo.getUserEmail());
+	//	System.out.println("鍮꾨�踰덊샇"+vo.getUserPassword());
 		
 		
 
@@ -105,7 +106,7 @@ public class SellerController {
 			
 	}
 
-	//정보수정2  숙소정보
+	//�젙蹂댁닔�젙2  �닕�냼�젙蹂�
 	@RequestMapping (value ="/sellerInfo2.do", method = RequestMethod.POST)
 	public String sellerInfo(LodgingVO vo, HttpServletRequest req)throws Exception{
 		
@@ -124,17 +125,17 @@ public class SellerController {
 
 		
 		
-	//문의리스트
+	//臾몄쓽由ъ뒪�듃
 	@RequestMapping(value = "/sellerInquire.do", method = RequestMethod.GET)
 	public String sellerInquire(Model model,HttpServletRequest req ){
 		
-		//session 선언
+		//session �꽑�뼵
 		HttpSession session = req.getSession();
-		//로그인한 uidx값을 받고
+		//濡쒓렇�씤�븳 uidx媛믪쓣 諛쏄퀬
 		UserVO login = (UserVO) session.getAttribute("login");
 	
-	    //qnaList에 매개변수로 loing한 사람의 uidx를 걸어줌 
-		//== 화면에 들어온 uidx에 해당하는 사람의 qanList만 보여준다
+	    //qnaList�뿉 留ㅺ컻蹂��닔濡� loing�븳 �궗�엺�쓽 uidx瑜� 嫄몄뼱以� 
+		//== �솕硫댁뿉 �뱾�뼱�삩 uidx�뿉 �빐�떦�븯�뒗 �궗�엺�쓽 qanList留� 蹂댁뿬以��떎
 		List<QnaVO> qnaList = sellerService.qnaList(login.getUidx()); 
 		model.addAttribute("qnaList", qnaList);
 	
@@ -143,7 +144,7 @@ public class SellerController {
 		return "seller/sellerInquire";
 	}
 	
-	//문의내용
+	//臾몄쓽�궡�슜
 	@RequestMapping(value="/sellerInquireView.do", method = RequestMethod.GET)
 	public String sellerInquireView(Locale locale, Model model, int QnA_idx) {
 		
@@ -162,7 +163,7 @@ public class SellerController {
 		
 		
 	}
-	//문의하기 페이지로딩
+	//臾몄쓽�븯湲� �럹�씠吏�濡쒕뵫
 	@RequestMapping(value = "/sellerInquireWrite.do", method = RequestMethod.GET)
 	public String sellerInquireWrite(Locale locale, Model model) {
 		
@@ -172,24 +173,24 @@ public class SellerController {
 	}
 	
 	
-	//문의하기 post
+	//臾몄쓽�븯湲� post
 	@RequestMapping(value = "/sellerInquireWrite.do", method = RequestMethod.POST)
 	public String sellerInquireWrite(QnaVO vo, HttpServletRequest req, HttpServletResponse response)throws Exception {
 		
-		//session을 불러옴 
+		//session�쓣 遺덈윭�샂 
 		HttpSession session = req.getSession();
 		
-		//login변수에  session에 넣어져있던(userController) "login"을 꺼내서 저장함
+		//login蹂��닔�뿉  session�뿉 �꽔�뼱�졇�엳�뜕(userController) "login"�쓣 爰쇰궡�꽌 ���옣�븿
 		UserVO login = (UserVO)session.getAttribute("login");
 		
-		//vo에 필요한 키값을 넣어주기
+		//vo�뿉 �븘�슂�븳 �궎媛믪쓣 �꽔�뼱二쇨린
 		vo.setUidx(login.getUidx());
 		
-		//result에 sellerService에 있던 qnaInsert를 저장 / 사용안했는데 왜 있지?
+		//result�뿉 sellerService�뿉 �엳�뜕 qnaInsert瑜� ���옣 / �궗�슜�븞�뻽�뒗�뜲 �솢 �엳吏�?
 		int result = sellerService.qnaInsert(vo);
 		
 	
-		//return할때 uidx을 넘기고 +로 Qna_idx값을 붙여줌 
+		//return�븷�븣 uidx�쓣 �꽆湲곌퀬 +濡� Qna_idx媛믪쓣 遺숈뿬以� 
 		return "redirect: sellerInquire.do?=uidx"+vo.getQnA_idx();	
 
 	}

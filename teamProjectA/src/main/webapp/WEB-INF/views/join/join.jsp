@@ -140,6 +140,19 @@
       .incorrect{
       	color: red;
       }
+     #joinText{
+     	padding-top:20px;
+     }
+     
+     #mail_check_input{
+     	width:180px;
+     	height:21px;
+     	
+     }
+     #mail_check_button{
+     	border:1px solid #000;
+     	background-color:rgba(0,0,0,0.10);
+     }
     </style>
 </head>
 <body>
@@ -153,10 +166,13 @@
 		       동의하신다면 이전화면에서 동의함 체크를 해주세요.</div>
     </div>
     <header>
-    	<a href="">
-    		<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>
-    	</a>
-        <h2>회원가입</h2>
+    	
+        <h2>
+        	<a href="<%=request.getContextPath()%>/index/index.do">
+    		<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg" style="width:150px;"/>
+    		</a>
+    		<p id="joinText">회원가입</p>
+    	</h2>
     </header>
     <main>
     	<div id="border1">
@@ -201,10 +217,10 @@
 	                <tr>
 		                <td></td>
 		                <td class="mail_check_input_box"><!-- 인증번호 입력란 -->
-		                	<input class="mail_check_input" disabled="disabled">
+		                	<input id="mail_check_input" class="mail_check_input" disabled="disabled">
 		                </td>		
-		                <td class="mail_check_button"><!-- 메일 체크 버튼 -->
-		                    	<span>인증번호 전송</span>
+		                <td id="mail_check_button" class="mail_check_button"><!-- 메일 체크 버튼 -->
+		                    	<span style="cursor:pointer;">인증번호 전송</span>
 	                    </td>
 	                </tr>
 	                <tr>
@@ -244,7 +260,7 @@
 	            <table id="table2">
 	                <tr>
 	                    <td id="join"><button class="footBtn">가입하기</button></td>
-	                    <td><button type="reset" class="footBtn">취소</button></td>
+	            		 <td><input type="button" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" class="footBtn" value="취소"></td>
 	                </tr>
 	            </table>
 	        </form>

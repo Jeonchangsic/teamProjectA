@@ -11,7 +11,11 @@
 </head>
 <body>
     <header>
-        <h2><img src="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg"></h2>
+        <h2>
+        	<a href="<%=request.getContextPath()%>/index/index.do">
+        	<img src="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg">
+        	</a>
+        </h2>
     </header>
 
             <!--end header-->

@@ -17,51 +17,28 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> <!--XE아이콘-->
     
-	<!-- 아이디 비밀번호 안내창 -->
-    	<!-- <script>
-    	$(function(){
-    		alert("일반회원 아이디: user1   비밀번호:1234 /n
-    			      일반회원 아이디:");
-    	});
-    	</script> -->
-    <!---- js --->
-    	<script>
-        $(document).ready(function(){
-        	
-            $(".search_btn").click(function(){
-                $(".search_bar").toggleClass("view");
-            });
-
-            // swiper slide
-            var swiper = new Swiper(".mySwiper", {
-                // cssMode: true,
-                navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-                },
-                pagination: {
-                el: ".swiper-pagination",
-                },
-                // mousewheel: true,
-                keyboard: true,
-            });
-        });
-    </script>
+    
 </head>
 <body>
     <header>
         <div class="inner">
-            <h1><a href="#"><img src="<%=request.getContextPath() %>/resources/images/index_images/logo.svg" alt="저긴어때"></a></h1>        
+            <h1>
+            	<a href="<%=request.getContextPath()%>/index/index.do">
+            		<img src="<%=request.getContextPath() %>/resources/images/index_images/logo.svg" alt="저긴어때">
+            	</a>
+            </h1>        
             <ul>
                 <li>
+                	<form action="" method="POST">
                     <select name="searchType" class="search_bar" id="search_bar">
                      	<option value="lodgingkind">종류</option>
                      	<option value="lodgingname">숙소명</option>
-                     	<option value="lodgingaddr">주소</option>
+                     	<option value="lodgingaddr">지역</option>
                      </select>
                      <input type="text" name="keyword"/>
-                     <button type="button">검색</button>
-                </li>                 <!-- **검색창 구현**-->
+                     <button>검색</button>
+                     </form>
+                </li>                 
                 
                 <li>
                 	<c:if test="${login == null }">
@@ -237,7 +214,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/festival1.jpg" alt="축제이미지">
                                 <div class="description">
                                     <p id="hover1" class="lod_name">[진주]남강유등축제</p>
-                                    <p class="lod_price">역사가 담긴 빛축제</p>
+                                    <p class="lod_price">"역사가 담긴 빛축제"</p>
                                 </div>
                             </a>
                         </li>
@@ -246,7 +223,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/festival2.jpg" alt="축제이미지">
                                 <div class="description">
 	                                <p class="lod_name">[여수]밤바다불꽃축제</p>
-	                                <p class="lod_price">밤바다 야경과 불꽃축제의 조화</p>
+	                                <p class="lod_price">"밤바다 야경과 불꽃축제의 조화"</p>
                                 </div>
                             </a>
                         </li>
@@ -255,7 +232,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/festival3.jpg" alt="축제이미지">
                                 <div class="description">
 	                                <p class="lod_name">[남원]춘향제</p>
-	                                <p class="lod_price">역사를 자랑하는 전통축제</p>
+	                                <p class="lod_price">"역사를 자랑하는 전통축제"</p>
 	                            </div>
                             </a>
                         </li> 
@@ -268,7 +245,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/festival3.jpg" alt="축제이미지">
                                 <div class="description">
                                     <p class="lod_name">[남원]춘향제</p>
-                                    <p class="lod_price">역사를 자랑하는 전통축제</p>
+                                    <p class="lod_price">"역사를 자랑하는 전통축제"</p>
                                 </div>
                             </a>
                         </li>
@@ -277,7 +254,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/festival2.jpg" alt="축제이미지">
                                 <div class="description">
 	                                <p class="lod_name">[여수]밤바다불꽃축제</p>
-	                                <p class="lod_price">밤바다 야경과 불꽃축제의 조화</p>
+	                                <p class="lod_price">"밤바다 야경과 불꽃축제의 조화"</p>
                                 </div>
                             </a>
                         </li>
@@ -286,7 +263,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/festival1.jpg" alt="축제이미지">
                                 <div class="description">
 	                                <p class="lod_name">[진주]남강유등축제</p>
-	                                <p class="lod_price">역사가 담긴 빛축제</p>
+	                                <p class="lod_price">"역사가 담긴 빛축제"</p>
                                 </div>
                             </a>
                         </li> 
@@ -312,7 +289,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/trip1.jpg" alt="즐길거리 이미지">
                                 <div class="description">
 	                                <p class="lod_name">[청주]자연휴양림</p>
-	                                <p class="lod_price">캠핑과 휴양을 동시에!</p>
+	                                <p class="lod_price">"캠핑과 휴양을 동시에!"</p>
 	                            </div>
                             </a>
                         </li>
@@ -321,7 +298,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/trip2.jpg" alt="즐길거리 이미지">
                                 <div class="description">
 	                                <p class="lod_name">[전주]한옥마을</p>
-	                                <p class="lod_price">전주 여행에 빠질 수 없는 코스</p>
+	                                <p class="lod_price">"전주 여행에 빠질 수 없는 코스"</p>
                                 </div>
                             </a>
                         </li>
@@ -330,7 +307,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/trip3.jpg" alt="즐길거리 이미지">
                                 <div class="description">
 	                                <p class="lod_name">[전주]덕진공원</p>
-	                                <p class="lod_price">수많은 연꽃을 보고싶을때</p>
+	                                <p class="lod_price">"수많은 연꽃을 보고싶을때"</p>
                                 </div>
                             </a>
                         </li> 
@@ -343,7 +320,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/trip3.jpg"alt="즐길거리 이미지">
                                 <div class="description">
 	                                <p class="lod_name">[전주]덕진공원</p>
-	                                <p class="lod_price">수많은 연꽃을 보고싶을때</p>
+	                                <p class="lod_price">"수많은 연꽃을 보고싶을때"</p>
 	                            </div>
                             </a>
                         </li>
@@ -352,7 +329,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/trip1.jpg" alt="즐길거리 이미지">
                                 <div class="description">
 	                                <p class="lod_name">[청주]자연휴양림</p>
-	                                <p class="lod_price">캠핑과 휴양을 동시에!</p>
+	                                <p class="lod_price">"캠핑과 휴양을 동시에!"</p>
 	                            </div>
                             </a>
                         </li>
@@ -361,7 +338,7 @@
                                 <img src="<%=request.getContextPath() %>/resources/images/index_images/trip2.jpg"alt="즐길거리 이미지">
                                 <div class="description">
 	                                <p class="lod_name">[전주]한옥마을</p>
-	                                <p class="lod_price">전주 여행에 빠질 수 없는 코스</p>
+	                                <p class="lod_price">"전주 여행에 빠질 수 없는 코스"</p>
                                 </div>
                             </a>
                         </li>
