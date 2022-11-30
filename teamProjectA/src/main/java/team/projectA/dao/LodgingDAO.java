@@ -24,11 +24,12 @@ public class LodgingDAO {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectList2", gubun);
 	}
 */	
-	public List<RoomVO> selectLodgingList(String lodgingkind, String type){
+	public List<RoomVO> selectLodgingList(String lodgingkind, String type, String area){
 		
 		HashMap<String, String> hm = new HashMap<String, String>();
 		hm.put("lodgingkind",lodgingkind);
 		hm.put("type", type);		
+		hm.put("area", area);		
 		
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectLodgingList",hm);
 	}

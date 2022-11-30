@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import team.projectA.dao.LodgingDAO;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.RoominVO;
 
 @Service
 public class LodgingServiceImpl implements LodgingService {
@@ -26,8 +27,8 @@ public class LodgingServiceImpl implements LodgingService {
 	}
 */
 	@Override
-	public List<RoomVO> selectLodgingList(String lodgingkind, String type) {
-		return lodgingDAO.selectLodgingList(lodgingkind, type);
+	public List<RoomVO> selectLodgingList(String lodgingkind, String type, String area) {
+		return lodgingDAO.selectLodgingList(lodgingkind, type, area);
 	}
 
 	@Override

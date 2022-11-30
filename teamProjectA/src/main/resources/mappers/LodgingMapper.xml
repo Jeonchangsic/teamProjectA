@@ -48,18 +48,63 @@
 							  ) a
 					 GROUP BY a.lidx)
 		<choose>
+			<when test ="area != null and area == '서울 전체'">
+				AND local like '10%'
+			</when>
+			<when test ="area != null and area == '홍대/신촌/마포'">
+				AND local = 1002
+			</when>
+			<when test ="area != null and area == '북촌/인사동/종로/동대문'">
+				AND local = 1003
+			</when>
+			<when test ="area != null and area == '명동/남산/중구'">
+				AND local = 1004
+			</when>
+			<when test ="area != null and area == '이태원/서울역/용산'">
+				AND local = 1006
+			</when>
+			<when test ="area != null and area == '부산 전체'">
+				AND local like '20%'
+			</when>
+			<when test ="area != null and area == '해운대/마린시티'">
+				AND local = 2002
+			</when>
+			<when test ="area != null and area == '광안리/경성대'">
+				AND local = 2003
+			</when>
+			<when test ="area != null and area == '송정/기장'">
+				AND local = 2005
+			</when>
+			<when test ="area != null and area == '제주 전체'">
+				AND local like '30%'
+			</when>
+			<when test ="area != null and area == '제주시/제주국제공항'">
+				AND local = 3002
+			</when>
+			<when test ="area != null and area == '전라 전체'">
+				AND local like '40%'
+			</when>
+			<when test ="area != null and area == '전주/완주'">
+				AND local = 4002
+			</when>
+			<when test ="area != null and area == '군산/익산'">
+				AND local = 4006
+			</when>
+			<when test ="area != null and area == '목포/신안/영광/진도/고흥/영암/완도'">
+				AND local = 4007
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+		<choose>
 			<when test ="type == 2">
 				order by rprice
 			</when>
 			<when test ="type == 3">
 				order by rprice desc
-			</when>
-			<otherwise>
-			</otherwise>
-		</choose>	
+			</when>	
+		</choose>
 	</select>
-	
-	
 	
 	<select id="selectListSearch" parameterType="String" resultType="RoomVO">
 		SELECT *

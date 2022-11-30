@@ -150,7 +150,7 @@
 
 			event.target.classList.add("active2");
 		}
-		location.href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?type="+type;
+		location.href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=${area}&type="+type;
 	}
 
 	function init() {
@@ -192,7 +192,7 @@
 		// 더하기/빼기
 		if (type === 'plus') {
 			number = parseInt(number) + 1;
-		} else if (type === 'minus') {
+		} else if (type === 'minus' && number != 1) {
 			number = parseInt(number) - 1;
 		}
 
@@ -345,6 +345,9 @@
 								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=순천/광양/담양/보성/화순">순천/광양/담양/보성/화순</a>
 							</li>
 							<li class="c1">
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=군산/익산">군산/익산</a>
+							</li>
+							<li class="c1">
 								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=목포/신안/영광/진도/고흥/영암/완도">목포/신안/영광/진도/고흥/영암/완도</a>
 							</li>
 						</ul>
@@ -359,22 +362,22 @@
 								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=서울 전체">서울 전체</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=강남/역삼/삼성">강남/역삼/삼성</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=홍대/신촌/마포">홍대/신촌/마포</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=서울역/이태원/용산">서울역/이태원/용산</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=북촌/인사동/종로/동대문">북촌/인사동/종로/동대문</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=여의도">여의도</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=명동/남산/중구">명동/남산/중구</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=영등포역">영등포역</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=강남/잠실/삼성/서초">강남/잠실/삼성/서초</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=서초/교대/사당">서초/교대/사당</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=이태원/서울역/용산">이태원/서울역/용산</a>
 							</li>
 							<li class="c1">
-								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=건대입구/성수/왕십리">건대입구/성수/왕십리</a>
+								<a href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=영등포/신림/김포공항">영등포/신림/김포공항</a>
 							</li>
 						</ul>
 						<div class="select_under">
@@ -579,7 +582,7 @@
 						<button type="button" onclick="change_btn2(event,5)" id="up5" class="btnbox2">리뷰많은순</button>
 					</li>
 					<li>
-						<button type="button" onclick="change_btn2(event,4)" id="up4" class="btnbox2">별점순</button>						
+						<button type="button" onclick="change_btn2(event,4)" id="up4" class="btnbox2">만족도순</button>						
 					</li>
 					<li>
 						<button type="button" onclick="change_btn2(event,3)" id="up3" class="btnbox2 <c:if test="${type eq '3'}">active2</c:if>">가격높은순</button>
