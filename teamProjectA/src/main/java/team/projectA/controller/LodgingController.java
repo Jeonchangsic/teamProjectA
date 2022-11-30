@@ -108,6 +108,7 @@ public class LodgingController {
 		
 		List<RoomVO> list = lodgingService.selectRoomList(lidx);
 		
+		
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);
 		

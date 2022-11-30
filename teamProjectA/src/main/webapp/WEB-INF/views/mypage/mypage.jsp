@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="<%=request.getContextPath() %>/resources/css/mypage_css/mypage.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/resources/css/mypage_css/mypage.css" rel="stylesheet"/>
     <!---- jQuery ---->
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
      
@@ -28,14 +28,6 @@
      		});
      	})
      </script>
-     <!--  리뷰쓰기 */ -->
-     <script>
-	$(".reply_button_wrap").on("click", function(e){
-		
-		e.preventDefault();			
-
-	});
-	</script>
 </head>
 <body>
     <header>
@@ -74,7 +66,7 @@
                         <td class="margin1">생년월일</td><td><input type="text" class="info" name="userBirth" value="${login.userBirth}"></td>
                     </tr>
                 </table>
-                <button type="button" onclick="location.href='<%=request.getContextPath()%>/mypage/userDt.do';" style="width:100px; height:30px; margin-left:200px;">회원탈퇴</button>
+                <button id="btn_style" type="button" onclick="location.href='<%=request.getContextPath()%>/mypage/userDt.do'" style="width:100px; height:30px; margin-left:200px;">회원탈퇴</button>
             </form>
         </div>
         <div id="contentsArea">
@@ -99,9 +91,7 @@
                         <td>2022-10-31 / 4명</td>
                         <td  class="ta_center">
                             <input type="button" value="예약취소"/>
-                            <div class="reply_button_wrap">
                             <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do'"/>
-                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -114,9 +104,7 @@
                         <td>2022-10-31 / 4명</td>
                         <td class="ta_center">
                             <input type="button" value="예약취소"/>
-                            <div class="reply_button_wrap">
                          	<input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do'"/>
-                         	</div>
                         </td>
                     </tr>
                 </table>

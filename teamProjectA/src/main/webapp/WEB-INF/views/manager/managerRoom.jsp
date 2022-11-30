@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="team.projectA.vo.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +11,32 @@
 <title>관리자 객실관리</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerRoom.css">
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
+<script>
+	function roomCategoryChange(){
+		alert("text");
+		alert("<%=request.getContextPath()%>/manager/roomCategoryChange.do?lodgingID=");
+		
+		var lidx = $("#lidx").val();
+		
+		alert(lidx);
+		
+		
+		$.ajax({
+		
+			url:"<%=request.getContextPath()%>/manager/roomCategoryChange.do?lidx="+lidx,
+			type:"get",	
+			dataType: "text",
+			success:function(data){
+				
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+		});
+	}
+</script>
 </head>
 <body style="overflow-x: hidden">
     <div id="header">
@@ -27,6 +56,7 @@
         <nav>
             <div class="nav">
                 <li><a href="">숙소리스트</a></li>
+                <li><a href="">객실추천등록</a></li>
             </div>
         </nav>
         <div>
@@ -85,7 +115,33 @@
                 </tr>
             </tbody>
         </table>
-       
+        <div>
+            <h3>객실추천등록</h3>
+        </div>     
+        <hr/>
+        <form method="POST" >
+        	<table>
+        		<tr>
+        			<th>
+        				<label>숙소명</label>
+        				<select name="lidx" id="lidx" onchange="roomCategoryChange()" class="lodgingCategory">
+        					<option value="숙소선택">숙소선택</option>
+        					<c:forEach var="vo" items="${lodgingCategory}" varStatus="status">
+        						<option value="${vo.lidx}">${vo.lodgingname}</option>
+        					</c:forEach>
+        				</select>
+        			</th>
+        		</tr>
+        		<tr>
+        			<th>
+        				<label>객실명</label>
+        				<select class="roomCategory">
+        					<option value="">객실명</option>
+        				</select>
+        			</th>
+        		</tr>
+        	</table>
+        </form>
     </main>
     <footer>
         <div id="foot">

@@ -13,8 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.sf.json.JSONArray;
+import team.projectA.service.ManagerService;
 import team.projectA.service.UserService;
+import team.projectA.vo.LodgingVO;
+import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
 
 @RequestMapping(value="/manager")
@@ -23,6 +28,8 @@ public class ManagerController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
 	
+	@Autowired
+	private ManagerService managerService;
 	@Autowired
 	private UserService userService;
 	@RequestMapping(value = "/managerUser.do", method = RequestMethod.GET)
@@ -36,8 +43,9 @@ public class ManagerController {
 	
 	}
 	@RequestMapping(value = "/managerRoom.do", method = RequestMethod.GET)
-	public String Room(Locale locale, Model model) {
+	public String Room(Locale locale, Model model) throws Exception{
 		logger.info("Welcome home! The client locale is {}.", locale);
+		
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -46,7 +54,12 @@ public class ManagerController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-	
+		//숙소 인기추천
+		List<LodgingVO> lodgingCategory = null;
+		lodgingCategory = managerService.lodgingCategory();
+		model.addAttribute("lodgingCategory",lodgingCategory);
+		
+		//
 		
 		return "manager/managerRoom";
 	}
@@ -65,4 +78,16 @@ public class ManagerController {
 		return "manager/managerReview";
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping(value="/roomCategoryChange.do", method= RequestMethod.GET)
+	public String lodgingCategory(@RequestParam("lidx")String lidx){
+		 System.out.println("data:"+lidx); 
+		List<RoomVO> rlist = (List<RoomVO>)managerService.selectRoomList(lidx);
+		
+		
+		 System.out.println("data:"+rlist.get(0).getLidx()); 
+		
+		return "rlist";
+	}
 }

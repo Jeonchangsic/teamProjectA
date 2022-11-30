@@ -11,7 +11,7 @@
     <!---- jQuery ---->
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
      
-     <!-- 리뷰 content영역 글자 제한 js -->
+     <!-- 리뷰 content영역 글자 제한 -->
      <script>
      	$(document).ready(function(){
      		$("#info").on("keyup",function(){
@@ -45,7 +45,7 @@
                     <tr>
                         <td class="margin1">만족도</td>
                         <td>
-                        	<select name="rvSatisfaction">
+                        	<select name="rvSatisfaction" required>
                         		<option value="10점">10점</option>
                         		<option value="20점">20점</option>
                         		<option value="30점">30점</option>
@@ -62,13 +62,13 @@
                     <tr>
                         <td class="margin1">제목</td>
                         <td>
-                        	<input type="text" class="info" name="rvTitle" placeholder="제목을 입력하세요.">
+                        	<input type="text" class="info" name="rvTitle" placeholder="제목을 입력하세요." required>
                         </td> 
                     </tr>
                     <tr>
                         <td id="margin1">리뷰 내용</td>
                         <td>
-                            <textarea type="text" id="info" name="rvContent" cols="30" rows="10" placeholder="공백 포함 100자 이내 리뷰를 작성해주세요."></textarea>
+                            <textarea id="info" name="rvContent" cols="30" rows="10" placeholder="공백 포함 100자 이내 리뷰를 작성해주세요." required></textarea>
                         	<div id="content_cnt">(0/100)</div>
                         </td>
                     </tr>

@@ -160,6 +160,7 @@ main #btnArea2{
 main #contentsArea{
 	display:none;
 }
+
                 /*footer*/
 footer{position:absolute; bottom:0;height:137px; width:100%; background-color:rgba(0,0,0,0.15);}
 footer #foot{margin: 0 auto; width:1024px; height:127px;}

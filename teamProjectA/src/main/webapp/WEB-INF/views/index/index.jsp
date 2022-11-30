@@ -17,7 +17,33 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> <!--XE아이콘-->
     
-    
+   <!-- 아이디 비밀번호 안내창 -->
+       <!-- <script>
+       $(function(){
+          alert("일반회원 아이디: user1   비밀번호:1234 /n
+                   일반회원 아이디:");
+       });
+       </script> -->
+    <!---- js --->
+       <script>
+        $(document).ready(function(){
+           
+            // swiper slide
+            var swiper = new Swiper(".mySwiper", {
+                // cssMode: true,
+                navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                el: ".swiper-pagination",
+                },
+                // mousewheel: true,
+                keyboard: true,
+            });
+        });
+    </script>
+
 </head>
 <body>
     <header>
@@ -372,11 +398,5 @@
             </div>
         </div>
     </footer>
-
-
-    <!-- Initialize Swiper -->
-    <script>
-     
-    </script>
 </body>
 </html>
