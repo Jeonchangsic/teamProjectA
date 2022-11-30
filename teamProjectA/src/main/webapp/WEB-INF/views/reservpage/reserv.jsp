@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ page import="java.util.*" %>
+<%@ page import="team.projectA.vo.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%
+	RoomVO rvo = (RoomVO)request.getAttribute("rvo");
+ 	
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,22 +29,21 @@
         IMP.request_pay({
             pg : 'html5_inicis',  // PG사 선택
             pay_method : 'card', // 지불 수단
-            merchant_uid: "57008833-33008", 
-            name : '호텔 크레센', // 상품명
-            amount : '1000', // 가격 ,제외
-            buyer_email : 'Iamport@chai.finance',
+            merchant_uid: "<%=rvo.getRidx()%>", 
+            name : '<%=rvo.getLodgingname()%>',	//상품명
+            amount : '<%=rvo.getRprice()%>', // 가격 
+            buyer_email : 'Iamport@chai.finance', //구매자이메일
             buyer_name : '아임포트 기술지원팀', // 구매자 이름
             buyer_tel : '010-1234-5678', // 구매자 연락처 
-            buyer_addr : '서울특별시 강남구 삼성동', // 구매자 주소지
-            buyer_postcode : '123-456' // 구매자 우편번호
         }, function (rsp) { // callback
-            if (rsp.success) {
+            if (rsp.success) {//결제성공시
             	var msg = '결제가 완료되었습니다.';
             	 msg += '고유ID : ' + rsp.imp_uid;
                  msg += '상점 거래ID : ' + rsp.merchant_uid;
                  msg += '결제 금액 : ' + rsp.paid_amount;
                  msg += '카드 승인번호 : ' + rsp.apply_num;
-            } else {
+                 location.href ="<%=request.getContextPath()%>/mypage/mypage";
+            } else {//결제실패시
             	 var msg = '결제에 실패하였습니다.';
                  msg += '에러내용 : ' + rsp.error_msg;
             }
@@ -114,7 +121,9 @@
             <input type="text" placeholder="체크인시 필요한 정보입니다 -를 빼고입력해주세요" >
             
             <div class="login">
-                <a>예약자정보 입력은 필수 입니다</a>
+                <a><br>
+					              
+                </a>
             </div> 
             <h3>약관동의</h3>
             <table class="agree">
@@ -148,26 +157,26 @@
             <section class="info">
                 <p class="name">
                     <strong>숙소이름</strong><br>
-                    <a>ㅇㅇㅇㅇㅇㅇㅇㅇㅇ</a>
+						<%=rvo.getLodgingname() %>
                 </p>
                 <p>
                     <strong>객실타입/기간</strong><br>
-                    <a>adadadada</a>
+                    	<%=rvo.getRtype() %>/1박
                 </p>
                 <p>
                     <strong>체크인</strong><br>
-                    <a>adadsdaada</a>
+                    	2022-11-30/15:00
                 </p>
                 <p>
                     <strong>체크아웃</strong><br>
-                    <a>dasdasdsadd</a>
+                    	2022-12-01/12:00
                 </p>
             </section>
             <hr>
             <section class="total">
                 <p>
-                    <strong><b>총 결제금액</b>(VAT)포함</strong>
-                    <span class="in_price"><a>1500000</a></span>
+                    <strong><b>총 결제금액</b>(VAT)포함<br></strong>
+                    <span class="in_price" ><fmt:formatNumber type="number" maxFractionDigits="3" value="<%=rvo.getRprice() %>" />원</span>
                 </p>
                 <ul>
                     <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>

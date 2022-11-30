@@ -267,7 +267,9 @@
 	                        </div>
 	                    </div><!--//modal-->
 	                    <button type="button" class="room_info">객실 이용 안내</button>
-	                    <button type="button" onclick="" class="room_booking">예약</button>
+	                    <a href="<%=request.getContextPath()%>/reserv/reserv.do?ridx=${vo2.ridx}" >
+	                    	<button type="button" class="room_booking">예약</button>
+                    	</a>
 	                </div><!--//room-->
                 </c:forEach>
             </div><!--//room_list-->

@@ -155,12 +155,15 @@
 		WHERE lidx = #{lidx}
 	</select>
 	<select id="selectRoom" parameterType="String" resultType="roomVO">
-		SELECT ridx
-			 , rtype
-			 , rnum
-			 , rprice			
-		 FROM roomtb
-		WHERE ridx = #{ridx}
+		SELECT r.ridx
+			 , r.rtype
+			 , r.rnum
+			 , r.rprice		
+			 , l.lodgingname	
+		 FROM roomtb r
+		 LEFT OUTER JOIN lodgingtb l
+		 ON r.lidx = l.lidx 
+		WHERE r.ridx = #{ridx}
 	</select>
 	
 </mapper>
