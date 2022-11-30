@@ -42,7 +42,7 @@ public class LodgingController {
 		 model.addAttribute("list1",list1); 
 		 model.addAttribute("list2",list2);
 */
-		 List<RoomVO> list = lodgingService.selectLodgingList("GH", type);
+		 List<RoomVO> list = lodgingService.selectLodgingList("GH", type, area);
 		 model.addAttribute("list",list);
 		 model.addAttribute("type", type);
 		 model.addAttribute("area", area);
@@ -53,18 +53,18 @@ public class LodgingController {
 	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : 가상경로  // "/":메인페이지(웰컴파일)
 	public String list_hotel(Model model, String type, String area) {
 
-		List<RoomVO> list = lodgingService.selectLodgingList("호텔", type);
+		List<RoomVO> list = lodgingService.selectLodgingList("호텔", type, area);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
-		 
+		
 		return "lodging/lodgingList_hotel"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
 	}
 	
 	@RequestMapping(value = "/lodgingList_motel.do", method = RequestMethod.GET) // value : 가상경로  // "/":메인페이지(웰컴파일)
 	public String list_motel(Model model, String type, String area) {
 
-		List<RoomVO> list = lodgingService.selectLodgingList("모텔", type);
+		List<RoomVO> list = lodgingService.selectLodgingList("모텔", type, area);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
@@ -75,7 +75,7 @@ public class LodgingController {
 	@RequestMapping(value = "/lodgingList_villa.do", method = RequestMethod.GET) // value : 가상경로  // "/":메인페이지(웰컴파일)
 	public String list_villa(Model model, String type, String area) {
 
-		List<RoomVO> list = lodgingService.selectLodgingList("펜션/풀빌라", type);
+		List<RoomVO> list = lodgingService.selectLodgingList("펜션/풀빌라", type, area);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
@@ -92,13 +92,12 @@ public class LodgingController {
 		return "lodging/lodgingList_search"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
 	}
 	
-	@RequestMapping(value = "/lodgingList_filter.do")
-	public String list_filter(Model model, HttpServletRequest req) {
+	@RequestMapping(value = "/lodgingList_filter.do", method = RequestMethod.POST)
+	public void list_filter(Model model, HttpServletRequest req) throws Exception {
 		
 		String[] arr = req.getParameterValues("roomin");
 		model.addAttribute("arr", arr);
 		
-		return "";
 	}
 	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
@@ -121,8 +120,6 @@ public class LodgingController {
 		
 		return "lodging/lodgingView"; 
 	}
-	
-	
 	
 
 
