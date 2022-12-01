@@ -4,7 +4,8 @@
 <mapper namespace="team.projectA.mapper.ManagerMapper">
 	<select id="lodgingCategory" resultType="LodgingVO">
 		SELECT lodgingname
-			,lidx 
+			,lidx
+			,limagename
 			FROM lodgingtb
 	</select>
 	

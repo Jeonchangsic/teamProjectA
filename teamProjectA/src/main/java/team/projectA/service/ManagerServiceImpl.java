@@ -24,6 +24,7 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public List<RoomVO> selectRoomList(String lidx) {
 		
+		 managerDAO.selectRoomList(lidx);
 		
 		
 		return managerDAO.selectRoomList(lidx);

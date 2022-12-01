@@ -3,7 +3,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="team.projectA.vo.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,28 +14,107 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
 <script>
+	//인기추천 숙소등록 select박스에 숙소명 나타내기
 	function roomCategoryChange(){
-		alert("text");
-		alert("<%=request.getContextPath()%>/manager/roomCategoryChange.do?lodgingID=");
+	//	alert("text");
+	<%-- 	alert("<%=request.getContextPath()%>/manager/roomCategoryChange.do?lodgingID="); --%>
 		
 		var lidx = $("#lidx").val();
+		var roomChange = $("#roomChange").val(); //옵션태그를 append할 select의 val
 		
-		alert(lidx);
+		//alert(lidx);
 		
 		
 		$.ajax({
 		
 			url:"<%=request.getContextPath()%>/manager/roomCategoryChange.do?lidx="+lidx,
 			type:"get",	
-			dataType: "text",
+			dataType: "json",
 			success:function(data){
+				//item.rtype
+				
+				var roomList = "";	
+				var roomPrice = "";
+				
+				$.each(data, function (i, item) {
+                    /* var option =  */
+                    roomList+="<option data-roomprice='"+item.rprice+"'>"+item.rtype+"</option>";
+                     
+                    
+                });
+				//인기추천 숙소등록 select박스에 숙소에 맞는 객실명 나타내기
+			  $("#roomChange").html(roomList).ready(function(){
+				  var price = data[0].rprice;
+				  
+				  $("#firstOptionTag").val(price);
+				  $("#firstOptionTag").html(price);
+			  });
+			  
+			 
+			  
+			 
+				
 				
 			},
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
 		});
+	}//인기추천 숙소등록 select박스에 객실에 맞는 가격 나타내기
+	function roomPrice(){
+		
+		roomprice = $("#roomChange option:selected").data("roomprice"); //데이터 읽기
+		/* console.log(roomprice); */
+		$("#priceChange").html("<option>"+roomprice+"</option>");
+		
 	}
+	//인기추천 숙소등록 이미지 select박스 value에 맞는 이미지 나타내기 
+	$(document).ready(function(){
+	$("#lodgingImg").change(function(){
+		if($(this).val() == "jeolla_1.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeolla_1.jpg");
+		}else if($(this).val() == "jeolla_2.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeolla_2.jpg");
+		}else if($(this).val() == "jeolla_3.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeolla_3.jpg");
+		}else if($(this).val() == "jeolla_4.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeolla_4.jpg");
+		}else if($(this).val() == "jeolla_5.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeolla_5.jpg");
+		}else if($(this).val() == "jeolla_6.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeolla_6.jpg");
+		}else if($(this).val() == "jeju_1.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeju_1.jpg");
+		}else if($(this).val() == "jeju_2.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeju_2.jpg");
+		}else if($(this).val() == "jeju_3.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeju_3.jpg");
+		}else if($(this).val() == "jeju_4.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/jeju_4.jpg");
+		}else if($(this).val() == "busan_1.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/busan_1.jpg");
+		}else if($(this).val() == "busan_2.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/busan_2.jpg");
+		}else if($(this).val() == "busan_3.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/busan_3.jpg");
+		}else if($(this).val() == "busan_4.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/busan_4.jpg");
+		}else if($(this).val() == "busan_5.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/busan_5.jpg");
+		}else if($(this).val() == "seoul_1.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/seoul_1.jpg");
+		}else if($(this).val() == "seoul_2.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/seoul_2.jpg");
+		}else if($(this).val() == "seoul_3.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/seoul_3.jpg");
+		}else if($(this).val() == "seoul_4.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/seoul_4.jpg");
+		}else if($(this).val() == "seoul_5.jpg"){
+			$("#lodgingImgArea").attr("src","<%=request.getContextPath()%>/resources/images/lodging_images/seoul_5.jpg");
+		}
+		
+		});
+	})
 </script>
 </head>
 <body style="overflow-x: hidden">
@@ -119,13 +198,13 @@
             <h3>객실추천등록</h3>
         </div>     
         <hr/>
-        <form method="POST" >
+        <form action="" method="POST" > <!--  ************************************** -->
         	<table>
         		<tr>
         			<th>
-        				<label>숙소명</label>
-        				<select name="lidx" id="lidx" onchange="roomCategoryChange()" class="lodgingCategory">
-        					<option value="숙소선택">숙소선택</option>
+        				<label>숙소선택</label>
+        				<select name="lidx" id="lidx" onchange="roomCategoryChange()" class="lodgingCategory" style="width:243px;">
+        					<option id="lodgingOption" value="숙소선택">숙소선택</option>
         					<c:forEach var="vo" items="${lodgingCategory}" varStatus="status">
         						<option value="${vo.lidx}">${vo.lodgingname}</option>
         					</c:forEach>
@@ -135,12 +214,34 @@
         		<tr>
         			<th>
         				<label>객실명</label>
-        				<select class="roomCategory">
-        					<option value="">객실명</option>
+        				<select id="roomChange" class="roomCategory" onchange="roomPrice()" style="width:243px;">
+        					<option>객실선택</option>
+        				</select>
+        			</th>
+        		</tr>
+        		<tr>
+        			<th>
+        				<label>가격</label>
+        				<select id="priceChange" class="roomCategory" style="width:243px;">
+        					<option id="firstOptionTag">가격</option>
+        				</select>
+        			</th>
+        		</tr>
+        		<tr>
+        			<th>
+        				<label>이미지</label>
+        				<select id="lodgingImg" class="roomCategory" style="width:243px;">
+        					<option value="이미지선택">이미지선택</option>
+        				<c:forEach var="vo" items="${lodgingCategory}" varStatus="status">
+        					<option value="${vo.limagename}">${vo.limagename}</option>
+        				</c:forEach>
         				</select>
         			</th>
         		</tr>
         	</table>
+        	
+        	<img id="lodgingImgArea" src="" style="width:300px; height:200px;"/>
+        	<button>등록</button>
         </form>
     </main>
     <footer>

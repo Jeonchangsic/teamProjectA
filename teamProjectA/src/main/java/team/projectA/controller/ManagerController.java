@@ -81,13 +81,13 @@ public class ManagerController {
 	
 	@ResponseBody
 	@RequestMapping(value="/roomCategoryChange.do", method= RequestMethod.GET)
-	public String lodgingCategory(@RequestParam("lidx")String lidx){
-		 System.out.println("data:"+lidx); 
+	public List<RoomVO> lodgingCategory(@RequestParam("lidx") String lidx){
+		/* System.out.println("data:"+lidx); */  
 		List<RoomVO> rlist = (List<RoomVO>)managerService.selectRoomList(lidx);
 		
+		/* System.out.println("rlist:"+rlist); */
+		/* System.out.println("data:"+rlist.get(0).getRidx()); */
 		
-		 System.out.println("data:"+rlist.get(0).getLidx()); 
-		
-		return "rlist";
+		return rlist;
 	}
 }

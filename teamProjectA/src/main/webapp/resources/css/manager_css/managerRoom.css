@@ -48,7 +48,9 @@ img,iframe{vertical-align:top;}
                       margin-bottom: 20px;
               }
               
-              
+              #roomChange{
+              	width:243px;
+              }
               
               
               hr{width:1020px;
