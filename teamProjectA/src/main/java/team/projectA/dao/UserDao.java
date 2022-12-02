@@ -34,5 +34,5 @@ public class UserDao {
 			return sqlsession.selectList("team.projectA.mapper.UserMapper.userlist",vo);
 			
 		}
-		
+	
 }

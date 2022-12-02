@@ -159,11 +159,14 @@
 			 , r.rtype
 			 , r.rnum
 			 , r.rprice		
-			 , l.lodgingname	
-		 FROM roomtb r
-		 LEFT OUTER JOIN lodgingtb l
-		 ON r.lidx = l.lidx 
-		WHERE r.ridx = #{ridx}
+			 , l.lodgingname
+			 , u.username
+			 , u.userphone
+			 , u.usertype
+		 FROM roomtb r, lodgingtb l, ausertb u
+		 WHERE r.lidx = l.lidx
+		  AND l.uidx = u.uidx 
+		  AND r.ridx = #{ridx}
 	</select>
 	
 </mapper>

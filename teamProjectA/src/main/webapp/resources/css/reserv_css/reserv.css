@@ -46,13 +46,13 @@ main h2{font-weight: bold;
 main p {font-size:25px;
         color:grey;
         padding-top:10px;}
-main input{font-size:20px;
-    color:grey;
+.left a{font-size:20px;
+    color:black;
     margin-top:10px;
     margin-bottom: 10px;
     width:100%;}
 .left {margin-top:30px; float:left; width:512px;}
-
+.agree{margin-top:30px;}
 .login{font-size: 15px;
     width:100%;
     line-height: 40px;

@@ -10,5 +10,5 @@ public interface UserService {
 	UserVO login(UserVO vo);
 	int userDt(UserVO vo);
 	public List<UserVO> userList(UserVO vo);
-
+   
 }

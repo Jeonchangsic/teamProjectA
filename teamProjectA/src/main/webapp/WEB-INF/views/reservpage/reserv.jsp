@@ -6,7 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <%
 	RoomVO rvo = (RoomVO)request.getAttribute("rvo");
- 	
  %>
 <!DOCTYPE html>
 <html>
@@ -103,7 +102,7 @@
 <body>
     <header>
         <div class="inner">
-            <h1><a href="#"><img src="<%=request.getContextPath() %>/resources/images/login_images/logo.svg" alt="저긴어때" ></a></h1>        
+            <h1><a href="<%=request.getContextPath() %>/index/index.do"><img src="<%=request.getContextPath() %>/resources/images/login_images/logo.svg" alt="저긴어때" ></a></h1>        
             <ul>
                 <li>
                     <input type="search" class="search_bar">
@@ -116,9 +115,9 @@
         <div class="left">
             <h2>예약자 정보</h2>
             <p>예약자 이름</p>
-            <input type="text" placeholder="체크인시 필요한 정보입니다" >
+            <a><%=rvo.getUserName() %></a>
             <p>휴대폰 번호<p>
-            <input type="text" placeholder="체크인시 필요한 정보입니다 -를 빼고입력해주세요" >
+            <a><%=rvo.getUserPhone() %></a>
             
             <div class="login">
                 <a><br>

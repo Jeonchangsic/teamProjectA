@@ -57,5 +57,6 @@
 		<select id="userlist" parameterType="userVO" resultType="userVO">
 			SELECT * FROM  AUSERTB 
 		</select>
+
 		
 </mapper>

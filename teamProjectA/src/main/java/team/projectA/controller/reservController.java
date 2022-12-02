@@ -31,16 +31,11 @@ public class reservController {
 	@Autowired
 	private LodgingService lodgingService;
 	
-	@Autowired
-	private UserService userService;
 	
 	@RequestMapping(value = "/reserv/reserv.do", method = RequestMethod.GET)
 	public String reserv(Model model,String ridx, HttpServletRequest req) {
 		
-
-		
-		
-		
+				
 		RoomVO rvo = lodgingService.selectRoom(ridx);
 		model.addAttribute("rvo", rvo);
 		
@@ -50,8 +45,7 @@ public class reservController {
 		
 		RoomVO room = lodgingService.selectRoom(ridx);
 		
-		
-		
+	
 		session.setAttribute("room", room);
 		
 		return "reservpage/reserv";
