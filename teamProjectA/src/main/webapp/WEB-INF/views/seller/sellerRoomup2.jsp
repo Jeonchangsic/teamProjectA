@@ -79,10 +79,6 @@
                     <td>객실수  </td>
                     <td>       &nbsp; </td>
                 </tr>
-                <tr>
-                    <td>수용인원  </td>
-                    <td>       &nbsp; </td>
-                </tr>
                 <tr >
                     <td>최대인원  </td>
                     <td>       &nbsp; </td>

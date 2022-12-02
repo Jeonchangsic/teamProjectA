@@ -11,7 +11,14 @@ public class RoomVO extends LodgingVO {
 	private String rimage3;
 	private String rimage4;
 	private String rimage5;
+	private int maxmen;
 	
+	public int getMaxmen() {
+		return maxmen;
+	}
+	public void setMaxmen(int maxmen) {
+		this.maxmen = maxmen;
+	}
 	public String getRidx() {
 		return ridx;
 	}

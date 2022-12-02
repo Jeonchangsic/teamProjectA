@@ -58,12 +58,12 @@ public class SellerController {
 	 * @param sellerService 
 	 */
 	
-	//ȸ������ȭ��
+	//숙소정보
 	@RequestMapping(value = "/sellerInfo.do", method = RequestMethod.GET)														 //session �ҷ����� ���ؼ� �ʿ� 
 	public String sellerInfo(Locale locale, Model model,  HttpServletRequest req) {
 
-		  //session ����
-		  HttpSession session = req.getSession(); //�α����� uidx���� �Ѿ���� ����� UserVO login =
+		  //session 꺼내기
+		  HttpSession session = req.getSession(); 
 		  UserVO login = (UserVO) session.getAttribute("login"); 
 		  model.addAttribute("vo", login);
 		 
@@ -79,37 +79,22 @@ public class SellerController {
 		return "seller/sellerInfo";
 	}
 	
-    //��������1 ȸ������
+    //개인정보 수정
 	@RequestMapping (value ="/sellerInfo1.do", method = RequestMethod.POST)
 	public String sellerInfo(UserVO vo, HttpServletRequest req)throws Exception{
-
-		System.out.println("email"+vo.getUserEmail());
 		 
 		HttpSession session2 = req.getSession();
 		UserVO login = (UserVO)session2.getAttribute("login");
 		
 		vo.setUidx(login.getUidx());
-		
-
-	
+			
 		int result = sellerService.sellerUpdate(vo);
 		
-		
-		
-	//	System.out.println("��ȣ"+login.getUserPhone());
-	//	System.out.println("�̸���"+vo.getUserEmail());
-	//	System.out.println("��й�ȣ"+vo.getUserPassword());
-		
-		
-
-		
-		 
-
 		return "redirect: sellerInfo.do";
 			
 	}
 
-	//��������2  ��������
+	//숙소정보 수정
 	@RequestMapping (value ="/sellerInfo2.do", method = RequestMethod.POST)
 	public String sellerInfo(LodgingVO vo, HttpServletRequest req)throws Exception{
 		
@@ -120,7 +105,6 @@ public class SellerController {
 		vo.setUidx(login.getUidx());
 	
 		int result = sellerService.sellerUpdate2(vo);
-
 		
 		return "redirect: sellerInfo.do";
 		
@@ -128,7 +112,7 @@ public class SellerController {
 
 		
 		
-	//���Ǹ���Ʈ + ����¡
+	//문의하기
     @RequestMapping(value = "/sellerInquire.do", method = RequestMethod.GET)
     public String sellerInquire(Model model,HttpServletRequest req){
  
@@ -137,16 +121,13 @@ public class SellerController {
         UserVO login = (UserVO) session.getAttribute("login");
         List<QnaVO> qnaList = sellerService.qnaList(login.getUidx()); 
 
-        //qnaList�� �Ű������� loing�� ����� uidx�� �ɾ��� 
-       //== ȭ�鿡 ���� uidx�� �ش��ϴ� ����� qanList�� �����ش�
-
-
        model.addAttribute("qnaList", qnaList);
                 
         return "seller/sellerInquire";
     }
     
-	//���ǳ���
+    
+	//문의 글 보기
 	@RequestMapping(value="/sellerInquireView.do", method = RequestMethod.GET)
 	public String sellerInquireView(Locale locale, Model model, int QnA_idx) {
 		
@@ -162,7 +143,7 @@ public class SellerController {
 		
 		
 	}
-	//�����ϱ� �������ε�
+	//문의쓰기
 	@RequestMapping(value = "/sellerInquireWrite.do", method = RequestMethod.GET)
 	public String sellerInquireWrite(Locale locale, Model model) {
 		
@@ -172,33 +153,29 @@ public class SellerController {
 	}
 	
 	
-	//�����ϱ� post
+	//문의쓰기
 	@RequestMapping(value = "/sellerInquireWrite.do", method = RequestMethod.POST)
 	public String sellerInquireWrite(QnaVO vo, HttpServletRequest req, HttpServletResponse response)throws Exception {
 		
-		//session�� �ҷ��� 
-		HttpSession session = req.getSession();
 		
-		//login������  session�� �־����ִ�(userController) "login"�� ������ ������
+		HttpSession session = req.getSession();		
 		UserVO login = (UserVO)session.getAttribute("login");
 		
-		//vo�� �ʿ��� Ű���� �־��ֱ�
 		vo.setUidx(login.getUidx());
 		
-		//result�� sellerService�� �ִ� qnaInsert�� ���� / �����ߴµ� �� ����?
-		int result = sellerService.qnaInsert(vo);
-		
 	
-		//return�Ҷ� uidx�� �ѱ�� +�� Qna_idx���� �ٿ��� 
+		int result = sellerService.qnaInsert(vo);	
+		
 		return "redirect: sellerInquire.do?=uidx"+vo.getQnA_idx();	
 
 	}
 	
 	
+	//roomup
 	@RequestMapping(value = "/sellerRoomup1.do", method = RequestMethod.GET)
 	public String roomup1(Locale locale, Model model) {
 		
-	//roomup
+	
 		
 		return "seller/sellerRoomup1";
 	}

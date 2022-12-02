@@ -45,7 +45,6 @@ public class SellerDao {
 			
 	}
 	
-	//qna�� ������ ��� �� �� �Խ������� �̵�
 	public QnaVO qnaOne(int QnA_idx) {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", QnA_idx);
 	}

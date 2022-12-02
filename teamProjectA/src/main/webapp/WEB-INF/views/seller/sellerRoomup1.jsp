@@ -94,10 +94,6 @@
                     <td>객실수  </td>
                     <td><input type:text></td>
                 </tr>
-                <tr>
-                    <td>수용인원  </td>
-                    <td><input type:text></td>
-                </tr>
                 <tr >
                     <td>최대인원  </td>
                     <td><input type:text></td>
