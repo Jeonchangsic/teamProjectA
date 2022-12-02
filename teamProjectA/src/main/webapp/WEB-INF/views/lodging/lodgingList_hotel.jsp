@@ -161,19 +161,19 @@
 	init();
 
 	//베드필터
-
-	function change_btn() {
-		var btns = document.querySelectorAll(".btnbox");
-		btns.forEach(function(btn, i) {
-			if (e.currentTarget == btn) {
-				btn.classList.add("active");
-			} else {
-				btn.classList.remove("active");
-			}
-		});
-		console.log(e.currentTarget);
+	function change_btn(e, name) {
+		var btn = e.currentTarget;
+		var imgs = btn.querySelector("img");
+		
+		if (btn.classList.contains("active") != true) {
+			btn.classList.add("active");
+			imgs.src = "<%=request.getContextPath()%>/resources/images/lodgingList_images/"+name+"_c.jpg";
+		} else {
+			btn.classList.remove("active");
+			imgs.src = "<%=request.getContextPath()%>/resources/images/lodgingList_images/"+name+".jpg";
+		}
 	}
-
+	//인원
 	function count(type) {
 		// 결과를 표시할 element
 		const resultElement = document.getElementById('result');
@@ -470,20 +470,20 @@
 						
 						<div class="filter">베드 타입</div>
 						<ul class="btnsBox">
-							<li class="btnbox active" onclick="change_btn(event)">
+							<li class="btnbox" onclick="change_btn(event,'single_bed')">
 								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/single_bed.jpg" alt="single_bed">
 								<p>싱글</p>
 							</li>
-							<li class="btnbox active" onclick="change_btn(event)">
-								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed.jpg" alt="single_bed">
+							<li class="btnbox" onclick="change_btn(event,'double_bed')">
+								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed.jpg" alt="double_bed">
 								<p>더블</p>
 							</li>
-							<li class="btnbox active" onclick="change_btn(event)">
-								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/twin_bed.jpg" alt="single_bed">
-								<p>트윈</p></a>
+							<li class="btnbox" onclick="change_btn(event,'twin_bed')">
+								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/twin_bed.jpg" alt="twin_bed">
+								<p>트윈</p>
 							</li>
-							<li class="btnbox active" onclick="change_btn(event)">
-								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/ondol_bed.jpg" alt="single_bed">
+							<li class="btnbox" onclick="change_btn(event,'ondol_bed')">
+								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/ondol_bed.jpg" alt="ondol_bed">
 								<p>온돌</p>
 							</li>
 						</ul>

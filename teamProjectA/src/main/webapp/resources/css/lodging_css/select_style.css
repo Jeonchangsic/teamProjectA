@@ -206,11 +206,14 @@ body #inner2 .img_right div:nth-child(2){font-weight:bold; padding-bottom:12px;}
 .active2{color:white;
          background-color:rgb(86,19,241) !important;}                    
 
+	.btnbox {cursor:pointer;}
+	#main_filter .btnsBox li:nth-child(4) img {width:50px; height:36px; padding:7px 0;}
+	.active {color:#5613f1;}
 
- .btnbox:hover, .btnbox.active p {
+/*  .btnbox:hover, .btnbox.active p {
            background: #FFE0C9;
                         }
-
+ */
                         /*footer*/
 footer{
     margin-top:150px;
