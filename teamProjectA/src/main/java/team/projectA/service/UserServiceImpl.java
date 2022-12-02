@@ -48,6 +48,12 @@ public class UserServiceImpl implements UserService{
 	}
 
 
+	@Override
+	public int sellerUserInsert(UserVO vo) {
+		return userDao.sellerUserInsert(vo);
+	}
+
+
 
 
 

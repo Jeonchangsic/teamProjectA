@@ -23,6 +23,20 @@
 						, #{userBirth}
 						)
 		</insert>
+		<insert id="sellerUserInsert" parameterType="userVO">
+			INSERT INTO AUSERTB 
+				VALUES(
+					AUIDX_SEQ.NEXTVAL
+					, #{userID}
+					, #{userPassword}
+					, #{userName}
+					, #{userEmail}
+					, #{userPhone}
+					, #{userGender}
+					, #{userBirth}
+					,'판매자'
+					)
+		</insert>
 		
 		<!-- 아이디 중복확인 -->
 		<select id="userForm" parameterType="String" resultType="int">
