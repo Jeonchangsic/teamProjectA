@@ -1,10 +1,14 @@
 package team.projectA.service;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+
 
 import team.projectA.vo.LodgingVO;
+
 import team.projectA.vo.QnaVO;
+import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
 
 public interface SellerService {
@@ -15,9 +19,13 @@ public interface SellerService {
 	
 	int sellerUpdate2(LodgingVO vo);
 	
-	List<QnaVO> qnaList(int uidx);
-		
+    List<QnaVO> qnaList(int uidx);
+   	
 	int qnaInsert(QnaVO vo);
 	
 	UserVO qnaOne(int QnA_idx);
+	
+	List<RoomVO> roomlist(int uidx);
+	
+
 }

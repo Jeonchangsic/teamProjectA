@@ -1,5 +1,8 @@
+<%@page import="team.projectA.vo.RoomVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% List<RoomVO> roomlist =  (List<RoomVO>)request.getAttribute("roomlist"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,56 +48,18 @@
                 </tr>
             </thead>
             <tbody>
+            <% for(RoomVO room : roomlist) {%>
                 <tr style="text-align:center;">
-                    <td><img src="../jquery/객실이미지.jpg" alt=""></td>
-                    <td>a-test</td>
-                    <td>100,000원</td>
-                    <td>3개</td>
+             		<td> <img src="<%= request.getContextPath()%>/resources/images/lodging_images/<%=room.getRimage1()%>" alt="숙소 이미지"></td>
+                    <td><%=room.getRtype() %></td>
+                    <td><%=room.getRprice() %></td>
+                    <td><%=room.getRnum()%></td>
                     <td>
                         <input type="button"value="수정">
                         <input type="button"value="삭제" onclick="deletFn()">
-                    </td>
+                    </td>  
                 </tr>
-                <tr style="text-align:center;">
-                    <td><img src="../jquery/객실이미지.jpg" alt=""></td>
-                    <td>b-test</td>
-                    <td>100,000원</td>
-                    <td>1개</td>
-                    <td>
-                        <input type="button"value="수정">
-                        <input type="button"value="삭제" onclick="deletFn()">
-                    </td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td><img src="../jquery/객실이미지.jpg" alt=""></td>
-                    <td>c-test</td>
-                    <td>100,000원</td>
-                    <td>1개</td>
-                    <td>
-                        <input type="button"value="수정">
-                        <input type="button"value="삭제" onclick="deletFn()">
-                    </td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td><img src="../jquery/객실이미지.jpg" alt=""></td>
-                    <td>d-test</td>
-                    <td>100,000원</td>
-                    <td>1개</td>
-                    <td>
-                        <input type="button"value="수정">
-                        <input type="button"value="삭제" onclick="deletFn()">
-                    </td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td><img src="../jquery/객실이미지.jpg" alt=""></td>
-                    <td>e-test</td>
-                    <td>100,000원</td>
-                    <td>2개</td>
-                    <td>
-                        <input type="button"value="수정">
-                        <input type="button"value="삭제" onclick="deletFn()">
-                    </td>
-                </tr>
+             <%} %>         
             </tbody>
         </table>
         <ul>

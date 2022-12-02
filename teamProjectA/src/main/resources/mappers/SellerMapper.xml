@@ -43,25 +43,26 @@
 	
 	<!-- Qna -->	
 	
-	<!--문의게시판 list -->
-	<select id= "qnaList" resultType="QnaVO" parameterType="int">
 	
-				SELECT a.uidx
-					, q.QnA_idx
-					, q.uidx
-					, q.userType
-					, q.qna_Qcontent
-					, q.qna_Qtitle
-					, q.qna_Qdate 
-					, q.qna_Acheck
+	<!--문의게시판 list-->
+        <select id= "qnaList" resultType="QnaVO" parameterType="int">
+    
+SELECT a.uidx
+						, q.QnA_idx
+						, q.uidx
+						, q.userType
+						, q.qna_Qcontent
+						, q.qna_Qtitle
+						, q.qna_Qdate 
+						, q.qna_Acheck
 					FROM ausertb a
 					LEFT OUTER JOIN qnatb q 
 					ON a.uidx = q.uidx 
-					WHERE a.uidx=#{uidx}
-					
-					
-
-	</select>
+					WHERE a.uidx= #{uidx}  ORDER BY QnA_idx DESC
+                
+ 
+        </select>
+    
 	
 	<!--문의하기 insert  -->
 	<insert id="qnaInsert" parameterType="QnaVO">
@@ -102,7 +103,21 @@
 					WHERE QnA_idx = #{QnA_idx}
 	</select>
 
-	
+	<!--판매자 숙소목록  -->
+	<select id="roomlist" resultType="RoomVO" parameterType="int">
+			SELECT l.uidx
+				, l.lidx
+				, r.ridx
+				, r.rimage1
+				, r.rtype
+				, r.rprice
+				, r.rnum 
+			FROM lodgingtb l
+			LEFT OUTER JOIN roomtb r
+			ON l.lidx = r.lidx 
+			WHERE l.uidx =#{uidx}
+	</select>
+
 </mapper>
 
 

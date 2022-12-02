@@ -1,14 +1,16 @@
 package team.projectA.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import team.projectA.vo.LodgingVO;
+
 import team.projectA.vo.QnaVO;
+import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
 
 @Repository
@@ -30,19 +32,28 @@ public class SellerDao {
 		return sqlSession.update("team.projectA.mapper.sellerMapper.sellerUpdate2", vo);
 		
 	}
-
+	
 	public List<QnaVO> qnaList(int uidx){
-		return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", uidx);
-		
-	}
-
+	        
+	    return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", uidx);
+	 }
+	    
+	
+	
 	public int qnaInsert(QnaVO vo) {
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.qnaInsert", vo);
 			
 	}
 	
-	//qna±Û ´­·¶À» °æ¿ì ±× ±Û °Ô½ÃÆÇÀ¸·Î ÀÌµ¿
+	//qnaï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	public QnaVO qnaOne(int QnA_idx) {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", QnA_idx);
 	}
+	
+	public List<RoomVO> roomlist(int uidx) {
+		return sqlSession.selectList("team.projectA.mapper.sellerMapper.roomlist", uidx);
+		
+	}
 }
+
+
