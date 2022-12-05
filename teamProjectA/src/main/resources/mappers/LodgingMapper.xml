@@ -163,6 +163,7 @@
 			 , u.username
 			 , u.userphone
 			 , u.usertype
+			 , u.userEmail
 		 FROM roomtb r, lodgingtb l, ausertb u
 		 WHERE r.lidx = l.lidx
 		  AND l.uidx = u.uidx 

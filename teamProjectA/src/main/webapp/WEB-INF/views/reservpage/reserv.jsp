@@ -28,12 +28,12 @@
         IMP.request_pay({
             pg : 'html5_inicis',  // PG사 선택
             pay_method : 'card', // 지불 수단
-            merchant_uid: "<%=rvo.getRidx()%>", 
+            merchant_uid: 'merchant_' + new Date().getTime(), 
             name : '<%=rvo.getLodgingname()%>',	//상품명
             amount : '<%=rvo.getRprice()%>', // 가격 
-            buyer_email : 'Iamport@chai.finance', //구매자이메일
-            buyer_name : '아임포트 기술지원팀', // 구매자 이름
-            buyer_tel : '010-1234-5678', // 구매자 연락처 
+            buyer_email : '<%=rvo.getUserEmail()%>', //구매자이메일
+            buyer_name : '<%=rvo.getUserName()%>', // 구매자 이름
+            buyer_tel : '<%=rvo.getUserPhone()%>', // 구매자 연락처 
         }, function (rsp) { // callback
             if (rsp.success) {//결제성공시
             	var msg = '결제가 완료되었습니다.';
@@ -41,7 +41,7 @@
                  msg += '상점 거래ID : ' + rsp.merchant_uid;
                  msg += '결제 금액 : ' + rsp.paid_amount;
                  msg += '카드 승인번호 : ' + rsp.apply_num;
-                 location.href ="<%=request.getContextPath()%>/mypage/mypage";
+                 location.href ="<%=request.getContextPath()%>/mypage/info.do";
             } else {//결제실패시
             	 var msg = '결제에 실패하였습니다.';
                  msg += '에러내용 : ' + rsp.error_msg;
@@ -115,13 +115,13 @@
         <div class="left">
             <h2>예약자 정보</h2>
             <p>예약자 이름</p>
-            <a><%=rvo.getUserName() %></a>
+            <a>${login.userName}</a>
             <p>휴대폰 번호<p>
-            <a><%=rvo.getUserPhone() %></a>
+            <a>${login.userPhone}</a>
             
             <div class="login">
-                <a><br>
-					              
+                <a>
+					<img src="<%=request.getContextPath() %>/resources/images/login_images/logo.svg" alt="저긴어때" >      
                 </a>
             </div> 
             <h3>약관동의</h3>
@@ -159,8 +159,8 @@
 						<%=rvo.getLodgingname() %>
                 </p>
                 <p>
-                    <strong>객실타입/기간</strong><br>
-                    	<%=rvo.getRtype() %>/1박
+                    <strong>객실타입/인원</strong><br>
+                    	<%=rvo.getRtype() %>/2인
                 </p>
                 <p>
                     <strong>체크인</strong><br>
