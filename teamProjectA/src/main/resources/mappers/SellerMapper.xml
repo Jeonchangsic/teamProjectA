@@ -127,7 +127,7 @@ SELECT a.uidx
 						, maxmen
 						, gdsThumbImg
 						, rimage1
-						, lidx )
+						, lidx  )
 					VALUES (
 						ridx_seq.nextval
 						, #{rtype}

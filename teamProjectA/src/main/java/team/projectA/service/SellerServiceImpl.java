@@ -54,7 +54,7 @@ public class SellerServiceImpl implements SellerService{
 
 	@Override
 	public UserVO qnaOne(int QnA_idx) {
-
+ 
 		return SellerDao.qnaOne(QnA_idx);
 	}
 

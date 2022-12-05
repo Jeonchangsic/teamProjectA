@@ -11,7 +11,7 @@ public class RoomVO extends LodgingVO {
 	private String rimage3;
 	private String rimage4;
 	private String rimage5;
-	private int maxmen;
+	private int maxmen; 
 	
 	//이미지 업로드
 	private String gdsThumbImg;

@@ -15,7 +15,7 @@
 	    <script src="<%=request.getContextPath()%>/resources/css/jquery-ui.min.js"></script>
 	    <script>
 	    
-	    //체크박스 전체선택
+	    //체크박스 전체선택 
 	    function ch1() {
 	    	  for(i=0; i<document.all.fil.length; i++) {
 	    	   document.all.fil[i].checked = true;

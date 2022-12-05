@@ -30,7 +30,7 @@ public class SellerDao {
 
 	public int sellerUpdate2(LodgingVO vo) {
 		return sqlSession.update("team.projectA.mapper.sellerMapper.sellerUpdate2", vo);
-		
+		 
 	}
 	
 	public List<QnaVO> qnaList(int uidx){

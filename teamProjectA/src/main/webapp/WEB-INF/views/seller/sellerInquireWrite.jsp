@@ -21,7 +21,7 @@
     </header>
                 <!--end header-->
 
-    <main>
+    <main> 
         
         <div id="contentsArea">
             <form action = "sellerInquireWrite.do" method="post">

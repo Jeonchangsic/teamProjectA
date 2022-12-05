@@ -189,7 +189,7 @@ public class SellerController {
 	@RequestMapping(value="/sellerRoomup1.do", method = RequestMethod.POST)
 	public String roomup1(RoomVO vo, MultipartFile file, HttpServletRequest req) throws Exception {
 				
-
+ 
 		
 		
 		
