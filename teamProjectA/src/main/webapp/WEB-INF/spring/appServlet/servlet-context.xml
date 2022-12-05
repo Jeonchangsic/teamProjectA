@@ -13,7 +13,8 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
+	<!-- 일반 파일 업로드 경로 -->
+	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -24,7 +25,16 @@
 	<context:component-scan base-package="team.projectA.controller" />       <!-- 이 안에있는 Controller 어노테이션이 들어있는 객체를 찾아라. -->
 	<context:component-scan base-package="team.projectA.service" /> <!-- 에노테이션을 찾아서 객체화 시킬 패키지 추가  어노테이션 :@Service-->
 	<context:component-scan base-package="team.projectA.dao" />		<!-- 에노테이션을 찾아서 객체화 시킬 패키지 추가  어노테이션 :@Repository-->
+	<context:component-scan base-package="team.projectA.utils" /> <!--이미지 업로드-->
+		<!-- 업로드 패스 설정 --> 
+	<!-- 업로드 패스 설정 --> 
+	<beans:bean class="java.lang.String" id="uploadPath">
+	 <beans:constructor-arg value="D:\eclipse\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\teamProjectA\resources" />
+	</beans:bean>
+
 	
-	
+	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+	 <beans:property name="maxUploadSize" value="10485760"/>
+	</beans:bean>
 	
 </beans:beans>

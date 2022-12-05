@@ -53,6 +53,13 @@ public class SellerDao {
 		return sqlSession.selectList("team.projectA.mapper.sellerMapper.roomlist", uidx);
 		
 	}
+	
+	public int roomup(RoomVO vo) {
+		return sqlSession.insert("team.projectA.mapper.sellerMapper.roomup",vo);
+		
+	}
+	
+	
 }
 
 

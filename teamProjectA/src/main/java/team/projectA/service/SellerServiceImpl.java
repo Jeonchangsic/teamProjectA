@@ -46,7 +46,6 @@ public class SellerServiceImpl implements SellerService{
     }
     
 
-
 	@Override
 	public int qnaInsert(QnaVO vo) {
 	
@@ -64,6 +63,14 @@ public class SellerServiceImpl implements SellerService{
 
 		return SellerDao.roomlist(uidx);
 	}
+
+	@Override
+	public int roomup(RoomVO vo) {
+		
+		return SellerDao.roomup(vo);
+	}
+
+
 
 
 

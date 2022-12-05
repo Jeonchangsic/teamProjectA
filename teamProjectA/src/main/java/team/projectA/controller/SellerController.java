@@ -2,6 +2,7 @@ package team.projectA.controller;
 
 
 import java.io.Console;
+import java.io.File;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +31,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import team.projectA.service.SellerService;
-
+import team.projectA.utils.UploadFileUtils;
 import team.projectA.vo.LodgingVO;
 
 import team.projectA.vo.QnaVO;
@@ -47,7 +50,9 @@ public class SellerController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SellerController.class);
 	 
-
+	@Autowired
+	@Resource(name="uploadPath")
+	private String uploadPath;
 	
 	@Autowired
 	private SellerService sellerService;
@@ -179,6 +184,34 @@ public class SellerController {
 		
 		return "seller/sellerRoomup1";
 	}
+	
+	
+	@RequestMapping(value="/sellerRoomup1.do", method = RequestMethod.POST)
+	public String roomup1(RoomVO vo, MultipartFile file, HttpServletRequest req) throws Exception {
+				
+
+		
+		
+		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null) {
+		   fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);   
+		} else {
+		   fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		vo.setRimage1(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		vo.setGdsThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		
+		int result = sellerService.roomup(vo);
+		
+		return "redirect: sellerRoomup2.do";
+	}
+		
+	
 	@RequestMapping(value = "/sellerRoomup2.do", method = RequestMethod.GET)
 	public String roomup2(Locale locale, Model model) {
 		

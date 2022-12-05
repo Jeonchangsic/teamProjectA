@@ -13,6 +13,16 @@ public class RoomVO extends LodgingVO {
 	private String rimage5;
 	private int maxmen;
 	
+	//이미지 업로드
+	private String gdsThumbImg;
+	
+	
+	public String getGdsThumbImg() {
+		return gdsThumbImg;
+	}
+	public void setGdsThumbImg(String gdsThumbImg) {
+		this.gdsThumbImg = gdsThumbImg;
+	}
 	public int getMaxmen() {
 		return maxmen;
 	}

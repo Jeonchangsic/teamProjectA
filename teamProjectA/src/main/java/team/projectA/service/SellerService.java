@@ -27,5 +27,7 @@ public interface SellerService {
 	
 	List<RoomVO> roomlist(int uidx);
 	
+	int roomup(RoomVO vo);
+	
 
 }

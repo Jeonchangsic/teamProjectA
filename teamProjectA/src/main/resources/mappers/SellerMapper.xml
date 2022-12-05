@@ -117,6 +117,27 @@ SELECT a.uidx
 			ON l.lidx = r.lidx 
 			WHERE l.uidx =#{uidx}
 	</select>
+	
+	<insert id = "roomup" parameterType="RoomVO">
+			INSERT INTO roomtb (
+						ridx
+						, rtype
+						, rnum
+						, rprice
+						, maxmen
+						, gdsThumbImg
+						, rimage1
+						, lidx )
+					VALUES (
+						ridx_seq.nextval
+						, #{rtype}
+						, #{rnum}
+						, #{rprice}
+						, #{maxmen}
+						, #{gdsThumbImg}
+						, #{rimage1}
+						, #{lidx})
+	</insert>
 
 </mapper>
 
