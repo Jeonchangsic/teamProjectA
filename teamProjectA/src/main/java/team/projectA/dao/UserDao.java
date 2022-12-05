@@ -13,9 +13,13 @@ public class UserDao {
 	
 	@Autowired
 	private SqlSession sqlsession;
-	
+	//회원가입
 	public int userInsert(UserVO vo) {
 		return sqlsession.insert("team.projectA.mapper.UserMapper.userInsert", vo);
+	}
+	//판매자 회원가입
+	public int sellerUserInsert(UserVO vo) {
+		return sqlsession.insert("team.projectA.mapper.UserMapper.sellerUserInsert", vo);
 	}
 	
 	//아이디 중복확인

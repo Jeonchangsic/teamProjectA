@@ -51,10 +51,9 @@
         </table>
         </form>
         <section id="join">
-            <span>저긴어때와 함께하기</span> 
-            <a href="<%=request.getContextPath() %>/join/join.do">
-                <strong>회원가입 ></strong>
-            </a>
+            <span style="display:block; margin:25px 0 10px 50px;">저긴어때와 함께하기</span> 
+            <a href="<%=request.getContextPath() %>/join/join.do" style="font-weight:bold; border-right:1px solid #000; padding:0 5px 0 50px; ">일반회원</a>
+            <a href="<%=request.getContextPath() %>/join/sellerJoin.do" style="font-weight:bold;">판매자회원</a>
         </section>
     </main>
             <!--end main-->
