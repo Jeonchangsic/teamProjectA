@@ -38,14 +38,20 @@ public class JoinController {
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(JoinController.class);
-	
+	//일반 회원가입 페이지
 	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
 	public String join(Locale locale, Model model) {
 		
 		return "join/join";
 	}
+	//판매자 회원가입 페이지
+	@RequestMapping(value = "/sellerJoin.do", method = RequestMethod.GET)
+	public String sellerJoin(Locale locale, Model model) {
+		
+		return "join/sellerJoin";
+	}
 	
-	//회원가입 
+	//일반 회원가입 
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String join(UserVO vo, HttpServletResponse response,HttpServletRequest req) throws Exception{
 		
@@ -54,6 +60,19 @@ public class JoinController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.append("<script>alert('회원가입이 정상적으로 완료되었습니다.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
+		out.flush();
+		out.close();
+		return "";
+	}
+	//판매자 회원가입 
+	@RequestMapping(value = "/sellerJoin.do", method = RequestMethod.POST)
+	public String sellerjoin(UserVO vo, HttpServletResponse response,HttpServletRequest req) throws Exception{
+		
+		UserService.sellerUserInsert(vo);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.append("<script>alert('판매자 회원가입이 정상적으로 완료되었습니다.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
 		out.flush();
 		out.close();
 		return "";

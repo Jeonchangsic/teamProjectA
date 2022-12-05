@@ -199,49 +199,50 @@
         </div>     
         <hr/>
         <form action="" method="POST" > <!--  ************************************** -->
-        	<table>
-        		<tr>
-        			<th>
-        				<label>숙소선택</label>
-        				<select name="lidx" id="lidx" onchange="roomCategoryChange()" class="lodgingCategory" style="width:243px;">
-        					<option id="lodgingOption" value="숙소선택">숙소선택</option>
-        					<c:forEach var="vo" items="${lodgingCategory}" varStatus="status">
-        						<option value="${vo.lidx}">${vo.lodgingname}</option>
-        					</c:forEach>
-        				</select>
-        			</th>
-        		</tr>
-        		<tr>
-        			<th>
-        				<label>객실명</label>
-        				<select id="roomChange" class="roomCategory" onchange="roomPrice()" style="width:243px;">
-        					<option>객실선택</option>
-        				</select>
-        			</th>
-        		</tr>
-        		<tr>
-        			<th>
-        				<label>가격</label>
-        				<select id="priceChange" class="roomCategory" style="width:243px;">
-        					<option id="firstOptionTag">가격</option>
-        				</select>
-        			</th>
-        		</tr>
-        		<tr>
-        			<th>
-        				<label>이미지</label>
-        				<select id="lodgingImg" class="roomCategory" style="width:243px;">
-        					<option value="이미지선택">이미지선택</option>
-        				<c:forEach var="vo" items="${lodgingCategory}" varStatus="status">
-        					<option value="${vo.limagename}">${vo.limagename}</option>
-        				</c:forEach>
-        				</select>
-        			</th>
-        		</tr>
-        	</table>
-        	
-        	<img id="lodgingImgArea" src="" style="width:300px; height:200px;"/>
-        	<button>등록</button>
+        	<div style="border:1px solid #000;">
+	        	<table id="lodgingRegistration">
+	        		<tr>
+	        			<th>
+	        				<label>숙소선택</label>
+	        				<select name="lidx" id="lidx" onchange="roomCategoryChange()" class="lodgingCategory" style="width:243px;">
+	        					<option id="lodgingOption" value="숙소선택">숙소선택</option>
+	        					<c:forEach var="vo" items="${lodgingCategory}" varStatus="status">
+	        						<option value="${vo.lidx}">${vo.lodgingname}</option>
+	        					</c:forEach>
+	        				</select>
+	        			</th>
+	        		</tr>
+	        		<tr>
+	        			<th>
+	        				<label>객실명</label>
+	        				<select id="roomChange" class="roomCategory" onchange="roomPrice()" style="width:243px;">
+	        					<option>객실선택</option>
+	        				</select>
+	        			</th>
+	        		</tr>
+	        		<tr>
+	        			<th>
+	        				<label>가격</label>
+	        				<select id="priceChange" class="roomCategory" style="width:243px;">
+	        					<option id="firstOptionTag">가격</option>
+	        				</select>
+	        			</th>
+	        		</tr>
+	        		<tr>
+	        			<th>
+	        				<label>이미지</label>
+	        				<select id="lodgingImg" class="roomCategory" style="width:243px;">
+	        					<option value="이미지선택">이미지선택</option>
+	        				<c:forEach var="vo" items="${lodgingCategory}" varStatus="status">
+	        					<option value="${vo.limagename}">${vo.limagename}</option>
+	        				</c:forEach>
+	        				</select>
+	        			</th>
+	        		</tr>
+	        	</table>
+	        	<img id="lodgingImgArea" src="<%=request.getContextPath()%>/resources/images/lodging_images/whiteBackground.jpg" style="width:300px; height:200px;"/>
+	        	<button style="display:block;">등록</button>
+	        </div>	
         </form>
     </main>
     <footer>
