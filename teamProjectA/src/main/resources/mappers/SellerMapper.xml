@@ -47,7 +47,7 @@
 	<!--문의게시판 list-->
         <select id= "qnaList" resultType="QnaVO" parameterType="int">
     
-SELECT a.uidx
+					SELECT a.uidx
 						, q.QnA_idx
 						, q.uidx
 						, q.userType
@@ -118,6 +118,13 @@ SELECT a.uidx
 			WHERE l.uidx =#{uidx}
 	</select>
 	
+	<!--판매사 숙소목록 삭제  -->
+	<delete id = "roomdel" parameterType="String">
+			DELETE FROM roomtb
+	           WHERE ridx = #{ridx}
+	</delete>
+	
+	<!--객실등록  -->
 	<insert id = "roomup" parameterType="RoomVO">
 			INSERT INTO roomtb (
 						ridx
@@ -127,6 +134,7 @@ SELECT a.uidx
 						, maxmen
 						, gdsThumbImg
 						, rimage1
+						, bed
 						, lidx  )
 					VALUES (
 						ridx_seq.nextval
@@ -136,9 +144,16 @@ SELECT a.uidx
 						, #{maxmen}
 						, #{gdsThumbImg}
 						, #{rimage1}
+						, #{bed}
 						, #{lidx})
 	</insert>
-
+	
+	<!--객실등록 lidx값 -->
+	<select id="lidxone" resultType="LodgingVO" parameterType="int">
+					SELECT lidx 
+					FROM lodgingtb 
+					WHERE uidx = #{uidx}
+	</select>
 </mapper>
 
 

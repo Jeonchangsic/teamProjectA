@@ -64,7 +64,7 @@ public class SellerController {
 	 */
 	
 	//숙소정보
-	@RequestMapping(value = "/sellerInfo.do", method = RequestMethod.GET)														 //session �ҷ����� ���ؼ� �ʿ� 
+	@RequestMapping(value = "/sellerInfo.do", method = RequestMethod.GET)
 	public String sellerInfo(Locale locale, Model model,  HttpServletRequest req) {
 
 		  //session 꺼내기
@@ -122,7 +122,7 @@ public class SellerController {
     public String sellerInquire(Model model,HttpServletRequest req){
  
                                                                         
-        HttpSession session = req.getSession();                                //�α��� uidx        
+        HttpSession session = req.getSession();                                 
         UserVO login = (UserVO) session.getAttribute("login");
         List<QnaVO> qnaList = sellerService.qnaList(login.getUidx()); 
 
@@ -169,16 +169,50 @@ public class SellerController {
 		vo.setUidx(login.getUidx());
 		
 	
-		int result = sellerService.qnaInsert(vo);	
+		sellerService.qnaInsert(vo);	
 		
-		return "redirect: sellerInquire.do?=uidx"+vo.getQnA_idx();	
+		return "redirect: sellerInquire.do";	
 
+	}
+	
+	//객실정보
+	@RequestMapping(value = "/sellerRegi.do", method = RequestMethod.GET)
+	public String Regi(Locale locale, Model model, HttpServletRequest req, RoomVO vo, String ridx) {
+		
+	
+		HttpSession session = req.getSession();
+		UserVO login = (UserVO)session.getAttribute("login");
+		
+		List<RoomVO> roomlist = sellerService.roomlist(login.getUidx());
+		
+		model.addAttribute("roomlist", roomlist);
+		
+		
+		return "seller/sellerRegi";
+	}
+	
+	//객실삭제
+	@RequestMapping(value = "/sellerRegi2.do", method = RequestMethod.GET)
+	public String Regi2(Locale locale, Model model, String ridx) {
+
+		 sellerService.roomdel(ridx);
+
+		
+		return "redirect:/seller/sellerRegi.do";
+		
 	}
 	
 	
 	//roomup
 	@RequestMapping(value = "/sellerRoomup1.do", method = RequestMethod.GET)
-	public String roomup1(Locale locale, Model model) {
+	public String roomup1(Locale locale, Model model, HttpServletRequest req, LodgingVO vo) {
+		
+			HttpSession session = req.getSession();
+			UserVO login = (UserVO)session.getAttribute("login");
+	
+			LodgingVO lidxone = sellerService.lidxone(login.getUidx());
+
+			model.addAttribute("lidxone",lidxone);
 		
 	
 		
@@ -188,10 +222,8 @@ public class SellerController {
 	
 	@RequestMapping(value="/sellerRoomup1.do", method = RequestMethod.POST)
 	public String roomup1(RoomVO vo, MultipartFile file, HttpServletRequest req) throws Exception {
-				
- 
-		
-		
+			
+ 		
 		
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
@@ -206,9 +238,9 @@ public class SellerController {
 		vo.setRimage1(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		vo.setGdsThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		
-		int result = sellerService.roomup(vo);
+		sellerService.roomup(vo);
 		
-		return "redirect: sellerRoomup2.do";
+		return "redirect: sellerRoomup3.do";
 	}
 		
 	
@@ -227,20 +259,8 @@ public class SellerController {
 		
 		return "seller/sellerRoomup3";
 	}
-	@RequestMapping(value = "/sellerRegi.do", method = RequestMethod.GET)
-	public String Regi(Locale locale, Model model, HttpServletRequest req, RoomVO vo) {
-		
 	
-		HttpSession session = req.getSession();
-		UserVO login = (UserVO)session.getAttribute("login");
-		
-		List<RoomVO> roomlist = sellerService.roomlist(login.getUidx());
-		
-		model.addAttribute("roomlist", roomlist);
-		
-		
-		return "seller/sellerRegi";
-	}
+
 	
 	@RequestMapping(value = "/sellerLodgingModify.do", method = RequestMethod.GET)
 	public String sellerLodgingModify(Locale locale, Model model) {

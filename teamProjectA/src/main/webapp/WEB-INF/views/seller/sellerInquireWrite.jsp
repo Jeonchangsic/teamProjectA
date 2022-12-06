@@ -25,7 +25,7 @@
         
         <div id="contentsArea">
             <form action = "sellerInquireWrite.do" method="post">
-         	  <input type="text" name="usertype" value="${login.userType}">
+         	  <input type="hidden" name="usertype" value="${login.userType}">
                 <table id="table1">
                     <tr>
                         <td class="margin1">제목</td>

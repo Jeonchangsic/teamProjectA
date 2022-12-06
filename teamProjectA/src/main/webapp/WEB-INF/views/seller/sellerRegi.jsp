@@ -37,31 +37,34 @@
             <a href="<%=request.getContextPath() %>/seller/sellerRoomup1.do"><input type="button" value="객실등록"></a>
         </div>     
         <hr/>
-        <table>
-            <thead>
-                <tr style="text-align:center;">
-                    <th>이미지</th>
-                    <th>객실명</th>
-                    <th>가격</th>
-                    <th>객실수</th>
-                    <th>상세관리</th>
-                </tr>
-            </thead>
-            <tbody>
-            <% for(RoomVO room : roomlist) {%>
-                <tr style="text-align:center;">
-             		<td> <img src="<%= request.getContextPath()%>/resources/images/lodging_images/<%=room.getRimage1()%>" alt="숙소 이미지"></td>
-                    <td><%=room.getRtype() %></td>
-                    <td><%=room.getRprice() %></td>
-                    <td><%=room.getRnum()%></td>
-                    <td>
-                        <input type="button"value="수정">
-                        <input type="button"value="삭제" onclick="deletFn()">
-                    </td>  
-                </tr>
-             <%} %>         
-            </tbody>
-        </table>
+        <form action="sellerRegi.do"method="post">
+
+	        <table>
+	            <thead>
+	                <tr style="text-align:center;">
+	                    <th>이미지</th>
+	                    <th>객실명</th>
+	                    <th>가격</th>
+	                    <th>객실수</th>
+	                    <th>상세관리</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	            <% for(RoomVO room : roomlist) {%>
+	                <tr style="text-align:center;">
+	             		<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/<%=room.getRimage1()%>" alt="숙소 이미지"></td>
+	                    <td><%=room.getRtype() %></td>
+	                    <td><%=room.getRprice() %></td>
+	                    <td><%=room.getRnum()%></td>
+	                    <td>
+	                       <button value="수정">수정</button>
+	                       <a href="<%=request.getContextPath() %>/seller/sellerRegi2.do?ridx=<%=room.getRidx()%>">삭제</a>
+	                    </td>  
+	                </tr>
+	             <%} %>         
+	            </tbody>
+	        </table>
+        </form>
         <ul>
             <li>
                 <a href="">1</a>
