@@ -97,7 +97,7 @@ public class SellerDao {
 	}
 
 	public int waiting(UserVO vo) {
-		return sqlSession.update("team.projectA.mapper.sellerMapper.update", vo);
+		return sqlSession.update("team.projectA.mapper.sellerMapper.waiting", vo);
 	}
 	
 	

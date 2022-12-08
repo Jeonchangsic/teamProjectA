@@ -277,10 +277,17 @@ System.out.println("asasavalue"+value);
 	}
 	
 	@RequestMapping(value="/sellerLodgingUp.do", method=RequestMethod.POST)
-	public String sellerLodgingUp(LodgingVO vo) {
+	public String sellerLodgingUp(LodgingVO vo, HttpServletRequest req) {
 		
 		sellerService.lodgingUp(vo);
 		sellerService.waiting(vo);
+		
+		HttpSession session = req.getSession();
+		UserVO login = (UserVO)session.getAttribute("login");
+		
+		login.setLodging("Waiting");
+		
+		session.setAttribute("login", login);
 
 		return "redirect:sellerInfo.do";
 	}

@@ -68,8 +68,7 @@
 								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
 							</c:if>
 							<c:if test="${login.lodging.equals('Waiting') }">
-								<a>숙소등록</a>
-								alert("숙소 승인을 요청하였습니다");
+								<a href="javascript:alert('이미 숙소 승인을 요청하였습니다.');">숙소등록</a>
 							</c:if>
 							<c:if test="${login.lodging.equals('Y') }">
 								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">객실관리</a>

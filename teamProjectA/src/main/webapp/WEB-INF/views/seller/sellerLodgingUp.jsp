@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +57,7 @@
 <body>
 	<header>
 		<div id="header">
-			<div class="top">
+			<div id="top">
 				<h3>판매자페이지</h3>
 				<div id="manager">
 					<ul>
@@ -68,8 +69,7 @@
 								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
 							</c:if>
 							<c:if test="${login.lodging.equals('Waiting') }">
-								<a>숙소등록</a>
-								alert("숙소 승인을 요청하였습니다");
+								<a href="javascript:alert('이미 숙소 승인을 요청하였습니다.');">숙소등록</a>
 							</c:if>
 							<c:if test="${login.lodging.equals('Y') }">
 								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">객실관리</a>
@@ -83,7 +83,7 @@
 		</div>
 	</header><!-- //header -->
     <main>
-    	<form>
+    	<form method="post">
 	    	<section id="lodgingtb" class="clearfix">
 	    		<h2>숙소등록</h2>
 	    		<div class="top">
@@ -93,99 +93,100 @@
 	   					</div>
 	    			</div>
 	    			<div class="top_right">
+	    			<input type="hidden" name="uidx" value="${login.uidx }">
 	    				<table>
 	    					<tr>
 	    						<td>숙소이름</td>
-	    						<td><input type="text" required></td>
+	    						<td><input type="text" required name="lodgingname"></td>
 	    					</tr>
 	    					<tr>
 	    						<td>숙소종류</td>
 	    						<td>
-	    							<select required>
+	    							<select required name="lodgingkind">
 	    								<option value="" disabled selected>메뉴 선택</option>
 	    								<option value="모텔">모텔</option>
 	    								<option value="호텔">호텔</option>
 	    								<option value="펜션/풀빌라">펜션/풀빌라</option>
-	    								<option value="게스트하우스">게스트하우스</option>
+	    								<option value="GH">게스트하우스</option>
 	    							</select>
 								</td>
 	    					</tr>
 	    					<tr>
 	    						<td>숙소지역</td>
 	    						<td>
-									<select required>
+									<select required name="local">
 										<option value="" disabled selected>메뉴 선택</option>
 										<optgroup label="서울">
-											<option value="홍대/신촌/마포">홍대/신촌/마포</option>
-											<option value="북촌/인사동/종로/동대문">북촌/인사동/종로/동대문</option>
-											<option value="명동/남산/중구">명동/남산/중구</option>
-											<option value="강남/잠실/삼성/서초">강남/잠실/삼성/서초</option>
-											<option value="이태원/서울역/용산">이태원/서울역/용산</option>
-											<option value="영등포/신림/김포공항">영등포/신림/김포공항</option>
+											<option value="1002">홍대/신촌/마포</option>
+											<option value="1003">북촌/인사동/종로/동대문</option>
+											<option value="1004">명동/남산/중구</option>
+											<option value="1005">강남/잠실/삼성/서초</option>
+											<option value="1006">이태원/서울역/용산</option>
+											<option value="1007">영등포/신림/김포공항</option>
 										</optgroup>
 										<optgroup label="부산">
-											<option value="해운대/마린시티">해운대/마린시티</option>
-											<option value="광안리/경성대">광안리/경성대</option>
-											<option value="부산역">부산역</option>
-											<option value="송정/기장">송정/기장</option>
-											<option value="자갈치/남포동/영도">자갈치/남포동/영도</option>
+											<option value="2002">해운대/마린시티</option>
+											<option value="2003">광안리/경성대</option>
+											<option value="2004">부산역</option>
+											<option value="2005">송정/기장</option>
+											<option value="2006">자갈치/남포동/영도</option>
 										</optgroup>
 										<optgroup label="제주">
-											<option value="제주시/제주국제공항">제주시/제주국제공항</option>
-											<option value="서귀포시">서귀포시</option>
-											<option value="애월/한림/협재">애월/한림/협재</option>
+											<option value="3002">제주시/제주국제공항</option>
+											<option value="3003">서귀포시</option>
+											<option value="3004">애월/한림/협재</option>
 										</optgroup>
 										<optgroup label="경기">
-											<option value="수원/화성">수원/화성</option>
-											<option value="남양주/구리/성남/분당">남양주/구리/성남/분당</option>
-											<option value="용인/동탄">용인/동탄</option>
-											<option value="이천/광주/여주/하남">이천/광주/여주/하남</option>
-											<option value="가평/청평/양평">가평/청평/양평</option>
-											<option value="부천/광명/시흥/안산">부천/광명/시흥/안산</option>
+											<option value="5002">수원/화성</option>
+											<option value="5003">남양주/구리/성남/분당</option>
+											<option value="5004">용인/동탄</option>
+											<option value="5005">이천/광주/여주/하남</option>
+											<option value="5006">가평/청평/양평</option>
+											<option value="5007">부천/광명/시흥/안산</option>
 										</optgroup>
 										<optgroup label="인천">
-											<option value="송도/소래포구">송도/소래포구</option>
-											<option value="구읍뱃터/월미">구읍뱃터/월미</option>
-											<option value="인천국제공항/강화/을왕리/영종">인천국제공항/강화/을왕리/영종</option>
-											<option value="청라/계양/부평">청라/계양/부평</option>
+											<option value="6002">송도/소래포구</option>
+											<option value="6003">구읍뱃터/월미</option>
+											<option value="6004">인천국제공항/강화/을왕리/영종</option>
+											<option value="6005">청라/계양/부평</option>
 										</optgroup>
 										<optgroup label="강원">
-											<option value="속초/양양/고성">속초/양양/고성</option>
-											<option value="강릉">강릉</option>
-											<option value="평창/정선/영월">평창/정선/영월</option>
-											<option value="동해/삼척/태백">동해/삼척/태백</option>
+											<option value="7002">속초/양양/고성</option>
+											<option value="7003">강릉</option>
+											<option value="7004">평창/정선/영월</option>
+											<option value="7005">동해/삼척/태백</option>
 										</optgroup>
 										<optgroup label="경상">
-											<option value="경주">경주</option>
-											<option value="울산/양산">울산/양산</option>
-											<option value="거제/통영">거제/통영</option>
-											<option value="포항/영덕/울진/청송">포항/영덕/울진/청송</option>
-											<option value="창원/마산/진해/김해">창원/마산/진해/김해</option>
+											<option value="8002">경주</option>
+											<option value="8003">울산/양산</option>
+											<option value="8004">거제/통영</option>
+											<option value="8005">포항/영덕/울진/청송</option>
+											<option value="8006">창원/마산/진해/김해</option>
 										</optgroup>
 										<optgroup label="전라">
-											<option value="전주/완주">전주/완주</option>
-											<option value="광주/나주">광주/나주</option>
-											<option value="여수">여수</option>
-											<option value="순천/광양/담양/보성/화순">순천/광양/담양/보성/화순</option>
-											<option value="군산/익산">군산/익산</option>
-											<option value="목포/신안/영광/진도/고흥/영암/완도">목포/신안/영광/진도/고흥/영암/완도</option>
+											<option value="4002">전주/완주</option>
+											<option value="4003">광주/나주</option>
+											<option value="4004">여수</option>
+											<option value="4005">순천/광양/담양/보성/화순</option>
+											<option value="4006">군산/익산</option>
+											<option value="4007">목포/신안/영광/진도/고흥/영암/완도</option>
 										</optgroup>
 										<optgroup label="충청">
-		    								<option value="대전/세종">대전/세종</option>
-											<option value="천안/아산/도고">천안/아산/도고</option>
-											<option value="보령/대천/부여/공주/금산">보령/대천/부여/공주/금산</option>
-											<option value="청주/음성/진천">청주/음성/진천</option>
+		    								<option value="9002">대전/세종</option>
+											<option value="9003">천안/아산/도고</option>
+											<option value="9004">보령/대천/부여/공주/금산</option>
+											<option value="9005">청주/음성/진천</option>
 	    								</optgroup>
 	    							</select>
 								</td>
 	    					</tr>
 	    					<tr>
 	    						<td>숙소주소</td>
-	    						<td><input type="text" required></td>
+	    						<td><input type="text" required name="lodgingaddr"></td>
 	    					</tr>
 	    					<tr>
 	    						<td id="intro">숙소소개</td>
-	    						<td><textarea name="" cols="50" rows="10"></textarea></td>
+	    						<td><textarea name="limagename" cols="50" rows="10"></textarea></td>
 	    					</tr>
 	    				</table>
 	    			</div><!-- //top_right -->    		

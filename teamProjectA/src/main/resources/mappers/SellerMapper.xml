@@ -185,10 +185,11 @@
 	<!-- 숙소 등록 -->
 	<insert id="lodgingUp" parameterType="lodgingVO">
 	INSERT INTO LODGINGTB (
+					  lidx
 					, lodgingkind
 					, lodgingname
 					, lodgingaddr
-					, loca
+					, local
 					, uidx
 					, limagename
 				)		
@@ -203,8 +204,8 @@
 				)
 	</insert>
 	<update id="waiting" parameterType="userVO">
-		UPDATE USERTB 
-		   SET lodging = 'waiting'
+		UPDATE AUSERTB 
+		   SET lodging = 'Waiting'
 		 WHERE uidx = #{uidx}
 				
 	</update>
