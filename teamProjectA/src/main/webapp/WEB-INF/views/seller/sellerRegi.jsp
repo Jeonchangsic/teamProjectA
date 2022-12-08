@@ -87,10 +87,5 @@
         </div>
     </footer>
 </body>
-<script>
-    function deletFn(){
-        alert('정말 삭제하시겠습니까?')
-    }
 
-</script>
 </html>

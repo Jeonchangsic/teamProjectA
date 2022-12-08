@@ -18,21 +18,15 @@ header li a{color:white; font-size:22px; font-weight:bold;}
     position: relative;
    
 }
-.search_bar {
-    height: 40px; width: 220px;
-    position: absolute;
-    left: -230px;
-    transition: all .4s;
-    transform: scaleX(0);
-    transform-origin: RIGHT;
-}
-.search_bar.view {
-    transform: scaleX(1);
-}
+
 header .search{font-size:30px; color:rgba(255,255,255,0.8);}   
 header .search:hover{color:white;} 
 header #login{color:rgba(255,255,255,0.8);}    
 header #login:hover{color:white;} 
+header #logout{color:rgba(255,255,255,0.8);}    
+header #logout:hover{color:white;} 
+header #mypage{color:rgba(255,255,255,0.8);}    
+header #mypage:hover{color:white;} 
    
             /*end header */
 

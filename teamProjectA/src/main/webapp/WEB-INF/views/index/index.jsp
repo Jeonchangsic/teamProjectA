@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
@@ -17,13 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> <!--XE아이콘-->
     
-   <!-- 아이디 비밀번호 안내창 -->
-       <!-- <script>
-       $(function(){
-          alert("일반회원 아이디: user1   비밀번호:1234 /n
-                   일반회원 아이디:");
-       });
-       </script> -->
     <!---- js --->
        <script>
         $(document).ready(function(){
@@ -42,52 +35,23 @@
                 keyboard: true,
             });
         });
+        
+        $(function(){
+    		$("#searchBtn").click(function(){
+    			var stype = $("select option:selected").val();
+    		//	var kword = encodeURIcomponent($("#keywordInput").val());
+    			var kword = $("#keywordInput").val();
+    			var type =1;
+    			
+    			document.location.href = "<%=request.getContextPath()%>/lodging/lodgingList_search.do?searchType="+stype+"&keyword="+kword+"&type="+type;
+    			return;
+    		});
+    	})
     </script>
 
 </head>
 <body>
-    <header>
-        <div class="inner">
-            <h1>
-            	<a href="<%=request.getContextPath()%>/index/index.do">
-            		<img src="<%=request.getContextPath() %>/resources/images/index_images/logo.svg" alt="저긴어때">
-            	</a>
-            </h1>        
-            <ul>
-                <li>
-                	<form action="" method="POST">
-                    <select name="searchType" class="search_bar" id="search_bar">
-                     	<option value="lodgingkind">종류</option>
-                     	<option value="lodgingname">숙소명</option>
-                     	<option value="lodgingaddr">지역</option>
-                     </select>
-                     <input type="text" name="keyword"/>
-                     <button>검색</button>
-                     </form>
-                </li>                 
-                
-                <li>
-                	<c:if test="${login == null }">
-                		<a href="<%=request.getContextPath() %>/login/login.do" id="login">로그인</a>
-                	</c:if> 
-                	<c:if test="${login.userType.equals('일반회원')}">
-						<a href="<%=request.getContextPath() %>/logout/logout.do" id="logout" style="font-size:15px;">로그아웃</a>
-						<a href="<%=request.getContextPath() %>/mypage/info.do" id="mypage" style="font-size:15px; border-left:1px solid #fff; padding-left:5px;">마이페이지</a>
-					</c:if> 
-					 <c:if test="${login.userType.equals('판매자')}">
-						<a href="<%=request.getContextPath() %>/logout/logout.do" id="logout" style="font-size:15px;">로그아웃</a>
-						<a href="<%=request.getContextPath() %>/seller/sellerInfo.do" id="seller" style="font-size:15px; border-left:1px solid #fff; padding-left:5px;">판매자페이지</a>
-					</c:if>
-					<c:if test="${login.userType.equals('관리자')}">
-						<a href="<%=request.getContextPath() %>/logout/logout.do" id="logout" style="font-size:15px;">로그아웃</a>
-						<a href="<%=request.getContextPath() %>/manager/managerUser.do" id="manager" style="font-size:15px; border-left:1px solid #fff; padding-left:5px;">관리자페이지</a>
-					</c:if>
-                </li>  
-                                                 <!-- 폰트 스타일 수정-->
-            </ul>
-               
-        </div>
-    </header>
+   	<%@ include file="/WEB-INF/common/Header.jsp" %>
                 <!-- end header-->
     <main>
         <nav id="gnb">

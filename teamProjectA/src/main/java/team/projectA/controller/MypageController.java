@@ -3,6 +3,7 @@ package team.projectA.controller;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +15,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import team.projectA.service.MypageService;
 import team.projectA.service.UserService;
+import team.projectA.vo.Criteria;
+import team.projectA.vo.PageMaker;
+import team.projectA.vo.ReservVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 /**
@@ -36,14 +43,42 @@ public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	//예약내역 리스트 출력 검색
 	@RequestMapping(value = "/info.do", method = RequestMethod.GET)
-	public String mypage(Locale locale, Model model) {
+	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Criteria cri, Model model)throws Exception {
+		
+		
+		List<ReservVO> list = null; 
+		list = mypageService.listSearch(scri);
+		model.addAttribute("list",list);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		//pageMaker.setTotalCount(mypageService.reserv_count());
+		pageMaker.setTotalCount(mypageService.countSearch(scri));
+		model.addAttribute("pageMaker",pageMaker);
 		
 		return "mypage/mypage";
 	}
+	
+	//예약내역 검색
+	/*
+	 * @RequestMapping(value = "/listSearch", method = RequestMethod.GET) public
+	 * void mypage(@ModelAttribute("scri") SearchCriteria scri, Model model)throws
+	 * Exception {
+	 * 
+	 * 
+	 * List<ReservVO> list = null; list = mypageService.listSearch(scri);
+	 * model.addAttribute("list",list);
+	 * 
+	 * PageMaker pageMaker = new PageMaker(); pageMaker.setCri(scri);
+	 * //pageMaker.setTotalCount(mypageService.reserv_count());
+	 * pageMaker.setTotalCount(mypageService.countSearch(scri));
+	 * model.addAttribute("pageMaker",pageMaker);
+	 * 
+	 * }
+	 */
+	
 
 	//비밀번호 수정
   @RequestMapping(value="pwModify.do", method = RequestMethod.POST) 
@@ -94,4 +129,5 @@ public class MypageController {
 	  return ""; //printWriter append를 사용해서 alert을 띄우면 무조건 location.href로 페이지 이동을 시켜야한다. 이때 메소드 자료형은 void로 변경해야하고 return타입은 없어야하는데 이를 방지하기위해 리턴을 빈문자로 하였다.
   }
   }
+  
 }

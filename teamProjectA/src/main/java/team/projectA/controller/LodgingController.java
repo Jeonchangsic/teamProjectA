@@ -2,6 +2,7 @@ package team.projectA.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -13,13 +14,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import team.projectA.service.LodgingService;
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.PageMaker;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 /**
@@ -84,10 +88,32 @@ public class LodgingController {
 	}
 	
 	@RequestMapping(value = "/lodgingList_search.do", method = RequestMethod.GET) // value : 가상경로  // "/":메인페이지(웰컴파일)
-	public String list_search(Model model, String type) {
+	public String list_search(@ModelAttribute("scri") SearchCriteria scri, Model model, String type)throws Exception {
 		
-		List<RoomVO> list = lodgingService.selectListSearch(type);
-		model.addAttribute("list",list);
+		
+		/*
+		 * System.out.println("keyword:"+ scri.getKeyword());
+		 * System.out.println("stype:"+scri.getSearchType());
+		 */
+		
+		
+		HashMap<String,String> hm = new HashMap<String,String>();
+		hm.put("type", type);
+		hm.put("keyword", scri.getKeyword());
+		hm.put("searchType", scri.getSearchType());
+		
+		
+		
+		 List<RoomVO> roomList = lodgingService.listSearch(hm);
+			/* System.out.println("확인"+roomList.get(0).getLodgingname()); */
+		 
+		 model.addAttribute("roomList",roomList);
+		 model.addAttribute("searchType",scri.getSearchType());
+		 model.addAttribute("keyword", scri.getKeyword());
+		/*
+		 * List<RoomVO> list = lodgingService.selectListSearch(type);// listSearch(scri)
+		 * model.addAttribute("list",list);
+		 */
 		
 		return "lodging/lodgingList_search"; //경로바뀌면 여기서(servlet-context.xml에 써있는 기본경로를 기반으로) 추가 경로만 써주면 됨 ex) main/home
 	}

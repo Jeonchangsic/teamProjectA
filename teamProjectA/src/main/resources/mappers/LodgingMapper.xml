@@ -106,6 +106,7 @@
 		</choose>
 	</select>
 	
+	<!-- 숙소 검색 리스트 -->
 	<select id="selectListSearch" parameterType="String" resultType="RoomVO">
 		SELECT *
  		  FROM lodgingtb lg, roomtb r
@@ -116,8 +117,9 @@
 								WHERE lg.lidx = r.lidx
 								  AND r.rnum > 0
 							 order BY r.ridx	   
-							  ) a
+							  ) a 
 					 GROUP BY a.lidx)
+
 		<choose>
 			<when test ="value != null and value == 2">
 				order by rprice
@@ -129,6 +131,60 @@
 			</otherwise>
 		</choose>
 	</select>
+	
+		
+	
+	
+	<!-- 숙소 리스트 + 검색 -->
+	<select id="listSearch" parameterType="HashMap" resultType="RoomVO">
+		
+		SELECT *
+ 		  FROM lodgingtb lg, roomtb r
+ 		 WHERE lg.lidx = r.lidx
+  		   AND ridx IN (SELECT MIN(a.ridx)
+						 FROM (SELECT r.*
+								 FROM lodgingtb lg, roomtb r
+								WHERE lg.lidx = r.lidx
+								  AND r.rnum > 0
+							 order BY r.ridx	   
+							  ) a WHERE 1=1 <include refid="search"></include>
+					 GROUP BY a.lidx)
+		
+		<choose>
+			<when test ="value != null and value == 2">
+				order by rprice
+			</when>
+			<when test ="value != null and value == 3">
+				order by rprice desc
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	
+	
+	<!-- 검색된 숙소 개수  -->
+	<select id="countSearch" resultType="int" parameterType="searchCriteria">
+		SELECT COUNT(lidx) 
+			FROM lodgingtb
+				<include refid="search"></include>
+	<![CDATA[
+		AND lidx > 0
+	]]>
+	</select>
+	
+		
+<sql id="search">
+<if test="searchType != null and searchType.equals('ln')">
+and lodgingname like  '%'||#{keyword}||'%'
+</if>
+<if test="searchType != null and searchType.equals('la')">
+and lodgingaddr like  '%'||#{keyword}||'%'
+</if>
+</sql>
+	
+	
 	<!-- 숙소상세 -->
 	<select id="selectLodging" parameterType="String" resultType="lodgingVO">
 		SELECT lidx

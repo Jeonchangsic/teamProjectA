@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -53,7 +54,7 @@
                         <td class="margin1">이름</td><td><input type="text" class="info" name="userName" value="${login.userName}" readonly></td> 
                     </tr>
                     <tr>
-                        <td class="margin1">비밀번호</td><td><input type="text" class="info"  name="userPassword" placeholder="변경할 비밀번호를 입력하세요."></td>
+                        <td class="margin1">비밀번호</td><td><input type="text" class="info"  name="userPassword" placeholder="변경할 비밀번호를 입력하세요." readonly></td>
                         <td><button>변경하기</button></td>
                     </tr>
                     <tr>
@@ -70,51 +71,43 @@
             </form>
         </div>
         <div id="contentsArea">
-            <form action="review.do" method="POST">
+            <form action="" method="">
                 <table id="table10">
                     <tr class="ta_center tr_border">
                         <th>예약번호</th>
-                        <th>펜션정보
-                            <img/>
-                        </th>
+                        <th>숙소정보</th>
                         <th>예약자명</th>
-                        <th>날짜/인원</th>
+                        <th>숙박일자</th>
                         <th>비고</th>
                     </tr>
-                    <tr>
-                        <td class="ta_center">1</td>
-                        <td class="lmg_info">
-                            <img class="img1"src="<%=request.getContextPath()%>/resources/images/mypage_images/sukso.jpg">
-                            <p>전주 더 메이HOTEL</p>
-                        </td>
-                        <td>홍길동</td>
-                        <td>2022-10-31 / 4명</td>
-                        <td  class="ta_center">
-                            <input type="button" value="예약취소"/>
-                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do'"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="ta_center">2</td>
-                        <td>
-                            <img class="img1"src="<%=request.getContextPath()%>/resources/images/mypage_images/sukso.jpg">
-                            <p>전주 더 메이HOTEL</p>
-                        </td>
-                        <td>홍길동</td>
-                        <td>2022-10-31 / 4명</td>
-                        <td class="ta_center">
-                            <input type="button" value="예약취소"/>
-                         	<input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do'"/>
-                        </td>
-                    </tr>
+                    <c:forEach items="${list}" var="list">
+	                    <tr>
+	                        <td>${list.reserv_idx}</td>
+	                        <td>${list.reserv_lodging}</td>
+	                        <td>${list.reserv_name}</td>
+	                        <td>${list.reserv_startDate}  ${list.reserv_endDate}</td>
+	                        <td  class="ta_center">
+	                            <input type="button" value="예약취소"/>
+	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do'"/>
+	                        </td>
+	                    </tr>
+                    </c:forEach>
                 </table>
             </form>
             <div id="btnArea">
                 <div id="btnArea2">
-                    <a href="#" >1</a>
-                    <a href="#" >2</a>
-                    <a href="#" >3</a>
-                    <a href="#" >4</a>
+                    <ul>
+                    	<c:if test="${pageMaker.prev}">
+                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+                    	</c:if>
+                    	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+                    	</c:forEach>
+                    	
+                    	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeSearch(pageMaker.endPage +1)}">다음</a></li>
+                    	</c:if>
+                    </ul>
                 </div>
             </div>
         </div>

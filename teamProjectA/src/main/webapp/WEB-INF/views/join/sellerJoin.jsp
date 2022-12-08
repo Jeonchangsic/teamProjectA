@@ -19,17 +19,19 @@
 	    	type:"post",
 	    	data:"userID="+userID,
 	    	success:function(data){
+	    		$("#id").blur(function(){
 	    		if(data != 1 && userID.length > 0){ 				//사용가능한 아이디일 경우
 	    			$(".id_ok").css("display","inline-block");
 	    			$(".id_no").css("display","none");
 	    		}else if(data == 1 && userID.length > 0){ 						//중복되는 아이디일 경우
 	    			$(".id_ok").css("display","none");
 	    			$(".id_no").css("display","inline-block");
-	    			$("#id").val("");
+	    			
 	    		}else{
 	    			$(".id_ok").css("display","none");
 	    			$(".id_no").css("display","none");
 	    		}
+	    		});
 	    	},
 	    	error:function(){
 	    		alert("에러입니다.");
@@ -88,7 +90,7 @@
     			checkResult.html("인증번호가 일치합니다.");
     			checkResult.attr("class","correct");
     		}else{
-    			checkResult.html("인증번호를 다시 확인해주세요.");
+    			checkResult.html("인증번호가 틀립니다.");
     			checkResult.attr("class","incorrect");
     		}
     	});
@@ -136,9 +138,11 @@
       }
       .correct{
       	color: green;
+      	font-weight:bold;
       }
       .incorrect{
       	color: red;
+      	font-weight:bold;
       }
      #joinText{
      	padding-top:20px;

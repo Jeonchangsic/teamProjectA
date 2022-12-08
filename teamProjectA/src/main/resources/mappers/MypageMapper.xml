@@ -9,4 +9,89 @@
 				SET userPassword = #{userPassword}
 				WHERE userName = #{userName}
 		</update>
+		
+		<!-- 마이페이지 예약내역 -->
+		<select id="reserv_list" resultType="reservVO">
+			SELECT reserv_idx
+				,reserv_lodging
+				,reserv_name
+				,reserv_startDate
+				,reserv_endDate 
+				FROM reservtb	
+		</select> 
+		
+		<!-- 마이페이지 예약내역 페이징(게시물 총개수 구하기) -->
+		<select id="reserv_count" resultType="int">
+			SELECT COUNT(reserv_idx) 
+				FROM reservtb
+				WHERE reserv_idx > 0	
+		</select>
+		
+		<!-- 게시물 목록 + 페이징 -->
+		<select id="listPage" parameterType="criteria" resultType="reservVO">
+			SELECT reserv_idx
+				,reserv_lodging
+				,reserv_name
+				,reserv_startDate
+				,reserv_endDate 
+					FROM (
+						SELECT reserv_idx
+						,reserv_lodging
+						,reserv_name
+						,reserv_startDate
+						,reserv_endDate
+						, ROW_NUMBER() 
+							OVER(
+								ORDER BY reserv_idx desc
+								) 
+							AS rNum FROM reservtb
+							)rtb 
+							WHERE rNum 
+							BETWEEN #{rowStart} AND #{rowEnd} 
+							ORDER BY reserv_idx DESC
+		</select>
+		
+		<!-- 검색 -->
+		<select id="listSearch" resultType="reservVO" parameterType="searchCriteria">
+			SELECT reserv_idx
+				,reserv_lodging
+				,reserv_name
+				,reserv_startDate
+				,reserv_endDate 
+					FROM (
+						SELECT reserv_idx
+						,reserv_lodging
+						,reserv_name
+						,reserv_startDate
+						,reserv_endDate
+						, ROW_NUMBER() 
+							OVER(
+								ORDER BY reserv_idx desc
+								) 
+							AS rNum FROM reservtb WHERE 1=1
+								<include refid="search"></include>
+							)rtb 
+							WHERE rNum 
+							BETWEEN #{rowStart} AND #{rowEnd} 
+							ORDER BY reserv_idx DESC
+
+		</select> 
+		
+		<sql id="search">
+			<if test="searchType != null">
+				<if test="searchType == 'rl'">AND reserv_lodging LIKE '%'||#{keyword}||'%'</if>
+				<if test="searchType == 'rn'">AND reserv_name LIKE '%'||#{keyword}||'%'</if>
+			</if>
+		</sql>
+		
+		<!-- 검색 게시물 개수 -->
+		<select id="countSearch" resultType="int" parameterType="searchCriteria">
+			 SELECT COUNT(reserv_idx)
+			  FROM reservtb
+			  WHERE 1=1
+	   		<include refid="search"></include>
+		<![CDATA[
+		   AND reserv_idx > 0
+		]]>
+		</select>
 </mapper>

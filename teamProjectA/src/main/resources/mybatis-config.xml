@@ -13,7 +13,9 @@
 		<typeAlias type="team.projectA.vo.RoomVO" alias="roomVO"/>
 		<typeAlias type="team.projectA.vo.QnaVO" alias="qnaVO"/>
 		<typeAlias type="team.projectA.vo.ReviewVO" alias="ReviewVO"/>
-		
+		<typeAlias type="team.projectA.vo.ReservVO" alias="reservVO"/>
+		<typeAlias type="team.projectA.vo.Criteria" alias="criteria"/>
+		<typeAlias type="team.projectA.vo.SearchCriteria" alias="searchCriteria"/>
 		<!-- <typeAlias type="edu.board.vo.BoardVO" alias="boardVO"/>
 		<typeAlias type="edu.board.vo.MemberVO" alias="memberVO"/>
 		<typeAlias type="edu.board.vo.SearchVO" alias="searchVO"/> -->

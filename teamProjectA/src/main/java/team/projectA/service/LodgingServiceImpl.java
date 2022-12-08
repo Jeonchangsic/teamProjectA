@@ -1,5 +1,6 @@
 package team.projectA.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import team.projectA.dao.LodgingDAO;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
+import team.projectA.vo.SearchCriteria;
 
 @Service
 public class LodgingServiceImpl implements LodgingService {
@@ -49,6 +51,18 @@ public class LodgingServiceImpl implements LodgingService {
 	public RoomVO selectRoom(String ridx) {
 		return lodgingDAO.selectRoom(ridx);
 	}
+
+	@Override
+	public List<RoomVO> listSearch(HashMap hm) throws Exception {
+		return lodgingDAO.listSearch(hm);
+	}
+	
+	@Override
+	public int countSearch(SearchCriteria scri) throws Exception {
+		return lodgingDAO.countSearch(scri);
+	}
+
+
 
 	
 	
