@@ -63,11 +63,24 @@ public class SellerServiceImpl implements SellerService{
 
 		return SellerDao.roomlist(uidx);
 	}
+	
+	@Override
+	public int roomdel(String ridx) {
+	
+		return SellerDao.roomdel(ridx);
+	}
+
 
 	@Override
 	public int roomup(RoomVO vo) {
 		
 		return SellerDao.roomup(vo);
+	}
+
+	@Override
+	public LodgingVO lidxone(int uidx) {
+	
+		return SellerDao.lidxone(uidx);
 	}
 
 

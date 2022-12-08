@@ -27,7 +27,11 @@ public interface SellerService {
 	
 	List<RoomVO> roomlist(int uidx);
 	
+	int roomdel(String ridx);
+	
 	int roomup(RoomVO vo); 
+	
+	LodgingVO lidxone(int uidx);
 	
 
 }

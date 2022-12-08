@@ -46,7 +46,7 @@
     	<form>
 	        <div id="title">
 	            <div id="title_date">
-	                <a><%=qnaOne.getQna_Qcontent()%> </a>
+	                <a><%=qnaOne.getQna_Qtitle()%> </a>
 	                <a> ${login.userName} <%=qnaOne.getQna_Qdate()%></a>
 	            </div>
 	            <hr>

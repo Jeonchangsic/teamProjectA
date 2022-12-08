@@ -54,8 +54,18 @@ public class SellerDao {
 		
 	}
 	
+	public int roomdel(String ridx) {
+		return sqlSession.delete("team.projectA.mapper.sellerMapper.roomdel", ridx);
+		
+	}
+	
 	public int roomup(RoomVO vo) {
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.roomup",vo);
+		
+	}
+	
+	public LodgingVO lidxone(int uidx){
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.lidxone",uidx);
 		
 	}
 	

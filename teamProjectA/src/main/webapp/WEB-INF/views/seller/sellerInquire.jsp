@@ -63,7 +63,7 @@
 				<%for(QnaVO qna : qnaList) { %>
                 <tr style="text-align:center;">
                     <td><%=qna.getQnA_idx()%></td>
-   				    <td><a href="sellerInquireView.do?QnA_idx=<%=qna.getQnA_idx()%>"><%=qna.getQna_Qcontent()%></a></td>
+   				    <td><a href="sellerInquireView.do?QnA_idx=<%=qna.getQnA_idx()%>"><%=qna.getQna_Qtitle()%></a></td>
                     <td><%=qna.getQna_Qdate()%></td>
                     <td><%=qna.getQna_Acheck()%></td>
                 </tr>

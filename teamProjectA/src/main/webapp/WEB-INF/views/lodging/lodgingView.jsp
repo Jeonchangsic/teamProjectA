@@ -28,7 +28,7 @@
     
 	<link href="<%= request.getContextPath() %>/resources/images/lodgingView_images/favicon.jpg" rel="shortcut icon">
 
-    <link href="<%= request.getContextPath() %>/resources/css/lodging_css/lodgingView_reset.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/lodging_css/lodging_reset.css" rel="stylesheet">
     <link href="<%= request.getContextPath() %>/resources/css/lodging_css/lodgingView_style.css" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"><!--XE아이콘-->
 
