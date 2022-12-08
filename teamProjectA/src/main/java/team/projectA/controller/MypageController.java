@@ -43,6 +43,7 @@ public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
+	
 	//예약내역 리스트 출력 검색
 	@RequestMapping(value = "/info.do", method = RequestMethod.GET)
 	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Criteria cri, Model model,HttpServletRequest req/*,ReservVO vo*/)throws Exception {
