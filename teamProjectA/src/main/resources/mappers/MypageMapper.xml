@@ -32,14 +32,10 @@
 			SELECT reserv_idx
 				,reserv_lodging
 				,reserv_name
-				,reserv_startDate
-				,reserv_endDate 
 					FROM (
 						SELECT reserv_idx
 						,reserv_lodging
 						,reserv_name
-						,reserv_startDate
-						,reserv_endDate
 						, ROW_NUMBER() 
 							OVER(
 								ORDER BY reserv_idx desc

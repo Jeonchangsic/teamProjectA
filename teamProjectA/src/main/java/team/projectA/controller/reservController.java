@@ -2,6 +2,7 @@ package team.projectA.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -15,8 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import team.projectA.service.LodgingService;
+import team.projectA.service.ReservService;
 import team.projectA.service.UserService;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.RoomVO;
@@ -30,6 +33,8 @@ public class reservController {
 	
 	@Autowired
 	private LodgingService lodgingService;
+	@Autowired
+	private ReservService reservService;
 	
 	
 	@RequestMapping(value = "/reserv/reserv.do", method = RequestMethod.GET)
@@ -50,5 +55,26 @@ public class reservController {
 		
 		return "reservpage/reserv";
 	}
-	
+	@ResponseBody
+	@RequestMapping(value = "/reserv/reserv_pay.do", method = RequestMethod.POST)
+	public String reserv_pay(String merchant_uid, String amount, String name, String buyer_name)throws Exception {
+		
+		HashMap<String,String> hm = new HashMap<String,String>();
+		hm.put("merchant_uid", merchant_uid);
+		hm.put("amount",amount);
+		hm.put("name",name);
+		hm.put("buyer_name",buyer_name);
+		
+		int vo = reservService.reservInsert(hm);
+		String result = Integer.toString(vo);
+		
+		System.out.println("result:"+result);
+		
+		  System.out.println("merchant_uid:"+ merchant_uid);
+		  System.out.println("amount:"+ amount); 
+		  System.out.println("name:"+ name);
+		  System.out.println("buyer_name:"+ buyer_name);
+		  
+		return result;
+	}
 }

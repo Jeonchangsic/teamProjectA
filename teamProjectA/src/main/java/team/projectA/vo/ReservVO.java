@@ -1,14 +1,31 @@
 package team.projectA.vo;
 
 public class ReservVO {
-	private int reserv_idx;
-	private int reserv_date;
+	private int reserv_idx; //시퀀스
+	private String reserv_num;	//예약번호
+	private int reserv_date; //예약날짜
+	private String reserv_lodging; //숙소이름
+	private String reserv_name; //예약자
+	private String reserv_startDate; //예약 시작날짜
+	private String reserv_endDate; // 예약 종료날짜
+	private String reserv_price;	//가격
+	
+	
+	
+	public String getReserv_num() {
+		return reserv_num;
+	}
+	public void setReserv_num(String reserv_num) {
+		this.reserv_num = reserv_num;
+	}
+	public String getReserv_price() {
+		return reserv_price;
+	}
+	public void setReserv_price(String reserv_price) {
+		this.reserv_price = reserv_price;
+	}
 	private int checkin;
 	private int checkout;
-	private String reserv_lodging;
-	private String reserv_name;
-	private String reserv_startDate;
-	private String reserv_endDate;
 	
 	
 	public String getReserv_lodging() {

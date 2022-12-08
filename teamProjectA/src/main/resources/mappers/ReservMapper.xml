@@ -3,5 +3,9 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 		<mapper namespace="team.projectA.mapper.ReservMapper">
 		
+		<insert id="reservInsert" parameterType="HashMap">
+			INSERT INTO reservtb(reserv_idx,reserv_lodging,reserv_name,reserv_date,reserv_startDate,reserv_endDate,reserv_price,reserv_num)
+				VALUES(reserv_seq.NEXTVAL,#{name},#{buyer_name},SYSDATE,SYSDATE,SYSDATE,#{amount},#{merchant_uid})
+		</insert>
 		
 </mapper>
