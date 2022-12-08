@@ -9,6 +9,7 @@ import team.projectA.vo.LodgingVO;
 
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.RoominVO;
 import team.projectA.vo.UserVO;
 
 public interface SellerService {
@@ -27,9 +28,11 @@ public interface SellerService {
 	
 	List<RoomVO> roomlist(int uidx);
 	
-	int roomdel(String ridx);
+	int roomdel(int ridx);
 	
 	int roomup(RoomVO vo); 
+	
+	int roomInCh(RoominVO vo);
 	
 	LodgingVO lidxone(int uidx);
 	

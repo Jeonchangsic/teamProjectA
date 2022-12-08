@@ -3,14 +3,7 @@
 	pageEncoding="utf-8"%>
 <%
 	UserVO vo = (UserVO) request.getAttribute("vo");
-%>
-<%
 	LodgingVO lodging = (LodgingVO) request.getAttribute("lodging");
-
-System.out.println(lodging.getUserEmail());
-System.out.println(lodging.getUserPassword());
-System.out.println(lodging.getUserPhone());
-
 %>
 
 

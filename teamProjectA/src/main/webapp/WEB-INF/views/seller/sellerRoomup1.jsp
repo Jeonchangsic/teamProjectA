@@ -30,6 +30,7 @@
 	  	  }
 	  	 };
 	    
+	  	//체크박스 선택시 ny주기
 	    function checkBox(obj){
 	    	var checked = obj.checked;
 	    	if(checked){
@@ -37,7 +38,7 @@
 	    	}else{ 
 	    		obj.value="N";
 	    		}
-	    	};
+	    	}; 
 
 		//추가정보입력
 	 	$(document).ready(function () {
@@ -45,7 +46,7 @@
     		  $(document).on("click", "button[name='plus']", function () {
 				if (maxAppend >= 5) 
 					return; // 5번째부터는 append 안되고 return 시키기
-    		    $("#bottom_right").append("<input type='text'></br>");
+    		    $("#bottom_right").append("</br><input type='text' class='plus' placeholder='추가정보를 입력해주세요'></br>");
 				maxAppend++;
     		  });
     		});
@@ -85,7 +86,6 @@
 					<input type="file" id="rimage1" name="file" required />
 					<div class="select_img"><img src="" /></div>	
 				</div>
-				
 				<input type="hidden" name="lidx" value="${lidxone.lidx}"> 
 			<!--정보입력-->
 			<div id="main_right">
@@ -93,14 +93,16 @@
 				객실명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="rtype"/ required> </br>
 				가격&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="rprice"  pattern="[0-9]+" placeholder="숫자를 입력해주세요" required/></br>
 				객실수&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <input type="text" name="rnum "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" required/></br>
+				기준인원 &nbsp;&nbsp;&nbsp;<input type="text" name="stdmen"  pattern="[0-9]+" placeholder="숫자를 입력해주세요" required/></br>
 				최대인원 &nbsp;&nbsp; <input type="text" name="maxmen" pattern="[0-9]+" placeholder="숫자를 입력해주세요" required/>	
+				
 				</div>
 				<div class="bed_filter">
 					<div id="bed_info">베드타입</div>
 						<ul>
 							<li>
 								<label>싱글</label></br>
-								<input id="single_bed" type="radio" name="bed" value="single_bed">
+								<input id="single_bed" type="radio" name="bed" value="single_bed" >
 							</li>
 							<li>
 								<label>더블</label></br>
@@ -161,27 +163,27 @@
 					                </ul>
 					                <ul id="in_right" class="filter_check">
 					                    <li>
-					                        <input type=checkbox class="ch" name="minibar">
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="minibar">
 					                        <label>미니바</label>
 					                    </li>   
 					                    <li>
-					                        <input type=checkbox class="ch" name="bathitem">
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="bathitem">
 					                        <label>욕실용품</label>
 					                    </li>   
 					                    <li>
-					                        <input type=checkbox class="ch" name="aircon">
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="aircon">
 					                        <label>에어컨</label>
 					                    </li>   
 					                    <li>
-					                        <input type=checkbox class="ch" name="shower">
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="shower">
 					                        <label>객실샤워실</label>
 					                    </li>   
 					                    <li>
-					                        <input type=checkbox class="ch" name="dryer">
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="dryer">
 					                        <label>드라이기</label>
 					                    </li>   
 					                    <li>
-					                        <input type=checkbox class="ch" name="ricecooker">
+					                        <input type="checkbox" class="ch" name="ricecooker">
 					                        <label>전기밥솥</label>
 					                    </li>   
 					
@@ -194,7 +196,7 @@
 		            
 			            <div id="bottom_right">
 			            	<p>추가정보<p>
-			            	<input type="text" id="plus" placeholder="추가정보를 입력해주세요"/><button type="button" name="plus">+</button>
+			            	<input type="text" class="plus" placeholder="추가정보를 입력해주세요"/><button type="button" name="plus">+</button>
 				            	
 			            </div>
 		    		
@@ -202,9 +204,10 @@
 		                <div>
 		                   <button type="submit" name="next" style="color:white; border:1px solid rgb(86,19,241);">다음</button> 
 		                </div>
-		          	 </div>
-		          </form>
-	        </section>
+		         	</div>
+		          </div>
+		        </form>
+	       </section>
 	</main>
 	 <footer class="fixedclear">
             <div id="foot" >
@@ -238,7 +241,7 @@
 		   }
 		  });
 	
-	//침대 선택 색상변경
+/* 	//침대 선택 색상변경
 		var div2 = document.querySelectorAll('.btnbox > img');
 		
 			function handleClick(event) {
@@ -265,7 +268,7 @@
 			  }
 			}
 		
-			init(); 
+			init();  */
 	</script>
 </body>
 </html>

@@ -7,10 +7,13 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import team.projectA.vo.LodgingVO;
 
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.RoominVO;
 import team.projectA.vo.UserVO;
 
 @Repository
@@ -54,15 +57,35 @@ public class SellerDao {
 		
 	}
 	
-	public int roomdel(String ridx) {
+	public int roomdel(int ridx) {
 		return sqlSession.delete("team.projectA.mapper.sellerMapper.roomdel", ridx);
 		
 	}
 	
+	@Transactional
 	public int roomup(RoomVO vo) {
-		return sqlSession.insert("team.projectA.mapper.sellerMapper.roomup",vo);
+		
+		int  value = sqlSession.insert("team.projectA.mapper.sellerMapper.roomup",vo);
+		
+		//System.out.println("value--->"+value);
+		//System.out.println("ridx"+vo.getRidx());
+	//	int maxridx = sqlSession.selectOne("team.projectA.mapper.sellerMapper.roomupselect",vo);
+		//System.out.println("value:"+value);
+		//System.out.println("ridx값:"+maxridx);
+		
+		return vo.getRidx();
+		
 		
 	}
+	
+	public int roomInCh(RoominVO vo) {
+		
+		System.out.println("pppppridx"+vo.getRidx());
+		int  value = sqlSession.insert("team.projectA.mapper.sellerMapper.roomInCh",vo);
+		return value;
+		
+	}
+	
 	
 	public LodgingVO lidxone(int uidx){
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.lidxone",uidx);

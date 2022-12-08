@@ -3,7 +3,7 @@ package team.projectA.vo;
 public class RoominVO extends RoomVO {
 	
 	private int roomin_idx;
-	private String ridx;
+	private int ridx;
 	private String spa;
 	private String wifi;
 	private String tv;
@@ -23,10 +23,10 @@ public class RoominVO extends RoomVO {
 	public void setRoomin_idx(int roomin_idx) {
 		this.roomin_idx = roomin_idx;
 	}
-	public String getRidx() {
+	public int getRidx() {
 		return ridx;
 	}
-	public void setRidx(String ridx) {
+	public void setRidx(int ridx) {
 		this.ridx = ridx;
 	}
 	public String getSpa() {

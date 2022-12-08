@@ -13,6 +13,7 @@ import team.projectA.vo.LodgingVO;
 
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.RoominVO;
 import team.projectA.vo.UserVO;
 
 @Service
@@ -65,7 +66,7 @@ public class SellerServiceImpl implements SellerService{
 	}
 	
 	@Override
-	public int roomdel(String ridx) {
+	public int roomdel(int ridx) {
 	
 		return SellerDao.roomdel(ridx);
 	}
@@ -81,6 +82,12 @@ public class SellerServiceImpl implements SellerService{
 	public LodgingVO lidxone(int uidx) {
 	
 		return SellerDao.lidxone(uidx);
+	}
+
+	@Override
+	public int roomInCh(RoominVO vo) {
+
+		return SellerDao.roomInCh(vo);
 	}
 
 

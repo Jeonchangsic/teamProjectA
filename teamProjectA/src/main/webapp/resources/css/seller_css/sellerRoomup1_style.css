@@ -68,9 +68,10 @@ img,iframe{vertical-align:top;}
 /*bottom */
 #bottom{clear:both; padding-top:70px;}
 #bottom_left{float:left;}
-#bottom_right{float:right; margin-right:250px; margin-top:100px;}
+#bottom_right{float:right; margin:100px 100px 0px 100px;}
 #bottom_right p{font-weight:bold; font-size:20px;}
 #bottom_right button{margin-left:10px;}
+#bottom_right .plus{width:300px;}
 
 #up_bottom2{display:flex; margin-left:148px;}
 #inner_bottom{clear:both;}

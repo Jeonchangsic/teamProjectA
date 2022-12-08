@@ -92,7 +92,7 @@
 		 			
 	</insert>
 	
-	<!--문의하기 selectone -->
+	<!--문의 글 보기 -->
 	<select id = "qnaOne" resultType="QnaVO" parameterType = "integer">
    					SELECT QnA_idx
 					, uidx
@@ -103,7 +103,7 @@
 					WHERE QnA_idx = #{QnA_idx}
 	</select>
 
-	<!--판매자 숙소목록  -->
+	<!--판매자 객실목록  -->
 	<select id="roomlist" resultType="RoomVO" parameterType="int">
 			SELECT l.uidx
 				, l.lidx
@@ -118,20 +118,22 @@
 			WHERE l.uidx =#{uidx}
 	</select>
 	
-	<!--판매사 숙소목록 삭제  -->
-	<delete id = "roomdel" parameterType="String">
+	<!--판매자 객실 삭제  -->
+	<delete id = "roomdel" parameterType="int">
 			DELETE FROM roomtb
 	           WHERE ridx = #{ridx}
 	</delete>
 	
-	<!--객실등록  -->
+	<!--객실등록 -->
 	<insert id = "roomup" parameterType="RoomVO">
+	
 			INSERT INTO roomtb (
 						ridx
 						, rtype
 						, rnum
 						, rprice
 						, maxmen
+						, stdmen
 						, gdsThumbImg
 						, rimage1
 						, bed
@@ -142,12 +144,38 @@
 						, #{rnum}
 						, #{rprice}
 						, #{maxmen}
+						, #{stdmen}
 						, #{gdsThumbImg}
 						, #{rimage1}
 						, #{bed}
 						, #{lidx})
+						
+		<selectKey keyProperty="ridx" resultType="int" order="AFTER">	<!--AFTER : 방금 입력한 값의 특정 값 리턴 (ridx_nextval리턴)  -->
+				select ridx_seq.currval as ridx FROM dual <!-- dual: 특정테이블 칼럼이 아닌경우 -->
+		</selectKey>
 	</insert>
 	
+	<!--체크박스 등록-->	
+	<insert id = "roomInCh" parameterType="RoominVO">
+	
+
+				INSERT INTO ROOMINTB 
+				VALUES(ROOMIN_IDX_SEQ.NEXTVAL
+				,#{ridx}
+				,#{spa}
+				,#{wifi}
+				,#{tv}
+				,#{refri}
+				,#{bath}
+				,#{iron}
+				,#{minibar}
+				,#{bathitem}
+				,#{aircon}
+				,#{shower}
+				,#{dryer}
+				,#{ricecooker})
+	
+	</insert>
 	<!--객실등록 lidx값 -->
 	<select id="lidxone" resultType="LodgingVO" parameterType="int">
 					SELECT lidx 

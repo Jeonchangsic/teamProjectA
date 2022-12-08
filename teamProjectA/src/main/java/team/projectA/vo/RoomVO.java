@@ -2,7 +2,7 @@ package team.projectA.vo;
 
 public class RoomVO extends LodgingVO {
 	
-	private String ridx;
+	private int ridx;
 	private String rtype;
 	private int rnum;
 	private int rprice;
@@ -11,6 +11,14 @@ public class RoomVO extends LodgingVO {
 	private String rimage3;
 	private String rimage4;
 	private String rimage5;
+	private String bed;
+	private int stdmen;
+	public int getStdmen() {
+		return stdmen;
+	}
+	public void setStdmen(int stdmen) {
+		this.stdmen = stdmen;
+	}
 	private int maxmen; 
 	
 	//이미지 업로드
@@ -29,10 +37,10 @@ public class RoomVO extends LodgingVO {
 	public void setMaxmen(int maxmen) {
 		this.maxmen = maxmen;
 	}
-	public String getRidx() {
+	public int getRidx() {
 		return ridx;
 	}
-	public void setRidx(String ridx) {
+	public void setRidx(int ridx) {
 		this.ridx = ridx;
 	}
 	public String getRtype() {
@@ -83,6 +91,11 @@ public class RoomVO extends LodgingVO {
 	public void setRimage5(String rimage5) {
 		this.rimage5 = rimage5;
 	}
-	
+	public String getBed() {
+		return bed;
+	}
+	public void setBed(String bed) {
+		this.bed = bed;
+	}
 	
 }
