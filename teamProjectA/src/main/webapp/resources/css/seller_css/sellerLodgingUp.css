@@ -47,10 +47,16 @@ textarea {resize:none;}
 .check_contents li {width:110px; margin:2px 7px;}
 .check {margin-right:5px;}
 .bottom {margin-top:80px;}
-.info {margin:0 0 50px 40px;}
-.info p {font-size:20px; font-weight:bold;}
-.plus {margin-top:20px; width:400px; padding:5px;}
-          
+/* .info {margin:0 0 50px 40px; display:flex;} */
+.info {margin-left: 40px; display:flex;}
+.info p {font-size:20px; font-weight:bold; width:155px; line-height:29px;
+		margin-right:70px;}
+.plus {width:400px; padding:5px; margin-right:5px;}
+.plus2 {width:400px; padding:5px; margin-right:5px; margin-left:265px;}
+.space {margin-bottom:50px;}
+.btn_submit {text-align:center; margin-top:40px;}
+.btn_submit button {color:white; border:1px solid #5613F1; background:#5613F1;
+					padding:5px 15px; border-radius:5px;}
 
             
 footer{

@@ -32,21 +32,21 @@
 				if(maxAppend1 >= 5){
 					return;
 				}else{
-					$(obj).parents(".info").append("</br><input type='text' class='plus' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					$(obj).parents(".info").next().append("<br><br><input type='text' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
 					maxAppend1++;
 				}	
 	    	}else if(type == "2"){
 				if(maxAppend2 >= 5){
 					return;
 				}else{
-					$(obj).parents(".info").append("</br><input type='text' class='plus' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					$(obj).parents(".info").next().append("<br><br><input type='text' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
 					maxAppend2++;
 				}
 	    	}else if(type == "3"){
 				if(maxAppend3 >= 5){
 					return;
 				}else{
-					$(obj).parents(".info").append("</br><input type='text' class='plus' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					$(obj).parents(".info").next().append("<br><br><input type='text' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
 					maxAppend3++;
 				}
 	    	}
@@ -83,12 +83,12 @@
 	    				<table>
 	    					<tr>
 	    						<td>숙소이름</td>
-	    						<td><input type="text"></td>
+	    						<td><input type="text" required></td>
 	    					</tr>
 	    					<tr>
 	    						<td>숙소종류</td>
 	    						<td>
-	    							<select>
+	    							<select required>
 	    								<option value="" disabled selected>메뉴 선택</option>
 	    								<option value="모텔">모텔</option>
 	    								<option value="호텔">호텔</option>
@@ -100,7 +100,7 @@
 	    					<tr>
 	    						<td>숙소지역</td>
 	    						<td>
-									<select>
+									<select required>
 										<option value="" disabled selected>메뉴 선택</option>
 										<optgroup label="서울">
 											<option value="홍대/신촌/마포">홍대/신촌/마포</option>
@@ -168,7 +168,7 @@
 	    					</tr>
 	    					<tr>
 	    						<td>숙소주소</td>
-	    						<td><input type="text"></td>
+	    						<td><input type="text" required></td>
 	    					</tr>
 	    					<tr>
 	    						<td id="intro">숙소소개</td>
@@ -178,7 +178,7 @@
 	    			</div><!-- //top_right -->    		
 	    		</div><!-- //top -->
 	    	</section><!-- //lodgingtb -->    	
-	    	<section id="fk">
+	    	<section id="fk" class="clearfix">
 	    		<div class="middle clearfix">
 	    			<div class="intro">- - - - 시설 및 서비스 - - - -</div>
 	    			<div class="mid_left">
@@ -243,18 +243,24 @@
 	    				<input type="text" class="plus" placeholder="주변정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(1,this)">+</button>
 	    			</div>
+	    			<div class="space"></div>
 	    			<div class="info">
 	    				<p>기본정보</p>
 	    				<input type="text" class="plus" placeholder="기본정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(2,this)">+</button>
 	    			</div>
+	    			<div class="space"></div>
 	    			<div class="info">
 	    				<p>확인사항 및 기타</p>
 	    				<input type="text" class="plus" placeholder="기타정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(3,this)">+</button>
-	    			</div>    			
+	    			</div>   
+	    			<div class="space"></div> 			
 	    		</div> 	
 	    	</section>
+	    	<div class="btn_submit">
+	    		<button>등록</button>
+	    	</div>
 	    </form>
     </main><!-- //main -->
     <footer class="clearfix">
