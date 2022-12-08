@@ -60,8 +60,14 @@
 			<when test ="area != null and area == '명동/남산/중구'">
 				AND local = 1004
 			</when>
+			<when test ="area != null and area == '강남/잠실/삼성/서초'">
+				AND local = 1005
+			</when>
 			<when test ="area != null and area == '이태원/서울역/용산'">
 				AND local = 1006
+			</when>
+			<when test ="area != null and area == '영등포/신림/김포공항'">
+				AND local = 1007
 			</when>
 			<when test ="area != null and area == '부산 전체'">
 				AND local like '20%'
@@ -72,8 +78,14 @@
 			<when test ="area != null and area == '광안리/경성대'">
 				AND local = 2003
 			</when>
+			<when test ="area != null and area == '부산역'">
+				AND local = 2004
+			</when>
 			<when test ="area != null and area == '송정/기장'">
 				AND local = 2005
+			</when>
+			<when test ="area != null and area == '자갈치/남포동/영도'">
+				AND local = 2006
 			</when>
 			<when test ="area != null and area == '제주 전체'">
 				AND local like '30%'
@@ -81,17 +93,116 @@
 			<when test ="area != null and area == '제주시/제주국제공항'">
 				AND local = 3002
 			</when>
+			<when test ="area != null and area == '서귀포시'">
+				AND local = 3003
+			</when>
+			<when test ="area != null and area == '애월/한림/협재'">
+				AND local = 3004
+			</when>
 			<when test ="area != null and area == '전라 전체'">
 				AND local like '40%'
 			</when>
 			<when test ="area != null and area == '전주/완주'">
 				AND local = 4002
 			</when>
+			<when test ="area != null and area == '광주/나주'">
+				AND local = 4003
+			</when>
+			<when test ="area != null and area == '여수'">
+				AND local = 4004
+			</when>
+			<when test ="area != null and area == '순천/광양/담양/보성/화순'">
+				AND local = 4005
+			</when>
 			<when test ="area != null and area == '군산/익산'">
 				AND local = 4006
 			</when>
 			<when test ="area != null and area == '목포/신안/영광/진도/고흥/영암/완도'">
 				AND local = 4007
+			</when>
+			<when test ="area != null and area == '경기 전체'">
+				AND local = 50%
+			</when>
+			<when test ="area != null and area == '수원/화성'">
+				AND local = 5002
+			</when>
+			<when test ="area != null and area == '남양주/구리/성남/분당'">
+				AND local = 5003
+			</when>
+			<when test ="area != null and area == '용인/동탄'">
+				AND local = 5004
+			</when>
+			<when test ="area != null and area == '이천/광주/여주/하남'">
+				AND local = 5005
+			</when>
+			<when test ="area != null and area == '가평/청평/양평'">
+				AND local = 5006
+			</when>
+			<when test ="area != null and area == '부천/광명/시흥/안산'">
+				AND local = 5007
+			</when>
+			<when test ="area != null and area == '인천 전체'">
+				AND local = 60%
+			</when>
+			<when test ="area != null and area == '송도/소래포구'">
+				AND local = 6002
+			</when>
+			<when test ="area != null and area == '구읍뱃터/월미'">
+				AND local = 6003
+			</when>
+			<when test ="area != null and area == '인천국제공항/강화/을왕리/영종'">
+				AND local = 6004
+			</when>
+			<when test ="area != null and area == '청라/계양/부평'">
+				AND local = 6005
+			</when>
+			<when test ="area != null and area == '강원 전체'">
+				AND local = 70%
+			</when>
+			<when test ="area != null and area == '속초/양양/고성'">
+				AND local = 7002
+			</when>
+			<when test ="area != null and area == '강릉'">
+				AND local = 7003
+			</when>
+			<when test ="area != null and area == '평창/정선/영월'">
+				AND local = 7004
+			</when>
+			<when test ="area != null and area == '동해/삼척/태백'">
+				AND local = 7005
+			</when>
+			<when test ="area != null and area == '경상 전체'">
+				AND local = 80%
+			</when>
+			<when test ="area != null and area == '경주'">
+				AND local = 8002
+			</when>
+			<when test ="area != null and area == '울산/양산'">
+				AND local = 8003
+			</when>
+			<when test ="area != null and area == '거제/통영'">
+				AND local = 8004
+			</when>
+			<when test ="area != null and area == '포항/영덕/울진/청송'">
+				AND local = 8005
+			</when>
+			<when test ="area != null and area == '창원/마산/진해/김해'">
+				AND local = 8006
+			</when>
+			<when test ="area != null and area == '충청 전체'">
+				AND local = 90%
+			</when>
+			<when test ="area != null and area == '대전/세종'">
+				AND local = 9002
+			</when>
+			<when test ="area != null and area == '천안/아산/도고'">
+				AND local = 9003
+			</when>
+			<when test ="area != null and area == '보령/대천/부여/공주/금산'">
+				AND local = 9004
+			</when>
+			<when test ="area != null and area == '청주/음성/진천'">
+				AND local = 9005
 			</when>
 			<otherwise>
 			</otherwise>

@@ -36,5 +36,8 @@ public interface SellerService {
 	
 	LodgingVO lidxone(int uidx);
 	
+	int lodgingUp(LodgingVO vo);
+	
+	int waiting(UserVO vo);
 
 }

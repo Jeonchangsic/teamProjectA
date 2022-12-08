@@ -39,15 +39,15 @@ public class LodgingDAO {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectListSearch",type);
 	}
 	
-	public LodgingVO selectLodging(String lidx) {
+	public LodgingVO selectLodging(int lidx) {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectLodging",lidx);
 	}
 	
-	public List<RoomVO> selectRoomList(String lidx){
+	public List<RoomVO> selectRoomList(int lidx){
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectRoomList",lidx);
 	}
 	
-	public RoomVO selectRoom(String ridx) {
+	public RoomVO selectRoom(int ridx) {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectRoom", ridx);
 	}
 	

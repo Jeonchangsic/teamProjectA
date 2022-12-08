@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% List<RoomVO> roomlist =  (List<RoomVO>)request.getAttribute("roomlist"); %>
 <!DOCTYPE html>
 <html>
@@ -13,19 +14,34 @@
 <script src="https://ajax.googleapis.com/resources/css/3.6.1/jquery.min.js"></script>
 </head>
 <body style="overflow-x: hidden">
-    <div id="header">
-        <div class="top">
-            <h3>판매자페이지</h3>
-            <div id="manager">
-                <ul>
-                    <li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
-                    <li><a href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
-                    <li><a href="">객실관리</a></li>
-                    <li><a href="<%=request.getContextPath()%>/seller/sellerInquire.do">문의</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <header>
+		<div id="header">
+			<div class="top">
+				<h3>판매자페이지</h3>
+				<div id="manager">
+					<ul>
+						<li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
+						<li><a
+							href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
+						<li>
+							<c:if test="${login.lodging.equals('N') }">
+								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
+							</c:if>
+							<c:if test="${login.lodging.equals('Waiting') }">
+								<a>숙소등록</a>
+								alert("숙소 승인을 요청하였습니다");
+							</c:if>
+							<c:if test="${login.lodging.equals('Y') }">
+								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">객실관리</a>
+							</c:if>
+						</li>
+						<li><a
+							href="<%=request.getContextPath()%>/seller/sellerInquire.do">문의</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
     <main class="inner">
         <nav>
             <div class="nav">

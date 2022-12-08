@@ -182,6 +182,32 @@
 					FROM lodgingtb 
 					WHERE uidx = #{uidx}
 	</select>
+	<!-- 숙소 등록 -->
+	<insert id="lodgingUp" parameterType="lodgingVO">
+	INSERT INTO LODGINGTB (
+					, lodgingkind
+					, lodgingname
+					, lodgingaddr
+					, loca
+					, uidx
+					, limagename
+				)		
+				VALUES (
+					lidx_seq.nextval
+					, #{lodgingkind}
+					, #{lodgingname}
+					, #{lodgingaddr}
+					, #{local}
+					, #{uidx}
+					, #{limagename}
+				)
+	</insert>
+	<update id="waiting" parameterType="userVO">
+		UPDATE USERTB 
+		   SET lodging = 'waiting'
+		 WHERE uidx = #{uidx}
+				
+	</update>
 </mapper>
 
 

@@ -56,6 +56,7 @@
 					,userBirth
 					,userPassword
 					,userType
+					,lodging
 					FROM ausertb
 					WHERE userID = #{userID}
 					AND userPassword = #{userPassword}

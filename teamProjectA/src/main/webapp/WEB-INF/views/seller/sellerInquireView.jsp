@@ -2,7 +2,7 @@
 <%@page import="team.projectA.vo.QnaVO"%>
 <%@page import="java.util.List"%>
 <% QnaVO qnaOne = (QnaVO)request.getAttribute("vo"); %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -27,19 +27,34 @@
     </script>
 </head>
 <body>
-    <div id="header">
-        <div class="top">
-            <h3>판매자페이지</h3>
-            <div id="manager">
-                <ul>
-                    <li><a href="">home</a></li>
-                    <li><a href="">회원관리</a></li>
-                    <li><a href="">숙소관리</a></li>
-                    <li><a href="">리뷰관리</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <header>
+		<div id="header">
+			<div class="top">
+				<h3>판매자페이지</h3>
+				<div id="manager">
+					<ul>
+						<li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
+						<li><a
+							href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
+						<li>
+							<c:if test="${login.lodging.equals('N') }">
+								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
+							</c:if>
+							<c:if test="${login.lodging.equals('Waiting') }">
+								<a>숙소등록</a>
+								alert("숙소 승인을 요청하였습니다");
+							</c:if>
+							<c:if test="${login.lodging.equals('Y') }">
+								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">객실관리</a>
+							</c:if>
+						</li>
+						<li><a
+							href="<%=request.getContextPath()%>/seller/sellerInquire.do">문의</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
     <input type="hidden" name="uidx">
     <input type="hidden" name="QnA_idx">
     <main  class=inner style="padding-top:115px;">

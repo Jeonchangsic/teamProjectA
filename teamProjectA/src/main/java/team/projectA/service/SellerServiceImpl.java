@@ -90,7 +90,15 @@ public class SellerServiceImpl implements SellerService{
 		return SellerDao.roomInCh(vo);
 	}
 
+	@Override
+	public int lodgingUp(LodgingVO vo) {
+		return SellerDao.lodgingUp(vo);
+	}
 
+	@Override
+	public int waiting(UserVO vo) {
+		return SellerDao.waiting(vo);
+	}
 
 
 

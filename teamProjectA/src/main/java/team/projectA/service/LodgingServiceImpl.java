@@ -39,16 +39,16 @@ public class LodgingServiceImpl implements LodgingService {
 	}
 	
 	@Override
-	public LodgingVO selectLodging(String lidx) {
+	public LodgingVO selectLodging(int lidx) {
 		return lodgingDAO.selectLodging(lidx);
 	}
 	@Override
-	public List<RoomVO> selectRoomList(String lidx) {
+	public List<RoomVO> selectRoomList(int lidx) {
 		return lodgingDAO.selectRoomList(lidx);
 	}
 
 	@Override
-	public RoomVO selectRoom(String ridx) {
+	public RoomVO selectRoom(int ridx) {
 		return lodgingDAO.selectRoom(ridx);
 	}
 

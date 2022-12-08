@@ -38,7 +38,7 @@ public class reservController {
 	
 	
 	@RequestMapping(value = "/reserv/reserv.do", method = RequestMethod.GET)
-	public String reserv(Model model,String ridx, HttpServletRequest req) {
+	public String reserv(Model model,int ridx, HttpServletRequest req) {
 		
 				
 		RoomVO rvo = lodgingService.selectRoom(ridx);

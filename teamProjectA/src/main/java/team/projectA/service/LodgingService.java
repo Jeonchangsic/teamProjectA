@@ -13,9 +13,9 @@ public interface LodgingService {
 */
 	List<RoomVO> selectLodgingList(String lodgingkind, String type, String area);
 	List<RoomVO> selectListSearch(String type);
-	LodgingVO selectLodging(String lidx); 
-	List<RoomVO> selectRoomList(String lidx); 
-	RoomVO selectRoom(String ridx);
+	LodgingVO selectLodging(int lidx); 
+	List<RoomVO> selectRoomList(int lidx); 
+	RoomVO selectRoom(int ridx);
 	List<RoomVO> listSearch(HashMap hm)throws Exception;
 	int countSearch(SearchCriteria scri)throws Exception;
 }

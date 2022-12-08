@@ -127,7 +127,7 @@ public class LodgingController {
 	}
 	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
-	public String lodgingView(String lidx, Model model, HttpServletRequest req) {
+	public String lodgingView(int lidx, Model model, HttpServletRequest req) {
 			
 		LodgingVO vo = lodgingService.selectLodging(lidx);
 		

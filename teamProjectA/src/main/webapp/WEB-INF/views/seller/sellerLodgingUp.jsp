@@ -54,21 +54,34 @@
     </script>
 </head>
 <body>
-	<header id="head">
-        <div id="header">
-            <div class="header">
-                <h3>판매자페이지</h3>
-                <div id="manager">
-                    <ul>
-	                    <li><a href="<%=request.getContextPath() %>/index/index.do">home</a></li>
-	                    <li><a href="<%=request.getContextPath() %>/seller/sellerInfo.do">내정보</a></li>
-	                    <li><a href="<%=request.getContextPath() %>/seller/sellerRegi.do">객실관리</a></li>
-	                    <li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do">문의</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header><!-- //header -->
+	<header>
+		<div id="header">
+			<div class="top">
+				<h3>판매자페이지</h3>
+				<div id="manager">
+					<ul>
+						<li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
+						<li><a
+							href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
+						<li>
+							<c:if test="${login.lodging.equals('N') }">
+								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
+							</c:if>
+							<c:if test="${login.lodging.equals('Waiting') }">
+								<a>숙소등록</a>
+								alert("숙소 승인을 요청하였습니다");
+							</c:if>
+							<c:if test="${login.lodging.equals('Y') }">
+								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">객실관리</a>
+							</c:if>
+						</li>
+						<li><a
+							href="<%=request.getContextPath()%>/seller/sellerInquire.do">문의</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header><!-- //header -->
     <main>
     	<form>
 	    	<section id="lodgingtb" class="clearfix">

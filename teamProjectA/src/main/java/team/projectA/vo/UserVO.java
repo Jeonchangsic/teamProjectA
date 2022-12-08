@@ -12,12 +12,19 @@ public class UserVO{
 	private String userGender;
 	private String userBirth;
 	private String userType;
+	private String lodging;
 	
 	private List<QnaVO> userqnaList;
 	
 	
 	
 	
+	public String getLodging() {
+		return lodging;
+	}
+	public void setLodging(String lodging) {
+		this.lodging = lodging;
+	}
 	public String getUserType() {
 		return userType;
 	}

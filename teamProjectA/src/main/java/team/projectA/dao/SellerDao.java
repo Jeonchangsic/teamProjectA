@@ -71,7 +71,7 @@ public class SellerDao {
 		//System.out.println("ridx"+vo.getRidx());
 	//	int maxridx = sqlSession.selectOne("team.projectA.mapper.sellerMapper.roomupselect",vo);
 		//System.out.println("value:"+value);
-		//System.out.println("ridx값:"+maxridx);
+		//System.out.println("ridx媛�:"+maxridx);
 		
 		return vo.getRidx();
 		
@@ -90,6 +90,14 @@ public class SellerDao {
 	public LodgingVO lidxone(int uidx){
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.lidxone",uidx);
 		
+	}
+	
+	public int lodgingUp(LodgingVO vo) {
+		return sqlSession.insert("team.projectA.mapper.sellerMapper.lodgingUp", vo);
+	}
+
+	public int waiting(UserVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.update", vo);
 	}
 	
 	

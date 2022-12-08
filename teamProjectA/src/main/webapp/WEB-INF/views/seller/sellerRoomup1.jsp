@@ -1,58 +1,87 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
-<body>
-	<head>
-	    <meta charset="UTF-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>Document</title>
-	    <link href="<%=request.getContextPath()%>/resources/css/lodging_css/reset.css" rel="stylesheet">
-	    <link href="<%=request.getContextPath()%>/resources/css/seller_css/sellerRoomup1_style.css" rel="stylesheet">
-	    <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
-	    <link href="<%=request.getContextPath()%>/resources/css/jquery-ui.css">
-	    <script src="<%=request.getContextPath()%>/resources/css/jquery-ui.min.js"></script>
-	    
-	    <script>
-	    
-	    //체크박스 전체선택 
-	    function ch1() {
-	    	  for(i=0; i<document.all.fil.length; i++) {
-	    	   document.all.fil[i].checked = true;
-	    	  }
-	    	 };
-	    //체크박스 전체해제
-	    function ch2() {
-	  	  for(i=0; i<document.all.fil.length; i++) {
-	  	   document.all.fil[i].checked = false;
-	  	  }
-	  	 };
-	    
-	  	//체크박스 선택시 ny주기
-	    function checkBox(obj){
-	    	var checked = obj.checked;
-	    	if(checked){
-	    		obj.value="Y";
-	    	}else{ 
-	    		obj.value="N";
-	    		}
-	    	}; 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="<%=request.getContextPath()%>/resources/css/lodging_css/reset.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/css/seller_css/sellerRoomup1_style.css" rel="stylesheet">
+    <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
+    <link href="<%=request.getContextPath()%>/resources/css/jquery-ui.css">
+    <script src="<%=request.getContextPath()%>/resources/css/jquery-ui.min.js"></script>
+    
+    <script>
+    
+    //체크박스 전체선택 
+    function ch1() {
+    	  for(i=0; i<document.all.fil.length; i++) {
+    	   document.all.fil[i].checked = true;
+    	  }
+    	 };
+    //체크박스 전체해제
+    function ch2() {
+  	  for(i=0; i<document.all.fil.length; i++) {
+  	   document.all.fil[i].checked = false;
+  	  }
+  	 };
+    
+  	//체크박스 선택시 ny주기
+    function checkBox(obj){
+    	var checked = obj.checked;
+    	if(checked){
+    		obj.value="Y";
+    	}else{ 
+    		obj.value="N";
+    		}
+    	}; 
 
-		//추가정보입력
-	 	$(document).ready(function () {
-    		var maxAppend = 1;
-    		  $(document).on("click", "button[name='plus']", function () {
-				if (maxAppend >= 5) 
-					return; // 5번째부터는 append 안되고 return 시키기
-    		    $("#bottom_right").append("</br><input type='text' class='plus' placeholder='추가정보를 입력해주세요'></br>");
-				maxAppend++;
-    		  });
-    		});
-			   
-	    </script>
-	</head>
+	//추가정보입력
+ 	$(document).ready(function () {
+   		var maxAppend = 1;
+   		  $(document).on("click", "button[name='plus']", function () {
+			if (maxAppend >= 5) 
+				return; // 5번째부터는 append 안되고 return 시키기
+   		    $("#bottom_right").append("</br><input type='text' class='plus' placeholder='추가정보를 입력해주세요'></br>");
+			maxAppend++;
+   		  });
+   		});
+		   
+    </script>
+</head>
+<body>
+	<header>
+		<div id="header">
+			<div class="top">
+				<h3>판매자페이지</h3>
+				<div id="manager">
+					<ul>
+						<li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
+						<li><a
+							href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
+						<li>
+							<c:if test="${login.lodging.equals('N') }">
+								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
+							</c:if>
+							<c:if test="${login.lodging.equals('Waiting') }">
+								<a>숙소등록</a>
+								alert("숙소 승인을 요청하였습니다");
+							</c:if>
+							<c:if test="${login.lodging.equals('Y') }">
+								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">객실관리</a>
+							</c:if>
+						</li>
+						<li><a
+							href="<%=request.getContextPath()%>/seller/sellerInquire.do">문의</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
 	<main>
 	    <section id="head">
 	        <div id="header">
