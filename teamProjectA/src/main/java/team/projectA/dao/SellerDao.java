@@ -79,10 +79,8 @@ public class SellerDao {
 	}
 	
 	public int roomInCh(RoominVO vo) {
-		
-		System.out.println("pppppridx"+vo.getRidx());
-		int  value = sqlSession.insert("team.projectA.mapper.sellerMapper.roomInCh",vo);
-		return value;
+
+		return sqlSession.insert("team.projectA.mapper.sellerMapper.roomInCh",vo);
 		
 	}
 	

@@ -157,9 +157,21 @@
 	
 	<!--체크박스 등록-->	
 	<insert id = "roomInCh" parameterType="RoominVO">
-	
-
 				INSERT INTO ROOMINTB 
+				(roomin_idx
+				,ridx
+				,spa
+				,wifi
+				,tv
+				,refri
+				,bath
+				,iron
+				,minibar
+				,bathitem
+				,aircon
+				,shower
+				,dryer
+				,ricecooker)
 				VALUES(ROOMIN_IDX_SEQ.NEXTVAL
 				,#{ridx}
 				,#{spa}
@@ -176,6 +188,7 @@
 				,#{ricecooker})
 	
 	</insert>
+	
 	<!--객실등록 lidx값 -->
 	<select id="lidxone" resultType="LodgingVO" parameterType="int">
 					SELECT lidx 

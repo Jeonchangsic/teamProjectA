@@ -18,7 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-
+ 
 import team.projectA.service.SellerService;
 import team.projectA.vo.LodgingVO;
 
@@ -26,7 +26,7 @@ import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
 import team.projectA.vo.UserVO;
-
+ 
 /**
  * Handles requests for the application home page.
  */
@@ -37,8 +37,6 @@ public class SellerController {
 	@Autowired
 	private SellerService sellerService;
 
-	@Resource(name="uploadPath")
-	private String uploadPath;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -62,18 +60,18 @@ public class SellerController {
     //媛쒖씤�젙蹂� �닔�젙
 	@RequestMapping (value ="/sellerInfo1.do", method = RequestMethod.POST)
 	public String sellerInfo(UserVO vo, HttpServletRequest req)throws Exception{
-		 
+		    
 		HttpSession session2 = req.getSession();
 		UserVO login = (UserVO)session2.getAttribute("login");
 		vo.setUidx(login.getUidx());
 			
 		sellerService.sellerUpdate(vo);
-		
+
 		return "redirect: sellerInfo.do";
 			
 	}
 
-	//�닕�냼�젙蹂� �닔�젙
+	//�닕�냼�젙蹂� �닔
 	@RequestMapping (value ="/sellerInfo2.do", method = RequestMethod.POST)
 	public String sellerInfo(LodgingVO vo, HttpServletRequest req)throws Exception{
 		
@@ -189,21 +187,21 @@ public class SellerController {
 	@RequestMapping(value="/sellerRoomup1.do", method = RequestMethod.POST)
 	public String roomup1(RoomVO vo, MultipartFile file, RoominVO room) throws Exception {
 			
-		String fileRealName = file.getOriginalFilename(); //�뙆�씪紐낆쓣 �뼸�뼱�궪 �닔 �엳�뒗 硫붿꽌�뱶!
-		long size = file.getSize(); //�뙆�씪 �궗�씠利�
+		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
+		long size = file.getSize(); //파일 사이즈
 		
-		System.out.println("�뙆�씪紐� : "  + fileRealName);
-		System.out.println("�슜�웾�겕湲�(byte) : " + size);
-		//�꽌踰꾩뿉 ���옣�븷 �뙆�씪�씠由� fileextension�쑝濡� .jsp�씠�윴�떇�쓽  �솗�옣�옄 紐낆쓣 援ы븿
+		System.out.println("파일명 : "  + fileRealName);
+		System.out.println("용량크기(byte) : " + size);
+		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자 명을 구함
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-		String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images";
+		String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
 		
 		
 		/*
-		  �뙆�씪 �뾽濡쒕뱶�떆 �뙆�씪紐낆씠 �룞�씪�븳 �뙆�씪�씠 �씠誘� 議댁옱�븷 �닔�룄 �엳怨� �궗�슜�옄媛� 
-		  �뾽濡쒕뱶 �븯�뒗 �뙆�씪紐낆씠 �뼵�뼱 �씠�쇅�쓽 �뼵�뼱濡� �릺�뼱�엳�쓣 �닔 �엳�뒿�땲�떎. 
-		  ���씤�뼱瑜� 吏��썝�븯吏� �븡�뒗 �솚寃쎌뿉�꽌�뒗 �젙�궛 �룞�옉�씠 �릺吏� �븡�뒿�땲�떎.(由щ늼�뒪媛� ���몴�쟻�씤 �삁�떆)
-		  怨좎쑀�븳 �옖�뜕 臾몄옄瑜� �넻�빐 db�� �꽌踰꾩뿉 ���옣�븷 �뙆�씪紐낆쓣 �깉濡�寃� 留뚮뱾�뼱 以��떎.
+		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
+		  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
+		  타인어를 지원하지 않는 환경에서는 정산 동작이 되지 않습니다.(리눅스가 대표적인 예시)
+		  고유한 랜던 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
 		 */
 		
 		UUID uuid = UUID.randomUUID();
@@ -211,26 +209,29 @@ public class SellerController {
 		String[] uuids = uuid.toString().split("-");
 		
 		String uniqueName = uuids[0];
-		System.out.println("�깮�꽦�맂 怨좎쑀臾몄옄�뿴" + uniqueName);
-		System.out.println("�솗�옣�옄紐�" + fileExtension);
+		System.out.println("생성된 고유문자열" + uniqueName);
+		System.out.println("확장자명" + fileExtension);
 		
 		
 		
-		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid �쟻�슜 �쟾
+		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
 		
-		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // �쟻�슜 �썑
+		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
 		try {
-			file.transferTo(saveFile); // �떎�젣 �뙆�씪 ���옣硫붿꽌�뱶(filewriter �옉�뾽�쓣 �넀�돺寃� �븳諛⑹뿉 泥섎━�빐以��떎.)
+			file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
+		
+		vo.setRimage1(uniqueName+fileExtension); //파일이름 + 확장자 vo 에 넣어줌 (db입력)
 		int maxridx = sellerService.roomup(vo);
+		
 		room.setRidx(maxridx);
+		
 		int value = sellerService.roomInCh(room);
-System.out.println("asasavalue"+value);
+		
 		
 
 
