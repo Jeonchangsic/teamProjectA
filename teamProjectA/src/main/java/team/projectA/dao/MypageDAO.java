@@ -30,10 +30,4 @@ public class MypageDAO {
 	 public List<ReservVO> listPage(Criteria cri)throws Exception{
 		 return sqlsession.selectList("team.projectA.mapper.MypageMapper.listPage",cri);
 	 }
-	 public List<ReservVO> listSearch(SearchCriteria scri)throws Exception{
-		 return sqlsession.selectList("team.projectA.mapper.MypageMapper.listSearch",scri);
-	 }
-	 public int countSearch(SearchCriteria scri)throws Exception{
-		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.countSearch",scri);
-	 }
 }

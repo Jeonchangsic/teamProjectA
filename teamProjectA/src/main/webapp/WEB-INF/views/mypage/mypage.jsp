@@ -54,7 +54,7 @@
                         <td class="margin1">이름</td><td><input type="text" class="info" name="userName" value="${login.userName}" readonly></td> 
                     </tr>
                     <tr>
-                        <td class="margin1">비밀번호</td><td><input type="text" class="info"  name="userPassword" placeholder="변경할 비밀번호를 입력하세요." readonly></td>
+                        <td class="margin1">비밀번호</td><td><input type="text" class="info"  name="userPassword" placeholder="변경할 비밀번호를 입력하세요."></td>
                         <td><button>변경하기</button></td>
                     </tr>
                     <tr>
@@ -83,8 +83,8 @@
                     <c:forEach items="${list}" var="list">
 	                    <tr>
 	                        <td>${list.reserv_idx}</td>
-	                        <td>${list.reserv_lodging}</td>
-	                        <td>${list.reserv_name}</td>
+	                        <td>${list.ridx}</td>
+	                        <td>${list.uidx}</td>
 	                        <td>${list.reserv_startDate}  ${list.reserv_endDate}</td>
 	                        <td  class="ta_center">
 	                            <input type="button" value="예약취소"/>

@@ -55,13 +55,13 @@ public class MypageController {
 		 */
 		
 		List<ReservVO> list = null; 
-		list = mypageService.listSearch(scri);
+		list = mypageService.listPage(cri);
 		model.addAttribute("list",list);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		//pageMaker.setTotalCount(mypageService.reserv_count());
-		pageMaker.setTotalCount(mypageService.countSearch(scri));
+		pageMaker.setTotalCount(mypageService.reserv_count());
 		model.addAttribute("pageMaker",pageMaker);
 		
 		return "mypage/mypage";

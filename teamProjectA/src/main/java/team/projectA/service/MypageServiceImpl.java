@@ -39,22 +39,5 @@ public class MypageServiceImpl implements MypageService{
 	public List<ReservVO> listPage(Criteria cri) throws Exception {
 		return mypageDao.listPage(cri);
 	}
-
-
-	@Override
-	public List<ReservVO> listSearch(SearchCriteria scri) throws Exception {
-		return mypageDao.listSearch(scri);
-	}
-
-
-	@Override
-	public int countSearch(SearchCriteria scri) throws Exception {
-		return mypageDao.countSearch(scri);
-	}
-	 
-	
-	
-
-	
-
+	 	
 }

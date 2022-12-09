@@ -12,6 +12,5 @@ public interface MypageService {
 	List<ReservVO>reserv_list()throws Exception;
 	int reserv_count()throws Exception;
 	List<ReservVO> listPage(Criteria cri)throws Exception;
-	List<ReservVO> listSearch(SearchCriteria scri)throws Exception;
-	int countSearch(SearchCriteria scri)throws Exception;
+	
 }
