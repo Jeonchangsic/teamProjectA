@@ -35,7 +35,7 @@ public class reservController {
 	private LodgingService lodgingService;
 	@Autowired
 	private ReservService reservService;
-	
+	 
 	
 	@RequestMapping(value = "/reserv/reserv.do", method = RequestMethod.GET)
 	public String reserv(Model model,int ridx, HttpServletRequest req) {
