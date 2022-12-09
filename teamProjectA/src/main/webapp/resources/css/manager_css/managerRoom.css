@@ -42,7 +42,7 @@ img,iframe{vertical-align:top;}
                       bottom: 0;
                       left:0;}
               .nav li a:hover::before{width:100%;}
-              main div h3{font-weight: bold;
+              main h3{font-weight: bold;
                       font-size: 20px;
                       margin-top:120px;
                       margin-bottom: 20px;
@@ -72,8 +72,12 @@ img,iframe{vertical-align:top;}
               ul{text-align: center;
                       margin-top:10px;}
               
-              
-                      
+/*숙소 승인 요청*/
+td button {color:white; border:1px solid #5613F1; background:#5613F1;
+			padding:5px 15px; border-radius:5px;}
+
+
+/*--//숙소 승인 요청*/          
               input{ font-size: 15px;;
                       color:white;
                       background-color: rgb(86,19,241);}

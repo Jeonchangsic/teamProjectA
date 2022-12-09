@@ -9,7 +9,7 @@
 			FROM lodgingtb
 	</select>
 	
-	<select id="lodgingID" parameterType="String" resultType="RoomVO">
+	<select id="lodgingID" parameterType="int" resultType="RoomVO">
 		SELECT ridx
 			 , rtype
 			 , rnum
@@ -22,6 +22,37 @@
 		 FROM roomtb
 		WHERE lidx = #{lidx}
 	</select>
+	<!-- 숙소 요청 목록  -->
+	<select id="requestList" resultType="lodgingVO">
+		SELECT u.userid
+			 , u.username
+			 , u.uidx
+			 , l.lidx
+			 , l.limagename
+			 , l.lodgingname
+			 , l.lodgingkind
+			 , l.lodgingaddr
+		  FROM lodgingtb l, ausertb u
+		 WHERE l.uidx = u.uidx
+		   AND lodging = 'Waiting'
+	</select>
+	<!-- 숙소 승인  -->
+	<update id="approval" parameterType="int">
+		UPDATE ausertb
+		   SET lodging = 'Y'
+		 WHERE uidx = #{uidx}
+	</update>
+	<!-- 숙소 승인거부 -->
+	<delete id="requestDel" parameterType="int">
+		DELETE 
+		  FROM lodgingtb
+		 WHERE lidx = #{lidx}
+	</delete>
+	<update id="requestN" parameterType="int">
+		UPDATE ausertb
+		   SET lodging = 'N'
+		 WHERE uidx = #{uidx}
+	</update>
 </mapper>
 
 
