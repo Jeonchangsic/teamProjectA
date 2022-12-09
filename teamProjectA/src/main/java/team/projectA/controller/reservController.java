@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -57,13 +58,17 @@ public class reservController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "/reserv/reserv_pay.do", method = RequestMethod.POST)
-	public String reserv_pay(String merchant_uid, String amount, String name, String buyer_name)throws Exception {
+	public String reserv_pay(String merchant_uid, int ridx,HttpServletResponse response, HttpServletRequest req)throws Exception {
 		
-		HashMap<String,String> hm = new HashMap<String,String>();
-		hm.put("merchant_uid", merchant_uid);
-		hm.put("amount",amount);
-		hm.put("name",name);
-		hm.put("buyer_name",buyer_name);
+		HttpSession session = req.getSession();
+		UserVO userVO = (UserVO)session.getAttribute("login");
+		
+		HashMap<String,Object> hm = new HashMap<String,Object>();
+		hm.put("merchant_uid", merchant_uid); //예약번호
+		hm.put("ridx", ridx);
+		hm.put("uidx", userVO.getUidx());
+		
+		
 		
 		int vo = reservService.reservInsert(hm);
 		String result = Integer.toString(vo);
@@ -71,9 +76,7 @@ public class reservController {
 		System.out.println("result:"+result);
 		
 		  System.out.println("merchant_uid:"+ merchant_uid);
-		  System.out.println("amount:"+ amount); 
-		  System.out.println("name:"+ name);
-		  System.out.println("buyer_name:"+ buyer_name);
+		  
 		  
 		return result;
 	}

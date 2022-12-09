@@ -4,8 +4,8 @@
 		<mapper namespace="team.projectA.mapper.ReservMapper">
 		
 		<insert id="reservInsert" parameterType="HashMap">
-			INSERT INTO reservtb(reserv_idx,reserv_lodging,reserv_name,reserv_date,reserv_startDate,reserv_endDate,reserv_price,reserv_num)
-				VALUES(reserv_seq.NEXTVAL,#{name},#{buyer_name},SYSDATE,SYSDATE,SYSDATE,#{amount},#{merchant_uid})
+			INSERT INTO reservtb
+				VALUES(reserv_seq.NEXTVAL,#{uidx},#{ridx},SYSDATE,SYSDATE,SYSDATE,#{merchant_uid})
 		</insert>
 		
 </mapper>

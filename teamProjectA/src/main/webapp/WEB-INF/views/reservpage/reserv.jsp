@@ -19,6 +19,7 @@
     <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> <!--XE아이콘-->
 	 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	 
 
   <script>
         
@@ -44,13 +45,10 @@
                  msg += '숙소이름 : ' + rsp.name;
                  msg += '구매자이름 :' + rsp.buyer_name;
                  $.ajax({
-                	 url:"reserv_pay.do",
+                	 url:"reserv_pay.do?ridx=<%=rvo.getRidx()%>",
                 	 method:"post",
                 	 data:{
-                		 "merchant_uid": rsp.merchant_uid, 
-	                	 "amount": rsp.amount, 
-	                	 "name": rsp.name, 
-	                	"buyer_name": rsp.buyer_name
+                		 "merchant_uid": rsp.merchant_uid
                 	 } 
                  });
                  location.href ="<%=request.getContextPath()%>/mypage/info.do";

@@ -116,8 +116,7 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
                     <th>ID</th>
                     <th>예약장소</th>
                     <th>예약번호</th>
-                    <th>예약날짜</th>
-                    <th>금액</th>
+                    <th>예약날짜</th>	
                 </tr>
             </thead>
             <tbody>
