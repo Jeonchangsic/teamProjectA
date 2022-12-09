@@ -297,7 +297,7 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 	
 	
 	<!-- 숙소상세 -->
-	<select id="selectLodging" parameterType="String" resultType="lodgingVO">
+	<select id="selectLodging" parameterType="int" resultType="lodgingVO">
 		SELECT lidx
 			 , limagename
 			 , lodgingname
@@ -308,7 +308,7 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		 FROM lodgingtb
 		WHERE lidx = #{lidx}
 	</select>
-	<select id="selectRoomList" parameterType="String" resultType="roomVO">
+	<select id="selectRoomList" parameterType="int" resultType="roomVO">
 		SELECT ridx
 			 , rtype
 			 , rnum
@@ -321,7 +321,7 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		 FROM roomtb
 		WHERE lidx = #{lidx}
 	</select>
-	<select id="selectRoom" parameterType="String" resultType="roomVO">
+	<select id="selectRoom" parameterType="int" resultType="roomVO">
 		SELECT r.ridx
 			 , r.rtype
 			 , r.rnum
