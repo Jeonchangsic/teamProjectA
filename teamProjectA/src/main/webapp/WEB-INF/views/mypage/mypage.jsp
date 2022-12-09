@@ -88,7 +88,7 @@
 	                        <td>${list.reserv_startDate}  ${list.reserv_endDate}</td>
 	                        <td  class="ta_center">
 	                            <input type="button" value="예약취소"/>
-	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do'"/>
+	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do?reserv_idx=${list.reserv_idx}'"/>
 	                        </td>
 	                    </tr>
                     </c:forEach>

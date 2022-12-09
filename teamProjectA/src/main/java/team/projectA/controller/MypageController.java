@@ -43,10 +43,16 @@ public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
+	
 	//예약내역 리스트 출력 검색
 	@RequestMapping(value = "/info.do", method = RequestMethod.GET)
-	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Criteria cri, Model model)throws Exception {
+	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Criteria cri, Model model,HttpServletRequest req/*,ReservVO vo*/)throws Exception {
 		
+		/*
+		 * HttpSession session = req.getSession(); UserVO userVO =
+		 * (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
+		 * vo.setUidx(userVO.getUidx());
+		 */
 		
 		List<ReservVO> list = null; 
 		list = mypageService.listSearch(scri);
