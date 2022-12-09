@@ -157,22 +157,8 @@
 	
 	<!--체크박스 등록-->	
 	<insert id = "roomInCh" parameterType="RoominVO">
-				INSERT INTO ROOMINTB 
-				(roomin_idx
-				,ridx
-				,spa
-				,wifi
-				,tv
-				,refri
-				,bath
-				,iron
-				,minibar
-				,bathitem
-				,aircon
-				,shower
-				,dryer
-				,ricecooker)
-				VALUES(ROOMIN_IDX_SEQ.NEXTVAL
+				INSERT INTO ROOMINTB VALUES(
+				ROOMIN_IDX_SEQ.NEXTVAL
 				,#{ridx}
 				,#{spa}
 				,#{wifi}
@@ -185,7 +171,12 @@
 				,#{aircon}
 				,#{shower}
 				,#{dryer}
-				,#{ricecooker})
+				,#{ricecooker}
+				,#{addinfo1}
+				,#{addinfo2}
+				,#{addinfo3}
+				,#{addinfo4}
+				,#{addinfo5})
 	
 	</insert>
 	

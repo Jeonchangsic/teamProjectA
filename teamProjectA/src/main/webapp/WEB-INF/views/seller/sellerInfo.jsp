@@ -156,7 +156,6 @@
 				</tr>
 
 
-
 				<tr>
 					<td>이메일</td>
 					<td><input type='text' name="userEmail" value="<%=lodging.getUserEmail() %>" autoComplete="off"></td>
@@ -167,15 +166,13 @@
 
 				<tr>
 					<td>전화번호</td>
-					<td><input type='text' name="userPhone"
-						value="<%=lodging.getUserPhone() %>"></td>
+					<td><input type='text' name="userPhone" value="<%=lodging.getUserPhone() %>"></td>
 					<td><button type="button" class="btn_size" id="phoneFn">변경</button></td>
 				</tr>
 
 				<tr>
 					<td>주소</td>
-					<td><input type='text' name="lodgingaddr"
-						value="<%=lodging.getLodgingaddr()%>"></td>
+					<td><input type='text' name="lodgingaddr" value="<%=lodging.getLodgingaddr()%>"></td>
 					<td><button type="button" class="btn_size" id="addrFn">변경</button></td>
 				</tr>
 

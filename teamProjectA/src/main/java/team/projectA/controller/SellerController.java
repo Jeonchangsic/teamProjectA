@@ -185,7 +185,7 @@ public class SellerController {
 	
 	
 	@RequestMapping(value="/sellerRoomup1.do", method = RequestMethod.POST)
-	public String roomup1(RoomVO vo, MultipartFile file, RoominVO room) throws Exception {
+	public String roomup1(RoomVO vo, MultipartFile file, RoominVO room, HttpServletRequest req) throws Exception {
 			
 		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
 		long size = file.getSize(); //파일 사이즈
@@ -230,7 +230,9 @@ public class SellerController {
 		
 		room.setRidx(maxridx);
 		
-		int value = sellerService.roomInCh(room);
+		sellerService.roomInCh(room);
+		
+		String[] addinfoArray = req.getParameterValues("addinfo");
 		
 		
 
