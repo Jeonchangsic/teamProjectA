@@ -89,7 +89,8 @@
 	    		<div class="top">
 	    			<div class="top_left">
 	    				<div class="lodging_img">
-	    					<button>사진업로드</button>
+	    					<div>사진등록</div>
+	    					<input type="file" name="limagename">
 	   					</div>
 	    			</div>
 	    			<div class="top_right">
@@ -186,7 +187,7 @@
 	    					</tr>
 	    					<tr>
 	    						<td id="intro">숙소소개</td>
-	    						<td><textarea name="limagename" cols="50" rows="10"></textarea></td>
+	    						<td><textarea name="" cols="50" rows="10"></textarea></td>
 	    					</tr>
 	    				</table>
 	    			</div><!-- //top_right -->    		

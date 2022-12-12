@@ -23,8 +23,9 @@ main {width:1024px; margin:0 auto;}
 .top{margin-top:80px;}
 .top_left, .mid_left{width:50%; float:left;}
 .lodging_img{border:1px solid #000; width:400px; height:360px;
-			margin-left:40px;
-			display:flex; justify-content:center; align-items:center;}
+			margin-left:40px; font-weight:bold;}
+.lodging_img > div{position:relative; top:135px; left:155px;}
+.lodging_img > input{position:relative; top:170px; left:150px;}
 .top_right, .mid_right{width:50%; float:right;}  
 .top_right table{margin-top:15px; margin-left:30px;}       
 .top_right td{padding-bottom:20px;}         

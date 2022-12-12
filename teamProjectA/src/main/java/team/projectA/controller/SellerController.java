@@ -302,7 +302,7 @@ public class SellerController {
 	
 		return "seller/sellerLodgingModify";
 	}
-	
+
 	@RequestMapping(value="/sellerLodgingUp.do", method=RequestMethod.GET)
 	public String sellerLodgingUp(Model model, HttpServletRequest req) {
 		
@@ -310,22 +310,63 @@ public class SellerController {
 		UserVO login = (UserVO)session.getAttribute("login");
 		model.addAttribute("vo", login);		
 		
+		//user lodging이 "Waiting"이면 페이지 접속 불가
+		if(login.getLodging().equals("Waiting") || login.getLodging().equals("Y")) {
+			//????????
+		}
+		
 		return "seller/sellerLodgingUp";
 	}
 	
 	@RequestMapping(value="/sellerLodgingUp.do", method=RequestMethod.POST)
-	public String sellerLodgingUp(LodgingVO vo, HttpServletRequest req) {
+	public String sellerLodgingUp(LodgingVO vo, HttpServletRequest req, MultipartFile file) {
 		
 		sellerService.lodgingUp(vo);
 		sellerService.waiting(vo);
 		
+		//Waiting으로 변경된 user데이터 session에 담기
 		HttpSession session = req.getSession();
 		UserVO login = (UserVO)session.getAttribute("login");
 		
 		login.setLodging("Waiting");
 		
 		session.setAttribute("login", login);
-
+		
+		//이미지(파일) 업로드
+		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드
+		long size = file.getSize(); //파일 사이즈
+		
+		System.out.println("파일명 : "  + fileRealName);
+		System.out.println("용량크기(byte) : " + size);
+		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자명을 구함
+		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
+		String uploadFolder = "C:\\Users\\798\\Documents\\workspace-sts-3.9.13.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\\\lodging_images";
+		
+		/*
+		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
+		  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
+		  타인어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
+		  고유한 랜덤 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
+		 */
+		
+		UUID uuid = UUID.randomUUID();
+		System.out.println(uuid.toString());
+		String[] uuids = uuid.toString().split("-");
+		
+		String uniqueName = uuids[0];
+		System.out.println("생성된 고유문자열" + uniqueName);
+		System.out.println("확장자명" + fileExtension);
+		
+		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
+		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+		try {
+			file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		return "redirect:sellerInfo.do";
 	}
 	
