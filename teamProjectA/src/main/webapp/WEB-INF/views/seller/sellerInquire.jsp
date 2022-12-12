@@ -34,7 +34,7 @@
 								<a href="javascript:alert('이미 숙소 승인을 요청하였습니다.');">숙소등록</a>
 							</c:if>
 							<c:if test="${login.lodging.equals('Y') }">
-								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">객실관리</a>
+								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">숙소관리</a>
 							</c:if>
 						</li>
 						<li><a

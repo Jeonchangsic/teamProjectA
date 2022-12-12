@@ -17,6 +17,7 @@
 						, l.lodgingname
 						, l.lodgingaddr
 						, l.lidx
+						, l.limagename
 					FROM ausertb u
 					LEFT OUTER JOIN lodgingtb l
 					ON u.uidx = l.uidx 

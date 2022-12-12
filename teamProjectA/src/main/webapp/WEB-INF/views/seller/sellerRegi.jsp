@@ -32,7 +32,7 @@
 								<a href="javascript:alert('이미 숙소 승인을 요청하였습니다.');">숙소등록</a>
 							</c:if>
 							<c:if test="${login.lodging.equals('Y') }">
-								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">객실관리</a>
+								<a href="<%=request.getContextPath()%>/seller/sellerRegi.do">숙소관리</a>
 							</c:if>
 						</li>
 						<li><a
@@ -45,7 +45,14 @@
     <main class="inner">
         <nav>
             <div class="nav">
-                <li><a href="">객실관리</a></li>
+                <h3>숙소정보</h3>
+                <div id="info">
+					<div><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${lodging2.limagename}"/></div>
+					<div id="lodgingName">${lodging2.lodgingname}</div>
+					<div><button type="button">수정</button></div>
+					<div><button type="button">삭제</button></div>
+				</div>
+				
             </div>
         </nav>
         <div>

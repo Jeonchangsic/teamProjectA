@@ -40,7 +40,7 @@
 	                    <ul>
 		                    <li><a href="<%=request.getContextPath() %>/index/index.do">home</a></li>
 		                    <li><a href="<%=request.getContextPath() %>/seller/sellerInfo.do">내정보</a></li>
-		                    <li><a href="<%=request.getContextPath() %>/seller/sellerRegi.do">객실관리</a></li>
+		                    <li><a href="<%=request.getContextPath() %>/seller/sellerRegi.do">숙소관리</a></li>
 		                    <li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do">문의</a></li>
 	                    </ul>
 	                </div>

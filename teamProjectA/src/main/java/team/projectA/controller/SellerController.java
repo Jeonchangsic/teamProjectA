@@ -141,19 +141,24 @@ public class SellerController {
 	}
 	
 	//객실 리스트
-	@RequestMapping(value = "/sellerRegi.do", method = RequestMethod.GET)
-	public String Regi(Locale locale, Model model, HttpServletRequest req, RoomVO vo) {
-		
-	
-		HttpSession session = req.getSession();
-		UserVO login = (UserVO)session.getAttribute("login");	
-		List<RoomVO> roomlist = sellerService.roomlist(login.getUidx());
-		
-		model.addAttribute("roomlist", roomlist);
-		
-		
-		return "seller/sellerRegi";
-	}
+	   @RequestMapping(value = "/sellerRegi.do", method = RequestMethod.GET)
+	   public String Regi(Locale locale, Model model, HttpServletRequest req, RoomVO vo, LodgingVO lodging ) {
+	      
+	   
+	      HttpSession session = req.getSession();
+	      UserVO login = (UserVO)session.getAttribute("login");   
+	      List<RoomVO> roomlist = sellerService.roomlist(login.getUidx());
+	      
+	      LodgingVO lodging2 = sellerService.SellerOne(login.getUidx());
+	      
+	      model.addAttribute("roomlist", roomlist);
+	      model.addAttribute("lodging2",lodging2);
+	      
+
+	      
+	      return "seller/sellerRegi";
+	   }
+	   
 	
 	//게시글 삭제 (redirect해야해서 가상경로 따로 설정함)
 	@RequestMapping(value = "/sellerRegi2.do", method = RequestMethod.GET)
