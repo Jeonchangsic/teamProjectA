@@ -302,6 +302,7 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 			 , limagename
 			 , lodgingname
 			 , lodgingaddr
+			 , intro
 			 , satis
 			 , reviewnum
 			 , uidx		

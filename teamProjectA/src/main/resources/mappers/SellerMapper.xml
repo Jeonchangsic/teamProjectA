@@ -197,6 +197,7 @@
 					, local
 					, uidx
 					, limagename
+					, intro
 				)		
 				VALUES (
 					lidx_seq.nextval

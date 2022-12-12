@@ -2,7 +2,7 @@ package team.projectA.vo;
 
 public class LodgingVO extends UserVO{ 
 	
-	private String lidx;
+	private int lidx;
 	private String lodgingkind;
 	private String lodgingname;
 	private String lodgingaddr;
@@ -10,11 +10,12 @@ public class LodgingVO extends UserVO{
 	private int reviewnum;
 	private int local;
 	private String limagename;
+	private String intro;
 	
-	public String getLidx() {
+	public int getLidx() {
 		return lidx;
 	}
-	public void setLidx(String lidx) {
+	public void setLidx(int lidx) {
 		this.lidx = lidx;
 	}
 	public String getLodgingkind() {
@@ -58,6 +59,12 @@ public class LodgingVO extends UserVO{
 	}
 	public void setLimagename(String limagename) {
 		this.limagename = limagename;
+	}
+	public String getIntro() {
+		return intro;
+	}
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 	
 	

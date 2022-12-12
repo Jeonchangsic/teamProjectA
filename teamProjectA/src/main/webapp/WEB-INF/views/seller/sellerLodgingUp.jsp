@@ -187,7 +187,7 @@
 	    					</tr>
 	    					<tr>
 	    						<td id="intro">숙소소개</td>
-	    						<td><textarea name="" cols="50" rows="10"></textarea></td>
+	    						<td><textarea name="intro" cols="50" rows="10"></textarea></td>
 	    					</tr>
 	    				</table>
 	    			</div><!-- //top_right -->    		
