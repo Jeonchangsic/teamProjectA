@@ -12,54 +12,119 @@
     <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
     <!-- jQuery -->
     <script src="<%=request.getContextPath() %>/resources/css/jquery-3.6.1.min.js"></script>
-    <script>
+     <script>
     
 	    //아이디 중복체크
-    	function idForm(){
-	    var userID = $("#id").val();
-	    $.ajax({
-	    	url:"userForm.do",
-	    	type:"post",
-	    	data:"userID="+userID,
-	    	success:function(data){
-	    		$("#id").blur(function(){
-	    		if(data != 1 && userID.length > 0){ 				//사용가능한 아이디일 경우
-	    			$(".id_ok").css("display","inline-block");
-	    			$(".id_no").css("display","none");
-	    		}else if(data == 1 && userID.length > 0){ 						//중복되는 아이디일 경우
-	    			$(".id_ok").css("display","none");
-	    			$(".id_no").css("display","inline-block");
-	    			
-	    		}else{
-	    			$(".id_ok").css("display","none");
-	    			$(".id_no").css("display","none");
-	    		}
-	    		});
-	    	},
-	    	error:function(){
-	    		alert("에러입니다.");
-	    	}
-	    	});
-	    };
+	    //아이디의 길이가 8~17자리에 일치하는 경우 ajax통신 후 아이디 중복검사 
+	    $(document).ready(function(){
+	    	$("#id").blur(function(){
+	   		 var userID = $(this).val();
+		    if(userID.length > 7 && userID.length < 16){
+			    $.ajax({
+			    	url:"userForm.do",
+			    	type:"post",
+			    	data:"userID="+userID,
+			    	success:function(data){
+			    		//console.log("data");
+				    		if(data != 1){ 								//중복되는 아이디가 없는경우
+					    		$(".id_ok").css("display","inline-block");
+				    			$(".id_no").css("display","none");
+				    			$(".id_no2").css("display","none");
+			    			}else if(data == 1){							 //중복되는 아이디가 있는경우
+				    			$(".id_ok").css("display","none");
+				    			$(".id_no").css("display","inline-block");
+				    			$(".id_no2").css("display","none");
+				    			$("#id").val("");
+		    				}else{
+		    					$(".id_ok").css("display","none");
+				    			$(".id_no").css("display","none");
+				    			$(".id_no2").css("display","none");
+		    				}	
+			    	},
+			    	error:function(){
+			    		alert("에러입니다.");
+			    	}
+			    	});
+		    }else {  			 //아이디의 길이가 일치하지 않는 경우 ajax통신 안함
+					$(".id_ok").css("display","none");
+					$(".id_no").css("display","none");
+					$(".id_no2").css("display","inline-block");
+			}
+	    	
+	    });
+	    })
 	    
-	    //비밀번호 확인
-	    function pwForm(){
+	    
+	    //비밀번호 설정 검사
+	    $(document).ready(function(){
+	    	$("#pwd").blur(function(){
 	    	 var pwd = $("#pwd").val();
-	    	var repwd = $("#repwd").val(); 
-	    	if(pwd == repwd && pwd.length > 0 && repwd.length > 0){
+	    	 var num = pwd.search(/[0-9]/g);
+	    	 var eng = pwd.search(/[a-z]/ig);
+	    	 var spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+	    	
+	    	if(pwd.length < 8 || pwd.length > 20){			 //비밀번호의 길이가 일치하지 않는경우
+	    		$(".pw_no2").css("display","inline-block");
+	    		$(".pw_no3").css("display","none");
+	    		$(".pw_no4").css("display","none");
+	    		$("#pwd").val("");
+	    	}else if((num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0)){ //특문,영문,숫자를 조합한 비밀번호가 아닌경우 
+	    		$(".pw_no2").css("display","none");
+	    		$(".pw_no3").css("display","inline-block");
+	    		$(".pw_no4").css("display","none");
+	    		$("#pwd").val("");
+	    	}else{//비밀번호 설정이 일치하는경우
+		    		$(".pw_no2").css("display","none");
+		    		$(".pw_no3").css("display","none");
+		    		$(".pw_no4").css("display","inline-block");
+	    	}
+	    	})
+	    	});
+	    
+	    //비밀번호 확인 검사
+	    	function pwdForm(){
+	    		var pwd = $("#pwd").val();
+		    	var repwd = $("#repwd").val();
+		    	
+		    	if(pwd == repwd){
+		    		$(".pw_ok").css("display","inline-block");
+		    		$(".pw_no").css("display","none");
+		    	}else{
+		    		$(".pw_ok").css("display","none");
+		    		$(".pw_no").css("display","inline-block");
+		    	}
+	    	}
+	    	
+	    	/* if(pwd.length > 7 && pwd.length < 21){			 //비밀번호의 길이가 일치하는 경우
 	    		$(".pw_ok").css("display","inline-block");
 	    		$(".pw_no").css("display","none");
-	    	}else if(pwd != repwd && pwd.length > 0 && repwd.length > 0){
+	    		$(".pw_no2").css("display","none");
+	    	}else if(pwd.length < 8 && pwd.length > 20){	//비밀번호 길이가 일치하지 않는 경우
+	    		$(".pw_ok").css("display","none");
+	    		$(".pw_no").css("display","none");
+	    		$(".pw_no2").css("display","inline-block");
+	    		$("#pwd").val("");
+	    	} */
+	    	
+	    	
+	    	
+	    	/* if(pwd == repwd && pwd.length > 0 && repwd.length > 0){ //비밀번호와 비밀번호 확인의 값이 일치하는 경우
+	    		$(".pw_ok").css("display","inline-block");
+	    		$(".pw_no").css("display","none");
+	    		$(".pw_no2").css("display","none");	
+	    	}else if(pwd != repwd && pwd.length > 0 && repwd.length > 0){ //비밀번호와 비밀번호 확인의 값이 일치하지 않는 경우
 	    		$(".pw_ok").css("display","none");
 	    		$(".pw_no").css("display","inline-block");
-	    		
+	    		$(".pw_no2").css("display","none");
+	    	}else if(pwd.length < 8 || pwd.length > 20){ //비밀번호의 값이 8보다 작거나 20보다 큰 경우 
+	    		$(".pw_ok").css("display","none");
+	    		$(".pw_no").css("display","none");
+	    		$(".pw_no2").css("display","inline-block");	
 	    	}else{
 	    		$(".pw_ok").css("display","none");
 	    		$(".pw_no").css("display","none");
-	    	};
-	    	};
-	    
-	    	
+	    		$(".pw_no2").css("display","none");
+	    	}; */
     </script>
     
     <!-- 이메일인증 스크립트 -->
@@ -68,16 +133,15 @@
     $(function(){
     	
     	$(".mail_check_button").click(function(){
-    		var email = $(".mail_input").val(); //입력한 이메일 값 
-    		var cehckBox = $(".mail_check_input");
-    		var boxWrap = $(".mail_check_input_box");
+    		var email = $(".mail_input").val(); //입력한 이메일 
+    		var cehckBox = $(".mail_check_input"); //인증번호 입력란
+    		var boxWrap = $(".mail_check_input_box"); //인증번호 입력영역
     		var code ="";
     		$.ajax({
     			
     			type:"GET",
     			url:"mailCheck?email="+ email,
     			success:function(data){
-    				 console.log(data); 
     				cehckBox.attr("disabled",false); // attr : cehckBox의 속성을 변경
     				boxWrap.attr("id","mail_check_input_box_true");
     				codetemp = data; //컨트롤러에서 받은 리턴값(난수)을 변수에 넣는다.
@@ -90,77 +154,18 @@
     		var checkResult = $("#mail_check_input_box_warn"); //비교결과
     		
     		if(inputcode == codetemp){
-    			checkResult.html("인증번호가 일치합니다.");
-    			checkResult.attr("class","correct");
+    			$(".email_ok").css("display","inline-block");
+	    		$(".email_no").css("display","none");
     		}else{
-    			checkResult.html("인증번호가 틀립니다.");
-    			checkResult.attr("class","incorrect");
+    			$(".email_ok").css("display","none");
+	    		$(".email_no").css("display","inline-block");
+	    		$(".mail_check_input").val("");
     		}
     	});
     	
     });
     </script>
     
-    
-    <!-- 모달 스타일 -->
-   <style>
-      .modal {
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100%;
-
-        display: none;
-
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-
-      .modal.show {
-        display: block;
-      }
-
-      .modal_body {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-
-        width: 400px;
-        height: 250px;
-		line-height:35px;
-        padding: 40px;
-
-        text-align: center;
-
-        background-color: rgb(255, 255, 255);
-        border-radius: 10px;
-        box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
-        transform: translateX(-50%) translateY(-50%);
-      }
-      .correct{
-      	color: green;
-      	font-weight:bold;
-      }
-      .incorrect{
-      	color: red;
-      	font-weight:bold;
-      }
-     #joinText{
-     	padding-top:20px;
-     }
-     
-     #mail_check_input{
-     	width:180px;
-     	height:21px;
-     	
-     }
-     #mail_check_button{
-     	border:1px solid #000;
-     	background-color:rgba(0,0,0,0.10);
-     }
-    </style>
 </head>
 <body>
 	<div class="modal">
@@ -189,8 +194,9 @@
 	                    <td class="contentsArea">아이디</td>
 	                    <td class="inputArea">
 	                        <input type="text" name="userID" id="id" class="inputArea" placeholder="아이디를 입력하세요." required oninput="idForm()">
-	                        <span class="id_ok" style="color:green; display:none; margin-top:4px; font-weight:bold;">사용 가능한 아이디입니다.</span>
-	                        <span class="id_no" style="color:red; display:none; margin-top:4px; font-weight:bold;">중복된  아이디입니다!</span>
+	                        <span class="id_ok">사용 가능한 아이디입니다.</span>
+	                        <span class="id_no">중복된  아이디입니다!</span>
+	                        <span class="id_no2">8자리 ~ 15자리 이내로 입력하여 주세요.</span>
 	                    </td>
 	                    <td></td>
 	                </tr>
@@ -198,14 +204,17 @@
 	                    <td class="contentsArea" >비밀번호</td>
 	                    <td class="inputArea">
 	                        <input type="password" name="userPassword" id="pwd" class="inputArea" placeholder="비밀번호를 입력하세요." required>
+	                    	<span class="pw_no2">8자리 ~20자리 이내로 입력하여 주세요.</span>
+	                        <span class="pw_no3">영문,숫자,특수문자를 혼합하여 주세요.</span>
+	                        <span class="pw_no4">안전한 비밀번호 입니다.</span>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td class="contentsArea">비밀번호확인</td>
 	                    <td class="inputArea">
-	                        <input type="password" id="repwd" class="inputArea" placeholder="비밀번호 확인" required oninput="pwForm()">
-	                        <span class="pw_ok" style="color:green; display:none; font-weight:bold;">비밀번호가 일치합니다.</span>
-	                        <span class="pw_no" style="color:red; display:none;  font-weight:bold;">비밀번호 불일치!</span>
+	                        <input type="password" id="repwd" class="inputArea" placeholder="비밀번호 확인" required oninput="pwdForm()">
+	                       <span class="pw_ok">비밀번호가 일치합니다.</span>
+	                        <span class="pw_no">비밀번호 불일치!</span>
 	                    </td>
 	                </tr>
 	                <tr>
@@ -223,8 +232,8 @@
 	                </tr>
 	                <tr>
 		                <td></td>
-		                <td class="mail_check_input_box"><!-- 인증번호 입력란 -->
-		                	<input id="mail_check_input" class="mail_check_input" disabled="disabled">
+		                <td class="mail_check_input_box">
+		                	<input id="mail_check_input" class="mail_check_input" disabled="disabled" required><!-- 인증번호 입력란 -->
 		                </td>		
 		                <td id="mail_check_button" class="mail_check_button"><!-- 메일 체크 버튼 -->
 		                    	<span style="cursor:pointer;">인증번호 전송</span>
@@ -232,7 +241,11 @@
 	                </tr>
 	                <tr>
 	                	<td></td>
-	                	<td><span id="mail_check_input_box_warn"></span></td>
+	                	<td>
+	                		<span id="mail_check_input_box_warn"></span>
+	                		<span class="email_ok" style="display:none;">인증번호가 일치합니다.</span>
+	                		<span class="email_no" style="display:none;">인증번호가 다릅니다.</span>
+	                	</td>
 	                	<td></td>
 	                </tr>
 	                <tr>
@@ -244,8 +257,8 @@
 	                <tr>
 	                    <td class="contentsArea">성별</td>
 	                    <td>
-	                        남성 <input type="radio" name="userGender" value="남자" id="man" >
-	                        여성 <input type="radio" name="userGender" value="여자 " >
+	                        남성 <input type="radio" name="userGender" value="남자" id="man" required>
+	                        여성 <input type="radio" name="userGender" value="여자 " required>
 	                    </td>
 	                </tr>
 	                <tr>

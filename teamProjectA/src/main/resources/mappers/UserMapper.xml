@@ -23,8 +23,18 @@
 						, #{userBirth}
 						)
 		</insert>
+		<!-- 판매자 회원가입 -->
 		<insert id="sellerUserInsert" parameterType="userVO">
-			INSERT INTO AUSERTB 
+			INSERT INTO AUSERTB (
+					uidx
+					,userID
+					,userPassword
+					,userName
+					,userEmail
+					,userPhone
+					,userGender
+					,userBirth
+					,userType)
 				VALUES(
 					AUIDX_SEQ.NEXTVAL
 					, #{userID}
