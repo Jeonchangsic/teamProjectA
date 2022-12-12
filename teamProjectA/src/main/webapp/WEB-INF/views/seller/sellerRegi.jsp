@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/sellerRegi.css">
 <script src="https://ajax.googleapis.com/resources/css/3.6.1/jquery.min.js"></script>
+
 </head>
 <body style="overflow-x: hidden">
     <header>
@@ -72,14 +73,26 @@
 	                    <td><%=room.getRprice() %></td>
 	                    <td><%=room.getRnum()%></td>
 	                    <td>
-	                       <button value="수정">수정</button>
-	                       <a href="<%=request.getContextPath() %>/seller/sellerRegi2.do?ridx=<%=room.getRidx()%>">삭제</a>
+	                       <button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=<%=room.getRidx()%>'">수정</button>
+	                       <button type="button" onclick="delFn()">삭제</button>
 	                    </td>  
+	                    <!--객실 삭제 안내 -->
+	                    <script>
+						function delFn() {
+						    if (!confirm("해당 객실을 삭제하시겠습니까?")) {
+						        alert("삭제가 취소되었습니다.");
+						    } else {
+						        alert("삭제가 완료되었습니다.");
+						        location = "sellerRegi2.do?ridx=<%=room.getRidx()%>";
+						    }
+						}
+						</script>
 	                </tr>
 	             <%} %>         
 	            </tbody>
 	        </table>
         </form>
+
         <ul>
             <li>
                 <a href="">1</a>

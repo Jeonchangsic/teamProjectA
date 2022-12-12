@@ -2,6 +2,7 @@ package team.projectA.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,6 +55,10 @@ public class ManagerController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		//¼÷¼Ò¿äÃ»¸ñ·Ï
+		List<LodgingVO> requestList = managerService.requestList();
+		model.addAttribute("requestList", requestList);
+		
 		//¼÷¼Ò ÀÎ±âÃßÃµ
 		List<LodgingVO> lodgingCategory = null;
 		lodgingCategory = managerService.lodgingCategory();
@@ -63,6 +68,24 @@ public class ManagerController {
 		
 		return "manager/managerRoom";
 	}
+	//¼÷¼Ò½ÂÀÎ
+	@RequestMapping(value="/requestApproval.do", method = RequestMethod.POST)
+	public String requestApproval(int uidx) {
+		
+		managerService.approval(uidx);
+		
+		return "redirect:managerRoom.do";
+	}
+	//¼÷¼Ò½ÂÀÎ°ÅºÎ
+	@RequestMapping(value="/requestDel.do", method = RequestMethod.POST)
+	public String requestDel(int uidx, int lidx) {
+		
+		managerService.requestDel(lidx);
+		managerService.requestN(uidx);
+		
+		return "redirect:managerRoom.do";
+	}
+	
 	@RequestMapping(value = "/managerReview.do", method = RequestMethod.GET)
 	public String Review(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -81,7 +104,7 @@ public class ManagerController {
 	
 	@ResponseBody
 	@RequestMapping(value="/roomCategoryChange.do", method= RequestMethod.GET)
-	public List<RoomVO> lodgingCategory(@RequestParam("lidx") String lidx){
+	public List<RoomVO> lodgingCategory(@RequestParam("lidx") int lidx){
 		/* System.out.println("data:"+lidx); */  
 		List<RoomVO> rlist = (List<RoomVO>)managerService.selectRoomList(lidx);
 		

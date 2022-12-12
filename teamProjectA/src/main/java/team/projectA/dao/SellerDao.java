@@ -40,9 +40,7 @@ public class SellerDao {
 	        
 	    return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", uidx);
 	 }
-	    
-	
-	
+	    	
 	public int qnaInsert(QnaVO vo) {
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.qnaInsert", vo);
 			
@@ -66,27 +64,15 @@ public class SellerDao {
 	public int roomup(RoomVO vo) {
 		
 		int  value = sqlSession.insert("team.projectA.mapper.sellerMapper.roomup",vo);
-		
-		//System.out.println("value--->"+value);
-		//System.out.println("ridx"+vo.getRidx());
-	//	int maxridx = sqlSession.selectOne("team.projectA.mapper.sellerMapper.roomupselect",vo);
-		//System.out.println("value:"+value);
-		//System.out.println("ridx媛�:"+maxridx);
-		
-		return vo.getRidx();
-		
-		
+		return vo.getRidx();		
 	}
 	
 	public int roomInCh(RoominVO vo) {
-		
-		System.out.println("pppppridx"+vo.getRidx());
-		int  value = sqlSession.insert("team.projectA.mapper.sellerMapper.roomInCh",vo);
-		return value;
+
+		return sqlSession.insert("team.projectA.mapper.sellerMapper.roomInCh",vo);
 		
 	}
-	
-	
+		
 	public LodgingVO lidxone(int uidx){
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.lidxone",uidx);
 		
@@ -100,7 +86,17 @@ public class SellerDao {
 		return sqlSession.update("team.projectA.mapper.sellerMapper.waiting", vo);
 	}
 	
+	public RoominVO roomModiInfo(int ridx) {
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.roomModiInfo", ridx);
+	}
 	
+	public int roomModify(RoomVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.roomModify", vo);
+	}
+	
+	public int roomModify2(RoominVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.roomModify2", vo);
+	}
 }
 
 

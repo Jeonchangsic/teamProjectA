@@ -157,10 +157,8 @@
 	
 	<!--체크박스 등록-->	
 	<insert id = "roomInCh" parameterType="RoominVO">
-	
-
-				INSERT INTO ROOMINTB 
-				VALUES(ROOMIN_IDX_SEQ.NEXTVAL
+				INSERT INTO ROOMINTB VALUES(
+				ROOMIN_IDX_SEQ.NEXTVAL
 				,#{ridx}
 				,#{spa}
 				,#{wifi}
@@ -173,9 +171,15 @@
 				,#{aircon}
 				,#{shower}
 				,#{dryer}
-				,#{ricecooker})
+				,#{ricecooker}
+				,#{addinfo1}
+				,#{addinfo2}
+				,#{addinfo3}
+				,#{addinfo4}
+				,#{addinfo5})
 	
 	</insert>
+	
 	<!--객실등록 lidx값 -->
 	<select id="lidxone" resultType="LodgingVO" parameterType="int">
 					SELECT lidx 
@@ -209,6 +213,63 @@
 		 WHERE uidx = #{uidx}
 				
 	</update>
+	
+	<!--객실 수정 정보-->
+	<select id="roomModiInfo" resultType="RoominVO" parameterType = "int">
+			SELECT 	 r.ridx
+	 				, r.rtype
+					, r.rnum
+					, r.rprice
+					, r.maxmen
+					, r.stdmen
+					, r.gdsThumbImg
+					, r.rimage1
+					, r.bed
+					, i.addinfo1
+					, i.addinfo2
+					, i.addinfo3
+					, i.addinfo4
+					, i.addinfo5
+					FROM roomtb r
+					LEFT OUTER JOIN roomintb i
+					ON r.ridx = i.ridx 
+					WHERE r.ridx= #{ridx}
+	</select>
+	
+	<!--객실수정-->
+	<update id="roomModify" parameterType="RoomVO">
+			UPDATE roomtb SET 
+				  rtype = #{rtype}
+				, rnum = #{rnum}
+				, rprice = #{rprice}
+				, maxmen = #{maxmen}
+				, stdmen = #{stdmen}
+				, rimage1 = #{rimage1}
+				, bed = #{bed}
+				 WHERE ridx = #{ridx} 
+	</update>
+	<update id="roomModify2" parameterType="RoominVO">
+	UPDATE roomintb SET spa = #{spa}
+				,wifi = #{wifi}
+				,tv = #{tv}
+				,refri = #{refri}
+				,bath = #{bath}
+				,iron = #{iron}
+				,minibar = #{minibar}
+				,bathitem = #{bathitem}
+				,aircon = #{aircon}
+				,shower = #{shower}
+				,dryer = #{dryer}
+				,ricecooker = #{ricecooker}
+				,addinfo1 = #{addinfo1}
+				,addinfo2 = #{addinfo2}
+				,addinfo3 = #{addinfo3}
+				,addinfo4 = #{addinfo4}
+				,addinfo5 = #{addinfo5} 
+				WHERE ridx = #{ridx}
+	
+	</update>
+
 </mapper>
 
 

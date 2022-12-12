@@ -29,8 +29,8 @@ import team.projectA.vo.UserVO;
 /**
  * Handles requests for the application home page.
  */
-@RequestMapping(value="/lodging") //ÀÌ controllerÀÇ urlÀº ¹İµå½Ã board·Î ½ÃÀÛÇÔ
-@Controller //°´Ã¼·Î ¸¸µé¾îÁÜ
+@RequestMapping(value="/lodging") //ï¿½ï¿½ controllerï¿½ï¿½ urlï¿½ï¿½ ï¿½İµï¿½ï¿½ boardï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+@Controller //ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class LodgingController {   
 	  
 	private static final Logger logger = LoggerFactory.getLogger(LodgingController.class);
@@ -38,7 +38,7 @@ public class LodgingController {
 	@Autowired
 	private LodgingService lodgingService;
 	
-	@RequestMapping(value = "/lodgingList_gh.do", method = RequestMethod.GET) // value : °¡»ó°æ·Î  // "/":¸ŞÀÎÆäÀÌÁö(À£ÄÄÆÄÀÏ)
+	@RequestMapping(value = "/lodgingList_gh.do", method = RequestMethod.GET) // value : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  // "/":ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	public String list_gh(Model model, String type, String area) {
 		
 /*		 List<LodgingVO> list1= lodgingService.selectList1("GH");		 
@@ -51,43 +51,43 @@ public class LodgingController {
 		 model.addAttribute("type", type);
 		 model.addAttribute("area", area);
 		 
-		return "lodging/lodgingList_gh"; //°æ·Î¹Ù²î¸é ¿©±â¼­(servlet-context.xml¿¡ ½áÀÖ´Â ±âº»°æ·Î¸¦ ±â¹İÀ¸·Î) Ãß°¡ °æ·Î¸¸ ½áÁÖ¸é µÊ ex) main/home
+		return "lodging/lodgingList_gh"; //ï¿½ï¿½Î¹Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­(servlet-context.xmlï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½âº»ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) ï¿½ß°ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ö¸ï¿½ ï¿½ï¿½ ex) main/home
 	}
 	
-	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : °¡»ó°æ·Î  // "/":¸ŞÀÎÆäÀÌÁö(À£ÄÄÆÄÀÏ)
+	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  // "/":ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	public String list_hotel(Model model, String type, String area) {
 
-		List<RoomVO> list = lodgingService.selectLodgingList("È£ÅÚ", type, area);
+		List<RoomVO> list = lodgingService.selectLodgingList("í˜¸í…”", type, area);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
 		
-		return "lodging/lodgingList_hotel"; //°æ·Î¹Ù²î¸é ¿©±â¼­(servlet-context.xml¿¡ ½áÀÖ´Â ±âº»°æ·Î¸¦ ±â¹İÀ¸·Î) Ãß°¡ °æ·Î¸¸ ½áÁÖ¸é µÊ ex) main/home
+		return "lodging/lodgingList_hotel"; //ï¿½ï¿½Î¹Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­(servlet-context.xmlï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½âº»ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) ï¿½ß°ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ö¸ï¿½ ï¿½ï¿½ ex) main/home
 	}
 	
-	@RequestMapping(value = "/lodgingList_motel.do", method = RequestMethod.GET) // value : °¡»ó°æ·Î  // "/":¸ŞÀÎÆäÀÌÁö(À£ÄÄÆÄÀÏ)
+	@RequestMapping(value = "/lodgingList_motel.do", method = RequestMethod.GET) // value : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  // "/":ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	public String list_motel(Model model, String type, String area) {
 
-		List<RoomVO> list = lodgingService.selectLodgingList("¸ğÅÚ", type, area);
+		List<RoomVO> list = lodgingService.selectLodgingList("ëª¨í…”", type, area);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
 		
-		return "lodging/lodgingList_motel"; //°æ·Î¹Ù²î¸é ¿©±â¼­(servlet-context.xml¿¡ ½áÀÖ´Â ±âº»°æ·Î¸¦ ±â¹İÀ¸·Î) Ãß°¡ °æ·Î¸¸ ½áÁÖ¸é µÊ ex) main/home
+		return "lodging/lodgingList_motel"; //ï¿½ï¿½Î¹Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­(servlet-context.xmlï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½âº»ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) ï¿½ß°ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ö¸ï¿½ ï¿½ï¿½ ex) main/home
 	}
 	
-	@RequestMapping(value = "/lodgingList_villa.do", method = RequestMethod.GET) // value : °¡»ó°æ·Î  // "/":¸ŞÀÎÆäÀÌÁö(À£ÄÄÆÄÀÏ)
+	@RequestMapping(value = "/lodgingList_villa.do", method = RequestMethod.GET) // value : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  // "/":ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	public String list_villa(Model model, String type, String area) {
 
-		List<RoomVO> list = lodgingService.selectLodgingList("Ææ¼Ç/Ç®ºô¶ó", type, area);
+		List<RoomVO> list = lodgingService.selectLodgingList("íœì…˜/í’€ë¹Œë¼", type, area);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
 		
-		return "lodging/lodgingList_villa"; //°æ·Î¹Ù²î¸é ¿©±â¼­(servlet-context.xml¿¡ ½áÀÖ´Â ±âº»°æ·Î¸¦ ±â¹İÀ¸·Î) Ãß°¡ °æ·Î¸¸ ½áÁÖ¸é µÊ ex) main/home
+		return "lodging/lodgingList_villa"; //ï¿½ï¿½Î¹Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­(servlet-context.xmlï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½âº»ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) ï¿½ß°ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ö¸ï¿½ ï¿½ï¿½ ex) main/home
 	}
 	
-	@RequestMapping(value = "/lodgingList_search.do", method = RequestMethod.GET) // value : °¡»ó°æ·Î  // "/":¸ŞÀÎÆäÀÌÁö(À£ÄÄÆÄÀÏ)
+	@RequestMapping(value = "/lodgingList_search.do", method = RequestMethod.GET) // value : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  // "/":ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	public String list_search(@ModelAttribute("scri") SearchCriteria scri, Model model, String type)throws Exception {
 		
 		
@@ -105,7 +105,7 @@ public class LodgingController {
 		
 		
 		 List<RoomVO> roomList = lodgingService.listSearch(hm);
-			/* System.out.println("È®ÀÎ"+roomList.get(0).getLodgingname()); */
+			/* System.out.println("È®ï¿½ï¿½"+roomList.get(0).getLodgingname()); */
 		 
 		 model.addAttribute("roomList",roomList);
 		 model.addAttribute("searchType",scri.getSearchType());
@@ -115,7 +115,7 @@ public class LodgingController {
 		 * model.addAttribute("list",list);
 		 */
 		
-		return "lodging/lodgingList_search"; //°æ·Î¹Ù²î¸é ¿©±â¼­(servlet-context.xml¿¡ ½áÀÖ´Â ±âº»°æ·Î¸¦ ±â¹İÀ¸·Î) Ãß°¡ °æ·Î¸¸ ½áÁÖ¸é µÊ ex) main/home
+		return "lodging/lodgingList_search"; //ï¿½ï¿½Î¹Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­(servlet-context.xmlï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½âº»ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) ï¿½ß°ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ö¸ï¿½ ï¿½ï¿½ ex) main/home
 	}
 	
 	@RequestMapping(value = "/lodgingList_filter.do", method = RequestMethod.POST)

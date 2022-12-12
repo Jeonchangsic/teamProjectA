@@ -100,6 +100,23 @@ public class SellerServiceImpl implements SellerService{
 		return SellerDao.waiting(vo);
 	}
 
+	@Override
+	public RoominVO roomModiInfo(int ridx) {
+		return SellerDao.roomModiInfo(ridx);
+	}
+
+	@Override
+	public int roomModify(RoomVO vo) {
+
+		return SellerDao.roomModify(vo);
+	}
+
+	@Override
+	public int roomModify2(RoominVO vo) {
+
+		return SellerDao.roomModify2(vo);
+	}
+
 
 
 
