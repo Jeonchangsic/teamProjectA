@@ -45,7 +45,7 @@
 	</header>
     <section id="inner">
         <h2 id="h">객실등록이 완료되었습니다.</h2>
-        <div><a href="#">등록 객실 보러가기</a></div>
+        <div><a href="<%=request.getContextPath()%>/seller/sellerRegi.do">등록 객실 보러가기</a></div>
          
     </section>
 

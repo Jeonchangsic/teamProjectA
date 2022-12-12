@@ -28,18 +28,7 @@
 		};
 		
 
-		//추가정보입력
-/* 		$(document).ready(function () {
-    		var maxAppend = 1;
-    		  $(document).on("click", "button[name='plus']", function () {
-				if (maxAppend >= 5) 
-					return; // 5번째부터는 append 안되고 return 시키기
-    		    $("#bottom_right").append("</br><input type='text' name='addinfo' class='plus' placeholder='추가정보를 입력해주세요'></br>");
-				maxAppend++;
-    		  });
-    		});
-			    */
-			    
+		//추가정보입력			    
 			    $(document).ready(function () {
 		    		var maxAppend = 1;
 		    		var extcnt = 1;

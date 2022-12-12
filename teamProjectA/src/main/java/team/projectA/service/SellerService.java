@@ -40,4 +40,9 @@ public interface SellerService {
 	
 	int waiting(UserVO vo);
 
+	RoominVO roomModiInfo(int ridx);
+	
+	int roomModify(RoomVO vo);
+	
+	int roomModify2(RoominVO vo);
 }
