@@ -48,23 +48,35 @@
 	<!--문의게시판 list-->
         <select id= "qnaList" resultType="QnaVO" parameterType="int">
     
-					SELECT a.uidx
-						, q.QnA_idx
-						, q.uidx
-						, q.userType
-						, q.qna_Qcontent
-						, q.qna_Qtitle
-						, q.qna_Qdate 
-						, q.qna_Acheck
-					FROM ausertb a
-					LEFT OUTER JOIN qnatb q 
-					ON a.uidx = q.uidx 
-					WHERE a.uidx= #{uidx}  ORDER BY QnA_idx DESC
+				SELECT a.uidx
+					, q.QnA_idx
+					, q.uidx
+					, q.userType
+					, q.qna_Qcontent
+					, q.qna_Qtitle
+					, q.qna_Qdate 
+					, q.qna_Acheck
+				FROM ausertb a
+				LEFT OUTER JOIN qnatb q 
+				ON a.uidx = q.uidx 
+				WHERE a.uidx= #{uidx}  ORDER BY QnA_idx DESC
                 
  
         </select>
-    
-	
+        
+    <!--문의글 페이징-->
+    <select id="QnaPaging" resultType="QnaVO" parameterType="Criteria" >
+		        select QnA_idx, qna_Qtitle, qna_Qdate, qna_Acheck
+					from (select QnA_idx, qna_Qtitle, qna_Qdate, qna_Acheck, 
+					row_number() over(order by QnA_idx desc)
+					as rNum from qnatb)mb 
+				where rNum between #{rowStart} and #{rowEnd} order by QnA_idx desc
+		    
+    </select>
+	<select id = "listCount" resultType="int">
+			select count(Qna_idx)
+			from qnatb where Qna_idx > 0
+	</select>	
 	<!--문의하기 insert  -->
 	<insert id="qnaInsert" parameterType="QnaVO">
 	<![CDATA[
