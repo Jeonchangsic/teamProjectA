@@ -199,7 +199,6 @@
 		<section>
 			<h3>숙소요청목록</h3>
 			<hr/>
-			<form method="post">
 				<table>
 					<thead>
 						<tr>
@@ -214,24 +213,25 @@
 					</thead>
 					<tbody>
 					<c:forEach var="vo" items="${requestList}" varStatus="status">
-						<input type="hidden" name="uidx" value="${vo.uidx}">							
-						<input type="hidden" name="lidx" value="${vo.lidx}">
-						<tr>
-							<td><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo.limagename}"></td>							
-							<td>${vo.lodgingname}</td>
-							<td style="text-align:center;">${vo.lodgingkind}</td>
-							<td>${vo.lodgingaddr}</td>
-							<td style="text-align:center;">${vo.userID}</td>
-							<td style="text-align:center;">${vo.userName}</td>
-							<td style="text-align:center;">
-								<button value="승인" formaction="<%=request.getContextPath()%>/manager/requestApproval">승인</button>
-								<button value="거부" formaction="<%=request.getContextPath()%>/manager/requestDel.do">거부</button>
-							</td>
-						</tr>
+						<form method="post">
+							<input type="hidden" name="uidx" value="${vo.uidx}">							
+							<input type="hidden" name="lidx" value="${vo.lidx}">
+							<tr>
+								<td><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo.limagename}"></td>							
+								<td>${vo.lodgingname}</td>
+								<td style="text-align:center;">${vo.lodgingkind}</td>
+								<td>${vo.lodgingaddr}</td>
+								<td style="text-align:center;">${vo.userID}</td>
+								<td style="text-align:center;">${vo.userName}</td>
+								<td style="text-align:center;">
+									<button value="승인" formaction="<%=request.getContextPath()%>/manager/requestApproval.do">승인</button>
+									<button value="거부" formaction="<%=request.getContextPath()%>/manager/requestDel.do">거부</button>
+								</td>
+							</tr>
+						</form>
 					</c:forEach>
 					</tbody>					
-				</table>			
-			</form>		
+				</table>
 		</section>
         
         <div>

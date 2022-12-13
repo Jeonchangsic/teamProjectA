@@ -22,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import team.projectA.service.SellerService;
 import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.LodginginVO;
+import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.PageMaker;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
@@ -316,6 +318,7 @@ public class SellerController {
 		return "seller/sellerLodgingModify";
 	}
 
+	//숙소등록페이지
 	@RequestMapping(value="/sellerLodgingUp.do", method=RequestMethod.GET)
 	public String sellerLodgingUp(Model model, HttpServletRequest req) {
 		
@@ -323,19 +326,23 @@ public class SellerController {
 		UserVO login = (UserVO)session.getAttribute("login");
 		model.addAttribute("vo", login);		
 		
-		//user lodging이 "Waiting"이면 페이지 접속 불가
+		//user lodging이 "Waiting", "Y"이면 페이지 접속 불가
 		if(login.getLodging().equals("Waiting") || login.getLodging().equals("Y")) {
 			//????????
 		}
 		
 		return "seller/sellerLodgingUp";
 	}
-	
+	//숙소등록정보
 	@RequestMapping(value="/sellerLodgingUp.do", method=RequestMethod.POST)
-	public String sellerLodgingUp(LodgingVO vo, HttpServletRequest req, MultipartFile file) {
+	public String sellerLodgingUp(LodgingVO vo, int uidx, LodginginVO invo, LodginginfoVO infovo, HttpServletRequest req, MultipartFile file) {
 		
-		sellerService.lodgingUp(vo);
-		sellerService.waiting(vo);
+		int maxlidx = sellerService.lodgingUp(vo);
+		invo.setLidx(maxlidx);
+		infovo.setLidx(maxlidx);
+		sellerService.lodginginUp(invo);
+		sellerService.lodginginfoUp(infovo);
+		sellerService.waiting(uidx);
 		
 		//Waiting으로 변경된 user데이터 session에 담기
 		HttpSession session = req.getSession();
@@ -353,7 +360,7 @@ public class SellerController {
 		System.out.println("용량크기(byte) : " + size);
 		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자명을 구함
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
-		String uploadFolder = "C:\\Users\\798\\Documents\\workspace-sts-3.9.13.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\\\lodging_images";
+		String uploadFolder = "C:\\Users\\798\\Documents\\workspace-sts-3.9.13.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
 		
 		/*
 		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 

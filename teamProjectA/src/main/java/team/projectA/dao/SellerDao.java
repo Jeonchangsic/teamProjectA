@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
-
+import team.projectA.vo.LodginginVO;
+import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
@@ -89,11 +90,21 @@ public class SellerDao {
 	}
 	
 	public int lodgingUp(LodgingVO vo) {
-		return sqlSession.insert("team.projectA.mapper.sellerMapper.lodgingUp", vo);
+		
+		sqlSession.insert("team.projectA.mapper.sellerMapper.lodgingUp", vo);
+		return vo.getLidx();
 	}
 
-	public int waiting(UserVO vo) {
-		return sqlSession.update("team.projectA.mapper.sellerMapper.waiting", vo);
+	public int waiting(int uidx) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.waiting", uidx);
+	}
+	
+	public int lodginginUp(LodginginVO vo) {
+		return sqlSession.insert("team.projectA.mapper.sellerMapper.lodginginUp", vo);
+	}
+	
+	public int lodginginfoUp(LodginginfoVO vo) {
+		return sqlSession.insert("team.projectA.mapper.sellerMapper.lodginginfoUp", vo);
 	}
 	
 	public RoominVO roomModiInfo(int ridx) {

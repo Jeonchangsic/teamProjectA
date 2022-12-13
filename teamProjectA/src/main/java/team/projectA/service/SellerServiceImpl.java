@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 import team.projectA.dao.SellerDao;
 import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
-
+import team.projectA.vo.LodginginVO;
+import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
@@ -106,10 +107,20 @@ public class SellerServiceImpl implements SellerService{
 	public int lodgingUp(LodgingVO vo) {
 		return SellerDao.lodgingUp(vo);
 	}
+	
+	@Override
+	public int lodginginUp(LodginginVO vo) {
+		return SellerDao.lodginginUp(vo);
+	}
+	
+	@Override
+	public int lodginginfoUp(LodginginfoVO vo) {
+		return SellerDao.lodginginfoUp(vo);
+	}
 
 	@Override
-	public int waiting(UserVO vo) {
-		return SellerDao.waiting(vo);
+	public int waiting(int uidx) {
+		return SellerDao.waiting(uidx);
 	}
 
 	@Override

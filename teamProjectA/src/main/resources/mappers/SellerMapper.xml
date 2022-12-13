@@ -199,6 +199,7 @@
 					FROM lodgingtb 
 					WHERE uidx = #{uidx}
 	</select>
+	
 	<!-- 숙소 등록 -->
 	<insert id="lodgingUp" parameterType="lodgingVO">
 	INSERT INTO LODGINGTB (
@@ -219,14 +220,83 @@
 					, #{local}
 					, #{uidx}
 					, #{limagename}
+					, #{intro}					
 				)
+				
+		<selectKey keyProperty="lidx" resultType="int" order="AFTER">	<!--AFTER : 방금 입력한 값의 특정 값 리턴 (lidx_nextval리턴)  -->
+				select lidx_seq.currval as lidx FROM dual <!-- dual: 특정테이블 칼럼이 아닌경우 -->
+		</selectKey>
 	</insert>
-	<update id="waiting" parameterType="userVO">
+	<update id="waiting" parameterType="int">
 		UPDATE AUSERTB 
 		   SET lodging = 'Waiting'
 		 WHERE uidx = #{uidx}
-				
 	</update>
+	<insert id="lodginginUp" parameterType="lodginginVO">
+		INSERT INTO LODGINGINTB
+						VALUES(
+							  lodgingin_idx_seq.nextval
+							, #{lidx}
+							, #{FITNESS}
+							, #{SAUNA}
+							, #{RESTAURANT}
+							, #{LOUNGE}
+							, #{BBQ}
+							, #{PUBLICSPA}
+							, #{SEMINAR}
+							, #{SINGING}
+							, #{WASHINGMACHINE}
+							, #{DEHYDRATOR}
+							, #{COOKING}
+							, #{spa}
+							, #{pool}
+							, #{golf}
+							, #{elevator}
+							, #{pc}
+							, #{cafe}
+							, #{footvolleyball}
+							, #{store}
+							, #{dining}
+							, #{dryer}
+							, #{parking}
+							, #{publicshower}
+							, #{ski}
+							, #{pickup}
+							, #{printer}
+							, #{locker}
+							, #{breakfast}
+							, #{valetparking}
+							, #{dog}
+							, #{inroomcooking}
+							, #{keepluggage}
+							, #{freeparking}
+							, #{inroomsmoking}
+							, #{nosmoking}
+							, #{creditcard}
+						)
+	</insert>
+	<insert id="lodginginfoUp" parameterType="lodginginfoVO">
+		INSERT INTO LODGINGINFOTB
+						VALUES(
+							  lodginginfo_idx_seq.nextval
+							, #{lidx}
+							, #{area1}
+							, #{area2}
+							, #{area3}
+							, #{area4}
+							, #{area5}
+							, #{basic1}
+							, #{basic2}
+							, #{basic3}
+							, #{basic4}
+							, #{basic5}
+							, #{odd1}
+							, #{odd2}
+							, #{odd3}
+							, #{odd4}
+							, #{odd5}
+						)
+	</insert>
 	
 	<!--객실 수정 정보-->
 	<select id="roomModiInfo" resultType="RoominVO" parameterType = "int">

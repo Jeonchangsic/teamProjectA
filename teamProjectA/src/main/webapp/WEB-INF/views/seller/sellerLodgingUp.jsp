@@ -27,31 +27,45 @@
 		var maxAppend1 = 1;
 		var maxAppend2 = 1;
 		var maxAppend3 = 1;
+		var extcnt = 1;
 		
 	    function clickplus(type,obj){
 	    	if(type == "1"){
 				if(maxAppend1 >= 5){
 					return;
 				}else{
-					$(obj).parents(".info").next().append("<br><br><input type='text' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					extcnt++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
 					maxAppend1++;
 				}	
 	    	}else if(type == "2"){
 				if(maxAppend2 >= 5){
 					return;
 				}else{
-					$(obj).parents(".info").next().append("<br><br><input type='text' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					extcnt++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='basic"+extcnt+"' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
 					maxAppend2++;
 				}
 	    	}else if(type == "3"){
 				if(maxAppend3 >= 5){
 					return;
 				}else{
-					$(obj).parents(".info").next().append("<br><br><input type='text' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					extcnt++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='odd"+extcnt+"' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
 					maxAppend3++;
 				}
 	    	}
 	    }
+	    
+	    //체크박스 value 변경
+	    function box(obj){
+	    	if(obj.checked){
+	    		obj.value = "Y";
+	    	}else {
+	    		obj.value="N";
+	    	}
+	    }
+	    
     </script>
 </head>
 <body>
@@ -201,30 +215,30 @@
 		    				<div class="check_name">공용시설</div>
 		    				<div class="check_contents">
 		    					<ul>
-			    					<li><input type="checkbox" class="check" name="public">피트니스</li>
-			    					<li><input type="checkbox" class="check" name="public">사우나</li>
-			    					<li><input type="checkbox" class="check" name="public">레스토랑</li>
-			    					<li><input type="checkbox" class="check" name="public">라운지</li>
-			    					<li><input type="checkbox" class="check" name="public">BBQ</li>
-			    					<li><input type="checkbox" class="check" name="public">공용스파</li>
-			    					<li><input type="checkbox" class="check" name="public">세미나실</li>
-			    					<li><input type="checkbox" class="check" name="public">노래방</li>
-			    					<li><input type="checkbox" class="check" name="public">세탁기</li>
-			    					<li><input type="checkbox" class="check" name="public">탈수기</li>
-			    					<li><input type="checkbox" class="check" name="public">취사가능</li>
-			    					<li><input type="checkbox" class="check" name="public">온천</li>
-			    					<li><input type="checkbox" class="check" name="public">수영장</li>
-			    					<li><input type="checkbox" class="check" name="public">골프장</li>
-			    					<li><input type="checkbox" class="check" name="public">엘리베이터</li>
-			    					<li><input type="checkbox" class="check" name="public">공용PC</li>
-			    					<li><input type="checkbox" class="check" name="public">카페</li>
-			    					<li><input type="checkbox" class="check" name="public">족구장</li>
-			    					<li><input type="checkbox" class="check" name="public">편의점</li>
-			    					<li><input type="checkbox" class="check" name="public">주방/식당</li>
-			    					<li><input type="checkbox" class="check" name="public">건조기</li>
-			    					<li><input type="checkbox" class="check" name="public">주차장</li>
-			    					<li><input type="checkbox" class="check" name="public">공용샤워실</li>
-			    					<li><input type="checkbox" class="check" name="public">스키장</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="FITNESS">피트니스</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="SAUNA">사우나</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="RESTAURANT">레스토랑</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="LOUNGE">라운지</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="BBQ">BBQ</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="PUBLICSPA">공용스파</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="SEMINAR">세미나실</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="SINGING">노래방</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="WASHINGMACHINE">세탁기</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="DEHYDRATOR">탈수기</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="COOKING">취사가능</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="spa">온천</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="pool">수영장</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="golf">골프장</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="elevator">엘리베이터</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="pc">공용PC</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="cafe">카페</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="footvolleyball">족구장</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="store">편의점</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="dining">주방/식당</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="dryer">건조기</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="parking">주차장</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="publicshower">공용샤워실</li>
+			    					<li><input type="checkbox" onchange="box(this)" class="check" name="ski">스키장</li>
 		    					</ul>
 		    				</div>
 		    			</div>
@@ -234,18 +248,18 @@
 		    				<div class="check_name">기타</div>
 		    				<div class="check_contents">
 		    					<ul>
-		    						<li><input type="checkbox" class="check" name="odd">픽업가능</li>
-		    						<li><input type="checkbox" class="check" name="odd">프린터사용</li>
-		    						<li><input type="checkbox" class="check" name="odd">개인사물함</li>
-		    						<li><input type="checkbox" class="check" name="odd">조식포함</li>
-		    						<li><input type="checkbox" class="check" name="odd">발렛파킹</li>
-		    						<li><input type="checkbox" class="check" name="odd">반려견동반</li>    						
-		    						<li><input type="checkbox" class="check" name="odd">객실내취사</li>
-		    						<li><input type="checkbox" class="check" name="odd">짐보관가능</li>
-		    						<li><input type="checkbox" class="check" name="odd">무료주차</li>    						
-		    						<li><input type="checkbox" class="check" name="odd">객실내흡연</li>
-		    						<li><input type="checkbox" class="check" name="odd">금연</li>
-		    						<li><input type="checkbox" class="check" name="odd">카드결제</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="pickup">픽업가능</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="printer">프린터사용</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="locker">개인사물함</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="breakfast">조식포함</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="valetparking">발렛파킹</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="dog">반려견동반</li>    						
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="inroomcooking">객실내취사</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="keepluggage">짐보관가능</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="freeparking">무료주차</li>    						
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="inroomsmoking">객실내흡연</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="nosmoking">금연</li>
+		    						<li><input type="checkbox" onchange="box(this)" class="check" name="creditcard">카드결제</li>
 		    					</ul>
 		    				</div>
 		    			</div>
@@ -255,19 +269,19 @@
 	    			<div class="intro">- - - - 기본정보 - - - -</div>
 	    			<div class="info">
 	    				<p>주변정보</p>
-	    				<input type="text" class="plus" placeholder="주변정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
+	    				<input type="text" name="area1" class="plus" placeholder="주변정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(1,this)">+</button>
 	    			</div>
 	    			<div class="space"></div>
 	    			<div class="info">
 	    				<p>기본정보</p>
-	    				<input type="text" class="plus" placeholder="기본정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
+	    				<input type="text" name="basic1" class="plus" placeholder="기본정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(2,this)">+</button>
 	    			</div>
 	    			<div class="space"></div>
 	    			<div class="info">
 	    				<p>확인사항 및 기타</p>
-	    				<input type="text" class="plus" placeholder="기타정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
+	    				<input type="text" name="odd1" class="plus" placeholder="기타정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(3,this)">+</button>
 	    			</div>   
 	    			<div class="space"></div> 			

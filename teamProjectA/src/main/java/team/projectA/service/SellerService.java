@@ -5,7 +5,8 @@ import java.util.List;
 
 import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
-
+import team.projectA.vo.LodginginVO;
+import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
@@ -39,10 +40,14 @@ public interface SellerService {
 	
 	LodgingVO lidxone(int uidx);
 	
-	int lodgingUp(LodgingVO vo);
+	int lodgingUp(LodgingVO vo);	
 	
-	int waiting(UserVO vo);
+	int lodginginUp(LodginginVO vo);
+	
+	int lodginginfoUp(LodginginfoVO vo);
 
+	int waiting(int uidx);
+	
 	RoominVO roomModiInfo(int ridx);
 	
 	int roomModify(RoomVO vo);
