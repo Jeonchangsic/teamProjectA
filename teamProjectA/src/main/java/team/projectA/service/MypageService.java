@@ -1,5 +1,6 @@
 package team.projectA.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import team.projectA.vo.Criteria;
@@ -11,6 +12,7 @@ public interface MypageService {
 	int changePw(UserVO vo);
 	List<ReservVO>reserv_list()throws Exception;
 	int reserv_count()throws Exception;
-	List<ReservVO> listPage(Criteria cri)throws Exception;
-	
+	List<ReservVO> listPage(HashMap hm)throws Exception;
+	int reserv_refund(ReservVO rvo);
+	ReservVO reservListPop(HashMap hm)throws Exception;
 }

@@ -1,6 +1,6 @@
 package team.projectA.vo;
 
-public class RoomVO extends LodgingVO {
+public class RoomVO extends LodgingVO{
 	
 	private int ridx;
 	private String rtype;
@@ -21,7 +21,7 @@ public class RoomVO extends LodgingVO {
 	}
 	private int maxmen; 
 	
-	//이미지 업로드
+	//�씠誘몄� �뾽濡쒕뱶
 	private String gdsThumbImg;
 	
 	

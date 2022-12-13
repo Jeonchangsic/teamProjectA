@@ -1,5 +1,6 @@
 package team.projectA.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,7 +28,13 @@ public class MypageDAO {
 	 public int reserv_count()throws Exception{
 		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reserv_count");
 	 }
-	 public List<ReservVO> listPage(Criteria cri)throws Exception{
-		 return sqlsession.selectList("team.projectA.mapper.MypageMapper.listPage",cri);
+	 public List<ReservVO> listPage(HashMap hm)throws Exception{
+		 return sqlsession.selectList("team.projectA.mapper.MypageMapper.listPage",hm);
+	 }
+	 public int reserv_refund(ReservVO rvo){
+			return sqlsession.delete("team.projectA.mapper.MypageMapper.reserv_refund", rvo);
+		}
+	 public ReservVO reservListPop(HashMap hm)throws Exception {
+		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reservListPop",hm);
 	 }
 }

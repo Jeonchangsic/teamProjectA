@@ -49,12 +49,12 @@ public class LoginController {
 		
 		UserVO loginVO = userService.login(vo);
 		
-		if(loginVO != null) { //·Î±×ÀÎÀÌ µÈ °æ¿ì.
+		if(loginVO != null) { //ë¡œê·¸ì¸ì´ ëœ ê²½ìš°.
 			session.setAttribute("login", loginVO);
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('·Î±×ÀÎ Á¤º¸¸¦ È®ÀÎÇØÁÖ¼¼¿ä.'); history.go(-1);</script>");
+			out.println("<script>alert('ë¡œê·¸ì¸ ì •ë³´ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.'); history.go(-1);</script>");
 			out.flush();
 			out.close();
 			
@@ -69,7 +69,7 @@ public class LoginController {
 		
 	
 		HttpSession session = req.getSession();
-		session.invalidate(); //¼¼¼ÇÀ» »ç¿ëÇÑ Á¤º¸¸¦ ÃÊ±âÈ­ ÇÏ´Â invalidate(). ·Î±×¾Æ¿ôÃ³¸®.
+		session.invalidate(); //ì„¸ì…˜ì„ ì‚¬ìš©í•œ ì •ë³´ë¥¼ ì´ˆê¸°í™” í•˜ëŠ” invalidate(). ë¡œê·¸ì•„ì›ƒì²˜ë¦¬.
 		
 		return "redirect:/";
 	}

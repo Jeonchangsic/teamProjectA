@@ -29,6 +29,15 @@
      		});
      	})
      </script>
+     <script>
+     function refund_pop(ridx,uidx){
+    	var url = "<%=request.getContextPath()%>/mypage/refundPop.do?ridx="+ridx+"&uidx="+uidx;   //팝업창 페이지 URL
+ 		var winWidth = 500;
+ 	    var winHeight = 400;
+ 	    var popupOption= "width="+winWidth+", height="+winHeight;    //팝업창 옵션(optoin)
+ 		window.open(url,"",popupOption);
+     };
+     </script>
 </head>
 <body>
     <header>
@@ -78,17 +87,19 @@
                         <th>숙소정보</th>
                         <th>예약자명</th>
                         <th>숙박일자</th>
+                        <th>금액</th>
                         <th>비고</th>
                     </tr>
                     <c:forEach items="${list}" var="list">
 	                    <tr>
-	                        <td>${list.reserv_idx}</td>
-	                        <td>${list.ridx}</td>
-	                        <td>${list.uidx}</td>
-	                        <td>${list.reserv_startDate}  ${list.reserv_endDate}</td>
+	                        <td>${list.reserv_num}</td>
+	                        <td>${list.lodgingname}</td>
+	                        <td>${list.userName}</td>
+	                        <td>${list.reserv_startDate} ~ ${list.reserv_endDate}</td>
+	                        <td>${list.rprice}</td>
 	                        <td  class="ta_center">
-	                            <input type="button" value="예약취소"/>
-	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do?reserv_idx=${list.reserv_idx}'"/>
+	                            <input onclick="refund_pop(${list.ridx},${list.uidx})" type="button" value="예약취소"/>
+	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do?reserv_idx=${list.ridx}'"/>
 	                        </td>
 	                    </tr>
                     </c:forEach>

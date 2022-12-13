@@ -1,5 +1,6 @@
 package team.projectA.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,23 @@ public class MypageServiceImpl implements MypageService{
 
 
 	@Override
-	public List<ReservVO> listPage(Criteria cri) throws Exception {
-		return mypageDao.listPage(cri);
+	public List<ReservVO> listPage(HashMap hm) throws Exception {
+		return mypageDao.listPage(hm);
 	}
+	@Override
+	public ReservVO reservListPop(HashMap hm) throws Exception {
+		return mypageDao.reservListPop(hm);
+	}
+
+	@Override
+	public int reserv_refund(ReservVO rvo) {
+		return mypageDao.reserv_refund(rvo);
+	}
+	
+
+
+
+
+	
 	 	
 }

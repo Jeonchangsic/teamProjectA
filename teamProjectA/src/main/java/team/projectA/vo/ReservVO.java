@@ -1,16 +1,23 @@
 package team.projectA.vo;
 
-public class ReservVO {
-	private int reserv_idx; //½ÃÄö½º
+import java.util.Date;
+
+public class ReservVO extends RoomVO {
+	private int reserv_idx; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private int uidx;
 	private int ridx;
-	private String reserv_num;	//¿¹¾à¹øÈ£
-	private int reserv_date; //¿¹¾à³¯Â¥
-	private String reserv_startDate; //¿¹¾à ½ÃÀÛ³¯Â¥
-	private String reserv_endDate; // ¿¹¾à Á¾·á³¯Â¥
+	private String reserv_num;	//ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	private Date reserv_date; //ï¿½ï¿½ï¿½à³¯Â¥
+	private String reserv_startDate; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û³ï¿½Â¥
+	private String reserv_endDate; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½á³¯Â¥
 	
-		
-	
+
+	public Date getReserv_date() {
+		return reserv_date;
+	}
+	public void setReserv_date(Date reserv_date) {
+		this.reserv_date = reserv_date;
+	}
 	public int getReserv_idx() {
 		return reserv_idx;
 	}
@@ -35,12 +42,7 @@ public class ReservVO {
 	public void setReserv_num(String reserv_num) {
 		this.reserv_num = reserv_num;
 	}
-	public int getReserv_date() {
-		return reserv_date;
-	}
-	public void setReserv_date(int reserv_date) {
-		this.reserv_date = reserv_date;
-	}
+	
 	public String getReserv_startDate() {
 		return reserv_startDate;
 	}

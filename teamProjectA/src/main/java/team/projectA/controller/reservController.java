@@ -62,9 +62,8 @@ public class reservController {
 		
 		HttpSession session = req.getSession();
 		UserVO userVO = (UserVO)session.getAttribute("login");
-		
 		HashMap<String,Object> hm = new HashMap<String,Object>();
-		hm.put("merchant_uid", merchant_uid); //¿¹¾à¹øÈ£
+		hm.put("merchant_uid", merchant_uid); //ï¿½ï¿½ï¿½ï¿½ï¿½È£
 		hm.put("ridx", ridx);
 		hm.put("uidx", userVO.getUidx());
 		
@@ -73,11 +72,10 @@ public class reservController {
 		int vo = reservService.reservInsert(hm);
 		String result = Integer.toString(vo);
 		
-		System.out.println("result:"+result);
 		
-		  System.out.println("merchant_uid:"+ merchant_uid);
 		  
 		  
 		return result;
 	}
+	
 }

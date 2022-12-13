@@ -3,6 +3,7 @@ package team.projectA.controller;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import team.projectA.service.MypageService;
+import team.projectA.service.ReservService;
 import team.projectA.service.UserService;
 import team.projectA.vo.Criteria;
 import team.projectA.vo.PageMaker;
@@ -40,34 +42,43 @@ public class MypageController {
 	private MypageService mypageService;
 	@Autowired
 	private UserService userService;
-	
+	@Autowired
+	private ReservService reservService;
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	
-	//¿¹¾à³»¿ª ¸®½ºÆ® Ãâ·Â °Ë»ö
+	//ì˜ˆì•½ë‚´ì—­ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥ ê²€ìƒ‰
 	@RequestMapping(value = "/info.do", method = RequestMethod.GET)
-	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Criteria cri, Model model,HttpServletRequest req/*,ReservVO vo*/)throws Exception {
+	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Model model,HttpServletRequest req)throws Exception {
 		
-		/*
-		 * HttpSession session = req.getSession(); UserVO userVO =
-		 * (UserVO)session.getAttribute("login"); //¿ÀºêÁ§Æ® Å¸ÀÔÀÌ±â ¶§¹®¿¡ Çüº¯È¯À» ÇÏ¿© ¸ÂÃçÁØ´Ù.
-		 * vo.setUidx(userVO.getUidx());
-		 */
 		
-		List<ReservVO> list = null; 
-		list = mypageService.listPage(cri);
+		  HttpSession session = req.getSession();
+		  UserVO userVO = (UserVO)session.getAttribute("login"); //ì˜¤ë¸Œì íŠ¸ íƒ€ì…ì´ê¸° ë•Œë¬¸ì— í˜•ë³€í™˜ì„ í•˜ì—¬ ë§ì¶°ì¤€ë‹¤.
+		 
+		  List<ReservVO> list = null; 
+		  
+		  PageMaker pageMaker = new PageMaker();
+		  pageMaker.setCri(scri);
+		  //pageMaker.setTotalCount(mypageService.reserv_count());
+		  pageMaker.setTotalCount(mypageService.reserv_count());
+		  
+		 
+		HashMap<String,Object> hm = new HashMap<String,Object>();
+		hm.put("uidx", userVO.getUidx());
+		hm.put("rowStart", scri.getRowStart());
+		hm.put("rowEnd", scri.getRowEnd());
+		list = mypageService.listPage(hm);
+		
 		model.addAttribute("list",list);
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		//pageMaker.setTotalCount(mypageService.reserv_count());
-		pageMaker.setTotalCount(mypageService.reserv_count());
 		model.addAttribute("pageMaker",pageMaker);
+		
+		
+		
 		
 		return "mypage/mypage";
 	}
 	
-	//¿¹¾à³»¿ª °Ë»ö
+	//ì˜ˆì•½ë‚´ì—­ ê²€ìƒ‰
 	/*
 	 * @RequestMapping(value = "/listSearch", method = RequestMethod.GET) public
 	 * void mypage(@ModelAttribute("scri") SearchCriteria scri, Model model)throws
@@ -86,7 +97,7 @@ public class MypageController {
 	 */
 	
 
-	//ºñ¹Ğ¹øÈ£ ¼öÁ¤
+	//ë¹„ë°€ë²ˆí˜¸ ìˆ˜ì •
   @RequestMapping(value="pwModify.do", method = RequestMethod.POST) 
   public void pwModify(HttpSession session, UserVO vo, HttpServletRequest req, HttpServletResponse response) throws Exception{
 	  
@@ -95,28 +106,28 @@ public class MypageController {
 	  	if(result >0) {
 	  	response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.append("<script>alert('ºñ¹Ğ¹øÈ£ ¼öÁ¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. º¯°æµÈ ºñ¹Ğ¹øÈ£·Î ´Ù½Ã ·Î±×ÀÎ ÇØÁÖ¼¼¿ä.');location.href='"+req.getContextPath()+"/index/index.do'</script>"); 
+		out.append("<script>alert('ë¹„ë°€ë²ˆí˜¸ ìˆ˜ì •ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ë³€ê²½ëœ ë¹„ë°€ë²ˆí˜¸ë¡œ ë‹¤ì‹œ ë¡œê·¸ì¸ í•´ì£¼ì„¸ìš”.');location.href='"+req.getContextPath()+"/index/index.do'</script>"); 
 		out.flush();
 		out.close();
-		session.invalidate(); //·Î±×¾Æ¿ôÃ³¸®.
+		session.invalidate(); //ë¡œê·¸ì•„ì›ƒì²˜ë¦¬.
 	  	}
   }
   
   
-  //È¸¿øÅ»Åğ ÆäÀÌÁö·Î ÀÌµ¿
+  //íšŒì›íƒˆí‡´ í˜ì´ì§€ë¡œ ì´ë™
   @RequestMapping(value="/userDt.do", method = RequestMethod.GET)
   public void userDt() {  
 	  
 	  }
   
   
-  //È¸¿øÅ»Åğ ÇÏ±â
+  //íšŒì›íƒˆí‡´ í•˜ê¸°
   @RequestMapping(value="/userDt.do", method = RequestMethod.POST)
   public String userDt(HttpSession session, UserVO vo, RedirectAttributes rttr,HttpServletRequest req,HttpServletResponse response) throws Exception{
 	  UserVO user = (UserVO)session.getAttribute("login");
 	  
-	  String oldPass = user.getUserPassword(); //·Î±×ÀÎÇÒ ¶§ÀÇ ºñ¹Ğ¹øÈ£°ªÀ» °¡Á®¿È. 
-	  String newPass = vo.getUserPassword();  //»õ·Î »ı¼ºÇÑ ºñ¹Ğ¹øÈ£ ¹Ş´Â inputÀÇ °ªÀ» °¡Á®¿È
+	  String oldPass = user.getUserPassword(); //ë¡œê·¸ì¸í•  ë•Œì˜ ë¹„ë°€ë²ˆí˜¸ê°’ì„ ê°€ì ¸ì˜´. 
+	  String newPass = vo.getUserPassword();  //ìƒˆë¡œ ìƒì„±í•œ ë¹„ë°€ë²ˆí˜¸ ë°›ëŠ” inputì˜ ê°’ì„ ê°€ì ¸ì˜´
 	  
 	  if(!(oldPass.equals(newPass))) {
 		  rttr.addFlashAttribute("msg",false);
@@ -127,13 +138,49 @@ public class MypageController {
 	  
 	  response.setContentType("text/html; charset=UTF-8");
 	  PrintWriter out = response.getWriter();
-	  out.append("<script>alert('È¸¿øÅ»Åğ°¡ Á¤»óÀûÀ¸·Î ÁøÇàµÇ¾ú½À´Ï´Ù.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
+	  out.append("<script>alert('íšŒì›íƒˆí‡´ê°€ ì •ìƒì ìœ¼ë¡œ ì§„í–‰ë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
 	  out.flush();
 	  out.close();
 	  session.invalidate();
 	  
-	  return ""; //printWriter append¸¦ »ç¿ëÇØ¼­ alertÀ» ¶ç¿ì¸é ¹«Á¶°Ç location.href·Î ÆäÀÌÁö ÀÌµ¿À» ½ÃÄÑ¾ßÇÑ´Ù. ÀÌ¶§ ¸Ş¼Òµå ÀÚ·áÇüÀº void·Î º¯°æÇØ¾ßÇÏ°í returnÅ¸ÀÔÀº ¾ø¾î¾ßÇÏ´Âµ¥ ÀÌ¸¦ ¹æÁöÇÏ±âÀ§ÇØ ¸®ÅÏÀ» ºó¹®ÀÚ·Î ÇÏ¿´´Ù.
+	  return ""; //printWriter appendë¥¼ ì‚¬ìš©í•´ì„œ alertì„ ë„ìš°ë©´ ë¬´ì¡°ê±´ location.hrefë¡œ í˜ì´ì§€ ì´ë™ì„ ì‹œì¼œì•¼í•œë‹¤. ì´ë•Œ ë©”ì†Œë“œ ìë£Œí˜•ì€ voidë¡œ ë³€ê²½í•´ì•¼í•˜ê³  returníƒ€ì…ì€ ì—†ì–´ì•¼í•˜ëŠ”ë° ì´ë¥¼ ë°©ì§€í•˜ê¸°ìœ„í•´ ë¦¬í„´ì„ ë¹ˆë¬¸ìë¡œ í•˜ì˜€ë‹¤.
   }
   }
   
+  //í™˜ë¶ˆì²˜ë¦¬ íŒì—…ì°½
+  @RequestMapping(value="/refundPop.do", method = RequestMethod.GET)
+  public String refundPop(int uidx ,int ridx, Model model)throws Exception{
+	  
+	  HashMap<String,Integer> hm = new HashMap<String,Integer>();
+	  hm.put("uidx", uidx);
+	  hm.put("ridx", ridx);
+	 ReservVO result = mypageService.reservListPop(hm);
+	  
+	 model.addAttribute("result",result);
+	  return "mypage/refund"; 
+  }
+  
+  //ì˜ˆì•½ë‚´ì—­ ì§€ìš°ê¸°
+  @RequestMapping(value="/refund.do", method = RequestMethod.POST)
+  public String refund(String reserv_num,ReservVO rvo,UserVO vo,HttpSession session,RedirectAttributes rttr,HttpServletRequest req,HttpServletResponse response) throws Exception{
+	  UserVO user = (UserVO)session.getAttribute("login");
+	  
+	  String oldPass = user.getUserPassword(); //ë¡œê·¸ì¸í•  ë•Œì˜ ë¹„ë°€ë²ˆí˜¸ê°’ì„ ê°€ì ¸ì˜´.
+	  String newPass = vo.getUserPassword();  //ìƒˆë¡œ ìƒì„±í•œ ë¹„ë°€ë²ˆí˜¸ ë°›ëŠ” inputì˜ ê°’ì„ ê°€ì ¸ì˜´
+	  
+	  if(!(oldPass.equals(newPass))) {
+		  rttr.addFlashAttribute("msg",false);
+		  return "redirect:/mypage/refund";
+	  }else {
+	  
+	  mypageService.reserv_refund(rvo);
+	  
+	  response.setContentType("text/html; charset=UTF-8");
+	  PrintWriter out = response.getWriter();
+	  out.append("<script>alert('ì˜ˆì•½ì·¨ì†Œê°€ ì™„ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='"+req.getContextPath()+"/mypage/info.do'</script>");
+	  out.flush();
+	  out.close();
+	  return ""; //printWriter appendë¥¼ ì‚¬ìš©í•´ì„œ alertì„ ë„ìš°ë©´ ë¬´ì¡°ê±´ location.hrefë¡œ í˜ì´ì§€ ì´ë™ì„ ì‹œì¼œì•¼í•œë‹¤. ì´ë•Œ ë©”ì†Œë“œ ìë£Œí˜•ì€ voidë¡œ ë³€ê²½í•´ì•¼í•˜ê³  returníƒ€ì…ì€ ì—†ì–´ì•¼í•˜ëŠ”ë° ì´ë¥¼ ë°©ì§€í•˜ê¸°ìœ„í•´ ë¦¬í„´ì„ ë¹ˆë¬¸ìë¡œ í•˜ì˜€ë‹¤.
+  }
+  }
 }

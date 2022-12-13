@@ -29,18 +29,20 @@
         IMP.request_pay({
             pg : 'html5_inicis',  // PG사 선택
             pay_method : 'card', // 지불 수단
-            merchant_uid: 'merchant_' + new Date().getTime(), 
-            name : '<%=rvo.getLodgingname()%>',	//상품명
-            amount : '<%=rvo.getRprice()%>', // 가격 
+            merchant_uid: 'R_' + new Date().getTime(), 
+            name : '<%=rvo.getLodgingname()%>', 
+            amount :'<%=rvo.getRprice()%>', //가격 
             buyer_email : '${login.userEmail}', //구매자이메일
             buyer_name : '${login.userName}', // 구매자 이름
             buyer_tel : '${login.userPhone}', // 구매자 연락처 
-        }, function (rsp) { // callback
+        }, 
+            
+        	function (rsp) { // callback
             if (rsp.success) {//결제성공시
             	var msg = '결제가 완료되었습니다.';
-            	 msg += '고유ID : ' + rsp.imp_uid;
+            	 msg += '고유ID : ' + rsp.imp_uid ;
                  msg += '상점 거래ID : ' + rsp.merchant_uid;
-                 msg += '결제 금액 : ' + rsp.amount;
+                 msg += '결제 금액 : ' + rsp.paid_amount;
                  msg += '카드 승인번호 : ' + rsp.apply_num;
                  msg += '숙소이름 : ' + rsp.name;
                  msg += '구매자이름 :' + rsp.buyer_name;
@@ -58,6 +60,8 @@
             }
             alert(msg);
         });
+        
+		
     }
 </script>
     <script>

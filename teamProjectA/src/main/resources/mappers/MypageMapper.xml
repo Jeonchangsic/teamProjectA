@@ -24,33 +24,61 @@
 		</select>
 		
 		<!-- 게시물 목록 + 페이징 -->
-		<select id="listPage" parameterType="criteria" resultType="reservVO">
+		<select id="listPage" parameterType="HashMap" resultType="reservVO">
 			SELECT reserv_idx
-				,uidx
-				,ridx
+				,username
+				,lodgingname
 				,reserv_date
 				,reserv_startDate
 				,reserv_endDate
-				reserv_num
+				,reserv_num
+				,ridx
+				,rprice
+				,uidx
 					FROM (
 						SELECT reserv_idx
-								,uidx
-								,ridx
+								,username
+								,lodgingname
 								,reserv_date
 								,reserv_startDate
 								,reserv_endDate
 								,reserv_num
+								,v.ridx
+								,rprice
+								,u.uidx
 						, ROW_NUMBER() 
 							OVER(
 								ORDER BY reserv_idx desc
 								) 
-							AS rNum FROM reservtb
-							)rtb 
+							AS rNum FROM AUSERTB u, LODGINGTB l, ROOMTB r, reservtb v
+							WHERE l.lidx = r.LIDX
+						   AND r.ridx = v.ridx
+						   AND v.uidx = u.uidx
+						   AND u.uidx = #{uidx}
+						   )rtb 
 							WHERE rNum 
 							BETWEEN #{rowStart} AND #{rowEnd} 
 							ORDER BY reserv_idx DESC
 		</select>
 		
+		<!-- 예약취소 팝업창 -->
+		<select id="reservListPop" parameterType="HashMap" resultType="reservVO">
+			SELECT lodgingname
+					,reserv_num
+					,rprice
+					FROM AUSERTB u, LODGINGTB l, ROOMTB r, reservtb v
+							WHERE l.lidx = r.LIDX
+						   AND r.ridx = v.ridx
+						   AND v.uidx = u.uidx
+						   AND v.ridx = #{ridx}
+						   AND v.uidx = #{uidx}
+		</select>
+		
+		<!-- 예약취소 -->
+		<delete id="reserv_refund">
+			DELETE FROM reservtb
+				WHERE reserv_num = #{reserv_num}
+		</delete>
 		
 		
 </mapper>
