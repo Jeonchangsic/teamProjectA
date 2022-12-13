@@ -9,6 +9,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,10 +20,9 @@
 <link
 	href="<%=request.getContextPath()%>/resources/css/seller_css/sellerInfo.css"
 	rel="stylesheet" />
-<script
-	src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
-<link
-	rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
+<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
 <script>
 	//사업장이름         
 	$(document).ready(function() {
@@ -117,12 +117,6 @@
 		</div>
 	</header>
 	<main class="inner">
-		<nav>
-			<div class="nav">
-				<li><a href="#">내정보</a></li>
-			</div>
-		</nav>
-
 		<form id="nameForm" name="nameform">
 			<table id="info_Area">
 				<tr>
@@ -182,7 +176,6 @@
 	</main>
 	<footer>
 		<div id="foot">
-
 			<br> <br>
 			<div id="copy">
 				(주)저긴어때 l 대표이사 : 홍이젠 l 사업자 등록번호 : 104-14-100400 l 메일 :

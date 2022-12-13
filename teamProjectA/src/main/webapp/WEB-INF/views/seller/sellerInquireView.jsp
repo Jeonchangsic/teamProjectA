@@ -57,29 +57,40 @@
     <input type="hidden" name="uidx">
     <input type="hidden" name="QnA_idx">
     <main  class=inner style="padding-top:115px;">
-    	<form>
-	        <div id="title">
-	            <div id="title_date">
-	                <a><%=qnaOne.getQna_Qtitle()%> </a>
-	                <a> ${login.userName} <%=qnaOne.getQna_Qdate()%></a>
-	            </div>
-	            <hr>
-	            <div id="content">
-	                <a><%=qnaOne.getQna_Qcontent() %></a>
-	            </div>
-	            <hr>
-	            <div id="change">
-	            <span>답변처리중</span>
-	            </div>
+    	<h2>게시글 상세화면</h2>
+	    	<form>
+	    		<table>
+	    		    <tr>
+	    				<td>작성자</td>
+	    				<td>${login.userName}</td>
+	    				<td>작성일</td>
+	    				<td><%=qnaOne.getQna_Qdate()%></td>
+	    			</tr>
+	    			<tr>
+	    				<td>제목</td>
+	    				<td><%=qnaOne.getQna_Qtitle()%></td>
+	    			</tr>
+
+	    			<tr>
+	    				<td colspan="4"><%=qnaOne.getQna_Qcontent() %></td>
+	    			</tr>
+		        </table>
+	<!-- 		        <div>
+			      
+			            <hr>
+			            <div id="change">
+			            <span>답변처리중</span>
+			            </div>
+			        </div> -->
+	
+	        </form>
+	        <form>
+	        </form>
+	        <div class="answer" style="display:none;">
+	            <input type="text" id="text">
+	            <input type="submit" id="insert" value="답변등록" onclick="document.querySelector('span').style.color='blue';
+	                document.querySelector('span').innerHTML='답변완료';">
 	        </div>
-        </form>
-        <form>
-        </form>
-        <div class="answer" style="display:none;">
-            <input type="text" id="text">
-            <input type="submit" id="insert" value="답변등록" onclick="document.querySelector('span').style.color='blue';
-                document.querySelector('span').innerHTML='답변완료';">
-        </div>
     </main>
     <footer>
         <div class="info">

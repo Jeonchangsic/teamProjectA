@@ -3,8 +3,7 @@ package team.projectA.service;
 import java.util.HashMap;
 import java.util.List;
 
-
-
+import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 
 import team.projectA.vo.QnaVO;
@@ -21,6 +20,10 @@ public interface SellerService {
 	int sellerUpdate2(LodgingVO vo);
 	
     List<QnaVO> qnaList(int uidx);
+    
+    List<QnaVO> QnaPaging(Criteria cri);
+    
+    int listCount();
    	
 	int qnaInsert(QnaVO vo);
 	

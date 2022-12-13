@@ -20,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
  
 import team.projectA.service.SellerService;
+import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
-
+import team.projectA.vo.PageMaker;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
@@ -88,22 +89,29 @@ public class SellerController {
 
 		
 		
-	//臾몄쓽 湲� 由ъ뒪�듃
+	//문의글 리스트
     @RequestMapping(value = "/sellerInquire.do", method = RequestMethod.GET)
-    public String sellerInquire(Model model,HttpServletRequest req){
+    public String sellerInquire(Model model,HttpServletRequest req, Criteria cri){
  
                                                                         
         HttpSession session = req.getSession();                                 
         UserVO login = (UserVO) session.getAttribute("login");
         List<QnaVO> qnaList = sellerService.qnaList(login.getUidx()); 
-
         model.addAttribute("qnaList", qnaList);
-                
+        
+  
+        List<QnaVO> paging = sellerService.QnaPaging(cri);
+        model.addAttribute("paging",paging);
+        
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(cri);
+        pageMaker.setTotalCount(sellerService.listCount());
+        model.addAttribute("pageMaker",pageMaker);
+        
         return "seller/sellerInquire";
     }
     
-    
-	//문의글 리스트
+    //문의글
 	@RequestMapping(value="/sellerInquireView.do", method = RequestMethod.GET)
 	public String sellerInquireView(Locale locale, Model model, int QnA_idx) {
 				
@@ -167,7 +175,7 @@ public class SellerController {
 		 sellerService.roomdel(ridx);
 
 		
-		return "redirect:/seller/sellerRegi.do";
+		return "redirect:sellerRegi.do";
 		
 	}
 	

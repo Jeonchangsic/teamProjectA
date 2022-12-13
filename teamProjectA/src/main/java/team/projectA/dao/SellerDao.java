@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 
 import team.projectA.vo.QnaVO;
@@ -40,6 +41,15 @@ public class SellerDao {
 	        
 	    return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", uidx);
 	 }
+	
+	public List<QnaVO> QnaPaging(Criteria cri) {
+		return sqlSession.selectList("team.projectA.mapper.sellerMapper.QnaPaging", cri);
+	
+	}
+	public int listCount() {
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount");
+		
+	}
 	    	
 	public int qnaInsert(QnaVO vo) {
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.qnaInsert", vo);
@@ -63,7 +73,7 @@ public class SellerDao {
 	@Transactional
 	public int roomup(RoomVO vo) {
 		
-		int  value = sqlSession.insert("team.projectA.mapper.sellerMapper.roomup",vo);
+		sqlSession.insert("team.projectA.mapper.sellerMapper.roomup",vo);
 		return vo.getRidx();		
 	}
 	

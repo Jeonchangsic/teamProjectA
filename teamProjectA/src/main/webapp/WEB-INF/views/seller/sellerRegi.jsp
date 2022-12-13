@@ -107,22 +107,16 @@
         </ul>
     </main>
     <footer> 
-        <div class="info">
-            <ul>
-                <li>(주)저긴어때</li>
-                <li>대표 : 홍길동&nbsp;&nbsp;</li>
-                <li>전라북도 전주시 덕진구 금암1동&nbsp;&nbsp;</li>
-                <li>사업자등록번호 : 000-00-00000&nbsp;&nbsp;</li>
-            </ul>
-            <ul>
-                <li>고객센터 : 1588-0000&nbsp;&nbsp;&nbsp;</li>
-                <li>개인정보관리책임자 : 홍길동&nbsp;&nbsp;</li>
-                <li>개인정보보유기간 : 3년</li>
-            </ul>
-            <div class="copyright">
-                <h6>Copyright 2022. Team 저긴어때. all rights reserved.</h6>
-            </div>
-        </div>
+     	<div id="foot">
+				<br> <br>
+				<div id="copy">
+					(주)저긴어때 l 대표이사 : 홍이젠 l 사업자 등록번호 : 104-14-100400 l 메일 :
+					Whatdoyouthink@naver.com <br> 주소 : 전라북도 전주시 덕진구 금암1동 667-52 5층
+					l 전화번호 : 063-104-1004 (오전 9시 ~ 오후 5시)<br> <br> Copyright
+					WD COMPANY Corp. All rights reserved. <br> <br>
+
+				</div>
+			</div>
     </footer>
 </body>
 

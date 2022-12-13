@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.projectA.dao.SellerDao;
-
+import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 
 import team.projectA.vo.QnaVO;
@@ -46,6 +46,18 @@ public class SellerServiceImpl implements SellerService{
         return SellerDao.qnaList(uidx);
     }
     
+	@Override
+	public List<QnaVO> QnaPaging(Criteria cri) {
+
+		return SellerDao.QnaPaging(cri);
+	}
+	
+	@Override
+	public int listCount() {
+
+		return SellerDao.listCount();
+	}
+
 
 	@Override
 	public int qnaInsert(QnaVO vo) {
@@ -116,6 +128,8 @@ public class SellerServiceImpl implements SellerService{
 
 		return SellerDao.roomModify2(vo);
 	}
+
+
 
 
 
