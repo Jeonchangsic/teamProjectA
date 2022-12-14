@@ -35,6 +35,7 @@
 				,ridx
 				,rprice
 				,uidx
+				,lidx
 					FROM (
 						SELECT reserv_idx
 								,username
@@ -46,6 +47,7 @@
 								,v.ridx
 								,rprice
 								,u.uidx
+								,l.lidx
 						, ROW_NUMBER() 
 							OVER(
 								ORDER BY reserv_idx desc
@@ -80,7 +82,37 @@
 				WHERE reserv_num = #{reserv_num}
 		</delete>
 		
+		<!-- 리뷰 내역 -->
+		<select id="reviewList" parameterType="int" resultType="reviewVO">
+			SELECT l.lodgingname
+					,rvtitle
+					,rvdate
+					,rvidx
+				 FROM reviewtb r, LODGINGTB l
+					 WHERE l.lidx = r.lidx
+					 AND r.uidx = #{uidx}
+		</select>
 		
+		<!-- 리뷰 상세 출력 -->
+		<select id="reviewList2" parameterType="int" resultType="reviewVO">
+			SELECT u.USERID
+			 	    ,l.lodgingname
+					,rvtitle
+					,rvdate
+					,rvidx
+					,rvSatisfaction
+					,rvContent
+					 FROM ausertb u, reviewtb r, LODGINGTB l
+						 WHERE l.lidx = r.lidx
+						 AND u.uidx = r.uidx
+						 AND r.rvidx = #{rvidx}
+		</select>
+		
+		<!-- 리뷰 삭제 -->
+		<delete id="reviewDt" parameterType="int">
+			DELETE FROM reviewtb 
+				WHERE rvidx = #{rvidx}
+		</delete>
 </mapper>
 
 

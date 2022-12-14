@@ -63,11 +63,12 @@ header h2{
 }
 
             /*main*/
+
 main{
     position:relative;
 }
 main #nav{
-    width:230px;
+    width:330px;
     height:20px;
     margin:35px auto;
     display:flex;
@@ -80,8 +81,18 @@ main table{
 }
 main #memberInfo{
     border-right:1px solid #919191;
-    padding-right:7px;
     font-weight: bold;
+    width:110px;
+    padding-right:7px;
+}
+main #conform{
+    border-right:1px solid #919191;
+    width:110px;
+    padding: 0 7px 0 7px;
+}
+main #reviewList{
+    width:110px;
+    padding-left:7px;
 }
 main #contentsArea1{
     border:1px solid #919191;
@@ -127,21 +138,22 @@ main table{
 
 
 /*reservation html*/
-main #table10 .tr_border{
+main .table10 .tr_border{
     border-bottom: 2px solid #000;
 }
-main #table10 th{
+main .table10 th{
     height:25px;
     font-weight: bold;
     font-size:20px;
 }
-main #table10 td{
+main .table10 td{
     border-bottom:1px solid #919191;
+    text-align:center;
 }
-main #table10 p{
+main .table10 p{
     display:inline-block;
 }
-main #table10 .ta_center{
+main .table10 .ta_center{
     text-align:center;
 }
 main #btnArea{
@@ -159,6 +171,15 @@ main #btnArea2{
 
 main #contentsArea{
 	display:none;
+}
+main #contentsArea2{
+	width:900px;
+	margin:0 auto;
+	display:none;
+}
+main #titleHover:hover{
+	color:blue;
+	font-weight:bold;
 }
 
                 /*footer*/

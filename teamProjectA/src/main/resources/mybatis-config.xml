@@ -12,7 +12,7 @@
 		<typeAlias type="team.projectA.vo.LodgingVO" alias="lodgingVO"/>
 		<typeAlias type="team.projectA.vo.RoomVO" alias="roomVO"/>
 		<typeAlias type="team.projectA.vo.QnaVO" alias="qnaVO"/>
-		<typeAlias type="team.projectA.vo.ReviewVO" alias="ReviewVO"/>
+		<typeAlias type="team.projectA.vo.ReviewVO" alias="reviewVO"/>
 		<typeAlias type="team.projectA.vo.ReservVO" alias="reservVO"/>
 		<typeAlias type="team.projectA.vo.Criteria" alias="criteria"/>
 		<typeAlias type="team.projectA.vo.SearchCriteria" alias="searchCriteria"/>

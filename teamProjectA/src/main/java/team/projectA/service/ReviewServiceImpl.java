@@ -1,5 +1,6 @@
 package team.projectA.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +21,8 @@ public class ReviewServiceImpl implements ReviewService{
 	private ReviewDAO reviewDAO;
 
 	@Override
-	public int rvInsert(ReviewVO vo) {
-		return reviewDAO.rvInsert(vo);
+	public int rvInsert(HashMap hm) {
+		return reviewDAO.rvInsert(hm);
 	}
 
 	

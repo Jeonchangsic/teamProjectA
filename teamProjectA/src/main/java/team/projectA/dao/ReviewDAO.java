@@ -1,5 +1,6 @@
 package team.projectA.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,8 +16,9 @@ public class ReviewDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public int rvInsert(ReviewVO vo) {
+	public int rvInsert(HashMap hm) {
 		
-		return sqlsession.insert("team.projectA.mapper.ReviewMapper.rvInsert", vo);
+		return sqlsession.insert("team.projectA.mapper.ReviewMapper.rvInsert", hm);
 	}
+	
 }

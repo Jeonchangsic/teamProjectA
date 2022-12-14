@@ -27,7 +27,7 @@ public class LogoutController {
 		
 	
 		HttpSession session = req.getSession();
-		session.invalidate(); //¼¼¼ÇÀ» »ç¿ëÇÑ Á¤º¸¸¦ ÃÊ±âÈ­ ÇÏ´Â invalidate(). ·Î±×¾Æ¿ôÃ³¸®.
+		session.invalidate(); //ì„¸ì…˜ì„ ì‚¬ìš©í•œ ì •ë³´ë¥¼ ì´ˆê¸°í™” í•˜ëŠ” invalidate(). ë¡œê·¸ì•„ì›ƒì²˜ë¦¬.
 		
 		return "redirect:/";
 	}

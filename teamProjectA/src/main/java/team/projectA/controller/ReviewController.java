@@ -3,6 +3,7 @@ package team.projectA.controller;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,32 +35,40 @@ public class ReviewController {
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
 	@RequestMapping(value = "/review.do", method = RequestMethod.GET)
-	public String review(Locale locale, Model model) {
+	public String review(int lidx, Locale locale, Model model) {
 		
-		
+		model.addAttribute("lidx",lidx);
 		
 		return "review/review";
 	}
 	
-	//¸®ºäÀÛ¼º
+	//ë¦¬ë·°ì‘ì„±
 	@RequestMapping(value="/review.do", method= RequestMethod.POST)
-	public String review(ReviewVO vo, HttpServletResponse response, HttpServletRequest req) throws Exception{
+	public String review(int lidx, String rvTitle, String rvSatisfaction, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
 		
-		/* System.out.println("¸®ºäÀÛ¼ºÀÚ:"+vo.getRvWriter()); */
+		/* System.out.println("ë¦¬ë·°ì‘ì„±ì:"+vo.getRvWriter()); */
 		HttpSession session = req.getSession();
-		UserVO userVO = (UserVO)session.getAttribute("login"); //¿ÀºêÁ§Æ® Å¸ÀÔÀÌ±â ¶§¹®¿¡ Çüº¯È¯À» ÇÏ¿© ¸ÂÃçÁØ´Ù.
-		vo.setUidx(userVO.getUidx());
-		reviewService.rvInsert(vo);
+		UserVO userVO = (UserVO)session.getAttribute("login"); 
+		
+		HashMap<String,Object> hm = new HashMap<String,Object>();
+		hm.put("uidx",userVO.getUidx());
+		hm.put("lidx",lidx);
+		hm.put("rvTitle", rvTitle);
+		hm.put("rvSatisfaction", rvSatisfaction);
+		hm.put("rvContent", rvContent);
+		
+		reviewService.rvInsert(hm);
 		
 		
-//		response.setContentType("text/html; charset=UTF-8"); 
-//		PrintWriter out = response.getWriter();
-		/*
-		 * out.append("<script>alert('¸®ºäÀÛ¼ºÀÌ Á¤»óÀûÀ¸·Î ¿Ï·áµÇ¾ú½À´Ï´Ù.');location.href='"+req.
-		 * getContextPath()+"/mypage/info.do'</script>"); out.flush(); out.close();
-		 */
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter out = response.getWriter();
+		
+		out.append("<script>alert('ë¦¬ë·° ì‘ì„±ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='"+req.getContextPath()+"/mypage/info.do'</script>"); 
+		out.flush(); 
+		out.close();
+		
 		 
-		return "redirect:/mypage/info.do";
+		return "";
 		
 	}
 }

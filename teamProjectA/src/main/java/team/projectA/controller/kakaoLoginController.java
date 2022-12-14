@@ -28,35 +28,35 @@ public class kakaoLoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(kakaoLoginController.class);
 	
-	@ResponseBody   //¸®½ºÆù½º¹Ùµğ´Â data¸¦ ¸®ÅÏÇØÁÖ´Â ÄÁÆ®·Ñ·¯·Î ÁöÁ¤
+	@ResponseBody   //ë¦¬ìŠ¤í°ìŠ¤ë°”ë””ëŠ” dataë¥¼ ë¦¬í„´í•´ì£¼ëŠ” ì»¨íŠ¸ë¡¤ëŸ¬ë¡œ ì§€ì •
 	@RequestMapping(value="/auth/kakao/callback", method = RequestMethod.GET)
 	public String kakaoLogin(String code) {
 		
-		//post¹æ½ÄÀ¸·Î key=value µ¥ÀÌÅÍ¸¦ Ä«Ä«¿À·Î ¿äÃ»
-		//µ¥ÀÌÅÍ ¿äÃ»À» ÇØÁÖ´Â ¶óÀÌºê·¯¸® RestTemplate
+		//postë°©ì‹ìœ¼ë¡œ key=value ë°ì´í„°ë¥¼ ì¹´ì¹´ì˜¤ë¡œ ìš”ì²­
+		//ë°ì´í„° ìš”ì²­ì„ í•´ì£¼ëŠ” ë¼ì´ë¸ŒëŸ¬ë¦¬ RestTemplate
 		
-		//HttpHeader ¿ÀºêÁ§Æ® »ı¼º
+		//HttpHeader ì˜¤ë¸Œì íŠ¸ ìƒì„±
 		RestTemplate rt = new RestTemplate();
-		HttpHeaders headers = new HttpHeaders();      //head¸¦ ¸¸µé±â À§ÇÔ
+		HttpHeaders headers = new HttpHeaders();      //headë¥¼ ë§Œë“¤ê¸° ìœ„í•¨
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 		
-		//HttpBody ¿ÀºêÁ§Æ® »ı¼º
+		//HttpBody ì˜¤ë¸Œì íŠ¸ ìƒì„±
 		MultiValueMap<String, String> params = new LinkedMultiValueMap();
 		params.add("grant_type","authorization_code");
 		params.add("client_id","8bb3c9d09631fc7a7f15a6de4cef3908");
 		params.add("redirect_uri","http://localhost:8080/A/auth/kakao/callback");
 		params.add("code",code); 
 		
-		//HttpHeader¿Í HttpBody¸¦ ÇÏ³ªÀÇ ¿ÀºêÁ§Æ®¿¡ ´ã±â
+		//HttpHeaderì™€ HttpBodyë¥¼ í•˜ë‚˜ì˜ ì˜¤ë¸Œì íŠ¸ì— ë‹´ê¸°
 		HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity(params,headers);
 		
-		//Http ¿äÃ»ÇÏ±â - post¹æ½ÄÀ¸·Î -  ±×¸®°í response º¯¼öÀÇ ÀÀ´ä¹ŞÀ½.
+		//Http ìš”ì²­í•˜ê¸° - postë°©ì‹ìœ¼ë¡œ -  ê·¸ë¦¬ê³  response ë³€ìˆ˜ì˜ ì‘ë‹µë°›ìŒ.
 		ResponseEntity<String> response = rt.exchange(
 			"https://kauth.kakao.com/oauth/token",
 			HttpMethod.POST,
 			kakaoTokenRequest,
 			String.class
 		);
-		return "ÅäÅ« ¿äÃ» ¿Ï·á: ÅäÅ« ¿äÃ»¿¡ ´ëÇÑ ÀÀ´ä:"+response;
+		return "í† í° ìš”ì²­ ì™„ë£Œ: í† í° ìš”ì²­ì— ëŒ€í•œ ì‘ë‹µ:"+response;
 	}
 }

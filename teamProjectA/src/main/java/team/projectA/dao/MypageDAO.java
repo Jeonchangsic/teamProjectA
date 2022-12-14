@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import team.projectA.vo.Criteria;
 import team.projectA.vo.ReservVO;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
@@ -37,4 +38,13 @@ public class MypageDAO {
 	 public ReservVO reservListPop(HashMap hm)throws Exception {
 		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reservListPop",hm);
 	 }
+	 public List<ReviewVO>reviewList(int uidx)throws Exception{
+			return sqlsession.selectList("team.projectA.mapper.MypageMapper.reviewList",uidx);
+	}
+	 public int reviewDt(int rvidx){
+			return sqlsession.delete("team.projectA.mapper.MypageMapper.reviewDt", rvidx);
+	}
+	 public ReviewVO reviewList2(int rvidx)throws Exception{
+		return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reviewList2",rvidx);
+}
 }

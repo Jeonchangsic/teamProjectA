@@ -1,11 +1,10 @@
 package team.projectA.vo;
 
-public class ReviewVO extends UserVO{ 
+public class ReviewVO extends LodgingVO{ 
 	
 	private int rvidx;
 	private int uidx;
-	private String lidx;
-	private String rvWriter;
+	private int lidx;
 	private String rvTitle;
 	private String rvSatisfaction;
 	private String rvContent;
@@ -24,17 +23,11 @@ public class ReviewVO extends UserVO{
 	public void setUidx(int uidx) {
 		this.uidx = uidx;
 	}
-	public String getLidx() {
+	public int getLidx() {
 		return lidx;
 	}
-	public void setLidx(String lidx) {
+	public void setLidx(int lidx) {
 		this.lidx = lidx;
-	}
-	public String getRvWriter() {
-		return rvWriter;
-	}
-	public void setRvWriter(String rvWriter) {
-		this.rvWriter = rvWriter;
 	}
 	public String getRvTitle() {
 		return rvTitle;

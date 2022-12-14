@@ -28,6 +28,7 @@ import team.projectA.service.UserService;
 import team.projectA.vo.Criteria;
 import team.projectA.vo.PageMaker;
 import team.projectA.vo.ReservVO;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
@@ -47,19 +48,19 @@ public class MypageController {
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	
-	//예약내역 리스트 출력 검색
+	//마이페이지
 	@RequestMapping(value = "/info.do", method = RequestMethod.GET)
 	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Model model,HttpServletRequest req)throws Exception {
 		
-		
+		//마이페이지 회원정보
 		  HttpSession session = req.getSession();
 		  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
 		 
+		//마이페이지 예약내역리스트,페이징
 		  List<ReservVO> list = null; 
 		  
 		  PageMaker pageMaker = new PageMaker();
 		  pageMaker.setCri(scri);
-		  //pageMaker.setTotalCount(mypageService.reserv_count());
 		  pageMaker.setTotalCount(mypageService.reserv_count());
 		  
 		 
@@ -72,9 +73,11 @@ public class MypageController {
 		model.addAttribute("list",list);
 		model.addAttribute("pageMaker",pageMaker);
 		
+		//마이페이지 리뷰내역
+		int uidx = userVO.getUidx();
+		List<ReviewVO> reviewList = mypageService.reviewList(uidx);
 		
-		
-		
+		model.addAttribute("reviewList",reviewList);
 		return "mypage/mypage";
 	}
 	
@@ -186,5 +189,26 @@ public class MypageController {
 	  
 	  return ""; //printWriter append를 사용해서 alert을 띄우면 무조건 location.href로 페이지 이동을 시켜야한다. 이때 메소드 자료형은 void로 변경해야하고 return타입은 없어야하는데 이를 방지하기위해 리턴을 빈문자로 하였다.
   }
+  }
+  
+  //리뷰 상세보기
+  @RequestMapping(value="/reviewInfo.do", method = RequestMethod.GET)
+  public String reviewInfo(int rvidx, Model model,HttpServletResponse response)throws Exception{
+	  	
+		ReviewVO vo = mypageService.reviewList2(rvidx);
+		model.addAttribute("vo",vo);
+	  return "review/reviewInfo"; 
+  }
+  
+  @RequestMapping(value="/reviewDt.do", method = RequestMethod.GET)
+  public String reviewDt(int rvidx, Model model,HttpServletResponse response,HttpServletRequest req)throws Exception{
+	  	PrintWriter out = response.getWriter();
+		mypageService.reviewDt(rvidx);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		out.append("<script>alert('리뷰 삭제가 완료되었습니다.');location.href='"+req.getContextPath()+"/mypage/info.do'</script>");
+		out.flush();
+		out.close();
+	  return ""; 
   }
 }

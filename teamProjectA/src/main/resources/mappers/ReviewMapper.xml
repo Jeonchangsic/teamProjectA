@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" 
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.projectA.mapper.ReviewMapper">
-	<insert id="rvInsert" parameterType="ReviewVO">
-		INSERT INTO reviewtb(rvidx,uidx,lidx,rvWriter,rvTitle,rvSatisfaction,rvContent)
-		VALUES(review_seq.NEXTVAL,#{uidx},,#{rvWriter},#{rvTitle},#{rvSatisfaction},#{rvContent})
+	<insert id="rvInsert" parameterType="HashMap">
+		INSERT INTO reviewtb
+		VALUES(review_seq.NEXTVAL,#{uidx},#{lidx},#{rvTitle},#{rvSatisfaction},#{rvContent},SYSDATE)
 	</insert> 
 	
 </mapper>

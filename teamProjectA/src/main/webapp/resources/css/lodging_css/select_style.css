@@ -27,6 +27,10 @@ header #logout{color:rgba(255,255,255,0.8);}
 header #logout:hover{color:white;} 
 header #mypage{color:rgba(255,255,255,0.8);}    
 header #mypage:hover{color:white;} 
+header #seller{color:rgba(255,255,255,0.8);}  
+header #seller:hover{color:white;}
+header #manager{color:rgba(255,255,255,0.8);}  
+header #manager:hover{color:white;}
    
             /*end header */
 

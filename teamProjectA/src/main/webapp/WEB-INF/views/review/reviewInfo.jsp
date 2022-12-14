@@ -7,80 +7,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="<%=request.getContextPath()%>/resources/css/review_css/review.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/resources/css/review_css/review.css" rel="stylesheet"/>  <!-- css파일 새로 만들기  -->
     <!---- jQuery ---->
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
      
-     <!-- 리뷰 content영역 글자 제한 -->
-     <script>
-     	$(document).ready(function(){
-     		$("#info").on("keyup",function(){
-     			$("#content_cnt").html("("+$(this).val().length+"/100)");
-     			
-     			if($(this).val().length > 100){
-     				$(this).val($(this).val().substring(0,100));
-     				$("#content_cnt").html("(100/100)");
-     			}
-     		});
-     	});
-     </script>
+     
 </head>
 <body>
     <header>
-        <h2>리뷰쓰기</h2>
+        <h2>리뷰</h2>
     </header>
                 <!--end header-->
-
     <main>
-        
         <div id="contentsArea">
-            <form name="frm" action="<%=request.getContextPath() %>/review/review.do?lidx=${lidx}" method="POST">
                 <table id="table1">
                 	<tr>
                 		<td class="margin1">작성자</td>
                 		<td>
-                			<input type="text" class="info" value="${login.userID}" readonly>
+                			<input type="text" class="info" value="${vo.userID}" readonly>
+                		</td>
+                	</tr>
+                	<tr>
+                		<td class="margin1">숙소명</td>
+                		<td>
+                			<input type="text" class="info" value="${vo.lodgingname}" readonly>
                 		</td>
                 	</tr>
                     <tr>
                         <td class="margin1">만족도</td>
                         <td>
-                        	<select name="rvSatisfaction" required>
-                        		<option value="10점">10점</option>
-                        		<option value="20점">20점</option>
-                        		<option value="30점">30점</option>
-                        		<option value="40점">40점</option>
-                        		<option value="50점">50점</option>
-                        		<option value="60점">60점</option>
-                        		<option value="70점">70점</option>
-                        		<option value="80점">80점</option>
-                        		<option value="90점">90점</option>
-                        		<option value="100점">100점</option>
+                        	<select name="rvSatisfaction" readonly>
+                        		<option value="${vo.rvSatisfaction}">${vo.rvSatisfaction}</option>
                         	</select>
                         </td>
                     </tr>
                     <tr>
                         <td class="margin1">제목</td>
                         <td>
-                        	<input type="text" class="info" name="rvTitle" placeholder="제목을 입력하세요." required>
+                        	<input type="text" class="info" name="rvTitle" value="${vo.rvTitle}" readonly>
                         </td> 
                     </tr>
                     <tr>
                         <td id="margin1">리뷰 내용</td>
                         <td>
-                            <textarea id="info" name="rvContent" cols="30" rows="10" placeholder="공백 포함 100자 이내 리뷰를 작성해주세요." required></textarea>
-                        	<div id="content_cnt">(0/100)</div>
+                            <textarea id="info" name="rvContent" cols="30" rows="10" readonly>${vo.rvContent}</textarea>
                         </td>
                     </tr>
                 </table>
                 <table id="table2">
                     <tr>
                         <td>
-                            <input type="submit" id="clearBtn" value="작성"/>
+                            <button type="button" id="clearBtn" value="확인" onclick="location.href='<%=request.getContextPath()%>/mypage/info.do'">확인</button>
+                            <button type="button" id="clearBtn" value="삭제" onclick="location.href='<%=request.getContextPath()%>/mypage/reviewDt.do?rvidx=${vo.rvidx}'">삭제</button>
                         </td>
                     </tr>
                 </table>
-            </form>
         </div>
     </main>
     <footer>

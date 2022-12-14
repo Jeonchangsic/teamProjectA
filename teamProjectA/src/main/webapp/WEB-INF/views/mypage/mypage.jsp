@@ -18,14 +18,26 @@
      		$("#change1").click(function(){
      			$("#contentsArea").css("display","none");
      			$("#contentsArea1").css("display","block");
+     			$("#contentsArea2").css("display","none");
      			$("#memberInfo").css("font-weight","bold");
      			$("#conform").css("font-weight","normal");
+     			$("#reviewList").css("font-weight","normal");
      		});
      		$("#change2").click(function(){
      			$("#contentsArea1").css("display","none");
      			$("#contentsArea").css("display","block");
+     			$("#contentsArea2").css("display","none");
      			$("#memberInfo").css("font-weight","normal");
      			$("#conform").css("font-weight","bold");
+     			$("#reviewList").css("font-weight","normal");
+     		});
+     		$("#change3").click(function(){
+     			$("#contentsArea1").css("display","none");
+     			$("#contentsArea").css("display","none");
+     			$("#contentsArea2").css("display","block");
+     			$("#memberInfo").css("font-weight","normal");
+     			$("#conform").css("font-weight","normal");
+     			$("#reviewList").css("font-weight","bold");
      		});
      	})
      </script>
@@ -53,8 +65,15 @@
 
     <main>
         <div id="nav">
-            <a id="change1" href="#"><div id="memberInfo">회원정보수정</div></a>
-            <a id="change2" href="#"><div id="conform">예약내역확인</div></a>
+            <a id="change1" href="#">
+            	<div id="memberInfo">회원정보수정</div>
+            </a>
+            <a id="change2" href="#">
+            	<div id="conform">예약내역확인</div>
+            </a>
+            <a id="change3" href="#">
+            	<div id="reviewList">리뷰내역</div>
+            </a>
         </div>
         <div id="contentsArea1">
             <form action="pwModify.do" method="post">
@@ -67,21 +86,20 @@
                         <td><button>변경하기</button></td>
                     </tr>
                     <tr>
-                        <td class="margin1">이메일</td><td><input type="text" class="info"  name="userEmail" value="${login.userEmail}"></td>
+                        <td class="margin1">이메일</td><td><input type="text" class="info"  name="userEmail" value="${login.userEmail}" readonly></td>
                     </tr>
                     <tr>
-                        <td class="margin1">휴대전화</td><td><input type="text" class="info" name="userPhone" value="${login.userPhone}"></td>
+                        <td class="margin1">휴대전화</td><td><input type="text" class="info" name="userPhone" value="${login.userPhone}" readonly></td>
                     </tr>
                     <tr>
-                        <td class="margin1">생년월일</td><td><input type="text" class="info" name="userBirth" value="${login.userBirth}"></td>
+                        <td class="margin1">생년월일</td><td><input type="text" class="info" name="userBirth" value="${login.userBirth}" readonly></td>
                     </tr>
                 </table>
                 <button id="btn_style" type="button" onclick="location.href='<%=request.getContextPath()%>/mypage/userDt.do'" style="width:100px; height:30px; margin-left:200px;">회원탈퇴</button>
             </form>
         </div>
         <div id="contentsArea">
-            <form action="" method="">
-                <table id="table10">
+                <table class="table10">
                     <tr class="ta_center tr_border">
                         <th>예약번호</th>
                         <th>숙소정보</th>
@@ -99,12 +117,11 @@
 	                        <td>${list.rprice}</td>
 	                        <td  class="ta_center">
 	                            <input onclick="refund_pop(${list.ridx},${list.uidx})" type="button" value="예약취소"/>
-	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do?reserv_idx=${list.ridx}'"/>
+	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do?lidx=${list.lidx}'"/>
 	                        </td>
 	                    </tr>
                     </c:forEach>
                 </table>
-            </form>
             <div id="btnArea">
                 <div id="btnArea2">
                     <ul>
@@ -121,6 +138,22 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div id="contentsArea2">
+        	 <table class="table10">
+                    <tr class="ta_center tr_border">
+                        <th>숙소명</th>
+                        <th>리뷰제목</th>
+                        <th>리뷰작성일</th>
+                    </tr>
+                    <c:forEach items="${reviewList}" var="reviewList">
+	                    <tr>
+	                    	<td>${reviewList.lodgingname}</td>
+	                    	<td id="titleHover"><a href="<%=request.getContextPath()%>/mypage/reviewInfo.do?rvidx=${reviewList.rvidx}">${reviewList.rvTitle}</a></td>
+	                    	<td>${reviewList.rvDate}</td>
+	                    </tr>
+	               	</c:forEach>
+             </table>
         </div>
     </main>
     <footer>

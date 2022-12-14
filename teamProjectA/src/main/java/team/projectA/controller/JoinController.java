@@ -38,20 +38,20 @@ public class JoinController {
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(JoinController.class);
-	//ÀÏ¹İ È¸¿ø°¡ÀÔ ÆäÀÌÁö
+	//ì¼ë°˜ íšŒì›ê°€ì… í˜ì´ì§€
 	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
 	public String join(Locale locale, Model model) {
 		
 		return "join/join";
 	}
-	//ÆÇ¸ÅÀÚ È¸¿ø°¡ÀÔ ÆäÀÌÁö
+	//íŒë§¤ì íšŒì›ê°€ì… í˜ì´ì§€
 	@RequestMapping(value = "/sellerJoin.do", method = RequestMethod.GET)
 	public String sellerJoin(Locale locale, Model model) {
 		
 		return "join/sellerJoin";
 	}
 	
-	//ÀÏ¹İ È¸¿ø°¡ÀÔ 
+	//ì¼ë°˜ íšŒì›ê°€ì… 
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String join(UserVO vo, HttpServletResponse response,HttpServletRequest req) throws Exception{
 		
@@ -59,12 +59,12 @@ public class JoinController {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.append("<script>alert('È¸¿ø°¡ÀÔÀÌ Á¤»óÀûÀ¸·Î ¿Ï·áµÇ¾ú½À´Ï´Ù.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
+		out.append("<script>alert('íšŒì›ê°€ì…ì´ ì •ìƒì ìœ¼ë¡œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
 		out.flush();
 		out.close();
 		return "";
 	}
-	//ÆÇ¸ÅÀÚ È¸¿ø°¡ÀÔ 
+	//íŒë§¤ì íšŒì›ê°€ì… 
 	@RequestMapping(value = "/sellerJoin.do", method = RequestMethod.POST)
 	public String sellerjoin(UserVO vo, HttpServletResponse response,HttpServletRequest req) throws Exception{
 		
@@ -72,13 +72,13 @@ public class JoinController {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.append("<script>alert('ÆÇ¸ÅÀÚ È¸¿ø°¡ÀÔÀÌ Á¤»óÀûÀ¸·Î ¿Ï·áµÇ¾ú½À´Ï´Ù.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
+		out.append("<script>alert('íŒë§¤ì íšŒì›ê°€ì…ì´ ì •ìƒì ìœ¼ë¡œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
 		out.flush();
 		out.close();
 		return "";
 	}
 	
-	//¾ÆÀÌµğ Áßº¹Ã¼Å©
+	//ì•„ì´ë”” ì¤‘ë³µì²´í¬
 	@ResponseBody
 	@RequestMapping(value="/userForm.do")
 	public String userForm(String userID) {
@@ -89,44 +89,44 @@ public class JoinController {
 		return result;
 	}
 	
-	//ÀÌ¸ŞÀÏ ÀÎÁõ
+	//ì´ë©”ì¼ ì¸ì¦
 	@ResponseBody
 	@RequestMapping(value="/mailCheck", method = RequestMethod.GET)
 	public String mailCheck(String email) throws Exception{
 		
-		//È­¸é¿¡¼­ ³Ñ¾î¿Â µ¥ÀÌÅÍ È®ÀÎ
-		System.out.println("ÀÎÁõ¹øÈ£"+email);
+		//í™”ë©´ì—ì„œ ë„˜ì–´ì˜¨ ë°ì´í„° í™•ì¸
+		System.out.println("ì¸ì¦ë²ˆí˜¸"+email);
 		
-		//ÀÎÁõ¹øÈ£(³­¼ö) »ı¼º
+		//ì¸ì¦ë²ˆí˜¸(ë‚œìˆ˜) ìƒì„±
 		Random random = new Random();
-		int checkNum = random.nextInt(888888) + 111111; //111111 ~ 999999 ÀÇ ¼ö·Î ³­¼ö »ı¼ºÇÏ±â À§ÇÔ
-		System.out.println("ÀÎÁõ¹øÈ£"+checkNum); //ÀÎÁõ¹øÈ£°¡ ³­¼ö·Î Àß »ı¼ºµÇ°í ÀÖ´ÂÁö È®ÀÎ
+		int checkNum = random.nextInt(888888) + 111111; //111111 ~ 999999 ì˜ ìˆ˜ë¡œ ë‚œìˆ˜ ìƒì„±í•˜ê¸° ìœ„í•¨
+		System.out.println("ì¸ì¦ë²ˆí˜¸"+checkNum); //ì¸ì¦ë²ˆí˜¸ê°€ ë‚œìˆ˜ë¡œ ì˜ ìƒì„±ë˜ê³  ìˆëŠ”ì§€ í™•ì¸
 		
-		//ÀÌ¸ŞÀÏ º¸³»±â
-		String setFrom = "teamproject_a@naver.com"; //root-context.xml¿¡ »ğÀÔÇÑ ÀÚ½ÅÀÇ ÀÌ¸ŞÀÏ °èÁ¤ (¸ŞÀÏ ¹ß½ÅÇÒ °èÁ¤)
-		String toMail = email; //ÀÔ·Â¹ŞÀº ¸ŞÀÏ°ª
-		String title = "Àú±ä¾î¶§(ÁÖ) È¸¿ø°¡ÀÔ ÀÎÁõ ÀÌ¸ŞÀÏ ÀÔ´Ï´Ù."; //¹ß½Å ½Ã »ç¿ëµÇ´Â ÀÌ¸ŞÀÏ Á¦¸ñ
-		String content = 								//¹ß½Å ½Ã »ç¿ëµÇ´Â ÀÌ¸ŞÀÏÀÇ ³»¿ë
-				"Àú±ä¾î¶§(ÁÖ)¿Í ÇÔ²² ÇÏ½Ã°Ô µÇ¾î ¿µ±¤ÀÔ´Ï´Ù." +
+		//ì´ë©”ì¼ ë³´ë‚´ê¸°
+		String setFrom = "teamproject_a@naver.com"; //root-context.xmlì— ì‚½ì…í•œ ìì‹ ì˜ ì´ë©”ì¼ ê³„ì • (ë©”ì¼ ë°œì‹ í•  ê³„ì •)
+		String toMail = email; //ì…ë ¥ë°›ì€ ë©”ì¼ê°’
+		String title = "ì €ê¸´ì–´ë•Œ(ì£¼) íšŒì›ê°€ì… ì¸ì¦ ì´ë©”ì¼ ì…ë‹ˆë‹¤."; //ë°œì‹  ì‹œ ì‚¬ìš©ë˜ëŠ” ì´ë©”ì¼ ì œëª©
+		String content = 								//ë°œì‹  ì‹œ ì‚¬ìš©ë˜ëŠ” ì´ë©”ì¼ì˜ ë‚´ìš©
+				"ì €ê¸´ì–´ë•Œ(ì£¼)ì™€ í•¨ê»˜ í•˜ì‹œê²Œ ë˜ì–´ ì˜ê´‘ì…ë‹ˆë‹¤." +
 		        "<br><br>" + 
-                "ÀÎÁõ ¹øÈ£´Â " + checkNum + "ÀÔ´Ï´Ù." + 
+                "ì¸ì¦ ë²ˆí˜¸ëŠ” " + checkNum + "ì…ë‹ˆë‹¤." + 
                 "<br>" + 
-                "ÇØ´ç ÀÎÁõ¹øÈ£¸¦ ÀÎÁõ¹øÈ£ È®ÀÎ¶õ¿¡ ±âÀÔÇÏ¿© ÁÖ¼¼¿ä.";
+                "í•´ë‹¹ ì¸ì¦ë²ˆí˜¸ë¥¼ ì¸ì¦ë²ˆí˜¸ í™•ì¸ë€ì— ê¸°ì…í•˜ì—¬ ì£¼ì„¸ìš”.";
 		
 		
 		  try { MimeMessage message = mailSender.createMimeMessage(); MimeMessageHelper
 		  helper = new MimeMessageHelper(message,true,"utf-8");
-		  helper.setFrom(setFrom); //¸ŞÀÏ ¹ß½ÅÇÒ °èÁ¤ 
-		  helper.setTo(toMail); //¼ö½ÅÀÚ °èÁ¤
-		  helper.setSubject(title); //¹ß½Å ½Ã »ç¿ëµÇ´Â ÀÌ¸ŞÀÏ Á¦¸ñ 
-		  helper.setText(content,true); //¹ß½Å ½Ã »ç¿ëµÇ´Â ÀÌ¸ŞÀÏ ³»¿ë 
+		  helper.setFrom(setFrom); //ë©”ì¼ ë°œì‹ í•  ê³„ì • 
+		  helper.setTo(toMail); //ìˆ˜ì‹ ì ê³„ì •
+		  helper.setSubject(title); //ë°œì‹  ì‹œ ì‚¬ìš©ë˜ëŠ” ì´ë©”ì¼ ì œëª© 
+		  helper.setText(content,true); //ë°œì‹  ì‹œ ì‚¬ìš©ë˜ëŠ” ì´ë©”ì¼ ë‚´ìš© 
 		  mailSender.send(message); 
 		  }catch(Exception e){
 		  e.printStackTrace(); 
 		  }
 		 
-		String num = Integer.toString(checkNum); //³­¼ö¸¦ ajax¸¦ ÅëÇØ ºä·Î ´Ù½Ã ¹İÈ¯ÇØ¾ßÇÏ´Âµ¥ ³­¼ö »ı¼º ½Ã »ç¿ëÇÑ ÀÚ·áÇüÀº intÇüÀÌÁö¸¸ ajax·Î ¹İÈ¯½Ã¿¡´Â StringÇü½Ä¸¸ °¡´ÉÇÏ¿© ÆÌ½ÌÇÔ
+		String num = Integer.toString(checkNum); //ë‚œìˆ˜ë¥¼ ajaxë¥¼ í†µí•´ ë·°ë¡œ ë‹¤ì‹œ ë°˜í™˜í•´ì•¼í•˜ëŠ”ë° ë‚œìˆ˜ ìƒì„± ì‹œ ì‚¬ìš©í•œ ìë£Œí˜•ì€ intí˜•ì´ì§€ë§Œ ajaxë¡œ ë°˜í™˜ì‹œì—ëŠ” Stringí˜•ì‹ë§Œ ê°€ëŠ¥í•˜ì—¬ íŒŸì‹±í•¨
 		
-		return num;   //ResponseBody ¾î³ëÅ×ÀÌ¼ÇÀÌ ¼³Á¤µÈ ¸Ş¼Òµå´Â ¹İÈ¯°ªÀÌ ajaxÀÇ successÀÇ ÇÔ¼ö ¸Å°³º¯¼ö·Î µé¾î°£´Ù. ±× °ªÀº num.
+		return num;   //ResponseBody ì–´ë…¸í…Œì´ì…˜ì´ ì„¤ì •ëœ ë©”ì†Œë“œëŠ” ë°˜í™˜ê°’ì´ ajaxì˜ successì˜ í•¨ìˆ˜ ë§¤ê°œë³€ìˆ˜ë¡œ ë“¤ì–´ê°„ë‹¤. ê·¸ ê°’ì€ num.
 	}
 }
