@@ -30,12 +30,7 @@
 			<tr>
 				<td>비밀번호:
 					<td>
-						<input type="text" name="userPassword" placeholder="회원 비밀번호를 입력하세요."/>
-						<c:if test="${msg == false }">
-					    <p style="color:red;"> 
-					   	 비밀번호가 일치하지 않습니다!
-					    </p>
-		   				</c:if>
+						<input type="password" name="userPassword" placeholder="회원 비밀번호를 입력하세요."/>
 					</td>
 				</td>
 			</tr>

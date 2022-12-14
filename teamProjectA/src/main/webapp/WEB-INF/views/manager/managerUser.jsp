@@ -114,6 +114,7 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
             <thead>
                 <tr style="text-align:center;">
                     <th>ID</th>
+                    <th>이름</th>
                     <th>예약장소</th>
                     <th>예약번호</th>
                     <th>예약날짜</th>	

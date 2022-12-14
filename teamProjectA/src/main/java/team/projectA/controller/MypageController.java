@@ -166,20 +166,24 @@ public class MypageController {
 	  UserVO user = (UserVO)session.getAttribute("login");
 	  
 	  String oldPass = user.getUserPassword(); //로그인할 때의 비밀번호값을 가져옴.
-	  String newPass = vo.getUserPassword();  //새로 생성한 비밀번호 받는 input의 값을 가져옴
+	  String newPass = vo.getUserPassword();  //새로 입력한 비밀번호 받는 input의 값을 가져옴
+	  PrintWriter out = response.getWriter();
 	  
 	  if(!(oldPass.equals(newPass))) {
-		  rttr.addFlashAttribute("msg",false);
-		  return "redirect:/mypage/refund";
+		  response.setContentType("text/html; charset=UTF-8");
+		  out.println("<script>alert('비밀번호가 일치하지 않습니다.'); history.go(-1);</script>");
+		  out.flush();
+		  out.close();
+		  return"";
 	  }else {
 	  
 	  mypageService.reserv_refund(rvo);
 	  
 	  response.setContentType("text/html; charset=UTF-8");
-	  PrintWriter out = response.getWriter();
-	  out.append("<script>alert('예약취소가 완료 되었습니다.');location.href='"+req.getContextPath()+"/mypage/info.do'</script>");
+	  out.append("<script>alert('예약취소가 완료 되었습니다.'); opener.parent.location.reload();window.close();</script>");
 	  out.flush();
 	  out.close();
+	  
 	  return ""; //printWriter append를 사용해서 alert을 띄우면 무조건 location.href로 페이지 이동을 시켜야한다. 이때 메소드 자료형은 void로 변경해야하고 return타입은 없어야하는데 이를 방지하기위해 리턴을 빈문자로 하였다.
   }
   }
