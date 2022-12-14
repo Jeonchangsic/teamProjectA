@@ -92,20 +92,15 @@ UL,li{list-style:none;}
         font-size:20px;
         font-family: 'Do Hyeon', sans-serif;
         }
-.nav{
-	width:100vw;
-    height: 30px;
-    list-style: none;
-    display: flex;
-    margin-top:80px;}
 ul{
     text-align: center;
     margin-top:10px;
 }
-hr{
-    width:820px;
-    margin-left:100px;
-}
+
+/* main  */
+main h2{font-weight: bold;
+        font-size: 25px;
+         margin: 120px 0 -50px 460px;}
 #info_Area{
     background-color:white;
     border:1px solid #919191;
@@ -120,6 +115,13 @@ hr{
 .btn_size{
     width:70px;
 }
+input{padding:3px; width:200px;}
+button{width:58px;
+        height:30px;
+        border:0px solid #555;
+        background-color:#555;
+        padding:5px;
+        color:white;}
                 /*footer*/
 footer{ 
 	height:100%; 

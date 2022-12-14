@@ -24,7 +24,7 @@
 					<ul>
 						<li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
+							href="<%=request.getContextPath()%>/seller/sellerInfo.do">마이페이지</a></li>
 						<li>
 							<c:if test="${login.lodging.equals('N') }">
 								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>

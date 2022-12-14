@@ -8,7 +8,9 @@ li{list-style:none;}
 img,iframe{vertical-align:top;}
 
 .clearfix::after{content:""; display:block; clear:both;}
-.inner{width:1024px; margin:0 auto; height:auto;}
+
+body{background-color:aliceblue;}
+#inner{width:1024px; margin:0 auto; background-color:white;}
 #header{ margin:0 auto;
         height: 100px;
         overflow: hidden;
@@ -24,29 +26,25 @@ img,iframe{vertical-align:top;}
           color:white;}
 #inner{width:1024px; margin:0 auto; }
 
-/*네비게이션 */
-#up_nav{overflow:hidden; }
-#up_nav li{float:left; margin:50px 30px 0px 150px;}
-#up_nav li:first-child{background-color:rgb(86,19,241); }
-
-#up_nav li:nth-child(odd){border:1px solid rgb(86,19,241);
-                          padding:10px 20px 10px 20px;
-                          border-radius:8px; }
-
-
 /*왼쪽 이미지업로드 영역  */
+h2{font-weight: bold;
+   font-size: 25px;
+	margin: 0px 0 20px 470px;
+    padding-top: 100px;}
 #main_left{width:300px; height:300px; float:left;
 		 	margin-left:150px; margin-top:80px;}
-#main_left label{font-weight:bold;}
+#main_left label{font-weight:bold; font-size:20px;}
 .select_img img{margin:20px 0; max-height:300px; width:300px;}
+#rimage1{margin-top:10px;}
 
 
 /*오른쪽 정보업로드 영역*/
 #main_right{height:300px; float:right;
-			margin-right:150px; margin-top:80px;}
+			margin-right:150px; margin-top:120px;}
 #main_right input{margin-bottom:20px; margin-left:15px;}
 #main_right #bed_info{font-size:20px; font-weight:bold; margin:30px 0 15px 80px;}
 #main_right ul li{float:left;margin-left: 25px;}
+
 /*라디오 박스 */
 .bed_filter #bed_info ul li{margin-left:30px;}
 /*체크박스*/

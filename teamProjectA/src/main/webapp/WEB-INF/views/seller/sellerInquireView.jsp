@@ -35,7 +35,7 @@
 					<ul>
 						<li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
+							href="<%=request.getContextPath()%>/seller/sellerInfo.do">마이페이지</a></li>
 						<li>
 							<c:if test="${login.lodging.equals('N') }">
 								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
@@ -56,7 +56,7 @@
 	</header>
     <input type="hidden" name="uidx">
     <input type="hidden" name="QnA_idx">
-    <main  class=inner style="padding-top:115px;">
+    <main  class=inner style="padding-top:150px;">
     	<h2>게시글 상세화면</h2>
 	    	<form>
 	    		<table>
@@ -69,46 +69,27 @@
 	    			<tr>
 	    				<td>제목</td>
 	    				<td><%=qnaOne.getQna_Qtitle()%></td>
-	    			</tr>
-
-	    			<tr>
-	    				<td colspan="4"><%=qnaOne.getQna_Qcontent() %></td>
-	    			</tr>
-		        </table>
-	<!-- 		        <div>
-			      
-			            <hr>
-			            <div id="change">
-			            <span>답변처리중</span>
-			            </div>
-			        </div> -->
-	
-	        </form>
-	        <form>
-	        </form>
-	        <div class="answer" style="display:none;">
-	            <input type="text" id="text">
-	            <input type="submit" id="insert" value="답변등록" onclick="document.querySelector('span').style.color='blue';
-	                document.querySelector('span').innerHTML='답변완료';">
-	        </div>
+	    			</tr>	
+	    		</table>
+		    	<div id="textA"><%=qnaOne.getQna_Qcontent() %></div>
+		    	<div id="btn">
+					<button type="button" onclick="location.href='sellerInquire.do'">목록</button>
+			    	<button type="button" >수정</button>
+		    	</div>
+	       </form>
+	       	    	   
     </main>
     <footer>
-        <div class="info">
-            <ul>
-                <li>(주)저긴어때</li>
-                <li>대표 : 홍길동&nbsp;&nbsp;</li>
-                <li>전라북도 전주시 덕진구 금암1동&nbsp;&nbsp;</li>
-                <li>사업자등록번호 : 000-00-00000&nbsp;&nbsp;</li>
-            </ul>
-            <ul>
-                <li>고객센터 : 1588-0000&nbsp;&nbsp;&nbsp;</li>
-                <li>개인정보관리책임자 : 홍길동&nbsp;&nbsp;</li>
-                <li>개인정보보유기간 : 3년</li>
-            </ul>
-            <div class="copyright">
-                <h6>Copyright 2022. Team 저긴어때. all rights reserved.</h6>
-            </div>
-        </div>
+          <div id="foot">
+				<br> <br>
+				<div id="copy">
+					(주)저긴어때 l 대표이사 : 홍이젠 l 사업자 등록번호 : 104-14-100400 l 메일 :
+					Whatdoyouthink@naver.com <br> 주소 : 전라북도 전주시 덕진구 금암1동 667-52 5층
+					l 전화번호 : 063-104-1004 (오전 9시 ~ 오후 5시)<br> <br> Copyright
+					WD COMPANY Corp. All rights reserved. <br> <br>
+
+				</div>
+			</div>
     </footer>
 </body>
 </html>
