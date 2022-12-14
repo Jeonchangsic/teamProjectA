@@ -97,7 +97,7 @@
 					<ul>
 						<li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
+							href="<%=request.getContextPath()%>/seller/sellerInfo.do">마이페이지</a></li>
 						<li>
 							<c:if test="${login.lodging.equals('N') }">
 								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
@@ -117,6 +117,7 @@
 		</div>
 	</header>
 	<main class="inner">
+		<h2>마이페이지</h2>
 		<form id="nameForm" name="nameform">
 			<table id="info_Area">
 				<tr>
@@ -124,8 +125,6 @@
 					<td><%=lodging.getUserID()%></td>
 					<td></td>
 				</tr>
-				<hr>
-
 				<tr>
 					<td>사업장명</td>
 					<td><input type='text' name="lodgingname" id="lodgingname"

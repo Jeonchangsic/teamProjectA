@@ -25,7 +25,7 @@
 					<ul>
 						<li><a href="<%=request.getContextPath()%>/index/index.do">home</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/seller/sellerInfo.do">내정보</a></li>
+							href="<%=request.getContextPath()%>/seller/sellerInfo.do">마이페이지</a></li>
 						<li>
 							<c:if test="${login.lodging.equals('N') }">
 								<a href="<%=request.getContextPath()%>/seller/sellerLodgingUp.do">숙소등록</a>
@@ -46,7 +46,6 @@
 	</header>
     <main class="inner">
             <h3>문의내역</h3>
-        <hr/>
         <form>
             <tbody>
                 <tr>
@@ -100,7 +99,7 @@
             <br>
             <br>
            <div id="foot">
-				<br> <br>
+				<br>
 				<div id="copy">
 					(주)저긴어때 l 대표이사 : 홍이젠 l 사업자 등록번호 : 104-14-100400 l 메일 :
 					Whatdoyouthink@naver.com <br> 주소 : 전라북도 전주시 덕진구 금암1동 667-52 5층

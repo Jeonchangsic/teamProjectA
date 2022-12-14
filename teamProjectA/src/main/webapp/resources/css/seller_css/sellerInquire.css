@@ -115,21 +115,23 @@ UL,li{list-style:none;}
 	}
 				/*main*/
 main  h3{font-weight: bold;
-        font-size: 20px;
+        font-size: 25px;
         margin-top:120px;
         margin-bottom: 20px;}
-form{margin-top:10px;}
+form{margin-top:20px;}
 select{width:88px;
         height:31px;}
 form input{width:259px;height:27px;}
 .btn{width:58px;
-        height:38px;
-        border-radius: 10px;
-        border:1px solid grey;}
+        height:30px;
+        border:0px solid #555;
+        background-color:#555;
+        padding:5px;
+        color:white;}
 hr{width:996px;
         margin:16px 0px;
         opacity: .25;}
-table{margin-top:10px;}
+table{margin-top:50px;}
 thead{font-weight: bold;
         height:30px;
         border-bottom:1px solid#000;
@@ -146,9 +148,13 @@ ul{
         margin-right:20px;
         width:100px;
         height:30px;
+        border:0px solid #555;
+        background-color:#555;
+        padding:5px;
+        color:white;
 }
 footer{
-    margin-top:150px;
+    margin-top:300px;
     height:100%; width:100%; background-color:rgba(0,0,0,0.15);}
 footer #foot{margin: 0 auto; width:1024px; height:100%; }
 footer #copy{color:#919191;}

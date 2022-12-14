@@ -4,7 +4,7 @@
 
 
             /*리셋코드*/
-* {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
+* {MARGIN:0; `:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -94,13 +94,26 @@ UL,li{list-style:none;}
         }
 
 /*main*/
-main table{width:1000px; margin:0 auto; text-align:center;}
-table tr{border-bottom:1px solid 	#E1E1E1;
-		}
-table tr td:first-child, table tr td:nth-child(3){background-color:#F6F6F6}
+h2{font-weight: bold; font-size:25px; margin: 0 0 20px 12px;}
+main table{width:1000px; margin:0 auto;}
+table tr{border-bottom:1px solid #E1E1E1;}
+		
+table tr td:first-child, table tr td:nth-child(3){background-color:#F6F6F6;
+													padding:5px;}
 table tr td:nth-child(2){width:400px;}
 table tr td:nth-child(3){margin-left:100px;}
-
+table tr td:nth-child(odd){font-weight:bold; text-align:center;}
+table tr td:nth-child(even){padding-left:10px;}
+#textA{border: 1px solid #595757; width: 980px;
+   		 height: 300px; border-radius: 8px;
+    	margin: 10px 0 0 10px; padding: 10px;}
+button{width:58px;
+        height:30px;
+        border:0px solid #555;
+        background-color:#555;
+        padding:5px;
+        color:white;}
+#btn button:first-child{margin:20px 0 0 890px;}
 ul{
     text-align: center;
     margin-top:10px;

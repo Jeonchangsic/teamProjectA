@@ -36,7 +36,7 @@
 						if (maxAppend >= 5) 							 
 							return; // 5번째부터는 append 안되고 return 시키기
 							extcnt++;
-		    		    $("#bottom_right").append('</br><input type="text" name="addinfo'+extcnt+'" class="plus" placeholder="추가정보를 입력해주세요"></br>');
+		    		    $("#bottom_info").append('</br><input type="text" name="addinfo'+extcnt+'" class="plus" placeholder="추가정보를 입력해주세요"></br>');
 						maxAppend++;
 						
 		    		  });
@@ -55,7 +55,7 @@
 	                <div id="manager">
 	                    <ul>
 		                    <li><a href="<%=request.getContextPath() %>/index/index.do">home</a></li>
-		                    <li><a href="<%=request.getContextPath() %>/seller/sellerInfo.do">내정보</a></li>
+		                    <li><a href="<%=request.getContextPath() %>/seller/sellerInfo.do">마이페이지</a></li>
 		                    <li><a href="<%=request.getContextPath() %>/seller/sellerRegi.do">숙소관리</a></li>
 		                    <li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do">문의</a></li>
 	                    </ul>
@@ -68,9 +68,7 @@
 	             <ul>
 	                <li><a href="#" style="color: white">객실등록</a></li>
 	                <li><img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerRoomup_right_icon.png"></li>
-	                <li><a href="#">객실정보등록</a></li>
-	                <li><img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerRoomup_right_icon.png"></li>
-	                <li><a href="#">완료등록</a></li>
+	                <li><a href="#">등록완료</a></li>
 	             </ul>
 	       	</div>
 	       	<form method="post" enctype="multipart/form-data" > 
@@ -78,9 +76,10 @@
 		        <div class="inputArea" id="main_left">
 				 	<label for="rimage1">사진등록</label>
 					<input type="file" id="rimage1" name="file" required />
-					<div class="select_img"><img src="" /></div>	
-				</div>
-		
+					<div id="imgborder">
+					
+					</div>
+				</div>	
 				<input type="hidden" name="lidx" value="${lidxone.lidx}"> 
 			<!--정보입력-->
 			<div id="main_right">
@@ -106,29 +105,7 @@
 						<td><input type="text" name="maxmen" pattern="[0-9]+" placeholder="숫자를 입력해주세요" required/></td>
 					</tr>
 				</table>
-				<div class="bed_filter">
-					<div id="bed_info">베드타입</div>
-						<ul>
-							<li>
-								<label>싱글</label><br>
-								<input id="single_bed" type="radio" name="bed" value="single_bed" required >
-							</li>
-							<li>
-								<label>더블</label><br>
-								<input type="radio" name="bed" value="double_bed">
-							</li>
-							<li>
-								<label>트윈</label><br>
-								<input type="radio" name="bed" value="twin_bed">
-							</li>
-							<li>
-								<label>온돌</label><br>
-								<input type="radio" name="bed" value="ondol_bed">
-							</li>
-						</ul>
-				</div>
 			</div> 
-		
 			<div id="bottom">
 				<!-- 체크박스 -->
 				<div id="bottom_left">
@@ -196,20 +173,43 @@
 				            	</div>
 				           </div>
 	            </div>
+	            <div class="bed_filter" id="bottom_right">
+					<div id="bed_info">베드타입</div>
+						<ul>
+							<li>
+								<label>싱글</label><br>
+								<input id="single_bed" type="radio" name="bed" value="single_bed" required >
+							</li>
+							<li>
+								<label>더블</label><br>
+								<input type="radio" name="bed" value="double_bed">
+							</li>
+							<li>
+								<label>트윈</label><br>
+								<input type="radio" name="bed" value="twin_bed">
+							</li>
+							<li>
+								<label>온돌</label><br>
+								<input type="radio" name="bed" value="ondol_bed">
+							</li>
+						</ul>				
+				</div>
+	            
 		            
-			            <div id="bottom_right">
-			            	<p>추가정보<p>
-			            	<input type="text" class="plus" name = "addinfo1" placeholder="추가정보를 입력해주세요"/><button type="button" name="plus">+</button>
-				            	
-			            </div>
-		    		
-		            <div id="inner_bottom">
+			    <div id="bottom_info">
+			    	<p>추가정보<p>
+			        	<input type="text" class="plus" name = "addinfo1" placeholder="추가정보를 입력해주세요"/>
+			            	<button type="button" name="plus" id="plus">
+			            		<img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerPlus_image.png" alt="">
+			            	</button>		            	
+			    </div>
+		        <div id="inner_bottom">
 		                <div>
 		                   <button type="submit" name="next" style="color:white; border:1px solid rgb(86,19,241);">다음</button> 
 		                </div>
-		         	</div>
-		          </div>
-		        </form>
+		        </div>
+		       </div>
+		     </form>
 	       </section>
 	 </main>
 	 <footer class="fixedclear">
@@ -234,15 +234,21 @@
 	</footer> 
 	<script>
 	//이미지 업로드
+
+	
+	
+	$(document).ready(function(){
 	  $("#rimage1").change(function(){
 		   if(this.files && this.files[0]) {
+			 $("#imgborder").append("<img src=''/>");
 		    var reader = new FileReader;
 		    reader.onload = function(data) {
-		     $(".select_img img").attr("src", data.target.result).width(300);              
+		     $("#imgborder img").attr("src", data.target.result);              
 		    }
 		    reader.readAsDataURL(this.files[0]);
 		   }
 		  });
+	  });
 	
 	</script>
 </body>
