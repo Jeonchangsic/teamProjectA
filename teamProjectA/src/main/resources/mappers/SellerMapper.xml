@@ -116,6 +116,19 @@
 					FROM qnatb
 					WHERE QnA_idx = #{QnA_idx}
 	</select>
+	<!--문의 글 삭제  -->
+   <delete id="qnaDelete" parameterType="int">
+      DELETE FROM qnatb 
+      WHERE QnA_idx = #{QnA_idx}
+   </delete>
+	
+	<!--문의 글 수정-->
+	<update id="qnaModify" parameterType="int">
+		UPDATE qnatb SET 
+			qna_Qtitle = #{qna_Qtitle}  
+			,qna_Qcontent = #{qna_Qcontent}
+			WHERE QnA_idx = #{QnA_idx}
+	</update>
 
 	<!--판매자 객실목록  -->
 	<select id="roomlist" resultType="RoomVO" parameterType="int">
@@ -367,11 +380,7 @@
 	
 	</update>
 	
-	<!--qna삭제  -->
-   <delete id="qnaDelete" parameterType="int">
-      DELETE FROM qnatb 
-      WHERE QnA_idx = #{QnA_idx}
-   </delete>
+
 	
 </mapper>
 

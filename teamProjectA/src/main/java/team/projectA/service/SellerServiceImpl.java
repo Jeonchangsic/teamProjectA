@@ -71,6 +71,19 @@ public class SellerServiceImpl implements SellerService{
  
 		return SellerDao.qnaOne(QnA_idx);
 	}
+	
+	@Override
+	public int qnaDelete(int QnA_idx) {
+	      
+		return SellerDao.qnaDelete(QnA_idx);
+	}
+
+	@Override
+	public int qnaModify(int QnA_idx) {
+	
+		return SellerDao.qnaModify(QnA_idx);
+	}
+
 
 	@Override
 	public List<RoomVO> roomlist(int uidx) {
@@ -145,11 +158,6 @@ public class SellerServiceImpl implements SellerService{
 		return SellerDao.lodgingModi(lidx);
 	}
 
-	@Override
-	public int qnaDelete(int QnA_idx) {
-	      
-		return SellerDao.qnaDelete(QnA_idx);
-	}
 
 
 

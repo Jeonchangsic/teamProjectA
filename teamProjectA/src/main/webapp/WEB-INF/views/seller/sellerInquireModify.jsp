@@ -45,20 +45,20 @@
 
     <main>       
         <div id="contentsArea">
-            <form action = "sellerInquireWrite.do" method="post">
+            <form action = "sellerInquireModify.do" method="post">
          	  <input type="hidden" name="usertype" value="${login.userType}">
          	  <h3>문의하기</h3>
                 <table id="table1">
                     <tr>
                         <td>제목</td>
-                        <td><input type="text" class="info" name="qna_Qtitle" placeholder="제목을 입력하세요." required></td>            
+                        <td><input type="text" class="info" name="qna_Qtitle" value="${qnaOne.qna_Qtitle}"></td>            
                     </tr>
                     <tr>
                         <td id="margin1">
                          	   문의 내용
                         </td>
                         <td>
-                            <textarea id="info" name="qna_Qcontent" placeholder="문의를 작성하세요." required></textarea>
+                            <textarea id="info" name="qna_Qcontent">${qnaOne.qna_Qcontent}</textarea>
                         </td>
                     </tr>
                 </table>

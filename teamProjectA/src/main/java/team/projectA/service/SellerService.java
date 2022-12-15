@@ -29,6 +29,10 @@ public interface SellerService {
 	int qnaInsert(QnaVO vo);
 	
 	UserVO qnaOne(int QnA_idx);
+
+	int qnaDelete(int QnA_idx);
+	
+	int qnaModify(int QnA_idx);
 	
 	List<RoomVO> roomlist(int uidx);
 	
@@ -55,7 +59,6 @@ public interface SellerService {
 	int roomModify(RoomVO vo);
 	
 	int roomModify2(RoominVO vo);
-	//qna삭제
-	int qnaDelete(int QnA_idx);
+
 
 }
