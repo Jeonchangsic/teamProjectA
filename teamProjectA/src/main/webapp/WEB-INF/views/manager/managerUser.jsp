@@ -6,7 +6,7 @@
 <% 
 
 List<UserVO> list = (List<UserVO>)request.getAttribute("list");
-
+List<ReservVO> list1 = (List<ReservVO>)request.getAttribute("list1");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
@@ -115,47 +115,21 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
                 <tr style="text-align:center;">
                     <th>ID</th>
                     <th>이름</th>
-                    <th>예약장소</th>
+                    <th>예약숙소</th>
                     <th>예약번호</th>
-                    <th>예약날짜</th>	
+                    <th>예약일시</th>	
                 </tr>
             </thead>
             <tbody>
+				 <%for(ReservVO vo1 : list1) {%>
                 <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><%=vo1.getUserID()%></td>
+                    <td><%=vo1.getUserName() %></td>
+                    <td><%=vo1.getLodgingname() %></td>
+                    <td><%=vo1.getReserv_num()%></td>
+                    <td><%=vo1.getReserv_date()%></td>
                 </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+              <%} %>
             </tbody>
         </table>
     </div>
@@ -185,9 +159,9 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
             <thead>
                 <tr style="text-align:center;">
                     <th>제목</th>
-                    <th>작성자/작성일</th>
-                    <th>상태</th>
-                    <th>구분</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>답변여부</th>
                 </tr>
             </thead>
             <tbody>
@@ -196,31 +170,6 @@ List<UserVO> list = (List<UserVO>)request.getAttribute("list");
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
                 </tr>
             </tbody>
         </table>

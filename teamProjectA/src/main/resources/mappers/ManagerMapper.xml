@@ -53,6 +53,20 @@
 		   SET lodging = 'N'
 		 WHERE uidx = #{uidx}
 	</update>
+	<!-- 예약 리스트 -->
+		<select id="reservlist" parameterType="ReservVO" resultType="ReservVO">
+			SELECT 
+				 u.username
+				,l.lodgingname
+				,v.reserv_date
+				,u.userid
+				,v.reserv_num
+					FROM ausertb u, lodgingtb l, reservtb v, roomtb r
+					where v.uidx = u.uidx
+					  and v.ridx = r.ridx
+					  and r.lidx = l.lidx
+					
+		</select>
 </mapper>
 
 

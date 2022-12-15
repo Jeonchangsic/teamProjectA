@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.sf.json.JSONArray;
+import team.projectA.service.LodgingService;
 import team.projectA.service.ManagerService;
+import team.projectA.service.ReservService;
 import team.projectA.service.UserService;
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
 
@@ -28,17 +31,20 @@ import team.projectA.vo.UserVO;
 public class ManagerController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
-	
+	@Autowired
+	private LodgingService lodgingService;
+	@Autowired
+	private ReservService reservService;
 	@Autowired
 	private ManagerService managerService;
 	@Autowired
 	private UserService userService;
 	@RequestMapping(value = "/managerUser.do", method = RequestMethod.GET)
-	public String user(Model model,UserVO vo ) {
-		
+	public String user(Model model,UserVO vo,ReservVO vo1 ) {
+		List<ReservVO> list1 = managerService.reservlist(vo1);
 		List<UserVO> list = userService.userList(vo);
 		model.addAttribute("list",list);
-		
+		model.addAttribute("list1",list1);
 		
 		return "manager/managerUser";
 	
@@ -55,11 +61,11 @@ public class ManagerController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		//¼÷¼Ò¿äÃ»¸ñ·Ï
+		//ï¿½ï¿½ï¿½Ò¿ï¿½Ã»ï¿½ï¿½ï¿½
 		List<LodgingVO> requestList = managerService.requestList();
 		model.addAttribute("requestList", requestList);
 		
-		//¼÷¼Ò ÀÎ±âÃßÃµ
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½Ãµ
 		List<LodgingVO> lodgingCategory = null;
 		lodgingCategory = managerService.lodgingCategory();
 		model.addAttribute("lodgingCategory",lodgingCategory);
@@ -68,7 +74,7 @@ public class ManagerController {
 		
 		return "manager/managerRoom";
 	}
-	//¼÷¼Ò½ÂÀÎ
+	//ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½
 	@RequestMapping(value="/requestApproval.do", method = RequestMethod.POST)
 	public String requestApproval(int uidx) {
 		
@@ -76,7 +82,7 @@ public class ManagerController {
 		
 		return "redirect:managerRoom.do";
 	}
-	//¼÷¼Ò½ÂÀÎ°ÅºÎ
+	//ï¿½ï¿½ï¿½Ò½ï¿½ï¿½Î°Åºï¿½
 	@RequestMapping(value="/requestDel.do", method = RequestMethod.POST)
 	public String requestDel(int uidx, int lidx) {
 		
