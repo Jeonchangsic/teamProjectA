@@ -118,8 +118,8 @@ public class SellerController {
 	@RequestMapping(value="/sellerInquireView.do", method = RequestMethod.GET)
 	public String sellerInquireView(Locale locale, Model model, int QnA_idx) {
 				
-			QnaVO vo = (QnaVO)sellerService.qnaOne(QnA_idx);
-			model.addAttribute("vo",vo);
+			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(QnA_idx);
+			model.addAttribute("qnaOne",qnaOne);
 			
 		
 		
@@ -150,16 +150,34 @@ public class SellerController {
 		return "redirect: sellerInquire.do";	
 
 	}
-	//게시글 삭제
+	//문의글 삭제
 	@RequestMapping (value = "/sellerdelete.do" , method = RequestMethod.GET)
 	public String sellerdelete(Locale locale, Model model, int QnA_idx) {
 	      
-	sellerService.qnaDelete(QnA_idx);
+		sellerService.qnaDelete(QnA_idx);
 	   
 
 		return "redirect:sellerInquire.do";
 	}
 
+	@RequestMapping (value = "/sellerInquireModify.do", method = RequestMethod.GET)
+	public String sellerInquireModify(Locale locale, Model model, int QnA_idx) {
+		
+		QnaVO qnaone = (QnaVO)sellerService.qnaOne(QnA_idx);
+		model.addAttribute("qnaOne", qnaone);
+		
+		return "seller/sellerInquireModify";
+	}
+	
+	//문의글 수정
+	@RequestMapping (value = "/sellerInquireModify.do", method = RequestMethod.POST)
+	public String sellerInquireModify(int QnA_idx) {
+		
+		sellerService.qnaModify(QnA_idx);
+		
+		return  "seller/sellerInquireView.do";
+	}
+	
 	
 	//객실 리스트
 	   @RequestMapping(value = "/sellerRegi.do", method = RequestMethod.GET)

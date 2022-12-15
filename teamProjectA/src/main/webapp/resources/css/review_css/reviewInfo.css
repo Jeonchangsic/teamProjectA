@@ -52,51 +52,27 @@ a{text-decoration:none; color: inherit;}
 UL,li{list-style:none;}
             /*리셋코드*/
 
-            /*header*/
+              /*header*/
 
 header h2{
     width:1024px; margin: 0 auto;
     text-align: center;
     font-size:30px;
     font-weight: bold;
-    padding-top:50px;
+    padding:50px 0 30px 0;
 }
 
             /*main*/
-
 main{
-    position:relative;
-}
-main #nav{
-    width:330px;
-    height:20px;
-    margin:35px auto;
-    display:flex;
-    ALIGN-ITEMS: CENTER;
-    JUSTIFY-CONTENT: SPACE-BETWEEN;
-    font-size:18px;
+    height:810px;
 }
 main table{
     font-size:20px;
 }
-main #memberInfo{
-    border-right:1px solid #919191;
-    font-weight: bold;
-    width:110px;
-    padding-right:7px;
-}
-main #conform{
-    border-right:1px solid #919191;
-    width:110px;
-    padding: 0 7px 0 7px;
-}
-main #reviewList{
-    width:110px;
-    padding-left:7px;
-}
-main #contentsArea1{
+main #contentsArea{
     border:1px solid #919191;
     width:500px;
+    height:300px;
     margin:0 auto;
     border-radius: 3px;
 }
@@ -108,6 +84,10 @@ main .info{
     width:200px;
     height:30px;
 }
+main #info{
+    width:300px;
+    height:90px;
+}
 main #table2{
     margin:30px auto;
     height:200px;
@@ -115,78 +95,13 @@ main #table2{
 main .margin1{
     padding-right:50px;
 }
+
 main #clearBtn{
-    margin-left:200px;
     width: 100px;
     height:30px;
 }
-main #contentsArea{
-    
-    width:900px;
-    
-    margin:0 auto;
-    
-}
-main .img1{
-    width:70px;
-    height:70px;
-}
-main table{
-    width:100%; 
-    
-}
-
-
-/*reservation html*/
-main .table10 .tr_border{
-    border-bottom: 2px solid #000;
-}
-main .table10 th{
-    height:25px;
-    font-weight: bold;
-    font-size:20px;
-}
-main .table10 td{
-    border-bottom:1px solid #919191;
-    text-align:center;
-}
-main .table10 p{
-    display:inline-block;
-}
-main .table10 .ta_center{
-    text-align:center;
-}
-main #btnArea{
-    margin-left:410px;
-}
-main #btnArea2{
-    
-    padding:5px;
-    margin-top:5px;
-    display:flex;
-    justify-content: space-between;
-    width:80px;
-    
-}
-
-main #contentsArea{
-	display:none;
-}
-main #contentsArea2{
-	width:900px;
-	margin:0 auto;
-	display:none;
-}
-main #titleHover:hover{
-	color:blue;
-	font-weight:bold;
-}
-main .fontSize{
-	font-size:15px;
-}
-
                 /*footer*/
-footer{position:absolute; bottom:0;height:137px; width:100%; background-color:rgba(0,0,0,0.15);}
+footer{height:137px; width:100%; background-color:rgba(0,0,0,0.15);}
 footer #foot{margin: 0 auto; width:1024px; height:127px;}
 footer #copy{color:#919191;}
                 /*end footer*/

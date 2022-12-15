@@ -25,7 +25,7 @@ img,iframe{vertical-align:top;}
         font-family: 'Do Hyeon', sans-serif;
         }
 .nav{margin-top:80px;}
-.nav img{width:350px;}
+.nav img{width:350px; height: 300px;}
 .nav #info{display:flex;}
 .nav #lodgingName{font-size:30px; margin:10px 0 0 20px; font-weight:bold;} 
 .nav button{margin-top:230px;}
@@ -71,7 +71,9 @@ button{width:58px;
         border:0px solid #555;
         background-color:#555;
         padding:5px;
-        color:white;}
+        color:white;
+        cursor:pointer;}
+input[type=button]{cursor:pointer;}
         
  footer{
     margin-top:150px;

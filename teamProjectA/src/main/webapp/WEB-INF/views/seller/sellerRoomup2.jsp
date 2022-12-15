@@ -27,7 +27,19 @@
 			}
 		};
 		
-
+		//이미지 업로드	
+		$(document).ready(function(){
+		  $("#rimage1").change(function(){
+			   if(this.files && this.files[0]) {
+			    var reader = new FileReader;
+			    reader.onload = function(data) {
+			     $("#imgborder img").attr("src", data.target.result);              
+			    }
+			    reader.readAsDataURL(this.files[0]);
+			   }
+			  });
+		  });
+		
 	    </script>
 </head>
 <body>
@@ -49,25 +61,31 @@
 	    </section>
     	<section id="inner">
 	      	 <div id="up_nav">
-	               <h2>객실수정</h2>
+	             <ul>
+	                <li><a href="#" style="color: white">객실등록</a></li>
+	                <li><img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerRoomup_right_icon.png"></li>
+	                <li><a href="#">등록완료</a></li>
+	             </ul>
 	       	</div>
-		       	<form method="post" enctype="multipart/form-data" > 
-		        <!--이미지 업로드 -->
-			        <div class="inputArea" id="main_left">
-					 	<label for="rimage1">사진등록</label>
-						<input type="file" id="rimage1" name="file" />
-						<div class="select_img"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage1}" />
-						<input type="hidden" name="rimage1" value="${roomModify.rimage1}">
+	       	<form method="post" enctype="multipart/form-data" > 
+	        <!--이미지 업로드 -->
+		        <div class="inputArea" id="main_left">
+				 	<label for="rimage1">사진등록</label>
+					<input type="file" id="rimage1" name="file" required />
+					<div id="imgborder">
+						<div class="select_img">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage1}" />
+							<input type="hidden" name="rimage1" value="${roomModify.rimage1}">
 						</div>
-							
 					</div>
-					<input type="hidden" name="ridx" value="${roomModify.ridx}">
-	 			<!--정보입력-->
-				<div id="main_right">
-					<table>
+				</div>	
+				<input type="hidden" name="lidx" value="${lidxone.lidx}"> 
+			<!--정보입력-->
+			<div id="main_right">
+				<table>
 						<tr>
 							<td>객실명</td>
-							<td><input type="text" name="rtype" value = "${roomModify.rtype}"required ></td>
+							<td><input type="text" name="rtype" value ="${roomModify.rtype}"required ></td>
 						</tr>
 						<tr>
 							<td>가격</td>
@@ -85,117 +103,116 @@
 							<td>최대인원</td>
 							<td><input type="text" name="maxmen" pattern="[0-9]+" placeholder="숫자를 입력해주세요" value="${roomModify.maxmen}" required/></td>
 						</tr>
-					</table>
-					<div class="bed_filter">
-						<div id="bed_info">베드타입</div>
-							<ul>
-								<li>
-									<label>싱글</label><br>
-									<input id="single_bed" type="radio" name="bed" value="single_bed" required >
-								</li>
-								<li>
-									<label>더블</label><br>
-									<input type="radio" name="bed" value="double_bed">
-								</li>
-								<li>
-									<label>트윈</label><br>
-									<input type="radio" name="bed" value="twin_bed">
-								</li>
-								<li>
-									<label>온돌</label><br>
-									<input type="radio" name="bed" value="ondol_bed">
-								</li>
-							</ul>
-					</div>
-				</div> 
-			
-				<div id="bottom">
-					<!-- 체크박스 -->
-					<div id="bottom_left">
-					        <div id="up_bottom2">
-								 <div class="filter1" >
-					                <div id="filter_in" class="filter" >
-					             		       객실 내 시설
-					                </div>
-					              	  <div class="public_in"> 
-						                <ul id="in_left" class="filter_check" >
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="spa">
-						                        <label>객실스파</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="wifi">
-						                        <label>와이파이</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="tv">
-						                        <label>TV</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="refri">
-						                        <label>냉장고</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="bath">
-						                        <label>욕조</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="iron">
-						                        <label>다리미</label>
-						                    </li>   
-						
-						                </ul>
-						                <ul id="in_right" class="filter_check">
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="minibar">
-						                        <label>미니바</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="bathitem">
-						                        <label>욕실용품</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="aircon">
-						                        <label>에어컨</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="shower">
-						                        <label>객실샤워실</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="dryer">
-						                        <label>드라이기</label>
-						                    </li>   
-						                    <li>
-						                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="ricecooker">
-						                        <label>전기밥솥</label>
-						                    </li>   
-						
-						                </ul>
-						              </div>
-					            	</div>
-					           </div>
-		            </div>
-			            
-				            <div id="bottom_right">
-				            	<p>추가정보<p>
-				            	<input type="text" class="plus" name = "addinfo1" value = "${roomModify.addinfo1}"><br>
-				            	<input type="text" class="plus" name = "addinfo2" value = "${roomModify.addinfo2}"><br>
-				            	<input type="text" class="plus" name = "addinfo3" value = "${roomModify.addinfo3}"><br>
-				            	<input type="text" class="plus" name = "addinfo4" value = "${roomModify.addinfo4}"><br>
-				            	<input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}">
-		
-		
-					            	
-				            </div>
-			    		
-			            <div id="inner_bottom">
-			                <div>
-			                   <button type="submit" name="next" style="color:white; border:1px solid rgb(86,19,241);">다음</button> 
-			                </div>
-			         	</div>
-			          </div>
-			        </form>
+				</table>
+			</div> 
+			<div id="bottom">
+				<div id="bottom_left">
+				        <div id="up_bottom2">
+							 <div class="filter1" >
+				                <div id="filter_in" class="filter" >
+				                	<p id="info_red">*객실 내 시설과 베드타입을 선택해 주세요</p>
+				             		       객실 내 시설
+				                </div>
+				              	  <div class="public_in"> 
+					                <ul id="in_left" class="filter_check" >
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="spa">
+					                        <label>객실스파</label>
+					                    </li>   
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="wifi">
+					                        <label>와이파이</label>
+					                    </li>   
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="tv">
+					                        <label>TV</label>
+					                    </li>   
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="refri">
+					                        <label>냉장고</label>
+					                    </li>   					
+					                </ul>
+					                <ul id="in_middle" class="filter_check">
+				                  		<li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="iron">
+					                        <label>다리미</label>
+					                    </li>  
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="bath">
+					                        <label>욕조</label>
+					                    </li>   
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="dryer">
+					                        <label>드라이기</label>
+					                    </li>   
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="ricecooker">
+					                        <label>전기밥솥</label>
+					                    </li>    
+					                </ul>
+					                <ul id="in_right" class="filter_check">
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="minibar">
+					                        <label>미니바</label>
+					                    </li>   
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="bathitem">
+					                        <label>욕실용품</label>
+					                    </li>   
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="aircon">
+					                        <label>에어컨</label>
+					                    </li>   
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="shower">
+					                        <label>객실샤워실</label>
+					                    </li>   					
+					                </ul>
+					              </div>
+				            	</div>
+				           </div>
+	            </div>
+	            <div class="bed_filter" id="bottom_right">
+					<div id="bed_info">베드타입</div>
+						<ul>
+							<li>
+								<p>싱글</p>
+								<input id="B1" type="radio" name="bed" value="single_bed" required >					
+								<label for="B1" id="single"></label>
+							</li>
+							<li>
+								<p>더블</p>
+								<input id="B2" type="radio" name="bed" value="double_bed">
+								<label for="B2" id="double"></label>
+							
+							<li>
+								<p>트윈</p>
+								<input id="B3" type="radio" name="bed" value="twin_bed">
+								<label for="B3" id="twin"></label>
+							</li>
+							<li>
+								<p>온돌</p>
+								<input id="B4"type="radio" name="bed" value="ondol_bed">
+								<label for="B4" id="ondol"></label>	
+							</li>
+						</ul>				
+				</div>
+		            
+			    <div id="bottom_info">
+			    	<p>추가정보<p>
+				    	<input type="text" class="plus" name = "addinfo1" value = "${roomModify.addinfo1}"><br>
+				        <input type="text" class="plus" name = "addinfo2" value = "${roomModify.addinfo2}"><br>
+				        <input type="text" class="plus" name = "addinfo3" value = "${roomModify.addinfo3}"><br>
+				        <input type="text" class="plus" name = "addinfo4" value = "${roomModify.addinfo4}"><br>
+				        <input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}">         	
+			    </div>
+		        <div id="inner_bottom">
+		                <div>
+		                   <button type="submit" name="next" style="color:white; border:1px solid rgb(86,19,241);">다음</button> 
+		                </div>
+		        </div>
+		       </div>
+		     </form>
 	       </section>
 	 </main>
 	 <footer class="fixedclear">
@@ -219,17 +236,7 @@
             </div>
 	</footer> 
 	<script>
-	//이미지 업로드
-	  $("#rimage1").change(function(){
-		   if(this.files && this.files[0]) {
-		    var reader = new FileReader;
-		    reader.onload = function(data) {
-		     $(".select_img img").attr("src", data.target.result).width(300);              
-		    }
-		    reader.readAsDataURL(this.files[0]);
-		   }
-		  });
-	
+
 	</script>
 </body>
 </html>

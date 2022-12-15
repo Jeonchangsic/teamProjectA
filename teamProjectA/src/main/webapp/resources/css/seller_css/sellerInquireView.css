@@ -107,13 +107,23 @@ table tr td:nth-child(even){padding-left:10px;}
 #textA{border: 1px solid #595757; width: 980px;
    		 height: 300px; border-radius: 8px;
     	margin: 10px 0 0 10px; padding: 10px;}
+    	
+#Atable p{margin: 20px 0 0 20px; font-weight:bold; background-color:#F6F6F6;
+		  width:980px; padding:5px;} 
+#Atable div{width: 980px;
+   			 min-height: 100px;
+   			 margin: 10px 0 0 10px;
+   			 border: 1px solid black;
+  			 padding: 10px;
+  			 border-radius: 8px;}  	
 button{width:58px;
         height:30px;
         border:0px solid #555;
         background-color:#555;
         padding:5px;
-        color:white;}
-#btn button:first-child{margin:20px 0 0 890px;}
+        color:white;
+        cursor:pointer;}
+#btn button:first-child{margin:20px 0 0 820px;}
 ul{
     text-align: center;
     margin-top:10px;

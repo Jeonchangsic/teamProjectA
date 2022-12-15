@@ -68,7 +68,7 @@
 	             <ul>
 	                <li><a href="#" style="color: white">객실등록</a></li>
 	                <li><img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerRoomup_right_icon.png"></li>
-	                <li><a href="#">등록완료</a></li>
+	                <li>등록완료</li>
 	             </ul>
 	       	</div>
 	       	<form method="post" enctype="multipart/form-data" > 
@@ -131,16 +131,25 @@
 					                    <li>
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="refri">
 					                        <label>냉장고</label>
-					                    </li>   
+					                    </li>   					
+					                </ul>
+					                <ul id="in_middle" class="filter_check">
+				                  		<li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="iron">
+					                        <label>다리미</label>
+					                    </li>  
 					                    <li>
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="bath">
 					                        <label>욕조</label>
 					                    </li>   
 					                    <li>
-					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="iron">
-					                        <label>다리미</label>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="dryer">
+					                        <label>드라이기</label>
 					                    </li>   
-					
+					                    <li>
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="ricecooker">
+					                        <label>전기밥솥</label>
+					                    </li>    
 					                </ul>
 					                <ul id="in_right" class="filter_check">
 					                    <li>
@@ -158,39 +167,34 @@
 					                    <li>
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="shower">
 					                        <label>객실샤워실</label>
-					                    </li>   
-					                    <li>
-					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="dryer">
-					                        <label>드라이기</label>
-					                    </li>   
-					                    <li>
-					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="ricecooker">
-					                        <label>전기밥솥</label>
-					                    </li>   
-					
+					                    </li>   					
 					                </ul>
 					              </div>
 				            	</div>
 				           </div>
 	            </div>
-	            <div class="bed_filter" id="bottom_right">
+	           <div class="bed_filter" id="bottom_right">
 					<div id="bed_info">베드타입</div>
 						<ul>
 							<li>
-								<label>싱글</label><br>
-								<input id="single_bed" type="radio" name="bed" value="single_bed" required >
+								<p>싱글</p>
+								<input id="B1" type="radio" name="bed" value="single_bed" required >					
+								<label for="B1" id="single"></label>
 							</li>
 							<li>
-								<label>더블</label><br>
-								<input type="radio" name="bed" value="double_bed">
+								<p>더블</p>
+								<input id="B2" type="radio" name="bed" value="double_bed">
+								<label for="B2" id="double"></label>
+							
+							<li>
+								<p>트윈</p>
+								<input id="B3" type="radio" name="bed" value="twin_bed">
+								<label for="B3" id="twin"></label>
 							</li>
 							<li>
-								<label>트윈</label><br>
-								<input type="radio" name="bed" value="twin_bed">
-							</li>
-							<li>
-								<label>온돌</label><br>
-								<input type="radio" name="bed" value="ondol_bed">
+								<p>온돌</p>
+								<input id="B4"type="radio" name="bed" value="ondol_bed">
+								<label for="B4" id="ondol"></label>	
 							</li>
 						</ul>				
 				</div>

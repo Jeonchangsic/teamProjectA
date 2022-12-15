@@ -23,6 +23,11 @@
 				</td>
 			</tr>
 			<tr>
+				<td>객실명:
+					<td>${result.rtype}</td>
+				</td>
+			</tr>
+			<tr>
 				<td>금액:
 					<td>${result.rprice}</td>
 				</td>
@@ -35,7 +40,7 @@
 				</td>
 			</tr>
 		</table>
-		<button style="margin-left:210px;">작성</button>
+		<button style="margin-left:210px;">완료</button>
 	</div>
 	</form>
 </body>

@@ -199,7 +199,7 @@ public class MypageController {
 		model.addAttribute("vo",vo);
 	  return "review/reviewInfo"; 
   }
-  
+  //리뷰 삭제
   @RequestMapping(value="/reviewDt.do", method = RequestMethod.GET)
   public String reviewDt(int rvidx, Model model,HttpServletResponse response,HttpServletRequest req)throws Exception{
 	  	PrintWriter out = response.getWriter();

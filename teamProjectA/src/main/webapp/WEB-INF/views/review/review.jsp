@@ -34,7 +34,7 @@
     <main>
         
         <div id="contentsArea">
-            <form name="frm" action="<%=request.getContextPath() %>/review/review.do?lidx=${lidx}" method="POST">
+            <form name="frm" action="<%=request.getContextPath() %>/review/review.do?lidx=${lidx}&ridx=${ridx}" method="POST">
                 <table id="table1">
                 	<tr>
                 		<td class="margin1">작성자</td>

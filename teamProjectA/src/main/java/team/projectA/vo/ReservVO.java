@@ -7,15 +7,16 @@ public class ReservVO extends RoomVO {
 	private int uidx;
 	private int ridx;
 	private String reserv_num;	//�����ȣ
-	private Date reserv_date; //���೯¥
+	private String reserv_date; //���೯¥
 	private String reserv_startDate; //���� ���۳�¥
 	private String reserv_endDate; // ���� ���ᳯ¥
 	
 
-	public Date getReserv_date() {
+	
+	public String getReserv_date() {
 		return reserv_date;
 	}
-	public void setReserv_date(Date reserv_date) {
+	public void setReserv_date(String reserv_date) {
 		this.reserv_date = reserv_date;
 	}
 	public int getReserv_idx() {

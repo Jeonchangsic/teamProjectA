@@ -4,7 +4,7 @@
 <mapper namespace="team.projectA.mapper.ReviewMapper">
 	<insert id="rvInsert" parameterType="HashMap">
 		INSERT INTO reviewtb
-		VALUES(review_seq.NEXTVAL,#{uidx},#{lidx},#{rvTitle},#{rvSatisfaction},#{rvContent},SYSDATE)
+		VALUES(review_seq.NEXTVAL,#{uidx},#{lidx},#{ridx},#{rvTitle},#{rvSatisfaction},#{rvContent},SYSDATE)
 	</insert> 
 	
 </mapper>

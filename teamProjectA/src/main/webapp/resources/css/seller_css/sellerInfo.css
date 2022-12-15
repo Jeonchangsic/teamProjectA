@@ -121,7 +121,9 @@ button{width:58px;
         border:0px solid #555;
         background-color:#555;
         padding:5px;
-        color:white;}
+        color:white;
+        cursor:pointer
+}     
                 /*footer*/
 footer{ 
 	height:100%; 

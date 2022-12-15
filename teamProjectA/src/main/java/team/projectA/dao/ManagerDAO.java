@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
 
@@ -35,5 +36,8 @@ public class ManagerDAO {
 	}
 	public int requestN(int uidx) {
 		return sqlSession.update("team.projectA.mapper.ManagerMapper.requestN", uidx);
+	}
+	public List<ReservVO> reservlist(ReservVO vo1){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.reservlist", vo1);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
 
@@ -14,4 +15,5 @@ public interface ManagerService {
 	public int approval(int uidx);
 	public int requestDel(int lidx);
 	public int requestN(int uidx);
+	public List<ReservVO> reservlist(ReservVO vo1);
 }

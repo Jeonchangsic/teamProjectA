@@ -112,6 +112,7 @@ ul{
         padding:5px;
         color:white;
         margin-left: 1240px;}
+button{cursor:pointer;}
 footer{
     margin-top:150px;
     height:100%; width:100%; background-color:rgba(0,0,0,0.15);}
