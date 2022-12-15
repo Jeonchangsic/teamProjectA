@@ -36,9 +36,11 @@ List<ReservVO> list1 = (List<ReservVO>)request.getAttribute("list1");
     <main class="inner">
         <nav>
             <div class="nav">
-                <li id="user_list" onclick="click()">회원리스트</li>
-                <li id="reserv_list" onclick="click()">예약내역</li>
-                <li id="qna_list" onclick="click()">문의내역</li>
+	            <ul>
+	                <li id="user_list" onclick="click()">회원리스트</li>
+	                <li id="reserv_list" onclick="click()">예약내역</li>
+	                <li id="qna_list" onclick="click()">문의내역</li>
+	            </ul>
             </div>
         </nav>
        
