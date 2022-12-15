@@ -140,6 +140,16 @@ public class SellerServiceImpl implements SellerService{
 		return SellerDao.roomModify2(vo);
 	}
 
+	@Override
+	public LodgingVO lodgingModi(int lidx) {
+		return SellerDao.lodgingModi(lidx);
+	}
+
+	@Override
+	public int qnaDelete(int QnA_idx) {
+	      
+		return SellerDao.qnaDelete(QnA_idx);
+	}
 
 
 

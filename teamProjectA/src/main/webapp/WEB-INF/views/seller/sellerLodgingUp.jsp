@@ -64,8 +64,22 @@
 	    	}else {
 	    		obj.value="N";
 	    	}
-	    }
+	    };
 	    
+	    //썸네일 이미지
+	    $(document).ready(function(){
+		    $("input:file").change(function(){
+				if(this.files && this.files[0]) {
+					$(".lodging_img").append("<img src=''/>");
+					
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$(".lodging_img img").attr("src", data.target.result);
+					}
+					reader.readAsDataURL(this.files[0]);
+				}
+			});
+	    });
     </script>
 </head>
 <body>
@@ -97,15 +111,17 @@
 		</div>
 	</header><!-- //header -->
     <main>
-    	<form method="post">
+    	<form method="post" enctype="multipart/form-data">
 	    	<section id="lodgingtb" class="clearfix">
 	    		<h2>숙소등록</h2>
 	    		<div class="top">
 	    			<div class="top_left">
-	    				<div class="lodging_img">
+		    			<div class="limage">				
 	    					<div>사진등록</div>
-	    					<input type="file" name="limagename">
-	   					</div>
+	    					<input type="file" name="file">
+	    					<div class="lodging_img">
+	    					</div>	 
+	    				</div>  					
 	    			</div>
 	    			<div class="top_right">
 	    			<input type="hidden" name="uidx" value="${login.uidx }">
@@ -288,7 +304,7 @@
 	    		</div> 	
 	    	</section>
 	    	<div class="btn_submit">
-	    		<button>등록</button>
+	    		<input type="submit" name="submit" value="등록"/>
 	    	</div>
 	    </form>
     </main><!-- //main -->

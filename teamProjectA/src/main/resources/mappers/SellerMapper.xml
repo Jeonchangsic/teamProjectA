@@ -112,6 +112,7 @@
 					, qna_Qcontent
 					, qna_Qtitle
 					, qna_Qdate
+					, qna_Acontent					
 					FROM qnatb
 					WHERE QnA_idx = #{QnA_idx}
 	</select>
@@ -199,7 +200,10 @@
 					FROM lodgingtb 
 					WHERE uidx = #{uidx}
 	</select>
-	
+	<!--
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	-->
 	<!-- 숙소 등록 -->
 	<insert id="lodgingUp" parameterType="lodgingVO">
 	INSERT INTO LODGINGTB (
@@ -297,7 +301,16 @@
 							, #{odd5}
 						)
 	</insert>
-	
+	<!-- 숙소 수정 -->
+	<select id="lodgingModi" parameterType="int" resultType="lodgingVO">
+		SELECT * 
+		  FROM LODGINGTB
+		 WHERE lidx = #{lidx}		
+	</select>
+	<!--
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	-->
 	<!--객실 수정 정보-->
 	<select id="roomModiInfo" resultType="RoominVO" parameterType = "int">
 			SELECT 	 r.ridx
@@ -353,7 +366,13 @@
 				WHERE ridx = #{ridx}
 	
 	</update>
-
+	
+	<!--qna삭제  -->
+   <delete id="qnaDelete" parameterType="int">
+      DELETE FROM qnatb 
+      WHERE QnA_idx = #{QnA_idx}
+   </delete>
+	
 </mapper>
 
 

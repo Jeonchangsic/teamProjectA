@@ -12,7 +12,16 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/sellerRegi.css">
 <script src="https://ajax.googleapis.com/resources/css/3.6.1/jquery.min.js"></script>
-
+<script>
+	function lodelFn() {
+	    if (!confirm("정말로 해당 숙소를 삭제하시겠습니까?")) {
+	        alert("삭제가 취소되었습니다.");
+	    } else {
+	        alert("삭제가 완료되었습니다.");
+	        location = "sellerLoDel.do?lidx=${lodging2.lidx}";
+	    }
+	}
+</script>
 </head>
 <body style="overflow-x: hidden">
     <header>
@@ -49,8 +58,8 @@
                 <div id="info">
 					<div><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${lodging2.limagename}"/></div>
 					<div id="lodgingName">${lodging2.lodgingname}</div>
-					<div><button type="button">수정</button></div>
-					<div><button type="button">삭제</button></div>
+					<div><button type="button" value="숙소수정" onclick="location.href='sellerLodgingModify.do?lidx=${lodging2.lidx}'">수정</button></div>
+					<div><button type="button" onclick="lodelFn()">삭제</button></div>
 				</div>
 				
             </div>

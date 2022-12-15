@@ -48,9 +48,14 @@ public interface SellerService {
 
 	int waiting(int uidx);
 	
+	LodgingVO lodgingModi(int lidx);
+	
 	RoominVO roomModiInfo(int ridx);
 	
 	int roomModify(RoomVO vo);
 	
 	int roomModify2(RoominVO vo);
+	//qna삭제
+	int qnaDelete(int QnA_idx);
+
 }

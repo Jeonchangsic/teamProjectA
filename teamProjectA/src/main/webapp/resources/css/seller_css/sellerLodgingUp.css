@@ -18,15 +18,16 @@
 
           
 main {width:1024px; margin:0 auto;}    
-#lodgingtb > h2{margin:50px; 
+#lodgingtb > h2{margin:50px 30px; 
 				font-weight:bold; font-size:25px;}
 .top{margin-top:80px;}
 .top_left, .mid_left{width:50%; float:left;}
-.lodging_img{border:1px solid #000; width:400px; height:360px;
-			margin-left:40px; font-weight:bold;}
-.lodging_img > div{position:relative; top:135px; left:155px;}
-.lodging_img > input{position:relative; top:170px; left:150px;}
+.limage{font-weight:bold; font-size:17px; margin-left:40px;}
+.limage > *{margin-bottom:10px;}
+.lodging_img{border:1px solid #000; width:440px; height:370px;}
+.lodging_img > img{width:100%; height:100%;}
 .top_right, .mid_right{width:50%; float:right;}  
+.top_right{margin-top:50px;}  
 .top_right table{margin-top:15px; margin-left:30px;}       
 .top_right td{padding-bottom:20px;}         
 .top_right td:nth-child(1){font-weight:bold; padding-right:20px;}
@@ -35,7 +36,7 @@ main {width:1024px; margin:0 auto;}
 select option[value=""][disabled] {display:none;}
 #intro {vertical-align:top;}
 textarea {resize:none;}
-#fk {margin:80px 0;}
+#fk {margin:90px 0;}
 .middle {}
 .intro {color:rgba(0, 0, 0, 0.626); margin:0 0 60px 40px;}
 .mid_left > div {margin-left:40px;}

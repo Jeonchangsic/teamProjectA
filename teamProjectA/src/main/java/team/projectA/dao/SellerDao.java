@@ -107,6 +107,10 @@ public class SellerDao {
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.lodginginfoUp", vo);
 	}
 	
+	public LodgingVO lodgingModi(int lidx) {
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.lodgingModi", lidx);
+	}
+	
 	public RoominVO roomModiInfo(int ridx) {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.roomModiInfo", ridx);
 	}
@@ -118,6 +122,11 @@ public class SellerDao {
 	public int roomModify2(RoominVO vo) {
 		return sqlSession.update("team.projectA.mapper.sellerMapper.roomModify2", vo);
 	}
+	//qna삭제
+	public int qnaDelete(int QnA_idx) {
+		return sqlSession.delete("team.projectA.mapper.sellerMapper.qnaDelete", QnA_idx);
+	}
+
 }
 
 

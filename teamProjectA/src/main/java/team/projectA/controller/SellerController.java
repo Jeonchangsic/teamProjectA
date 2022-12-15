@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
  
 import team.projectA.service.SellerService;
@@ -149,6 +150,16 @@ public class SellerController {
 		return "redirect: sellerInquire.do";	
 
 	}
+	//게시글 삭제
+	@RequestMapping (value = "/sellerdelete.do" , method = RequestMethod.GET)
+	public String sellerdelete(Locale locale, Model model, int QnA_idx) {
+	      
+	sellerService.qnaDelete(QnA_idx);
+	   
+
+		return "redirect:sellerInquire.do";
+	}
+
 	
 	//객실 리스트
 	   @RequestMapping(value = "/sellerRegi.do", method = RequestMethod.GET)
@@ -170,7 +181,7 @@ public class SellerController {
 	   }
 	   
 	
-	//게시글 삭제 (redirect해야해서 가상경로 따로 설정함)
+	//객실 삭제 (redirect해야해서 가상경로 따로 설정함)
 	@RequestMapping(value = "/sellerRegi2.do", method = RequestMethod.GET)
 	public String Regi2(Locale locale, Model model, int ridx) {
 
@@ -306,18 +317,10 @@ public class SellerController {
 		
 		return "seller/sellerRoomup3";
 	}
-	
-
-	
-	@RequestMapping(value = "/sellerLodgingModify.do", method = RequestMethod.GET)
-	public String sellerLodgingModify(Locale locale, Model model) {
-		
-		
-		
-	
-		return "seller/sellerLodgingModify";
-	}
-
+	//
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
 	//숙소등록페이지
 	@RequestMapping(value="/sellerLodgingUp.do", method=RequestMethod.GET)
 	public String sellerLodgingUp(Model model, HttpServletRequest req) {
@@ -325,32 +328,17 @@ public class SellerController {
 		HttpSession session = req.getSession();
 		UserVO login = (UserVO)session.getAttribute("login");
 		model.addAttribute("vo", login);		
-		
+		/*
 		//user lodging이 "Waiting", "Y"이면 페이지 접속 불가
 		if(login.getLodging().equals("Waiting") || login.getLodging().equals("Y")) {
 			//????????
 		}
-		
+		*/
 		return "seller/sellerLodgingUp";
 	}
-	//숙소등록정보
+	//숙소등록
 	@RequestMapping(value="/sellerLodgingUp.do", method=RequestMethod.POST)
 	public String sellerLodgingUp(LodgingVO vo, int uidx, LodginginVO invo, LodginginfoVO infovo, HttpServletRequest req, MultipartFile file) {
-		
-		int maxlidx = sellerService.lodgingUp(vo);
-		invo.setLidx(maxlidx);
-		infovo.setLidx(maxlidx);
-		sellerService.lodginginUp(invo);
-		sellerService.lodginginfoUp(infovo);
-		sellerService.waiting(uidx);
-		
-		//Waiting으로 변경된 user데이터 session에 담기
-		HttpSession session = req.getSession();
-		UserVO login = (UserVO)session.getAttribute("login");
-		
-		login.setLodging("Waiting");
-		
-		session.setAttribute("login", login);
 		
 		//이미지(파일) 업로드
 		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드
@@ -387,8 +375,40 @@ public class SellerController {
 			e.printStackTrace();
 		}
 		
+		vo.setLimagename(uniqueName+fileExtension); // (파라미터로 받아온 file을) 위에서 처리해서 나온 파일명을 (db에 넣어줄) vo변수(칼럼)에 담아준다
+		
+		//insert, update
+		int maxlidx = sellerService.lodgingUp(vo);
+		invo.setLidx(maxlidx);
+		infovo.setLidx(maxlidx);
+		sellerService.lodginginUp(invo);
+		sellerService.lodginginfoUp(infovo);
+		sellerService.waiting(uidx);
+		
+		//Waiting으로 변경된 user데이터 session에 담기
+		HttpSession session = req.getSession();
+		UserVO login = (UserVO)session.getAttribute("login");
+		
+		login.setLodging("Waiting");
+		
+		session.setAttribute("login", login);
+		
 		return "redirect:sellerInfo.do";
 	}
+	//숙소 수정
+	@RequestMapping(value = "/sellerLodgingModify.do", method = RequestMethod.GET)
+	public String sellerLodgingModify(Model model, int lidx) {
+		
+		LodgingVO vo = sellerService.lodgingModi(lidx);
+		
+		model.addAttribute("vo", vo);		
 	
-
+		return "seller/sellerLodgingModify";
+	}
+	//
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	
+	
 }
