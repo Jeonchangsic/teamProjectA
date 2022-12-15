@@ -181,6 +181,9 @@ main #titleHover:hover{
 	color:blue;
 	font-weight:bold;
 }
+main .fontSize{
+	font-size:15px;
+}
 
                 /*footer*/
 footer{position:absolute; bottom:0;height:137px; width:100%; background-color:rgba(0,0,0,0.15);}

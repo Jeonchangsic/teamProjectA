@@ -35,24 +35,27 @@ public class ReviewController {
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
 	@RequestMapping(value = "/review.do", method = RequestMethod.GET)
-	public String review(int lidx, Locale locale, Model model) {
+	public String review(int lidx, int ridx,Locale locale, Model model) {
 		
 		model.addAttribute("lidx",lidx);
+		model.addAttribute("ridx",ridx);
 		
 		return "review/review";
 	}
 	
 	//리뷰작성
 	@RequestMapping(value="/review.do", method= RequestMethod.POST)
-	public String review(int lidx, String rvTitle, String rvSatisfaction, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
+	public String review(int lidx, int ridx, String rvTitle, String rvSatisfaction, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
 		
-		/* System.out.println("리뷰작성자:"+vo.getRvWriter()); */
+		System.out.println("ridx:"+ridx);
+		
 		HttpSession session = req.getSession();
 		UserVO userVO = (UserVO)session.getAttribute("login"); 
 		
 		HashMap<String,Object> hm = new HashMap<String,Object>();
 		hm.put("uidx",userVO.getUidx());
 		hm.put("lidx",lidx);
+		hm.put("ridx",ridx);
 		hm.put("rvTitle", rvTitle);
 		hm.put("rvSatisfaction", rvSatisfaction);
 		hm.put("rvContent", rvContent);

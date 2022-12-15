@@ -32,6 +32,7 @@
 				,reserv_startDate
 				,reserv_endDate
 				,reserv_num
+				,rtype
 				,ridx
 				,rprice
 				,uidx
@@ -44,6 +45,7 @@
 								,reserv_startDate
 								,reserv_endDate
 								,reserv_num
+								,rtype
 								,v.ridx
 								,rprice
 								,u.uidx
@@ -68,6 +70,7 @@
 			SELECT lodgingname
 					,reserv_num
 					,rprice
+					,rtype
 					FROM AUSERTB u, LODGINGTB l, ROOMTB r, reservtb v
 							WHERE l.lidx = r.LIDX
 						   AND r.ridx = v.ridx
@@ -88,9 +91,12 @@
 					,rvtitle
 					,rvdate
 					,rvidx
-				 FROM reviewtb r, LODGINGTB l
+					,rm.rtype
+				 FROM reviewtb r, LODGINGTB l,roomtb rm
 					 WHERE l.lidx = r.lidx
+					 AND r.ridx = rm.ridx
 					 AND r.uidx = #{uidx}
+					 
 		</select>
 		
 		<!-- 리뷰 상세 출력 -->
@@ -102,9 +108,11 @@
 					,rvidx
 					,rvSatisfaction
 					,rvContent
-					 FROM ausertb u, reviewtb r, LODGINGTB l
+					,rm.rtype
+					 FROM ausertb u, reviewtb r, LODGINGTB l, roomtb rm
 						 WHERE l.lidx = r.lidx
 						 AND u.uidx = r.uidx
+						 AND r.ridx = rm.ridx
 						 AND r.rvidx = #{rvidx}
 		</select>
 		

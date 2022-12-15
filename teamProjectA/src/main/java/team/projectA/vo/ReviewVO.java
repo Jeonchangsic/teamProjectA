@@ -1,10 +1,11 @@
 package team.projectA.vo;
 
-public class ReviewVO extends LodgingVO{ 
+public class ReviewVO extends RoomVO{ 
 	
 	private int rvidx;
 	private int uidx;
 	private int lidx;
+	private int ridx;
 	private String rvTitle;
 	private String rvSatisfaction;
 	private String rvContent;

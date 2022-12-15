@@ -102,22 +102,24 @@
                 <table class="table10">
                     <tr class="ta_center tr_border">
                         <th>예약번호</th>
-                        <th>숙소정보</th>
-                        <th>예약자명</th>
+                        <th>숙소명</th>
+                        <th>객실명</th>
+                        <th>예약자</th>
                         <th>숙박일자</th>
                         <th>금액</th>
                         <th>비고</th>
                     </tr>
                     <c:forEach items="${list}" var="list">
 	                    <tr>
-	                        <td>${list.reserv_num}</td>
-	                        <td>${list.lodgingname}</td>
-	                        <td>${list.userName}</td>
-	                        <td>${list.reserv_startDate} ~ ${list.reserv_endDate}</td>
-	                        <td>${list.rprice}</td>
+	                        <td class="fontSize">${list.reserv_num}</td>
+	                        <td class="fontSize">${list.lodgingname}</td>
+	                        <td class="fontSize">${list.rtype}</td>
+	                        <td class="fontSize">${list.userName}</td>
+	                        <td class="fontSize">${list.reserv_startDate} ~ ${list.reserv_endDate}</td>
+	                        <td class="fontSize">${list.rprice}</td>
 	                        <td  class="ta_center">
 	                            <input onclick="refund_pop(${list.ridx},${list.uidx})" type="button" value="예약취소"/>
-	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do?lidx=${list.lidx}'"/>
+	                            <input type="button" value="리뷰쓰기" onclick="location.href='<%=request.getContextPath()%>/review/review.do?lidx=${list.lidx}&ridx=${list.ridx}'"/>
 	                        </td>
 	                    </tr>
                     </c:forEach>
@@ -143,14 +145,16 @@
         	 <table class="table10">
                     <tr class="ta_center tr_border">
                         <th>숙소명</th>
+                        <th>객실명</th>
                         <th>리뷰제목</th>
                         <th>리뷰작성일</th>
                     </tr>
                     <c:forEach items="${reviewList}" var="reviewList">
 	                    <tr>
-	                    	<td>${reviewList.lodgingname}</td>
-	                    	<td id="titleHover"><a href="<%=request.getContextPath()%>/mypage/reviewInfo.do?rvidx=${reviewList.rvidx}">${reviewList.rvTitle}</a></td>
-	                    	<td>${reviewList.rvDate}</td>
+	                    	<td class="fontSize">${reviewList.lodgingname}</td>
+	                    	<td class="fontSize">${reviewList.rtype}</td>
+	                    	<td class="fontSize" id="titleHover" ><a href="<%=request.getContextPath()%>/mypage/reviewInfo.do?rvidx=${reviewList.rvidx}">${reviewList.rvTitle}</a></td>
+	                    	<td class="fontSize">${reviewList.rvDate}</td>
 	                    </tr>
 	               	</c:forEach>
              </table>

@@ -33,6 +33,12 @@
                 			<input type="text" class="info" value="${vo.lodgingname}" readonly>
                 		</td>
                 	</tr>
+                	<tr>
+                		<td class="margin1">객실명</td>
+                		<td>
+                			<input type="text" class="info" value="${vo.rtype}" readonly>
+                		</td>
+                	</tr>
                     <tr>
                         <td class="margin1">만족도</td>
                         <td>
