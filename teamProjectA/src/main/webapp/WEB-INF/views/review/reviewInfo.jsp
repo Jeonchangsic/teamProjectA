@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="<%=request.getContextPath()%>/resources/css/review_css/review.css" rel="stylesheet"/>  <!-- css파일 새로 만들기  -->
+    <link href="<%=request.getContextPath()%>/resources/css/review_css/reviewInfo.css" rel="stylesheet"/>  
     <!---- jQuery ---->
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
      

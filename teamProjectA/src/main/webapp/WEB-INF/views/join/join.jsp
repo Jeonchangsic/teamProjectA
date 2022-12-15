@@ -252,7 +252,7 @@
 	                <tr>
 	                    <td class="contentsArea">휴대전화</td>
 	                    <td class="inputArea">
-	                        <input type="tel" name="userPhone" id="phone" class="inputArea" placeholder="000-0000-0000" required>
+	                        <input type="tel" name="userPhone" id="phone" class="inputArea" placeholder="- 제외하고 입력하세요." required>
 	                    </td>
 	                </tr>
 	                <tr>
