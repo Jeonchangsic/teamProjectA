@@ -153,6 +153,7 @@ ul{
         padding:5px;
         color:white;
 }
+button{cursor:pointer;}
 footer{
     margin-top:300px;
     height:100%; width:100%; background-color:rgba(0,0,0,0.15);}

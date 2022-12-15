@@ -8,9 +8,7 @@ li{list-style:none;}
 img,iframe{vertical-align:top;}
 
 .clearfix::after{content:""; display:block; clear:both;}
-
-body{background-color:aliceblue;}
-#inner{width:1024px; margin:0 auto; background-color:white;}
+.inner{width:1024px; margin:0 auto; height:auto;}
 #header{ margin:0 auto;
         height: 100px;
         overflow: hidden;
@@ -24,62 +22,106 @@ body{background-color:aliceblue;}
                     margin:40px 150px 40px;}
 .top li a{text-decoration: none;
           color:white;}
-#inner{width:1024px; margin:0 auto; }
+#inner{width:1024px; margin:0 auto; background-color:white; }
+body{background-color:aliceblue;}
+/*네비게이션 */
+#up_nav{overflow:hidden; margin-left: 40px; }
+#up_nav li{float:left; margin-top:50px; margin-right:30px;
+}
+#up_nav li:first-child{background-color:rgb(86,19,241); }
+
+#up_nav li:nth-child(odd){border:1px solid rgb(86,19,241);
+                          padding:10px 20px 10px 20px;
+                          border-radius:8px; }
+#up_nav li:nth-child(even){margin-top:60px;}
+#inner #up_nav img{width:20px;}
 
 /*왼쪽 이미지업로드 영역  */
-h2{font-weight: bold;
-   font-size: 25px;
-	margin: 0px 0 20px 470px;
-    padding-top: 100px;}
 #main_left{width:300px; height:300px; float:left;
 		 	margin-left:150px; margin-top:80px;}
 #main_left label{font-weight:bold; font-size:20px;}
-.select_img img{margin:20px 0; max-height:300px; width:300px;}
-#rimage1{margin-top:10px;}
-
+#imgborder img {
+    width: 350px;
+    height: 300px;
+	}	
+#rimage1{margin:10px 0 10px 0;}
+#imgborder{border:1px solid black; width:350px; height:300px; }
 
 /*오른쪽 정보업로드 영역*/
 #main_right{height:300px; float:right;
-			margin-right:150px; margin-top:120px;}
+			margin:190px 150px 0 0;}
 #main_right input{margin-bottom:20px; margin-left:15px;}
-#main_right #bed_info{font-size:20px; font-weight:bold; margin:30px 0 15px 80px;}
-#main_right ul li{float:left;margin-left: 25px;}
+#main_right ul li{float:left; margin-left: 25px;}
 
-/*라디오 박스 */
-.bed_filter #bed_info ul li{margin-left:30px;}
+
 /*체크박스*/
+#info_red{color:red; font-size:12px; margin: 0 0 15px 0px;;}
 #up_bottom{margin-top:50px;
            margin-left:148px;}
-.filter {font-size:20px; font-weight:bold; margin:30px 0 15px 50px; }
-.public_in{font-size:14px; border:1px solid black;
-           height:180px; width:200px; padding-top:50px; padding-left:10px;}
+.filter {font-size:20px; font-weight:bold; margin:30px 0 15px 0px; }
+.public_in{font-size: 14px;
+  		  border: 1px solid black;
+    	  height: 100px;
+          width: 350px;
+   		  padding-top: 20px;
+  		  padding-left: 10px;}
 
 #in_left{float:left;}
+#in_middle{float:left; margin-left: 45px;}
 #in_right{float:right; margin-right:10px;}
 
 
-
+/*침대 필터 */
+.bed_filter ul li{float: left; margin-left:30px;}
+.bed_filter p{margin:0 0 5px 7px;}
+#single{
+    content:url("../../images/lodgingList_images/single_bed.png");
+    width:50px;
+}
+#double{
+    content:url("../../images/lodgingList_images/double_bed.png");
+    width:50px;
+}
+#twin{
+    content:url("../../images/lodgingList_images/twin_bed.png");
+    width:50px;
+}
+#ondol{
+    content:url("../../images/lodgingList_images/ondol_bed.png");
+    width:45px;
+}
+#bed_info{font-weight:bold; font-size:20px; margin: -100px 0 20px 130px;}
+[type=radio] { 
+  position: absolute;
+  display:none;}
+[type=radio] + label {
+  cursor: pointer;}
+input[type=radio]:checked + label{
+  border-bottom: 5px solid indigo;} 
+ 
+  
 /*bottom */
-#bottom{clear:both; padding-top:70px;}
+#bottom{clear:both;}
 #bottom_left{float:left;}
-#bottom_right{float:right; margin:100px 140px 0px 100px;}
-#bottom_right p{font-weight:bold; font-size:20px; margin-bottom:10px;}
-#bottom_right .plus{width:300px; margin-bottom:10px;}
+#bottom_right{float:right; margin: 230px 150px 0 0; }
 
+#bottom_info{clear:both; margin: 0 0 0 150px; padding-top: 80px; height: 200px;}
+#bottom_info p{font-weight:bold; font-size:20px; margin-bottom: 10px;}
+#bottom_info .plus{width:500px;}
 #up_bottom2{display:flex; margin-left:148px; margin-top:70px;}
 #inner_bottom{clear:both;}
 #inner_bottom div{margin-top:30px; margin-left:450px;}
 #inner_bottom div button{padding: 5px 10px 5px 10px; 
                       background-color:rgb(86,19,241);
-                      border-radius:8px;
-                      border:none; color:white;
-                      margin-top:80px;
-                       }
+                      border:1px solid rgb(86,19,241);
+                      color:white;
+                      margin: 80px auto 50px 40px;
+                      cursor:pointer;}
 
 
                         /*footer*/
 footer{
-    margin-top:150px;
+
     height:100%; width:100%; background-color:rgba(0,0,0,0.15);}
 footer #foot{margin: 0 auto; width:1024px; height:100%; }
 footer #copy{color:#919191;}

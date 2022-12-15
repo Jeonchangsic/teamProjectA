@@ -54,25 +54,54 @@ body{background-color:aliceblue;}
 /*체크박스*/
 #up_bottom{margin-top:50px;
            margin-left:148px;}
-.filter {font-size:20px; font-weight:bold; margin:30px 0 15px 50px; }
-.public_in{font-size:14px; border:1px solid black;
-           height:180px; width:200px; padding-top:50px; padding-left:10px;}
+.filter {font-size:20px; font-weight:bold; margin:30px 0 15px 0px; }
+.public_in{font-size: 14px;
+  		  border: 1px solid black;
+    	  height: 100px;
+          width: 350px;
+   		  padding-top: 20px;
+  		  padding-left: 10px;}
 
 #in_left{float:left;}
+#in_middle{float:left; margin-left: 45px;}
 #in_right{float:right; margin-right:10px;}
 
 
 /*침대 필터 */
 .bed_filter ul li{float: left; margin-left:30px;}
-#bed_info{font-weight:bold; font-size:20px; margin: -100px 0 20px 100px;}
+.bed_filter p{margin:0 0 5px 7px;}
+#single{
+    content:url("../../images/lodgingList_images/single_bed.png");
+    width:50px;
+}
+#double{
+    content:url("../../images/lodgingList_images/double_bed.png");
+    width:50px;
+}
+#twin{
+    content:url("../../images/lodgingList_images/twin_bed.png");
+    width:50px;
+}
+#ondol{
+    content:url("../../images/lodgingList_images/ondol_bed.png");
+    width:45px;
+}
+#bed_info{font-weight:bold; font-size:20px; margin: -100px 0 20px 130px;}
+[type=radio] { 
+  position: absolute;
+  display:none;}
+[type=radio] + label {
+  cursor: pointer;}
+input[type=radio]:checked + label{
+  border-bottom: 5px solid indigo;} 
 /*bottom */
 #bottom{clear:both;}
 #bottom_left{float:left;}
-#bottom_right{float:right; margin: 200px 200px 0 0; }
+#bottom_right{float:right; margin: 200px 150px 0 0; }
 
-#bottom_info{clear:both; margin: 0 0 0 150px; padding-top: 80px;}
+#bottom_info{clear:both; margin: 0 0 0 150px; padding-top: 80px; height: 200px;}
 #bottom_info p{font-weight:bold; font-size:20px; margin-bottom: 10px;}
-#bottom_info button{margin-left:10px;}
+#bottom_info button{margin-left:10px; cursor:pointer;}
 #bottom_info .plus{width:500px;}
 #bottom_info #plus img{width:15px;}
 #bottom_info #plus{background-color:white; border:none;}
@@ -84,7 +113,8 @@ body{background-color:aliceblue;}
                       background-color:rgb(86,19,241);
                       border:1px solid rgb(86,19,241);
                       color:white;
-                      margin: 80px auto 50px 40px;}
+                      margin: 80px auto 50px 40px;
+                      cursor:pointer;}
 
 
                         /*footer*/
