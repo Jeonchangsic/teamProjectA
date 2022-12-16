@@ -3,12 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% List<RoomVO> roomlist =  (List<RoomVO>)request.getAttribute("roomlist"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매자 객실등록</title>
+<title>저긴어때</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/sellerRegi.css">
 <script src="https://ajax.googleapis.com/resources/css/3.6.1/jquery.min.js"></script>
@@ -98,15 +97,16 @@
 	                    <th>상세관리</th>
 	                </tr>
 	            </thead>
-	            <tbody>
-	            <% for(RoomVO room : roomlist) {%>
+	           <tbody>
+	            <c:if test = "${empty roomlist} "> </c:if>
+	            <c:forEach var = "list" items="${roomlist}" varStatus="status">
 	                <tr style="text-align:center;">
-	             		<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/<%=room.getRimage1()%>" alt="숙소 이미지"></td>
-	                    <td><%=room.getRtype() %></td>
-	                    <td><%=room.getRprice() %></td>
-	                    <td><%=room.getRnum()%></td>
+	             		<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/${list.rimage1}" alt="숙소 이미지"></td>
+	                    <td>${list.rtype}</td>
+	                    <td>${list.rprice}</td>
+	                    <td>${list.rnum}</td>
 	                    <td>
-	                       <button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=<%=room.getRidx()%>'">수정</button>
+	                       <button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=${list.ridx}'">수정</button>
 	                       <button type="button" onclick="delFn()">삭제</button>
 	                    </td>  
 	                    <!--객실 삭제 안내 -->
@@ -116,12 +116,12 @@
 						        alert("삭제가 취소되었습니다.");
 						    } else {
 						        alert("삭제가 완료되었습니다.");
-						        location = "sellerRegi2.do?ridx=<%=room.getRidx()%>";
+						        location = "sellerRegi2.do?ridx=${list.ridx}";
 						    }
 						}
 						</script>
 	                </tr>
-	             <%} %>         
+	             </c:forEach>     
 	            </tbody>
 	        </table>
 

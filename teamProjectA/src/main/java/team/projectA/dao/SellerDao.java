@@ -57,17 +57,18 @@ public class SellerDao {
 			
 	}
 	
-	public QnaVO qnaOne(int QnA_idx) {
-		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", QnA_idx);
+	public QnaVO qnaOne(int qna_idx) {
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", qna_idx);
 	}
 	
-	public int qnaDelete(int QnA_idx) {
-		return sqlSession.delete("team.projectA.mapper.sellerMapper.qnaDelete", QnA_idx);
+	public int qnaDelete(int qna_idx) {
+		return sqlSession.delete("team.projectA.mapper.sellerMapper.qnaDelete", qna_idx);
 	}
 	
-	public int qnaModify(int QnA_idx) {
-		return sqlSession.update("team.projectA.mapper.sellerMapper.qnaModify", QnA_idx);
+	public int qnaModify(QnaVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.qnaModify", vo);
 	}
+
 	public List<RoomVO> roomlist(int uidx) {
 		return sqlSession.selectList("team.projectA.mapper.sellerMapper.roomlist", uidx);
 		
@@ -114,28 +115,8 @@ public class SellerDao {
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.lodginginfoUp", vo);
 	}
 	
-	public Map<String, Object> lodgingModi(int lidx) {
+	public LodgingVO lodgingModi(int lidx) {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.lodgingModi", lidx);
-	}
-	
-	public int lodgingModify(LodgingVO vo) {
-		return sqlSession.update("team.projectA.mapper.sellerMapper.lodgingModify", vo);
-	}
-	
-	public int lodginginModify(LodginginVO vo) {
-		return sqlSession.update("team.projectA.mapper.sellerMapper.lodginginModify", vo);
-	}
-	
-	public int lodginginfoModify(LodginginfoVO vo) {
-		return sqlSession.update("team.projectA.mapper.sellerMapper.lodginginfoModify", vo);
-	}
-	
-	public int loDel(int lidx) {
-		return sqlSession.delete("team.projectA.mapper.sellerMapper.loDel", lidx);
-	}
-	
-	public int N(int uidx) {
-		return sqlSession.update("team.projectA.mapper.sellerMapper.N", uidx);
 	}
 	
 	public RoominVO roomModiInfo(int ridx) {
