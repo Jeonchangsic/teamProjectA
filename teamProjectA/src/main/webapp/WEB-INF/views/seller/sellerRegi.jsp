@@ -3,23 +3,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% List<RoomVO> roomlist =  (List<RoomVO>)request.getAttribute("roomlist"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매자 객실등록</title>
+<title>저긴어때</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/sellerRegi.css">
 <script src="https://ajax.googleapis.com/resources/css/3.6.1/jquery.min.js"></script>
 <script>
 	function lodelFn() {
-	    if (!confirm("정말로 해당 숙소를 삭제하시겠습니까?")) {
-	        alert("삭제가 취소되었습니다.");
-	    } else {
-	        alert("삭제가 완료되었습니다.");
-	        location = "sellerLoDel.do?lidx=${lodging2.lidx}";
-	    }
+		
+		if(!confirm("정말로 해당 숙소를 삭제하시겠습니까?")){
+			alert("삭제가 취소되었습니다.");
+		}else{
+			let f = document.createElement('form');
+			
+			let obj1;
+			obj1 = document.createElement('input');
+			obj1.setAttribute('type', 'hidden');
+			obj1.setAttribute('name', 'lidx');
+			obj1.setAttribute('value', '${lodging2.lidx}');
+			
+			let obj2;
+			obj2 = document.createElement('input');
+			obj2.setAttribute('type', 'hidden');
+			obj2.setAttribute('name', 'uidx');
+			obj2.setAttribute('value', '${lodging2.uidx}');
+			
+			f.appendChild(obj1);
+			f.appendChild(obj2);
+			f.setAttribute('method', 'post');
+			f.setAttribute('action', 'sellerRegi.do');
+			document.body.appendChild(f);
+			f.submit();
+		}
 	}
 </script>
 </head>
@@ -69,8 +87,6 @@
             <a href="<%=request.getContextPath() %>/seller/sellerRoomup1.do"><input type="button" value="객실등록"></a>
         </div>     
         <hr/>
-        <form action="sellerRegi.do"method="post">
-
 	        <table>
 	            <thead>
 	                <tr style="text-align:center;">
@@ -81,15 +97,16 @@
 	                    <th>상세관리</th>
 	                </tr>
 	            </thead>
-	            <tbody>
-	            <% for(RoomVO room : roomlist) {%>
+	           <tbody>
+	            <c:if test = "${empty roomlist} "> </c:if>
+	            <c:forEach var = "list" items="${roomlist}" varStatus="status">
 	                <tr style="text-align:center;">
-	             		<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/<%=room.getRimage1()%>" alt="숙소 이미지"></td>
-	                    <td><%=room.getRtype() %></td>
-	                    <td><%=room.getRprice() %></td>
-	                    <td><%=room.getRnum()%></td>
+	             		<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/${list.rimage1}" alt="숙소 이미지"></td>
+	                    <td>${list.rtype}</td>
+	                    <td>${list.rprice}</td>
+	                    <td>${list.rnum}</td>
 	                    <td>
-	                       <button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=<%=room.getRidx()%>'">수정</button>
+	                       <button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=${list.ridx}'">수정</button>
 	                       <button type="button" onclick="delFn()">삭제</button>
 	                    </td>  
 	                    <!--객실 삭제 안내 -->
@@ -99,15 +116,14 @@
 						        alert("삭제가 취소되었습니다.");
 						    } else {
 						        alert("삭제가 완료되었습니다.");
-						        location = "sellerRegi2.do?ridx=<%=room.getRidx()%>";
+						        location = "sellerRegi2.do?ridx=${list.ridx}";
 						    }
 						}
 						</script>
 	                </tr>
-	             <%} %>         
+	             </c:forEach>     
 	            </tbody>
 	        </table>
-        </form>
 
         <ul>
             <li>

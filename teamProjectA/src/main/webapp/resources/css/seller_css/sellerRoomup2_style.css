@@ -93,7 +93,7 @@ body{background-color:aliceblue;}
 #bed_info{font-weight:bold; font-size:20px; margin: -100px 0 20px 130px;}
 [type=radio] { 
   position: absolute;
-  display:none;}
+  width:1px;}
 [type=radio] + label {
   cursor: pointer;}
 input[type=radio]:checked + label{

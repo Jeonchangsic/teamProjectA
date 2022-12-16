@@ -7,11 +7,13 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Document</title>
+		<title>저긴어때</title>
 	<link href="<%=request.getContextPath()%>/resources/css/lodging_css/reset.css" rel="stylesheet">
 	<link href="<%=request.getContextPath()%>/resources/css/seller_css/sellerRoomup2_style.css" rel="stylesheet">
 	<script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
 	<link href="<%=request.getContextPath()%>/resources/css/jquery-ui.css">
+    <!-- 파비콘 -->
+	<link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 	<script src="<%=request.getContextPath()%>/resources/css/jquery-ui.min.js"></script>
 	    
 	    <script>	    
@@ -62,16 +64,14 @@
     	<section id="inner">
 	      	 <div id="up_nav">
 	             <ul>
-	                <li><a href="#" style="color: white">객실등록</a></li>
-	                <li><img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerRoomup_right_icon.png"></li>
-	                <li><a href="#">등록완료</a></li>
+	                <li><a href="#" style="color: white">객실수정</a></li>
 	             </ul>
 	       	</div>
-	       	<form method="post" enctype="multipart/form-data" > 
+	       	<form method="post" action="sellerRoomup2.do" enctype="multipart/form-data" > 
 	        <!--이미지 업로드 -->
 		        <div class="inputArea" id="main_left">
 				 	<label for="rimage1">사진등록</label>
-					<input type="file" id="rimage1" name="file" required />
+					<input type="file" id="rimage1" name="file" />
 					<div id="imgborder">
 						<div class="select_img">
 							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage1}" />
@@ -79,7 +79,7 @@
 						</div>
 					</div>
 				</div>	
-				<input type="hidden" name="lidx" value="${lidxone.lidx}"> 
+				<input type="hidden" name="ridx" value="${roomModify.ridx}"> 
 			<!--정보입력-->
 			<div id="main_right">
 				<table>
@@ -177,27 +177,26 @@
 						<ul>
 							<li>
 								<p>싱글</p>
-								<input id="B1" type="radio" name="bed" value="single_bed" required >					
+								<input id="B1" type="radio" name="bed" value="single_bed" required/>					
 								<label for="B1" id="single"></label>
 							</li>
 							<li>
 								<p>더블</p>
-								<input id="B2" type="radio" name="bed" value="double_bed">
+								<input id="B2" type="radio" name="bed" value="double_bed"/>
 								<label for="B2" id="double"></label>
 							
 							<li>
 								<p>트윈</p>
-								<input id="B3" type="radio" name="bed" value="twin_bed">
+								<input id="B3" type="radio" name="bed" value="twin_bed"/>
 								<label for="B3" id="twin"></label>
 							</li>
 							<li>
 								<p>온돌</p>
-								<input id="B4"type="radio" name="bed" value="ondol_bed">
+								<input id="B4"type="radio" name="bed" value="ondol_bed"/>
 								<label for="B4" id="ondol"></label>	
 							</li>
 						</ul>				
-				</div>
-		            
+				</div>		            
 			    <div id="bottom_info">
 			    	<p>추가정보<p>
 				    	<input type="text" class="plus" name = "addinfo1" value = "${roomModify.addinfo1}"><br>
@@ -208,7 +207,7 @@
 			    </div>
 		        <div id="inner_bottom">
 		                <div>
-		                   <button type="submit" name="next" style="color:white; border:1px solid rgb(86,19,241);">다음</button> 
+		                   <button type="submit" name="next" style="color:white; border:1px solid rgb(86,19,241);">완료</button> 
 		                </div>
 		        </div>
 		       </div>

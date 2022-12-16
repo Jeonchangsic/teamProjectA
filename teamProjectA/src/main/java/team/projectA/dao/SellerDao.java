@@ -57,17 +57,18 @@ public class SellerDao {
 			
 	}
 	
-	public QnaVO qnaOne(int QnA_idx) {
-		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", QnA_idx);
+	public QnaVO qnaOne(int qna_idx) {
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.qnaOne", qna_idx);
 	}
 	
-	public int qnaDelete(int QnA_idx) {
-		return sqlSession.delete("team.projectA.mapper.sellerMapper.qnaDelete", QnA_idx);
+	public int qnaDelete(int qna_idx) {
+		return sqlSession.delete("team.projectA.mapper.sellerMapper.qnaDelete", qna_idx);
 	}
 	
-	public int qnaModify(int QnA_idx) {
-		return sqlSession.update("team.projectA.mapper.sellerMapper.qnaModify", QnA_idx);
+	public int qnaModify(QnaVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.qnaModify", vo);
 	}
+
 	public List<RoomVO> roomlist(int uidx) {
 		return sqlSession.selectList("team.projectA.mapper.sellerMapper.roomlist", uidx);
 		

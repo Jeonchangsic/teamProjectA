@@ -96,11 +96,12 @@ main  h3{font-weight: bold;
         margin:100px 0 0 500px;}
 form{margin-top:20px;}
 form input{width:259px;height:27px; padding-left:5px;}
-form textarea{padding: 5px 0 0 5px;}
 table{margin:50px 0 0 500px;}
 table td{padding:9px;}
 textarea{width:700px;
-		height:300px;}
+		height:300px;
+		padding: 5px 0 0 5px;
+		resize:none;}
 #margin1{vertical-align:top;}
 ul{     
         text-align: center;

@@ -28,11 +28,11 @@ public interface SellerService {
    	
 	int qnaInsert(QnaVO vo);
 	
-	UserVO qnaOne(int QnA_idx);
+	UserVO qnaOne(int qna_idx);
 
-	int qnaDelete(int QnA_idx);
+	int qnaDelete(int qna_idx);
 	
-	int qnaModify(int QnA_idx);
+	int qnaModify(QnaVO vo);
 	
 	List<RoomVO> roomlist(int uidx);
 	

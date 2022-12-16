@@ -116,9 +116,9 @@ public class SellerController {
     
     //문의글
 	@RequestMapping(value="/sellerInquireView.do", method = RequestMethod.GET)
-	public String sellerInquireView(Locale locale, Model model, int QnA_idx) {
+	public String sellerInquireView(Locale locale, Model model, int qna_idx) {
 				
-			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(QnA_idx);
+			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(qna_idx);
 			model.addAttribute("qnaOne",qnaOne);
 			
 		
@@ -152,31 +152,32 @@ public class SellerController {
 	}
 	//문의글 삭제
 	@RequestMapping (value = "/sellerdelete.do" , method = RequestMethod.GET)
-	public String sellerdelete(Locale locale, Model model, int QnA_idx) {
+	public String sellerdelete(Locale locale, Model model, int qna_idx) {
 	      
-		sellerService.qnaDelete(QnA_idx);
+		sellerService.qnaDelete(qna_idx);
 	   
 
 		return "redirect:sellerInquire.do";
 	}
 
 	@RequestMapping (value = "/sellerInquireModify.do", method = RequestMethod.GET)
-	public String sellerInquireModify(Locale locale, Model model, int QnA_idx) {
+	public String sellerInquireModify(Locale locale, Model model, int qna_idx) {
 		
-		QnaVO qnaone = (QnaVO)sellerService.qnaOne(QnA_idx);
+		QnaVO qnaone = (QnaVO)sellerService.qnaOne(qna_idx);
 		model.addAttribute("qnaOne", qnaone);
 		
 		return "seller/sellerInquireModify";
 	}
 	
 	//문의글 수정
-	@RequestMapping (value = "/sellerInquireModify.do", method = RequestMethod.POST)
-	public String sellerInquireModify(int QnA_idx) {
-		
-		sellerService.qnaModify(QnA_idx);
-		
-		return  "seller/sellerInquireView.do";
-	}
+		@RequestMapping (value = "/sellerInquireModify.do", method = RequestMethod.POST)
+		public String sellerInquireModify(QnaVO vo) {
+			
+			sellerService.qnaModify(vo);
+
+			return  "redirect:sellerInquireView.do?qna_idx="+vo.getQna_idx();
+
+		}
 	
 	
 	//객실 리스트
@@ -292,39 +293,41 @@ public class SellerController {
 	@RequestMapping (value = "/sellerRoomup2.do", method = RequestMethod.POST)
 	public String roomModify(Locale locale, Model model, MultipartFile file, HttpServletRequest req, RoomVO vo, RoominVO in) {
 
-		 //새로운 이미지가 등록 되어있나 확인
-		 if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-			  // 기존 이미지 삭제
-			  new File(req.getParameter("rimage1")).delete();
-			  // 새로운 이미지 등록
-			  String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-				long size = file.getSize(); //파일 사이즈
+		//새로운 이미지가 등록 되어있는지 확인
+        if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+             // 기존 이미지 삭제
+             new File(req.getParameter("rimage1")).delete();
+             //이미지 등록
+             String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
+               long size = file.getSize(); //파일 사이즈
 
-				String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-				String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
-							
-				UUID uuid = UUID.randomUUID();
-				String[] uuids = uuid.toString().split("-");			
-				String uniqueName = uuids[0];
-				
-				File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
-				try {
-					file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
-				} catch (IllegalStateException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				
-				vo.setRimage1(uniqueName+fileExtension); 
-		 }else {
-			 	//새로운 이미지가 등록되지 않았다면 기존 이미지 그대로 사용
-			    vo.setRimage1(req.getParameter("rimage1"));	 
-		 }
-			  
-		 sellerService.roomModify(vo);
+               String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
+               String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+                           
+               UUID uuid = UUID.randomUUID();
+
+               String[] uuids = uuid.toString().split("-");
+               
+               String uniqueName = uuids[0];
+               
+               File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+               try {
+                   file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+               } catch (IllegalStateException e) {
+                   e.printStackTrace();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+               
+               vo.setRimage1(uniqueName+fileExtension); 
+        }else {
+               //새로운 이미지가 등록되지 않아다면 기본 이미지 그대로 
+               vo.setRimage1(req.getParameter("rimage1"));     
+        }
+             
+         sellerService.roomModify(vo);
 		 sellerService.roomModify2(in);
-		
+		 
 		 return "redirect:/seller/sellerRegi.do";
 	}
 	

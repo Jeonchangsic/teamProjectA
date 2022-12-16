@@ -64,7 +64,8 @@ UL,li{list-style:none;}
 }
 .inner{
 	width:1024px; 
-	margin:0 auto; 
+	margin:0 auto;
+	height:800px; 
 }
 #header{ 
 	margin:0 auto;
@@ -139,7 +140,7 @@ thead{font-weight: bold;
 thead th{width:250px; }
 
 table td{padding:9px;}
-tbody td{border-bottom: 1px solid rgb(214, 214, 214);}
+#maintb tbody td{border-bottom: 1px solid rgb(214, 214, 214);}
 ul{     
         text-align: center;
         margin-top:10px;}
@@ -155,7 +156,6 @@ ul{
 }
 button{cursor:pointer;}
 footer{
-    margin-top:300px;
     height:100%; width:100%; background-color:rgba(0,0,0,0.15);}
 footer #foot{margin: 0 auto; width:1024px; height:100%; }
 footer #copy{color:#919191;}

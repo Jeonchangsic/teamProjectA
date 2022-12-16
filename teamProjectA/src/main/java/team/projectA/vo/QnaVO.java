@@ -2,7 +2,7 @@ package team.projectA.vo;
 
 public class QnaVO extends UserVO{
 
-	private int QnA_idx;
+	private int qna_idx;
 	private int uidx;
 	private String usertype;
 	private String qna_Qcontent;
@@ -11,11 +11,13 @@ public class QnaVO extends UserVO{
 	private String qna_Acontent;
 	private String qna_Qdate;
 	private String qna_Adate;
-	public int getQnA_idx() {
-		return QnA_idx;
+	
+	
+	public int getQna_idx() {
+		return qna_idx;
 	}
-	public void setQnA_idx(int qnA_idx) {
-		QnA_idx = qnA_idx;
+	public void setQna_idx(int qna_idx) {
+		this.qna_idx = qna_idx;
 	}
 	public int getUidx() {
 		return uidx;
@@ -65,5 +67,6 @@ public class QnaVO extends UserVO{
 	public void setQna_Adate(String qna_Adate) {
 		this.qna_Adate = qna_Adate;
 	}
+	  
 	
 }

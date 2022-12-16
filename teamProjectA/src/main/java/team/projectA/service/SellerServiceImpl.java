@@ -67,21 +67,21 @@ public class SellerServiceImpl implements SellerService{
 	}
 
 	@Override
-	public UserVO qnaOne(int QnA_idx) {
+	public UserVO qnaOne(int qna_idx) {
  
-		return SellerDao.qnaOne(QnA_idx);
+		return SellerDao.qnaOne(qna_idx);
 	}
 	
 	@Override
-	public int qnaDelete(int QnA_idx) {
+	public int qnaDelete(int qna_idx) {
 	      
-		return SellerDao.qnaDelete(QnA_idx);
+		return SellerDao.qnaDelete(qna_idx);
 	}
 
 	@Override
-	public int qnaModify(int QnA_idx) {
+	public int qnaModify(QnaVO vo) {
 	
-		return SellerDao.qnaModify(QnA_idx);
+		return SellerDao.qnaModify(vo);
 	}
 
 

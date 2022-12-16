@@ -49,7 +49,7 @@
         <select id= "qnaList" resultType="QnaVO" parameterType="int">
     
 				SELECT a.uidx
-					, q.QnA_idx
+					, q.qna_idx
 					, q.uidx
 					, q.userType
 					, q.qna_Qcontent
@@ -59,29 +59,29 @@
 				FROM ausertb a
 				LEFT OUTER JOIN qnatb q 
 				ON a.uidx = q.uidx 
-				WHERE a.uidx= #{uidx}  ORDER BY QnA_idx DESC
+				WHERE a.uidx= #{uidx}  ORDER BY qna_idx DESC
                 
  
         </select>
         
     <!--문의글 페이징-->
     <select id="QnaPaging" resultType="QnaVO" parameterType="Criteria" >
-		        select QnA_idx, qna_Qtitle, qna_Qdate, qna_Acheck
-					from (select QnA_idx, qna_Qtitle, qna_Qdate, qna_Acheck, 
-					row_number() over(order by QnA_idx desc)
+		        select qna_idx, qna_Qtitle, qna_Qdate, qna_Acheck
+					from (select qna_idx, qna_Qtitle, qna_Qdate, qna_Acheck, 
+					row_number() over(order by qna_idx desc)
 					as rNum from qnatb)mb 
-				where rNum between #{rowStart} and #{rowEnd} order by QnA_idx desc
+				where rNum between #{rowStart} and #{rowEnd} order by qna_idx desc
 		    
     </select>
 	<select id = "listCount" resultType="int">
-			select count(Qna_idx)
-			from qnatb where Qna_idx > 0
+			select count(qna_idx)
+			from qnatb where qna_idx > 0
 	</select>	
 	<!--문의하기 insert  -->
 	<insert id="qnaInsert" parameterType="QnaVO">
 	<![CDATA[
 		INSERT INTO qnatb (
-						 QnA_idx
+						 qna_idx
 						, uidx 
 						, qna_Qcontent
 						, qna_Qtitle
@@ -90,7 +90,7 @@
 						, usertype 
 						)
 					 VALUES(
-						 QnA_idx_seq.nextval 
+						 qna_idx_seq.nextval 
 					    , #{uidx} 
 					    , #{qna_Qcontent}
 						, #{qna_Qtitle}
@@ -98,36 +98,32 @@
 					 	, sysdate
 					 	, #{usertype}
 					 	)	
-	]]>
-	<selectKey order="AFTER" resultType="integer" keyProperty="QnA_idx"> <!-- after:주 쿼리가 실행된 이후에 호출하겠다 -->
-		SELECT MAX(QnA_idx) from qnatb <!--최대값을 구하라 / 최근 입력한 게시글이 가장 최근수=가장큰수  -->
-	</selectKey>
-		 			
+	]]>			
 	</insert>
 	
 	<!--문의 글 보기 -->
 	<select id = "qnaOne" resultType="QnaVO" parameterType = "integer">
-   					SELECT QnA_idx
+   					SELECT qna_idx
 					, uidx
 					, qna_Qcontent
 					, qna_Qtitle
 					, qna_Qdate
 					, qna_Acontent					
 					FROM qnatb
-					WHERE QnA_idx = #{QnA_idx}
+					WHERE qna_idx = #{qna_idx}
 	</select>
 	<!--문의 글 삭제  -->
    <delete id="qnaDelete" parameterType="int">
       DELETE FROM qnatb 
-      WHERE QnA_idx = #{QnA_idx}
+      WHERE qna_idx = #{qna_idx}
    </delete>
 	
 	<!--문의 글 수정-->
-	<update id="qnaModify" parameterType="int">
+	<update id="qnaModify" parameterType="QnaVO">
 		UPDATE qnatb SET 
 			qna_Qtitle = #{qna_Qtitle}  
 			,qna_Qcontent = #{qna_Qcontent}
-			WHERE QnA_idx = #{QnA_idx}
+			WHERE qna_idx = #{qna_idx}
 	</update>
 
 	<!--판매자 객실목록  -->
@@ -314,12 +310,158 @@
 							, #{odd5}
 						)
 	</insert>
-	<!-- 숙소 수정 -->
-	<select id="lodgingModi" parameterType="int" resultType="lodgingVO">
+	<!-- lodgingtb, lodgingintb, lodginginfotb 를 담음 -->
+	<resultMap type="HashMap" id="lodgingAll">
+		<id column="lidx" property="lidx" />
+		<id column="lodgingkind" property="lodgingkind" />
+		<id column="lodgingname" property="lodgingname" />
+		<id column="lodgingaddr" property="lodgingaddr" />
+		<id column="satis" property="satis" />
+		<id column="reviewnum"	property="reviewnum" />
+		<id column="local" property="local" />
+		<id column="limagename" property="limagename" />
+		<id column="intro" property="intro" />
+		<id column="FITNESS" property="FITNESS" />
+		<id column="SAUNA" property="SAUNA" />
+		<id column="RESTAURANT"	property="RESTAURANT" />
+		<id column="LOUNGE" property="LOUNGE" />
+		<id column="BBQ" property="BBQ" />
+		<id column="PUBLICSPA" property="PUBLICSPA" />
+		<id column="SEMINAR" property="SEMINAR" />
+		<id column="SINGING" property="SINGING" />
+		<id column="WASHINGMACHINE" property="WASHINGMACHINE" />
+		<id column="DEHYDRATOR" property="DEHYDRATOR" />
+		<id column="COOKING" property="COOKING" />
+		<id column="spa" property="spa" />
+		<id column="pool" property="pool" />
+		<id column="golf" property="golf" />
+		<id column="elevator" property="elevator" />
+		<id column="pc" property="pc" />
+		<id column="cafe" property="cafe" />
+		<id column="footvolleyball" property="footvolleyball" />
+		<id column="store" property="store" />
+		<id column="dining" property="dining" />
+		<id column="dryer" property="dryer" />
+		<id column="parking" property="parking" />
+		<id column="publicshower" property="publicshower" />
+		<id column="ski" property="ski" />
+		<id column="pickup" property="pickup" />
+		<id column="printer" property="printer" />
+		<id column="locker" property="locker" />
+		<id column="breakfast" property="breakfast" />
+		<id column="valetparking" property="valetparking" />
+		<id column="dog" property="dog" />
+		<id column="inroomcooking" property="inroomcooking" />
+		<id column="keepluggage" property="keepluggage" />
+		<id column="freeparking" property="freeparking" />
+		<id column="inroomsmoking" property="inroomsmoking" />
+		<id column="nosmoking" property="creditcard" />
+		<id column="area1" property="area1" />
+		<id column="area2" property="area2" />
+		<id column="area2" property="area2" />
+		<id column="area3" property="area3" />
+		<id column="area4" property="area4" />
+		<id column="area5" property="area5" />
+		<id column="basic1" property="basic1" />
+		<id column="basic2" property="basic2" />
+		<id column="basic3" property="basic3" />
+		<id column="basic4" property="basic4" />
+		<id column="basic5" property="basic5" />
+		<id column="odd1" property="odd1" />
+		<id column="odd2" property="odd2" />
+		<id column="odd3" property="odd3" />
+		<id column="odd4" property="odd4" />
+		<id column="odd5" property="odd5" />
+	</resultMap> 
+		<!-- column은 DB의 출력하는 칼럼명, property는 Key값 -->
+	<!-- 숙소 수정 페이지 -->
+	<select id="lodgingModi" parameterType="int" resultMap="lodgingAll">
 		SELECT * 
-		  FROM LODGINGTB
-		 WHERE lidx = #{lidx}		
+		  FROM LODGINGTB l, LODGINGINTB i, LODGINGINFOTB f
+		 WHERE l.lidx = i.lidx
+		   AND l.lidx = f.lidx	
+		   AND l.lidx = #{lidx}
 	</select>
+	<!-- 숙소 수정 -->
+	<update id="lodgingModify" parameterType="lodgingVO">
+		UPDATE LODGINGTB 
+		   SET lodgingkind = #{lodgingkind}
+		     , lodgingname = #{lodgingname}
+			 , lodgingaddr = #{lodgingaddr}
+			 , local = #{local}
+			 , limagename = #{limagename}
+			 , intro = #{intro}					
+		WHERE lidx = #{lidx}
+	</update>
+	<update id="lodginginModify" parameterType="lodginginVO">
+		UPDATE LODGINGinTB 
+		   SET fitness = #{FITNESS}
+			 , SAUNA = #{SAUNA}
+			 , RESTAURANT = #{RESTAURANT}
+			 , LOUNGE = #{LOUNGE}
+			 , BBQ = #{BBQ}
+			 , PUBLICSPA = #{PUBLICSPA}
+			 , SEMINAR = #{SEMINAR}
+			 , SINGING = #{SINGING}
+			 , WASHINGMACHINE = #{WASHINGMACHINE}
+			 , DEHYDRATOR = #{DEHYDRATOR}
+			 , COOKING = #{COOKING}
+			 , spa = #{spa}
+			 , pool = #{pool}
+			 , golf = #{golf}
+			 , elevator = #{elevator}
+			 , pc = #{pc}
+			 , cafe = #{cafe}
+			 , footvolleyball = #{footvolleyball}
+			 , store = #{store}
+			 , dining = #{dining}
+			 , dryer = #{dryer}
+			 , parking = #{parking}
+			 , publicshower = #{publicshower}
+			 , ski = #{ski}
+			 , pickup = #{pickup}
+			 , printer = #{printer}
+			 , locker = #{locker}
+			 , breakfast = #{breakfast}
+			 , valetparking = #{valetparking}
+			 , dog = #{dog}
+			 , inroomcooking = #{inroomcooking}
+			 , keepluggage = #{keepluggage}
+			 , freeparking = #{freeparking}
+			 , inroomsmoking = #{inroomsmoking}
+			 , nosmoking = #{nosmoking}
+			 , creditcard = #{creditcard}
+		WHERE lidx = #{lidx}
+	</update>
+	<update id="lodginginfoModify" parameterType="lodginginfoVO">
+		UPDATE LODGINGinfoTB 
+		   SET area1 = #{area1}
+			 , area2 = #{area2}
+			 , area3 = #{area3}
+			 , area4 = #{area4}
+			 , area5 = #{area5}
+			 , basic1 = #{basic1}
+			 , basic2 = #{basic2}
+			 , basic3 = #{basic3}
+			 , basic4 = #{basic4}
+			 , basic5 = #{basic5}
+			 , odd1 = #{odd1}
+			 , odd2 = #{odd2}
+			 , odd3 = #{odd3}
+			 , odd4 = #{odd4}
+			 , odd5 = #{odd5}
+		WHERE lidx = #{lidx}
+	</update>
+	<!-- 숙소 삭제 -->
+	<delete id="loDel" parameterType="int">
+		DELETE FROM lodgingtb
+		 WHERE lidx = #{lidx}
+	</delete>
+	<update id="N" parameterType="int">
+		UPDATE AUSERTB 
+		   SET lodging = 'N'
+		 WHERE uidx = #{uidx}
+	</update>
 	<!--
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

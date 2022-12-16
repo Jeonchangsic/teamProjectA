@@ -4,7 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% List<QnaVO> qnaList = (List<QnaVO>)request.getAttribute("qnaList"); %>
 
  <%@ page session="true" %>
 <!DOCTYPE html>
@@ -13,8 +12,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>판매자페이지</title>
+    <title>저긴어때</title>
     <link href="<%=request.getContextPath()%>/resources/css/seller_css/sellerInquire.css" rel="stylesheet">
+        <!-- 파비콘 -->
+    <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 </head>
 <body style="overflow-x: hidden">
     <header>
@@ -47,7 +48,7 @@
     <main class="inner">
             <h3>문의내역</h3>
         <form>
-            <tbody>
+            <table>
                 <tr>
                     <td>
                         <select class="frm_select">
@@ -62,9 +63,9 @@
                         <button class="btn" type="submit" name="submit">조회</button>
                     </td>
                 </tr>
-            </tbody>
+            </table>
         </form>
-        <table>
+        <table id="maintb">
             <thead>
                 <tr style="text-align:center;">
                     <th>번호</th>
@@ -73,22 +74,19 @@
                     <th>답변여부</th>
                 </tr>
             </thead>
-            <tbody>	
-				<%for(QnaVO qna : qnaList) { %>
-                <tr style="text-align:center;">
-                    <td><%=qna.getQnA_idx()%></td>
-   				    <td><a href="sellerInquireView.do?QnA_idx=<%=qna.getQnA_idx()%>"><%=qna.getQna_Qtitle()%></a></td>
-                    <td><%=qna.getQna_Qdate()%></td>
-                    <td><%=qna.getQna_Acheck()%></td>
-                </tr>
-               
-             	 <%} %>
+            <tbody>	  
+            <c:if test = "${empty qnalist} "> </c:if>
+				<c:forEach var="qna" items="${qnaList}" varStatus="status">	
+	                <tr style="text-align:center;">
+	                    <td>${qna.qna_idx}</td>
+	                    <td><a href="sellerInquireView.do?qna_idx=${qna.qna_idx}">${qna.qna_Qtitle}</a></td>	
+		                <td>${qna.qna_Qdate}</td>
+		                <td>${qna.qna_Acheck}</td>
+	                </tr>
+             	</c:forEach>         	
             </tbody>
         </table>
         <ul>
-     <div>
-
-	</div>
         </ul>
         <button onclick="location.href='sellerInquireWrite.do'" id="btn_right">문의쓰기</button>
 

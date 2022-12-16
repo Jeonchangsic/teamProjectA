@@ -11,9 +11,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문의내용</title>
+    <title>저긴어때</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/sellerInquireView.css">
+    <!-- 파비콘 -->
+<link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>	
 	/*게시글삭제  */
@@ -23,7 +25,7 @@
 				alert("삭제가 취소되었습니다.");
 			} else {
 				alert("삭제가 완료되었습니다.");
-				location = "sellerdelete.do?QnA_idx=<%=qnaOne.getQnA_idx()%>";
+				location = "sellerdelete.do?qna_idx=<%=qnaOne.getQna_idx()%>";
 				}
 			};
 
@@ -59,7 +61,7 @@
 		</div>
 	</header>
     <input type="hidden" name="uidx">
-    <input type="hidden" name="QnA_idx">
+    <input type="hidden" name="qna_idx">
     <main  class=inner style="padding-top:150px;">
     	<h2>게시글 상세화면</h2>
 	    	<form>
@@ -89,7 +91,7 @@
 				</div>		
 		    	<div id="btn">
 					<button type="button" onclick="location.href='sellerInquire.do'">목록</button>
-			    	<button type="button" onclick="location.href='sellerInquireModify.do?QnA_idx=<%=qnaOne.getQnA_idx()%>'">수정</button> 
+			    	<button type="button" onclick="location.href='sellerInquireModify.do?qna_idx=${qnaOne.qna_idx}'">수정</button> 
 			    	<button type="button" onclick="delFn()">삭제</button>
 		    	</div>
 	       </form>

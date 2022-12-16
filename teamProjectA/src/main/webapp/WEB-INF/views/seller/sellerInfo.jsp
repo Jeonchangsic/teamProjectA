@@ -1,10 +1,7 @@
 <%@page import="team.projectA.vo.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%
-	UserVO vo = (UserVO) request.getAttribute("vo");
-	LodgingVO lodging = (LodgingVO) request.getAttribute("lodging");
-%>
+<% LodgingVO lodging = (LodgingVO) request.getAttribute("lodging"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
@@ -16,12 +13,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>저긴어때</title>
 <link
 	href="<%=request.getContextPath()%>/resources/css/seller_css/sellerInfo.css"
 	rel="stylesheet" />
 <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
 <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- 파비콘 -->
+<link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 
 <script>
 	//사업장이름         
@@ -29,7 +28,6 @@
 		$("#nameFn").on("click", function() {
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
-			//alert(frm.lodgingname.value);
 			frm.action = "sellerInfo2.do";
 			frm.method = "POST";
 			frm.submit();
@@ -40,7 +38,6 @@
 		$("#addrFn").on("click", function() {
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
-			//alert(frm.lodgingaddr.value);
 			frm.action = "sellerInfo2.do";
 			frm.method = "POST";
 			frm.submit();
@@ -51,7 +48,6 @@
 		$("#mailFn").on("click", function() {
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
-			//alert(frm.userEmail.value);
 			frm.action = "sellerInfo1.do";
 			frm.method = "POST";
 			frm.submit();
@@ -62,7 +58,6 @@
 		$("#pwdFn").on("click", function() {
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
-			//alert(frm.lodgingname.value);
 			frm.action = "sellerInfo1.do";
 			frm.method = "POST";
 			frm.submit();
@@ -73,7 +68,6 @@
 		$("#phoneFn").on("click", function() {
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
-			//alert(frm.lodgingname.value);
 			frm.action = "sellerInfo1.do";
 			frm.method = "POST";
 			frm.submit();
