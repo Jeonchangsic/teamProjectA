@@ -55,34 +55,28 @@ UL,li{list-style:none;}
               /*header*/
 
 header h2{
-    width:1024px; margin: 0 auto;
     text-align: center;
-    font-size:30px;
+    font-size:25px;
     font-weight: bold;
-    padding:50px 0 30px 0;
+    padding:20px 0 10px 0;
 }
 
             /*main*/
-main{
-    height:810px;
-}
+
 main table{
     font-size:20px;
 }
 main #contentsArea{
-    border:1px solid #919191;
-    width:500px;
-    height:300px;
+    width:520px;
     margin:0 auto;
-    border-radius: 3px;
 }
 main #table1{
-    margin:30px auto;
+    margin: 5px 20px 0 40px;
     height:300px;
 }
 main .info{
     width:200px;
-    height:30px;
+    height:20px;
 }
 main #info{
     width:300px;
@@ -90,18 +84,56 @@ main #info{
 }
 main #table2{
     margin:30px auto;
-    height:200px;
 }
 main .margin1{
     padding-right:50px;
 }
-
-main #clearBtn{
+main .margin2{
+	padding: 15px 50px 0 0;
+	height:50px;
+}
+main .clearBtn{
     width: 100px;
     height:30px;
+    color:rgba(255,255,255,0.8);
+	background-color:rgb(86, 19, 241);
+	font-weight:bold;
+	border:0px solid #000;
+	border-radius:2px;
 }
-                /*footer*/
-footer{height:137px; width:100%; background-color:rgba(0,0,0,0.15);}
-footer #foot{margin: 0 auto; width:1024px; height:127px;}
-footer #copy{color:#919191;}
-                /*end footer*/
+main .clearBtn:hover{
+	color:white;
+}
+.td_vertical-align{
+	vertical-align:middle;
+}
+#review_Img{
+	width:110px;
+	height:70px;
+}
+#rtypeText{
+	color:#bbb;
+	margin: 3px 0 3px 0;
+	font-size:20px;
+}
+#selectStyle{
+	width:200px;
+	height:30px;
+}
+#headLine{
+	width:100%;
+	height:1px;
+	background-color:#919191;
+}
+.td_padding{
+	padding-left:10px;
+}
+.tr_background{
+	height:1px;
+	background-color:#bbb;
+	margin-bottom:5px;
+	
+}
+.cursorStyle{
+	cursor:pointer;
+}    

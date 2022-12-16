@@ -31,6 +31,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color:aliceblue;
+	height:1000px;
 }
 ol, ul {
 	list-style: none;
@@ -53,19 +55,22 @@ UL,li{list-style:none;}
             /*리셋코드*/
 
             /*header*/
+header .inner{ width:1024px; height:100%; margin:0 auto; position:relative;}header{position:fixed; top:0; left:0; width:100%; height: 100px; background-color:rgb(86, 19, 241); z-index:999;} /*헤더 상단 고정을 위해 줬음*/
+header h1 { float: left; margin-top: 10px; }
+header h1 img{width:130px; height:80px;}
+header ul{float:right; display: flex; align-items: center;  height: 100%;}  
+header ul li:first-child{padding-right:20px;}
+header li:not(:first-child){ margin-left: 20px;}  
+header li a{color:white; font-size:22px; font-weight:bold;}
 
-header h2{
-    width:1024px; margin: 0 auto;
-    text-align: center;
-    font-size:30px;
-    font-weight: bold;
-    padding-top:50px;
+.inner > ul > li:first-child {
+    position: relative;
 }
-
             /*main*/
 
 main{
     position:relative;
+    padding-top: 130px;
 }
 main #nav{
     width:330px;
@@ -149,11 +154,12 @@ main .table10 th{
 main .table10 td{
     border-bottom:1px solid #919191;
     text-align:center;
+    vertical-align: middle;
 }
 main .table10 p{
     display:inline-block;
 }
-main .table10 .ta_center{
+main .table10 .tr_center{
     text-align:center;
 }
 main #btnArea{
@@ -183,8 +189,69 @@ main #titleHover:hover{
 }
 main .fontSize{
 	font-size:15px;
+	height:80px;
+	vertical-align: middle;
 }
-
+.date_size1{
+	width:80px;
+	font-size:15px;
+	height:80px;
+	vertical-align: middle;
+	padding: 0 20px;
+}
+main .td_padding{
+	font-size:15px;
+	padding:10px 0 7px 0;
+	line-height:5px;
+}
+main .lodging_Style{
+	width:190px;
+}
+main .review_style{
+	padding-left:20px;
+}
+#whiteArea{
+	margin:0 auto;
+	height:920px;
+	width:1024px;
+	background-color:white;
+}
+#mypageArea{
+	width:150px;
+	margin:0 auto;
+	font-weight:bold;
+	font-size:30px;
+}
+.reservListBtn{
+	color:rgba(255,255,255,0.8);
+	background-color:rgb(86, 19, 241);
+	width:70px;
+	font-weight:bold;
+	border:0px solid #000;
+	border-radius:2px;
+}
+.reservListBtn:hover{
+	color:white;
+}
+.cursorStyle{
+	cursor:pointer;
+}
+#btn_style{
+	width:100px; 
+	height:30px; 
+	margin-left:200px;
+}
+img{
+	vertical-align: middle;
+	width:80px;
+	height:70px;
+}
+.td_Size1{
+	width:70px;
+}
+.button_Size{
+	width:10px;
+}
                 /*footer*/
 footer{position:absolute; bottom:0;height:137px; width:100%; background-color:rgba(0,0,0,0.15);}
 footer #foot{margin: 0 auto; width:1024px; height:127px;}

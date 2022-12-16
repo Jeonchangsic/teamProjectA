@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -29,23 +30,29 @@
     <header>
         <h2>리뷰쓰기</h2>
     </header>
+    <div id="headLine"></div>
                 <!--end header-->
 
     <main>
-        
         <div id="contentsArea">
             <form name="frm" action="<%=request.getContextPath() %>/review/review.do?lidx=${lidx}&ridx=${ridx}" method="POST">
                 <table id="table1">
                 	<tr>
-                		<td class="margin1">작성자</td>
-                		<td>
-                			<input type="text" class="info" value="${login.userID}" readonly>
+                		<td class="td_vertical-align"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/> </td>
+                		<td class="td_vertical-align">
+                			<div id="lodgingText">${lodgingname}</div>
+                			<div id="rtypeText">[${rtype}]</div>
+                			<div id="dateText">[${reserv_startDate}~${reserv_endDate}]</div>
                 		</td>
                 	</tr>
+                	<tr>
+                		<td class="tr_background"></td>
+                		<td class="tr_background"></td>
+                	</tr>
                     <tr>
-                        <td class="margin1">만족도</td>
-                        <td>
-                        	<select name="rvSatisfaction" required>
+                        <td class="margin2">만족도</td>
+                        <td class="satisfactionStyle">
+                        	<select id="selectStyle" name="rvSatisfaction" required>
                         		<option value="10점">10점</option>
                         		<option value="20점">20점</option>
                         		<option value="30점">30점</option>
@@ -60,9 +67,15 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="margin2"></td>
+                        <td>
+                        	
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="margin1">제목</td>
                         <td>
-                        	<input type="text" class="info" name="rvTitle" placeholder="제목을 입력하세요." required>
+                        	<input type="text" class="info" name="rvTitle" placeholder="10자 이내 제목을 입력하세요." maxlength="10" required>
                         </td> 
                     </tr>
                     <tr>
@@ -76,32 +89,12 @@
                 <table id="table2">
                     <tr>
                         <td>
-                            <input type="submit" id="clearBtn" value="작성"/>
+                            <input class="cursorStyle" type="submit" id="clearBtn" value="작성"/>
                         </td>
                     </tr>
                 </table>
             </form>
         </div>
     </main>
-    <footer>
-        <div id="foot">
-            
-            <br>
-            <br>
-            <div id="copy">
-                (주)저긴어때 l 
-                대표이사 : 홍이젠 l
-                사업자 등록번호 : 104-14-100400 l
-                메일 : Whatdoyouthink@naver.com <br>
-                주소 : 전라북도 전주시 덕진구 금암1동 667-52 5층 l
-                전화번호 : 063-104-1004 (오전 9시 ~ 오후 5시)<br>
-                <br>
-                Copyright WD COMPANY Corp. All rights reserved.
-                <br>
-                <br>
-                
-            </div>
-        </div>
-    </footer>
 </body>
 </html>

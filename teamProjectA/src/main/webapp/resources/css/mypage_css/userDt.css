@@ -54,7 +54,7 @@ UL,li{list-style:none;}
 
 header h2{
 	margin: 0 auto;
-	padding:80px 0 20px 0;
+	padding:50px 0 0 0;
 	width: 120px;
 	font-weight:bold;
 	font-size:30px;
@@ -66,18 +66,45 @@ main table tr{
 }
 main form{
 	margin: 0 auto;
-	border:1px solid rgb(86,19,241);
-	border-radius:5px;
-	padding:10px;
-	width:240px;
+	padding-right:40px;
+	width:300px;
+	height:150px;
 }
-main button{
+button{
 	margin:10px 0 0 90px;
+	color:rgba(255,255,255,0.8);
+	background-color:rgb(86, 19, 241);
+	font-weight:bold;
+	border:0px solid #000;
 	border-radius:5px;
-	width:70px;
+	width:172px;
+	height:25px;
 }
-
-
+button:hover{
+	color:white;
+}
+input{
+	height:25px;
+	margin-top:20px;
+}
+#tableMargin{
+	margin-left:25px;
+}
+.trMargin{
+	margin-top:10px;
+}
+.passwordMargin{
+	margin-right:10px;
+}
+#pwFalse{
+	color:red;
+	margin-left:90px;
+	font-size:12px;
+	font-weight:bold;
+}
+.cursorStyle{
+	cursor:pointer;
+}
 
                 /*footer*/
 footer{position:absolute; bottom:0;height:137px; width:100%; background-color:rgba(0,0,0,0.15);}

@@ -131,6 +131,7 @@ public class MypageController {
 	  
 	  String oldPass = user.getUserPassword(); //로그인할 때의 비밀번호값을 가져옴. 
 	  String newPass = vo.getUserPassword();  //새로 생성한 비밀번호 받는 input의 값을 가져옴
+	  PrintWriter out = response.getWriter();
 	  
 	  if(!(oldPass.equals(newPass))) {
 		  rttr.addFlashAttribute("msg",false);
@@ -140,8 +141,7 @@ public class MypageController {
 	  userService.userDt(vo);
 	  
 	  response.setContentType("text/html; charset=UTF-8");
-	  PrintWriter out = response.getWriter();
-	  out.append("<script>alert('회원탈퇴가 정상적으로 진행되었습니다.');location.href='"+req.getContextPath()+"/index/index.do'</script>");
+	  out.append("<script>alert('회원탈퇴가 정상적으로 진행되었습니다.'); opener.location.href='"+req.getContextPath()+"/index/index.do'; window.close();</script>");
 	  out.flush();
 	  out.close();
 	  session.invalidate();
@@ -183,7 +183,7 @@ public class MypageController {
 	  mypageService.reserv_refund(rvo);
 	  
 	  response.setContentType("text/html; charset=UTF-8");
-	  out.append("<script>alert('예약취소가 완료 되었습니다.'); opener.parent.location.reload();window.close();</script>");
+	  out.append("<script>alert('예약취소가 완료 되었습니다.'); opener.parent.location.reload(); window.close();</script>");
 	  out.flush();
 	  out.close();
 	  
@@ -206,7 +206,7 @@ public class MypageController {
 		mypageService.reviewDt(rvidx);
 		
 		response.setContentType("text/html; charset=UTF-8");
-		out.append("<script>alert('리뷰 삭제가 완료되었습니다.');location.href='"+req.getContextPath()+"/mypage/info.do'</script>");
+		out.append("<script>alert('리뷰 삭제가 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>");
 		out.flush();
 		out.close();
 	  return ""; 
