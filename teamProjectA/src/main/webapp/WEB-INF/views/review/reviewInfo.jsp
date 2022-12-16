@@ -15,47 +15,39 @@
 </head>
 <body>
     <header>
-        <h2>리뷰</h2>
+        <h2>리뷰내역</h2>
     </header>
+    <div id="headLine"></div>
                 <!--end header-->
     <main>
         <div id="contentsArea">
                 <table id="table1">
                 	<tr>
-                		<td class="margin1">작성자</td>
-                		<td>
-                			<input type="text" class="info" value="${vo.userID}" readonly>
+                		<td class="td_vertical-align"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/jeolla_5.jpg"/> </td>
+                		<td class="td_vertical-align td_padding">
+                			<div id="lodgingText">${vo.lodgingname}</div>
+                			<div id="rtypeText">[${vo.rtype}]</div>
                 		</td>
                 	</tr>
                 	<tr>
-                		<td class="margin1">숙소명</td>
-                		<td>
-                			<input type="text" class="info" value="${vo.lodgingname}" readonly>
-                		</td>
-                	</tr>
-                	<tr>
-                		<td class="margin1">객실명</td>
-                		<td>
-                			<input type="text" class="info" value="${vo.rtype}" readonly>
-                		</td>
+                		<td class="tr_background"></td>
+                		<td class="tr_background"></td>
                 	</tr>
                     <tr>
-                        <td class="margin1">만족도</td>
-                        <td>
-                        	<select name="rvSatisfaction" readonly>
-                        		<option value="${vo.rvSatisfaction}">${vo.rvSatisfaction}</option>
-                        	</select>
+                        <td class="margin2">만족도</td>
+                        <td class="satisfactionStyle td_padding">
+                        	<div id="selectStyle">${vo.rvSatisfaction}</div>
                         </td>
                     </tr>
                     <tr>
                         <td class="margin1">제목</td>
-                        <td>
+                        <td class="td_padding">
                         	<input type="text" class="info" name="rvTitle" value="${vo.rvTitle}" readonly>
                         </td> 
                     </tr>
                     <tr>
                         <td id="margin1">리뷰 내용</td>
-                        <td>
+                        <td class="td_padding">
                             <textarea id="info" name="rvContent" cols="30" rows="10" readonly>${vo.rvContent}</textarea>
                         </td>
                     </tr>
@@ -63,32 +55,12 @@
                 <table id="table2">
                     <tr>
                         <td>
-                            <button type="button" id="clearBtn" value="확인" onclick="location.href='<%=request.getContextPath()%>/mypage/info.do'">확인</button>
-                            <button type="button" id="clearBtn" value="삭제" onclick="location.href='<%=request.getContextPath()%>/mypage/reviewDt.do?rvidx=${vo.rvidx}'">삭제</button>
+                            <button type="button" class="clearBtn cursorStyle" value="확인" onclick="window.close();">확인</button>
+                            <button type="button" class="clearBtn cursorStyle" value="삭제" onclick="location.href='<%=request.getContextPath()%>/mypage/reviewDt.do?rvidx=${vo.rvidx}'">삭제</button>
                         </td>
                     </tr>
                 </table>
         </div>
     </main>
-    <footer>
-        <div id="foot">
-            
-            <br>
-            <br>
-            <div id="copy">
-                (주)저긴어때 l 
-                대표이사 : 홍이젠 l
-                사업자 등록번호 : 104-14-100400 l
-                메일 : Whatdoyouthink@naver.com <br>
-                주소 : 전라북도 전주시 덕진구 금암1동 667-52 5층 l
-                전화번호 : 063-104-1004 (오전 9시 ~ 오후 5시)<br>
-                <br>
-                Copyright WD COMPANY Corp. All rights reserved.
-                <br>
-                <br>
-                
-            </div>
-        </div>
-    </footer>
 </body>
 </html>

@@ -52,108 +52,59 @@ a{text-decoration:none; color: inherit;}
 UL,li{list-style:none;}
             /*리셋코드*/
 
-              /*header*/
-
-header h2{
-    text-align: center;
-    font-size:25px;
-    font-weight: bold;
-    padding:15px 0 15px 0;
+#divArea{
+	margin:10px;
+	border:1px solid #000; 
+	border-radius:5px; 
+	padding:8px;
 }
-
-            /*main*/
-#headLine{
-	width:100%;
-	height:1px;
-	background-color:#919191;
-	margin-bottom:10px;
+button{
+	margin-left:10px;
+	height:24px;
+	line-height:3px;
 }
-main table{
-    font-size:20px;
+h2{
+	width:100px;
+	margin:0 auto;
+	padding-top:10px;
+	font-weight:bold;
+	font-size:23px;
 }
-main #contentsArea{
-    width:500px;
-    height:300px;
-    margin:0 auto;
-}
-main #table1{
-	width:508px;
-    margin:0px auto;
-    height:300px;
-}
-main .info{
-    width:200px;
-    height:30px;
-}
-main #info{
-    width:300px;
-    height:90px;
-}
-main #table2{
-    margin:10px auto;
-}
-main .margin1{
-    padding-right:50px;
-    text-align:center;
-}
-main .margin2{
-	padding:15px 50px 0 0;
+.text_Center{
 	text-align:center;
 }
-
-main #clearBtn{
-    width: 150px;
-    height:30px;
-    color:rgba(255,255,255,0.8);
+.tr_height{
+	height:30px;
+}
+#passwordArea{
+	width:70px;
+}
+#passwordTb{
+	margin:25px 0 0 10px;
+}
+#passwordInput{
+	height:20px;
+}
+.inputArea{
+	margin-left:5px;
+}
+#headLine{
+	background-color:#919191;
+	height:1px;
+	width:480px;
+	margin:15px 0 0 10px;
+}
+button{
+	color:rgba(255,255,255,0.8);
 	background-color:rgb(86, 19, 241);
 	font-weight:bold;
 	border:0px solid #000;
-	border-radius:2px;
+	border-radius:5px;
+	width:100px;
 }
-main #clearBtn:hover{
+button:hover{
 	color:white;
-}
-#review_Img{
-	width:110px;
-	height:70px;
-}
-.td_vertical-align{
-	vertical-align:middle;
-}
-
-table tr{
-	background-color:white;
-}
-table tr td{
-	background-color:white;
-}
-#lodgingText{
-	
-}
-#rtypeText{
-	color:#bbb;
-	margin: 3px 0 3px 0;
-	font-size:20px;
-}
-#dateText{
-	color:#bbb;
-	font-size:18px;
-}
-.tr_background{
-	height:1px;
-	background-color:#bbb;
-	margin-bottom:5px;
-	
-}
-#selectStyle{
-	width:200px;
-	height:30px;
 }
 .cursorStyle{
 	cursor:pointer;
 }
-                /*footer*/
-footer{height:137px; width:100%; background-color:rgba(0,0,0,0.15);}
-footer #foot{margin: 0 auto; width:1024px; height:127px;}
-footer #copy{color:#919191;}
-                /*end footer*/

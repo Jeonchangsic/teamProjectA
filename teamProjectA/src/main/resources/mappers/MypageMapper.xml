@@ -37,6 +37,7 @@
 				,rprice
 				,uidx
 				,lidx
+				,limagename
 					FROM (
 						SELECT reserv_idx
 								,username
@@ -50,6 +51,7 @@
 								,rprice
 								,u.uidx
 								,l.lidx
+								,limagename
 						, ROW_NUMBER() 
 							OVER(
 								ORDER BY reserv_idx desc
@@ -92,6 +94,7 @@
 					,rvdate
 					,rvidx
 					,rm.rtype
+					,l.limagename
 				 FROM reviewtb r, LODGINGTB l,roomtb rm
 					 WHERE l.lidx = r.lidx
 					 AND r.ridx = rm.ridx
