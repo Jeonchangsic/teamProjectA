@@ -14,12 +14,31 @@
 <script src="https://ajax.googleapis.com/resources/css/3.6.1/jquery.min.js"></script>
 <script>
 	function lodelFn() {
-	    if (!confirm("정말로 해당 숙소를 삭제하시겠습니까?")) {
-	        alert("삭제가 취소되었습니다.");
-	    } else {
-	        alert("삭제가 완료되었습니다.");
-	        location = "sellerLoDel.do?lidx=${lodging2.lidx}";
-	    }
+		
+		if(!confirm("정말로 해당 숙소를 삭제하시겠습니까?")){
+			alert("삭제가 취소되었습니다.");
+		}else{
+			let f = document.createElement('form');
+			
+			let obj1;
+			obj1 = document.createElement('input');
+			obj1.setAttribute('type', 'hidden');
+			obj1.setAttribute('name', 'lidx');
+			obj1.setAttribute('value', '${lodging2.lidx}');
+			
+			let obj2;
+			obj2 = document.createElement('input');
+			obj2.setAttribute('type', 'hidden');
+			obj2.setAttribute('name', 'uidx');
+			obj2.setAttribute('value', '${lodging2.uidx}');
+			
+			f.appendChild(obj1);
+			f.appendChild(obj2);
+			f.setAttribute('method', 'post');
+			f.setAttribute('action', 'sellerRegi.do');
+			document.body.appendChild(f);
+			f.submit();
+		}
 	}
 </script>
 </head>
@@ -69,8 +88,6 @@
             <a href="<%=request.getContextPath() %>/seller/sellerRoomup1.do"><input type="button" value="객실등록"></a>
         </div>     
         <hr/>
-        <form action="sellerRegi.do"method="post">
-
 	        <table>
 	            <thead>
 	                <tr style="text-align:center;">
@@ -107,7 +124,6 @@
 	             <%} %>         
 	            </tbody>
 	        </table>
-        </form>
 
         <ul>
             <li>

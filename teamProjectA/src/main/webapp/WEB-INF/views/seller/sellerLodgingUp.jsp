@@ -306,7 +306,7 @@
 	    		</div> 	
 	    	</section>
 	    	<div class="btn_submit">
-	    		<input type="submit" name="submit" value="등록"/>
+	    		<button>등록</button>
 	    	</div>
 	    </form>
     </main><!-- //main -->

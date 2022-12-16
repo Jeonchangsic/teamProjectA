@@ -59,7 +59,6 @@
 	    	//썸네일 이미지
 		    $("input:file").change(function(){
 				if(this.files && this.files[0]) {
-					$(".lodging_img").append("<img src=''/>");
 					
 					var reader = new FileReader;
 					reader.onload = function(data) {
@@ -69,10 +68,21 @@
 				}
 			});
 	    	
-	    	//select option checked
+	    	//셀렉트박스 option selected
 	    	$("option").each(function(){
-	    		if($(this).val() == "${lodgingkind}"){
+	    		if($(this).val() == "${hm.lodgingkind}"){
 	    			$(this).attr("selected","selected");
+	    		}else if($(this).val() == "${hm.local}"){
+	    			$(this).attr("selected","selected");
+	    		}
+	    	});
+	    	
+	    	//체크박스 checked
+	    	$("input:checkbox").each(function(){
+	    		if($(this).val().equals("Y")){
+	    			$(this).checked = true;
+	    		}else{
+	    			$(this).checked = false;
 	    		}
 	    	});
 	    	
@@ -116,7 +126,9 @@
 		    			<div class="limage">				
 	    					<div>이미지</div>
 	    					<input type="file" name="file">
+	    					<input type="hidden" name="limagename" value="${hm.limagename}">
 	    					<div class="lodging_img">
+	    						<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${hm.limagename}" />
 	    					</div>	 
 	    				</div>  					
 	    			</div>
@@ -124,7 +136,7 @@
 	    				<table>
 	    					<tr>
 	    						<td>숙소이름</td>
-	    						<td><input type="text" required name="lodgingname" value="${lodgingname}"></td>
+	    						<td><input type="text" required name="lodgingname" value="${hm.lodgingname}"></td>
 	    					</tr>
 	    					<tr>
 	    						<td>숙소종류</td>
@@ -141,7 +153,6 @@
 	    						<td>숙소지역</td>
 	    						<td>
 									<select required name="local">
-										<option value="" disabled selected>메뉴 선택</option>
 										<optgroup label="서울">
 											<option value="1002">홍대/신촌/마포</option>
 											<option value="1003">북촌/인사동/종로/동대문</option>
@@ -208,11 +219,11 @@
 	    					</tr>
 	    					<tr>
 	    						<td>숙소주소</td>
-	    						<td><input type="text" required name="lodgingaddr" value="${lodgingaddr}"></td>
+	    						<td><input type="text" required name="lodgingaddr" value="${hm.lodgingaddr}"></td>
 	    					</tr>
 	    					<tr>
 	    						<td id="intro">숙소소개</td>
-	    						<td><textarea name="intro" cols="50" rows="10" value="${intro}"></textarea></td>
+	    						<td><textarea name="intro" cols="50" rows="10">${hm.intro}</textarea></td>
 	    					</tr>
 	    				</table>
 	    			</div><!-- //top_right -->    		
@@ -280,26 +291,26 @@
 	    			<div class="intro">- - - - 기본정보 - - - -</div>
 	    			<div class="info">
 	    				<p>주변정보</p>
-	    				<input type="text" name="area1" class="plus" placeholder="주변정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
+	    				<input type="text" name="area1" class="plus" placeholder="주변정보를 입력해주세요  (5개까지 입력 가능합니다)" value="${hm.area1}" />
 	    				<button type="button" name="plus" onclick="clickplus(1,this)">+</button>
 	    			</div>
 	    			<div class="space"></div>
 	    			<div class="info">
 	    				<p>기본정보</p>
-	    				<input type="text" name="basic1" class="plus" placeholder="기본정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
+	    				<input type="text" name="basic1" class="plus" placeholder="기본정보를 입력해주세요  (5개까지 입력 가능합니다)" value="${hm.basic1}" />
 	    				<button type="button" name="plus" onclick="clickplus(2,this)">+</button>
 	    			</div>
 	    			<div class="space"></div>
 	    			<div class="info">
 	    				<p>확인사항 및 기타</p>
-	    				<input type="text" name="odd1" class="plus" placeholder="기타정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
+	    				<input type="text" name="odd1" class="plus" placeholder="기타정보를 입력해주세요  (5개까지 입력 가능합니다)" value="${hm.odd1}" />
 	    				<button type="button" name="plus" onclick="clickplus(3,this)">+</button>
 	    			</div>   
 	    			<div class="space"></div> 			
 	    		</div> 	
 	    	</section>
 	    	<div class="btn_submit">
-	    		<input type="submit" name="submit" value="등록"/>
+	    		<button>등록</button>
 	    	</div>
 	    </form>
     </main><!-- //main -->

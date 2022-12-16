@@ -2,7 +2,7 @@ package team.projectA.service;
 
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -154,13 +154,34 @@ public class SellerServiceImpl implements SellerService{
 	}
 
 	@Override
-	public LodgingVO lodgingModi(int lidx) {
+	public Map<String, Object> lodgingModi(int lidx) {
 		return SellerDao.lodgingModi(lidx);
 	}
 
+	@Override
+	public int loDel(int lidx) {
+		return SellerDao.loDel(lidx);
+	}
 
+	@Override
+	public int N(int uidx) {
+		return SellerDao.N(uidx);
+	}
 
+	@Override
+	public int lodgingModify(LodgingVO vo) {
+		return SellerDao.lodgingModify(vo);
+	}
 
+	@Override
+	public int lodginginModify(LodginginVO vo) {
+		return SellerDao.lodginginModify(vo);
+	}
+	
+	@Override
+	public int lodginginfoModify(LodginginfoVO vo) {
+		return SellerDao.lodginginfoModify(vo);
+	}
 
 
 

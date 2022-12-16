@@ -3,8 +3,11 @@ package team.projectA.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -413,15 +416,76 @@ public class SellerController {
 		
 		return "redirect:sellerInfo.do";
 	}
-	//숙소 수정
+	//숙소 수정 페이지
 	@RequestMapping(value = "/sellerLodgingModify.do", method = RequestMethod.GET)
 	public String sellerLodgingModify(Model model, int lidx) {
 		
-		LodgingVO vo = sellerService.lodgingModi(lidx);
+		Map<String, Object> hm = sellerService.lodgingModi(lidx);
+				
+		System.out.println(hm);				
+		model.addAttribute("hm", hm);
 		
-		model.addAttribute("vo", vo);		
-	
 		return "seller/sellerLodgingModify";
+	}
+	//숙소 수정
+	@RequestMapping(value = "/sellerLodgingModify.do", method = RequestMethod.POST)
+	public String sellerLodgingModify(LodgingVO vo, LodginginVO invo, LodginginfoVO infovo, HttpServletRequest req, MultipartFile file) {
+			
+		//새로운 이미지가 등록 되어있나 확인
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+		// 기존 이미지 삭제
+		new File(req.getParameter("limagename")).delete();
+		
+		// 새로운 이미지 등록
+		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
+		long size = file.getSize(); //파일 사이즈
+		
+		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
+		String uploadFolder = "C:\\Users\\798\\Documents\\workspace-sts-3.9.13.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+					
+		UUID uuid = UUID.randomUUID();
+		String[] uuids = uuid.toString().split("-");			
+		String uniqueName = uuids[0];
+		
+		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+		try {
+			file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			vo.setLimagename(uniqueName+fileExtension); 
+		}else {
+			//새로운 이미지가 등록되지 않았다면 기존 이미지 그대로 사용
+			vo.setLimagename(req.getParameter("limagename"));	 
+		}
+		
+		sellerService.lodgingModify(vo);
+		sellerService.lodginginModify(invo);
+		sellerService.lodginginfoModify(infovo);
+		
+		return "redirect:sellerRegi.do";
+	}
+	//숙소 삭제
+	@RequestMapping(value = "/sellerRegi.do", method = RequestMethod.POST)
+	public void sellerLoDel(Model model, int lidx, int uidx, HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+		sellerService.loDel(lidx);
+		sellerService.N(uidx);
+		 
+		//Waiting으로 변경된 user데이터 session에 담기
+		HttpSession session = req.getSession();
+		UserVO login = (UserVO)session.getAttribute("login");
+		login.setLodging("N");
+		session.setAttribute("login", login);
+		
+		//숙소 삭제 후 alert
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter pw = res.getWriter();
+		pw.append("<script>alert('삭제되었습니다.');location='sellerInfo.do'</script>");
+		
+		//return "redirect:sellerInfo.do";		
 	}
 	//
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

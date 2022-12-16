@@ -2,6 +2,7 @@ package team.projectA.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
@@ -52,7 +53,17 @@ public interface SellerService {
 
 	int waiting(int uidx);
 	
-	LodgingVO lodgingModi(int lidx);
+	Map<String, Object> lodgingModi(int lidx);
+	
+	int lodgingModify(LodgingVO vo);
+	
+	int lodginginModify(LodginginVO vo);
+	
+	int lodginginfoModify(LodginginfoVO vo);
+	
+	int loDel(int lidx);
+	
+	int N(int uidx);
 	
 	RoominVO roomModiInfo(int ridx);
 	
