@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.PagingVO;
+import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
@@ -16,4 +18,6 @@ public interface ManagerService {
 	public int requestDel(int lidx);
 	public int requestN(int uidx);
 	public List<ReservVO> reservlist(ReservVO vo1);
+	public List<QnaVO> managerqnalist();
+	public int qnaReply(QnaVO qv);
 }

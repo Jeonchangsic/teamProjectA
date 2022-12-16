@@ -20,8 +20,11 @@ import net.sf.json.JSONArray;
 import team.projectA.service.LodgingService;
 import team.projectA.service.ManagerService;
 import team.projectA.service.ReservService;
+import team.projectA.service.SellerService;
 import team.projectA.service.UserService;
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.PagingVO;
+import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
@@ -38,16 +41,32 @@ public class ManagerController {
 	@Autowired
 	private ManagerService managerService;
 	@Autowired
+	private SellerService sellerService;
+	@Autowired
 	private UserService userService;
 	@RequestMapping(value = "/managerUser.do", method = RequestMethod.GET)
-	public String user(Model model,UserVO vo,ReservVO vo1 ) {
+	public String user(Model model,UserVO vo,ReservVO vo1) {
+		
+		
 		List<ReservVO> list1 = managerService.reservlist(vo1);
 		List<UserVO> list = userService.userList(vo);
+		List<QnaVO> list2 = managerService.managerqnalist();
 		model.addAttribute("list",list);
 		model.addAttribute("list1",list1);
+		model.addAttribute("list2",list2);
 		
+	
 		return "manager/managerUser";
 	
+	}
+	
+	@RequestMapping(value="/managerQna.do", method = RequestMethod.GET)
+	public String sellerInquireView(Locale locale, Model model, int QnA_idx) {
+				
+			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(QnA_idx);
+			model.addAttribute("qnaOne",qnaOne);
+			
+		return "manager/managerQna";
 	}
 	@RequestMapping(value = "/managerRoom.do", method = RequestMethod.GET)
 	public String Room(Locale locale, Model model) throws Exception{
@@ -107,7 +126,30 @@ public class ManagerController {
 		return "manager/managerReview";
 	}
 	
-	
+	@RequestMapping(value = "/managerQnaList.do", method = RequestMethod.GET)
+	public String qna(UserVO vo, Model model,ReservVO vo1) {
+		
+		List<ReservVO> list1 = managerService.reservlist(vo1);
+		List<UserVO> list = userService.userList(vo);
+		List<QnaVO> list2 = managerService.managerqnalist();
+		model.addAttribute("list",list);
+		model.addAttribute("list1",list1);
+		model.addAttribute("list2",list2);
+		
+		return "manager/managerQnaList";
+	}
+	@RequestMapping(value = "/managerReservList.do", method = RequestMethod.GET)
+	public String reservList(UserVO vo, Model model,ReservVO vo1) {
+		
+		List<ReservVO> list1 = managerService.reservlist(vo1);
+		List<UserVO> list = userService.userList(vo);
+		List<QnaVO> list2 = managerService.managerqnalist();
+		model.addAttribute("list",list);
+		model.addAttribute("list1",list1);
+		model.addAttribute("list2",list2);
+		
+		return "manager/managerReservList";
+	}
 	@ResponseBody
 	@RequestMapping(value="/roomCategoryChange.do", method= RequestMethod.GET)
 	public List<RoomVO> lodgingCategory(@RequestParam("lidx") int lidx){

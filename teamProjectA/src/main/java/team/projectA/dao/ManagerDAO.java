@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.PagingVO;
+import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
@@ -39,5 +41,11 @@ public class ManagerDAO {
 	}
 	public List<ReservVO> reservlist(ReservVO vo1){
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.reservlist", vo1);
+	}
+	public List<QnaVO> managerqnalist(){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.managerqnalist");
+	}
+	public int qnaReply(QnaVO qv) {
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.qnaReply", qv);
 	}
 }

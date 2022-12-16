@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import team.projectA.dao.LodgingDAO;
 import team.projectA.dao.ManagerDAO;
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.PagingVO;
+import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.UserVO;
@@ -58,10 +60,19 @@ public class ManagerServiceImpl implements ManagerService {
 		
 		return managerDAO.reservlist(vo1);
 	}
-	
-	
-	
 
+	@Override
+	public List<QnaVO> managerqnalist() {
+		
+		return managerDAO.managerqnalist();
+	}
+
+	@Override
+	public int qnaReply(QnaVO qv) {
+		
+		return managerDAO.qnaReply(qv);
+	}
+	
 	
 
 }

@@ -157,7 +157,6 @@
 						, rprice
 						, maxmen
 						, stdmen
-						, gdsThumbImg
 						, rimage1
 						, bed
 						, lidx  )
@@ -168,7 +167,6 @@
 						, #{rprice}
 						, #{maxmen}
 						, #{stdmen}
-						, #{gdsThumbImg}
 						, #{rimage1}
 						, #{bed}
 						, #{lidx})
@@ -474,7 +472,6 @@
 					, r.rprice
 					, r.maxmen
 					, r.stdmen
-					, r.gdsThumbImg
 					, r.rimage1
 					, r.bed
 					, i.addinfo1

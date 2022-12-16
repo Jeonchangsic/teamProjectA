@@ -67,6 +67,24 @@
 					  and r.lidx = l.lidx
 					
 		</select>
+		<!-- 문의 리스트 -->
+		<select id="managerqnalist" resultType="qnaVO">
+			SELECT a.username
+					, q.qna_idx
+					, q.qna_Qtitle
+					, q.qna_Qdate 
+					, q.qna_Acheck
+				FROM ausertb a, QNATB q
+				WHERE a.uidx = q.uidx
+		</select>
+		<!-- 문의 답변 -->
+		<update id="qnaReply" parameterType="QnaVO">
+			UPDATE qnatb
+				SET qna_acontent = #{qna_acontent}
+					qna_acheck = '답변완료'
+				WHERE  qna_idx= #{qna_idx}
+		</update>
+
 </mapper>
 
 
