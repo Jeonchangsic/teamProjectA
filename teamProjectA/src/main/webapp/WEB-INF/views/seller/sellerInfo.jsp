@@ -122,7 +122,7 @@
 				<tr>
 					<td>사업장명</td>
 					<td><input type='text' name="lodgingname" id="lodgingname"
-						value="<%=lodging.getLodgingname()%>"></td>
+						value="${lodging.lodgingname}"></td>
 
 					<td><button type="button" id="nameFn" value="상세변경"
 							class="btn_size">변경</button></td>
@@ -138,14 +138,14 @@
 				<tr>
 					<td>비밀번호변경</td>
 					<td><input type='password' name='userPassword'
-						value="<%=lodging.getUserPassword()%>" autoComplete="off"></td>
+						value="${lodging.userPassword}" autoComplete="off"></td>
 					<td><button type="button" class="btn_size" id="pwdFn">변경</button></td>
 				</tr>
 
 
 				<tr>
 					<td>이메일</td>
-					<td><input type='text' name="userEmail" value="<%=lodging.getUserEmail() %>" autoComplete="off"></td>
+					<td><input type='text' name="userEmail" value="${lodging.userEmail}" autoComplete="off"></td>
 					<td><button type="button" class="btn_size" id="mailFn">변경</button></td>
 
 				</tr>
@@ -153,13 +153,13 @@
 
 				<tr>
 					<td>전화번호</td>
-					<td><input type='text' name="userPhone" value="<%=lodging.getUserPhone() %>"></td>
+					<td><input type='text' name="userPhone" value="${lodging.userPhone}"></td>
 					<td><button type="button" class="btn_size" id="phoneFn">변경</button></td>
 				</tr>
 
 				<tr>
 					<td>주소</td>
-					<td><input type='text' name="lodgingaddr" value="<%=lodging.getLodgingaddr()%>"></td>
+					<td><input type='text' name="lodgingaddr" value="${lodging.lodgingaddr}"></td>
 					<td><button type="button" class="btn_size" id="addrFn">변경</button></td>
 				</tr>
 

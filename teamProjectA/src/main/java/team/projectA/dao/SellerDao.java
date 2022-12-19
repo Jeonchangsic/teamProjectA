@@ -43,8 +43,8 @@ public class SellerDao {
 	    return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", uidx);
 	 }
 	
-	public List<QnaVO> QnaPaging(Criteria cri) {
-		return sqlSession.selectList("team.projectA.mapper.sellerMapper.QnaPaging", cri);
+	public List<Map<String,Object>> QnaPaging(HashMap hm) {
+		return sqlSession.selectList("team.projectA.mapper.sellerMapper.QnaPaging", hm);
 	
 	}
 	public int listCount() {

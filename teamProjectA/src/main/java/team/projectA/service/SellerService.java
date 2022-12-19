@@ -2,6 +2,7 @@ package team.projectA.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
@@ -22,7 +23,7 @@ public interface SellerService {
 	
     List<QnaVO> qnaList(int uidx);
     
-    List<QnaVO> QnaPaging(Criteria cri);
+    List<Map<String,Object>> QnaPaging(HashMap hm);
     
     int listCount();
    	

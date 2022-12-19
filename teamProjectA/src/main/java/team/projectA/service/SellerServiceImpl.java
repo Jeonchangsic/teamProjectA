@@ -2,7 +2,7 @@ package team.projectA.service;
 
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,9 +48,9 @@ public class SellerServiceImpl implements SellerService{
     }
     
 	@Override
-	public List<QnaVO> QnaPaging(Criteria cri) {
+	public List<Map<String,Object>> QnaPaging(HashMap hm) {
 
-		return SellerDao.QnaPaging(cri);
+		return SellerDao.QnaPaging(hm);
 	}
 	
 	@Override

@@ -27,7 +27,12 @@ img,iframe{vertical-align:top;}
 .nav{margin-top:80px;}
 .nav img{width:350px; height: 300px;}
 .nav #info{display:flex;}
-.nav #lodgingName{font-size:30px; margin:10px 0 0 20px; font-weight:bold;} 
+.nav #lodgingName {
+    font-size: 30px;
+    margin: 0px 0 0 20px;
+    font-weight: bold;
+    width: 330px;
+}
 .nav button{margin-top:230px;}
 .nav #info div:nth-child(3){padding:0 10px 0 155px;}
 

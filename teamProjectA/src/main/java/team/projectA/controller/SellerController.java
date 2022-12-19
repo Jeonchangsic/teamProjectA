@@ -3,8 +3,10 @@ package team.projectA.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -102,15 +104,12 @@ public class SellerController {
         List<QnaVO> qnaList = sellerService.qnaList(login.getUidx()); 
         model.addAttribute("qnaList", qnaList);
         
-  
-        List<QnaVO> paging = sellerService.QnaPaging(cri);
-        model.addAttribute("paging",paging);
+        HashMap<String, Object> hm = new HashMap<String, Object>();
+        hm.put("cri", cri);
+        hm.put("uidx", login.getUidx());
         
-        PageMaker pageMaker = new PageMaker();
-        pageMaker.setCri(cri);
-        pageMaker.setTotalCount(sellerService.listCount());
-        model.addAttribute("pageMaker",pageMaker);
-        
+        List<Map<String,Object>> paging = sellerService.QnaPaging(hm);    
+        model.addAttribute("paging", paging);
         return "seller/sellerInquire";
     }
     

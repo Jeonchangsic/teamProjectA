@@ -65,17 +65,17 @@
         </select>
         
     <!--문의글 페이징-->
-    <select id="QnaPaging" resultType="QnaVO" parameterType="Criteria" >
-		        select qna_idx, qna_Qtitle, qna_Qdate, qna_Acheck
-					from (select qna_idx, qna_Qtitle, qna_Qdate, qna_Acheck, 
+    <select id="QnaPaging" resultType="HashMap" parameterType="HashMap" >
+		          select qna_idx, qna_Qtitle, qna_Qdate, qna_Acheck
+					from (select qna_idx, qna_Qtitle, qna_Qdate, qna_Acheck,
 					row_number() over(order by qna_idx desc)
-					as rNum from qnatb)mb 
-				where rNum between #{rowStart} and #{rowEnd} order by qna_idx desc
+					as rNum from qnatb WHERE uidx=#{uidx})mb
+				where rNum  between #{rowStart} and #{rowEnd} order by qna_idx DESC
 		    
     </select>
-	<select id = "listCount" resultType="int">
-			select count(qna_idx)
-			from qnatb where qna_idx > 0
+	<select id = "listCount" resultType="HashMap">
+				select count(qna_idx)
+			from qnatb where #{qna_idx} > 0 AND uidx=#{uidx}
 	</select>	
 	<!--문의하기 insert  -->
 	<insert id="qnaInsert" parameterType="QnaVO">

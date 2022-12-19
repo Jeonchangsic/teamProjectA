@@ -177,22 +177,22 @@
 						<ul>
 							<li>
 								<p>싱글</p>
-								<input id="B1" type="radio" name="bed" value="single_bed" required/>					
+								<input id="B1" type="radio" name="bed" value="싱글" required/>					
 								<label for="B1" id="single"></label>
 							</li>
 							<li>
 								<p>더블</p>
-								<input id="B2" type="radio" name="bed" value="double_bed"/>
+								<input id="B2" type="radio" name="bed" value="더블"/>
 								<label for="B2" id="double"></label>
 							
 							<li>
 								<p>트윈</p>
-								<input id="B3" type="radio" name="bed" value="twin_bed"/>
+								<input id="B3" type="radio" name="bed" value="트윈"/>
 								<label for="B3" id="twin"></label>
 							</li>
 							<li>
 								<p>온돌</p>
-								<input id="B4"type="radio" name="bed" value="ondol_bed"/>
+								<input id="B4"type="radio" name="bed" value="온돌"/>
 								<label for="B4" id="ondol"></label>	
 							</li>
 						</ul>				
