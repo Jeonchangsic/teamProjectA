@@ -157,13 +157,7 @@
                 </div><!--//lodging_info-->
                 <div class="lodging_intro">
                     <h4>숙소 소개</h4>
-                    <p>우리 숙소가 짱
-                    	<br>
-                       	 진짜임
-                        <br>
-						그러니까 다들 우리 숙소에 오기를 바라고 바라고 바라고 바라고 바라고 바라고
-                 	   	바라고 바라 마지않지 않지 않지 않아
-                    </p>
+                    <p><%=vo.getIntro() %></p>
                 </div>
             </div><!--//right-->
         </section><!--//lodging_view-->
@@ -247,20 +241,37 @@
 	                                <div>
 	                                    <h4>기본정보</h4>
 	                                        <ul>
-	                                            <li>2인 기준 최대 2인</li>
-	                                            <li>더블 베드 1개</li>
+	                                            <li>${vo2.stdmen}인 기준 최대 ${vo2.maxmen}인</li>
+	                                            <li>${vo2.bed}</li>
 	                                        </ul>                
 	                                </div>  
 	                                <div>      
 	                                    <h4>편의시설</h4>
 	                                        <ul>
-	                                            <li>침대, TV, 냉장고, 에어컨, 테이블, 의자, 목욕가운, 욕실용품, 슬리퍼</li>
+	                                            <li>
+	                                            	<c:if test="${vo2.tv == 'Y'}">TV</c:if>
+	                                            	<c:if test="${vo2.refri == 'Y'}">, 냉장고</c:if>
+	                                            	<c:if test="${vo2.aircon == 'Y'}">, 에어컨</c:if>
+	                                            	<c:if test="${vo2.wifi == 'Y'}">, wifi</c:if>
+	                                            	<c:if test="${vo2.shower == 'Y'}">, 객실샤워실</c:if>
+	                                            	<c:if test="${vo2.bathitem == 'Y'}">, 욕실용품</c:if>
+	                                            	<c:if test="${vo2.bath == 'Y'}">, 욕조</c:if>
+	                                            	<c:if test="${vo2.dryer == 'Y'}">, 드라이기</c:if>
+	                                            	<c:if test="${vo2.spa == 'Y'}">, 객실스파</c:if>
+	                                            	<c:if test="${vo2.iron == 'Y'}">, 다리미</c:if>
+	                                            	<c:if test="${vo2.minibar == 'Y'}">, 미니바</c:if>
+	                                            	<c:if test="${vo2.ricecooker == 'Y'}">, 전기밥솥</c:if>
+	                                            </li>
 	                                        </ul>
 	                                </div>      
 	                                <div>
 	                                    <h4>추가정보</h4>
 	                                        <ul>
-	                                            <li>퇴실시간</li>
+	                                            <li>${vo2.addinfo1}</li>
+	                                            <li>${vo2.addinfo2}</li>
+	                                            <li>${vo2.addinfo3}</li>
+	                                            <li>${vo2.addinfo4}</li>
+	                                            <li>${vo2.addinfo5}</li>
 	                                        </ul>                
 	                                </div>    
 	                            </div>
@@ -282,27 +293,33 @@
             <section class="basic_info info_detail">
                 <h4>주변 정보</h4>
                     <ul>
-                        <li>주변</li>
-                        <li>정보</li>
-                        <li>입니다</li>
+                        <li>${vo.area1}</li>
+                        <li>${vo.area2}</li>
+                        <li>${vo.area3}</li>
+                        <li>${vo.area4}</li>
+                        <li>${vo.area5}</li>
                     </ul>
                 <h4>기본 정보</h4>
                     <ul>
-                        <li>기본</li>
-                        <li>정보</li>
-                        <li>입니다</li>
+                        <li>${vo.basic1}</li>
+                        <li>${vo.basic2}</li>
+                        <li>${vo.basic3}</li>
+                        <li>${vo.basic4}</li>
+                        <li>${vo.basic5}</li>
                     </ul>
                 <h4>취소 및 환불 규정</h4>
                     <ul>
-                        <li>취소</li>
-                        <li>환불</li>
-                        <li>규정</li>
+                        <li>체크인일 기준 1일 전 18시까지:100% 환불</li>
+                        <li>체크인일 기준 1일 전 18시 이후~당일 및 No-show:환불불가</li>
+                        <li>취소,환불 시 수수료가 발생할 수 있습니다</li>
                     </ul>
                 <h4>확인 사항 및 기타</h4>
                     <ul>
-                        <li>확인</li>
-                        <li>사항</li>
-                        <li>기타</li>
+                        <li>${odd1}</li>
+                        <li>${odd2}</li>
+                        <li>${odd3}</li>
+                        <li>${odd4}</li>
+                        <li>${odd5}</li>
                     </ul>
             </section>
             <button type="button" id="service_info_tab" class="category">

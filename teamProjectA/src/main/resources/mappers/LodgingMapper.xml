@@ -295,32 +295,82 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 </if>
 </sql>
 	
-	
+	<resultMap type="HashMap" id="lodgingAll">
+		<id column="lidx" property="lidx" />
+		<id column="lodgingkind" property="lodgingkind" />
+		<id column="lodgingname" property="lodgingname" />
+		<id column="lodgingaddr" property="lodgingaddr" />
+		<id column="satis" property="satis" />
+		<id column="reviewnum"	property="reviewnum" />
+		<id column="local" property="local" />
+		<id column="limagename" property="limagename" />
+		<id column="intro" property="intro" />
+		<id column="FITNESS" property="FITNESS" />
+		<id column="SAUNA" property="SAUNA" />
+		<id column="RESTAURANT"	property="RESTAURANT" />
+		<id column="LOUNGE" property="LOUNGE" />
+		<id column="BBQ" property="BBQ" />
+		<id column="PUBLICSPA" property="PUBLICSPA" />
+		<id column="SEMINAR" property="SEMINAR" />
+		<id column="SINGING" property="SINGING" />
+		<id column="WASHINGMACHINE" property="WASHINGMACHINE" />
+		<id column="DEHYDRATOR" property="DEHYDRATOR" />
+		<id column="COOKING" property="COOKING" />
+		<id column="spa" property="spa" />
+		<id column="pool" property="pool" />
+		<id column="golf" property="golf" />
+		<id column="elevator" property="elevator" />
+		<id column="pc" property="pc" />
+		<id column="cafe" property="cafe" />
+		<id column="footvolleyball" property="footvolleyball" />
+		<id column="store" property="store" />
+		<id column="dining" property="dining" />
+		<id column="dryer" property="dryer" />
+		<id column="parking" property="parking" />
+		<id column="publicshower" property="publicshower" />
+		<id column="ski" property="ski" />
+		<id column="pickup" property="pickup" />
+		<id column="printer" property="printer" />
+		<id column="locker" property="locker" />
+		<id column="breakfast" property="breakfast" />
+		<id column="valetparking" property="valetparking" />
+		<id column="dog" property="dog" />
+		<id column="inroomcooking" property="inroomcooking" />
+		<id column="keepluggage" property="keepluggage" />
+		<id column="freeparking" property="freeparking" />
+		<id column="inroomsmoking" property="inroomsmoking" />
+		<id column="nosmoking" property="creditcard" />
+		<id column="area1" property="area1" />
+		<id column="area2" property="area2" />
+		<id column="area2" property="area2" />
+		<id column="area3" property="area3" />
+		<id column="area4" property="area4" />
+		<id column="area5" property="area5" />
+		<id column="basic1" property="basic1" />
+		<id column="basic2" property="basic2" />
+		<id column="basic3" property="basic3" />
+		<id column="basic4" property="basic4" />
+		<id column="basic5" property="basic5" />
+		<id column="odd1" property="odd1" />
+		<id column="odd2" property="odd2" />
+		<id column="odd3" property="odd3" />
+		<id column="odd4" property="odd4" />
+		<id column="odd5" property="odd5" />
+	</resultMap> 
+		<!-- column은 DB의 출력하는 칼럼명, property는 Key값 -->
 	<!-- 숙소상세 -->
-	<select id="selectLodging" parameterType="int" resultType="lodgingVO">
-		SELECT lidx
-			 , limagename
-			 , lodgingname
-			 , lodgingaddr
-			 , intro
-			 , satis
-			 , reviewnum
-			 , uidx		
-		 FROM lodgingtb
-		WHERE lidx = #{lidx}
+	<select id="selectLodging" parameterType="int" resultMap="lodgingAll">
+		SELECT *
+		 FROM lodgingtb l, lodgingintb i, lodginginfotb f
+		WHERE l.lidx = i.lidx
+		  AND l.lidx = f.lidx
+		  AND l.lidx = #{lidx}
 	</select>
-	<select id="selectRoomList" parameterType="int" resultType="roomVO">
-		SELECT ridx
-			 , rtype
-			 , rnum
-			 , rprice
-			 , rimage1
-			 , rimage2
-			 , rimage3
-			 , rimage4
-			 , rimage5
-		 FROM roomtb
-		WHERE lidx = #{lidx}
+	<select id="selectRoomList" parameterType="int" resultType="roominVO">
+		SELECT *
+		 FROM roomtb r, roomintb i
+		WHERE r.ridx = i.ridx 
+		  AND r.lidx = #{lidx}
 	</select>
 	<select id="selectRoom" parameterType="int" resultType="roomVO">
 		SELECT r.ridx

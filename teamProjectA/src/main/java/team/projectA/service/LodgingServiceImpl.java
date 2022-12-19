@@ -43,7 +43,7 @@ public class LodgingServiceImpl implements LodgingService {
 		return lodgingDAO.selectLodging(lidx);
 	}
 	@Override
-	public List<RoomVO> selectRoomList(int lidx) {
+	public List<RoominVO> selectRoomList(int lidx) {
 		return lodgingDAO.selectRoomList(lidx);
 	}
 

@@ -109,9 +109,30 @@ public class SellerDao {
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.lodginginfoUp", vo);
 	}
 	
-	public LodgingVO lodgingModi(int lidx) {
+	public Map<String, Object> lodgingModi(int lidx) {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.lodgingModi", lidx);
 	}
+	
+	public int lodgingModify(LodgingVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.lodgingModify", vo);
+	}
+	
+	public int lodginginModify(LodginginVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.lodginginModify", vo);
+	}
+	
+	public int lodginginfoModify(LodginginfoVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.lodginginfoModify", vo);
+	}
+	
+	public int loDel(int lidx) {
+		return sqlSession.delete("team.projectA.mapper.sellerMapper.loDel", lidx);
+	}
+	
+	public int N(int uidx) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.N", uidx);
+	}
+			
 	
 	public RoominVO roomModiInfo(int ridx) {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.roomModiInfo", ridx);
