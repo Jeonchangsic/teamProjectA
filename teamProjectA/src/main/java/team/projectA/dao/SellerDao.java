@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.LodginginVO;
 import team.projectA.vo.LodginginfoVO;
@@ -38,16 +37,11 @@ public class SellerDao {
 		 
 	}
 	
-	public List<QnaVO> qnaList(int uidx){
-	        
-	    return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", uidx);
+	public List<QnaVO> qnaList(HashMap<String, Object> hm){
+        return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", hm);
 	 }
 	
-	public List<Map<String,Object>> QnaPaging(HashMap hm) {
-		return sqlSession.selectList("team.projectA.mapper.sellerMapper.QnaPaging", hm);
-	
-	}
-	public int listCount() {
+	public Map<String,Object> listCount() {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount");
 		
 	}

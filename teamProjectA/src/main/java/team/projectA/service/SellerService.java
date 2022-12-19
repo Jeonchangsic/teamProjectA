@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.LodginginVO;
 import team.projectA.vo.LodginginfoVO;
@@ -21,11 +20,9 @@ public interface SellerService {
 	
 	int sellerUpdate2(LodgingVO vo);
 	
-    List<QnaVO> qnaList(int uidx);
+    List<QnaVO> qnaList(HashMap<String, Object> hm);
     
-    List<Map<String,Object>> QnaPaging(HashMap hm);
-    
-    int listCount();
+    Map<String,Object> listCount();
    	
 	int qnaInsert(QnaVO vo);
 	

@@ -42,19 +42,15 @@ public class SellerServiceImpl implements SellerService{
 	}
 
     @Override
-    public List<QnaVO> qnaList(int uidx) {
+    public List<QnaVO> qnaList(HashMap<String, Object> hm) {
     
-        return SellerDao.qnaList(uidx);
+        return SellerDao.qnaList(hm);
     }
     
-	@Override
-	public List<Map<String,Object>> QnaPaging(HashMap hm) {
 
-		return SellerDao.QnaPaging(hm);
-	}
 	
 	@Override
-	public int listCount() {
+	public Map<String,Object> listCount() {
 
 		return SellerDao.listCount();
 	}

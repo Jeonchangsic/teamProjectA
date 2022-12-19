@@ -3,6 +3,7 @@ package team.projectA.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -19,7 +20,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
  
 import team.projectA.service.SellerService;
@@ -27,7 +27,7 @@ import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.LodginginVO;
 import team.projectA.vo.LodginginfoVO;
-import team.projectA.vo.PageMaker;
+import team.projectA.vo.PageMaker2;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
@@ -101,16 +101,29 @@ public class SellerController {
                                                                         
         HttpSession session = req.getSession();                                 
         UserVO login = (UserVO) session.getAttribute("login");
-        List<QnaVO> qnaList = sellerService.qnaList(login.getUidx()); 
-        model.addAttribute("qnaList", qnaList);
         
         HashMap<String, Object> hm = new HashMap<String, Object>();
         hm.put("cri", cri);
         hm.put("uidx", login.getUidx());
         
-        List<Map<String,Object>> paging = sellerService.QnaPaging(hm);    
-        model.addAttribute("paging", paging);
+        sellerService.qnaList(hm);
+        System.out.println(sellerService.qnaList(hm));
+        
+        List<QnaVO> qnaList = sellerService.qnaList(hm);
+        
+        model.addAttribute("qnaList", qnaList);
+        
+        System.out.println("uidx"+qnaList);
+        
+        
+		/*
+		 * PageMaker2 pageMaker2 = new PageMaker2(); pageMaker2.setCri(cri);
+		 * pageMaker2.setTotalCount(sellerService.listCount());
+		 */
+        
         return "seller/sellerInquire";
+        
+        
     }
     
     //문의글

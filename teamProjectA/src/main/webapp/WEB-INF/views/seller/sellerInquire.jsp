@@ -75,7 +75,7 @@
                 </tr>
             </thead>
             <tbody>	  
-            <c:if test = "${empty qnalist} "> </c:if>
+            <%-- <c:if test = "${empty qnalist} "> </c:if> --%>
 				<c:forEach var="qna" items="${qnaList}" varStatus="status">	
 	                <tr style="text-align:center;">
 	                    <td>${qna.qna_idx}</td>
