@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,10 +28,12 @@ import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.LodginginVO;
 import team.projectA.vo.LodginginfoVO;
+import team.projectA.vo.PageMaker;
 import team.projectA.vo.PageMaker2;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
  
 /**
@@ -96,24 +99,26 @@ public class SellerController {
 		
 	//문의글 리스트
     @RequestMapping(value = "/sellerInquire.do", method = RequestMethod.GET)
-    public String sellerInquire(Model model,HttpServletRequest req, Criteria cri){
+    public String sellerInquire(Model model,HttpServletRequest req,@ModelAttribute("scri") SearchCriteria scri){
  
                                                                         
         HttpSession session = req.getSession();                                 
         UserVO login = (UserVO) session.getAttribute("login");
         
+        List<QnaVO> qnaList = null;
+        
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(scri);
+        pageMaker.setTotalCount(sellerService.listCount());
+        
         HashMap<String, Object> hm = new HashMap<String, Object>();
-        hm.put("cri", cri);
         hm.put("uidx", login.getUidx());
-        
-        sellerService.qnaList(hm);
-        System.out.println(sellerService.qnaList(hm));
-        
-        List<QnaVO> qnaList = sellerService.qnaList(hm);
+        hm.put("start", scri.getRowStart());
+        hm.put("end", scri.getRowEnd());
+        qnaList = sellerService.qnaList(hm);
         
         model.addAttribute("qnaList", qnaList);
-        
-        System.out.println("uidx"+qnaList);
+        model.addAttribute("pageMaker", pageMaker);
         
         
 		/*

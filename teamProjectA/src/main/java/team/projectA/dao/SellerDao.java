@@ -37,11 +37,11 @@ public class SellerDao {
 		 
 	}
 	
-	public List<QnaVO> qnaList(HashMap<String, Object> hm){
+	public List<QnaVO> qnaList(HashMap hm){
         return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", hm);
 	 }
 	
-	public Map<String,Object> listCount() {
+	public int listCount() {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount");
 		
 	}

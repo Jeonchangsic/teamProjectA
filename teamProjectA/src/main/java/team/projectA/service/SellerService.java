@@ -20,9 +20,9 @@ public interface SellerService {
 	
 	int sellerUpdate2(LodgingVO vo);
 	
-    List<QnaVO> qnaList(HashMap<String, Object> hm);
+    List<QnaVO> qnaList(HashMap hm);
     
-    Map<String,Object> listCount();
+    int listCount();
    	
 	int qnaInsert(QnaVO vo);
 	

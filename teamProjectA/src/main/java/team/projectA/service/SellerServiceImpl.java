@@ -42,7 +42,7 @@ public class SellerServiceImpl implements SellerService{
 	}
 
     @Override
-    public List<QnaVO> qnaList(HashMap<String, Object> hm) {
+    public List<QnaVO> qnaList(HashMap hm) {
     
         return SellerDao.qnaList(hm);
     }
@@ -50,7 +50,7 @@ public class SellerServiceImpl implements SellerService{
 
 	
 	@Override
-	public Map<String,Object> listCount() {
+	public int listCount() {
 
 		return SellerDao.listCount();
 	}
