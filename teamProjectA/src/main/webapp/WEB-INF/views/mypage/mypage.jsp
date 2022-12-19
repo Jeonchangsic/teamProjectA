@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>저긴어때</title>
     <link href="<%=request.getContextPath()%>/resources/css/mypage_css/mypage.css" rel="stylesheet"/>
+    <!-- 파비콘 -->
+    <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
     <!---- jQuery ---->
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
      
@@ -48,9 +50,9 @@
      function userDt(){
     	 alert(" 저긴어때(주) 회원 탈퇴를 진행하시면\n 기존의 정보와 거래내역 등 모든 정보가 사라집니다.\n 또한 삭제된 정보는 되돌릴 수 없습니다.\n 계속 탈퇴를 진행하시려면 비밀번호란에 회원님의 비밀번호를 \n 작성 후 계속 진행해 주세요.");
     	var url = "<%=request.getContextPath()%>/mypage/userDt.do";   //팝업창 페이지 URL
- 		var winWidth = 400;
+ 		var winWidth = 500;
  	    var winHeight = 350;
- 	  	var popupX = (window.screen.width / 2) - (400 / 2);
+ 	  	var popupX = (window.screen.width / 2) - (500 / 2);
  	  	var popupY= (window.screen.height / 2) - (350 / 2);
  	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
  		window.open(url,"",popupOption);
@@ -59,8 +61,8 @@
      
      <!--예약취소 팝업창  -->
      <script>
-     function refund_pop(ridx,uidx){
-    	var url = "<%=request.getContextPath()%>/mypage/refundPop.do?ridx="+ridx+"&uidx="+uidx;   //팝업창 페이지 URL
+     function refund_pop(ridx,uidx,limagename){
+    	var url = "<%=request.getContextPath()%>/mypage/refundPop.do?ridx="+ridx+"&uidx="+uidx+"&limagename="+limagename;   //팝업창 페이지 URL
  		var winWidth = 500;
  	    var winHeight = 250;
  	   var popupX = (window.screen.width / 2) - (500 / 2);
@@ -86,8 +88,8 @@
      
      <!-- 리뷰 상세페이지 팝업창 -->
      <script>
-     function reviewInfoPop(rvidx){
-    	var url = "<%=request.getContextPath()%>/mypage/reviewInfo.do?rvidx="+rvidx;   //팝업창 페이지 URL
+     function reviewInfoPop(rvidx,limagename){
+    	var url = "<%=request.getContextPath()%>/mypage/reviewInfo.do?rvidx="+rvidx+"&limagename="+limagename;   //팝업창 페이지 URL
  		var winWidth = 550;
  	    var winHeight = 470;
  	  	var popupX = (window.screen.width / 2) - (550 / 2);
@@ -131,7 +133,7 @@
 	                        <td class="margin1">이름</td><td><input type="text" class="info" name="userName" value="${login.userName}" readonly></td> 
 	                    </tr>
 	                    <tr>
-	                        <td class="margin1">비밀번호</td><td><input type="text" class="info"  name="userPassword" placeholder="변경할 비밀번호를 입력하세요."></td>
+	                        <td class="margin1">비밀번호</td><td><input type="password" class="info"  name="userPassword" placeholder="변경할 비밀번호를 입력하세요." required></td>
 	                        <td><button class="cursorStyle" >변경하기</button></td>
 	                    </tr>
 	                    <tr>
@@ -169,7 +171,7 @@
 		                        	<fmt:formatNumber type="number" maxFractionDigits="3" value="${list.rprice}" />원
 		                        </td>
 		                        <td  class="button_Size">
-		                            <input class="reservListBtn cursorStyle" onclick="refund_pop(${list.ridx},${list.uidx})" type="button" value="예약취소"/>
+		                            <input class="reservListBtn cursorStyle" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}')" type="button" value="예약취소"/>
 		                            <input class="reservListBtn cursorStyle" onclick="review(${list.lidx},${list.ridx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
 		                        </td>
 		                    </tr>
@@ -195,7 +197,7 @@
 	        <div id="contentsArea2">
 	        	 <table class="table10">
 	                    <tr class="tr_center tr_border">
-	                   		<th class="lodging_Style"></th>
+	                   		<th ></th>
 	                        <th class="lodging_Style">숙소명</th>
 	                        <th class="lodging_Style">객실명</th>
 	                        <th class="review_style">리뷰제목</th>
@@ -203,10 +205,10 @@
 	                    </tr>
 	                    <c:forEach items="${reviewList}" var="reviewList">
 		                    <tr>
-		              		    <td class="td_padding lodging_Style"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${reviewList.limagename}"/></td>
+		              		    <td class="td_padding lodging_Style1"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${reviewList.limagename}"/></td>
 		                    	<td class="td_padding lodging_Style">${reviewList.lodgingname}</td>
 		                    	<td class="td_padding lodging_Style">${reviewList.rtype}</td>
-		                    	<td class="td_padding review_style" id="titleHover" ><a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx})">${reviewList.rvTitle}</a></td>
+		                    	<td class="td_padding review_style" id="titleHover" ><a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx},'${reviewList.limagename}')">${reviewList.rvTitle}</a></td>
 		                    	<td class="td_padding">${reviewList.rvDate}</td>
 		                    </tr>
 		               	</c:forEach>

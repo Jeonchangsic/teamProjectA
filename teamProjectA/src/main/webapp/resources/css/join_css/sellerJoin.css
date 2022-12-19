@@ -64,7 +64,7 @@ header h2{
 
             /*main*/
 main #table1{
-     margin:0 auto;
+    margin:0 auto 10px auto;
     text-align:center;
 }
 main .contentsArea{
@@ -217,7 +217,7 @@ main .pw_no4{
         height: 100%;
 
         display: none;
-
+		
         background-color: rgba(0, 0, 0, 0.4);
       }
 
@@ -238,6 +238,7 @@ main .pw_no4{
         text-align: center;
 
         background-color: rgb(255, 255, 255);
+        border: 2px solid #000;
         border-radius: 10px;
         box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 
@@ -282,3 +283,37 @@ main .email_no{
 	border-radius:5px; 
 	background-color:#ffcccc;
     }      
+.btnStyle{
+	cursor:pointer;
+	color:rgba(255,255,255,0.8);
+   	background-color:rgb(86, 19, 241);
+   	font-weight:bold;
+	border:0px solid #000;
+	border-radius:2px;
+}
+.btnStyle:hover{
+	color:white;
+}
+.email_ok{
+	display:none;
+}
+.email_no{
+	display:none;
+}
+.btn-open-popup{
+	width:110px;
+	height:25px;
+}
+img{
+	width:150px;
+}
+#mail_check_button{
+     	color:rgba(255,255,255,0.8);
+     	background-color:rgb(86, 19, 241);
+     	font-weight:bold;
+		border:0px solid #000;
+		border-radius:2px;
+     }
+#mail_check_button:hover{
+		color:white;
+     }

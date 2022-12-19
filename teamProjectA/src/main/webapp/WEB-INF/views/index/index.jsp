@@ -10,14 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>저긴어때</title>
     <link href="<%=request.getContextPath() %>/resources/css/index_css/index.css" rel="stylesheet"/>
+    
     <!-- 파비콘 -->
     <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
-     <!---- jQuery ---->
-     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/> <!--스와이퍼-->
+    
+    <!---- jQuery ---->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <!--스와이퍼-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/> 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> <!--XE아이콘-->
+    <!--XE아이콘-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> 
     
     <!---- js --->
        <script>

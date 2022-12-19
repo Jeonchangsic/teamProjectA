@@ -6,9 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>저긴어때</title>
-<link href="<%=request.getContextPath()%>/resources/css/mypage_css/refund.css" rel="stylesheet"/>
+	<meta charset="UTF-8">
+	<title>저긴어때</title>
+	<link href="<%=request.getContextPath()%>/resources/css/mypage_css/refund.css" rel="stylesheet"/>
+	<!-- 파비콘 -->
+	<link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 </head>
 <body>
 	<form action="refund.do" method="post">
@@ -22,6 +24,7 @@
 			</tr>
 			<tr class="tr_height">
 				<td>숙소명:
+					<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/>
 					<td class="text_Center">${result.lodgingname}</td>
 				</td>
 			</tr>

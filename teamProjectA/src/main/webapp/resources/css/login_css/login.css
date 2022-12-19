@@ -86,6 +86,7 @@ main #login{
     font-weight:bold;
     border:0px solid #000;
     border-radius:5px;
+    cursor:pointer;
 }
 
 main #login:hover{
@@ -101,7 +102,7 @@ main #table2 td{
 }
 
 main #kakao{
-    margin-right: 10px;
+    margin-right: 4px;
 }
 
 main #join{
@@ -109,9 +110,17 @@ main #join{
     width:250px; 
 }
 
-main #join span{
-    
+#join1{
+	font-weight:bold; 
+	border-right:1px solid #000;
+	padding:0 5px 0 50px;
 }
-
+#join2{
+	font-weight:bold;
+}
+#join3{
+	display:block; 
+	margin:25px 0 10px 50px;
+}
 
                

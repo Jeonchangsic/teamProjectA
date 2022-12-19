@@ -94,37 +94,6 @@
 		    		$(".pw_no").css("display","inline-block");
 		    	}
 	    	}
-	    	
-	    	/* if(pwd.length > 7 && pwd.length < 21){			 //비밀번호의 길이가 일치하는 경우
-	    		$(".pw_ok").css("display","inline-block");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","none");
-	    	}else if(pwd.length < 8 && pwd.length > 20){	//비밀번호 길이가 일치하지 않는 경우
-	    		$(".pw_ok").css("display","none");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","inline-block");
-	    		$("#pwd").val("");
-	    	} */
-	    	
-	    	
-	    	
-	    	/* if(pwd == repwd && pwd.length > 0 && repwd.length > 0){ //비밀번호와 비밀번호 확인의 값이 일치하는 경우
-	    		$(".pw_ok").css("display","inline-block");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","none");	
-	    	}else if(pwd != repwd && pwd.length > 0 && repwd.length > 0){ //비밀번호와 비밀번호 확인의 값이 일치하지 않는 경우
-	    		$(".pw_ok").css("display","none");
-	    		$(".pw_no").css("display","inline-block");
-	    		$(".pw_no2").css("display","none");
-	    	}else if(pwd.length < 8 || pwd.length > 20){ //비밀번호의 값이 8보다 작거나 20보다 큰 경우 
-	    		$(".pw_ok").css("display","none");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","inline-block");	
-	    	}else{
-	    		$(".pw_ok").css("display","none");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","none");
-	    	}; */
     </script>
     
     <!-- 이메일인증 스크립트 -->
@@ -133,6 +102,7 @@
     $(function(){
     	
     	$(".mail_check_button").click(function(){
+    		alert("인증번호 전송이 완료되었습니다.");
     		var email = $(".mail_input").val(); //입력한 이메일 
     		var cehckBox = $(".mail_check_input"); //인증번호 입력란
     		var boxWrap = $(".mail_check_input_box"); //인증번호 입력영역
@@ -165,8 +135,6 @@
     	
     });
     </script>
-    
-    
 </head>
 <body>
 	<div class="modal">
@@ -182,19 +150,18 @@
     	
         <h2>
         	<a href="<%=request.getContextPath()%>/index/index.do">
-    		<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg" id="logo1" />
+    			<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>
     		</a>
-    		<p id="joinText">회원가입</p>
     	</h2>
     </header>
     <main>
     	<div id="border1">
 	        <form action="join.do" method="post">
-	            <table id="table1">
+	            <table id="table1" class="joinBorder">
 	                <tr>
 	                    <td class="contentsArea">아이디</td>
 	                    <td class="inputArea">
-	                        <input type="text" name="userID" id="id" class="inputArea" placeholder="아이디를 입력하세요." required >
+	                        <input type="text" name="userID" id="id" class="inputArea" placeholder="아이디를 입력하세요." required>
 	                        <span class="id_ok">사용 가능한 아이디입니다.</span>
 	                        <span class="id_no">중복된  아이디입니다!</span>
 	                        <span class="id_no2">8자리 ~ 15자리 이내로 입력하여 주세요.</span>
@@ -237,15 +204,15 @@
 		                	<input id="mail_check_input" class="mail_check_input" disabled="disabled" required><!-- 인증번호 입력란 -->
 		                </td>		
 		                <td id="mail_check_button" class="mail_check_button"><!-- 메일 체크 버튼 -->
-		                    	<span style="cursor:pointer;">인증번호 전송</span>
+		                    	<span class="BtnStyle">인증번호 전송</span>
 	                    </td>
 	                </tr>
 	                <tr>
 	                	<td></td>
 	                	<td>
 	                		<span id="mail_check_input_box_warn"></span>
-	                		<span class="email_ok" style="display:none;">인증번호가 일치합니다.</span>
-	                		<span class="email_no" style="display:none;">인증번호가 다릅니다.</span>
+	                		<span class="email_ok">인증번호가 일치합니다.</span>
+	                		<span class="email_no">인증번호가 다릅니다.</span>
 	                	</td>
 	                	<td></td>
 	                </tr>
@@ -271,7 +238,7 @@
 	                <tr>
 	                    <td class="contentsArea">약관동의</td>
 	                    <td class="inputArea">
-	                        <button class="btn-open-popup" type="button" >약관보기</button>
+	                        <button class="btn-open-popup BtnStyle" type="button" >약관보기</button>
 	                    </td>
 	                    <td>동의함
 	                    	 <input type="radio" name="agree" required>
@@ -280,12 +247,12 @@
 	            </table>
 	            <table id="table2">
 	                <tr>
-	                    <td id="join"><button class="footBtn">가입하기</button></td>
-	            		 <td><input type="button" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" class="footBtn" value="취소"></td>
+	                    <td id="join"><button class="footBtn BtnStyle">가입하기</button></td>
+	            		 <td><input type="button" class="BtnStyle footBtn" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" value="취소"></td>
 	                </tr>
 	            </table>
 	        </form>
-     	</div>     	
+     	</div>   	
     </main>
     <!-- 모달 스크립트 -->
     <script>

@@ -133,6 +133,7 @@
     $(function(){
     	
     	$(".mail_check_button").click(function(){
+    		alert("인증번호 전송이 완료되었습니다.");
     		var email = $(".mail_input").val(); //입력한 이메일 
     		var cehckBox = $(".mail_check_input"); //인증번호 입력란
     		var boxWrap = $(".mail_check_input_box"); //인증번호 입력영역
@@ -181,9 +182,8 @@
     	
         <h2>
         	<a href="<%=request.getContextPath()%>/index/index.do">
-    		<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg" style="width:150px;"/>
-    		</a>
-    		<p id="joinText">판매자 회원가입</p>
+    			<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>  
+    		</a>  	
     	</h2>
     </header>
     <main>
@@ -236,15 +236,15 @@
 		                	<input id="mail_check_input" class="mail_check_input" disabled="disabled" required><!-- 인증번호 입력란 -->
 		                </td>		
 		                <td id="mail_check_button" class="mail_check_button"><!-- 메일 체크 버튼 -->
-		                    	<span style="cursor:pointer;">인증번호 전송</span>
+		                    	<span class="btnStyle">인증번호 전송</span>
 	                    </td>
 	                </tr>
 	                <tr>
 	                	<td></td>
 	                	<td>
 	                		<span id="mail_check_input_box_warn"></span>
-	                		<span class="email_ok" style="display:none;">인증번호가 일치합니다.</span>
-	                		<span class="email_no" style="display:none;">인증번호가 다릅니다.</span>
+	                		<span class="email_ok">인증번호가 일치합니다.</span>
+	                		<span class="email_no">인증번호가 다릅니다.</span>
 	                	</td>
 	                	<td></td>
 	                </tr>
@@ -270,7 +270,7 @@
 	                <tr>
 	                    <td class="contentsArea">약관동의</td>
 	                    <td class="inputArea">
-	                        <button class="btn-open-popup" type="button" >약관보기</button>
+	                        <button class="btn-open-popup btnStyle" type="button" >약관보기</button>
 	                    </td>
 	                    <td>동의함
 	                    	 <input type="radio" name="agree" required>
@@ -279,8 +279,8 @@
 	            </table>
 	            <table id="table2">
 	                <tr>
-	                    <td id="join"><button class="footBtn">가입하기</button></td>
-	            		 <td><input type="button" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" class="footBtn" value="취소"></td>
+	                    <td id="join"><button class="footBtn btnStyle">가입하기</button></td>
+	            		 <td><input type="button" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" class="footBtn btnStyle" value="취소"></td>
 	                </tr>
 	            </table>
 	        </form>

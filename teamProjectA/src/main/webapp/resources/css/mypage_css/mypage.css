@@ -193,7 +193,7 @@ main .fontSize{
 	vertical-align: middle;
 }
 .date_size1{
-	width:80px;
+	width:100px;
 	font-size:15px;
 	height:80px;
 	vertical-align: middle;
@@ -206,6 +206,9 @@ main .td_padding{
 }
 main .lodging_Style{
 	width:190px;
+}
+main .lodging_Style1{
+	
 }
 main .review_style{
 	padding-left:20px;

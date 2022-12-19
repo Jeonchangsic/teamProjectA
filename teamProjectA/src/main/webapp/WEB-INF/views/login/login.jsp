@@ -45,7 +45,7 @@
         <table id="table2">
             <tr>
                 <td>
-                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=227a905a07d7faec4ff2683045c19574&redirect_uri=http://localhost:8080/A/auth/kakao/callback&response_type=code" id="kakao" style="margin-left:5px;">  <!--카카오 로그인 링크-->
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=227a905a07d7faec4ff2683045c19574&redirect_uri=http://localhost:8080/A/auth/kakao/callback&response_type=code" id="kakao">  <!--카카오 로그인 링크-->
                         <img src="<%=request.getContextPath() %>/resources/images/login_images/kakao_login_medium_narrow.png" width="250" height="45" >
                     </a>
                 </td>
@@ -53,9 +53,9 @@
         </table>
         </form>
         <section id="join">
-            <span style="display:block; margin:25px 0 10px 50px;">저긴어때와 함께하기</span> 
-            <a href="<%=request.getContextPath() %>/join/join.do" style="font-weight:bold; border-right:1px solid #000; padding:0 5px 0 50px; ">일반회원</a>
-            <a href="<%=request.getContextPath() %>/join/sellerJoin.do" style="font-weight:bold;">판매자회원</a>
+            <span id="join3">저긴어때와 함께하기</span> 
+            <a href="<%=request.getContextPath() %>/join/join.do" id="join1">일반회원</a>
+            <a href="<%=request.getContextPath() %>/join/sellerJoin.do" id="join2">판매자회원</a>
         </section>
     </main>
             <!--end main-->
