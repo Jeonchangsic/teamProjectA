@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.LodginginVO;
 import team.projectA.vo.LodginginfoVO;
@@ -38,15 +37,10 @@ public class SellerDao {
 		 
 	}
 	
-	public List<QnaVO> qnaList(int uidx){
-	        
-	    return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", uidx);
+	public List<QnaVO> qnaList(HashMap hm){
+        return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", hm);
 	 }
 	
-	public List<Map<String,Object>> QnaPaging(HashMap hm) {
-		return sqlSession.selectList("team.projectA.mapper.sellerMapper.QnaPaging", hm);
-	
-	}
 	public int listCount() {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount");
 		
@@ -115,9 +109,30 @@ public class SellerDao {
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.lodginginfoUp", vo);
 	}
 	
-	public LodgingVO lodgingModi(int lidx) {
+	public Map<String, Object> lodgingModi(int lidx) {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.lodgingModi", lidx);
 	}
+	
+	public int lodgingModify(LodgingVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.lodgingModify", vo);
+	}
+	
+	public int lodginginModify(LodginginVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.lodginginModify", vo);
+	}
+	
+	public int lodginginfoModify(LodginginfoVO vo) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.lodginginfoModify", vo);
+	}
+	
+	public int loDel(int lidx) {
+		return sqlSession.delete("team.projectA.mapper.sellerMapper.loDel", lidx);
+	}
+	
+	public int N(int uidx) {
+		return sqlSession.update("team.projectA.mapper.sellerMapper.N", uidx);
+	}
+			
 	
 	public RoominVO roomModiInfo(int ridx) {
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.roomModiInfo", ridx);

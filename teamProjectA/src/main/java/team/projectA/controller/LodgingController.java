@@ -23,6 +23,7 @@ import team.projectA.service.LodgingService;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.PageMaker;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.RoominVO;
 import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
@@ -131,8 +132,8 @@ public class LodgingController {
 			
 		LodgingVO vo = lodgingService.selectLodging(lidx);
 		
-		List<RoomVO> list = lodgingService.selectRoomList(lidx);
-		
+		List<RoominVO> list = lodgingService.selectRoomList(lidx);
+		System.out.println(lodgingService.selectRoomList(lidx));
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);

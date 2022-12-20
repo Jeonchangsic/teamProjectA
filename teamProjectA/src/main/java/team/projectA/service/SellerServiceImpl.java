@@ -42,16 +42,12 @@ public class SellerServiceImpl implements SellerService{
 	}
 
     @Override
-    public List<QnaVO> qnaList(int uidx) {
+    public List<QnaVO> qnaList(HashMap hm) {
     
-        return SellerDao.qnaList(uidx);
+        return SellerDao.qnaList(hm);
     }
     
-	@Override
-	public List<Map<String,Object>> QnaPaging(HashMap hm) {
 
-		return SellerDao.QnaPaging(hm);
-	}
 	
 	@Override
 	public int listCount() {
@@ -154,10 +150,34 @@ public class SellerServiceImpl implements SellerService{
 	}
 
 	@Override
-	public LodgingVO lodgingModi(int lidx) {
+	public Map<String, Object> lodgingModi(int lidx) {
 		return SellerDao.lodgingModi(lidx);
 	}
 
+	@Override
+	public int loDel(int lidx) {
+		return SellerDao.loDel(lidx);
+	}
+	
+	@Override
+	public int N(int uidx) {
+		return SellerDao.N(uidx);
+	}
+	
+	@Override
+	public int lodgingModify(LodgingVO vo) {
+		return SellerDao.lodgingModify(vo);
+	}
+	
+	@Override
+	public int lodginginModify(LodginginVO vo) {
+		return SellerDao.lodginginModify(vo);
+	}
+	
+	@Override
+	public int lodginginfoModify(LodginginfoVO vo) {
+		return SellerDao.lodginginfoModify(vo);
+	}
 
 
 

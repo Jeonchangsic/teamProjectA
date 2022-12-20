@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.RoominVO;
 import team.projectA.vo.SearchCriteria;
 
 @Repository
@@ -43,7 +44,7 @@ public class LodgingDAO {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectLodging",lidx);
 	}
 	
-	public List<RoomVO> selectRoomList(int lidx){
+	public List<RoominVO> selectRoomList(int lidx){
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectRoomList",lidx);
 	}
 	
