@@ -53,9 +53,7 @@
 		<img src="<%=request.getContextPath()%>/resources/images/index_images/loading.gif"/>
 	</div>
     <header>
-        <h2>
-        	<img src="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg">
-        </h2>
+        <h2>비밀번호 찾기</h2>
     </header>
 
             <!--end header-->
@@ -63,21 +61,19 @@
         <form> 
         <table id="table1">
             <tr>
-                <td id="textArea">
+            <td class="td_style">아이디</td>
+                <td class="textArea">
                     <input type="text" class="loginInputArea" id="id" name="userID" placeholder="아이디를 입력하세요.">
                 </td>
             </tr>
-            <tr>
-                <td>
+            <tr id="tr_border">
+            <td class="td_style">이메일</td>
+                <td class="textArea">
                     <input type="text" class="loginInputArea" id="email" name="userEmail" placeholder="회원가입 시 입력한 이메일을 입력하세요.">
                 </td>
             </tr>
-            <tr>
-                <td id="loginbtn">
-                    <input type="button" id="search" value="찾기"/>
-                </td>
-            </tr>
         </table>
+        <input type="button" id="search" value="비밀번호 찾기"/>
         </form>
     </main>
             <!--end main-->

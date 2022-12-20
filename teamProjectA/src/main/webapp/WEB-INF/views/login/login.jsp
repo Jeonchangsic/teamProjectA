@@ -16,9 +16,9 @@
      function pwSearch(){
     	var url = "<%=request.getContextPath()%>/login/pwSearch.do";   //팝업창 페이지 URL
  		var winWidth = 500;
- 	    var winHeight = 350;
+ 	    var winHeight = 250;
  	  	var popupX = (window.screen.width / 2) - (500 / 2);
- 	  	var popupY= (window.screen.height / 2) - (350 / 2);
+ 	  	var popupY= (window.screen.height / 2) - (250 / 2);
  	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
  		window.open(url,"",popupOption);
      };

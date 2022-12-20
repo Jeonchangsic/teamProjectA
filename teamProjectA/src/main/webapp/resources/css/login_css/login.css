@@ -127,12 +127,13 @@ main #join{
 	color:#919191;
 	font-size:11px;
 	display: inline-block;
-    margin-top: 10px;
+    margin-top: 13px;
 }
 #span2{
 	font-weight:bold;
 	font-size:11px;
 	cursor:pointer;
+	padding-left: 10px;
 }              
 #img1{
 	width:255px;

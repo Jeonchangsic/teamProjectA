@@ -54,9 +54,11 @@ UL,li{list-style:none;}
 
                 /*header*/
 header h2{ 
-    margin:0 auto; 
-    padding:10% 0 20px 0; 
-    text-align:center;
+	margin: 20px 57px 0 61px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 3px solid #919191;
 }
 
             /*end header*/
@@ -67,25 +69,26 @@ main #table1{
 }
 
 .loginInputArea{
-    width:250px; 
-    height:35px;
+    width: 245px;
+    height: 35px;
+    margin: 10px 0 0 10px;
 }
 
-main #textArea{
+main .textArea{
     padding-bottom:13px;
 }
 
 main #search{
-	width:255px;
-	height:35px;
-    color:rgba(255,255,255,0.8);
-    background-color:rgb(86, 19, 241);
-    margin-top:5px;
-    font-size:15px;
-    font-weight:bold;
-    border:0px solid #000;
-    border-radius:5px;
-    cursor:pointer;
+	width: 255px;
+    height: 35px;
+    color: rgba(255,255,255,0.8);
+    background-color: rgb(86, 19, 241);
+    margin: 10px 0 0 130px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 0px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 main #search:hover{
@@ -129,4 +132,16 @@ main #table2 td{
   	top: 45%;
   	left: 46%;
   	z-index: 100;
-}                           
+}                     
+  
+#tr_border{
+	border-top:1px solid #919191;
+	border-bottom: 1px solid #919191;
+}
+.td_style{
+	width: 120px;
+	background-color: aliceblue;
+    opacity: 0.67;
+    font-weight:bold;
+    text-align: center;
+}
