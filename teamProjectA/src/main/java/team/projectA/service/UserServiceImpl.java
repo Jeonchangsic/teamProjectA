@@ -1,5 +1,6 @@
 package team.projectA.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -51,6 +52,18 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int sellerUserInsert(UserVO vo) {
 		return userDao.sellerUserInsert(vo);
+	}
+
+
+	@Override
+	public int pwUpdate(HashMap hm) {
+		return userDao.pwUpdate(hm);
+	}
+
+
+	@Override
+	public int userSearch(String id) {
+		return userDao.userSearch(id);
 	}
 
 

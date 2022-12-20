@@ -6,8 +6,8 @@
 		<!-- 마이페이지 비밀번호 변경 -->
 		<update id="changePw">
 			UPDATE AUSERTB
-				SET userPassword = #{userPassword}
-				WHERE userName = #{userName}
+				SET userPassword = #{password}
+				WHERE userID = #{userID}
 		</update>
 		
 		<!-- 마이페이지 예약내역 -->
@@ -38,6 +38,7 @@
 				,uidx
 				,lidx
 				,limagename
+				,reviewCheck
 					FROM (
 						SELECT reserv_idx
 								,username
@@ -52,6 +53,7 @@
 								,u.uidx
 								,l.lidx
 								,limagename
+								,reviewCheck
 						, ROW_NUMBER() 
 							OVER(
 								ORDER BY reserv_idx desc
@@ -99,7 +101,6 @@
 					 WHERE l.lidx = r.lidx
 					 AND r.ridx = rm.ridx
 					 AND r.uidx = #{uidx}
-					 
 		</select>
 		
 		<!-- 리뷰 상세 출력 -->

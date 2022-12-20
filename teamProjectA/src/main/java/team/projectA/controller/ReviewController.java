@@ -41,12 +41,13 @@ public class ReviewController {
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
 	@RequestMapping(value = "/review.do", method = RequestMethod.GET)
-	public String review(int lidx, int ridx,String lodgingname,String rtype,String reserv_startDate,String reserv_endDate, String limagename,Locale locale, Model model)throws Exception {
+	public String review(int lidx, int ridx,int reserv_idx, String lodgingname,String rtype,String reserv_startDate,String reserv_endDate, String limagename,Locale locale, Model model)throws Exception {
 		
 		
 
 		model.addAttribute("lidx",lidx);
 		model.addAttribute("ridx",ridx);
+		model.addAttribute("reserv_idx",reserv_idx);
 		model.addAttribute("lodgingname",lodgingname);
 		model.addAttribute("rtype",rtype);
 		model.addAttribute("reserv_startDate",reserv_startDate);
@@ -59,7 +60,7 @@ public class ReviewController {
 	
 	//리뷰작성
 	@RequestMapping(value="/review.do", method= RequestMethod.POST)
-	public String review(int lidx, int ridx, String rvTitle, String rvSatisfaction, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
+	public String review(int lidx, int ridx, int reserv_idx, String rvTitle, String rvSatisfaction, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
 		
 		
 		HttpSession session = req.getSession();
@@ -72,8 +73,10 @@ public class ReviewController {
 		hm.put("rvTitle", rvTitle);
 		hm.put("rvSatisfaction", rvSatisfaction);
 		hm.put("rvContent", rvContent);
+		hm.put("reserv_idx", reserv_idx);
 		
 		reviewService.rvInsert(hm);
+		reviewService.rvUpdate(reserv_idx);
 		
 		
 		response.setContentType("text/html; charset=UTF-8"); 

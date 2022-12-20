@@ -75,8 +75,8 @@
      
      <!-- 리뷰 작성 팝업창 -->
      <script>
-     function review(lidx,ridx,lodgingname,rtype,reserv_startDate,reserv_endDate,limagename){
-    	var url = "<%=request.getContextPath()%>/review/review.do?lidx="+lidx+"&ridx="+ridx+"&lodgingname="+lodgingname+"&rtype="+rtype+"&reserv_startDate="+reserv_startDate+"&reserv_endDate="+reserv_endDate+"&limagename="+limagename;   //팝업창 페이지 URL
+     function review(lidx,ridx,reserv_idx,lodgingname,rtype,reserv_startDate,reserv_endDate,limagename){
+    	var url = "<%=request.getContextPath()%>/review/review.do?lidx="+lidx+"&ridx="+ridx+"&reserv_idx="+reserv_idx+"&lodgingname="+lodgingname+"&rtype="+rtype+"&reserv_startDate="+reserv_startDate+"&reserv_endDate="+reserv_endDate+"&limagename="+limagename;   //팝업창 페이지 URL
  		var winWidth = 550;
  	    var winHeight = 430;
  	  	var popupX = (window.screen.width / 2) - (550 / 2);
@@ -99,6 +99,31 @@
      };
      </script>
      
+     <!-- 비밀번호 변경 -->
+     <script>
+     function pwReset(){
+    	 var password = $("#password").val();
+    	 var num = password.search(/[0-9]/g);
+    	 var eng = password.search(/[a-z]/ig);
+    	 var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    	 
+    	 if(password.length < 8 || password.length > 20){			 //비밀번호의 길이가 일치하지 않는경우
+    		 alert("8자리 ~20자리 이내로 입력하여 주세요.");
+	    	}else if((num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0)){ //특문,영문,숫자를 조합한 비밀번호가 아닌경우 
+	    		alert("특수문자, 영문, 숫자를 조합하여주세요.");
+	    	}else{										//비밀번호 설정이 일치하는경우
+		    	 $.ajax({
+		    		 url:"pwModify.do",
+		    		 type:"post",
+		    		 data: "password="+password,
+		    		 success:function(data){
+		    				  alert('비밀번호 수정이 완료되었습니다.');
+		    				  location.reload(); 
+		    		 }
+		    	 });	
+	    	};
+     };
+     </script>
      
 </head>
 <body>
@@ -127,14 +152,14 @@
 	            </a>
 	        </div>
 	        <div id="contentsArea1">
-	            <form action="pwModify.do" method="post">
+	            <form>
 	                <table id="table1">
 	                    <tr>
 	                        <td class="margin1">이름</td><td><input type="text" class="info" name="userName" value="${login.userName}" readonly></td> 
 	                    </tr>
 	                    <tr>
-	                        <td class="margin1">비밀번호</td><td><input type="password" class="info"  name="userPassword" placeholder="변경할 비밀번호를 입력하세요." required></td>
-	                        <td><button class="cursorStyle" >변경하기</button></td>
+	                        <td class="margin1">비밀번호</td><td><input type="password" class="info" id="password" name="userPassword" placeholder="변경할 비밀번호를 입력하세요." required></td>
+	                        <td><button type="button" onclick="pwReset()" class="cursorStyle">변경하기</button></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="margin1">이메일</td><td><input type="text" class="info"  name="userEmail" value="${login.userEmail}" readonly></td>
@@ -172,7 +197,14 @@
 		                        </td>
 		                        <td  class="button_Size">
 		                            <input class="reservListBtn cursorStyle" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}')" type="button" value="예약취소"/>
-		                            <input class="reservListBtn cursorStyle" onclick="review(${list.lidx},${list.ridx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
+		                            <c:choose>
+			                            <c:when test="${list.reviewCheck eq 'N'}">
+			                           		<input class="reservListBtn cursorStyle" onclick="review(${list.lidx},${list.ridx},${list.reserv_idx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
+			                        	</c:when>
+			                        	<c:otherwise>
+			                        		<input class="reservListBtn cursorStyle btnFontSize" onclick="alert('이미 리뷰 작성을 완료하였습니다.');" type="button" value="리뷰작성완료"/>
+			                        	</c:otherwise>
+		                        	</c:choose>
 		                        </td>
 		                    </tr>
 	                    </c:forEach>
@@ -204,13 +236,13 @@
 	                        <th>리뷰작성일</th>
 	                    </tr>
 	                    <c:forEach items="${reviewList}" var="reviewList">
-		                    <tr>
-		              		    <td class="td_padding lodging_Style1"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${reviewList.limagename}"/></td>
-		                    	<td class="td_padding lodging_Style">${reviewList.lodgingname}</td>
-		                    	<td class="td_padding lodging_Style">${reviewList.rtype}</td>
-		                    	<td class="td_padding review_style" id="titleHover" ><a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx},'${reviewList.limagename}')">${reviewList.rvTitle}</a></td>
-		                    	<td class="td_padding">${reviewList.rvDate}</td>
-		                    </tr>
+			                    <tr>
+			              		    <td class="td_padding lodging_Style1"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${reviewList.limagename}"/></td>
+			                    	<td class="td_padding lodging_Style">${reviewList.lodgingname}</td>
+			                    	<td class="td_padding lodging_Style">${reviewList.rtype}</td>
+			                    	<td class="td_padding review_style" id="titleHover" ><a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx},'${reviewList.limagename}')">${reviewList.rvTitle}</a></td>
+			                    	<td class="td_padding">${reviewList.rvDate}</td>
+			                    </tr>
 		               	</c:forEach>
 	             </table>
 	        </div>

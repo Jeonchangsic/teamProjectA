@@ -53,8 +53,7 @@ UL,li{list-style:none;}
             /*리셋코드*/
 
                 /*header*/
-header h2{
-    width:1024px;  
+header h2{ 
     margin:0 auto; 
     padding:10% 0 20px 0; 
     text-align:center;
@@ -76,9 +75,9 @@ main #textArea{
     padding-bottom:13px;
 }
 
-main #login{
+main #search{
 	width:255px;
-	height:45px;
+	height:35px;
     color:rgba(255,255,255,0.8);
     background-color:rgb(86, 19, 241);
     margin-top:5px;
@@ -89,7 +88,7 @@ main #login{
     cursor:pointer;
 }
 
-main #login:hover{
+main #search:hover{
      color:white;
 }
 
@@ -101,41 +100,33 @@ main #table2 td{
     padding-top:10px;
 }
 
-main #kakao{
-    margin-right: 4px;
-}
-
-main #join{
-    margin:0 auto; 
-    width:250px; 
-}
-
-#join1{
-	font-weight:bold; 
-	border-right:1px solid #000;
-	padding:0 5px 0 50px;
-}
-#join2{
-	font-weight:bold;
-	margin-right:29px;
-}
-#join3{
-	display:block; 
-	margin:25px 0 10px 50px;
-}
 #p1{
 	color:#919191;
 	font-size:11px;
 	display: inline-block;
-    margin-top: 10px;
+    margin-top: 17px;
 }
 #span2{
 	font-weight:bold;
 	font-size:11px;
 	cursor:pointer;
-}              
-#img1{
-	width:255px;
-	height:45px;
-	margin-left:3px;
-}               
+}
+#loading{ 
+	display:none;
+	width: 100%;
+  	height: 100%;
+  	top: 0;
+  	left: 0;
+  	position: fixed;
+  	opacity: 0.4;
+  	background:silver;
+  	z-index: 99;
+  	text-align: center;
+	margin-left:0px;
+}         
+#loading > img {
+  	position: absolute;
+  	top: 45%;
+  	left: 46%;
+  	z-index: 100;
+}                           

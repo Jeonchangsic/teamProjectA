@@ -9,4 +9,5 @@ import team.projectA.vo.ReviewVO;
 
 public interface ReviewService {
 	int rvInsert(HashMap hm);
+	int rvUpdate(int reserv_idx);
 }

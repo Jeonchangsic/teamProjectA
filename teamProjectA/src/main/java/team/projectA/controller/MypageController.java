@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import team.projectA.service.MypageService;
@@ -72,12 +73,13 @@ public class MypageController {
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageMaker",pageMaker);
-		
 		//마이페이지 리뷰내역
 		int uidx = userVO.getUidx();
 		List<ReviewVO> reviewList = mypageService.reviewList(uidx);
 		
 		model.addAttribute("reviewList",reviewList);
+		
+		//마이페이지 
 		return "mypage/mypage";
 	}
 	
@@ -101,19 +103,22 @@ public class MypageController {
 	
 
 	//비밀번호 수정
+  @ResponseBody
   @RequestMapping(value="pwModify.do", method = RequestMethod.POST) 
-  public void pwModify(HttpSession session, UserVO vo, HttpServletRequest req, HttpServletResponse response) throws Exception{
+  public String pwModify(HttpSession session, String password, HttpServletRequest req, HttpServletResponse response) throws Exception{
 	  
-	  	int result = mypageService.changePw(vo); 
+	  
+	  UserVO userVO = (UserVO)session.getAttribute("login");
+	  
+	  System.out.println("password:"+password);
+	  HashMap<String,Object> hm = new HashMap<String,Object>();
+	  hm.put("password", password);
+	  hm.put("userID", userVO.getUserID());
+	  	int result = mypageService.changePw(hm); 
 	  	
-	  	if(result >0) {
-	  	response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.append("<script>alert('비밀번호 수정이 완료되었습니다. 변경된 비밀번호로 다시 로그인 해주세요.');location.href='"+req.getContextPath()+"/index/index.do'</script>"); 
-		out.flush();
-		out.close();
-		session.invalidate(); //로그아웃처리.
-	  	}
+	  	String num = Integer.toString(result);
+	  	
+	  	return num;
   }
   
   

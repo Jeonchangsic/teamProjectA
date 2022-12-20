@@ -10,7 +10,7 @@ import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 public interface MypageService {
-	int changePw(UserVO vo);
+	int changePw(HashMap hm);
 	List<ReservVO>reserv_list()throws Exception;
 	int reserv_count()throws Exception;
 	List<ReservVO> listPage(HashMap hm)throws Exception;

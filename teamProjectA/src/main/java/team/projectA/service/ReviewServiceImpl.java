@@ -25,6 +25,11 @@ public class ReviewServiceImpl implements ReviewService{
 		return reviewDAO.rvInsert(hm);
 	}
 
+	@Override
+	public int rvUpdate(int reserv_idx) {
+		return reviewDAO.rvUpdate(reserv_idx);
+	}
+
 	
 
 

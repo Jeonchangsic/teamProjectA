@@ -21,8 +21,8 @@ public class MypageServiceImpl implements MypageService{
 	private MypageDAO mypageDao;
 
 	@Override
-	public int changePw(UserVO vo) {
-		return mypageDao.changePw(vo);
+	public int changePw(HashMap hm) {
+		return mypageDao.changePw(hm);
 	}
 	@Override 
 	public List<ReservVO> reserv_list()throws Exception { 

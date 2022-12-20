@@ -20,5 +20,9 @@ public class ReviewDAO {
 		
 		return sqlsession.insert("team.projectA.mapper.ReviewMapper.rvInsert", hm);
 	}
+	public int rvUpdate(int reserv_idx) {
+		
+		return sqlsession.update("team.projectA.mapper.ReviewMapper.rvUpdate", reserv_idx);
+	}
 	
 }

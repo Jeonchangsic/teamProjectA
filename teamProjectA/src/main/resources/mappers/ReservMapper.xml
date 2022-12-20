@@ -5,7 +5,7 @@
 		
 		<insert id="reservInsert" parameterType="HashMap">
 			INSERT INTO reservtb
-				VALUES(reserv_seq.NEXTVAL,#{uidx},#{ridx},SYSDATE,SYSDATE,#{merchant_uid},SYSDATE)
+				VALUES(reserv_seq.NEXTVAL,#{uidx},#{ridx},SYSDATE,SYSDATE,#{merchant_uid},SYSDATE,'N')
 		</insert>
 		
 </mapper>

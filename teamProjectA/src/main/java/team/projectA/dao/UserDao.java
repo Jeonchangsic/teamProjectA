@@ -1,5 +1,6 @@
 package team.projectA.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,30 +14,38 @@ public class UserDao {
 	
 	@Autowired
 	private SqlSession sqlsession;
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int userInsert(UserVO vo) {
 		return sqlsession.insert("team.projectA.mapper.UserMapper.userInsert", vo);
 	}
-	//ÆÇ¸ÅÀÚ È¸¿ø°¡ÀÔ
+	//ï¿½Ç¸ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int sellerUserInsert(UserVO vo) {
 		return sqlsession.insert("team.projectA.mapper.UserMapper.sellerUserInsert", vo);
 	}
 	
-	//¾ÆÀÌµğ Áßº¹È®ÀÎ
+	//ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½È®ï¿½ï¿½
 	public int userForm(String userID) {
 		return sqlsession.selectOne("team.projectA.mapper.UserMapper.userForm", userID);
 	}
 	public UserVO login(UserVO vo) {
 		return sqlsession.selectOne("team.projectA.mapper.UserMapper.login",vo);
 	}
-	//È¸¿øÅ»Åğ
+	//È¸ï¿½ï¿½Å»ï¿½ï¿½
 	public int userDt(UserVO vo) {
 		return sqlsession.delete("team.projectA.mapper.UserMapper.userDt", vo);
 	}
-	//È¸¿ø¸®½ºÆ®
-		public List<UserVO> userList(UserVO vo){
-			return sqlsession.selectList("team.projectA.mapper.UserMapper.userlist",vo);
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+	public List<UserVO> userList(UserVO vo){
+		return sqlsession.selectList("team.projectA.mapper.UserMapper.userlist",vo);
 			
-		}
-	
+	}
+	//ì•„ì´ë”” ì¡´ì¬ ì—¬ë¶€ 
+	public int userSearch(String id){
+		return sqlsession.selectOne("team.projectA.mapper.UserMapper.userSearch",id);
+			
+	}
+	//ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
+	public int pwUpdate(HashMap hm){
+		return sqlsession.update("team.projectA.mapper.UserMapper.pwUpdate",hm);
+	}
 }

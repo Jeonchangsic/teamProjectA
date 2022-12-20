@@ -107,7 +107,7 @@ public class JoinController {
 		String toMail = email; //입력받은 메일값
 		String title = "저긴어때(주) 회원가입 인증 이메일 입니다."; //발신 시 사용되는 이메일 제목
 		String content = 								//발신 시 사용되는 이메일의 내용
-				"저긴어때(주)와 함께 하시게 되어 영광입니다." +
+				"저긴어때(주)와 함께 하시게 되었습니다!" +
 		        "<br><br>" + 
                 "인증 번호는 " + checkNum + "입니다." + 
                 "<br>" + 

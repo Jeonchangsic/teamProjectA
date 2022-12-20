@@ -304,7 +304,7 @@ main .email_no{
 	width:110px;
 	height:25px;
 }
-img{
+#main_logo{
 	width:150px;
 }
 #mail_check_button{
@@ -313,7 +313,25 @@ img{
      	font-weight:bold;
 		border:0px solid #000;
 		border-radius:2px;
-     }
+}
 #mail_check_button:hover{
 		color:white;
-     }
+}
+#loading{ 
+	display:none;
+	width: 100%;
+  	height: 100%;
+  	top: 0;
+  	left: 0;
+  	position: fixed;
+  	z-index: 99;
+  	text-align: center;
+	margin-left:0px;
+}         
+#loading > img {
+  	position: absolute;
+    top: 36.4%;
+    left: 49%;
+    width: 25px;
+    z-index: 100;
+}

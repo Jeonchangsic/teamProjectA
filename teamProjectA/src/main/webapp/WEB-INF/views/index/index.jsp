@@ -86,79 +86,98 @@
                                     <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_1.jpg" alt="숙소이미지">
                                     <div>
                                         <p class="lod_name">[슈퍼얼리버드] 앙드레 브라질리에</p>
-                                       
-                                        <p class="lod_price">
-                                            <span class="sale">50<i>%</i></span>
-                                            <span class="price">153,000<i>원</i></span>
-                                        </p>
-                                        <p class="promotion">
-                                            <span>시즌특가</span>
-                                        </p>
+                                       	<p class="lod_price">객실명</p>
+                                        <p class="promotion">가격</p>
                                     </div>
                                 </a>
                             </li>
-                            <li >
+                            <li class="border">
                                 <a href="<%=request.getContextPath() %>/lodging/lodgingView.do" class="lod">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_2.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_2.jpg" alt="숙소이미지">
+                                    <div>
+                                        <p class="lod_name">[슈퍼얼리버드] 앙드레 브라질리에</p>
+                                       	<p class="lod_price">객실명</p>
+                                        <p class="promotion">가격</p>
+                                    </div>
                                 </a>
                             </li>
                             <li class="border">
                                 <a href="<%=request.getContextPath() %>/lodging/lodgingView.do" class="lod">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_3.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_3.jpg" alt="숙소이미지">
+                                    <div>
+                                        <p class="lod_name">[슈퍼얼리버드] 앙드레 브라질리에</p>
+                                       	<p class="lod_price">객실명</p>
+                                        <p class="promotion">가격</p>
+                                    </div>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do" class="lod">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_4.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p></a>
                             </li>
                             <li class="border">
                                 <a href="<%=request.getContextPath() %>/lodging/lodgingView.do" class="lod">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_5.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_4.jpg" alt="숙소이미지">
+                                    <div>
+                                        <p class="lod_name">[슈퍼얼리버드] 앙드레 브라질리에</p>
+                                       	<p class="lod_price">객실명</p>
+                                        <p class="promotion">가격</p>
+                                    </div>
                                 </a>
                             </li>
-                            <li>
+                            <li class="border">
                                 <a href="<%=request.getContextPath() %>/lodging/lodgingView.do" class="lod">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_6.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_5.jpg" alt="숙소이미지">
+                                    <div>
+                                        <p class="lod_name">[슈퍼얼리버드] 앙드레 브라질리에</p>
+                                       	<p class="lod_price">객실명</p>
+                                        <p class="promotion">가격</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="border">
+                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do" class="lod">
+                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_6.jpg" alt="숙소이미지">
+                                    <div>
+                                        <p class="lod_name">[슈퍼얼리버드] 앙드레 브라질리에</p>
+                                       	<p class="lod_price">객실명</p>
+                                        <p class="promotion">가격</p>
+                                    </div>
                                 </a>
                             </li>
                         </ul>
-                        </div>
+                  	 </div>
+	                 <div class="swiper-slide">
+	                   <ul>
+	                       <li class="border">
+	                           <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
+	                               <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_1.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+	                           </a>
+	                       </li>
+	                       <li >
+	                           <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
+	                               <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_2.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+	                           </a>
+	                       </li>
+	                       <li class="border">
+	                           <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
+	                               <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_3.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+	                           </a>
+	                       </li>
+	                       <li >
+	                           <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
+	                               <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_4.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+	                           </a>
+	                       </li>
+	                       <li class="border">
+	                           <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
+	                               <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_5.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+	                           </a>
+	                       </li>
+	                       <li >
+	                           <a href="<%=request.getContextPath() %>/lodging/lodgingView.do"><img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_6.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
+	                           </a>
+	                       </li>
+	                   </ul>
+                     </div>
 
-                        <div class="swiper-slide">
-                        <ul>
-                            <li class="border">
-                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_1.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
-                                </a>
-                            </li>
-                            <li >
-                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_2.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
-                                </a>
-                            </li>
-                            <li class="border">
-                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_3.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
-                                </a>
-                            </li>
-                            <li >
-                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_4.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
-                                </a>
-                            </li>
-                            <li class="border">
-                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_5.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
-                                </a>
-                            </li>
-                            <li >
-                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do"><img src="<%=request.getContextPath() %>/resources/images/index_images/lodging_6.jpg" alt="숙소이미지"><p class="lod_name">숙소이름</p><p class="lod_price">숙소가격</p>
-                                </a>
-                            </li>
-                        </ul>
-                        </div>
-
-                        <div class="swiper-slide">
+                     <div class="swiper-slide">
                         <ul>
                             <li class="border">
                                 <a href="<%=request.getContextPath() %>/lodging/lodgingView.do">

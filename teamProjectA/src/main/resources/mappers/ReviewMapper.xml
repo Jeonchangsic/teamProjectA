@@ -6,7 +6,11 @@
 		INSERT INTO reviewtb
 		VALUES(review_seq.NEXTVAL,#{uidx},#{lidx},#{ridx},#{rvTitle},#{rvSatisfaction},#{rvContent},SYSDATE)
 	</insert> 
-	
+	<update id="rvUpdate" parameterType="int">
+		UPDATE reservtb 
+			SET reviewCheck = 'Y' 
+				WHERE reserv_idx = #{reserv_idx}
+	</update>
 </mapper>
 
 

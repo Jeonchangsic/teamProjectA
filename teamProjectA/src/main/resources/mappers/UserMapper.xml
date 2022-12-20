@@ -78,10 +78,25 @@
 				WHERE userID = #{userID}
 				AND userPassword = #{userPassword}
 		</delete>
+		
 		<!-- 회원리스트 -->
 		<select id="userlist" parameterType="userVO" resultType="userVO">
 			SELECT * FROM  AUSERTB 
 		</select>
-
 		
+		<!-- 비밀번호 찾기 -->
+		<update id="pwUpdate">
+			UPDATE AUSERTB 
+				SET userpassword = #{pw} 
+				WHERE userid = #{id}
+		</update>
+		
+		<!-- 아이디 존재 여부 --> 
+		<select id="userSearch" parameterType="String" resultType="int">
+			<![CDATA[
+			SELECT COUNT(userID) 
+				FROM ausertb 
+				WHERE userID = #{userID} 
+			]]>
+		</select>
 </mapper>

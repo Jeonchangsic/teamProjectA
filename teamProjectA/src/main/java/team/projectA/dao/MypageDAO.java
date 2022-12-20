@@ -19,8 +19,8 @@ public class MypageDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public int changePw(UserVO vo) {
-		return sqlsession.update("team.projectA.mapper.MypageMapper.changePw", vo);
+	public int changePw(HashMap hm) {
+		return sqlsession.update("team.projectA.mapper.MypageMapper.changePw", hm);
 	}
 	
 	  public List<ReservVO> reserv_list()throws Exception{ 

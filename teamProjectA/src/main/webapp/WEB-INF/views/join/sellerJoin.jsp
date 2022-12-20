@@ -49,6 +49,7 @@
 					$(".id_ok").css("display","none");
 					$(".id_no").css("display","none");
 					$(".id_no2").css("display","inline-block");
+					$("#id").val("");
 			}
 	    	
 	    });
@@ -82,7 +83,8 @@
 	    	});
 	    
 	    //비밀번호 확인 검사
-	    	function pwdForm(){
+	    	$(document).ready(function(){
+	    		$("#repwd").blur(function(){
 	    		var pwd = $("#pwd").val();
 		    	var repwd = $("#repwd").val();
 		    	
@@ -92,39 +94,11 @@
 		    	}else{
 		    		$(".pw_ok").css("display","none");
 		    		$(".pw_no").css("display","inline-block");
+		    		$("#repwd").val("");
 		    	}
-	    	}
+	    		});
+	    	});
 	    	
-	    	/* if(pwd.length > 7 && pwd.length < 21){			 //비밀번호의 길이가 일치하는 경우
-	    		$(".pw_ok").css("display","inline-block");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","none");
-	    	}else if(pwd.length < 8 && pwd.length > 20){	//비밀번호 길이가 일치하지 않는 경우
-	    		$(".pw_ok").css("display","none");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","inline-block");
-	    		$("#pwd").val("");
-	    	} */
-	    	
-	    	
-	    	
-	    	/* if(pwd == repwd && pwd.length > 0 && repwd.length > 0){ //비밀번호와 비밀번호 확인의 값이 일치하는 경우
-	    		$(".pw_ok").css("display","inline-block");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","none");	
-	    	}else if(pwd != repwd && pwd.length > 0 && repwd.length > 0){ //비밀번호와 비밀번호 확인의 값이 일치하지 않는 경우
-	    		$(".pw_ok").css("display","none");
-	    		$(".pw_no").css("display","inline-block");
-	    		$(".pw_no2").css("display","none");
-	    	}else if(pwd.length < 8 || pwd.length > 20){ //비밀번호의 값이 8보다 작거나 20보다 큰 경우 
-	    		$(".pw_ok").css("display","none");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","inline-block");	
-	    	}else{
-	    		$(".pw_ok").css("display","none");
-	    		$(".pw_no").css("display","none");
-	    		$(".pw_no2").css("display","none");
-	    	}; */
     </script>
     
     <!-- 이메일인증 스크립트 -->
@@ -133,7 +107,7 @@
     $(function(){
     	
     	$(".mail_check_button").click(function(){
-    		alert("인증번호 전송이 완료되었습니다.");
+    		$("#loading").css("display","inline-block");
     		var email = $(".mail_input").val(); //입력한 이메일 
     		var cehckBox = $(".mail_check_input"); //인증번호 입력란
     		var boxWrap = $(".mail_check_input_box"); //인증번호 입력영역
@@ -143,6 +117,8 @@
     			type:"GET",
     			url:"mailCheck?email="+ email,
     			success:function(data){
+		    		alert("인증번호 전송이 완료되었습니다.");
+    				$("#loading").css("display","none");
     				cehckBox.attr("disabled",false); // attr : cehckBox의 속성을 변경
     				boxWrap.attr("id","mail_check_input_box_true");
     				codetemp = data; //컨트롤러에서 받은 리턴값(난수)을 변수에 넣는다.
@@ -169,6 +145,9 @@
     
 </head>
 <body>
+	<div id="loading">
+		<img src="<%=request.getContextPath()%>/resources/images/index_images/loading.gif"/>
+	</div>
 	<div class="modal">
       <div class="modal_body">
       		저긴어때(주)에서 회원님의 개인정보에 접근합니다.<br>
@@ -182,7 +161,7 @@
     	
         <h2>
         	<a href="<%=request.getContextPath()%>/index/index.do">
-    			<img src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>  
+    			<img id="main_logo" src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>  
     		</a>  	
     	</h2>
     </header>
@@ -212,7 +191,7 @@
 	                <tr>
 	                    <td class="contentsArea">비밀번호확인</td>
 	                    <td class="inputArea">
-	                        <input type="password" id="repwd" class="inputArea" placeholder="비밀번호 확인" required oninput="pwdForm()">
+	                        <input type="password" id="repwd" class="inputArea" placeholder="비밀번호 확인" required>
 	                       <span class="pw_ok">비밀번호가 일치합니다.</span>
 	                        <span class="pw_no">비밀번호 불일치!</span>
 	                    </td>

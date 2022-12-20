@@ -37,7 +37,7 @@
 
     <main>
         <div id="contentsArea">
-            <form name="frm" action="<%=request.getContextPath() %>/review/review.do?lidx=${lidx}&ridx=${ridx}" method="POST">
+            <form name="frm" action="<%=request.getContextPath() %>/review/review.do?lidx=${lidx}&ridx=${ridx}&reserv_idx=${reserv_idx}" method="POST">
                 <table id="table1">
                 	<tr>
                 		<td class="td_vertical-align"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/> </td>
@@ -55,16 +55,16 @@
                         <td class="margin2">만족도</td>
                         <td class="satisfactionStyle">
                         	<select id="selectStyle" name="rvSatisfaction" required>
-                        		<option value="10점">10점</option>
-                        		<option value="20점">20점</option>
-                        		<option value="30점">30점</option>
-                        		<option value="40점">40점</option>
-                        		<option value="50점">50점</option>
-                        		<option value="60점">60점</option>
-                        		<option value="70점">70점</option>
-                        		<option value="80점">80점</option>
-                        		<option value="90점">90점</option>
-                        		<option value="100점">100점</option>
+                        		<option value="1.0점">1.0점</option>
+                        		<option value="2.0점">2.0점</option>
+                        		<option value="3.0점">3.0점</option>
+                        		<option value="4.0점">4.0점</option>
+                        		<option value="5.0점">5.0점</option>
+                        		<option value="6.0점">6.0점</option>
+                        		<option value="7.0점">7.0점</option>
+                        		<option value="8.0점">8.0점</option>
+                        		<option value="9.0점">9.0점</option>
+                        		<option value="10.0점">10.0점</option>
                         	</select>
                         </td>
                     </tr>
