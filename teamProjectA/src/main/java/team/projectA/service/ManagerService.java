@@ -19,5 +19,5 @@ public interface ManagerService {
 	public int requestN(int uidx);
 	public List<ReservVO> reservlist(ReservVO vo1);
 	public List<QnaVO> managerqnalist();
-	public int qnaReply(QnaVO qv);
+	public int qnaReply(HashMap hm);
 }

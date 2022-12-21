@@ -68,9 +68,9 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public int qnaReply(QnaVO qv) {
+	public int qnaReply(HashMap hm) {
 		
-		return managerDAO.qnaReply(qv);
+		return managerDAO.qnaReply(hm);
 	}
 	
 	

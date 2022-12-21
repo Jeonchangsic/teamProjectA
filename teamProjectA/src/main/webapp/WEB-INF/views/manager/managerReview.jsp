@@ -49,8 +49,8 @@
                 <thead>
                     <tr style="text-align:center;">
                         <th>ID</th>           
-                        <th>작성자/작성일</th>
                         <th>제목</th>
+                        <th>작성자/작성일</th>
                         <th>상세관리</th>
                     </tr>
                 </thead>
@@ -93,11 +93,6 @@
                     </tr>
                 </tbody>
             </table>
-            <ul>
-                <li>
-                    <a href="">1</a>
-                </li>
-            </ul>
         </main>
         <footer>
 

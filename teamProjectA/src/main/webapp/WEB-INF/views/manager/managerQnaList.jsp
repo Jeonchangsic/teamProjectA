@@ -4,7 +4,7 @@
  <%@ page import="team.projectA.vo.*" %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- 
+ <% QnaVO qnaOne = (QnaVO)request.getAttribute("qnaOne"); %>
 <% 
 
 List<UserVO> list = (List<UserVO>)request.getAttribute("list");
@@ -21,6 +21,7 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerQnaList.css">
 <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
+
 </head>
 
 <body style="overflow-x: hidden">
@@ -51,13 +52,14 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
             <tbody>
                 <tr>
                     <td>
-                        <select class="frm_select">
-                            <option value="nickname">일반회원</option>
-                            <option value="nickname">업체회원</option>
+                        <select class="frm_select" name="searchType">
+                            <option value="title">제목</option>
+                            <option value="writer">작성자</option>
+                            <option value="Acheck">답변여부</option>
                         </select>
                     </td>
                     <td>
-                        <input type="text" name="keyword" size="30">
+                        <input type="text" name="searchName" size="30">
                     </td>
                     <td>
                         <button class="btn" type="submit" name="submit">검색</button>
@@ -72,15 +74,23 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
                     <th>작성자</th>
                     <th>작성일</th>
                     <th>답변여부</th>
+                    <th>비고</th>
                 </tr>
             </thead>
             <tbody>
 			<%for(QnaVO vo2 : list2) {%>
 				<tr style="text-align:center;">
-					<td><a href="managerQna.do?QnA_idx=<%=vo2.getQna_idx()%>"><%=vo2.getQna_Qtitle()%></a></td>
+					<td><a href="managerQna.do?qna_idx=<%=vo2.getQna_idx()%>"><%=vo2.getQna_Qtitle()%></a></td>
 					<td><%=vo2.getUserName()%></td>
 					<td><%=vo2.getQna_Qdate() %></td>
 					<td><%=vo2.getQna_Acheck() %></td>
+					<td>
+					<% if (vo2.getQna_Acheck().equals("답변처리중")) { %>
+						<button type="button" onclick="location.href='managerQnaView.do?qna_idx=<%=vo2.getQna_idx()%>'">답변등록</button>
+					<% } else { %>
+						<button type="button" onclick="alert('이미 답변을 작성하였습니다.')">답변완료</button>
+					<% } %>
+					</td>
 				</tr>
 			<%} %>
             </tbody>
@@ -91,5 +101,8 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
 
     </footer>
 </body>
-
+<script>
+$("td:contains('답변처리중')").css({color:"red"});
+$("td:contains('답변완료')").css({color:"blue"});
+</script>
 </html>

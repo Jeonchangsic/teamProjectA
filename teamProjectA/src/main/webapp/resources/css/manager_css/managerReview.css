@@ -52,7 +52,9 @@ img,iframe{vertical-align:top;}
               .btn{width:58px;
                   height:38px;
                   border-radius: 10px;
-                  border:1px solid grey;}
+                  border:1px solid grey;
+                  color:white;
+                background-color:#555;}
               hr{width:1020px;
                   margin:16px 0px;
                   opacity: .25;}
