@@ -4,17 +4,17 @@ public class LodginginVO {
 	
 	private int lodgingin_idx;
 	private int lidx;
-	private String FITNESS;
-	private String SAUNA;
-	private String RESTAURANT;
-	private String LOUNGE;
-	private String BBQ;
-	private String PUBLICSPA;
-	private String SEMINAR;
-	private String SINGING;
-	private String WASHINGMACHINE;
-	private String DEHYDRATOR;
-	private String COOKING;
+	private String fitness;
+	private String sauna;
+	private String restaurant;
+	private String lounge;
+	private String bbq;
+	private String publicspa;
+	private String seminar;
+	private String singing;
+	private String washingmachine;
+	private String dehydrator;
+	private String cooking;
 	private String spa;
 	private String pool;
 	private String golf;
@@ -53,71 +53,71 @@ public class LodginginVO {
 	public void setLidx(int lidx) {
 		this.lidx = lidx;
 	}
-	public String getFITNESS() {
-		return FITNESS;
+	public String getFitness() {
+		return fitness;
 	}
-	public void setFITNESS(String fITNESS) {
-		FITNESS = fITNESS;
+	public void setFitness(String fitness) {
+		this.fitness = fitness;
 	}
-	public String getSAUNA() {
-		return SAUNA;
+	public String getSauna() {
+		return sauna;
 	}
-	public void setSAUNA(String sAUNA) {
-		SAUNA = sAUNA;
+	public void setSauna(String sauna) {
+		this.sauna = sauna;
 	}
-	public String getRESTAURANT() {
-		return RESTAURANT;
+	public String getRestaurant() {
+		return restaurant;
 	}
-	public void setRESTAURANT(String rESTAURANT) {
-		RESTAURANT = rESTAURANT;
+	public void setRestaurant(String restaurant) {
+		this.restaurant = restaurant;
 	}
-	public String getLOUNGE() {
-		return LOUNGE;
+	public String getLounge() {
+		return lounge;
 	}
-	public void setLOUNGE(String lOUNGE) {
-		LOUNGE = lOUNGE;
+	public void setLounge(String lounge) {
+		this.lounge = lounge;
 	}
-	public String getBBQ() {
-		return BBQ;
+	public String getBbq() {
+		return bbq;
 	}
-	public void setBBQ(String bBQ) {
-		BBQ = bBQ;
+	public void setBbq(String bbq) {
+		this.bbq = bbq;
 	}
-	public String getPUBLICSPA() {
-		return PUBLICSPA;
+	public String getPublicspa() {
+		return publicspa;
 	}
-	public void setPUBLICSPA(String pUBLICSPA) {
-		PUBLICSPA = pUBLICSPA;
+	public void setPublicspa(String publicspa) {
+		this.publicspa = publicspa;
 	}
-	public String getSEMINAR() {
-		return SEMINAR;
+	public String getSeminar() {
+		return seminar;
 	}
-	public void setSEMINAR(String sEMINAR) {
-		SEMINAR = sEMINAR;
+	public void setSeminar(String seminar) {
+		this.seminar = seminar;
 	}
-	public String getSINGING() {
-		return SINGING;
+	public String getSinging() {
+		return singing;
 	}
-	public void setSINGING(String sINGING) {
-		SINGING = sINGING;
+	public void setSinging(String singing) {
+		this.singing = singing;
 	}
-	public String getWASHINGMACHINE() {
-		return WASHINGMACHINE;
+	public String getWashingmachine() {
+		return washingmachine;
 	}
-	public void setWASHINGMACHINE(String wASHINGMACHINE) {
-		WASHINGMACHINE = wASHINGMACHINE;
+	public void setWashingmachine(String washingmachine) {
+		this.washingmachine = washingmachine;
 	}
-	public String getDEHYDRATOR() {
-		return DEHYDRATOR;
+	public String getDehydrator() {
+		return dehydrator;
 	}
-	public void setDEHYDRATOR(String dEHYDRATOR) {
-		DEHYDRATOR = dEHYDRATOR;
+	public void setDehydrator(String dehydrator) {
+		this.dehydrator = dehydrator;
 	}
-	public String getCOOKING() {
-		return COOKING;
+	public String getCooking() {
+		return cooking;
 	}
-	public void setCOOKING(String cOOKING) {
-		COOKING = cOOKING;
+	public void setCooking(String cooking) {
+		this.cooking = cooking;
 	}
 	public String getSpa() {
 		return spa;

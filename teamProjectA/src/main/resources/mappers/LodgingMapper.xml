@@ -32,17 +32,86 @@
 			</otherwise>
 		</choose>
 	</select>-->
-	
+	<resultMap type="HashMap" id="lodgingList">
+		<id column="lidx" property="lidx" />
+		<id column="lodgingkind" property="lodgingkind" />
+		<id column="lodgingname" property="lodgingname" />
+		<id column="lodgingaddr" property="lodgingaddr" />
+		<id column="satis" property="satis" />
+		<id column="reviewnum"	property="reviewnum" />
+		<id column="local" property="local" />
+		<id column="limagename" property="limagename" />
+		<id column="intro" property="intro" />
+		<id column="ridx" property="ridx" />
+		<id column="rnum" property="rnum" />
+		<id column="rprice" property="rprice" />
+		<id column="bed" property="bed" />
+		<id column="stdmen" property="stdmen" />
+		<id column="maxmen" property="maxmen" />
+		<id column="roomspa" property="roomspa" />
+		<id column="wifi" property="wifi" />
+		<id column="tv" property="tv" />
+		<id column="refri" property="refri" />
+		<id column="bath" property="bath" />
+		<id column="iron" property="iron" />
+		<id column="minibar" property="minibar" />
+		<id column="bathitem" property="bathitem" />
+		<id column="aircon" property="aircon" />
+		<id column="shower" property="shower" />
+		<id column="dryer" property="dryer" />
+		<id column="ricecooker" property="ricecooker" />
+		<id column="FITNESS" property="FITNESS" />
+		<id column="SAUNA" property="SAUNA" />
+		<id column="RESTAURANT"	property="RESTAURANT" />
+		<id column="LOUNGE" property="LOUNGE" />
+		<id column="BBQ" property="BBQ" />
+		<id column="PUBLICSPA" property="PUBLICSPA" />
+		<id column="SEMINAR" property="SEMINAR" />
+		<id column="SINGING" property="SINGING" />
+		<id column="WASHINGMACHINE" property="WASHINGMACHINE" />
+		<id column="DEHYDRATOR" property="DEHYDRATOR" />
+		<id column="COOKING" property="COOKING" />
+		<id column="spa" property="spa" />
+		<id column="pool" property="pool" />
+		<id column="golf" property="golf" />
+		<id column="elevator" property="elevator" />
+		<id column="pc" property="pc" />
+		<id column="cafe" property="cafe" />
+		<id column="footvolleyball" property="footvolleyball" />
+		<id column="store" property="store" />
+		<id column="dining" property="dining" />
+		<id column="dryer" property="dryer" />
+		<id column="parking" property="parking" />
+		<id column="publicshower" property="publicshower" />
+		<id column="ski" property="ski" />
+		<id column="pickup" property="pickup" />
+		<id column="printer" property="printer" />
+		<id column="locker" property="locker" />
+		<id column="breakfast" property="breakfast" />
+		<id column="valetparking" property="valetparking" />
+		<id column="dog" property="dog" />
+		<id column="inroomcooking" property="inroomcooking" />
+		<id column="keepluggage" property="keepluggage" />
+		<id column="freeparking" property="freeparking" />
+		<id column="inroomsmoking" property="inroomsmoking" />
+		<id column="nosmoking" property="nosmoking" />
+		<id column="creditcard" property="creditcard" />
+	</resultMap> 
 	<!-- 숙소리스트 -->
-	<select id="selectLodgingList" parameterType="HashMap" resultType="roomVO">
-		SELECT *
- 		  FROM lodgingtb lg, roomtb r
- 		 WHERE lg.lidx = r.lidx
-  		   AND ridx IN (SELECT MIN(a.ridx)
+	<select id="selectLodgingList" parameterType="HashMap" resultMap="lodgingList">
+		SELECT l.limagename
+			 , l.lodgingname
+			 , l.lodgingaddr
+			 , l.satis
+			 , r.rnum
+			 , r.rprice
+ 		  FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
+ 		 WHERE l.lidx = r.lidx
+  		   AND r.ridx IN (SELECT MIN(a.ridx)
 						 FROM (SELECT r.*
-								 FROM lodgingtb lg, roomtb r
-								WHERE lg.lidx = r.lidx
-								  AND lg.lodgingkind = #{lodgingkind}
+								 FROM lodgingtb l, roomtb r
+								WHERE l.lidx = r.lidx
+								  AND l.lodgingkind = #{lodgingkind}
 								  AND r.rnum > 0
 							 order BY r.ridx	   
 							  ) a
@@ -207,13 +276,177 @@
 			<otherwise>
 			</otherwise>
 		</choose>
+		<trim prefix="AND" prefixOverrides="OR">
+			<if test="bed == 'single_bed'">
+				OR bed = 'single_bed'
+			</if>
+			<if test="bed == 'double_bed'">
+				OR bed = 'double_bed'
+			</if>
+			<if test="bed == 'twin_bed'">
+				OR bed = 'twin_bed'
+			</if>
+			<if test="bed == 'ondol_bed'">
+				OR bed = 'ondol_bed'
+			</if>
+			<if test="FITNESS == 'on'">
+				OR FITNESS = 'Y'
+			</if>
+			<if test="SAUNA == 'on'">
+				OR SAUNA = 'Y'
+			</if>
+			<if test="RESTAURANT == 'on'">
+				OR RESTAURANT = 'Y'
+			</if>
+			<if test="LOUNGE == 'on'">
+				OR LOUNGE = 'Y'
+			</if>
+			<if test="BBQ == 'on'">
+				OR BBQ = 'Y'
+			</if>
+			<if test="PUBLICSPA == 'on'">
+				OR PUBLICSPA = 'Y'
+			</if>
+			<if test="SEMINAR == 'on'">
+				OR SEMINAR = 'Y'
+			</if>
+			<if test="SINGING == 'on'">
+				OR SINGING = 'Y'
+			</if>
+			<if test="WASHINGMACHINE == 'on'">
+				OR WASHINGMACHINE = 'Y'
+			</if>
+			<if test="DEHYDRATOR == 'on'">
+				OR DEHYDRATOR = 'Y'
+			</if>
+			<if test="COOKING == 'on'">
+				OR COOKING = 'Y'
+			</if>
+			<if test="spa == 'on'">
+				OR spa = 'Y'
+			</if>
+			<if test="pool == 'on'">
+				OR pool = 'Y'
+			</if>
+			<if test="golf == 'on'">
+				OR golf = 'Y'
+			</if>
+			<if test="elevator == 'on'">
+				OR elevator = 'Y'
+			</if>
+			<if test="pc == 'on'">
+				OR pc = 'Y'
+			</if>
+			<if test="cafe == 'on'">
+				OR cafe = 'Y'
+			</if>
+			<if test="footvolleyball == 'on'">
+				OR footvolleyball = 'Y'
+			</if>
+			<if test="store == 'on'">
+				OR store = 'Y'
+			</if>
+			<if test="dining == 'on'">
+				OR dining = 'Y'
+			</if>
+			<if test="dryer == 'on'">
+				OR dryer = 'Y'
+			</if>
+			<if test="parking == 'on'">
+				OR parking = 'Y'
+			</if>
+			<if test="publicshower == 'on'">
+				OR publicshower = 'Y'
+			</if>
+			<if test="ski == 'on'">
+				OR ski = 'Y'
+			</if>
+			<if test="roomspa == 'on'">
+				OR roomspa = 'Y'
+			</if>
+			<if test="wifi == 'on'">
+				OR wifi = 'Y'
+			</if>
+			<if test="tv == 'on'">
+				OR tv = 'Y'
+			</if>
+			<if test="refri == 'on'">
+				OR refri = 'Y'
+			</if>
+			<if test="bath == 'on'">
+				OR bath = 'Y'
+			</if>
+			<if test="iron == 'on'">
+				OR iron = 'Y'
+			</if>
+			<if test="minibar == 'on'">
+				OR minibar = 'Y'
+			</if>
+			<if test="bathitem == 'on'">
+				OR bathitem = 'Y'
+			</if>
+			<if test="aircon == 'on'">
+				OR aircon = 'Y'
+			</if>
+			<if test="shower == 'on'">
+				OR shower = 'Y'
+			</if>
+			<if test="dryer == 'on'">
+				OR dryer = 'Y'
+			</if>
+			<if test="ricecooker == 'on'">
+				OR ricecooker = 'Y'
+			</if>
+			<if test="pickup == 'on'">
+				OR pickup = 'Y'
+			</if>
+			<if test="printer == 'on'">
+				OR printer = 'Y'
+			</if>
+			<if test="locker == 'on'"
+				>OR locker = 'Y'
+			</if>
+			<if test="breakfast == 'on'">
+				OR breakfast = 'Y'
+			</if>
+			<if test="valetparking == 'on'">
+				OR valetparking = 'Y'
+			</if>
+			<if test="dog == 'on'">
+				OR dog = 'Y'
+			</if>
+			<if test="inroomcooking == 'on'">
+				OR inroomcooking = 'Y'
+			</if>
+			<if test="keepluggage == 'on'">
+				OR keepluggage = 'Y'
+			</if>
+			<if test="freeparking == 'on'">
+				OR freeparking = 'Y'
+			</if>
+			<if test="inroomsmoking == 'on'">
+				OR inroomsmoking = 'Y'
+			</if>
+			<if test="nosmoking == 'on'">
+				OR creditcard = 'Y'
+			</if>
+		</trim>
 		<choose>
+			<when test ="type == 1">
+				order by lidx desc
+			</when>
 			<when test ="type == 2">
 				order by rprice
 			</when>
 			<when test ="type == 3">
 				order by rprice desc
-			</when>	
+			</when>
+			<when test ="type == 4">
+				order by satis desc
+			</when>
+			<when test ="type == 5">
+				order by reviewnum desc
+			</when>
 		</choose>
 	</select>
 	
@@ -339,7 +572,8 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		<id column="keepluggage" property="keepluggage" />
 		<id column="freeparking" property="freeparking" />
 		<id column="inroomsmoking" property="inroomsmoking" />
-		<id column="nosmoking" property="creditcard" />
+		<id column="nosmoking" property="nosmoking" />
+		<id column="creditcard" property="creditcard" />
 		<id column="area1" property="area1" />
 		<id column="area2" property="area2" />
 		<id column="area2" property="area2" />
@@ -386,6 +620,14 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		 WHERE r.lidx = l.lidx
 		  AND l.uidx = u.uidx 
 		  AND r.ridx = #{ridx}
+	</select>
+	<select id="selectReview" parameterType="int" resultType="reviewVO">
+		SELECT rvtitle
+			 , rvcontent
+			 , rvsatisfaction
+			 , rvdate
+		  FROM reviewtb
+		 WHERE lidx = #{lidx}
 	</select>
 	
 </mapper>

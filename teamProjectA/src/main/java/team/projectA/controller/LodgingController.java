@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import team.projectA.service.LodgingService;
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.LodginginVO;
 import team.projectA.vo.PageMaker;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
 import team.projectA.vo.SearchCriteria;
@@ -40,50 +43,62 @@ public class LodgingController {
 	private LodgingService lodgingService;
 	
 	@RequestMapping(value = "/lodgingList_gh.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_gh(Model model, String type, String area) {
+	public String list_gh(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
 		
 /*		 List<LodgingVO> list1= lodgingService.selectList1("GH");		 
 		 List<RoomVO> list2= lodgingService.selectList2(gubun);		 
 		 model.addAttribute("list1",list1); 
 		 model.addAttribute("list2",list2);
 */
-		 List<RoomVO> list = lodgingService.selectLodgingList("GH", type, area);
+		 List<Map<String,Object>> list = lodgingService.selectLodgingList("GH", type, area, rvo, linvo, rinvo);
 		 model.addAttribute("list",list);
 		 model.addAttribute("type", type);
 		 model.addAttribute("area", area);
+		 model.addAttribute("rvo", rvo);
+		model.addAttribute("linvo", linvo);
+		model.addAttribute("rinvo", rinvo);
 		 
 		return "lodging/lodgingList_gh"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
 	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_hotel(Model model, String type, String area) {
-
-		List<RoomVO> list = lodgingService.selectLodgingList("호텔", type, area);
+	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
+		
+		List<Map<String,Object>> list = lodgingService.selectLodgingList("호텔", type, area, rvo, linvo, rinvo);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
+		model.addAttribute("rvo", rvo);
+		model.addAttribute("linvo", linvo);
+		model.addAttribute("rinvo", rinvo);
 		
 		return "lodging/lodgingList_hotel"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
 	@RequestMapping(value = "/lodgingList_motel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_motel(Model model, String type, String area) {
+	public String list_motel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
 
-		List<RoomVO> list = lodgingService.selectLodgingList("모텔", type, area);
+		List<Map<String,Object>> list = lodgingService.selectLodgingList("모텔", type, area, rvo, linvo, rinvo);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
+		model.addAttribute("rvo", rvo);
+		model.addAttribute("linvo", linvo);
+		model.addAttribute("rinvo", rinvo);
 		
 		return "lodging/lodgingList_motel"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
 	@RequestMapping(value = "/lodgingList_villa.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_villa(Model model, String type, String area) {
+	public String list_villa(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
 
-		List<RoomVO> list = lodgingService.selectLodgingList("펜션/풀빌라", type, area);
+		List<Map<String,Object>> list = lodgingService.selectLodgingList("펜션/풀빌라", type, area, rvo, linvo, rinvo);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
+		model.addAttribute("rvo", rvo);
+		model.addAttribute("linvo", linvo);
+		model.addAttribute("rinvo", rinvo);
 		
 		return "lodging/lodgingList_villa"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
@@ -119,28 +134,31 @@ public class LodgingController {
 		return "lodging/lodgingList_search"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
-	@RequestMapping(value = "/lodgingList_filter.do", method = RequestMethod.POST)
-	public void list_filter(Model model, HttpServletRequest req) throws Exception {
-		
-		String[] arr = req.getParameterValues("roomin");
-		model.addAttribute("arr", arr);
-		
-	}
+//	@RequestMapping(value = "/lodgingList_filter.do", method = RequestMethod.POST)
+//	public void list_filter(Model model, HttpServletRequest req) throws Exception {
+//		
+//		String[] arr = req.getParameterValues("roomin");
+//		model.addAttribute("arr", arr);
+//		
+//	}
 	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
 	public String lodgingView(int lidx, Model model, HttpServletRequest req) {
 			
-		LodgingVO vo = lodgingService.selectLodging(lidx);
+		Map<String,Object> map = lodgingService.selectLodging(lidx);
 		
 		List<RoominVO> list = lodgingService.selectRoomList(lidx);
-		System.out.println(lodgingService.selectRoomList(lidx));
 		
-		model.addAttribute("vo", vo);
+		List<ReviewVO> list2 = lodgingService.selectReview(lidx);
+		
+		model.addAttribute("map", map);
 		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
 		
+		//세션에 담기
 		HttpSession session = req.getSession();
 		
-		LodgingVO lodging = lodgingService.selectLodging(lidx);
+		Map<String,Object> lodging = lodgingService.selectLodging(lidx);
 		
 		session.setAttribute("lodging", lodging);
 		

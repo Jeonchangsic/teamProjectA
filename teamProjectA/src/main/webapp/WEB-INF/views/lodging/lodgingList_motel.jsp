@@ -473,7 +473,8 @@
 						<ul class="btnsBox">
 							<li class="btnbox" onclick="change_btn(event,'single_bed')">
 								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/single_bed.jpg" alt="single_bed">
-								<p>싱글</p>
+								<label for="single_bed"><p>싱글</p></label>
+								<input type="checkbox" name="bed" id="single_bed">
 							</li>
 							<li class="btnbox" onclick="change_btn(event,'double_bed')">
 								<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed.jpg" alt="double_bed">
@@ -607,7 +608,7 @@
 										</ul>
 									</div>
 									<div class="img_right">
-										<div>남은 객실 ${vo.rnum}개</div>
+										<div><c:if test="${vo.rnum < 6}">남은 객실 ${vo.rnum}개</c:if></div>
 										<div>
 											<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.rprice}" />
 											원

@@ -606,7 +606,7 @@
 										</ul>
 									</div>
 									<div class="img_right">
-										<div>남은 객실 ${vo.rnum}개</div>
+										<div><c:if test="${vo.rnum < 6}">남은 객실 ${vo.rnum}개</c:if></div>
 										<div>
 											<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.rprice}" />
 											원

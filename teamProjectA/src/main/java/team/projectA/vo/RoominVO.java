@@ -4,7 +4,7 @@ public class RoominVO extends RoomVO {
 	
 	private int roomin_idx;
 	private int ridx;
-	private String spa;
+	private String roomspa;
 	private String wifi;
 	private String tv;
 	private String refri;
@@ -36,11 +36,11 @@ public class RoominVO extends RoomVO {
 	public void setRidx(int ridx) {
 		this.ridx = ridx;
 	}
-	public String getSpa() {
-		return spa;
+	public String getRoomspa() {
+		return roomspa;
 	}
-	public void setSpa(String spa) {
-		this.spa = spa;
+	public void setRoomspa(String roomspa) {
+		this.roomspa = roomspa;
 	}
 	public String getWifi() {
 		return wifi;

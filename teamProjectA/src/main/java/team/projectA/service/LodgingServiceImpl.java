@@ -2,12 +2,15 @@ package team.projectA.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.projectA.dao.LodgingDAO;
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.LodginginVO;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
 import team.projectA.vo.SearchCriteria;
@@ -29,8 +32,8 @@ public class LodgingServiceImpl implements LodgingService {
 	}
 */
 	@Override
-	public List<RoomVO> selectLodgingList(String lodgingkind, String type, String area) {
-		return lodgingDAO.selectLodgingList(lodgingkind, type, area);
+	public List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
+		return lodgingDAO.selectLodgingList(lodgingkind, type, area, rvo, linvo, rinvo);
 	}
 
 	@Override
@@ -39,7 +42,7 @@ public class LodgingServiceImpl implements LodgingService {
 	}
 	
 	@Override
-	public LodgingVO selectLodging(int lidx) {
+	public Map<String,Object> selectLodging(int lidx) {
 		return lodgingDAO.selectLodging(lidx);
 	}
 	@Override
@@ -60,6 +63,11 @@ public class LodgingServiceImpl implements LodgingService {
 	@Override
 	public int countSearch(SearchCriteria scri) throws Exception {
 		return lodgingDAO.countSearch(scri);
+	}
+
+	@Override
+	public List<ReviewVO> selectReview(int lidx) {
+		return lodgingDAO.selectReview(lidx);
 	}
 
 

@@ -2,12 +2,15 @@ package team.projectA.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.LodginginVO;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
 import team.projectA.vo.SearchCriteria;
@@ -26,12 +29,61 @@ public class LodgingDAO {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectList2", gubun);
 	}
 */	
-	public List<RoomVO> selectLodgingList(String lodgingkind, String type, String area){
+	public List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo){
 		
-		HashMap<String, String> hm = new HashMap<String, String>();
+		HashMap<String, Object> hm = new HashMap<String, Object>();
 		hm.put("lodgingkind",lodgingkind);
 		hm.put("type", type);		
-		hm.put("area", area);		
+		hm.put("area", area);
+		hm.put("bed", rvo.getBed());
+		hm.put("roomspa", rinvo.getRoomspa());
+		hm.put("wifi", rinvo.getWifi());
+		hm.put("tv", rinvo.getTv());
+		hm.put("refri", rinvo.getRefri());
+		hm.put("bath", rinvo.getBath());
+		hm.put("iron", rinvo.getIron());
+		hm.put("minibar", rinvo.getMinibar());
+		hm.put("bathitem", rinvo.getBathitem());
+		hm.put("aircon", rinvo.getAircon());
+		hm.put("shower", rinvo.getShower());
+		hm.put("dryer", rinvo.getDryer());
+		hm.put("ricecooker", rinvo.getRicecooker());
+		hm.put("fitness", linvo.getFitness());
+		hm.put("sauna", linvo.getSauna());
+		hm.put("restaurant", linvo.getRestaurant());
+		hm.put("lounge", linvo.getLounge());
+		hm.put("bbq", linvo.getBbq());
+		hm.put("publicspa", linvo.getPublicspa());
+		hm.put("seminar", linvo.getSeminar());
+		hm.put("singing", linvo.getSinging());
+		hm.put("washingmachine", linvo.getWashingmachine());
+		hm.put("dehydrator", linvo.getDehydrator());
+		hm.put("cooking", linvo.getCooking());
+		hm.put("spa", linvo.getSpa());
+		hm.put("pool", linvo.getPool());
+		hm.put("golf", linvo.getGolf());
+		hm.put("elevator", linvo.getElevator());
+		hm.put("pc", linvo.getPc());
+		hm.put("cafe", linvo.getCafe());
+		hm.put("footvolleyball", linvo.getFootvolleyball());
+		hm.put("store", linvo.getStore());
+		hm.put("dining", linvo.getDining());
+		hm.put("dryer", linvo.getDryer());
+		hm.put("parking", linvo.getParking());
+		hm.put("publicshower", linvo.getPublicshower());
+		hm.put("ski", linvo.getSki());
+		hm.put("pickup", linvo.getPickup());
+		hm.put("printer", linvo.getPrinter());
+		hm.put("locker", linvo.getLocker());
+		hm.put("breakfast", linvo.getBreakfast());
+		hm.put("valetparking", linvo.getValetparking());
+		hm.put("dog", linvo.getDog());
+		hm.put("inroomcooking", linvo.getInroomcooking());
+		hm.put("keepluggage", linvo.getKeepluggage());
+		hm.put("freeparking", linvo.getFreeparking());
+		hm.put("inroomsmoking", linvo.getInroomsmoking());
+		hm.put("nosmoking", linvo.getNosmoking());
+		hm.put("creditcard", linvo.getCreditcard());
 		
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectLodgingList",hm);
 	}
@@ -40,7 +92,7 @@ public class LodgingDAO {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectListSearch",type);
 	}
 	
-	public LodgingVO selectLodging(int lidx) {
+	public Map<String,Object> selectLodging(int lidx) {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectLodging",lidx);
 	}
 	
@@ -52,6 +104,9 @@ public class LodgingDAO {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectRoom", ridx);
 	}
 	
+	public List<ReviewVO> selectReview(int lidx) {
+		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectReview", lidx);
+	}
 	
 	public List<RoomVO> listSearch(HashMap hm)throws Exception{
 		

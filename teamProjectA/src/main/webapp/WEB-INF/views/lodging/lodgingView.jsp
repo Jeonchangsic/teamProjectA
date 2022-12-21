@@ -3,10 +3,10 @@
 <%@ page import="java.util.*" %>
 <%@ page import="team.projectA.vo.*" %>
 <%
-	LodgingVO vo = (LodgingVO)request.getAttribute("vo");
+	Map<String,Object> map = (Map<String,Object>)request.getAttribute("map");
 	List<RoomVO> list = (List<RoomVO>)request.getAttribute("list");
 	//숙소 슬라이더에 객실 이미지 삽입하기 (for문 및 배열 사용) //for문으로 모든 이미지 담기
-	String total_img = vo.getLimagename(); 
+	String total_img = (String)map.get("limagename"); 
 	for(int i=0; i<list.size(); i++){
 		String imgss = list.get(i).getRimage1()+","
 						+list.get(i).getRimage2()+","
@@ -152,12 +152,12 @@
             </div><!--//lodging_slider-->
             <div class="right">
                 <div class="lodging_info">
-                    <h2><%=vo.getLodgingname() %></h2>
-                    <p class="lodging_address"><%=vo.getLodgingaddr() %></p>
+                    <h2><%=map.get("lodgingname") %></h2>
+                    <p class="lodging_address"><%=map.get("lodgingaddr") %></p>
                 </div><!--//lodging_info-->
                 <div class="lodging_intro">
                     <h4>숙소 소개</h4>
-                    <p><%=vo.getIntro() %></p>
+                    <p><%=map.get("intro") %></p>
                 </div>
             </div><!--//right-->
         </section><!--//lodging_view-->
@@ -293,33 +293,33 @@
             <section class="basic_info info_detail">
                 <h4>주변 정보</h4>
                     <ul>
-                        <li>${vo.area1}</li>
-                        <li>${vo.area2}</li>
-                        <li>${vo.area3}</li>
-                        <li>${vo.area4}</li>
-                        <li>${vo.area5}</li>
+                        <li>${map.area1}</li>
+                        <li>${map.area2}</li>
+                        <li>${map.area3}</li>
+                        <li>${map.area4}</li>
+                        <li>${map.area5}</li>
                     </ul>
                 <h4>기본 정보</h4>
                     <ul>
-                        <li>${vo.basic1}</li>
-                        <li>${vo.basic2}</li>
-                        <li>${vo.basic3}</li>
-                        <li>${vo.basic4}</li>
-                        <li>${vo.basic5}</li>
+                        <li>${map.basic1}</li>
+                        <li>${map.basic2}</li>
+                        <li>${map.basic3}</li>
+                        <li>${map.basic4}</li>
+                        <li>${map.basic5}</li>
                     </ul>
                 <h4>취소 및 환불 규정</h4>
                     <ul>
-                        <li>체크인일 기준 1일 전 18시까지:100% 환불</li>
-                        <li>체크인일 기준 1일 전 18시 이후~당일 및 No-show:환불불가</li>
+                        <li>체크인일 기준 1일 전 18시까지 : 100% 환불</li>
+                        <li>체크인일 기준 1일 전 18시 이후~당일 및 No-show : 환불불가</li>
                         <li>취소,환불 시 수수료가 발생할 수 있습니다</li>
                     </ul>
                 <h4>확인 사항 및 기타</h4>
                     <ul>
-                        <li>${odd1}</li>
-                        <li>${odd2}</li>
-                        <li>${odd3}</li>
-                        <li>${odd4}</li>
-                        <li>${odd5}</li>
+                        <li>${map.odd1}</li>
+                        <li>${map.odd2}</li>
+                        <li>${map.odd3}</li>
+                        <li>${map.odd4}</li>
+                        <li>${map.odd5}</li>
                     </ul>
             </section>
             <button type="button" id="service_info_tab" class="category">
@@ -327,82 +327,66 @@
             </button>
             <section class="service_info info_detail">
                 <ul>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
-                    <li>시설</li>
+                    <c:if test="${map.fitness == 'Y'}"><li>피트니스</li></c:if>                    
+                    <c:if test="${map.sauna == 'Y'}"><li>사우나</li></c:if> 
+                    <c:if test="${map.restaurant == 'Y'}"><li>레스토랑</li></c:if> 
+                    <c:if test="${map.lounge == 'Y'}"><li>라운지</li></c:if> 
+                    <c:if test="${map.bbq == 'Y'}"><li>BBQ</li></c:if> 
+                    <c:if test="${map.publicspa == 'Y'}"><li>공용스파</li></c:if> 
+                    <c:if test="${map.seminar == 'Y'}"><li>세미나실</li></c:if> 
+                    <c:if test="${map.singing == 'Y'}"><li>노래방</li></c:if> 
+                    <c:if test="${map.washingmachine == 'Y'}"><li>세탁기</li></c:if> 
+                    <c:if test="${map.dehydrator == 'Y'}"><li>탈수기</li></c:if> 
+                    <c:if test="${map.cooking == 'Y'}"><li>취사가능</li></c:if> 
+                    <c:if test="${map.spa == 'Y'}"><li>온천</li></c:if> 
+                    <c:if test="${map.poll == 'Y'}"><li>수영장</li></c:if> 
+                    <c:if test="${map.golf == 'Y'}"><li>골프장</li></c:if> 
+                    <c:if test="${map.elevator == 'Y'}"><li>엘레베이터</li></c:if> 
+                    <c:if test="${map.pc == 'Y'}"><li>공용PC</li></c:if> 
+                    <c:if test="${map.cafe == 'Y'}"><li>카페</li></c:if> 
+                    <c:if test="${map.footvolleyball == 'Y'}"><li>족구장</li></c:if> 
+                    <c:if test="${map.store == 'Y'}"><li>편의점</li></c:if> 
+                    <c:if test="${map.dining == 'Y'}"><li>주방/식당</li></c:if> 
+                    <c:if test="${map.dryer == 'Y'}"><li>건조기</li></c:if> 
+                    <c:if test="${map.parking == 'Y'}"><li>주차장</li></c:if> 
+                    <c:if test="${map.publicshower == 'Y'}"><li>공용샤워실</li></c:if> 
+                    <c:if test="${map.ski == 'Y'}"><li>스키장</li></c:if> 
+                    <c:if test="${map.pickup == 'Y'}"><li>픽업가능</li></c:if> 
+                    <c:if test="${map.printer == 'Y'}"><li>프린터사용</li></c:if> 
+                    <c:if test="${map.locker == 'Y'}"><li>개인사물함</li></c:if> 
+                    <c:if test="${map.breakfast == 'Y'}"><li>조식포함</li></c:if> 
+                    <c:if test="${map.valetparking == 'Y'}"><li>발렛파킹</li></c:if> 
+                    <c:if test="${map.dog == 'Y'}"><li>반려견동반</li></c:if> 
+                    <c:if test="${map.inroomcooking == 'Y'}"><li>객실내취사</li></c:if> 
+                    <c:if test="${map.keepluggage == 'Y'}"><li>짐보관가능</li></c:if> 
+                    <c:if test="${map.freeparking == 'Y'}"><li>무료주차</li></c:if> 
+                    <c:if test="${map.inroomsmoking == 'Y'}"><li>객실내흡연</li></c:if> 
+                    <c:if test="${map.nosmoking == 'Y'}"><li>금연</li></c:if> 
+                    <c:if test="${map.creditcard == 'Y'}"><li>카드결제</li></c:if> 
                 </ul>
             </section>
         </article>
 
         <article class="review">
             <div class="review_grade">
-                <h3>리뷰 (999)</h3>
+                <h3>리뷰 (${map.get("reviewnum")})</h3>
                 <div class="star_grade">
 					만족도
-                    <p><strong>9.9</strong> /10.0</p>
+                    <p><strong>${map.get("satis")}</strong> /10.0</p>
                 </div>
             </div><!--//review_grade-->
             <ul>
+            <c:forEach var="vo3" items="${list2}" varStatus="status">
                 <li>
                     <div class="guest">
                         <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/ico_21.png">
-                        <strong>이건 리뷰의 제목이랍니다.</strong>
-                        <div class="review_star"><p>만족도 9.5 /10.0</p></div>
-                        <div class="review_txt">리뷰 내용을 작성하고 있습니다.
-                            <br>
-                           	 숙소 정말 좋네요.
-                        </div><!--//review_txt-->
-                        <div class="review_date">2일전</div>
+                        <strong>${vo3.rvTitle}</strong>
+                        <div class="review_star"><p>만족도 ${vo3.rvSatisfaction} /10.0</p></div>
+                        <div class="review_txt">${vo3.rvContent}</div>
+                        <div class="review_date">${vo3.rvDate}</div>
                     </div><!--//guest-->
                 </li>
-                <li>
-                    <div class="guest">
-                        <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/ico_21.png">
-                        <strong>이건 리뷰의 제목이랍니다.</strong>
-                        <div class="review_star"><p>만족도 9.5 /10.0</p></div>
-                        <div class="review_txt">리뷰 내용을 작성하고 있습니다.
-                            <br>
-                         	 숙소 정말 좋네요.
-                        </div><!--//review_txt-->
-                        <div class="review_date">2일전</div>
-                    </div><!--//guest-->
-                </li>
-                <li>
-                    <div class="guest">
-                        <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/ico_21.png">
-                        <strong>이건 리뷰의 제목이랍니다.</strong>
-                        <div class="review_star"><p>만족도 9.5 /10.0</p></div>
-                        <div class="review_txt">리뷰 내용을 작성하고 있습니다.
-                            <br>
-                           	 숙소 정말 좋네요.
-                        </div><!--//review_txt-->
-                        <div class="review_date">2일전</div>
-                    </div><!--//guest-->
-                </li>
-                <li>
-                    <div class="guest">
-                        <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/ico_21.png">
-                        <strong>이건 리뷰의 제목이랍니다.</strong>
-                        <div class="review_star"><p>만족도 9.5 /10.0</p></div>
-                        <div class="review_txt">리뷰 내용을 작성하고 있습니다.
-                            <br>
-                           	 숙소 정말 좋네요.
-                        </div><!--//review_txt-->
-                        <div class="review_date">2일전</div>
-                    </div><!--//guest-->
-                </li>
+			</c:forEach>                
             </ul>
             <div id="pagination">
                 <div class="paging">
