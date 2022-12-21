@@ -10,6 +10,7 @@ import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 public interface SellerService {
@@ -22,7 +23,7 @@ public interface SellerService {
 	
     List<QnaVO> qnaList(HashMap hm);
     
-    int listCount();
+    int listCount(SearchCriteria cri);
    	
 	int qnaInsert(QnaVO vo);
 	

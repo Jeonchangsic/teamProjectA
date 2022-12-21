@@ -97,19 +97,19 @@ public class SellerController {
 
 		
 		
-	//문의글 리스트
+	//문의글 리스트+페이징+검색
     @RequestMapping(value = "/sellerInquire.do", method = RequestMethod.GET)
-    public String sellerInquire(Model model, HttpServletRequest req, @ModelAttribute("scri") SearchCriteria scri){
+    public String sellerInquire(Model model, HttpServletRequest req, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
  
                                                                         
 		HttpSession session = req.getSession();                                 
 		UserVO login = (UserVO) session.getAttribute("login");
-		        
-		List<QnaVO> qnaList = null;
-		        
+		 	        
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(sellerService.listCount());
+		pageMaker.setTotalCount(sellerService.listCount(scri));
+		
+		List<QnaVO> qnaList = null;
 		       
 		HashMap<String, Object> hm = new HashMap<String, Object>();
 		hm.put("uidx", login.getUidx());
@@ -122,7 +122,7 @@ public class SellerController {
                
         return "seller/sellerInquire";
         
-        
+
     }
     
     //문의글

@@ -15,6 +15,7 @@ import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 @Repository
@@ -38,12 +39,13 @@ public class SellerDao {
 	}
 	
 	public List<QnaVO> qnaList(HashMap hm){
+	
         return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", hm);
 	 }
 	
-	public int listCount() {
+	public int listCount(SearchCriteria cri) {
 
-		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount");
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount", cri);
 		
 	}
 	    	

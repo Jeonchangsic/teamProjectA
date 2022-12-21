@@ -14,6 +14,7 @@ import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 @Service
@@ -47,9 +48,9 @@ public class SellerServiceImpl implements SellerService{
     }
     	
 	@Override
-	public int listCount() {
+	public int listCount(SearchCriteria cri) {
 
-		return SellerDao.listCount();
+		return SellerDao.listCount(cri);
 	}
 
 	@Override
