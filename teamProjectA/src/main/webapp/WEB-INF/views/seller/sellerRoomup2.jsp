@@ -116,7 +116,7 @@
 				              	  <div class="public_in"> 
 					                <ul id="in_left" class="filter_check" >
 					                    <li>
-					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="spa">
+					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="roomspa">
 					                        <label>객실스파</label>
 					                    </li>   
 					                    <li>
@@ -177,22 +177,22 @@
 						<ul>
 							<li>
 								<p>싱글</p>
-								<input id="B1" type="radio" name="bed" value="싱글" required/>					
+								<input id="B1" type="radio" name="bed" value="single_bed" required/>					
 								<label for="B1" id="single"></label>
 							</li>
 							<li>
 								<p>더블</p>
-								<input id="B2" type="radio" name="bed" value="더블"/>
+								<input id="B2" type="radio" name="bed" value="double_bed"/>
 								<label for="B2" id="double"></label>
 							
 							<li>
 								<p>트윈</p>
-								<input id="B3" type="radio" name="bed" value="트윈"/>
+								<input id="B3" type="radio" name="bed" value="twin_bed"/>
 								<label for="B3" id="twin"></label>
 							</li>
 							<li>
 								<p>온돌</p>
-								<input id="B4"type="radio" name="bed" value="온돌"/>
+								<input id="B4"type="radio" name="bed" value="ondol_bed"/>
 								<label for="B4" id="ondol"></label>	
 							</li>
 						</ul>				

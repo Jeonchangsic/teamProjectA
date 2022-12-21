@@ -112,18 +112,24 @@ main h2{font-weight: bold;
     text-align: center;
     padding-top: 30px;
 }
-.btn_size{
-    width:70px;
-}
 input{padding:3px; width:200px;}
-button{width:58px;
+.btn_size{width:58px;
         height:30px;
         border:0px solid #555;
         background-color:#555;
         padding:5px;
         color:white;
-        cursor:pointer
-}     
+        cursor:pointer        
+}
+main #mydel{width:80px;
+        height:30px;
+        border:0px solid #555;
+        background-color:#555;
+        padding:5px;
+        color:white;
+        cursor:pointer;
+        margin: 20px 0 0 480px;}
+     
                 /*footer*/
 footer{ 
 	height:100%; 

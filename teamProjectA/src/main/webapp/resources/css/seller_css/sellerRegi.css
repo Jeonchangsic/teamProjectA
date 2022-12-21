@@ -79,6 +79,7 @@ button{width:58px;
         color:white;
         cursor:pointer;}
 input[type=button]{cursor:pointer;}
+#paging ul li{display:inline-block;}
         
  footer{
     margin-top:150px;

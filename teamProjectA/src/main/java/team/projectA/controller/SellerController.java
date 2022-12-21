@@ -30,7 +30,6 @@ import team.projectA.vo.LodgingVO;
 import team.projectA.vo.LodginginVO;
 import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.PageMaker;
-import team.projectA.vo.PageMaker2;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
@@ -58,11 +57,11 @@ public class SellerController {
 	public String sellerInfo(Locale locale, Model model,  HttpServletRequest req) {
 
 		  //uidx가 ?값인 사용자의 정보가 필요v
-		  HttpSession session = req.getSession(); 								//session불러냄
-		  UserVO login = (UserVO) session.getAttribute("login"); 				//session에 저장되어있는 login값 불러옴
-		  LodgingVO lodging = sellerService.SellerOne(login.getUidx());			//SellerOne에 uidx저장
-		  	  
-		  model.addAttribute("lodging",lodging);								
+		HttpSession session = req.getSession(); 								//session불러냄
+		UserVO login = (UserVO) session.getAttribute("login"); 				//session에 저장되어있는 login값 불러옴
+		LodgingVO lodging = sellerService.SellerOne(login.getUidx());			//SellerOne에 uidx저장
+  	  
+		model.addAttribute("lodging",lodging);								
 		
 		return "seller/sellerInfo";
 	}
@@ -70,7 +69,7 @@ public class SellerController {
     //판매자 정보 수정 (개인정보)
 	@RequestMapping (value ="/sellerInfo1.do", method = RequestMethod.POST)
 	public String sellerInfo(UserVO vo, HttpServletRequest req)throws Exception{
-  
+		
 		HttpSession session2 = req.getSession();
 		UserVO login = (UserVO)session2.getAttribute("login");
 		vo.setUidx(login.getUidx());
@@ -100,33 +99,27 @@ public class SellerController {
 		
 	//문의글 리스트
     @RequestMapping(value = "/sellerInquire.do", method = RequestMethod.GET)
-    public String sellerInquire(Model model,HttpServletRequest req,@ModelAttribute("scri") SearchCriteria scri){
+    public String sellerInquire(Model model, HttpServletRequest req, @ModelAttribute("scri") SearchCriteria scri){
  
                                                                         
-        HttpSession session = req.getSession();                                 
-        UserVO login = (UserVO) session.getAttribute("login");
-        
-        List<QnaVO> qnaList = null;
-        
-        PageMaker pageMaker = new PageMaker();
-        pageMaker.setCri(scri);
-        pageMaker.setTotalCount(sellerService.listCount());
-        
-        HashMap<String, Object> hm = new HashMap<String, Object>();
-        hm.put("uidx", login.getUidx());
-        hm.put("start", scri.getRowStart());
-        hm.put("end", scri.getRowEnd());
-        qnaList = sellerService.qnaList(hm);
-        
-        model.addAttribute("qnaList", qnaList);
-        model.addAttribute("pageMaker", pageMaker);
-        
-        
-		/*
-		 * PageMaker2 pageMaker2 = new PageMaker2(); pageMaker2.setCri(cri);
-		 * pageMaker2.setTotalCount(sellerService.listCount());
-		 */
-        
+		HttpSession session = req.getSession();                                 
+		UserVO login = (UserVO) session.getAttribute("login");
+		        
+		List<QnaVO> qnaList = null;
+		        
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(sellerService.listCount());
+		       
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("uidx", login.getUidx());
+		hm.put("rowStart", scri.getRowStart());
+		hm.put("rowEnd", scri.getRowEnd());
+		qnaList = sellerService.qnaList(hm);
+		
+		model.addAttribute("qnaList", qnaList);
+		model.addAttribute("pageMaker", pageMaker);
+               
         return "seller/sellerInquire";
         
         
@@ -136,8 +129,8 @@ public class SellerController {
 	@RequestMapping(value="/sellerInquireView.do", method = RequestMethod.GET)
 	public String sellerInquireView(Locale locale, Model model, int qna_idx) {
 				
-			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(qna_idx);
-			model.addAttribute("qnaOne",qnaOne);
+		QnaVO qnaOne = (QnaVO)sellerService.qnaOne(qna_idx);
+		model.addAttribute("qnaOne",qnaOne);
 			
 		
 		
@@ -200,21 +193,25 @@ public class SellerController {
 	
 	//객실 리스트
 	   @RequestMapping(value = "/sellerRegi.do", method = RequestMethod.GET)
-	   public String Regi(Locale locale, Model model, HttpServletRequest req, RoomVO vo, LodgingVO lodging ) {
+	   public String Regi(Locale locale, Model model, HttpServletRequest req) {
 	      
 	   
-	      HttpSession session = req.getSession();
-	      UserVO login = (UserVO)session.getAttribute("login");   
-	      List<RoomVO> roomlist = sellerService.roomlist(login.getUidx());
+		HttpSession session = req.getSession();
+		UserVO login = (UserVO)session.getAttribute("login");   
+		List<RoomVO> roomlist = sellerService.roomlist(login.getUidx());
 	      
-	      LodgingVO lodging2 = sellerService.SellerOne(login.getUidx());
-	      
-	      model.addAttribute("roomlist", roomlist);
-	      model.addAttribute("lodging2",lodging2);
-	      
+		LodgingVO lodging2 = sellerService.SellerOne(login.getUidx());
+		
+		model.addAttribute("roomlist",roomlist);
+		model.addAttribute("lodging2",lodging2);
+		
+		
 
-	      
-	      return "seller/sellerRegi";
+		
+		
+		
+			      
+		return "seller/sellerRegi";
 	   }
 	   
 	
@@ -222,9 +219,9 @@ public class SellerController {
 	@RequestMapping(value = "/sellerRegi2.do", method = RequestMethod.GET)
 	public String Regi2(Locale locale, Model model, int ridx) {
 
-		 sellerService.roomdel(ridx);
-
+		sellerService.roomdel(ridx);
 		
+				
 		return "redirect:sellerRegi.do";
 		
 	}
@@ -234,12 +231,12 @@ public class SellerController {
 	@RequestMapping(value = "/sellerRoomup1.do", method = RequestMethod.GET)
 	public String roomup1(Locale locale, Model model, HttpServletRequest req, LodgingVO vo) {
 		
-			HttpSession session = req.getSession();
-			UserVO login = (UserVO)session.getAttribute("login");	
-			LodgingVO lidxone = sellerService.lidxone(login.getUidx());
+		HttpSession session = req.getSession();
+		UserVO login = (UserVO)session.getAttribute("login");	
+		LodgingVO lidxone = sellerService.lidxone(login.getUidx());
 
 
-			model.addAttribute("lidxone",lidxone);
+		model.addAttribute("lidxone",lidxone);
 		
 	
 		
@@ -312,41 +309,41 @@ public class SellerController {
 	public String roomModify(Locale locale, Model model, MultipartFile file, HttpServletRequest req, RoomVO vo, RoominVO in) {
 
 		//새로운 이미지가 등록 되어있는지 확인
-        if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
              // 기존 이미지 삭제
-             new File(req.getParameter("rimage1")).delete();
+			new File(req.getParameter("rimage1")).delete();
              //이미지 등록
              String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-               long size = file.getSize(); //파일 사이즈
+             long size = file.getSize(); //파일 사이즈
 
-               String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-               String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+             String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
+             String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
                            
-               UUID uuid = UUID.randomUUID();
+             UUID uuid = UUID.randomUUID();
 
-               String[] uuids = uuid.toString().split("-");
+             String[] uuids = uuid.toString().split("-");
                
-               String uniqueName = uuids[0];
+             String uniqueName = uuids[0];
                
-               File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
-               try {
-                   file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
-               } catch (IllegalStateException e) {
-                   e.printStackTrace();
-               } catch (IOException e) {
-                   e.printStackTrace();
-               }
+             File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+             try {
+            	 file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+             } catch (IllegalStateException e) {
+            	 e.printStackTrace();
+             } catch (IOException e) {
+            	 e.printStackTrace();
+             }
                
-               vo.setRimage1(uniqueName+fileExtension); 
-        }else {
+             vo.setRimage1(uniqueName+fileExtension); 
+		}else {
                //새로운 이미지가 등록되지 않아다면 기본 이미지 그대로 
-               vo.setRimage1(req.getParameter("rimage1"));     
-        }
+			vo.setRimage1(req.getParameter("rimage1"));     
+		}
              
-         sellerService.roomModify(vo);
-		 sellerService.roomModify2(in);
+		sellerService.roomModify(vo);
+		sellerService.roomModify2(in);
 		 
-		 return "redirect:/seller/sellerRegi.do";
+		return "redirect:/seller/sellerRegi.do";
 	}
 	
 	@RequestMapping(value = "/sellerRoomup3.do", method = RequestMethod.GET)

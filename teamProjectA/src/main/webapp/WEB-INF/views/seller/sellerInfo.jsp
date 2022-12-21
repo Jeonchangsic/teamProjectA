@@ -25,17 +25,25 @@
 <script>
 	//사업장이름         
 	$(document).ready(function() {
-		$("#nameFn").on("click", function() {
-			alert("변경이 완료되었습니다");
+		$("#nameFn").on("click", function() {			
+			var lodgingname = ${lodging.lidx}
+			if( !lodgingname ){
+				alert("숙소를 먼저 등록하세요")
+			} else {alert("변경이 완료되었습니다");
 			var frm = document.nameform;
 			frm.action = "sellerInfo2.do";
 			frm.method = "POST";
 			frm.submit();
 
 			console.log("성공");
+			}
 		})
 		//주소
 		$("#addrFn").on("click", function() {
+			var lodgingaddr = ${lodging.lidx}
+			if( !lodgingaddr){
+				alert("숙소를 먼저 등록하세요")
+			} else {
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
 			frm.action = "sellerInfo2.do";
@@ -43,6 +51,7 @@
 			frm.submit();
 
 			console.log("성공");
+			}
 		})
 		//이메일
 		$("#mailFn").on("click", function() {
@@ -56,6 +65,18 @@
 		})
 		//비밀번호
 		$("#pwdFn").on("click", function() {
+			
+			 var password = $("#password").val();
+	    	 var num = password.search(/[0-9]/g);
+	    	 var eng = password.search(/[a-z]/ig);
+	    	 var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+	    	 console.log(password);
+	    	 if(password.length < 8 || password.length > 20){			 //비밀번호의 길이가 일치하지 않는경우
+	    		 alert("8자리 ~20자리 이내로 입력하여 주세요.");
+		    	}else if((num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0)){ //특문,영문,숫자를 조합한 비밀번호가 아닌경우 
+		    		alert("특수문자, 영문, 숫자를 조합하여주세요.");
+		    	}else{
+		    		
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
 			frm.action = "sellerInfo1.do";
@@ -63,6 +84,7 @@
 			frm.submit();
 
 			console.log("성공");
+		  }
 		})
 		//전화번호
 		$("#phoneFn").on("click", function() {
@@ -76,7 +98,14 @@
 		})
 	});
 
-
+		/*회원탈퇴 페이지 이동  */
+		function delFn() {
+			if (!confirm("회원탈퇴 페이지로 이동하시겠습니까?")) {
+				alert("이동이 취소되었습니다.");
+			} else {
+				location = "/A/mypage/userDt.do";
+			}
+		}
 
 	//비밀번호 체크
 </script>
@@ -121,24 +150,14 @@
 				</tr>
 				<tr>
 					<td>사업장명</td>
-					<td><input type='text' name="lodgingname" id="lodgingname"
-						value="${lodging.lodgingname}"></td>
+					<td><input type='text' name="lodgingname" id="lodgingname" value="${lodging.lodgingname}"></td>
 
-					<td><button type="button" id="nameFn" value="상세변경"
-							class="btn_size">변경</button></td>
+					<td><button type="button" id="nameFn" value="상세변경" class="btn_size">변경</button></td>
 				</tr>
-
-
-				<!--                <tr>
-                    <td>비밀번호변경</td>
-                    <td><input type='password' name="userpassword2"></td>
-                    <td></td>
-                </tr> -->
 
 				<tr>
 					<td>비밀번호변경</td>
-					<td><input type='password' name='userPassword'
-						value="${lodging.userPassword}" autoComplete="off"></td>
+					<td><input type='password' name="userPassword"  id="password" value="${lodging.userPassword}" ></td>
 					<td><button type="button" class="btn_size" id="pwdFn">변경</button></td>
 				</tr>
 
@@ -158,13 +177,16 @@
 				</tr>
 
 				<tr>
-					<td>주소</td>
-					<td><input type='text' name="lodgingaddr" value="${lodging.lodgingaddr}"></td>
+					<td>숙소 주소</td>
+					<td><input type='text' name="lodgingaddr" id="lodgingaddr" value="${lodging.lodgingaddr}"></td>
 					<td><button type="button" class="btn_size" id="addrFn">변경</button></td>
 				</tr>
 
 			</table>
 		</form>
+		<div id="delrow">
+			<button id="mydel" type="button" onclick="delFn()">회원탈퇴</button>
+		</div>
 
 	</main>
 	<footer>

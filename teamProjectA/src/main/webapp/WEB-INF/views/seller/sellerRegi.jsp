@@ -39,6 +39,17 @@
 			f.submit();
 		}
 	}
+	
+	/*객실삭제  */
+	function delFn() {
+		if (!confirm("해당 객실을 삭제하시겠습니까?")) {
+			alert("삭제가 취소되었습니다.");
+			} else {
+			alert("삭제가 완료되었습니다.");
+			location = "sellerRegi2.do?ridx=${list.ridx}";
+			}
+		}
+
 </script>
 </head>
 <body style="overflow-x: hidden">
@@ -87,49 +98,39 @@
             <a href="<%=request.getContextPath() %>/seller/sellerRoomup1.do"><input type="button" value="객실등록"></a>
         </div>     
         <hr/>
-	        <table>
-	            <thead>
-	                <tr style="text-align:center;">
-	                    <th>이미지</th>
-	                    <th>객실명</th>
-	                    <th>가격</th>
-	                    <th>객실수</th>
-	                    <th>상세관리</th>
-	                </tr>
-	            </thead>
-	           <tbody>
-	            <c:if test = "${empty roomlist} "> </c:if>
-	            <c:forEach var = "list" items="${roomlist}" varStatus="status">
-	                <tr style="text-align:center;">
-	             		<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/${list.rimage1}" alt="숙소 이미지"></td>
-	                    <td>${list.rtype}</td>
-	                    <td>${list.rprice}</td>
-	                    <td>${list.rnum}</td>
-	                    <td>
-	                       <button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=${list.ridx}'">수정</button>
-	                       <button type="button" onclick="delFn()">삭제</button>
-	                    </td>  
-	                    <!--객실 삭제 안내 -->
-	                    <script>
-						function delFn() {
-						    if (!confirm("해당 객실을 삭제하시겠습니까?")) {
-						        alert("삭제가 취소되었습니다.");
-						    } else {
-						        alert("삭제가 완료되었습니다.");
-						        location = "sellerRegi2.do?ridx=${list.ridx}";
-						    }
-						}
-						</script>
-	                </tr>
-	             </c:forEach>     
-	            </tbody>
-	        </table>
+		<table>
+			<thead>
+				<tr style="text-align:center;">
+					<th>이미지</th>
+					<th>객실명</th>
+					<th>가격</th>
+					<th>객실수</th>
+					<th>상세관리</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var = "list" items="${roomlist}" varStatus="status">
+					<c:if test = "${roomlist != null}" >
+							<tr style="text-align:center;">
+								<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/${list.rimage1}" alt="숙소 이미지"></td>
+								<td>${list.rtype}</td>
+								<td>${list.rprice}</td>
+								<td>${list.rnum}</td>
+								<td>
+									<button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=${list.ridx}'">수정</button>
+									<button type="button" onclick="delFn()">삭제</button>
+								</td>  
+				           
+				                    <!--객실 삭제 안내 -->
 
-        <ul>
-            <li>
-                <a href="">1</a>
-            </li>
-        </ul>
+	             		   </tr>
+	             		   </c:if>
+	             		   	<c:if test = "${roomlist == null}" >
+	             		   		<td>객실을 등록해주세요</td>
+	             		   	</c:if>
+				</c:forEach>        
+			</tbody>
+		</table>	
     </main>
     <footer> 
      	<div id="foot">

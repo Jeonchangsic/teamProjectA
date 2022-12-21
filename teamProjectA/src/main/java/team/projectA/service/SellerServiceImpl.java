@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.projectA.dao.SellerDao;
-import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.LodginginVO;
 import team.projectA.vo.LodginginfoVO;
@@ -43,18 +42,15 @@ public class SellerServiceImpl implements SellerService{
 
     @Override
     public List<QnaVO> qnaList(HashMap hm) {
-    
-        return SellerDao.qnaList(hm);
+ 
+    	return SellerDao.qnaList(hm);           
     }
-    
-
-	
+    	
 	@Override
 	public int listCount() {
 
 		return SellerDao.listCount();
 	}
-
 
 	@Override
 	public int qnaInsert(QnaVO vo) {
@@ -87,6 +83,7 @@ public class SellerServiceImpl implements SellerService{
 		return SellerDao.roomlist(uidx);
 	}
 	
+
 	@Override
 	public int roomdel(int ridx) {
 	
@@ -150,34 +147,37 @@ public class SellerServiceImpl implements SellerService{
 	}
 
 	@Override
-	public Map<String, Object> lodgingModi(int lidx) {
-		return SellerDao.lodgingModi(lidx);
-	}
+	   public Map<String, Object> lodgingModi(int lidx) {
+	      return SellerDao.lodgingModi(lidx);
+	   }
 
 	@Override
-	public int loDel(int lidx) {
-		return SellerDao.loDel(lidx);
-	}
-	
+	   public int loDel(int lidx) {
+	      return SellerDao.loDel(lidx);
+	   }
+	   
 	@Override
-	public int N(int uidx) {
-		return SellerDao.N(uidx);
-	}
-	
+	   public int N(int uidx) {
+	      return SellerDao.N(uidx);
+	   }
+	   
 	@Override
-	public int lodgingModify(LodgingVO vo) {
-		return SellerDao.lodgingModify(vo);
-	}
-	
+	   public int lodgingModify(LodgingVO vo) {
+	      return SellerDao.lodgingModify(vo);
+	   }
+	   
 	@Override
-	public int lodginginModify(LodginginVO vo) {
-		return SellerDao.lodginginModify(vo);
-	}
-	
+	   public int lodginginModify(LodginginVO vo) {
+	      return SellerDao.lodginginModify(vo);
+	   }
+	   
 	@Override
-	public int lodginginfoModify(LodginginfoVO vo) {
-		return SellerDao.lodginginfoModify(vo);
-	}
+	   public int lodginginfoModify(LodginginfoVO vo) {
+	      return SellerDao.lodginginfoModify(vo);
+	   }
+
+
+
 
 
 

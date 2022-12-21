@@ -1,10 +1,10 @@
-
 <%@page import="team.projectA.vo.QnaVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+	
  <%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -75,7 +75,6 @@
                 </tr>
             </thead>
             <tbody>	  
-            <%-- <c:if test = "${empty qnalist} "> </c:if> --%>
 				<c:forEach var="qna" items="${qnaList}" varStatus="status">	
 	                <tr style="text-align:center;">
 	                    <td>${qna.qna_idx}</td>
@@ -86,6 +85,23 @@
              	</c:forEach>         	
             </tbody>
         </table>
+		<div>
+			<div id="paging">
+				<ul>
+					<c:if test="${pageMaker.prev}">
+						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+					</c:if>   
+					    
+					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+					</c:forEach>
+					      
+					<c:if test="${pageMaker.next}">
+						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+					</c:if>   
+				</ul>
+			</div>
+		</div>
         <ul>
         </ul>
         <button onclick="location.href='sellerInquireWrite.do'" id="btn_right">문의쓰기</button>

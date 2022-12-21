@@ -5,19 +5,19 @@
 
 
 	<!-- 회원정보 -->
-	<select id = "SellerOne" resultType="LodgingVO" parameterType = "int">
+	<select id = "SellerOne" parameterType = "int" resultType="LodgingVO">
 	
-				SELECT 	 u.uidx
-						, u.userID
-						, u.userName
-						, u.userPassword
-						, u.userEmail
-						, u.userPhone
-						, u.userType
-						, l.lodgingname
-						, l.lodgingaddr
-						, l.lidx
-						, l.limagename
+			SELECT 	 u.uidx
+					, u.userID
+					, u.userName
+					, u.userPassword
+					, u.userEmail
+					, u.userPhone
+					, u.userType
+					, l.lodgingname
+					, l.lodgingaddr
+					, l.lidx
+					, l.limagename
 					FROM ausertb u
 					LEFT OUTER JOIN lodgingtb l
 					ON u.uidx = l.uidx 
@@ -46,33 +46,73 @@
 	
 	
 	<!--문의게시판 list-->
-	<select id= "qnaList" resultType="QnaVO" parameterType="HashMap">
-  				select qna_idx
+	<!-- <select id= "qnaList" parameterType="HashMap" resultType="QnaVO">
+			SELECT qna_idx
   					, qna_Qtitle
   					, qna_Qdate
   					, qna_Acheck
-					from (select qna_idx
+					FROM (SELECT qna_idx
 								, qna_Qtitle
 								, qna_Qdate
-								, qna_Acheck,
-					row_number() over(order by qna_idx desc)
-					as rNum 
-					from qnatb 
-					WHERE uidx=#{uidx})mb
-					where rNum  
-					between #{rowStart} and #{rowEnd} 
-					order by qna_idx DESC
+								, qna_Acheck
+					, row_number() over(order by qna_idx desc)
+					AS rNum 
+					FROM qnatb 
+					WHERE uidx=#{uidx}
+					)mb
+					WHERE rNum  
+					BETWEEN #{rowStart} and #{rowEnd} 
+					ORDER BY qna_idx DESC
     </select>
         
 	<select id = "listCount" resultType="int">
-				select count(qna_idx)
-			from qnatb where #{qna_idx} > 0
-	</select>	
+			SELECT count(qna_idx)
+				FROM qnatb
+				WHERE qna_idx > 0
+	</select>	 -->
+	
+	<!--문의하기 리스트+페이징+검색-->
+	<select id="qnaList" parameterType="HashMap" resultType="qnaVO">	
+			SELECT qna_idx
+					, qna_Qtitle
+					, qna_Qdate
+					, qna_Acheck
+				FROM (
+					SELECT qna_idx
+							, qna_Qtitle
+							, qna_Qdate
+							, qna_Acheck
+							, row_number() over(ORDER BY qna_idx DESC)
+							 AS qnum
+					FROM qnatb
+					WHERE uidx = 2 <!--uidx먼저구한후 검색어조건-->
+					<include refid="search"/>
+					)
+					WHERE qnum BETWEEN 1 AND 10
+					ORDER BY qna_idx DESC
+	</select>
+		
+	<sql id="search"><!--sql:다른 구문에서 재사용가능한 sql쿼리-->	 
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()"> AND qna_Qtitle LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
+
+	<select id="listCount" resultType="int">
+			SELECT count(qna_idx)
+				FROM qnatb
+		        WHERE qna_idx > 0 <!--총게시글 수 구한후 refid로 검색어 조건-->
+		        <include refid="search"/>
+
+	</select>
+
+
+
 	
 	<!--문의하기 insert  -->
 	<insert id="qnaInsert" parameterType="QnaVO">
 	<![CDATA[
-		INSERT INTO qnatb (
+			INSERT INTO qnatb (
 						 qna_idx
 						, uidx 
 						, qna_Qcontent
@@ -81,8 +121,8 @@
 						, qna_Adate
 						, usertype 
 						)
-					 VALUES(
-						 qna_idx_seq.nextval 
+					VALUES(
+						qna_idx_seq.nextval 
 					    , #{uidx} 
 					    , #{qna_Qcontent}
 						, #{qna_Qtitle}
@@ -95,7 +135,7 @@
 	
 	<!--문의 글 보기 -->
 	<select id = "qnaOne" resultType="QnaVO" parameterType = "integer">
-   					SELECT qna_idx
+			SELECT qna_idx
 					, uidx
 					, qna_Qcontent
 					, qna_Qtitle
@@ -106,20 +146,20 @@
 	</select>
 	<!--문의 글 삭제  -->
    <delete id="qnaDelete" parameterType="int">
-      DELETE FROM qnatb 
-      WHERE qna_idx = #{qna_idx}
+			DELETE FROM qnatb 
+			WHERE qna_idx = #{qna_idx}
    </delete>
 	
 	<!--문의 글 수정-->
 	<update id="qnaModify" parameterType="QnaVO">
-		UPDATE qnatb SET 
+			UPDATE qnatb SET 
 			qna_Qtitle = #{qna_Qtitle}  
 			,qna_Qcontent = #{qna_Qcontent}
 			WHERE qna_idx = #{qna_idx}
 	</update>
 
 	<!--판매자 객실목록  -->
-	<select id="roomlist" resultType="RoomVO" parameterType="int">
+	<select id="roomlist"  parameterType="int" resultType="RoomVO">
 			SELECT l.uidx
 				, l.lidx
 				, r.ridx
@@ -128,15 +168,16 @@
 				, r.rprice
 				, r.rnum 
 			FROM lodgingtb l
-			LEFT OUTER JOIN roomtb r
+			FULL OUTER JOIN roomtb r
 			ON l.lidx = r.lidx 
 			WHERE l.uidx =#{uidx}
+			ORDER BY r.RIDX DESC
 	</select>
 	
 	<!--판매자 객실 삭제  -->
 	<delete id = "roomdel" parameterType="int">
 			DELETE FROM roomtb
-	           WHERE ridx = #{ridx}
+			WHERE ridx = #{ridx}
 	</delete>
 	
 	<!--객실등록 -->
@@ -164,7 +205,7 @@
 						, #{lidx})
 						
 		<selectKey keyProperty="ridx" resultType="int" order="AFTER">	<!--AFTER : 방금 입력한 값의 특정 값 리턴 (ridx_nextval리턴)  -->
-				select ridx_seq.currval as ridx FROM dual <!-- dual: 특정테이블 칼럼이 아닌경우 -->
+			SELECT ridx_seq.currval AS ridx FROM dual <!-- dual: 특정테이블 칼럼이 아닌경우 -->
 		</selectKey>
 	</insert>
 	
@@ -173,7 +214,7 @@
 				INSERT INTO ROOMINTB VALUES(
 				ROOMIN_IDX_SEQ.NEXTVAL
 				,#{ridx}
-				,#{spa}
+				,#{roomspa}
 				,#{wifi}
 				,#{tv}
 				,#{refri}
@@ -194,11 +235,67 @@
 	</insert>
 	
 	<!--객실등록 lidx값 -->
-	<select id="lidxone" resultType="LodgingVO" parameterType="int">
-					SELECT lidx 
-					FROM lodgingtb 
-					WHERE uidx = #{uidx}
+	<select id="lidxone" parameterType="int" resultType="LodgingVO">
+			SELECT lidx 
+			FROM lodgingtb 
+			WHERE uidx = #{uidx}
 	</select>
+	
+	<!--객실 수정 정보-->
+	<select id="roomModiInfo" parameterType = "int" resultType="RoominVO">
+			SELECT 	 r.ridx
+	 				, r.rtype
+					, r.rnum
+					, r.rprice
+					, r.maxmen
+					, r.stdmen
+					, r.rimage1
+					, r.bed
+					, i.addinfo1
+					, i.addinfo2
+					, i.addinfo3
+					, i.addinfo4
+					, i.addinfo5
+					FROM roomtb r
+					LEFT OUTER JOIN roomintb i
+					ON r.ridx = i.ridx 
+					WHERE r.ridx= #{ridx}
+	</select>
+	
+	<!--객실수정-->
+	<update id="roomModify" parameterType="RoomVO">
+			UPDATE roomtb SET 
+				rtype = #{rtype}
+				, rnum = #{rnum}
+				, rprice = #{rprice}
+				, maxmen = #{maxmen}
+				, stdmen = #{stdmen}
+				, rimage1 = #{rimage1}
+				, bed = #{bed}
+				WHERE ridx = #{ridx} 
+	</update>
+	<update id="roomModify2" parameterType="RoominVO">
+			UPDATE roomintb SET roomspa = #{roomspa}
+				,wifi = #{wifi}
+				,tv = #{tv}
+				,refri = #{refri}
+				,bath = #{bath}
+				,iron = #{iron}
+				,minibar = #{minibar}
+				,bathitem = #{bathitem}
+				,aircon = #{aircon}
+				,shower = #{shower}
+				,dryer = #{dryer}
+				,ricecooker = #{ricecooker}
+				,addinfo1 = #{addinfo1}
+				,addinfo2 = #{addinfo2}
+				,addinfo3 = #{addinfo3}
+				,addinfo4 = #{addinfo4}
+				,addinfo5 = #{addinfo5} 
+				WHERE ridx = #{ridx}
+	
+	</update>
+	
 	<!--
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -345,7 +442,8 @@
 		<id column="keepluggage" property="keepluggage" />
 		<id column="freeparking" property="freeparking" />
 		<id column="inroomsmoking" property="inroomsmoking" />
-		<id column="nosmoking" property="creditcard" />
+		<id column="nosmoking" property="nosmoking" />
+		<id column="creditcard" property="creditcard" />
 		<id column="area1" property="area1" />
 		<id column="area2" property="area2" />
 		<id column="area2" property="area2" />
@@ -456,61 +554,7 @@
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	-->
-	<!--객실 수정 정보-->
-	<select id="roomModiInfo" resultType="RoominVO" parameterType = "int">
-			SELECT 	 r.ridx
-	 				, r.rtype
-					, r.rnum
-					, r.rprice
-					, r.maxmen
-					, r.stdmen
-					, r.rimage1
-					, r.bed
-					, i.addinfo1
-					, i.addinfo2
-					, i.addinfo3
-					, i.addinfo4
-					, i.addinfo5
-					FROM roomtb r
-					LEFT OUTER JOIN roomintb i
-					ON r.ridx = i.ridx 
-					WHERE r.ridx= #{ridx}
-	</select>
-	
-	<!--객실수정-->
-	<update id="roomModify" parameterType="RoomVO">
-			UPDATE roomtb SET 
-				  rtype = #{rtype}
-				, rnum = #{rnum}
-				, rprice = #{rprice}
-				, maxmen = #{maxmen}
-				, stdmen = #{stdmen}
-				, rimage1 = #{rimage1}
-				, bed = #{bed}
-				 WHERE ridx = #{ridx} 
-	</update>
-	<update id="roomModify2" parameterType="RoominVO">
-	UPDATE roomintb SET spa = #{spa}
-				,wifi = #{wifi}
-				,tv = #{tv}
-				,refri = #{refri}
-				,bath = #{bath}
-				,iron = #{iron}
-				,minibar = #{minibar}
-				,bathitem = #{bathitem}
-				,aircon = #{aircon}
-				,shower = #{shower}
-				,dryer = #{dryer}
-				,ricecooker = #{ricecooker}
-				,addinfo1 = #{addinfo1}
-				,addinfo2 = #{addinfo2}
-				,addinfo3 = #{addinfo3}
-				,addinfo4 = #{addinfo4}
-				,addinfo5 = #{addinfo5} 
-				WHERE ridx = #{ridx}
-	
-	</update>
-	
+
 
 	
 </mapper>

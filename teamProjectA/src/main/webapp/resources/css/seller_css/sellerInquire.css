@@ -141,6 +141,7 @@ thead th{width:250px; }
 
 table td{padding:9px;}
 #maintb tbody td{border-bottom: 1px solid rgb(214, 214, 214);}
+main #paging ul li {display:inline-block;}
 ul{     
         text-align: center;
         margin-top:10px;}

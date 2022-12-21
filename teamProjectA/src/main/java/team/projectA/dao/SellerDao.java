@@ -42,6 +42,7 @@ public class SellerDao {
 	 }
 	
 	public int listCount() {
+
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount");
 		
 	}
