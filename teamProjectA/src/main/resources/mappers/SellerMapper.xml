@@ -85,26 +85,22 @@
 							, row_number() over(ORDER BY qna_idx DESC)
 							 AS qnum
 					FROM qnatb
-					WHERE uidx = #{uidx} <!-- uidx먼저구한후 검색어조건 -->
-					<include refid="search"/>
+					WHERE qna_Qtitle LIKE '%' || #{keyword} || '%'
+					AND uidx = #{uidx} <!-- uidx먼저구한후 검색어조건 -->
+
 					)
 					WHERE qnum BETWEEN #{rowStart} and #{rowEnd} 
 					ORDER BY qna_idx DESC
 	</select>
-		
-	<sql id="search"> <!--  sql:다른 구문에서 재사용가능한 sql쿼리	  -->
-		<if test="searchType != null">
-			<if test="searchType == 't'.toString()"> AND qna_Qtitle LIKE '%' || #{keyword} || '%'</if>
-		</if>
-	</sql>
 
 	<select id="listCount" resultType="int">
 			SELECT count(qna_idx)
 				FROM qnatb
+				WHERE qna_Qtitle LIKE '%' || #{keyword} || '%'
 				<![CDATA[
-					WHERE qna_idx > 0
+					AND qna_idx > 0
 		        ]]>
-		        <include refid="search"/>
+
 	</select> 
 
 

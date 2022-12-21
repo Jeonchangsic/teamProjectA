@@ -4,6 +4,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 	
  <%@ page session="true" %>
 <!DOCTYPE html>
@@ -16,6 +17,7 @@
     <link href="<%=request.getContextPath()%>/resources/css/seller_css/sellerInquire.css" rel="stylesheet">
         <!-- 파비콘 -->
     <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
+    <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
 </head>
 <body style="overflow-x: hidden">
     <header>
@@ -56,7 +58,7 @@
 								<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
                         	</select>
                         	<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
-                        	<button id="searchBtn" class="btn" type="submit" name="submit">조회</button>
+                        	<button id="searchBtn" class="btn" type="submit">조회</button>
                         </div>
                     </td>
                 </tr>
@@ -70,21 +72,14 @@
 			     + $("select option:selected").val()
 			     + "&keyword="
 			     + encodeURIComponent($('#keywordInput').val());
+			    
 			    });
-			 });   
+			 }) 
 			 
+
+
 			 
-			 $(function(){
-		    		$("#searchBtn").click(function(){
-		    			var stype = $("select option:selected").val();
-		    		//	var kword = encodeURIcomponent($("#keywordInput").val());
-		    			var kword = $("#keywordInput").val();
-		    			var type =1;
-		    			
-		    			document.location.href = "<%=request.getContextPath()%>/lodging/lodgingList_search.do?searchType="+stype+"&keyword="+kword+"&type="+type;
-		    			return;
-		    		});
-		    	})
+
 			 </script>
             
         </form>

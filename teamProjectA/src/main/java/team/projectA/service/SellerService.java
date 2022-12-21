@@ -23,7 +23,7 @@ public interface SellerService {
 	
     List<QnaVO> qnaList(HashMap hm);
     
-    int listCount(SearchCriteria cri);
+    int listCount(SearchCriteria scri);
    	
 	int qnaInsert(QnaVO vo);
 	

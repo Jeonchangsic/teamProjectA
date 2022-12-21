@@ -48,9 +48,9 @@ public class SellerServiceImpl implements SellerService{
     }
     	
 	@Override
-	public int listCount(SearchCriteria cri) {
+	public int listCount(SearchCriteria scri) {
 
-		return SellerDao.listCount(cri);
+		return SellerDao.listCount(scri);
 	}
 
 	@Override

@@ -115,10 +115,14 @@ public class SellerController {
 		hm.put("uidx", login.getUidx());
 		hm.put("rowStart", scri.getRowStart());
 		hm.put("rowEnd", scri.getRowEnd());
+		hm.put("keyword", scri.getKeyword());
 		qnaList = sellerService.qnaList(hm);
 		
 		model.addAttribute("qnaList", qnaList);
 		model.addAttribute("pageMaker", pageMaker);
+		
+		System.out.println("keyword:"+scri.getKeyword());
+		System.out.println("searchType:"+scri.getSearchType());
                
         return "seller/sellerInquire";
         
