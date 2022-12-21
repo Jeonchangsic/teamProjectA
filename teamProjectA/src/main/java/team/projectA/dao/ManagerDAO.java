@@ -45,7 +45,7 @@ public class ManagerDAO {
 	public List<QnaVO> managerqnalist(){
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.managerqnalist");
 	}
-	public int qnaReply(QnaVO qv) {
-		return sqlSession.update("team.projectA.mapper.ManagerMapper.qnaReply", qv);
+	public int qnaReply(HashMap hm) {
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.qnaReply", hm);
 	}
 }

@@ -78,11 +78,11 @@
 				WHERE a.uidx = q.uidx
 		</select>
 		<!-- 문의 답변 -->
-		<update id="qnaReply" parameterType="QnaVO">
+		<update id="qnaReply" parameterType="HashMap">
 			UPDATE qnatb
-				SET qna_acontent = #{qna_acontent}
-					qna_acheck = '답변완료'
-				WHERE  qna_idx= #{qna_idx}
+				SET qna_Acontent = #{qna_Acontent}
+					,qna_acheck = '답변완료'
+				WHERE  qna_idx = #{qna_idx}
 		</update>
 
 </mapper>

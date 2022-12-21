@@ -4,6 +4,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 	
  <%@ page session="true" %>
 <!DOCTYPE html>
@@ -16,6 +17,7 @@
     <link href="<%=request.getContextPath()%>/resources/css/seller_css/sellerInquire.css" rel="stylesheet">
         <!-- 파비콘 -->
     <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
+    <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
 </head>
 <body style="overflow-x: hidden">
     <header>
@@ -51,19 +53,35 @@
             <table>
                 <tr>
                     <td>
-                        <select class="frm_select">
-                            <option>날짜</option>
-                            <option>제목</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="keyword" size="30">
-                    </td>
-                    <td>
-                        <button class="btn" type="submit" name="submit">조회</button>
+                    	<div class="search">
+	                        <select class="frm_select" name="searchType">
+								<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+                        	</select>
+                        	<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+                        	<button id="searchBtn" class="btn" type="submit">조회</button>
+                        </div>
                     </td>
                 </tr>
             </table>
+            <script>
+			 $(function(){
+			  $('#searchBtn').click(function() {
+			   self.location = "qnaList"
+			     + '${pageMaker.makeQuery(1)}'
+			     + "&searchType="
+			     + $("select option:selected").val()
+			     + "&keyword="
+			     + encodeURIComponent($('#keywordInput').val());
+			    
+			    });
+			 }) 
+			 
+
+
+			 
+
+			 </script>
+            
         </form>
         <table id="maintb">
             <thead>
@@ -89,15 +107,15 @@
 			<div id="paging">
 				<ul>
 					<c:if test="${pageMaker.prev}">
-						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
 					</c:if>   
 					    
 					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
 					</c:forEach>
 					      
 					<c:if test="${pageMaker.next}">
-						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+						<li><a href="<%=request.getContextPath() %>/seller/sellerInquire.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
 					</c:if>   
 				</ul>
 			</div>

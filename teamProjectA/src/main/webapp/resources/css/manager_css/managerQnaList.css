@@ -56,6 +56,13 @@ img,iframe{vertical-align:top;}
         hr{width:996px;
                 margin:16px 0px;
                 opacity: .25;}
+        button{width:40px;
+        height:30px; width:80px;
+        border:0px solid #555;
+        background-color:#555;
+        padding:0px;
+        color:white;
+        cursor:pointer;}
         table{margin-top:10px;}
         thead{font-weight: bold;
                 height:30px;

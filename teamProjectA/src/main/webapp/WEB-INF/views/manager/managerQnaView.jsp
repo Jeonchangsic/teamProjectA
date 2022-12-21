@@ -13,9 +13,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문의내용</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/reset.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/qnaView.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/qnaView2.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>	
+	
 
+		function reply(qna_idx,qna_Acontent){
+			var acontent = $("#qna_Acontent").val();
+			alert("답변등록이 완료되었습니다.");
+			location.href="/manager/managerQnaList.do";
+		}
+</script>
 </head>
 <body>
   	 <div id="header">
@@ -36,7 +44,7 @@
 	    		<table>
 	    		    <tr>
 	    				<td>작성자</td>
-	    				<td><%=qnaOne.getUserName() %></td>
+	    				<td><%=qnaOne.getUserName()%></td>
 	    				<td>작성일</td>
 	    				<td><%=qnaOne.getQna_Qdate()%></td>
 	    			</tr>
@@ -49,13 +57,12 @@
 		    	<form action="managerQna.do?qna_idx=${qnaOne.qna_idx}" method="POST">
 			    	<div id="Atable">
 						<p>관리자 답변</p>
-						<input type="hidden" value="${qnaOne.qna_idx}" /> 
-								<div><input type="hidden" id="qna_Acontent" name="qna_Acontent"></div>
-								<input type="text" value="${qnaOne.qna_Acontent }">								
-							
+								<div><input type="text" id="qna_Acontent" name="qna_Acontent"></div>
+								<input type="hidden" value="${qnaOne.qna_Acontent }">								
 					</div>		
 			    	<div id="btn">
-						<button type="button" onclick="location.href='managerQnaList.do?'">목록</button>
+			    		<button type="submit" >답변등록</button>
+						<button type="button" onclick="location.href='managerQnaList.do'">목록</button>
 			    	</div>
 		    	</form>
 	

@@ -59,15 +59,52 @@ public class ManagerController {
 		return "manager/managerUser";
 	
 	}
-	
+	//QnA리스트 
+	@RequestMapping(value = "/managerQnaList.do", method = RequestMethod.GET)
+	public String qna(UserVO vo, Model model,ReservVO vo1) {
+		
+		List<ReservVO> list1 = managerService.reservlist(vo1);
+		List<UserVO> list = userService.userList(vo);
+		List<QnaVO> list2 = managerService.managerqnalist();
+		model.addAttribute("list",list);
+		model.addAttribute("list1",list1);
+		model.addAttribute("list2",list2);
+		
+		return "manager/managerQnaList";
+	}
+	//문의내역 상세화면
 	@RequestMapping(value="/managerQna.do", method = RequestMethod.GET)
-	public String sellerInquireView(Locale locale, Model model, int QnA_idx) {
-				
-			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(QnA_idx);
+	public String sellerInquireView(Locale locale, Model model, int qna_idx) {
+			
+			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(qna_idx);
 			model.addAttribute("qnaOne",qnaOne);
 			
 		return "manager/managerQna";
 	}
+	//문의내역 답변등록
+	@RequestMapping(value="/managerQnaView.do", method = RequestMethod.GET)
+	public String managerQnaView(Locale locale, Model model, int qna_idx,String qna_Acontent) {
+			
+			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(qna_idx);
+			model.addAttribute("qnaOne",qnaOne);
+			HashMap<String,Object> hm = new HashMap<String,Object>();
+			hm.put("qna_idx",qna_idx);
+			hm.put("qna_Acontent",qna_Acontent);
+			managerService.qnaReply(hm);
+		return "manager/managerQnaView";
+	}
+	//문의내역 답변 update
+	@RequestMapping(value="/managerQna.do", method = RequestMethod.POST)
+	public String managerReply(int qna_idx,String qna_Acontent) {
+		HashMap<String,Object> hm = new HashMap<String,Object>();
+		hm.put("qna_idx",qna_idx);
+		hm.put("qna_Acontent",qna_Acontent);
+		managerService.qnaReply(hm);	
+			
+			
+		return "redirect:/manager/managerQnaList.do";
+	}
+	
 	@RequestMapping(value = "/managerRoom.do", method = RequestMethod.GET)
 	public String Room(Locale locale, Model model) throws Exception{
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -124,19 +161,6 @@ public class ManagerController {
 		
 		
 		return "manager/managerReview";
-	}
-	
-	@RequestMapping(value = "/managerQnaList.do", method = RequestMethod.GET)
-	public String qna(UserVO vo, Model model,ReservVO vo1) {
-		
-		List<ReservVO> list1 = managerService.reservlist(vo1);
-		List<UserVO> list = userService.userList(vo);
-		List<QnaVO> list2 = managerService.managerqnalist();
-		model.addAttribute("list",list);
-		model.addAttribute("list1",list1);
-		model.addAttribute("list2",list2);
-		
-		return "manager/managerQnaList";
 	}
 	@RequestMapping(value = "/managerReservList.do", method = RequestMethod.GET)
 	public String reservList(UserVO vo, Model model,ReservVO vo1) {

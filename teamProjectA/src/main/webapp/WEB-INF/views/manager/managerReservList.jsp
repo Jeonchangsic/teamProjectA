@@ -54,7 +54,7 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
                     <td>
                         <select class="frm_select">
                             <option value="id">아이디</option>
-                            <option value="nickname">예약번호</option>
+                            <option value="reservNum">예약번호</option>
                         </select>
                     </td>
                     <td>
