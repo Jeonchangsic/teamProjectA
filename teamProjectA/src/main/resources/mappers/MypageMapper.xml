@@ -89,18 +89,40 @@
 				WHERE reserv_num = #{reserv_num}
 		</delete>
 		
-		<!-- 리뷰 내역 -->
-		<select id="reviewList" parameterType="int" resultType="reviewVO">
-			SELECT l.lodgingname
+		<!-- 리뷰 내역  + 페이징-->
+		<select id="reviewList" parameterType="HashMap" resultType="reviewVO">
+			SELECT lodgingname
 					,rvtitle
 					,rvdate
 					,rvidx
-					,rm.rtype
-					,l.limagename
-				 FROM reviewtb r, LODGINGTB l,roomtb rm
-					 WHERE l.lidx = r.lidx
-					 AND r.ridx = rm.ridx
-					 AND r.uidx = #{uidx}
+					,rtype
+					,limagename
+					FROM ( 
+						SELECT lodgingname
+						,rvtitle
+						,rvdate
+						,rvidx
+						,rtype
+						,limagename
+						, ROW_NUMBER() 
+							OVER(
+								ORDER BY rvidx desc
+								) 
+								AS rNum FROM reviewtb r, LODGINGTB l,roomtb rm
+								 WHERE l.lidx = r.lidx
+								 AND r.ridx = rm.ridx
+								 AND r.uidx = #{uidx}
+								 )rtb 
+								WHERE rNum
+								BETWEEN 1 AND 5
+								ORDER BY rvidx DESC
+		</select>
+		
+		<!-- 마이페이지 리뷰내역 페이징(게시물 총개수 구하기) -->
+		<select id="review_count" resultType="int">
+			SELECT COUNT(rvidx) 
+				FROM reviewtb
+				WHERE rvidx > 0	
 		</select>
 		
 		<!-- 리뷰 상세 출력 -->

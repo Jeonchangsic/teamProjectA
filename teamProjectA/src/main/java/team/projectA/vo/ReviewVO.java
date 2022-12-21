@@ -7,11 +7,17 @@ public class ReviewVO extends RoomVO{
 	private int lidx;
 	private int ridx;
 	private String rvTitle;
-	private String rvSatisfaction;
+	private double rvSatisfaction;
 	private String rvContent;
 	private String rvDate;
 	
 	
+	public double getRvSatisfaction() {
+		return rvSatisfaction;
+	}
+	public void setRvSatisfaction(double rvSatisfaction) {
+		this.rvSatisfaction = rvSatisfaction;
+	}
 	public int getRvidx() {
 		return rvidx;
 	}
@@ -36,12 +42,14 @@ public class ReviewVO extends RoomVO{
 	public void setRvTitle(String rvTitle) {
 		this.rvTitle = rvTitle;
 	}
-	public String getRvSatisfaction() {
-		return rvSatisfaction;
+	
+	public int getRidx() {
+		return ridx;
 	}
-	public void setRvSatisfaction(String rvSatisfaction) {
-		this.rvSatisfaction = rvSatisfaction;
+	public void setRidx(int ridx) {
+		this.ridx = ridx;
 	}
+	
 	public String getRvContent() {
 		return rvContent;
 	}

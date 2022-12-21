@@ -60,9 +60,9 @@ public class ReviewController {
 	
 	//리뷰작성
 	@RequestMapping(value="/review.do", method= RequestMethod.POST)
-	public String review(int lidx, int ridx, int reserv_idx, String rvTitle, String rvSatisfaction, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
+	public String review(int lidx, int ridx, int reserv_idx, String rvTitle, double rvSatisfaction, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
 		
-		
+		System.out.println("rvSatisfaction:"+rvSatisfaction);
 		HttpSession session = req.getSession();
 		UserVO userVO = (UserVO)session.getAttribute("login"); 
 		

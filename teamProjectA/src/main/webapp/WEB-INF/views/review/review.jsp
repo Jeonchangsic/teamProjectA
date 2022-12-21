@@ -55,16 +55,16 @@
                         <td class="margin2">만족도</td>
                         <td class="satisfactionStyle">
                         	<select id="selectStyle" name="rvSatisfaction" required>
-                        		<option value="1.0점">1.0점</option>
-                        		<option value="2.0점">2.0점</option>
-                        		<option value="3.0점">3.0점</option>
-                        		<option value="4.0점">4.0점</option>
-                        		<option value="5.0점">5.0점</option>
-                        		<option value="6.0점">6.0점</option>
-                        		<option value="7.0점">7.0점</option>
-                        		<option value="8.0점">8.0점</option>
-                        		<option value="9.0점">9.0점</option>
-                        		<option value="10.0점">10.0점</option>
+                        		<option value="1.0">1.0점</option>
+                        		<option value="2.0">2.0점</option>
+                        		<option value="3.0">3.0점</option>
+                        		<option value="4.0">4.0점</option>
+                        		<option value="5.0">5.0점</option>
+                        		<option value="6.0">6.0점</option>
+                        		<option value="7.0">7.0점</option>
+                        		<option value="8.0">8.0점</option>
+                        		<option value="9.0">9.0점</option>
+                        		<option value="10.0">10.0점</option>
                         	</select>
                         </td>
                     </tr>

@@ -104,27 +104,35 @@
     <script>
     var codetemp ="";
     $(function(){
-    	
     	$(".mail_check_button").click(function(){
-    		$("#loading").css("display","inline-block");
-    		var email = $(".mail_input").val(); //입력한 이메일 
-    		var cehckBox = $(".mail_check_input"); //인증번호 입력란
-    		var boxWrap = $(".mail_check_input_box"); //인증번호 입력영역
-    		var code ="";
-    		$.ajax({
-    			
-    			type:"GET",
-    			url:"mailCheck?email="+ email,
-    			success:function(data){
-    				alert("인증번호 전송이 완료되었습니다.");
-    				$("#loading").css("display","none");
-    				cehckBox.attr("disabled",false); // attr : cehckBox의 속성을 변경
-    				boxWrap.attr("id","mail_check_input_box_true");
-    				codetemp = data; //컨트롤러에서 받은 리턴값(난수)을 변수에 넣는다.
+    		if($("#id").val() == ""){
+    			alert("아이디를 입력해주세요.");
+    		}else if($("#pwd").val() == ""){
+    			alert("비밀번호를 입력해주세요.");
+    		}else if($("#repwd").val() == ""){
+    			alert("비밀번호 확인을 완료해주세요.");
+    		}else{
+	    		$("#loading").css("display","inline-block");
+	    		var email = $(".mail_input").val(); //입력한 이메일 
+	    		var cehckBox = $(".mail_check_input"); //인증번호 입력란
+	    		var boxWrap = $(".mail_check_input_box"); //인증번호 입력영역
+	    		var code ="";
+	    		$.ajax({
+	    			
+	    			type:"GET",
+	    			url:"mailCheck?email="+ email,
+	    			success:function(data){
+	    				alert("인증번호 전송이 완료되었습니다.");
+	    				$("#loading").css("display","none");
+	    				cehckBox.attr("disabled",false); // attr : cehckBox의 속성을 변경
+	    				boxWrap.attr("id","mail_check_input_box_true");
+	    				codetemp = data; //컨트롤러에서 받은 리턴값(난수)을 변수에 넣는다.
     				
     			}
     		});
+    	}
     	});
+    	
     	$(".mail_check_input").blur(function(){
     		var inputcode = $(".mail_check_input").val(); //입력결과
     		var checkResult = $("#mail_check_input_box_warn"); //비교결과
@@ -158,17 +166,19 @@
     <header>
     	
         <h2>
-        	<a href="<%=request.getContextPath()%>/index/index.do">
-    			<img  id="main_logo"src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>
-    		</a>
     	</h2>
     </header>
     <main>
+    	<div id="logoArea">
+	       	<a href="<%=request.getContextPath()%>/index/index.do">
+	   			<img  id="main_logo"src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>
+	   		</a>
+   		</div>
     	<div id="border1">
 	        <form action="join.do" method="post">
 	            <table id="table1" class="joinBorder">
 	                <tr>
-	                    <td class="contentsArea">아이디</td>
+	                    <td class="contentsArea1">아이디</td>
 	                    <td class="inputArea">
 	                        <input type="text" name="userID" id="id" class="inputArea" placeholder="아이디를 입력하세요." required>
 	                        <span class="id_ok">사용 가능한 아이디입니다.</span>
@@ -187,7 +197,7 @@
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea">비밀번호확인</td>
+	                    <td class="contentsArea3">비밀번호확인</td>
 	                    <td class="inputArea">
 	                        <input type="password" id="repwd" class="inputArea" placeholder="비밀번호 확인" required>
 	                        <span class="pw_ok">비밀번호가 일치합니다.</span>
@@ -245,7 +255,7 @@
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea">약관동의</td>
+	                    <td class="contentsArea2">약관동의</td>
 	                    <td class="inputArea">
 	                        <button class="btn-open-popup BtnStyle" type="button" >약관보기</button>
 	                    </td>

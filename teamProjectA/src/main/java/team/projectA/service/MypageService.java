@@ -16,7 +16,8 @@ public interface MypageService {
 	List<ReservVO> listPage(HashMap hm)throws Exception;
 	int reserv_refund(ReservVO rvo);
 	ReservVO reservListPop(HashMap hm)throws Exception;
-	List<ReviewVO>reviewList(int uidx)throws Exception;
+	List<ReviewVO>reviewList(HashMap hm1)throws Exception;
 	int reviewDt(int rvidx);
 	ReviewVO reviewList2(int rvidx)throws Exception;
+	int review_count()throws Exception;
 }

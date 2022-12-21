@@ -28,6 +28,7 @@ import team.projectA.service.ReservService;
 import team.projectA.service.UserService;
 import team.projectA.vo.Criteria;
 import team.projectA.vo.PageMaker;
+import team.projectA.vo.PageMaker2;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
 import team.projectA.vo.SearchCriteria;
@@ -51,7 +52,7 @@ public class MypageController {
 	
 	//마이페이지
 	@RequestMapping(value = "/info.do", method = RequestMethod.GET)
-	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Model model,HttpServletRequest req)throws Exception {
+	public String mypage(@ModelAttribute("scri") SearchCriteria scri,Model model,HttpServletRequest req)throws Exception {
 		
 		//마이페이지 회원정보
 		  HttpSession session = req.getSession();
@@ -73,11 +74,22 @@ public class MypageController {
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageMaker",pageMaker);
-		//마이페이지 리뷰내역
-		int uidx = userVO.getUidx();
-		List<ReviewVO> reviewList = mypageService.reviewList(uidx);
+		
+		//마이페이지 리뷰내역,페이징
+		List<ReviewVO> reviewList = null;
+		
+		PageMaker pageMaker2 = new PageMaker();
+		 pageMaker.setCri(scri);
+		 pageMaker.setTotalCount(mypageService.review_count());
+		  
+		HashMap<String,Object> hm1 = new HashMap<String,Object>();
+		hm1.put("uidx", userVO.getUidx());
+		hm1.put("rowStart", scri.getRowStart());
+		hm1.put("rowEnd", scri.getRowEnd());
+		reviewList = mypageService.reviewList(hm1);
 		
 		model.addAttribute("reviewList",reviewList);
+		model.addAttribute("pageMaker2",pageMaker2);
 		
 		//마이페이지 
 		return "mypage/mypage";

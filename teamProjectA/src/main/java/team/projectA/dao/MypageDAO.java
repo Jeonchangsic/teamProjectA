@@ -38,9 +38,12 @@ public class MypageDAO {
 	 public ReservVO reservListPop(HashMap hm)throws Exception {
 		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reservListPop",hm);
 	 }
-	 public List<ReviewVO>reviewList(int uidx)throws Exception{
-			return sqlsession.selectList("team.projectA.mapper.MypageMapper.reviewList",uidx);
+	 public List<ReviewVO>reviewList(HashMap hm1)throws Exception{
+			return sqlsession.selectList("team.projectA.mapper.MypageMapper.reviewList",hm1);
 	}
+	 public int review_count()throws Exception{
+		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.review_count");
+	 }
 	 public int reviewDt(int rvidx){
 			return sqlsession.delete("team.projectA.mapper.MypageMapper.reviewDt", rvidx);
 	}

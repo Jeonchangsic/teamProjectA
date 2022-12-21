@@ -38,7 +38,7 @@
                     <tr>
                         <td class="margin2">만족도</td>
                         <td class="satisfactionStyle td_padding">
-                        	<div id="selectStyle">${vo.rvSatisfaction}</div>
+                        	<div id="selectStyle">${vo.rvSatisfaction}점</div>
                         </td>
                     </tr>
                     <tr>

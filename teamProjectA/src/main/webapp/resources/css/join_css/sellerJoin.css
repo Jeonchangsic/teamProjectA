@@ -330,8 +330,8 @@ main .email_no{
 }         
 #loading > img {
   	position: absolute;
-    top: 36.4%;
-    left: 49%;
-    width: 25px;
-    z-index: 100;
+  	top: 43%;
+  	left: 49.4%;
+  	width:23px;
+  	z-index: 100;
 }

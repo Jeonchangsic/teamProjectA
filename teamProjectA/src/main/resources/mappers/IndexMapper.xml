@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+		<mapper namespace="team.projectA.mapper.IndexMapper">
+		
+		<select id="popLodgingList" resultType="reviewVO">
+			SELECT l.lidx 
+			,l.lodgingname
+			,rm.rtype
+			,rm.rprice
+			,l.limagename
+			,AVG(rvsatisfaction)AS rvg
+		 	FROM reviewtb r
+		 		,roomtb rm
+		 		,lodgingtb l 
+				GROUP BY r.ridx
+	 					,r.lidx
+	 					,l.limagename
+	 					,l.lodgingname
+	 					,rm.ridx
+	 					,rm.rprice
+	 					,rm.RTYPE
+	 					,l.lidx
+		 	HAVING r.ridx = rm.ridx 
+			 	AND l.lidx = r.LIDX
+			 	ORDER BY rvg DESC
+		</select>
+</mapper>

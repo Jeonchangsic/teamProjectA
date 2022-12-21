@@ -245,6 +245,22 @@
 			                    </tr>
 		               	</c:forEach>
 	             </table>
+	             <div id="btnArea3">
+	                <div id="btnArea4">
+	                    <ul>
+	                    	<c:if test="${pageMaker.prev}">
+	                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker2.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+	                    	</c:if>
+	                    	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+	                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+	                    	</c:forEach>
+	                    	
+	                    	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+	                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeSearch(pageMaker.endPage +1)}">다음</a></li>
+	                    	</c:if>
+	                    </ul>
+	                </div>
+	            </div>
 	        </div>
 	    </main>
 	</div>
