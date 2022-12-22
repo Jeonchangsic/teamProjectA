@@ -20,4 +20,6 @@ public interface ManagerService {
 	public List<ReservVO> reservlist(ReservVO vo1);
 	public List<QnaVO> managerqnalist();
 	public int qnaReply(HashMap hm);
+	int userlistCount();
+	List<UserVO> muserList(HashMap hm1);
 }

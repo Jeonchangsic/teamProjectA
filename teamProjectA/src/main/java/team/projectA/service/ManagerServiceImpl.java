@@ -72,6 +72,18 @@ public class ManagerServiceImpl implements ManagerService {
 		
 		return managerDAO.qnaReply(hm);
 	}
+
+	@Override
+	public int userlistCount() {
+	
+		return managerDAO.userlistCount();
+	}
+
+	@Override
+	public List<UserVO> muserList(HashMap hm1) {
+		
+		return managerDAO.muserList(hm1);
+	}
 	
 	
 

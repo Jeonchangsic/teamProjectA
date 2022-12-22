@@ -85,5 +85,6 @@ public class UserVO{
 	public void setUserqnaList(List<QnaVO> userqnaList) {
 		this.userqnaList = userqnaList;
 	}
+
 	
 }

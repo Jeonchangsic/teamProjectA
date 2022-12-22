@@ -84,7 +84,35 @@
 					,qna_acheck = '답변완료'
 				WHERE  qna_idx = #{qna_idx}
 		</update>
-
+		<!-- 회원리스트 -->
+		<select id="userlistCount" resultType="int">
+			SELECT count(uidx)
+				FROM ausertb
+		        WHERE uidx > 0 <!--총게시글 수 구한후 refid로 검색어 조건-->
+		</select>
+		<!--관리자회원 리스트+페이징+검색-->
+	<select id="muserList" parameterType="HashMap" resultType="userVO">	
+			SELECT uidx
+					, userID
+					, userName
+					, userPhone
+					, userEmail
+					, userType
+				FROM (
+					SELECT uidx
+							, userID
+							, userName
+							, userPhone
+							, userEmail
+							, userType
+							, row_number() over(ORDER BY uidx DESC)
+							 AS unum
+					FROM ausertb
+					)
+					WHERE unum BETWEEN #{rowStart} AND #{rowEnd}
+					
+					ORDER BY uidx DESC
+	</select>
 </mapper>
 
 

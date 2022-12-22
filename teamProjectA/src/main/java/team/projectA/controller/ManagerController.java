@@ -6,11 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +26,12 @@ import team.projectA.service.ReservService;
 import team.projectA.service.SellerService;
 import team.projectA.service.UserService;
 import team.projectA.vo.LodgingVO;
+import team.projectA.vo.PageMaker;
 import team.projectA.vo.PagingVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 @RequestMapping(value="/manager")
@@ -45,16 +50,24 @@ public class ManagerController {
 	@Autowired
 	private UserService userService;
 	@RequestMapping(value = "/managerUser.do", method = RequestMethod.GET)
-	public String user(Model model,UserVO vo,ReservVO vo1) {
+	public String user(Model model,UserVO vo,ReservVO vo1,HttpServletRequest req, @ModelAttribute("scri") SearchCriteria scri) {
 		
-		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(managerService.userlistCount());
+		List<UserVO> muserList = null;
+		HashMap<String, Object> hm1 = new HashMap<String, Object>();
 		List<ReservVO> list1 = managerService.reservlist(vo1);
 		List<UserVO> list = userService.userList(vo);
 		List<QnaVO> list2 = managerService.managerqnalist();
+		hm1.put("rowStart", scri.getRowStart());
+		hm1.put("rowEnd", scri.getRowEnd());
+		muserList = managerService.muserList(hm1);
 		model.addAttribute("list",list);
 		model.addAttribute("list1",list1);
 		model.addAttribute("list2",list2);
-		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("muserList",muserList);
 	
 		return "manager/managerUser";
 	
