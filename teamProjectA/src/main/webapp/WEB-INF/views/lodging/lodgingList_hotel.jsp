@@ -743,7 +743,15 @@
 						<button type="button" onclick="change_btn2(event,1)" id="up1" class="btnbox2  <c:if test="${type eq '1'}">active2</c:if>">최근등록순</button>
 					</li>
 				</ul>
-				<h2>인기추천</h2>					
+				<h2>인기추천</h2>		
+					<c:if test="${empty list}">
+						<div class="empty">
+							<p>현재 조건에 맞는 숙소가 없습니다.</p>
+							 지역을 변경하거나
+							<br>
+							일정, 상세조건을 재설정해 보세요.
+						</div>
+					</c:if>			
 					<c:forEach var="vo" items="${list}" varStatus="status">
 						<!-- break를 위한 boolean변수 doneLoop 선언 -->
 						<c:set var="doneLoop" value="false" />

@@ -83,7 +83,9 @@ body #inner2 #up li{float:right;}
 body #inner2 #up button{padding:10px; background-color: white; border:1px solid rgb(86,19,241); border-radius: 5px;}
 body #inner2 h2{clear:both; font-size:20px; font-weight:bold;
                 margin-bottom:20px;}
-
+                
+.empty {padding:120px 0; text-align:center; line-height:24px; font-size:14px; color:rgba(0,0,0,0.38);}
+.empty p {display:block; margin-bottom:18px; font-size:20px; font-weight:bold; color:rgba(0,0,0,0.56);}
 
 body #inner2 .imgbor{position:relative;
      
