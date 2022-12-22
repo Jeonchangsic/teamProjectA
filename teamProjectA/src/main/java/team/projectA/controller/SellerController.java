@@ -212,13 +212,16 @@ public class SellerController {
 	   
 	
 	//객실 삭제 (redirect해야해서 가상경로 따로 설정함)
-	@RequestMapping(value = "/sellerRegi2.do", method = RequestMethod.GET)
-	public String Regi2(Locale locale, Model model, int ridx) {
+	@RequestMapping(value = "/sellerRegi2.do", method = RequestMethod.POST)
+	public void Regi2(Locale locale, Model model, int ridx, HttpServletResponse res) throws IOException {
 
 		sellerService.roomdel(ridx);
 		
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter pw = res.getWriter();
+		pw.append("<script>alert('삭제되었습니다.');location='sellerRegi.do'</script>");
 				
-		return "redirect:sellerRegi.do";
+		//return "redirect:sellerRegi.do";
 		
 	}
 	

@@ -105,14 +105,9 @@
 	       	<form method="post" enctype="multipart/form-data" > 
 	        <!--이미지 업로드 -->
 		        <div class="inputArea" id="main_left">
-				 	<label for="rimage1">사진등록</label>
+				 	<label id="rimage1_btn" for="rimage1">사진등록</label>
 					<input multiple="multiple" type="file" id="rimage1" name="file" required />
-					<div id="imgborder"></div>
-					
-					<label for="rimage2">ㅇ</label>
-					<input multiple="multiple" type="file" id="rimage2" name="file"/>
-					<div id="imgborder2"></div>
-					
+					<div id="imgborder"></div>			
 				</div>	
 				
 				<input type="hidden" name="lidx" value="${lidxone.lidx}"> 

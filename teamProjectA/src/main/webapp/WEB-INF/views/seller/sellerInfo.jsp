@@ -149,10 +149,21 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td>사업장명</td>
-					<td><input type='text' name="lodgingname" id="lodgingname" value="${lodging.lodgingname}"></td>
-
-					<td><button type="button" id="nameFn" value="상세변경" class="btn_size">변경</button></td>
+					<c:choose>
+						<c:when test = "${lodging.lodging == 'Y'}">
+							<td>사업장 명</td>
+							<td><input type='text' name="lodgingname" id="lodgingname" value="${lodging.lodgingname}"></td>
+							<td><button type="button" id="nameFn" value="상세변경" class="btn_size">변경</button></td>
+						</c:when>
+						<c:when test = "${lodging.lodging == 'N'}">
+							<td>사업장 명</td>
+							<td >숙소를 등록해 주세요.</td>
+						</c:when>
+						<c:when test = "${lodging.lodging == 'Waiting'}">
+							<td>사업장 명</td>
+							<td>승인 대기 중입니다.</td>
+						</c:when>
+					</c:choose>
 				</tr>
 
 				<tr>
@@ -177,10 +188,23 @@
 				</tr>
 
 				<tr>
-					<td>숙소 주소</td>
-					<td><input type='text' name="lodgingaddr" id="lodgingaddr" value="${lodging.lodgingaddr}"></td>
-					<td><button type="button" class="btn_size" id="addrFn">변경</button></td>
+					<c:choose>
+						<c:when test = "${lodging.lodging == 'Y'}">
+							<td>숙소 주소</td>
+							<td><input type='text' name="lodgingaddr" id="lodgingaddr" value="${lodging.lodgingaddr}"></td>
+							<td><button type="button" class="btn_size" id="addrFn">변경</button></td>
+						</c:when>
+						<c:when test = "${lodging.lodging == 'N'}">
+							<td>숙소 주소</td>
+							<td >숙소를 등록해 주세요.</td>
+						</c:when>
+						<c:when test = "${lodging.lodging == 'Waiting'}">
+							<td>숙소 주소</td>
+							<td >승인 대기 중입니다.</td>
+						</c:when>
+					</c:choose>
 				</tr>
+
 
 			</table>
 		</form>

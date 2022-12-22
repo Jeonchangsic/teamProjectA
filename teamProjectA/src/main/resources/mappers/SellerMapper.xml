@@ -14,12 +14,13 @@
 					, u.userEmail
 					, u.userPhone
 					, u.userType
+					, u.lodging
 					, l.lodgingname
 					, l.lodgingaddr
 					, l.lidx
 					, l.limagename
 					FROM ausertb u
-					LEFT OUTER JOIN lodgingtb l
+					FULL OUTER JOIN lodgingtb l
 					ON u.uidx = l.uidx 
 					WHERE u.uidx= #{uidx}
 	</select>
@@ -272,7 +273,8 @@
 				WHERE ridx = #{ridx} 
 	</update>
 	<update id="roomModify2" parameterType="RoominVO">
-			UPDATE roomintb SET roomspa = #{roomspa}
+			UPDATE roomintb SET 
+				 roomspa = #{roomspa}
 				,wifi = #{wifi}
 				,tv = #{tv}
 				,refri = #{refri}

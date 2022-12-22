@@ -108,34 +108,33 @@
 								<td>${vo.rprice}</td>
 								<td>${vo.rnum}</td>
 								<td>
-									<button type="button" onclick="reFn() "value="수정" onclick="location.href='sellerRoomup2.do?ridx=${vo.ridx}'">수정</button>
+									<button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=${vo.ridx}'">수정</button>
 									<button type="button" onclick="delFn()">삭제</button>
 								</td>  			 
 							</tr>
 							<script>
-								//객실 삭제 안내
+								//객실 삭제 안내	 vo. 를 써야하기 때문에 jsp안에서 스크립트씀
 								function delFn() {
 									
-									var llist = ${vo.ridx}
-									
-									if (!llist){
-										alert("삭제할 객실이 없습니다.")
-									} else if (!confirm("해당 객실을 삭제하시겠습니까?")) {
+									if (!confirm("해당 객실을 삭제하시겠습니까?")) {
 										alert("삭제가 취소되었습니다.");
 									} else {
-										alert("삭제가 완료되었습니다.");
-										location = "sellerRegi2.do?ridx=${vo.ridx}"; //list. 를 써야하기 때문에 jsp안에서 스크립트씀
-									}
-								}
-								
-								//객실 수정 안내
-								function reFn(){
-									
-									var re = ${vo.ridx}
-									if (!re){
-										alert("수정할 객실이 없습니다.")	
-									} else {
-										location = "sellerRoomup2.do?ridx=${vo.ridx}"
+							/* 			alert("삭제가 완료되었습니다."); */
+							
+										let r = document.createElement('form');	
+							
+										let obj;
+										obj = document.createElement('input');
+										obj.setAttribute('type', 'hidden');
+										obj.setAttribute('name', 'ridx');
+										obj.setAttribute('value', '${vo.ridx}');
+										
+										r.appendChild(obj);
+										r.setAttribute('method', 'post');
+										r.setAttribute('action', 'sellerRegi2.do');
+										document.body.appendChild(r);
+										r.submit();
+
 									}
 								}
 		
