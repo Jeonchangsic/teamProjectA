@@ -9,5 +9,6 @@ import team.projectA.vo.UserVO;
 public interface IndexService {
 	
 	List<ReviewVO> popLodgingList()throws Exception;
+	List<ReviewVO> popLodgingList2()throws Exception;
 }
 

@@ -55,7 +55,9 @@ UL,li{list-style:none;}
                              
                   /*header*/
 header h2{
-    width:1024px; margin: 0 auto;
+    width:1024px; 
+    height:30px;
+    margin: 0 auto;
     text-align: center;
     font-size:30px;
     font-weight: bold;
@@ -63,13 +65,33 @@ header h2{
 }
 
             /*main*/
+main{
+	position:relative;
+}
 main #table1{
     margin:0 auto 10px auto;
     text-align:center;
+    border: 3px groove #5613f1;
+    border-radius:5px;
 }
 main .contentsArea{
-    padding-top:30px;
+    padding-top:10px;
 }   
+main .contentsArea1{
+	padding-top:50px;
+}
+main .contentsArea2{
+	padding: 30px 0 19px 0;
+}
+main .contentsArea3{
+	padding: 10px 0 10px 4px;
+}
+main .contentsArea4{
+	padding: 10px 0 32px 0px;
+}
+main .contentsArea5{
+	padding: 23px 0 17px 0;	
+}
 main .inputArea{
     width:170px;
     height:25px;
@@ -212,13 +234,11 @@ main .pw_no4{
         position: absolute;
         top: 0;
         left: 0;
-
         width: 100%;
         height: 100%;
-
         display: none;
-		
         background-color: rgba(0, 0, 0, 0.4);
+        z-index:998;
       }
 
 .modal.show {
@@ -229,20 +249,17 @@ main .pw_no4{
         position: absolute;
         top: 30%;
         left: 50%;
-
         width: 400px;
         height: 250px;
 		line-height:35px;
         padding: 40px;
-
         text-align: center;
-
         background-color: rgb(255, 255, 255);
         border: 2px solid #000;
         border-radius: 10px;
         box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
         transform: translateX(-50%) translateY(-50%);
+        z-index: 999;
       }
 #joinText{
      	padding-top:20px;
@@ -255,7 +272,6 @@ main .pw_no4{
      }
 #mail_check_button{
      	border:1px solid #000;
-     	background-color:rgba(0,0,0,0.10);
      }
 #logo1{
      	width:150px;
@@ -290,6 +306,10 @@ main .email_no{
    	font-weight:bold;
 	border:0px solid #000;
 	border-radius:2px;
+	margin-right:5px;
+	display: inline-block;
+    height: 22px;
+    line-height: 1.2;
 }
 .btnStyle:hover{
 	color:white;
@@ -309,7 +329,6 @@ main .email_no{
 }
 #mail_check_button{
      	color:rgba(255,255,255,0.8);
-     	background-color:rgb(86, 19, 241);
      	font-weight:bold;
 		border:0px solid #000;
 		border-radius:2px;
@@ -327,11 +346,29 @@ main .email_no{
   	z-index: 99;
   	text-align: center;
 	margin-left:0px;
-}         
+}
 #loading > img {
   	position: absolute;
-  	top: 43%;
+  	top: 36.6%;
   	left: 49.4%;
   	width:23px;
   	z-index: 100;
+}
+#logoArea{
+	position:absolute;
+	left:46%;
+	top:-33px;
+	background-color: white;
+}         
+#idFormArea{
+	height:25px;
+}
+#pwFormArea{
+	height:25.5px;
+}
+#repwFormArea{
+	height:22px;
+}
+#emailFormArea{
+	 height:23px;
 }

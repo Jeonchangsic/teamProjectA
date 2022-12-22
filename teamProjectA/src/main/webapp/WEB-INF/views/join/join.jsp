@@ -30,15 +30,18 @@
 					    		$(".id_ok").css("display","inline-block");
 				    			$(".id_no").css("display","none");
 				    			$(".id_no2").css("display","none");
+				    			$("#idFormArea").css("display","none");
 			    			}else if(data == 1){							 //중복되는 아이디가 있는경우
 				    			$(".id_ok").css("display","none");
 				    			$(".id_no").css("display","inline-block");
 				    			$(".id_no2").css("display","none");
+				    			$("#idFormArea").css("display","none");
 				    			$("#id").val("");
 		    				}else{
 		    					$(".id_ok").css("display","none");
 				    			$(".id_no").css("display","none");
 				    			$(".id_no2").css("display","none");
+				    			$("#idFormArea").css("display","block");
 		    				}	
 			    	},
 			    	error:function(){
@@ -49,6 +52,7 @@
 					$(".id_ok").css("display","none");
 					$(".id_no").css("display","none");
 					$(".id_no2").css("display","inline-block");
+					$("#idFormArea").css("display","none");
 					$("#id").val("");
 			}
 	    	
@@ -68,16 +72,19 @@
 	    		$(".pw_no2").css("display","inline-block");
 	    		$(".pw_no3").css("display","none");
 	    		$(".pw_no4").css("display","none");
+	    		$("#pwFormArea").css("display","none");
 	    		$("#pwd").val("");
 	    	}else if((num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0)){ //특문,영문,숫자를 조합한 비밀번호가 아닌경우 
 	    		$(".pw_no2").css("display","none");
 	    		$(".pw_no3").css("display","inline-block");
 	    		$(".pw_no4").css("display","none");
+	    		$("#pwFormArea").css("display","none");
 	    		$("#pwd").val("");
 	    	}else{//비밀번호 설정이 일치하는경우
 		    		$(".pw_no2").css("display","none");
 		    		$(".pw_no3").css("display","none");
 		    		$(".pw_no4").css("display","inline-block");
+		    		$("#pwFormArea").css("display","none");
 	    	}
 	    	})
 	    });
@@ -91,9 +98,11 @@
 	    	if(pwd == repwd){
 	    		$(".pw_ok").css("display","inline-block");
 	    		$(".pw_no").css("display","none");
+	    		$("#repwFormArea").css("display","none");
 	    	}else{
 	    		$(".pw_ok").css("display","none");
 	    		$(".pw_no").css("display","inline-block");
+	    		$("#repwFormArea").css("display","none");
 	    		$("#repwd").val("");
 	    	}
     	});
@@ -140,9 +149,11 @@
     		if(inputcode == codetemp){ //인증번호가 일치하는 경우
     			$(".email_ok").css("display","inline-block");
 	    		$(".email_no").css("display","none");
+	    		$("#emailFormArea").css("display","none");
     		}else{						//인증번호가 일치하지 않는 경우
     			$(".email_ok").css("display","none");
 	    		$(".email_no").css("display","inline-block");
+	    		$("#emailFormArea").css("display","none");
 	    		$(".mail_check_input").val("");
     		}
     	});
@@ -165,8 +176,7 @@
     </div>
     <header>
     	
-        <h2>
-    	</h2>
+        <h2></h2>
     </header>
     <main>
     	<div id="logoArea">
@@ -187,6 +197,15 @@
 	                    </td>
 	                    <td></td>
 	                </tr>
+	                <tr id="idFormArea">
+	                    <td></td>
+	                    <td>
+	                        <span></span>
+	                        <span></span>
+	                        <span></span>
+	                    </td>
+	                    <td></td>
+	                </tr>
 	                <tr>
 	                    <td class="contentsArea" >비밀번호</td>
 	                    <td class="inputArea">
@@ -196,6 +215,15 @@
 	                        <span class="pw_no4">안전한 비밀번호 입니다.</span>
 	                    </td>
 	                </tr>
+	                <tr id="pwFormArea">
+	                    <td></td>
+	                    <td>
+	                        <span></span>
+	                        <span></span>
+	                        <span></span>
+	                    </td>
+	                    <td></td>
+	                </tr>
 	                <tr>
 	                    <td class="contentsArea3">비밀번호확인</td>
 	                    <td class="inputArea">
@@ -204,8 +232,17 @@
 	                        <span class="pw_no">비밀번호 불일치!</span>
 	                    </td>
 	                </tr>
+	                <tr id="repwFormArea">
+	                    <td></td>
+	                    <td>
+	                        <span></span>
+	                        <span></span>
+	                        <span></span>
+	                    </td>
+	                    <td></td>
+	                </tr>
 	                <tr>
-	                    <td class="contentsArea">이름</td>
+	                    <td class="contentsArea4">이름</td>
 	                    <td class="inputArea">
 	                        <input type="text" name="userName" id="name" class="inputArea" placeholder="이름을 입력하세요." required>
 	                    </td>
@@ -226,6 +263,15 @@
 		                    	<span class="BtnStyle">인증번호 전송</span>
 	                    </td>
 	                </tr>
+	                <tr id="emailFormArea">
+	                    <td></td>
+	                    <td>
+	                        <span></span>
+	                        <span></span>
+	                        <span></span>
+	                    </td>
+	                    <td></td>
+	                </tr>
 	                <tr>
 	                	<td></td>
 	                	<td>
@@ -238,11 +284,11 @@
 	                <tr>
 	                    <td class="contentsArea">휴대전화</td>
 	                    <td class="inputArea">
-	                        <input type="tel" name="userPhone" id="phone" class="inputArea" placeholder="- 제외하고 입력하세요." required>
+	                        <input type="tel" name="userPhone" id="phone" class="inputArea" placeholder="- 제외하고 입력하세요." maxlength="11" required>
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea">성별</td>
+	                    <td class="contentsArea5">성별</td>
 	                    <td>
 	                        남성 <input type="radio" name="userGender" value="남자" id="man" required>
 	                        여성 <input type="radio" name="userGender" value="여자 " required>

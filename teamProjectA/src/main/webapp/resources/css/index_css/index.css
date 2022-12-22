@@ -122,19 +122,14 @@ main #slide_list h4{display:inline-block; border-bottom:5px solid rgb(86, 19, 24
 main #slide_list img{width:270px; height:180px;}
 main #slide_list ul{display:flex; align-items:center; JUSTIFY-CONTENT: SPACE-BETWEEN; flex-wrap:wrap;}
 main #slide_list li{width:50%; padding-left: 120px; box-sizing:border-box; padding-bottom: 30px;}
-/*main #slide_list a{padding-bottom:20px; }*/
-main #slide_list .lod_name{ font-size:16px; line-height:2em; text-align: left;}
-main #slide_list .lod_price{ font-size:22px; font-weight:bold; text-align: left;} 
-/* main #bg_w1{height:97px;}   */
 main .slide_list{margin-top:10px; padding-bottom: 20px;}
-/*main .slide_list:not(last-child){}*/
 main .slide_list h4{display:inline-block; border-bottom:5px solid rgb(86, 19, 241); margin:20px; font-size:25px; padding-bottom:10px;}
 main .slide_list img{width:230px; height:180px;}
 main .slide_list ul{display:flex; align-items:center; JUSTIFY-CONTENT: SPACE-BETWEEN;}
 main .slide_list li{padding: 0 50px;}
 main .slide_list a{padding-bottom:20px;}
 main .slide_list .lod_name{ font-size:18px; line-height:2em;}
-main .slide_list .lod_price{ font-size:15px; font-weight:bold; line-height:2em;}
+main .slide_list { font-size:15px; font-weight:bold; line-height:2em;}
 
  
 main .border{border-right:1px solid rgba(0,0,0,0.15);}
@@ -186,16 +181,12 @@ footer #copy{color:#919191;}
 
 /* 수정 내용 */
 
-.lod_price .sale {
-    font-size: 22px;
-    color: rgb(199, 38, 38);
-    margin-right: 10px;
-}
-.lod_price .sale i {
+
+.lod_rtype .sale i {
     font-size: 15px;
     
 }
-.lod_price .price i {
+.lod_rtype .price i {
     font-size: 15px;
     font-style: normal;
 }
@@ -217,4 +208,44 @@ footer #copy{color:#919191;}
 #festival_content .swiper-slide,
 #best_item .swiper-slide {
     padding-bottom: 30px;
+}
+.lod_name{
+	font-weight: bold;
+    font-size: 22px;
+    padding-right: 5px;
+    margin-top: 6px;
+}
+.lod_rtype{
+	color:#bbb;
+	text-align: revert;
+	font-size:16px; 
+	line-height:2em;
+	height:26px;
+}
+.lod_satisfaction{
+	margin-top: 5px;
+    font-size: 16px;
+}
+.text_left{
+	text-align:left;
+}
+.lod_price{
+	font-weight: bold;
+    font-size: 21px;
+    text-align: center;
+    padding: 5px 0 0 56px;
+}
+.festival_name{
+	font-size: 16px;
+}
+.festival_text{
+	font-size: 16px;
+    font-weight: normal;
+}
+.trip_name{
+	font-size: 16px;
+}
+.trip_text{
+	font-size: 16px;
+    font-weight: normal;
 }

@@ -10,8 +10,15 @@ public class ReviewVO extends RoomVO{
 	private double rvSatisfaction;
 	private String rvContent;
 	private String rvDate;
+	private double avgrv;
 	
 	
+	public double getAvgrv() {
+		return avgrv;
+	}
+	public void setAvgrv(double avgrv) {
+		this.avgrv = avgrv;
+	}
 	public double getRvSatisfaction() {
 		return rvSatisfaction;
 	}

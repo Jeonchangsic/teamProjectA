@@ -23,6 +23,11 @@ public class IndexServiceImpl implements IndexService{
 	public List<ReviewVO> popLodgingList() throws Exception {
 		return indexDAO.popLodgingList();
 	}
+
+	@Override
+	public List<ReviewVO> popLodgingList2() throws Exception {
+		return indexDAO.popLodgingList2();
+	}
 	
 
 }

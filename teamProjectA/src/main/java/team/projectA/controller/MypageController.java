@@ -75,12 +75,9 @@ public class MypageController {
 		model.addAttribute("list",list);
 		model.addAttribute("pageMaker",pageMaker);
 		
-		//마이페이지 리뷰내역,페이징
+		//마이페이지 리뷰내역
 		List<ReviewVO> reviewList = null;
 		
-		PageMaker pageMaker2 = new PageMaker();
-		 pageMaker.setCri(scri);
-		 pageMaker.setTotalCount(mypageService.review_count());
 		  
 		HashMap<String,Object> hm1 = new HashMap<String,Object>();
 		hm1.put("uidx", userVO.getUidx());
@@ -89,7 +86,6 @@ public class MypageController {
 		reviewList = mypageService.reviewList(hm1);
 		
 		model.addAttribute("reviewList",reviewList);
-		model.addAttribute("pageMaker2",pageMaker2);
 		
 		//마이페이지 
 		return "mypage/mypage";

@@ -52,10 +52,14 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value = "/index/index.do", method = RequestMethod.GET)  // index�������� �̵�
-	public String backIndex(Locale locale, Model model) {
+	public String backIndex(Locale locale, Model model)throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		
+		List<ReviewVO> list = indexService.popLodgingList2();
+
+		
+		model.addAttribute("list",list);
 		
 		return "index/index";
 	}

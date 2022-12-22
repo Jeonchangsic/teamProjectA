@@ -60,11 +60,6 @@
                         		<option value="3.0">3.0점</option>
                         		<option value="4.0">4.0점</option>
                         		<option value="5.0">5.0점</option>
-                        		<option value="6.0">6.0점</option>
-                        		<option value="7.0">7.0점</option>
-                        		<option value="8.0">8.0점</option>
-                        		<option value="9.0">9.0점</option>
-                        		<option value="10.0">10.0점</option>
                         	</select>
                         </td>
                     </tr>
