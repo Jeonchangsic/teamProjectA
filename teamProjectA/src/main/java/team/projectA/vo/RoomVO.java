@@ -12,6 +12,7 @@ public class RoomVO extends LodgingVO{
 	private String rimage4;
 	private String rimage5;
 	private String bed;
+	private String[] bedArr;
 	private int stdmen;
 	public int getStdmen() {
 		return stdmen;
@@ -96,6 +97,12 @@ public class RoomVO extends LodgingVO{
 	}
 	public void setBed(String bed) {
 		this.bed = bed;
+	}
+	public String[] getBedArr() {
+		return bedArr;
+	}
+	public void setBedArr(String[] bedArr) {
+		this.bedArr = bedArr;
 	}
 	
 }

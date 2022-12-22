@@ -35,7 +35,7 @@ public class LodgingDAO {
 		hm.put("lodgingkind",lodgingkind);
 		hm.put("type", type);		
 		hm.put("area", area);
-		hm.put("bed", rvo.getBed());
+		hm.put("bedArr", rvo.getBedArr());
 		hm.put("roomspa", rinvo.getRoomspa());
 		hm.put("wifi", rinvo.getWifi());
 		hm.put("tv", rinvo.getTv());

@@ -4,6 +4,7 @@
 <%@ page import="team.projectA.vo.*" %>
 <%
 	List<Map<String,Object>> list = (List<Map<String,Object>>)request.getAttribute("list");
+	//pageContext.setAttribute(arg0, arg1)
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -85,35 +86,7 @@
 			keyboard : true,
 		});
 		
-		<%-- //베드필터
-		$(input[name=bed]).each(function() {
-			var btn = document.
-			var imgs = btn.querySelector("img");
-			var checks = btn.querySelector("input");
-			
-			if (checks.checked == true) {
-				btn.classList.add("active");
-				imgs.src = "<%=request.getContextPath()%>/resources/images/lodgingList_images/"+name+"_c.jpg";
-			} else {
-				btn.classList.remove("active");
-				imgs.src = "<%=request.getContextPath()%>/resources/images/lodgingList_images/"+name+".jpg";
-			}
-		}
 		
-		//베드필터
-		function change_btn(e, name) {
-			var btn = e.currentTarget;
-			var imgs = btn.querySelector("img");
-			var checks = btn.querySelector("input");
-			
-			if (checks.checked == true) {
-				btn.classList.add("active");
-				imgs.src = "<%=request.getContextPath()%>/resources/images/lodgingList_images/"+name+"_c.jpg";
-			} else {
-				btn.classList.remove("active");
-				imgs.src = "<%=request.getContextPath()%>/resources/images/lodgingList_images/"+name+".jpg";
-			}
-		} --%>
 	});
 
 	//캘린더
@@ -194,13 +167,14 @@
 	function change_btn(e, name) {
 		var btn = e.currentTarget;
 		var imgs = btn.querySelector("img");
+		var ps = btn.querySelector("p");
 		var checks = btn.querySelector("input");
 		
 		if (checks.checked == true) {
-			btn.classList.add("active");
+			ps.classList.add("active");
 			imgs.src = "<%=request.getContextPath()%>/resources/images/lodgingList_images/"+name+"_c.jpg";
 		} else {
-			btn.classList.remove("active");
+			ps.classList.remove("active");
 			imgs.src = "<%=request.getContextPath()%>/resources/images/lodgingList_images/"+name+".jpg";
 		}
 	}
@@ -514,34 +488,155 @@
 						
 						<div class="filter">베드 타입</div>
 						<ul class="btnsBox">
-							<li class="btnbox" onclick="change_btn(event,'single_bed')">
+							<%
+							String[] bedArr  = request.getParameterValues("bedArr");								
+						
+							String str1 = "<li class='btnbox' onclick='change_btn(event, \"single_bed\")'><label>"
+											+"<img src='"+request.getContextPath()+"/resources/images/lodgingList_images/single_bed.jpg' alt='single_bed'><p>싱글</p>"
+											+"<input type='checkbox' name='bedArr' value='single_bed'></label></li>";
+							String str2 = "<li class='btnbox' onclick='change_btn(event, \"double_bed\")'><label>"
+											+"<img src='"+request.getContextPath()+"/resources/images/lodgingList_images/double_bed.jpg' alt='double_bed'><p>더블</p>"
+											+"<input type='checkbox' name='bedArr' value='double_bed'></label></li>";
+							String str3 = "<li class='btnbox' onclick='change_btn(event, \"twin_bed\")'><label>"
+											+"<img src='"+request.getContextPath()+"/resources/images/lodgingList_images/twin_bed.jpg' alt='twin_bed'><p>트윈</p>"
+											+"<input type='checkbox' name='bedArr' value='twin_bed'></label></li>";
+							String str4 = "<li class='btnbox' onclick='change_btn(event, \"ondol_bed\")'><label>"
+											+"<img src='"+request.getContextPath()+"/resources/images/lodgingList_images/ondol_bed.jpg' alt='ondol_bed'><p>온돌</p>"
+											+"<input type='checkbox' name='bedArr' value='ondol_bed'></label></li>";
+							
+							if(bedArr != null){
+								for (String pbed : bedArr){
+									if (pbed.equals("single_bed")){
+										str1 = "<li class='btnbox' onclick='change_btn(event, \"single_bed\")'><label>"
+												+"<img src='"+request.getContextPath()+"/resources/images/lodgingList_images/single_bed_c.jpg' alt='single_bed'><p class='active'>싱글</p>"
+												+"<input type='checkbox' name='bedArr' value='single_bed' checked></label></li>";
+									}
+									if (pbed.equals("double_bed")){
+										str2 = "<li class='btnbox' onclick='change_btn(event, \"double_bed\")'><label>"
+												+"<img src='"+request.getContextPath()+"/resources/images/lodgingList_images/double_bed_c.jpg' alt='double_bed'><p class='active'>더블</p>"
+												+"<input type='checkbox' name='bedArr' value='double_bed' checked></label></li>";
+									}
+									if (pbed.equals("twin_bed")){
+										str3 = "<li class='btnbox' onclick='change_btn(event, \"twin_bed\")'><label>"
+												+"<img src='"+request.getContextPath()+"/resources/images/lodgingList_images/twin_bed_c.jpg' alt='twin_bed'><p class='active'>트윈</p>"
+												+"<input type='checkbox' name='bedArr' value='twin_bed' checked></label></li>";
+									}
+									if (pbed.equals("ondol_bed")){
+										str4 = "<li class='btnbox' onclick='change_btn(event, \"ondol_bed\")'><label>"
+												+"<img src='"+request.getContextPath()+"/resources/images/lodgingList_images/ondol_bed_c.jpg' alt='ondol_bed'><p class='active'>온돌</p>"
+												+"<input type='checkbox' name='bedArr' value='ondol_bed' checked></label></li>";
+									}
+								}
+							}
+							
+							out.println(str1);
+							out.println(str2);
+							out.println(str3);
+							out.println(str4);
+							%>				
+							
+							<%-- <li class="btnbox" onclick="change_btn(event,'single_bed')">
 								<label>
-									<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/single_bed.jpg" alt="single_bed">
-									<p>싱글</p>
-									<input type="checkbox" name="bed" value="single_bed" <c:if test="${rvo.bed eq 'single_bed'}">checked</c:if>>
-								</label>
+									<c:if test="${empty paramValues.bed}">
+										<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/single_bed.jpg" alt="single_bed">
+										<p>싱글</p>
+										<input type="checkbox" name="bed" value="single_bed">
+									</c:if>
+									<c:if test="${not empty paramValues.bed}">
+										<c:choose>
+											<c:when test="">
+												<c:forEach var="pbed" items="${paramValues.bed}" varStatus="status">
+														<c:if test="${pbed eq 'single_bed'}">
+															<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/single_bed_c.jpg" alt="single_bed">
+															<p class="active">싱글</p>
+															<input type="checkbox" name="bed" value="single_bed" checked>
+														</c:if>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/single_bed.jpg" alt="single_bed">
+												<p>싱글</p>
+												<input type="checkbox" name="bed" value="single_bed">
+											</c:otherwise>
+										</c:choose>
+									</c:if>
+								</label>								
 							</li>
 							<li class="btnbox" onclick="change_btn(event,'double_bed')">
 								<label>
-									<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed.jpg" alt="double_bed">
-									<p>더블</p>
-									<input type="checkbox" name="bed" value="double_bed" <c:if test="${rvo.bed eq 'double_bed'}">checked</c:if>>
+									<c:if test="${empty paramValues.bed}">
+										<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed.jpg" alt="double_bed">
+										<p>더블</p>
+										<input type="checkbox" name="bed" value="double_bed">
+									</c:if>
+									<c:if test="${not empty paramValues.bed}">
+										<c:forEach var="pbed" items="${paramValues.bed}" varStatus="status">
+											<c:choose>
+												<c:when test="${pbed eq 'double_bed'}">
+													<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed_c.jpg" alt="double_bed">
+													<p class="active">더블</p>
+													<input type="checkbox" name="bed" value="double_bed" checked>
+												</c:when>
+												<c:otherwise>
+													<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/double_bed.jpg" alt="double_bed">
+													<p>더블</p>
+													<input type="checkbox" name="bed" value="double_bed">
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</c:if>
 								</label>								
 							</li>
 							<li class="btnbox" onclick="change_btn(event,'twin_bed')">
 								<label>
-									<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/twin_bed.jpg" alt="twin_bed">
-									<p>트윈</p>
-									<input type="checkbox" name="bed" value="twin_bed" <c:if test="${rvo.bed eq 'twin_bed'}">checked</c:if>>
-								</label>
+									<c:if test="${empty paramValues.bed}">
+										<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/twin_bed.jpg" alt="twin_bed">
+										<p>트윈</p>
+										<input type="checkbox" name="bed" value="twin_bed">
+									</c:if>
+									<c:if test="${not empty paramValues.bed}">
+										<c:forEach var="pbed" items="${paramValues.bed}" varStatus="status">
+											<c:choose>
+												<c:when test="${pbed eq 'double_bed'}">
+													<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/twin_bed_c.jpg" alt="twin_bed">
+													<p class="active">트윈</p>
+													<input type="checkbox" name="bed" value="double_bed" checked>
+												</c:when>
+												<c:otherwise>
+													<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/twin_bed.jpg" alt="twin_bed">
+													<p>트윈</p>
+													<input type="checkbox" name="bed" value="twin_bed">
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</c:if>
+								</label>								
 							</li>
 							<li class="btnbox" onclick="change_btn(event,'ondol_bed')">
 								<label>
-									<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/ondol_bed.jpg" alt="ondol_bed">
-									<p>온돌</p>
-									<input type="checkbox" name="bed" value="ondol_bed" <c:if test="${rvo.bed eq 'ondol_bed'}">checked</c:if>>
-								</label>
-							</li>
+									<c:if test="${empty paramValues.bed}">
+										<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/ondol_bed.jpg" alt="ondol_bed">
+										<p>온돌</p>
+										<input type="checkbox" name="bed" value="ondol_bed">
+									</c:if>
+									<c:if test="${not empty paramValues.bed}">
+										<c:forEach var="pbed" items="${paramValues.bed}" varStatus="status">
+											<c:choose>
+												<c:when test="${pbed eq 'ondol_bed'}">
+													<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/ondol_bed_c.jpg" alt="ondol_bed">
+													<p class="active">온돌</p>
+													<input type="checkbox" name="bed" value="ondol_bed" checked>
+												</c:when>
+												<c:otherwise>
+													<img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/ondol_bed.jpg" alt="ondol_bed">
+													<p>온돌</p>
+													<input type="checkbox" name="bed" value="ondol_bed">
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</c:if>
+								</label>								
+							</li> --%>
 						</ul>
 						<div class="filter" id="filter_num">
 							인원
@@ -652,7 +747,7 @@
 					<c:forEach var="vo" items="${list}" varStatus="status">
 						<!-- break를 위한 boolean변수 doneLoop 선언 -->
 						<c:set var="doneLoop" value="false" />
-						<!-- doneLoop 논리값이 반대가 되면 break -->							
+						<!-- doneLoop 논리값이 반대가 되면 break -->
 						<c:if test="${doneLoop ne true}">
 							<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}">
 								<div class="imgbor">

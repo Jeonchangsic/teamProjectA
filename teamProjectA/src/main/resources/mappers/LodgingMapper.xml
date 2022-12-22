@@ -60,17 +60,17 @@
 		<id column="shower" property="shower" />
 		<id column="dryer" property="dryer" />
 		<id column="ricecooker" property="ricecooker" />
-		<id column="FITNESS" property="FITNESS" />
-		<id column="SAUNA" property="SAUNA" />
-		<id column="RESTAURANT"	property="RESTAURANT" />
-		<id column="LOUNGE" property="LOUNGE" />
-		<id column="BBQ" property="BBQ" />
-		<id column="PUBLICSPA" property="PUBLICSPA" />
-		<id column="SEMINAR" property="SEMINAR" />
-		<id column="SINGING" property="SINGING" />
-		<id column="WASHINGMACHINE" property="WASHINGMACHINE" />
-		<id column="DEHYDRATOR" property="DEHYDRATOR" />
-		<id column="COOKING" property="COOKING" />
+		<id column="fitness" property="fitness" />
+		<id column="sauna" property="sauna" />
+		<id column="restaurant"	property="restaurant" />
+		<id column="lounge" property="lounge" />
+		<id column="bbq" property="bbq" />
+		<id column="publicspa" property="publicspa" />
+		<id column="seminar" property="seminar" />
+		<id column="singing" property="singing" />
+		<id column="washingmachine" property="washingmachine" />
+		<id column="dehydrator" property="dehydrator" />
+		<id column="cooking" property="cooking" />
 		<id column="spa" property="spa" />
 		<id column="pool" property="pool" />
 		<id column="golf" property="golf" />
@@ -99,7 +99,8 @@
 	</resultMap> 
 	<!-- 숙소리스트 -->
 	<select id="selectLodgingList" parameterType="HashMap" resultMap="lodgingList">
-		SELECT l.limagename
+		SELECT l.lidx
+			 , l.limagename
 			 , l.lodgingname
 			 , l.lodgingaddr
 			 , l.satis
@@ -277,50 +278,44 @@
 			</otherwise>
 		</choose>
 		<trim prefix="AND" prefixOverrides="OR">
-			<if test="bed == 'single_bed'">
-				OR bed = 'single_bed'
+			<if test="bedArr != null">
+				bed IN
+				<foreach collection="bedArr" item="obj" open="(" close=")" separator=",">
+					#{obj}
+				</foreach>
 			</if>
-			<if test="bed == 'double_bed'">
-				OR bed = 'double_bed'
+			<if test="fitness == 'on'">
+				OR fitness = 'Y'
 			</if>
-			<if test="bed == 'twin_bed'">
-				OR bed = 'twin_bed'
+			<if test="sauna == 'on'">
+				OR sauna = 'Y'
 			</if>
-			<if test="bed == 'ondol_bed'">
-				OR bed = 'ondol_bed'
+			<if test="restaurant == 'on'">
+				OR restaurant = 'Y'
 			</if>
-			<if test="FITNESS == 'on'">
-				OR FITNESS = 'Y'
+			<if test="lounge == 'on'">
+				OR lounge = 'Y'
 			</if>
-			<if test="SAUNA == 'on'">
-				OR SAUNA = 'Y'
+			<if test="bbq == 'on'">
+				OR bbq = 'Y'
 			</if>
-			<if test="RESTAURANT == 'on'">
-				OR RESTAURANT = 'Y'
+			<if test="publicspa == 'on'">
+				OR publicspa = 'Y'
 			</if>
-			<if test="LOUNGE == 'on'">
-				OR LOUNGE = 'Y'
+			<if test="seminar == 'on'">
+				OR seminar = 'Y'
 			</if>
-			<if test="BBQ == 'on'">
-				OR BBQ = 'Y'
+			<if test="singing == 'on'">
+				OR singing = 'Y'
 			</if>
-			<if test="PUBLICSPA == 'on'">
-				OR PUBLICSPA = 'Y'
+			<if test="washingmachine == 'on'">
+				OR washingmachine = 'Y'
 			</if>
-			<if test="SEMINAR == 'on'">
-				OR SEMINAR = 'Y'
+			<if test="dehydrator == 'on'">
+				OR dehydrator = 'Y'
 			</if>
-			<if test="SINGING == 'on'">
-				OR SINGING = 'Y'
-			</if>
-			<if test="WASHINGMACHINE == 'on'">
-				OR WASHINGMACHINE = 'Y'
-			</if>
-			<if test="DEHYDRATOR == 'on'">
-				OR DEHYDRATOR = 'Y'
-			</if>
-			<if test="COOKING == 'on'">
-				OR COOKING = 'Y'
+			<if test="cooking == 'on'">
+				OR cooking = 'Y'
 			</if>
 			<if test="spa == 'on'">
 				OR spa = 'Y'

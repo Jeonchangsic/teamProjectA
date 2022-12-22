@@ -64,14 +64,14 @@ public class LodgingController {
 	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
 	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
 		
+		System.out.println("Ddd "+rvo.getBedArr());
 		List<Map<String,Object>> list = lodgingService.selectLodgingList("호텔", type, area, rvo, linvo, rinvo);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
-		model.addAttribute("rvo", rvo);
+		model.addAttribute("rvo", rvo); // model에 담는 이유 : requestAttribute에 담는건데 이엘로 꺼내쓰기 위해
 		model.addAttribute("linvo", linvo);
 		model.addAttribute("rinvo", rinvo);
-		
 		return "lodging/lodgingList_hotel"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
