@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ page import="java.util.*" %>
+ <%@page import="team.projectA.vo.UserVO"%>
  <%@ page import="team.projectA.vo.*" %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -12,7 +13,7 @@ List<ReservVO> list1 = (List<ReservVO>)request.getAttribute("list1");
 List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
 
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,17 +54,17 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
             <tbody>
                 <tr>
                     <td>
-                        <select class="frm_select">
+                        <select class="frm_select" name="searchType">
                             <option value="id">아이디</option>
                             <option value="nickname">이름</option>
                             <option value="type">구분</option>
                         </select>
                     </td>
                     <td>
-                        <input type="text" name="keyword" size="30">
+                        <input type="text" name="keyword" id="keywordInput" value="" size="30">
                     </td>
                     <td>
-                        <button class="btn" type="submit" name="submit">검색</button>
+                        <button class="btn" type="submit" id="searchBtn">검색</button>
                     </td>
                 </tr>
             </tbody>
@@ -79,16 +80,31 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
                 </tr>
             </thead>
             <tbody>
-            <%for(UserVO vo : list) {%>
-                <tr style="text-align:center;">
-                    <td><%=vo.getUserID() %></td>
-                    <td><%=vo.getUserName() %></td>
-                    <td><%=vo.getUserPhone() %></td>
-                    <td><%=vo.getUserEmail() %></td>
-                    <td><%=vo.getUserType() %></td>
-                </tr>
-              <%} %>  
+           	<c:forEach var="muser" items="${muserList}" varStatus="status">	
+	                <tr style="text-align:center;">
+	                    <td>${muser.userID}</td>
+	                    <td>${muser.userName}</td>	
+		                <td>${muser.userPhone}</td>
+		                <td>${muser.userEmail}</td>
+		                <td>${muser.userType}</td>
+	                </tr>
+             	</c:forEach>    
             </tbody>
         </table>
-
+		<div id="paging" style="text-align:center;">
+				<ul>
+					<c:if test="${pageMaker.prev}">
+						<li><a href="<%=request.getContextPath() %>/manager/managerUser.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+					</c:if>   
+					    
+					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+						<li><a href="<%=request.getContextPath() %>/manager/managerUser.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+					</c:forEach>
+					      
+					<c:if test="${pageMaker.next}">
+						<li><a href="<%=request.getContextPath() %>/manager/managerUser.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+					</c:if>   
+				</ul>
+			</div>
+		</main>
 </html>

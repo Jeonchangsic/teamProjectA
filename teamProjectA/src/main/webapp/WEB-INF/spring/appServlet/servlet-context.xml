@@ -33,5 +33,45 @@
     <beans:property name="maxUploadSize" value="10485760"/>
     <beans:property name="defaultEncoding" value="utf-8" />
    </beans:bean>
-   
+   	
+   	<!-- 로그인 인터셉터 -->
+	<beans:bean id="LoginInterceptor" class="team.projectA.interceptor.LoginInterceptor"></beans:bean> 
+		<interceptors>
+			<interceptor>
+			<!-- 로그인 안할시 아래 경로 전부 이용불가 -->
+				<mapping path="/manager/*.do"/>
+				<mapping path="/seller/*.do"/>
+				<mapping path="/reserv/*.do"/>
+				<mapping path="/mypage/*.do"/>
+				<mapping path="/review/*.do"/>
+				<beans:ref bean="LoginInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+	<!-- 관리자 인터셉터 --><!-- 관리자만 접근가능 -->
+	<beans:bean id="AdminInterceptor" class="team.projectA.interceptor.AdminInterceptor"></beans:bean> 
+		<interceptors>
+			<interceptor>
+				<mapping path="/manager/*.do"/>
+				<beans:ref bean="AdminInterceptor"/>
+			</interceptor>
+		</interceptors>
+	<!-- 판매자 인터셉터 --><!-- 판매자만 접근가능 -->
+	<beans:bean id="SellerInterceptor" class="team.projectA.interceptor.SellerInterceptor"></beans:bean> 
+		<interceptors>
+			<interceptor>
+				<mapping path="/seller/*.do"/>
+				<beans:ref bean="SellerInterceptor"/>
+			</interceptor>
+		</interceptors>
+	<!-- 마이페이지 인터셉터 --><!-- 일반회원만 접근가능 -->
+	<beans:bean id="MyPageInterceptor" class="team.projectA.interceptor.MyPageInterceptor"></beans:bean> 
+		<interceptors>
+			<interceptor>
+				<mapping path="/mypage/*.do"/>
+				<beans:ref bean="MyPageInterceptor"/>
+			</interceptor>
+		</interceptors>
 </beans:beans> 
+
+	

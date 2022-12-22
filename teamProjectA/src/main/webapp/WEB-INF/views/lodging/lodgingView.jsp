@@ -84,7 +84,7 @@
 <body>
     <header>
         <div class="inner">
-            <h1><a href="#"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/logo.svg" alt="저긴어때"></a></h1>
+            <h1><a href="<%=request.getContextPath()%>/index/index.do"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/logo.svg" alt="저긴어때"></a></h1>
             <ul>
                 <li>
                     <input type="search" class="search_bar">
