@@ -48,4 +48,10 @@ public class ManagerDAO {
 	public int qnaReply(HashMap hm) {
 		return sqlSession.update("team.projectA.mapper.ManagerMapper.qnaReply", hm);
 	}
+	public int userlistCount() {
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.userlistCount");
+	}
+	public List<UserVO> muserList(HashMap hm1){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.muserList", hm1);
+	}
 }

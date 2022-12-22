@@ -59,37 +59,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><input type="button" value="삭제"></td>
-                    </tr>
-                    <tr style="text-align:center;">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><input type="button" value="삭제"></td>
-                    </tr>
-                    <tr style="text-align:center;">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><input type="button" value="삭제"></td>
-                    </tr>
-                    <tr style="text-align:center;">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><input type="button" value="삭제"></td>
-                    </tr>
-                    <tr style="text-align:center;">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><input type="button" value="삭제"></td>
-                    </tr>
-                    <tr style="text-align:center;">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><input type="button" value="삭제"></td>
+                        <td><input class="btn" type="button" value="삭제"></td>
                     </tr>
                 </tbody>
             </table>
