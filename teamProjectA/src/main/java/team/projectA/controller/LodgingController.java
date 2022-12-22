@@ -64,7 +64,6 @@ public class LodgingController {
 	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
 	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
 		
-		System.out.println("Ddd "+rvo.getBedArr());
 		List<Map<String,Object>> list = lodgingService.selectLodgingList("호텔", type, area, rvo, linvo, rinvo);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);

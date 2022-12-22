@@ -108,6 +108,8 @@
 			 , r.rprice
  		  FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
  		 WHERE l.lidx = r.lidx
+ 		   AND l.lidx = lin.lidx
+ 		   AND r.ridx = rin.ridx
   		   AND r.ridx IN (SELECT MIN(a.ridx)
 						 FROM (SELECT r.*
 								 FROM lodgingtb l, roomtb r
