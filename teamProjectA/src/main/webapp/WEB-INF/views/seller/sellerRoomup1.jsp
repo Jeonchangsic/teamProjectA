@@ -31,19 +31,48 @@
 		
 
 		//추가정보입력			    
-			    $(document).ready(function () {
-		    		var maxAppend = 1;
-		    		var extcnt = 1;
-		    		  $(document).on("click", "button[name='plus']", function () {
-						if (maxAppend >= 5) 							 
-							return; // 5번째부터는 append 안되고 return 시키기
-							extcnt++;
-		    		    $("#bottom_info").append('</br><input type="text" name="addinfo'+extcnt+'" class="plus" placeholder="추가정보를 입력해주세요"></br>');
-						maxAppend++;
+		$(document).ready(function () {
+			var maxAppend = 1;
+			var extcnt = 1;
+			
+			$(document).on("click", "button[name='plus']", function () {
+				if (maxAppend >= 5) 							 
+				return; // 5번째부터는 append 안되고 return 시키기
+				extcnt++;
+			$("#bottom_info").append('</br><input type="text" name="addinfo'+extcnt+'" class="plus" placeholder="추가정보를 입력해주세요"></br>');
+				maxAppend++;
 						
-		    		  });
-		    		});
+				 });
+			});
 					   
+		//이미지 업로드	
+		$(document).ready(function(){
+			$("#rimage1").change(function(){
+				if(this.files && this.files[0]) {					
+					$("#imgborder").empty("<img src=''/>"); // 이미지 지우고
+					$("#imgborder").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#imgborder img").attr("src", data.target.result);              
+						}
+					reader.readAsDataURL(this.files[0]);
+					}
+				});
+			
+			$("#rimage2").change(function(){
+				if(this.files && this.files[0]) {					
+					$("#imgborder2").empty("<img src=''/>"); // 이미지 지우고
+					$("#imgborder2").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#imgborder2 img").attr("src", data.target.result);              
+						}
+					reader.readAsDataURL(this.files[0]);
+					}
+				});
+			});
+		
+
 
 	   	
 	    </script>
@@ -77,11 +106,15 @@
 	        <!--이미지 업로드 -->
 		        <div class="inputArea" id="main_left">
 				 	<label for="rimage1">사진등록</label>
-					<input type="file" id="rimage1" name="file" required />
-					<div id="imgborder">
+					<input multiple="multiple" type="file" id="rimage1" name="file" required />
+					<div id="imgborder"></div>
 					
-					</div>
+					<label for="rimage2">ㅇ</label>
+					<input multiple="multiple" type="file" id="rimage2" name="file"/>
+					<div id="imgborder2"></div>
+					
 				</div>	
+				
 				<input type="hidden" name="lidx" value="${lidxone.lidx}"> 
 			<!--정보입력-->
 			<div id="main_right">
@@ -238,21 +271,5 @@
                 </div>
             </div>
 	</footer> 
-	<script>
-	//이미지 업로드	
-	$(document).ready(function(){
-	  $("#rimage1").change(function(){
-		   if(this.files && this.files[0]) {
-			 $("#imgborder").append("<img src=''/>");
-		    var reader = new FileReader;
-		    reader.onload = function(data) {
-		     $("#imgborder img").attr("src", data.target.result);              
-		    }
-		    reader.readAsDataURL(this.files[0]);
-		   }
-		  });
-	  });
-	
-	</script>
 </body>
 </html>

@@ -334,17 +334,17 @@
 						VALUES(
 							  lodgingin_idx_seq.nextval
 							, #{lidx}
-							, #{FITNESS}
-							, #{SAUNA}
-							, #{RESTAURANT}
-							, #{LOUNGE}
-							, #{BBQ}
-							, #{PUBLICSPA}
-							, #{SEMINAR}
-							, #{SINGING}
-							, #{WASHINGMACHINE}
-							, #{DEHYDRATOR}
-							, #{COOKING}
+							, #{fitness}
+							, #{sauna}
+							, #{restaurant}
+							, #{lounge}
+							, #{bbq}
+							, #{publicspa}
+							, #{seminar}
+							, #{singing}
+							, #{washingmachine}
+							, #{dehydrator}
+							, #{cooking}
 							, #{spa}
 							, #{pool}
 							, #{golf}
@@ -405,17 +405,17 @@
 		<id column="local" property="local" />
 		<id column="limagename" property="limagename" />
 		<id column="intro" property="intro" />
-		<id column="FITNESS" property="FITNESS" />
-		<id column="SAUNA" property="SAUNA" />
-		<id column="RESTAURANT"	property="RESTAURANT" />
-		<id column="LOUNGE" property="LOUNGE" />
-		<id column="BBQ" property="BBQ" />
-		<id column="PUBLICSPA" property="PUBLICSPA" />
-		<id column="SEMINAR" property="SEMINAR" />
-		<id column="SINGING" property="SINGING" />
-		<id column="WASHINGMACHINE" property="WASHINGMACHINE" />
-		<id column="DEHYDRATOR" property="DEHYDRATOR" />
-		<id column="COOKING" property="COOKING" />
+		<id column="fitness" property="fitness" />
+		<id column="sauna" property="sauna" />
+		<id column="restaurant"	property="restaurant" />
+		<id column="lounge" property="lounge" />
+		<id column="bbq" property="bbq" />
+		<id column="publicspa" property="publicspa" />
+		<id column="seminar" property="seminar" />
+		<id column="singing" property="singing" />
+		<id column="washingmachine" property="washingmachine" />
+		<id column="dehydrator" property="dehydrator" />
+		<id column="cooking" property="cooking" />
 		<id column="spa" property="spa" />
 		<id column="pool" property="pool" />
 		<id column="golf" property="golf" />
@@ -479,18 +479,18 @@
 		WHERE lidx = #{lidx}
 	</update>
 	<update id="lodginginModify" parameterType="lodginginVO">
-		UPDATE LODGINGinTB 
-		   SET fitness = #{FITNESS}
-			 , SAUNA = #{SAUNA}
-			 , RESTAURANT = #{RESTAURANT}
-			 , LOUNGE = #{LOUNGE}
-			 , BBQ = #{BBQ}
-			 , PUBLICSPA = #{PUBLICSPA}
-			 , SEMINAR = #{SEMINAR}
-			 , SINGING = #{SINGING}
-			 , WASHINGMACHINE = #{WASHINGMACHINE}
-			 , DEHYDRATOR = #{DEHYDRATOR}
-			 , COOKING = #{COOKING}
+		UPDate lodgingintb 
+		   set fitness = #{fitness}
+			 , sauna = #{sauna}
+			 , restaurant = #{restaurant}
+			 , lounge = #{lounge}
+			 , bbq = #{bbq}
+			 , publicspa = #{publicspa}
+			 , seminar = #{seminar}
+			 , singing = #{singing}
+			 , washingmachine = #{washingmachine}
+			 , dehydrator = #{dehydrator}
+			 , cooking = #{cooking}
 			 , spa = #{spa}
 			 , pool = #{pool}
 			 , golf = #{golf}

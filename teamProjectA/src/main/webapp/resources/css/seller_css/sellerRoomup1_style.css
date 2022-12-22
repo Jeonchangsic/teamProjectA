@@ -43,6 +43,8 @@ body{background-color:aliceblue;}
 #imgborder img{width: 100%; height: 100%;}
 #rimage1{margin:10px 0 10px 0; }
 #imgborder{border:1px solid black; width:350px; height:300px; }
+#imgborder2{border:1px solid black; width:100px; height:100px; }
+
 
 /*오른쪽 정보업로드 영역*/
 #main_right{height:300px; float:right;

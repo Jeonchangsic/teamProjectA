@@ -1,7 +1,6 @@
-<%@page import="team.projectA.vo.RoomVO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -40,16 +39,6 @@
 		}
 	}
 	
-	/*객실삭제  */
-	function delFn() {
-		if (!confirm("해당 객실을 삭제하시겠습니까?")) {
-			alert("삭제가 취소되었습니다.");
-			} else {
-			alert("삭제가 완료되었습니다.");
-			location = "sellerRegi2.do?ridx=${list.ridx}";
-			}
-		}
-
 </script>
 </head>
 <body style="overflow-x: hidden">
@@ -109,27 +98,62 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var = "list" items="${roomlist}" varStatus="status">
-					<c:if test = "${roomlist != null}" >
-							<tr style="text-align:center;">
-								<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/${list.rimage1}" alt="숙소 이미지"></td>
-								<td>${list.rtype}</td>
-								<td>${list.rprice}</td>
-								<td>${list.rnum}</td>
-								<td>
-									<button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=${list.ridx}'">수정</button>
-									<button type="button" onclick="delFn()">삭제</button>
-								</td>  
-				           
-				                    <!--객실 삭제 안내 -->
+				<c:forEach  items="${roomlist}" var="vo">
+					<c:choose>
+						<c:when test = "${vo.rprice != 0 and vo.rnum != 0}">
 
-	             		   </tr>
-	             		   </c:if>
-	             		   	<c:if test = "${roomlist == null}" >
-	             		   		<td>객실을 등록해주세요</td>
-	             		   	</c:if>
-				</c:forEach>        
+							<tr style="text-align:center;">
+								<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/${vo.rimage1}" alt="숙소 이미지"></td>
+								<td>${vo.rtype}</td>
+								<td>${vo.rprice}</td>
+								<td>${vo.rnum}</td>
+								<td>
+									<button type="button" onclick="reFn() "value="수정" onclick="location.href='sellerRoomup2.do?ridx=${vo.ridx}'">수정</button>
+									<button type="button" onclick="delFn()">삭제</button>
+								</td>  			 
+							</tr>
+							<script>
+								//객실 삭제 안내
+								function delFn() {
+									
+									var llist = ${vo.ridx}
+									
+									if (!llist){
+										alert("삭제할 객실이 없습니다.")
+									} else if (!confirm("해당 객실을 삭제하시겠습니까?")) {
+										alert("삭제가 취소되었습니다.");
+									} else {
+										alert("삭제가 완료되었습니다.");
+										location = "sellerRegi2.do?ridx=${vo.ridx}"; //list. 를 써야하기 때문에 jsp안에서 스크립트씀
+									}
+								}
+								
+								//객실 수정 안내
+								function reFn(){
+									
+									var re = ${vo.ridx}
+									if (!re){
+										alert("수정할 객실이 없습니다.")	
+									} else {
+										location = "sellerRoomup2.do?ridx=${vo.ridx}"
+									}
+								}
+		
+							</script>
+	 					</c:when>
+	 					<c:when test = "${vo.rprice == 0 and vo.rnum == 0}">
+		 					<tr>
+		 						<td></td>
+		 						<td></td>
+		 						<td>객실을 등록해 주세요</td>
+		 						<td></td>
+		 						<td></td>
+		 					</tr>
+	 					</c:when>
+ 					</c:choose>   
+				</c:forEach>
 			</tbody>
+			
 		</table>	
     </main>
     <footer> 

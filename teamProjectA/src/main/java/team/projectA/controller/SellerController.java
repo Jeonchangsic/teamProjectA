@@ -121,8 +121,6 @@ public class SellerController {
 		model.addAttribute("qnaList", qnaList);
 		model.addAttribute("pageMaker", pageMaker);
 		
-		System.out.println("keyword:"+scri.getKeyword());
-		System.out.println("searchType:"+scri.getSearchType());
                
         return "seller/sellerInquire";
         
@@ -208,12 +206,6 @@ public class SellerController {
 		
 		model.addAttribute("roomlist",roomlist);
 		model.addAttribute("lodging2",lodging2);
-		
-		
-
-		
-		
-		
 			      
 		return "seller/sellerRegi";
 	   }
