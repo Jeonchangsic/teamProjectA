@@ -242,7 +242,18 @@
 	                                    <h4>기본정보</h4>
 	                                        <ul>
 	                                            <li>${vo2.stdmen}인 기준 최대 ${vo2.maxmen}인</li>
-	                                            <li>${vo2.bed}</li>
+	                                            <c:if test="${vo2.bed eq 'single_bed'}">
+	                                            	<li>싱글베드 1개</li>
+	                                            </c:if>
+	                                            <c:if test="${vo2.bed eq 'double_bed'}">
+	                                            	<li>더블베드 1개</li>
+	                                            </c:if>
+	                                            <c:if test="${vo2.bed eq 'twin_bed'}">
+	                                            	<li>싱글베드 2개</li>
+	                                            </c:if>
+	                                            <c:if test="${vo2.bed eq 'ondol_bed'}">
+	                                            	<li>온돌방</li>
+	                                            </c:if>
 	                                        </ul>                
 	                                </div>  
 	                                <div>      
@@ -257,7 +268,7 @@
 	                                            	<c:if test="${vo2.bathitem == 'Y'}">, 욕실용품</c:if>
 	                                            	<c:if test="${vo2.bath == 'Y'}">, 욕조</c:if>
 	                                            	<c:if test="${vo2.dryer == 'Y'}">, 드라이기</c:if>
-	                                            	<c:if test="${vo2.spa == 'Y'}">, 객실스파</c:if>
+	                                            	<c:if test="${vo2.roomspa == 'Y'}">, 객실스파</c:if>
 	                                            	<c:if test="${vo2.iron == 'Y'}">, 다리미</c:if>
 	                                            	<c:if test="${vo2.minibar == 'Y'}">, 미니바</c:if>
 	                                            	<c:if test="${vo2.ricecooker == 'Y'}">, 전기밥솥</c:if>
