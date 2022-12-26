@@ -73,12 +73,6 @@
 				});
 			});
 		
-		
-		
-		
-		
-
-
 	   	
 	    </script>
 </head>
@@ -129,11 +123,7 @@
 					</tr>
 					<tr>
 						<td>객실수</td>
-						<td><input type="text" name="rnum "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" required></td>
-					</tr>
-					<tr>
-						<td>남은 객실수</td>
-						<td><input type="text" name="spareroom "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" required></td>
+						<td><input type="text" name="rnum "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" id="rnum" required></td>
 					</tr>
 					<tr>
 						<td>기준인원</td>
@@ -143,8 +133,14 @@
 						<td>최대인원</td>
 						<td><input type="text" name="maxmen" pattern="[0-9]+" placeholder="숫자를 입력해주세요" required/></td>
 					</tr>
+					<input type="hidden" name="spareroom "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" id="spareroom" required>
 				</table>
 			</div> 
+			<script>
+			$("#rnum").change(function(){
+		        $('#spareroom').val($(this).val());
+		    });
+			</script>
 			<div id="bottom">
 				<!-- 체크박스 -->
 				<div id="bottom_left">
