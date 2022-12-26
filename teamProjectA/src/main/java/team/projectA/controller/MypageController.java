@@ -28,7 +28,6 @@ import team.projectA.service.ReservService;
 import team.projectA.service.UserService;
 import team.projectA.vo.Criteria;
 import team.projectA.vo.PageMaker;
-import team.projectA.vo.PageMaker2;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
 import team.projectA.vo.SearchCriteria;
@@ -52,7 +51,7 @@ public class MypageController {
 	
 	//마이페이지
 	@RequestMapping(value = "/info.do", method = RequestMethod.GET)
-	public String mypage(@ModelAttribute("scri") SearchCriteria scri,Model model,HttpServletRequest req)throws Exception {
+	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Model model,HttpServletRequest req)throws Exception {
 		
 		//마이페이지 회원정보
 		  HttpSession session = req.getSession();
@@ -72,21 +71,24 @@ public class MypageController {
 		hm.put("rowEnd", scri.getRowEnd());
 		list = mypageService.listPage(hm);
 		
+		
+		Date now = new Date();
+		
+		model.addAttribute("now",now);
 		model.addAttribute("list",list);
 		model.addAttribute("pageMaker",pageMaker);
 		
 		//마이페이지 리뷰내역
-		List<ReviewVO> reviewList = null;
 		
+		 List<ReviewVO> reviewList = null;
 		  
-		HashMap<String,Object> hm1 = new HashMap<String,Object>();
-		hm1.put("uidx", userVO.getUidx());
-		hm1.put("rowStart", scri.getRowStart());
-		hm1.put("rowEnd", scri.getRowEnd());
-		reviewList = mypageService.reviewList(hm1);
-		
-		model.addAttribute("reviewList",reviewList);
-		
+		  
+		  
+		  int uidx = userVO.getUidx();
+		  reviewList = mypageService.reviewList(uidx);
+		  
+		  model.addAttribute("reviewList",reviewList);
+		  
 		//마이페이지 
 		return "mypage/mypage";
 	}
@@ -143,14 +145,18 @@ public class MypageController {
 	  UserVO user = (UserVO)session.getAttribute("login");
 	  
 	  String oldPass = user.getUserPassword(); //로그인할 때의 비밀번호값을 가져옴. 
-	  String newPass = vo.getUserPassword();  //새로 생성한 비밀번호 받는 input의 값을 가져옴
+	  String newPass = vo.getUserPassword();  //입력받은 비밀번호  input의 값을 가져옴
 	  PrintWriter out = response.getWriter();
 	  
 	  if(!(oldPass.equals(newPass))) {
-		  rttr.addFlashAttribute("msg",false);
-		  return "redirect:/mypage/userDt.do";
+		  response.setContentType("text/html; charset=UTF-8");
+		  out.append("<script>alert('비밀번호가 일치하지 않습니다.'); history.go(-1);</script>");
+		  out.flush();
+		  out.close();
+		  return "";
 	  }else {
-	  
+	  userService.reviewDt(vo);
+	  userService.reservDt(vo);
 	  userService.userDt(vo);
 	  
 	  response.setContentType("text/html; charset=UTF-8");

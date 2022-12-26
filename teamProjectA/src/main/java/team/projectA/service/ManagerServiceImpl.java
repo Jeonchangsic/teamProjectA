@@ -22,20 +22,6 @@ public class ManagerServiceImpl implements ManagerService {
 	private ManagerDAO managerDAO;
 
 	@Override
-	public List<LodgingVO> lodgingCategory()throws Exception {
-		return managerDAO.lodgingCategory();
-	}
-
-	@Override
-	public List<RoomVO> selectRoomList(int lidx) {
-		
-		 managerDAO.selectRoomList(lidx);
-		
-		
-		return managerDAO.selectRoomList(lidx);
-	}
-
-	@Override
 	public List<LodgingVO> requestList() {
 		return managerDAO.requestList();
 	}

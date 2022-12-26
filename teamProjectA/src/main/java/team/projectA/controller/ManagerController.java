@@ -134,10 +134,7 @@ public class ManagerController {
 		List<LodgingVO> requestList = managerService.requestList();
 		model.addAttribute("requestList", requestList);
 		
-		//���� �α���õ
-		List<LodgingVO> lodgingCategory = null;
-		lodgingCategory = managerService.lodgingCategory();
-		model.addAttribute("lodgingCategory",lodgingCategory);
+		
 		
 		//
 		
@@ -187,15 +184,5 @@ public class ManagerController {
 		
 		return "manager/managerReservList";
 	}
-	@ResponseBody
-	@RequestMapping(value="/roomCategoryChange.do", method= RequestMethod.GET)
-	public List<RoomVO> lodgingCategory(@RequestParam("lidx") int lidx){
-		/* System.out.println("data:"+lidx); */  
-		List<RoomVO> rlist = (List<RoomVO>)managerService.selectRoomList(lidx);
-		
-		/* System.out.println("rlist:"+rlist); */
-		/* System.out.println("data:"+rlist.get(0).getRidx()); */
-		
-		return rlist;
-	}
+	
 }

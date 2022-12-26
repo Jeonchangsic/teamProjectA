@@ -67,6 +67,18 @@ public class UserServiceImpl implements UserService{
 	}
 
 
+	@Override
+	public int reviewDt(UserVO vo) {
+		return userDao.reviewDt(vo);
+	}
+
+
+	@Override
+	public int reservDt(UserVO vo) {
+		return userDao.reservDt(vo);
+	}
+
+
 
 
 

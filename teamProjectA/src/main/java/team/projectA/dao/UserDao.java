@@ -34,6 +34,12 @@ public class UserDao {
 	public int userDt(UserVO vo) {
 		return sqlsession.delete("team.projectA.mapper.UserMapper.userDt", vo);
 	}
+	public int reviewDt(UserVO vo) {
+		return sqlsession.delete("team.projectA.mapper.UserMapper.reviewDt", vo);
+	}
+	public int reservDt(UserVO vo) {
+		return sqlsession.delete("team.projectA.mapper.UserMapper.reservDt", vo);
+	}
 	//ȸ������Ʈ
 	public List<UserVO> userList(UserVO vo){
 		return sqlsession.selectList("team.projectA.mapper.UserMapper.userlist",vo);
