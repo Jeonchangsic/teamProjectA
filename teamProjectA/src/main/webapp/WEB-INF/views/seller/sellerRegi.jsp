@@ -94,6 +94,7 @@
 					<th>객실명</th>
 					<th>가격</th>
 					<th>객실수</th>
+					<th>남은 객실수</th>
 					<th>상세관리</th>
 				</tr>
 			</thead>
@@ -107,6 +108,7 @@
 								<td>${vo.rtype}</td>
 								<td>${vo.rprice}</td>
 								<td>${vo.rnum}</td>
+								<td>${vo.spareroom}</td>
 								<td>
 									<button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=${vo.ridx}'">수정</button>
 									<button type="button" onclick="delFn()">삭제</button>

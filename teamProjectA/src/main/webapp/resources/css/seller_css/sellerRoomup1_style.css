@@ -86,7 +86,7 @@ body{background-color:aliceblue;}
 }
 /*오른쪽 정보업로드 영역*/
 #main_right{height:300px; float:right;
-			margin:190px 150px 0 0;}
+			margin:160px 150px 0 0;}
 #main_right input{margin-bottom:20px; margin-left:15px;}
 #main_right ul li{float:left; margin-left: 25px;}
 
@@ -142,9 +142,11 @@ input[type=radio]:checked + label{
 #bottom_info{clear:both; margin: 0 0 0 150px; padding-top: 80px; height: 200px;}
 #bottom_info p{font-weight:bold; font-size:20px; margin-bottom: 10px;}
 #bottom_info button{margin-left:10px; cursor:pointer;}
-#bottom_info .plus{width:500px;}
-#bottom_info #plus img{width:15px;}
-#bottom_info #plus{background-color:white; border:none;}
+#bottom_info .plus, .plus2{width:500px;}
+
+#bottom_info .btn img{width:15px;}
+#bottom_info .btn{background-color:white; border:none;}
+#bottom_info #minus{margin-left:-10px;}
 
 #up_bottom2{display:flex; margin-left:148px; margin-top:70px;}
 #inner_bottom{clear:both;}
@@ -155,8 +157,7 @@ input[type=radio]:checked + label{
                       color:white;
                       margin: 80px auto 50px 40px;
                       cursor:pointer;}
-
-
+                      
                         /*footer*/
 footer{
 

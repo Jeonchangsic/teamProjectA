@@ -167,11 +167,12 @@
 				, r.rtype
 				, r.rprice
 				, r.rnum 
+				, r.spareroom
 			FROM lodgingtb l
 			FULL OUTER JOIN roomtb r
 			ON l.lidx = r.lidx 
 			WHERE l.uidx =#{uidx}
-			ORDER BY r.RIDX DESC
+			ORDER BY r.ridx DESC
 	</select>
 	
 	<!--판매자 객실 삭제  -->
@@ -187,6 +188,7 @@
 						ridx
 						, rtype
 						, rnum
+						, spareroom
 						, rprice
 						, maxmen
 						, stdmen
@@ -197,6 +199,7 @@
 						ridx_seq.nextval
 						, #{rtype}
 						, #{rnum}
+						, #{spareroom}
 						, #{rprice}
 						, #{maxmen}
 						, #{stdmen}
@@ -246,6 +249,7 @@
 			SELECT 	 r.ridx
 	 				, r.rtype
 					, r.rnum
+					, r.spareroom
 					, r.rprice
 					, r.maxmen
 					, r.stdmen
@@ -267,6 +271,7 @@
 			UPDATE roomtb SET 
 				rtype = #{rtype}
 				, rnum = #{rnum}
+				, spareroom = #{spareroom}
 				, rprice = #{rprice}
 				, maxmen = #{maxmen}
 				, stdmen = #{stdmen}

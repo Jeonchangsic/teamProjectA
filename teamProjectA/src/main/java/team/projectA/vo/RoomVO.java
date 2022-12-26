@@ -5,6 +5,7 @@ public class RoomVO extends LodgingVO{
 	private int ridx;
 	private String rtype;
 	private int rnum;
+	private int spareroom;
 	private int rprice;
 	private String rimage1;
 	private String rimage2;
@@ -22,7 +23,7 @@ public class RoomVO extends LodgingVO{
 	}
 	private int maxmen; 
 	
-	//�씠誘몄� �뾽濡쒕뱶
+
 	private String gdsThumbImg;
 	
 	
@@ -55,6 +56,12 @@ public class RoomVO extends LodgingVO{
 	}
 	public void setRnum(int rnum) {
 		this.rnum = rnum;
+	}
+	public int getSpareroom() {
+		return spareroom;
+	}
+	public void setSpareroom(int spareroom) {
+		this.spareroom = spareroom;
 	}
 	public int getRprice() {
 		return rprice;
@@ -104,5 +111,6 @@ public class RoomVO extends LodgingVO{
 	public void setBedArr(String[] bedArr) {
 		this.bedArr = bedArr;
 	}
+
 	
 }

@@ -29,6 +29,33 @@
 			}
 		};
 		
+		//추가정보입력			    
+		$(document).ready(function () {
+			var maxAppend = 1;
+			var extcnt = 1;
+			var infocnt = 1;
+			
+			$(document).on("click", "button[name='plus']", function () {
+					if (maxAppend >= 5){ 							 
+					return; // 5번째부터는 append 안되고 return 시키기
+				}else {
+					extcnt++;
+					$("#bottom_info").append('</br><input type="text" name="addinfo'+extcnt+'" value = "${roomModify.addinfo2}" class="plus" placeholder="추가정보를 입력해주세요" required></br>');
+					maxAppend++;
+				}				
+			});
+
+			$('#minus').click(function(){
+				if (maxAppend <=1){
+					return;
+				}else{
+				$('#bottom_info> br:last-of-type, .plus:last-of-type').remove();
+				$('#bottom_info> br:last-of-type').remove();
+				maxAppend--;
+				}
+				});
+			});
+		
 		//이미지 업로드	
 		$(document).ready(function(){
 		  $("#rimage1").change(function(){
@@ -94,6 +121,10 @@
 						<tr>
 							<td>객실수</td>
 							<td><input type="text" name="rnum "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" value="${roomModify.rnum}" required></td>
+						</tr>
+						<tr>
+							<td>남은 객실수</td>
+							<td><input type="text" name="rnum "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" value="${roomModify.spareroom}" required></td>
 						</tr>
 						<tr>
 							<td>기준인원</td>
@@ -199,11 +230,19 @@
 				</div>		            
 			    <div id="bottom_info">
 			    	<p>추가정보<p>
-				    	<input type="text" class="plus" name = "addinfo1" value = "${roomModify.addinfo1}"><br>
+				    	<%-- <input type="text" class="plus" name = "addinfo1" value = "${roomModify.addinfo1}"><br>
 				        <input type="text" class="plus" name = "addinfo2" value = "${roomModify.addinfo2}"><br>
 				        <input type="text" class="plus" name = "addinfo3" value = "${roomModify.addinfo3}"><br>
 				        <input type="text" class="plus" name = "addinfo4" value = "${roomModify.addinfo4}"><br>
-				        <input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}">         	
+				        <input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}">    
+				              --%>	
+				        <input type="text" class="plus2" name = "addinfo1" value = "${roomModify.addinfo1}" placeholder="추가정보를 입력해주세요 (5개까지 입력 가능합니다.)"/>
+			            <button type="button" name="plus" id="plus" class="btn">
+			            <img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerPlus_image.png" alt="추가버튼">
+			            </button>
+			           	<button type="button" name="minus" id="minus" class="btn">
+			           	<img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerMinus_image.png" alt="삭제버튼">
+			           	</button>		            	
 			    </div>
 		        <div id="inner_bottom">
 		                <div>

@@ -67,7 +67,7 @@ body{background-color:aliceblue;}
 
 /*오른쪽 정보업로드 영역*/
 #main_right{height:300px; float:right;
-			margin:190px 150px 0 0;}
+			margin:180px 150px 0 0;}
 #main_right input{margin-bottom:20px; margin-left:15px;}
 #main_right ul li{float:left; margin-left: 25px;}
 
@@ -135,7 +135,10 @@ input[type=radio]:checked + label{
                       color:white;
                       margin: 80px auto 50px 40px;
                       cursor:pointer;}
-
+                      
+#bottom_info .btn img{width:15px;}
+#bottom_info .btn{background-color:white; border:none;}
+#bottom_info #minus{margin-left:-10px;}
 
                         /*footer*/
 footer{
