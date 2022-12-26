@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import net.sf.json.JSONArray;
 import team.projectA.service.LodgingService;
 import team.projectA.service.ManagerService;
+import team.projectA.service.MypageService;
 import team.projectA.service.ReservService;
 import team.projectA.service.SellerService;
 import team.projectA.service.UserService;
@@ -30,6 +32,7 @@ import team.projectA.vo.PageMaker;
 import team.projectA.vo.PagingVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
@@ -43,6 +46,8 @@ public class ManagerController {
 	private LodgingService lodgingService;
 	@Autowired
 	private ReservService reservService;
+	@Autowired
+	private MypageService mypageService;
 	@Autowired
 	private ManagerService managerService;
 	@Autowired
@@ -73,7 +78,7 @@ public class ManagerController {
 	
 	}
 	//QnA리스트 
-	@RequestMapping(value = "/managerQnaList.do", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/managerQnaList.do", method = RequestMethod.GET)
 	public String qna(UserVO vo, Model model,ReservVO vo1) {
 		
 		List<ReservVO> list1 = managerService.reservlist(vo1);
@@ -84,7 +89,24 @@ public class ManagerController {
 		model.addAttribute("list2",list2);
 		
 		return "manager/managerQnaList";
-	}
+	}*/
+	//QnA리스트 
+		@RequestMapping(value = "/managerQnaList.do", method = RequestMethod.GET)
+		public String qna(Model model,  @ModelAttribute("scri") SearchCriteria scri) {
+			
+			List<QnaVO> qnalist = managerService.qnaList(scri);
+			model.addAttribute("qnalist", qnalist); 
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(managerService.qnacount());
+			model.addAttribute("pageMaker", pageMaker);	 
+
+			
+			
+			return "manager/managerQnaList";
+		}
+
 	//문의내역 상세화면
 	@RequestMapping(value="/managerQna.do", method = RequestMethod.GET)
 	public String sellerInquireView(Locale locale, Model model, int qna_idx) {
@@ -134,7 +156,10 @@ public class ManagerController {
 		List<LodgingVO> requestList = managerService.requestList();
 		model.addAttribute("requestList", requestList);
 		
-		
+		//���� �α���õ
+		List<LodgingVO> lodgingCategory = null;
+		lodgingCategory = managerService.lodgingCategory();
+		model.addAttribute("lodgingCategory",lodgingCategory);
 		
 		//
 		
@@ -159,19 +184,32 @@ public class ManagerController {
 	}
 	
 	@RequestMapping(value = "/managerReview.do", method = RequestMethod.GET)
-	public String Review(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	public String Review(Model model,ReviewVO rev) {  
+		List<ReviewVO> rlist = managerService.ReviewList(rev);
+		model.addAttribute("rlist", rlist);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		
 		return "manager/managerReview";
 	}
+	 //리뷰 상세보기
+	  @RequestMapping(value="/managerRinfo.do", method = RequestMethod.GET)
+	  public String reviewInfo(int rvidx, String limagename, Model model,HttpServletResponse response)throws Exception{
+		  	
+			ReviewVO vo = mypageService.reviewList2(rvidx);
+			model.addAttribute("vo",vo);
+			model.addAttribute("limagename",limagename);
+		  return "manager/managerRinfo"; 
+	  }
+	//리뷰 삭제
+		@RequestMapping (value = "/Reviewdelete.do" , method = RequestMethod.GET)
+		public String reviewdelete(Locale locale, Model model, int rvidx) {
+			
+			managerService.reviewDelete(rvidx);
+
+			return "redirect:managerReview.do";
+		}
+
 	@RequestMapping(value = "/managerReservList.do", method = RequestMethod.GET)
 	public String reservList(UserVO vo, Model model,ReservVO vo1) {
 		
@@ -184,5 +222,15 @@ public class ManagerController {
 		
 		return "manager/managerReservList";
 	}
-	
+	@ResponseBody
+	@RequestMapping(value="/roomCategoryChange.do", method= RequestMethod.GET)
+	public List<RoomVO> lodgingCategory(@RequestParam("lidx") int lidx){
+		/* System.out.println("data:"+lidx); */  
+		List<RoomVO> rlist = (List<RoomVO>)managerService.selectRoomList(lidx);
+		
+		/* System.out.println("rlist:"+rlist); */
+		/* System.out.println("data:"+rlist.get(0).getRidx()); */
+		
+		return rlist;
+	}
 }

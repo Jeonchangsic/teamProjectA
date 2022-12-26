@@ -2,6 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" 
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.projectA.mapper.ManagerMapper">
+	<select id="lodgingCategory" resultType="LodgingVO">
+		SELECT lodgingname
+			,lidx
+			,limagename
+			FROM lodgingtb
+	</select>
+	
+	<select id="lodgingID" parameterType="int" resultType="RoomVO">
+		SELECT ridx
+			 , rtype
+			 , rnum
+			 , rprice
+			 , rimage1
+			 , rimage2
+			 , rimage3
+			 , rimage4
+			 , rimage5
+		 FROM roomtb
+		WHERE lidx = #{lidx}
+	</select>
 	<!-- 숙소 요청 목록  -->
 	<select id="requestList" resultType="lodgingVO">
 		SELECT u.userid
@@ -93,7 +113,63 @@
 					
 					ORDER BY uidx DESC
 	</select>
+	<select id="ReviewList" parameterType="ReviewVO" resultType="ReviewVO">
+			SELECT r.RVIDX
+				, u.uidx
+				, u.userID
+				, r.rvTitle
+				, u.userName
+				, r.rvdate
+				FROM REVIEWTB r, AUSERTB u
+				WHERE r.uidx = u.uidx
+		</select>
+	<!--리뷰 삭제  -->
+   <delete id="reviewDelete" parameterType="int">
+			DELETE FROM REVIEWTB 
+			WHERE rvidx = #{rvidx}
+   </delete>
+   <select id="reviewOne" parameterType="int" resultType="ReviewVO">
+   			SELECT rvidx
+   				   ,rvTitle
+   				   ,rvContent
+   				   ,rvDate
+   				FROM REVIEWTB
+   				WHERE rvidx = #{rvidx}
+   </select>
+   
+   <!--문의내역 페이징 -->
+	<select id="qnaList" parameterType="SearchCriteria" resultType="qnaVO">	
+		 SELECT a.userName, qe.qna_idx, qe.qna_Qtitle, qe.qna_Acheck, qe.qna_Qdate FROM ausertb a
+   FULL OUTER JOIN
+     (SELECT a.userName, a.uidx, q.qna_idx, q.qna_Qtitle, q.qna_Acheck, q.qna_Qdate, 
+								ROW_NUMBER() OVER(ORDER BY q.qna_idx desc) AS qnum
+        FROM ausertb a 
+        FULL OUTER JOIN qnatb q 
+        on a.uidx = q.uidx
+        WHERE a.uidx = q.uidx )qe
+        ON a.uidx = qe.uidx
+				WHERE qNum BETWEEN #{rowStart} AND #{rowEnd}
+				ORDER BY qe.qna_idx DESC
+	</select>
+	<!--문의 페이지 총 개수-->
+	<select id="qnacount" resultType="int">
+		<![CDATA[
+		SELECT count(qna_idx)
+		FROM qnatb
+		WHERE qna_idx > 0
+		]]>
+	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,7 +12,9 @@ import team.projectA.vo.LodgingVO;
 import team.projectA.vo.PagingVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 @Service
@@ -20,6 +22,20 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Autowired
 	private ManagerDAO managerDAO;
+
+	@Override
+	public List<LodgingVO> lodgingCategory()throws Exception {
+		return managerDAO.lodgingCategory();
+	}
+
+	@Override
+	public List<RoomVO> selectRoomList(int lidx) {
+		
+		 managerDAO.selectRoomList(lidx);
+		
+		
+		return managerDAO.selectRoomList(lidx);
+	}
 
 	@Override
 	public List<LodgingVO> requestList() {
@@ -70,7 +86,34 @@ public class ManagerServiceImpl implements ManagerService {
 		
 		return managerDAO.muserList(hm1);
 	}
-	
-	
+
+	@Override
+	public List<ReviewVO> ReviewList(ReviewVO rev) {
+		
+		return managerDAO.ReviewList(rev);
+	}
+
+	@Override
+	public int reviewDelete(int rvidx) {
+		
+		return managerDAO.reviewDelete(rvidx);
+	}
+
+	@Override
+	public ReviewVO reviewOne(int rvidx) {
+		
+		return managerDAO.reviewOne(rvidx);
+	}
+	@Override
+	public List<QnaVO> qnaList(SearchCriteria scri) {
+		
+		return managerDAO.qnaList(scri);
+	}
+
+	@Override
+	public int qnacount() {
+		
+		return managerDAO.qnacount();
+	}
 
 }

@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+  <%@ page import="java.util.*" %>
+  <%@page import="team.projectA.vo.ReviewVO"%>
+  <%
+  	List<ReviewVO> rlist = (List<ReviewVO>)request.getAttribute("rlist");
+    ReviewVO rvo = (ReviewVO)request.getAttribute("rvo"); 
+  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +15,16 @@
 <title>관리자 리뷰</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerReview.css">
+<script>	
+	/*리뷰삭제*/  
+	
+	function delFn() {
+		
+			};
+
+
+</script>
+  
 </head>
     <body style="overflow-x: hidden">
         <div id="header">
@@ -46,21 +64,23 @@
                 </tbody>
             </form>
             <table>
-                <thead>
+                <thead>	
                     <tr style="text-align:center;">
                         <th>ID</th>           
                         <th>제목</th>
-                        <th>작성자/작성일</th>
-                        <th>상세관리</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
                     </tr>
                 </thead>
                 <tbody>
+                	<c:forEach var="rev" items="${rlist}" varStatus="status">
                     <tr style="text-align:center;">                       
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><input class="btn" type="button" value="삭제"></td>
+                        <td>${rev.userID }</td>
+                        <td><a href="<%=request.getContextPath()%>/manager/managerRinfo.do?rvidx=${rev.rvidx}">${rev.rvTitle}</a></td>
+                        <td>${rev.userName}</td>
+						<td>${rev.rvDate}</td>
                     </tr>
+                    </c:forEach>  
                 </tbody>
             </table>
         </main>

@@ -34,7 +34,6 @@
             <div class="nav">
                 <li><a href="">숙소리스트</a></li>
                 <li><a href="">숙소승인</a></li>
-                <li><a href="">객실추천등록</a></li>
             </div>
         </nav>
         <div>

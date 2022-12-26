@@ -1,0 +1,148 @@
+@charset "utf-8";
+
+
+            /*리셋코드*/
+* {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{text-decoration:none; color: inherit;}
+UL,li{list-style:none;}
+            /*리셋코드*/
+
+              /*header*/
+
+header h2{
+    text-align: center;
+    font-size:25px;
+    font-weight: bold;
+    padding:20px 0 10px 0;
+}
+
+            /*main*/
+
+main table{
+    font-size:20px;
+
+}
+main #contentsArea{
+    width:520px;
+    margin:0 auto;
+    border:3px solid rgb(86, 19, 241);
+}
+main #table1{
+    margin: 5px 20px 0 40px;
+    height:600px;
+}
+main .info{
+    width:200px;
+    height:20px;
+}
+main #info{
+    width:300px;
+    height:90px;
+}
+main #table2{
+    margin:30px auto;
+}
+main .margin1{
+    padding-right:50px;
+}
+main .margin2{
+	padding: 15px 50px 0 0;
+	height:50px;
+}
+ textarea {
+    width: 100%;
+    height: 6.25em;
+    resize: none;
+  }
+main .clearBtn{
+    width: 100px;
+    height:30px;
+    color:rgba(255,255,255,0.8);
+	background-color:rgb(86, 19, 241);
+	font-weight:bold;
+	border:0px solid #000;
+	border-radius:2px;
+}
+main .clearBtn:hover{
+	color:white;
+}
+.td_vertical-align{
+	vertical-align:center;
+}
+#review_Img{
+	width:150px;
+	height:150px;
+	margin:50px 0 3px 20;
+	
+}
+#rtypeText{
+	color:#bbb;
+	margin: 10px 0 3px 0;
+	font-size:20px;
+}
+#selectStyle{
+	width:200px;
+	height:30px;
+}
+#headLine{
+	width:100%;
+	height:1px;
+	background-color:#919191;
+}
+.td_padding{
+	padding-left:10px;
+}
+.tr_background{
+	height:1px;
+	background-color:#bbb;
+	margin-bottom:5px;
+	
+}
+.cursorStyle{
+	cursor:pointer;
+}    

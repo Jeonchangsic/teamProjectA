@@ -1,3 +1,4 @@
+
 package team.projectA.dao;
 
 import java.util.HashMap;
@@ -11,7 +12,9 @@ import team.projectA.vo.LodgingVO;
 import team.projectA.vo.PagingVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 @Repository
@@ -20,7 +23,13 @@ public class ManagerDAO {
 	@Autowired
 	private SqlSession sqlSession; 
 	
-	
+	public List<LodgingVO> lodgingCategory() throws Exception{
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.lodgingCategory");
+	}
+	public List<RoomVO> selectRoomList(int lidx){
+		
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.lodgingID",lidx);
+	}
 	public List<LodgingVO> requestList() {
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.requestList");
 	}
@@ -48,4 +57,23 @@ public class ManagerDAO {
 	public List<UserVO> muserList(HashMap hm1){
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.muserList", hm1);
 	}
+	public List<ReviewVO> ReviewList(ReviewVO rev){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.ReviewList",rev);
+		
+	}
+	public int reviewDelete(int rvidx) {
+		return sqlSession.delete("team.projectA.mapper.ManagerMapper.reviewDelete", rvidx);
+	}
+	public ReviewVO reviewOne(int rvidx) {
+		
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.reviewOne", rvidx);
+	}
+	public List<QnaVO> qnaList(SearchCriteria scri){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.qnaList", scri);
+	}
+	
+	public int qnacount() {
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.qnacount");
+	}
+
 }

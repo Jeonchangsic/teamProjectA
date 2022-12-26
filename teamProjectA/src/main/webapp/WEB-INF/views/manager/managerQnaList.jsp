@@ -78,23 +78,41 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
                 </tr>
             </thead>
             <tbody>
-			<%for(QnaVO vo2 : list2) {%>
+			<c:forEach var ="list" items="${qnalist}">
 				<tr style="text-align:center;">
-					<td><a href="managerQna.do?qna_idx=<%=vo2.getQna_idx()%>"><%=vo2.getQna_Qtitle()%></a></td>
-					<td><%=vo2.getUserName()%></td>
-					<td><%=vo2.getQna_Qdate() %></td>
-					<td><%=vo2.getQna_Acheck() %></td>
+					<td><a href="managerQna.do?qna_idx=${list.qna_idx}">${list.qna_Qtitle}</a></td>
+					<td>${list.userName}</td>
+					<td>${list.qna_Qdate}</td>
+					<td>${list.qna_Acheck}</td>
 					<td>
-					<% if (vo2.getQna_Acheck().equals("답변처리중")) { %>
-						<button type="button" onclick="location.href='managerQnaView.do?qna_idx=<%=vo2.getQna_idx()%>'">답변등록</button>
-					<% } else { %>
+					<c:choose>
+						<c:when test = "${list.qna_Acheck == '답변처리중'}" >
+						<button type="button" onclick="location.href='managerQnaView.do?qna_idx=${list.qna_idx}">답변등록</button>
+						</c:when>
+						<c:when test = "${list.qna_Acheck == '답변완료' and list.qna_Acheck == '답변완료'}" >
 						<button type="button" onclick="alert('이미 답변을 작성하였습니다.')">답변완료</button>
-					<% } %>
+						</c:when>
+					</c:choose>
 					</td>
 				</tr>
-			<%} %>
+			</c:forEach>
             </tbody>
         </table>
+        	<div id="paging">
+				<ul>
+					<c:if test="${pageMaker.prev}">
+						<li><a href="<%=request.getContextPath() %>/manager/managerQnaList.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+					</c:if>   
+					    
+					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+						<li><a href="<%=request.getContextPath() %>/manager/managerQnaList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+					</c:forEach>
+					      
+					<c:if test="${pageMaker.next}">
+						<li><a href="<%=request.getContextPath() %>/manager/managerQnaList.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+					</c:if>   
+				</ul>
+			</div>
     </div>
     </main>
     <footer>
