@@ -39,12 +39,14 @@ public class reservController {
 	 
 	
 	@RequestMapping(value = "/reserv/reserv.do", method = RequestMethod.GET)
-	public String reserv(Model model,int ridx, HttpServletRequest req) {
+	public String reserv(Model model,int ridx, HttpServletRequest req, String fromDate, String toDate) {
 		
 				
 		RoomVO rvo = lodgingService.selectRoom(ridx);
 		model.addAttribute("rvo", rvo);
 		
+		model.addAttribute("fromDate", fromDate);
+		model.addAttribute("toDate", toDate);
 		
 		
 		HttpSession session = req.getSession();

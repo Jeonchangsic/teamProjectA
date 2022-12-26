@@ -504,8 +504,8 @@
 					<form name="frm" action="lodgingList_hotel.do" method="get">
 						<div class="filter" id="filter_day">날짜</div>
 						<div>
-							<input type="text" name="fromDate" id="fromDate">
-							<input type="text" name="toDate" id="toDate">
+							<input type="text" name="fromDate" id="fromDate" value="${fromDate}">
+							<input type="text" name="toDate" id="toDate" value="${toDate}">
 						</div>
 						
 						<div class="filter">베드 타입</div>
@@ -779,7 +779,7 @@
 						<c:set var="doneLoop" value="false" />
 						<!-- doneLoop 논리값이 반대가 되면 break -->
 						<c:if test="${doneLoop ne true}">
-							<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}">
+							<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}&fromDate=${fromDate}&toDate=${toDate}">
 								<div class="imgbor">
 									<div class="img_left">
 										<ul>

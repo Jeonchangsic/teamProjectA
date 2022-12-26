@@ -62,7 +62,7 @@ public class LodgingController {
 	}
 	
 	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
+	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate) {
 		
 		List<Map<String,Object>> list = lodgingService.selectLodgingList("호텔", type, area, rvo, linvo, rinvo);
 		model.addAttribute("list",list);
@@ -71,6 +71,9 @@ public class LodgingController {
 		model.addAttribute("rvo", rvo); // model에 담는 이유 : requestAttribute에 담는건데 이엘로 꺼내쓰기 위해
 		model.addAttribute("linvo", linvo);
 		model.addAttribute("rinvo", rinvo);
+		model.addAttribute("fromDate", fromDate);
+		model.addAttribute("toDate", toDate);
+		
 		return "lodging/lodgingList_hotel"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
@@ -142,7 +145,7 @@ public class LodgingController {
 //	}
 	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
-	public String lodgingView(int lidx, Model model, HttpServletRequest req) {
+	public String lodgingView(int lidx, Model model, HttpServletRequest req, String fromDate, String toDate) {
 			
 		Map<String,Object> map = lodgingService.selectLodging(lidx);
 		
@@ -153,6 +156,8 @@ public class LodgingController {
 		model.addAttribute("map", map);
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
+		model.addAttribute("fromDate", fromDate);
+		model.addAttribute("toDate", toDate);
 		
 		//세션에 담기
 		HttpSession session = req.getSession();

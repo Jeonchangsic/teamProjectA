@@ -231,135 +231,139 @@
         </div><!--//lodging_lnb-->
 
         <article class="room_contents">
-            <div class="btn_datePsn">
-                <div class="date_btn">
-                    <div class="date_view">
-                        <input type="text" name="fromDate" id="fromDate">
-						<input type="text" name="toDate" id="toDate">
-                    </div>
-                </div>
-                <div class="psn_btn">
-                    <span class="psn_view">
-                        <button type='button' onclick='count("minus")' value='-' class="updown">-</button>
-						<span id='result'>2</span>
-						<button type='button' onclick='count("plus")' value='+' class="updown">+</button>
-                    </span>
-                </div>
-            </div><!--//btn_datePsn-->
+        	<form name="frm" action="lodgingView.do" method="get">
+	            <div class="btn_datePsn">
+	                <div class="date_btn">
+	                    <div class="date_view">
+	                    	<input type="hidden" name="lidx" value="<%=map.get("lidx")%>">
+	                        <input type="text" name="fromDate" id="fromDate" value="${fromDate}">
+							<input type="text" name="toDate" id="toDate" value="${toDate}">
+		                    <button>적용</button>
+	                    </div>
+	                </div>
+	                <div class="psn_btn">
+	                    <span class="psn_view">
+	                        <button type='button' onclick='count("minus")' value='-' class="updown">-</button>
+							<span id='result'>2</span>
+							<button type='button' onclick='count("plus")' value='+' class="updown">+</button>
+	                    </span>
+	                </div>
+	            </div><!--//btn_datePsn-->
 
-            <div class="room_list">            
-                <c:forEach var="vo2" items="${list}" varStatus="status">
-	                <div class="room">
-	                    <div class="room_slider box2">
-	                        <!-- Swiper -->
-	                        <div class="swiper mySwiper">
-                        		<div class="swiper-wrapper">
-	                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage1}" alt="객실 이미지"></div>
-	                                <c:if test="${vo2.rimage2 != null}">
-	                                	<div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage2}" alt="객실 이미지"></div>
-	                                </c:if>
-	                                <c:if test="${vo2.rimage3 != null}">
-		                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage3}" alt="객실 이미지"></div>
-		                            </c:if>
-		                            <c:if test="${vo2.rimage4 != null}">
-		                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage4}" alt="객실 이미지"></div>
-		                            </c:if>
-		                            <c:if test="${vo2.rimage5 != null}">
-		                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage5}" alt="객실 이미지"></div>                        
-	                            	</c:if>
-	                            </div>
-	                            <div class="swiper-button-next"></div>
-	                            <div class="swiper-button-prev"></div>
-	                            <div class="swiper-pagination"></div>
-	                        </div>
-	                    
-	                        <!-- Swiper JS -->
-	                        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-	                    
-	                        <!-- Initialize Swiper -->
-	                        <script>
-	                            var swiper = new Swiper(".box2 .mySwiper", {
-	                            pagination: {
-	                                el: ".swiper-pagination",
-	                                type: "fraction",
-	                            },
-	                            navigation: {
-	                                nextEl: ".box2 .swiper-button-next",
-	                                prevEl: ".box2 .swiper-button-prev",
-	                            },
-	                            });
-	                        </script>
-	                    </div><!--//room_slider-->
-	                    <div class="room_name">${vo2.rtype}</div>
-	                    <div class="room_price">
-	                        <p>가격</p>
-	                        <div> 
-	                            <p class="room_amount">남은 객실${vo2.rnum}개</p>
-	                            <p><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</p>
-	                        </div>
-	                    </div><!--//room_price-->
-	                    <div class="modal">
-	                        <div class="modal_body">
-	                            <h3>객실 이용 안내</h3>
-	                            <div class="modal_close"><i class="xi-close"></i></div>
-	                            <div class="modal_info">
-	                                <div>
-	                                    <h4>기본정보</h4>
-	                                        <ul>
-	                                            <li>${vo2.stdmen}인 기준 최대 ${vo2.maxmen}인</li>
-	                                            <c:if test="${vo2.bed eq 'single_bed'}">
-	                                            	<li>싱글베드 1개</li>
-	                                            </c:if>
-	                                            <c:if test="${vo2.bed eq 'double_bed'}">
-	                                            	<li>더블베드 1개</li>
-	                                            </c:if>
-	                                            <c:if test="${vo2.bed eq 'twin_bed'}">
-	                                            	<li>싱글베드 2개</li>
-	                                            </c:if>
-	                                            <c:if test="${vo2.bed eq 'ondol_bed'}">
-	                                            	<li>온돌방</li>
-	                                            </c:if>
-	                                        </ul>                
-	                                </div>  
-	                                <div>      
-	                                    <h4>편의시설</h4>
-	                                        <ul>
-	                                            <li>
-	                                            	<c:if test="${vo2.tv == 'Y'}">TV</c:if>
-	                                            	<c:if test="${vo2.refri == 'Y'}">, 냉장고</c:if>
-	                                            	<c:if test="${vo2.aircon == 'Y'}">, 에어컨</c:if>
-	                                            	<c:if test="${vo2.wifi == 'Y'}">, wifi</c:if>
-	                                            	<c:if test="${vo2.shower == 'Y'}">, 객실샤워실</c:if>
-	                                            	<c:if test="${vo2.bathitem == 'Y'}">, 욕실용품</c:if>
-	                                            	<c:if test="${vo2.bath == 'Y'}">, 욕조</c:if>
-	                                            	<c:if test="${vo2.dryer == 'Y'}">, 드라이기</c:if>
-	                                            	<c:if test="${vo2.roomspa == 'Y'}">, 객실스파</c:if>
-	                                            	<c:if test="${vo2.iron == 'Y'}">, 다리미</c:if>
-	                                            	<c:if test="${vo2.minibar == 'Y'}">, 미니바</c:if>
-	                                            	<c:if test="${vo2.ricecooker == 'Y'}">, 전기밥솥</c:if>
-	                                            </li>
-	                                        </ul>
-	                                </div>      
-	                                <div>
-	                                    <h4>추가정보</h4>
-	                                        <ul>
-	                                            <li>${vo2.addinfo1}</li>
-	                                            <li>${vo2.addinfo2}</li>
-	                                            <li>${vo2.addinfo3}</li>
-	                                            <li>${vo2.addinfo4}</li>
-	                                            <li>${vo2.addinfo5}</li>
-	                                        </ul>                
-	                                </div>    
-	                            </div>
-	                        </div>
-	                    </div><!--//modal-->
-	                    <button type="button" class="room_info">객실 이용 안내</button>
-	                    <a href="<%=request.getContextPath()%>/reserv/reserv.do?ridx=${vo2.ridx}" >
-	                    	<button type="button" class="room_booking">예약</button>
-                    	</a>
-	                </div><!--//room-->
-                </c:forEach>
-            </div><!--//room_list-->
+	            <div class="room_list">            
+	                <c:forEach var="vo2" items="${list}" varStatus="status">
+		                <div class="room">
+		                    <div class="room_slider box2">
+		                        <!-- Swiper -->
+		                        <div class="swiper mySwiper">
+	                        		<div class="swiper-wrapper">
+		                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage1}" alt="객실 이미지"></div>
+		                                <c:if test="${vo2.rimage2 != null}">
+		                                	<div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage2}" alt="객실 이미지"></div>
+		                                </c:if>
+		                                <c:if test="${vo2.rimage3 != null}">
+			                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage3}" alt="객실 이미지"></div>
+			                            </c:if>
+			                            <c:if test="${vo2.rimage4 != null}">
+			                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage4}" alt="객실 이미지"></div>
+			                            </c:if>
+			                            <c:if test="${vo2.rimage5 != null}">
+			                                <div class="swiper-slide"><img src="<%= request.getContextPath() %>/resources/images/lodging_images/${vo2.rimage5}" alt="객실 이미지"></div>                        
+		                            	</c:if>
+		                            </div>
+		                            <div class="swiper-button-next"></div>
+		                            <div class="swiper-button-prev"></div>
+		                            <div class="swiper-pagination"></div>
+		                        </div>
+		                    
+		                        <!-- Swiper JS -->
+		                        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+		                    
+		                        <!-- Initialize Swiper -->
+		                        <script>
+		                            var swiper = new Swiper(".box2 .mySwiper", {
+		                            pagination: {
+		                                el: ".swiper-pagination",
+		                                type: "fraction",
+		                            },
+		                            navigation: {
+		                                nextEl: ".box2 .swiper-button-next",
+		                                prevEl: ".box2 .swiper-button-prev",
+		                            },
+		                            });
+		                        </script>
+		                    </div><!--//room_slider-->
+		                    <div class="room_name">${vo2.rtype}</div>
+		                    <div class="room_price">
+		                        <p>가격</p>
+		                        <div> 
+		                            <p class="room_amount"><c:if test="${vo2.rnum < 6}">남은 객실${vo2.rnum}개</c:if></p>
+		                            <p><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</p>
+		                        </div>
+		                    </div><!--//room_price-->
+		                    <div class="modal">
+		                        <div class="modal_body">
+		                            <h3>객실 이용 안내</h3>
+		                            <div class="modal_close"><i class="xi-close"></i></div>
+		                            <div class="modal_info">
+		                                <div>
+		                                    <h4>기본정보</h4>
+		                                        <ul>
+		                                            <li>${vo2.stdmen}인 기준 최대 ${vo2.maxmen}인</li>
+		                                            <c:if test="${vo2.bed eq 'single_bed'}">
+		                                            	<li>싱글베드 1개</li>
+		                                            </c:if>
+		                                            <c:if test="${vo2.bed eq 'double_bed'}">
+		                                            	<li>더블베드 1개</li>
+		                                            </c:if>
+		                                            <c:if test="${vo2.bed eq 'twin_bed'}">
+		                                            	<li>싱글베드 2개</li>
+		                                            </c:if>
+		                                            <c:if test="${vo2.bed eq 'ondol_bed'}">
+		                                            	<li>온돌방</li>
+		                                            </c:if>
+		                                        </ul>                
+		                                </div>  
+		                                <div>      
+		                                    <h4>편의시설</h4>
+		                                        <ul>
+		                                            <li>
+		                                            	<c:if test="${vo2.tv == 'Y'}">TV</c:if>
+		                                            	<c:if test="${vo2.refri == 'Y'}">, 냉장고</c:if>
+		                                            	<c:if test="${vo2.aircon == 'Y'}">, 에어컨</c:if>
+		                                            	<c:if test="${vo2.wifi == 'Y'}">, wifi</c:if>
+		                                            	<c:if test="${vo2.shower == 'Y'}">, 객실샤워실</c:if>
+		                                            	<c:if test="${vo2.bathitem == 'Y'}">, 욕실용품</c:if>
+		                                            	<c:if test="${vo2.bath == 'Y'}">, 욕조</c:if>
+		                                            	<c:if test="${vo2.dryer == 'Y'}">, 드라이기</c:if>
+		                                            	<c:if test="${vo2.roomspa == 'Y'}">, 객실스파</c:if>
+		                                            	<c:if test="${vo2.iron == 'Y'}">, 다리미</c:if>
+		                                            	<c:if test="${vo2.minibar == 'Y'}">, 미니바</c:if>
+		                                            	<c:if test="${vo2.ricecooker == 'Y'}">, 전기밥솥</c:if>
+		                                            </li>
+		                                        </ul>
+		                                </div>      
+		                                <div>
+		                                    <h4>추가정보</h4>
+		                                        <ul>
+		                                            <li>${vo2.addinfo1}</li>
+		                                            <li>${vo2.addinfo2}</li>
+		                                            <li>${vo2.addinfo3}</li>
+		                                            <li>${vo2.addinfo4}</li>
+		                                            <li>${vo2.addinfo5}</li>
+		                                        </ul>                
+		                                </div>    
+		                            </div>
+		                        </div>
+		                    </div><!--//modal-->
+		                    <button type="button" class="room_info">객실 이용 안내</button>
+		                    <a href="<%=request.getContextPath()%>/reserv/reserv.do?ridx=${vo2.ridx}&fromDate=${fromDate}&toDate=${toDate}" >
+		                    	<button type="button" class="room_booking">예약</button>
+	                    	</a>
+		                </div><!--//room-->
+	                </c:forEach>
+	            </div><!--//room_list-->
+            </form>
         </article><!--//room_contents-->
    
         <article class="detail_info">

@@ -178,11 +178,11 @@
                 </p>
                 <p>
                     <strong>체크인</strong><br>
-                    	2022-11-30/15:00
+                    	${fromDate}
                 </p>
                 <p>
                     <strong>체크아웃</strong><br>
-                    	2022-12-01/12:00
+                    	${toDate}
                 </p>
             </section>
             <hr>
