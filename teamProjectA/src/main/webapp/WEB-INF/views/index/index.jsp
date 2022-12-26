@@ -73,7 +73,7 @@
                 <li><a href="<%=request.getContextPath() %>/lodging/lodgingList_hotel.do"><i class="xi-city "></i><p>호텔</p></a></li>        
                 <li><a href="<%=request.getContextPath() %>/lodging/lodgingList_villa.do"><i class="xi-beach  "></i><p>펜션/풀빌라</p></a></li>             
                 <li><a href="<%=request.getContextPath() %>/lodging/lodgingList_gh.do"><i class="xi-home-o"></i><p>게스트하우스</p></a></li>        
-                <li><a onclick="callAlert();"><i class="xi-maker-drop "></i><p>내주변</p></a></li>              
+                <li><a onclick="callAlert();" id="cursor_Style"><i class="xi-maker-drop"></i><p>내주변</p></a></li>              
             </ul>
         </nav>
         <section id="main_img">
@@ -98,24 +98,24 @@
                                        	<div>
 	                                     	<c:choose>
 					                            <c:when test="${list.avgrv == 5.0}">
-			                                      	<p class="star" style="color:#FF8200;">&#9733;&#9733;&#9733;&#9733;&#9733;</p> 
+			                                      	<p class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</p> 
 					                        	</c:when>
 					                        	<c:when test="${list.avgrv == 4.9 ||list.avgrv == 4.8||list.avgrv == 4.7||list.avgrv == 4.6||list.avgrv == 4.5||list.avgrv == 4.4||list.avgrv == 4.3||list.avgrv == 4.2||list.avgrv == 4.1||list.avgrv == 4.0}">
-			                                      	<p class="star" style="color:#FF8200;">&#9733;&#9733;&#9733;&#9733;</p> 
+			                                      	<p class="star">&#9733;&#9733;&#9733;&#9733;</p> 
 					                        	</c:when>
 					                        	<c:when test="${list.avgrv == 3.9 ||list.avgrv == 3.8||list.avgrv == 3.7||list.avgrv == 3.6||list.avgrv == 3.5||list.avgrv == 3.4||list.avgrv == 3.3||list.avgrv == 3.2||list.avgrv == 3.1||list.avgrv == 3.0}">
-			                                      	<p class="star" style="color:#FF8200;">&#9733;&#9733;&#9733;</p> 
+			                                      	<p class="star">&#9733;&#9733;&#9733;</p> 
 					                        	</c:when>
 					                        	<c:when test="${list.avgrv == 2.9 ||list.avgrv == 2.8||list.avgrv == 2.7||list.avgrv == 2.6||list.avgrv == 2.5||list.avgrv == 2.4||list.avgrv == 2.3||list.avgrv == 2.2||list.avgrv == 2.1||list.avgrv == 2.0}">
-			                                      	<p class="star" style="color:#FF8200;">&#9733;&#9733;</p> 
+			                                      	<p class="star">&#9733;&#9733;</p> 
 					                        	</c:when>
 					                        	<c:otherwise>
-					                        		<p class="star" style="color:#FF8200;">&#9733;</p> 
+					                        		<p class="star">&#9733;</p> 
 					                        	</c:otherwise>
 			                        		</c:choose>               	
 	                                    <p class="lod_satisfaction" >(${list.avgrv}점)</p>
                                        	</div>
-                                       	<div class="lod_price" style="font-weight:bold;">
+                                       	<div class="lod_price">
                                        		<fmt:formatNumber type="number" maxFractionDigits="3" value="${list.rprice}" />원
                                      	</div>
                                     </div>

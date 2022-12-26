@@ -73,10 +73,21 @@
 		</select>
 		
 		<!-- 회원탈퇴 -->
+		<!-- 1.아이디 삭제 -->
 		<delete id="userDt">
 			DELETE FROM ausertb
 				WHERE userID = #{userID}
 				AND userPassword = #{userPassword}
+		</delete>
+		<!-- 2.리뷰 삭제 -->
+		<delete id="reviewDt">
+		DELETE FROM reviewtb 
+			WHERE uidx = #{uidx}
+		</delete>
+		<!-- 3.예약내역 삭제 -->
+		<delete id="reservDt">
+			DELETE FROM reservtb 
+				WHERE uidx = #{uidx}
 		</delete>
 		
 		<!-- 회원리스트 -->

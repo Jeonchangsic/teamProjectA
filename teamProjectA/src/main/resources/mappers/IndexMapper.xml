@@ -4,7 +4,7 @@
 		<mapper namespace="team.projectA.mapper.IndexMapper">
 		
 		<select id="popLodgingList" resultType="reviewVO">
-			SELECT ridx,rtype,rprice,lidx,lodgingname,limagename,avgrv 
+			SELECT *
 				FROM (SELECT ridx,rtype,rprice,lidx,lodgingname,limagename,avgrv 
 					FROM (SELECT rm.ridx
 							,rm.rtype

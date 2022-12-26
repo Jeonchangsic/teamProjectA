@@ -11,6 +11,8 @@ public interface UserService {
 	int userForm(String userID);
 	UserVO login(UserVO vo);
 	int userDt(UserVO vo);
+	int reviewDt(UserVO vo);
+	int reservDt(UserVO vo);
 	public List<UserVO> userList(UserVO vo);
 	int pwUpdate(HashMap hm);
 	int userSearch(String id);

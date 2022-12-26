@@ -20,30 +20,26 @@
 <body>
 	<header>
 		<h2>
-			<img src="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg">
+			회원탈퇴
 		</h2>
 	</header>
 	<main>
 	    <form action="userDt.do" method="post">
+	    <input type="hidden" name="uidx" value="${login.uidx}">
 	    	<table id="tableMargin">
 	    		<tr>
 	    			<td class="passwordMargin">아이디</td>
-	    			<td>
-	    				<input type="text" id="userID" name="userID" value="${login.userID}"/>
+	    			<td class="input_td">
+	    				<input type="text" id="userID" name="userID" value="${login.userID}" readonly/>
 	    			</td>
 	    		</tr>
-	    		<tr>
+	    		<tr id="tr_border">
 	    			<td class="passwordMargin">패스워드</td>
-	    			<td>
+	    			<td class="input_td">
 	    				<input class="trMargin" type="password" id="userPassword" name="userPassword" placeholder="비밀번호를 입력하세요."/>
 	    			</td>
 	    		</tr>
 	    	</table>
-		    <c:if test="${msg == false }">
-		    <p id="pwFalse"> 
-		   	 비밀번호가 일치하지 않습니다!
-		    </p>
-		    </c:if>
 	    	<button class="cursorStyle">회원탈퇴</button>
 	    </form>
     </main>

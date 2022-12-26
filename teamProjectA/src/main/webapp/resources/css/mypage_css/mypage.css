@@ -163,16 +163,13 @@ main .table10 .tr_center{
     text-align:center;
 }
 main #btnArea{
-    margin-left:410px;
+    margin: 0 auto;
+    width: 100px;
 }
 main #btnArea2{
-    
+    width: 200px;
     padding:5px;
-    margin-top:5px;
-    display:flex;
-    justify-content: space-between;
-    width:80px;
-    
+    margin-top:5px;  
 }
 
 main #contentsArea{
@@ -258,6 +255,15 @@ img{
 .btnFontSize{
 	font-size: 11px;
     height: 20px;
+}
+.input_none{
+	display:none;
+}
+.float{
+	float:left;
+}
+.a_margin{
+	margin: 0 5px 0 5px;
 }
                 /*footer*/
 footer{position:absolute; bottom:0;height:137px; width:100%; background-color:rgba(0,0,0,0.15);}

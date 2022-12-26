@@ -20,13 +20,7 @@ public class ManagerDAO {
 	@Autowired
 	private SqlSession sqlSession; 
 	
-	public List<LodgingVO> lodgingCategory() throws Exception{
-		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.lodgingCategory");
-	}
-	public List<RoomVO> selectRoomList(int lidx){
-		
-		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.lodgingID",lidx);
-	}
+	
 	public List<LodgingVO> requestList() {
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.requestList");
 	}

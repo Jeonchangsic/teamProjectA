@@ -51,9 +51,9 @@
     	 alert(" 저긴어때(주) 회원 탈퇴를 진행하시면\n 기존의 정보와 거래내역 등 모든 정보가 사라집니다.\n 또한 삭제된 정보는 되돌릴 수 없습니다.\n 계속 탈퇴를 진행하시려면 비밀번호란에 회원님의 비밀번호를 \n 작성 후 계속 진행해 주세요.");
     	var url = "<%=request.getContextPath()%>/mypage/userDt.do";   //팝업창 페이지 URL
  		var winWidth = 500;
- 	    var winHeight = 350;
+ 	    var winHeight = 300;
  	  	var popupX = (window.screen.width / 2) - (500 / 2);
- 	  	var popupY= (window.screen.height / 2) - (350 / 2);
+ 	  	var popupY= (window.screen.height / 2) - (300 / 2);
  	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
  		window.open(url,"",popupOption);
      };
@@ -78,9 +78,9 @@
      function review(lidx,ridx,reserv_idx,lodgingname,rtype,reserv_startDate,reserv_endDate,limagename){
     	var url = "<%=request.getContextPath()%>/review/review.do?lidx="+lidx+"&ridx="+ridx+"&reserv_idx="+reserv_idx+"&lodgingname="+lodgingname+"&rtype="+rtype+"&reserv_startDate="+reserv_startDate+"&reserv_endDate="+reserv_endDate+"&limagename="+limagename;   //팝업창 페이지 URL
  		var winWidth = 550;
- 	    var winHeight = 430;
+ 	    var winHeight = 450;
  	  	var popupX = (window.screen.width / 2) - (550 / 2);
- 	  	var popupY= (window.screen.height / 2) - (430 / 2);
+ 	  	var popupY= (window.screen.height / 2) - (450 / 2);
  	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
  		window.open(url,"",popupOption);
      };
@@ -195,8 +195,17 @@
 		                        <td class="fontSize">
 		                        	<fmt:formatNumber type="number" maxFractionDigits="3" value="${list.rprice}" />원
 		                        </td>
+		                        	<fmt:formatDate value="${list.reserv_startDate2}" pattern="yyyyMMdd" var="startDate"/>
+		                        	<fmt:formatDate value="${now}" pattern="yyyyMMdd" var="nowDate"/>
 		                        <td  class="button_Size">
-		                            <input class="reservListBtn cursorStyle" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}')" type="button" value="예약취소"/>
+		                        	<c:choose>
+		                        		<c:when test="${startDate <= nowDate}">
+		                        			<input class="reservListBtn cursorStyle input_none" type="button" value="취소불가능"/>
+		                            	</c:when>
+		                            	<c:otherwise>
+		                            		<input class="reservListBtn cursorStyle" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}')" type="button" value="예약취소"/>
+		                            	</c:otherwise>
+		                            </c:choose>
 		                            <c:choose>
 			                            <c:when test="${list.reviewCheck eq 'N'}">
 			                           		<input class="reservListBtn cursorStyle" onclick="review(${list.lidx},${list.ridx},${list.reserv_idx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
@@ -213,14 +222,14 @@
 	                <div id="btnArea2">
 	                    <ul>
 	                    	<c:if test="${pageMaker.prev}">
-	                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
 	                    	</c:if>
 	                    	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-	                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
 	                    	</c:forEach>
 	                    	
 	                    	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-	                    		<li><a href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(pageMaker.endPage +1)}">다음</a></li>
+	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(pageMaker.endPage +1)}">다음</a></li>
 	                    	</c:if>
 	                    </ul>
 	                </div>
