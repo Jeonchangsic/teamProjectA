@@ -4,7 +4,7 @@
 <%@ page import="team.projectA.vo.*" %>
 <%
 	List<Map<String,Object>> list = (List<Map<String,Object>>)request.getAttribute("list");
-	//pageContext.setAttribute(arg0, arg1)
+	//pageContext.setAttribute(arg0, arg1) //page attribute(이엘; .., request, page, ..)
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -24,7 +24,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> <!--XE아이콘-->
 
 
+
 <script>
+	
+	/* var url = location.href; //url얻어오기
+	var frm = document.getElementsByTagName("frm");
+	console.log("Aaaa"+frm);
+	if(frm.submit() == true){
+		var params = location.search; //파라미터 추출해서 변수에 담기
+		
+		//추출한걸 대상링크 뒤에 붙인다
+		console.log(url);
+		console.log(params);	
+	}; */
+	
 	$(document).ready(function() {
 		// 메뉴 접었다 폈다 하는 기능
 		$(".select_under").click(function() {
@@ -85,8 +98,6 @@
 			// mousewheel: true,
 			keyboard : true,
 		});
-		
-		
 	});
 
 	//캘린더
@@ -151,8 +162,19 @@
 			}
 
 			event.target.classList.add("active2");
-		}
-		location.href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=${area}&type="+type;
+		}		
+		location.href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=${area}&type="+type;
+		
+		<%-- <%
+		String uri = request.getRequestURI();
+		
+		%>
+		
+		var uri  = "<%=uri%>";
+		
+		var btnnn = document.frm.dddd.value;
+		
+		location.href = uri + "ddd="+btnnn --%>
 	}
 
 	function init() {
@@ -479,7 +501,7 @@
 			</div>
 			<div id="inner1" class="fixedclear">
 				<div id="main_filter" class="fixedclear">
-					<form action="lodgingList_hotel.do" method="get">
+					<form name="frm" action="lodgingList_hotel.do" method="get">
 						<div class="filter" id="filter_day">날짜</div>
 						<div>
 							<input type="text" name="fromDate" id="fromDate">
@@ -743,7 +765,15 @@
 						<button type="button" onclick="change_btn2(event,1)" id="up1" class="btnbox2  <c:if test="${type eq '1'}">active2</c:if>">최근등록순</button>
 					</li>
 				</ul>
-				<h2>인기추천</h2>					
+				<h2>인기추천</h2>		
+					<c:if test="${empty list}">
+						<div class="empty">
+							<p>현재 조건에 맞는 숙소가 없습니다.</p>
+							 지역을 변경하거나
+							<br>
+							일정, 상세조건을 재설정해 보세요.
+						</div>
+					</c:if>			
 					<c:forEach var="vo" items="${list}" varStatus="status">
 						<!-- break를 위한 boolean변수 doneLoop 선언 -->
 						<c:set var="doneLoop" value="false" />

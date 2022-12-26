@@ -39,7 +39,7 @@
 	    					$("#loading").css("display","none");
 	    						alert("임시 비밀번호가 발송되었습니다.");
 	    						location.reload(); 
-	    						window.close();
+	    						/* window.close(); */
     						
     					}
     				})

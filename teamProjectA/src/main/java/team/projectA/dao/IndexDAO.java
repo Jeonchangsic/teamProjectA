@@ -21,5 +21,8 @@ public class IndexDAO {
 	public List<ReviewVO> popLodgingList() throws Exception{
 		return sqlSession.selectList("team.projectA.mapper.IndexMapper.popLodgingList");
 	}
+	public List<ReviewVO> popLodgingList2() throws Exception{
+		return sqlSession.selectList("team.projectA.mapper.IndexMapper.popLodgingList");
+	}
 	
 }

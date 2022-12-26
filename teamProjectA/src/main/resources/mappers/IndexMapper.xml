@@ -4,25 +4,21 @@
 		<mapper namespace="team.projectA.mapper.IndexMapper">
 		
 		<select id="popLodgingList" resultType="reviewVO">
-			SELECT l.lidx 
-			,l.lodgingname
-			,rm.rtype
-			,rm.rprice
-			,l.limagename
-			,AVG(rvsatisfaction)AS rvg
-		 	FROM reviewtb r
-		 		,roomtb rm
-		 		,lodgingtb l 
-				GROUP BY r.ridx
-	 					,r.lidx
-	 					,l.limagename
-	 					,l.lodgingname
-	 					,rm.ridx
-	 					,rm.rprice
-	 					,rm.RTYPE
-	 					,l.lidx
-		 	HAVING r.ridx = rm.ridx 
-			 	AND l.lidx = r.LIDX
-			 	ORDER BY rvg DESC
+			SELECT ridx,rtype,rprice,lidx,lodgingname,limagename,avgrv 
+				FROM (SELECT ridx,rtype,rprice,lidx,lodgingname,limagename,avgrv 
+					FROM (SELECT rm.ridx
+							,rm.rtype
+							,rm.rprice
+							,l.lidx
+							,l.lodgingname
+							,l.limagename
+							,TRUNC (rv.avgrv,1) AS avgrv
+						FROM roomtb rm
+						,(SELECT ridx, AVG(rvsatisfaction) AS avgrv 
+							FROM reviewtb GROUP BY ridx) rv,lodgingtb l 
+							WHERE rm.ridx = rv.ridx
+								AND l.lidx = rm.lidx
+								<![CDATA[AND ROWNUM <= 18]]>
+							 	ORDER by rv.avgrv DESC))
 		</select>
 </mapper>
