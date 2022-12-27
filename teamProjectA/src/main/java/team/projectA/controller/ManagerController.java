@@ -1,5 +1,6 @@
 package team.projectA.controller;
 
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -141,28 +142,15 @@ public class ManagerController {
 	}
 	
 	@RequestMapping(value = "/managerRoom.do", method = RequestMethod.GET)
-	public String Room(Locale locale, Model model) throws Exception{
-		logger.info("Welcome home! The client locale is {}.", locale);
+	public String Room(Locale locale, Model model,LodgingVO rdv,@ModelAttribute("scri") SearchCriteria scri2) throws Exception{
+		List<LodgingVO> lodlist = managerService.managerRoomList(scri2);
+		model.addAttribute("lodlist",lodlist);
 		
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		//���ҿ�û���
-		List<LodgingVO> requestList = managerService.requestList();
-		model.addAttribute("requestList", requestList);
-		
-		//���� �α���õ
-		List<LodgingVO> lodgingCategory = null;
-		lodgingCategory = managerService.lodgingCategory();
-		model.addAttribute("lodgingCategory",lodgingCategory);
-		
-		//
-		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri2);
+		pageMaker.setTotalCount(managerService.RoomListcount());
+		model.addAttribute("pageMaker", pageMaker);	 
+
 		return "manager/managerRoom";
 	}
 	//���ҽ���
@@ -171,7 +159,7 @@ public class ManagerController {
 		
 		managerService.approval(uidx);
 		
-		return "redirect:managerRoom.do";
+		return "redirect:managerRoomOK.do";
 	}
 	//���ҽ��ΰź�
 	@RequestMapping(value="/requestDel.do", method = RequestMethod.POST)
@@ -180,14 +168,19 @@ public class ManagerController {
 		managerService.requestDel(lidx);
 		managerService.requestN(uidx);
 		
-		return "redirect:managerRoom.do";
+		return "redirect:managerRoomOK.do";
 	}
 	
 	@RequestMapping(value = "/managerReview.do", method = RequestMethod.GET)
-	public String Review(Model model,ReviewVO rev) {  
-		List<ReviewVO> rlist = managerService.ReviewList(rev);
-		model.addAttribute("rlist", rlist);
+	public String Review(Model model,ReviewVO rev,@ModelAttribute("scri") SearchCriteria scri3)throws Exception {  
+		List<ReviewVO> rlist = managerService.ReviewList(scri3);
+		model.addAttribute("rlist", rlist);        
 		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri3);
+		pageMaker.setTotalCount(managerService.reviewcount());
+		model.addAttribute("pageMaker", pageMaker);	 
+
 		
 		
 		return "manager/managerReview";
@@ -203,22 +196,23 @@ public class ManagerController {
 	  }
 	//리뷰 삭제
 		@RequestMapping (value = "/Reviewdelete.do" , method = RequestMethod.GET)
-		public String reviewdelete(Locale locale, Model model, int rvidx) {
+		public String reviewdelete(Locale locale, Model model, int rvidx){
 			
 			managerService.reviewDelete(rvidx);
-
+			
 			return "redirect:managerReview.do";
 		}
 
 	@RequestMapping(value = "/managerReservList.do", method = RequestMethod.GET)
-	public String reservList(UserVO vo, Model model,ReservVO vo1) {
+	public String reservList(UserVO vo, Model model,ReservVO vo1,@ModelAttribute("scri") SearchCriteria scri4) {
 		
 		List<ReservVO> list1 = managerService.reservlist(vo1);
-		List<UserVO> list = userService.userList(vo);
-		List<QnaVO> list2 = managerService.managerqnalist();
-		model.addAttribute("list",list);
 		model.addAttribute("list1",list1);
-		model.addAttribute("list2",list2);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri4);
+		pageMaker.setTotalCount(managerService.reservcount());
+		model.addAttribute("pageMaker", pageMaker);	 
 		
 		return "manager/managerReservList";
 	}
@@ -232,5 +226,19 @@ public class ManagerController {
 		/* System.out.println("data:"+rlist.get(0).getRidx()); */
 		
 		return rlist;
+	}
+	@RequestMapping(value="managerRoomOK.do", method = RequestMethod.GET)
+	public String requestApproval(Model model) throws Exception{
+		List<LodgingVO> requestList = managerService.requestList();
+		model.addAttribute("requestList", requestList);
+		
+		//���� �α���õ
+		List<LodgingVO> lodgingCategory = null;
+		lodgingCategory = managerService.lodgingCategory();
+		model.addAttribute("lodgingCategory",lodgingCategory);
+		
+		
+		
+		return "manager/managerRoomOK";
 	}
 }

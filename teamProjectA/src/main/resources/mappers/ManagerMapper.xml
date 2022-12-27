@@ -64,7 +64,7 @@
 					FROM ausertb u, lodgingtb l, reservtb v, roomtb r
 					where v.uidx = u.uidx
 					  and v.ridx = r.ridx
-					  and r.lidx = l.lidx
+					  and r.lidx = l.lidx   
 					
 		</select>
 			<!--예약리스트  총 개수-->

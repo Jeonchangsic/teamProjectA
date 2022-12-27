@@ -32,5 +32,5 @@ public interface ManagerService {
 	public List<QnaVO> qnaList(SearchCriteria scri2);
 	public int qnacount();
 	public List<LodgingVO> managerRoomList(SearchCriteria scri2);
-	public int RoomListcount();
+	public int RoomListcount();  
 }

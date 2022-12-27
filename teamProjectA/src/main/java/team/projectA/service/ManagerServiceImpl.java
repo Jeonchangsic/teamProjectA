@@ -137,7 +137,7 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int reservcount() {
 
-		return managerDAO.reservcount();
+		return managerDAO.reservcount();    
 	}
 
 }

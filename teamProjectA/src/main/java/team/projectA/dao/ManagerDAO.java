@@ -86,5 +86,5 @@ public class ManagerDAO {
 	}
 	public int RoomListcount() {
 		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.RoomListcount");
-	}
+	}    
 }
