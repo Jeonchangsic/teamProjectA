@@ -12,7 +12,7 @@ public class ReviewVO extends RoomVO{
 	private String rvContent;
 	private String rvDate;
 	
-	
+	   
 	public double[] getRvSatisfactionAry() {
 		return rvSatisfactionAry;
 	}
