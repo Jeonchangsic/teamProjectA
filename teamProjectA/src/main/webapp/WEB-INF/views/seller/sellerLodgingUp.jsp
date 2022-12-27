@@ -35,7 +35,7 @@
 					return;
 				}else{
 					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend1++;
 				}	
 	    	}else if(type == "2"){
@@ -43,7 +43,7 @@
 					return;
 				}else{
 					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='basic"+extcnt+"' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='basic"+extcnt+"' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend2++;
 				}
 	    	}else if(type == "3"){
@@ -51,9 +51,37 @@
 					return;
 				}else{
 					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='odd"+extcnt+"' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='odd"+extcnt+"' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend3++;
 				}
+	    	}
+	    }
+	    
+	    function clickminus(type,obj){
+	    	if(type == "1"){
+	    		if(maxAppend1 <= 1){
+	    			return;
+	    		}else{
+					$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
+					$(obj).parents().next().children("br:last-of-type").remove();
+					maxAppend1--;
+	    		}
+	    	}else if(type == "2"){
+	    		if(maxAppend2 <= 1){
+	    			return;
+	    		}else{
+	    			$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
+					$(obj).parents().next().children("br:last-of-type").remove();
+					maxAppend2--;
+	    		}
+	    	}else if(type == "3"){
+	    		if(maxAppend3 <= 1){
+	    			return;
+	    		}else{					
+	    			$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
+					$(obj).parents().next().children("br:last-of-type").remove();
+					maxAppend3--;
+	    		}
 	    	}
 	    }
 	    
@@ -289,18 +317,21 @@
 	    				<p>주변정보</p>
 	    				<input type="text" name="area1" class="plus" placeholder="주변정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(1,this)">+</button>
+	    				<button type="button" name="minus" onclick="clickminus(1,this)">-</button>
 	    			</div>
 	    			<div class="space"></div>
 	    			<div class="info">
 	    				<p>기본정보</p>
 	    				<input type="text" name="basic1" class="plus" placeholder="기본정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(2,this)">+</button>
+	    				<button type="button" name="minus" onclick="clickminus(2,this)">-</button>
 	    			</div>
 	    			<div class="space"></div>
 	    			<div class="info">
 	    				<p>확인사항 및 기타</p>
 	    				<input type="text" name="odd1" class="plus" placeholder="기타정보를 입력해주세요  (5개까지 입력 가능합니다)"/>
 	    				<button type="button" name="plus" onclick="clickplus(3,this)">+</button>
+	    				<button type="button" name="minus" onclick="clickminus(3,this)">-</button>
 	    			</div>   
 	    			<div class="space"></div> 			
 	    		</div> 	

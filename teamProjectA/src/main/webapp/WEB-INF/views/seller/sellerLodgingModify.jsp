@@ -17,6 +17,32 @@
 		var maxAppend3 = 1;
 		var extcnt = 1;
 		
+		$(document).ready(function () {
+			
+			if(${hm.area2 != null}){
+				extcnt++;
+				$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' value='${hm.area2}' />");
+				maxAppend1++;
+			}
+			if(${hm.area3 != null}){
+				extcnt++;
+				$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' value='${hm.area3}' />");
+				maxAppend1++;
+			}
+			if(${hm.area4 != null}){
+				extcnt++;
+				$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' value='${hm.area4}' />");
+				maxAppend1++;
+			}
+			if(${hm.area5 != null}){
+				extcnt++;
+				$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' value='${hm.area5}' />");
+				maxAppend1++;
+			}
+			
+			clickplus();
+		});
+		
 	    function clickplus(type,obj){
 	    	if(type == "1"){
 				if(maxAppend1 >= 5){

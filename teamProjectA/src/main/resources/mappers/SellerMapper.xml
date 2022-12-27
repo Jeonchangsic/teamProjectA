@@ -83,18 +83,18 @@
 							, qna_Qtitle
 							, qna_Qdate
 							, qna_Acheck
-							, row_number() over(ORDER BY qna_idx DESC)
+							, row_number() over(ORDER BY qna_idx DESC) <!--row_num() over :정렬된 순서 기준으로 고유한 값 반환  -->
 							 AS qnum
 					FROM qnatb
 					WHERE qna_Qtitle LIKE '%' || #{keyword} || '%'
-					AND uidx = #{uidx} <!-- uidx먼저구한후 검색어조건 -->
+					AND uidx = #{uidx} 
 
 					)
 					WHERE qnum BETWEEN #{rowStart} and #{rowEnd} 
 					ORDER BY qna_idx DESC
 	</select>
 
-	<select id="listCount" resultType="int">
+	<select id="listCount" parameterType = "SearchCriteria" resultType="int">
 			SELECT count(qna_idx)
 				FROM qnatb
 				WHERE qna_Qtitle LIKE '%' || #{keyword} || '%'

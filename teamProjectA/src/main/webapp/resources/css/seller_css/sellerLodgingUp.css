@@ -53,6 +53,7 @@ textarea {resize:none;}
 .info {margin-left: 40px; display:flex;}
 .info p {font-size:20px; font-weight:bold; width:155px; line-height:29px;
 		margin-right:70px;}
+.info button {margin-right:5px;}
 .plus {width:400px; padding:5px; margin-right:5px;}
 .plus2 {width:400px; padding:5px; margin-right:5px; margin-left:265px;}
 .space {margin-bottom:50px;}

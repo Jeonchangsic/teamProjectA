@@ -65,7 +65,6 @@ UL,li{list-style:none;}
 .inner{
 	width:1024px; 
 	margin:0 auto; 
-	height:900px;
 	font-family: 'Nanum Gothic', sans-serif;
 }
 #header{ 
@@ -131,8 +130,8 @@ main #mydel{width:80px;
         margin: 20px 0 0 480px;}
      
                 /*footer*/
-footer{ 
-	height:100%; 
+footer{ position : absolute;
+	bottom:0;
 	width:100%; 
 	background-color:rgba(0,0,0,0.15);
 	font-family: 'Nanum Gothic', sans-serif;

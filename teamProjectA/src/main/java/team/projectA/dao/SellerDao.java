@@ -67,13 +67,11 @@ public class SellerDao {
 	}
 
 	public List<RoomVO> roomlist(int uidx) {
-		return sqlSession.selectList("team.projectA.mapper.sellerMapper.roomlist", uidx);
-		
+		return sqlSession.selectList("team.projectA.mapper.sellerMapper.roomlist", uidx);		
 	}
 	
 	public int roomdel(int ridx) {
 		return sqlSession.delete("team.projectA.mapper.sellerMapper.roomdel", ridx);
-		
 	}
 	
 	@Transactional

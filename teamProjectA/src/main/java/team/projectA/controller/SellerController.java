@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
- 
+
+import team.projectA.service.ReservService;
 import team.projectA.service.SellerService;
 import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
@@ -31,6 +33,7 @@ import team.projectA.vo.LodginginVO;
 import team.projectA.vo.LodginginfoVO;
 import team.projectA.vo.PageMaker;
 import team.projectA.vo.QnaVO;
+import team.projectA.vo.ReservVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
 import team.projectA.vo.SearchCriteria;
@@ -45,6 +48,8 @@ public class SellerController {
 	 	
 	@Autowired
 	private SellerService sellerService;
+	@Autowired
+	private ReservService reservServcice;
 
 	
 	/**
@@ -204,6 +209,7 @@ public class SellerController {
 	      
 		LodgingVO lodging2 = sellerService.SellerOne(login.getUidx());
 		
+		
 		model.addAttribute("roomlist",roomlist);
 		model.addAttribute("lodging2",lodging2);
 			      
@@ -214,12 +220,27 @@ public class SellerController {
 	//객실 삭제 (redirect해야해서 가상경로 따로 설정함)
 	@RequestMapping(value = "/sellerRegi2.do", method = RequestMethod.POST)
 	public void Regi2(Locale locale, Model model, int ridx, HttpServletResponse res) throws IOException {
-
-		sellerService.roomdel(ridx);
 		
-		res.setContentType("text/html; charset=UTF-8");
-		PrintWriter pw = res.getWriter();
-		pw.append("<script>alert('삭제되었습니다.');location='sellerRegi.do'</script>");
+		List<ReservVO> delridx = reservServcice.ridxList(ridx);
+		
+		PrintWriter out = res.getWriter();
+		
+		
+		if(delridx == null || delridx.isEmpty()) {
+			sellerService.roomdel(ridx);
+			res.setContentType("text/html; charset=UTF-8");
+			PrintWriter pw = res.getWriter();
+			pw.append("<script>alert('삭제되었습니다.');location='sellerRegi.do'</script>");
+			out.flush();
+			out.close();
+			
+		}else {			
+			res.setContentType("text/html; charset=UTF-8");
+			PrintWriter pw = res.getWriter();
+			pw.append("<script>alert('예약이 있는 객실입니다.'); history.go(-1);</script>");
+			out.flush();
+			out.close();
+		}
 				
 		//return "redirect:sellerRegi.do";
 		

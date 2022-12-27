@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -29,19 +30,40 @@
 			}
 		};
 		
+				
 		//추가정보입력			    
 		$(document).ready(function () {
+			
 			var maxAppend = 1;
+			
+			if(${roomModify.addinfo2 != null}){
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo2" value = "${roomModify.addinfo2}"><br>');
+				maxAppend++;
+			}
+			if(${roomModify.addinfo3 != null}){
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo3" value = "${roomModify.addinfo3}"><br>');
+				maxAppend++;
+			}
+			if(${roomModify.addinfo4 != null}){
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo4" value = "${roomModify.addinfo4}"><br>');
+				maxAppend++;
+			}
+			if(${roomModify.addinfo5 != null}){
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}"><br>');
+				maxAppend++;
+			}
+						
 			var extcnt = 1;
-			var infocnt = 1;
 			
 			$(document).on("click", "button[name='plus']", function () {
 					if (maxAppend >= 5){ 							 
 					return; // 5번째부터는 append 안되고 return 시키기
 				}else {
 					extcnt++;
-					$("#bottom_info").append('</br><input type="text" name="addinfo'+extcnt+'" value = "${roomModify.addinfo2}" class="plus" placeholder="추가정보를 입력해주세요" required></br>');
+					$("#bottom_info").append('</br><input type="text" name="addinfo'+extcnt+'" class="plus" placeholder="추가정보를 입력해주세요" required></br>');
 					maxAppend++;
+					
+					
 				}				
 			});
 
@@ -230,13 +252,10 @@
 				</div>		            
 			    <div id="bottom_info">
 			    	<p>추가정보<p>
-				    	<%-- <input type="text" class="plus" name = "addinfo1" value = "${roomModify.addinfo1}"><br>
-				        <input type="text" class="plus" name = "addinfo2" value = "${roomModify.addinfo2}"><br>
-				        <input type="text" class="plus" name = "addinfo3" value = "${roomModify.addinfo3}"><br>
-				        <input type="text" class="plus" name = "addinfo4" value = "${roomModify.addinfo4}"><br>
-				        <input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}">    
-				              --%>	
-				        <input type="text" class="plus2" name = "addinfo1" value = "${roomModify.addinfo1}" placeholder="추가정보를 입력해주세요 (5개까지 입력 가능합니다.)"/>
+			    		
+				       	<input type="text" class="plus" name = "addinfo1" value = "${roomModify.addinfo1}"><br>
+
+
 			            <button type="button" name="plus" id="plus" class="btn">
 			            <img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerPlus_image.png" alt="추가버튼">
 			            </button>

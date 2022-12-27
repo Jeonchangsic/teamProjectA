@@ -55,9 +55,7 @@
 				}
 				});
 			});
-		
-
-					   
+							   
 		//이미지 업로드	
 		$(document).ready(function(){
 			$("#rimage1").change(function(){
@@ -71,7 +69,24 @@
 					reader.readAsDataURL(this.files[0]);
 					}
 				});
+			
+			//이미지 필수 등록 안내
+			$('#next').on("click",function() { 
+				var imgVal = $('#rimage1').val(); 
+				if(imgVal=='') 
+					{ 
+						alert("사진을 등록해 주세요."); 
+						return false; 
+					} 
+				});
 			});
+		
+		//남은객실수 val값 추가
+		$(document).ready(function(){
+			$("#rnum").change(function(){
+		        $('#spareroom').val($(this).val());
+		    });	
+		});
 		
 	   	
 	    </script>
@@ -104,8 +119,8 @@
 	       	<form method="post" enctype="multipart/form-data" > 
 	        <!--이미지 업로드 -->
 		        <div class="inputArea" id="main_left">
-				 	<label id="rimage1_btn" for="rimage1">사진등록</label>
-					<input multiple="multiple" type="file" id="rimage1" name="file" required />
+				 	<label id="rimage1_btn" for="rimage1" class="rimage1">사진등록</label>
+					<input multiple="multiple" type="file" id="rimage1" name="file"  class="rimage1" required />
 					<div id="imgborder"></div>			
 				</div>	
 				
@@ -133,14 +148,9 @@
 						<td>최대인원</td>
 						<td><input type="text" name="maxmen" pattern="[0-9]+" placeholder="숫자를 입력해주세요" required/></td>
 					</tr>
-					<input type="hidden" name="spareroom "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" id="spareroom" required>
 				</table>
+					<input type="hidden" name="spareroom "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" id="spareroom" required>
 			</div> 
-			<script>
-			$("#rnum").change(function(){
-		        $('#spareroom').val($(this).val());
-		    });
-			</script>
 			<div id="bottom">
 				<!-- 체크박스 -->
 				<div id="bottom_left">
@@ -247,7 +257,7 @@
 			    </div>
 		        <div id="inner_bottom">
 		                <div>
-		                   <button type="submit" name="next" style="color:white; border:1px solid rgb(86,19,241);">다음</button> 
+		                   <button type="submit" name="next" id="next" style="color:white; border:1px solid rgb(86,19,241);">다음</button> 
 		                </div>
 		        </div>
 		       </div>
