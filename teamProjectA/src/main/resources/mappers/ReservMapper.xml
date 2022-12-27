@@ -7,5 +7,14 @@
 			INSERT INTO reservtb
 				VALUES(reserv_seq.NEXTVAL,#{uidx},#{ridx},#{reserv_startDate},#{reserv_endDate},#{merchant_uid},SYSDATE,'N')
 		</insert>
-		
+		<update id = "reservMinus" parameterType="int">
+			UPDATE roomtb
+     		SET spareroom  = spareroom  - 1
+			WHERE ridx = #{ridx}
+		</update>		
+		<select id="ridxList" parameterType="int" resultType="reservVO">
+			SELECT ridx 
+			FROM reservtb
+			WHERE ridx = #{ridx}
+		</select>
 </mapper>
