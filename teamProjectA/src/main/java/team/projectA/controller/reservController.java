@@ -39,12 +39,14 @@ public class reservController {
 	 
 	
 	@RequestMapping(value = "/reserv/reserv.do", method = RequestMethod.GET)
-	public String reserv(Model model,int ridx, HttpServletRequest req) {
+	public String reserv(Model model,int ridx, HttpServletRequest req, String fromDate, String toDate) {
 		
 				
 		RoomVO rvo = lodgingService.selectRoom(ridx);
 		model.addAttribute("rvo", rvo);
 		
+		model.addAttribute("fromDate", fromDate);
+		model.addAttribute("toDate", toDate);
 		
 		
 		HttpSession session = req.getSession();
@@ -58,7 +60,7 @@ public class reservController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "/reserv/reserv_pay.do", method = RequestMethod.POST)
-	public String reserv_pay(String merchant_uid, int ridx,HttpServletResponse response, HttpServletRequest req)throws Exception {
+	public String reserv_pay(String merchant_uid,String fromDate,String toDate,int ridx,HttpServletResponse response, HttpServletRequest req)throws Exception {
 		
 		HttpSession session = req.getSession();
 		UserVO userVO = (UserVO)session.getAttribute("login");
@@ -66,7 +68,8 @@ public class reservController {
 		hm.put("merchant_uid", merchant_uid); //�����ȣ
 		hm.put("ridx", ridx);
 		hm.put("uidx", userVO.getUidx());
-		
+		hm.put("reserv_startDate", fromDate);
+		hm.put("reserv_endDate", toDate);
 		
 		
 		int vo = reservService.reservInsert(hm);

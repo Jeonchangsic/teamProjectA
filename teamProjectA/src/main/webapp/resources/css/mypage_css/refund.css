@@ -53,10 +53,8 @@ UL,li{list-style:none;}
             /*리셋코드*/
 
 #divArea{
-	margin:10px;
-	border:1px solid #000; 
-	border-radius:5px; 
-	padding:8px;
+	margin: 10px 10px 0 10px;
+	padding: 8px 8px 0 8px;
 }
 button{
 	margin-left:10px;
@@ -64,23 +62,21 @@ button{
 	line-height:3px;
 }
 h2{
-	width:100px;
-	margin:0 auto;
-	padding-top:10px;
-	font-weight:bold;
-	font-size:23px;
-}
-.text_Center{
-	text-align:center;
+	width: 100px;
+    margin: 3px auto 12px auto;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 23px;
 }
 .tr_height{
 	height:30px;
 }
 #passwordArea{
 	width:70px;
+	padding-left: 8px;
 }
 #passwordTb{
-	margin:25px 0 0 10px;
+	margin: 19px 0 0 10px;
 }
 #passwordInput{
 	height:20px;
@@ -92,7 +88,7 @@ h2{
 	background-color:#919191;
 	height:1px;
 	width:480px;
-	margin:15px 0 0 10px;
+	margin-left:10px;
 }
 button{
 	color:rgba(255,255,255,0.8);
@@ -107,4 +103,28 @@ button:hover{
 }
 .cursorStyle{
 	cursor:pointer;
+}
+#inputBorder{
+	border:0px;
+}
+#lodging_Img{
+	width: 120px;
+    height: 83px;
+}
+.lodging_Info{
+	vertical-align: middle;
+	padding-left: 10px;
+}
+#lodgingname{
+	font-size:24px;
+	padding-top: 29px;
+}
+#rtype{
+	color: #bbb;
+    font-size: 20px;
+    padding: 2px 0 3px 0;
+}
+#rprice{
+	font-size: 24px;
+    margin-left: 208px;
 }

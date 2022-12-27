@@ -45,8 +45,8 @@ public class MypageServiceImpl implements MypageService{
 		return mypageDao.reserv_refund(rvo);
 	}
 	@Override
-	public List<ReviewVO> reviewList(HashMap hm1)throws Exception {
-		return mypageDao.reviewList(hm1);
+	public List<ReviewVO> reviewList(int uidx)throws Exception {
+		return mypageDao.reviewList(uidx);
 	}
 	@Override
 	public int reviewDt(int rvidx) {

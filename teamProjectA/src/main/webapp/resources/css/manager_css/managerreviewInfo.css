@@ -22,7 +22,7 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -52,94 +52,97 @@ a{text-decoration:none; color: inherit;}
 UL,li{list-style:none;}
             /*리셋코드*/
 
-                /*header*/
-header h2{
-    width:1024px;  
-    margin:0 auto; 
-    padding:10% 0 20px 0; 
-    text-align:center;
-}
+              /*header*/
 
-            /*end header*/
+header h2{
+    text-align: center;
+    font-size:25px;
+    font-weight: bold;
+    padding:20px 0 10px 0;
+}
 
             /*main*/
+
+main table{
+    font-size:20px;
+
+}
+main #contentsArea{
+    width:520px;
+    margin:0 auto;
+    border:3px solid rgb(86, 19, 241);
+}
 main #table1{
-    margin:0 auto;
+    margin: 5px 20px 0 40px;
+    height:600px;
 }
-
-.loginInputArea{
-    width:250px; 
-    height:35px;
+main .info{
+    width:200px;
+    height:20px;
 }
-
-main #textArea{
-    padding-bottom:13px;
+main #info{
+    width:300px;
+    height:90px;
 }
-
-main #login{
-	width:255px;
-	height:45px;
-    color:rgba(255,255,255,0.8);
-    background-color:rgb(86, 19, 241);
-    margin-top:5px;
-    font-size:15px;
-    font-weight:bold;
-    border:0px solid #000;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-main #login:hover{
-     color:white;
-}
-
 main #table2{
-    margin:0 auto;
+    margin:30px auto;
 }
-
-main #table2 td{
-    padding-top:10px;
+main .margin1{
+    padding-right:50px;
 }
-
-main #kakao{
-    margin-right: 4px;
+main .margin2{
+	padding: 15px 50px 0 0;
+	height:50px;
 }
-
-main #join{
-    margin:0 auto; 
-    width:250px; 
-}
-
-#join1{
-	font-weight:bold; 
-	border-right:1px solid #000;
-	padding:0 5px 0 50px;
-}
-#join2{
+ textarea {
+    width: 100%;
+    height: 6.25em;
+    resize: none;
+  }
+main .clearBtn{
+    width: 100px;
+    height:30px;
+    color:rgba(255,255,255,0.8);
+	background-color:rgb(86, 19, 241);
 	font-weight:bold;
-	margin-right:29px;
+	border:0px solid #000;
+	border-radius:2px;
 }
-#join3{
-	display:block; 
-	margin:25px 0 10px 50px;
+main .clearBtn:hover{
+	color:white;
 }
-#p1{
-	color:#919191;
-	font-size:11px;
-	display: inline-block;
-    margin-top: 13px;
+.td_vertical-align{
+	vertical-align:center;
 }
-#span2{
-	font-weight:bold;
-	font-size:11px;
+#review_Img{
+	width:150px;
+	height:150px;
+	margin:50px 0 3px 20;
+	
+}
+#rtypeText{
+	color:#bbb;
+	margin: 10px 0 3px 0;
+	font-size:20px;
+}
+#selectStyle{
+	width:200px;
+	height:30px;
+}
+#headLine{
+	width:100%;
+	height:1px;
+	background-color:#919191;
+}
+.td_padding{
+	padding-left:10px;
+}
+.tr_background{
+	height:1px;
+	background-color:#bbb;
+	margin-bottom:5px;
+	
+}
+.cursorStyle{
 	cursor:pointer;
-	padding-left: 10px;
-}              
-#img1{
-	width:255px;
-	height:45px;
-	margin-left:3px;
-}               
-#img_Style{
-	width: 157px;
-}
+}    

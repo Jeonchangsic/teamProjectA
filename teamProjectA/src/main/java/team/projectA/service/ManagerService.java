@@ -7,7 +7,9 @@ import team.projectA.vo.LodgingVO;
 import team.projectA.vo.PagingVO;
 import team.projectA.vo.QnaVO;
 import team.projectA.vo.ReservVO;
+import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
+import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
 
 public interface ManagerService {
@@ -22,4 +24,10 @@ public interface ManagerService {
 	public int qnaReply(HashMap hm);
 	int userlistCount();
 	List<UserVO> muserList(HashMap hm1);
+	List<ReviewVO> ReviewList(ReviewVO rev);
+	int reviewDelete(int rvidx);
+	ReviewVO reviewOne(int rvidx);
+	public List<QnaVO> qnaList(SearchCriteria scri);
+	public int qnacount();
+
 }

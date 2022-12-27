@@ -26,6 +26,8 @@
     IMP.init("imp07081518"); 
 
     function requestPay() {
+    	var fromDate = $(".fromDate").val();
+    	var toDate = $(".toDate").val();
         IMP.request_pay({
             pg : 'html5_inicis',  // PG사 선택
             pay_method : 'card', // 지불 수단
@@ -35,6 +37,7 @@
             buyer_email : '${login.userEmail}', //구매자이메일
             buyer_name : '${login.userName}', // 구매자 이름
             buyer_tel : '${login.userPhone}', // 구매자 연락처 
+           
         }, 
             
         	function (rsp) { // callback
@@ -47,7 +50,7 @@
                  msg += '숙소이름 : ' + rsp.name;
                  msg += '구매자이름 :' + rsp.buyer_name;
                  $.ajax({
-                	 url:"reserv_pay.do?ridx=<%=rvo.getRidx()%>",
+                	 url:"reserv_pay.do?ridx=<%=rvo.getRidx()%>&fromDate=${fromDate}&toDate=${toDate}",
                 	 method:"post",
                 	 data:{
                 		 "merchant_uid": rsp.merchant_uid
@@ -177,12 +180,12 @@
                     	<%=rvo.getRtype() %>/2인
                 </p>
                 <p>
-                    <strong>체크인</strong><br>
-                    	2022-11-30/15:00
+                    <strong class="fromDate">체크인</strong><br>
+                    	${fromDate}
                 </p>
                 <p>
-                    <strong>체크아웃</strong><br>
-                    	2022-12-01/12:00
+                    <strong class="toDate">체크아웃</strong><br>
+                    	${toDate}
                 </p>
             </section>
             <hr>

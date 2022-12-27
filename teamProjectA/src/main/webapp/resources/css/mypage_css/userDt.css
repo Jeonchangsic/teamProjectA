@@ -53,58 +53,64 @@ UL,li{list-style:none;}
             /*리셋코드*/
 
 header h2{
-	margin: 0 auto;
-	padding:50px 0 0 0;
-	width: 120px;
-	font-weight:bold;
-	font-size:30px;
+	margin: 26px 57px 0 61px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 3px solid #919191;
 }
 
 
 main table tr{
 	padding-top: 10px;
 }
-main form{
-	margin: 0 auto;
-	padding-right:40px;
-	width:300px;
-	height:150px;
-}
+
 button{
-	margin:10px 0 0 90px;
-	color:rgba(255,255,255,0.8);
-	background-color:rgb(86, 19, 241);
-	font-weight:bold;
-	border:0px solid #000;
-	border-radius:5px;
-	width:172px;
-	height:25px;
+	margin: 10px 0 0 142px;
+    color: rgba(255,255,255,0.8);
+    background-color: rgb(86, 19, 241);
+    font-weight: bold;
+    border: 0px solid #000;
+    border-radius: 5px;
+    width: 234px;
+    height: 32px;
+    font-size: 17px;
 }
 button:hover{
 	color:white;
 }
 input{
-	height:25px;
-	margin-top:20px;
+	width: 245px;
+    height: 35px;
+    margin: 10px 0 13px 10px;
 }
 #tableMargin{
-	margin-left:25px;
+	margin: 0 auto;
 }
 .trMargin{
-	margin-top:10px;
+	margin: 10px 0 13px 10px;
 }
 .passwordMargin{
-	margin-right:10px;
+	width: 120px;
+    background-color: aliceblue;
+    opacity: 0.67;
+    font-weight: bold;
+    text-align: center;
 }
 #pwFalse{
 	color:red;
-	margin-left:90px;
 	font-size:12px;
 	font-weight:bold;
+	margin-left: 10px;
 }
 .cursorStyle{
 	cursor:pointer;
 }
+#tr_border{
+    border-top: 1px solid #919191;
+    border-bottom: 1px solid #919191;
+}
+
 
                 /*footer*/
 footer{position:absolute; bottom:0;height:137px; width:100%; background-color:rgba(0,0,0,0.15);}

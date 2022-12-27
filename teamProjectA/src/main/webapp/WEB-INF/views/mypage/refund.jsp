@@ -14,33 +14,29 @@
 </head>
 <body>
 	<form action="refund.do" method="post">
-	<h2>    </h2>
+	<h2>예약취소</h2>
+	<hr/>
 	<div id="divArea">
 		<table>
+			<input class="inputArea" id="inputBorder" type="hidden" name="reserv_num" value="${result.reserv_num}" readonly/>
 			<tr class="tr_height">
-				<td>예약번호:
-					<td class="text_Center"><input class="inputArea" type="text" name="reserv_num" value="${result.reserv_num}" readonly/></td>
+				<td class="lodging_Info">
+					<img id="lodging_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/>
+				</td>
+				<td class="lodging_Info">
+					<div id="lodgingname">${result.lodgingname}</div>
+					<div id="rtype">[${result.rtype}]</div>
+					
 				</td>
 			</tr>
 			<tr class="tr_height">
-				<td>숙소명:
-					<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/>
-					<td class="text_Center">${result.lodgingname}</td>
+				<td></td>
+				<td>
+					<div id="rprice">
+							<fmt:formatNumber type="number" maxFractionDigits="3" value="${result.rprice}" />원
+					</div>
 				</td>
 			</tr>
-			<tr class="tr_height">
-				<td>객실명:
-					<td class="text_Center">${result.rtype}</td>
-				</td>
-			</tr>
-			<tr class="tr_height">
-				<td>금액:
-					<td class="text_Center">
-						<fmt:formatNumber type="number" maxFractionDigits="3" value="${result.rprice}" />원
-					</td>
-				</td>
-			</tr>
-			
 		</table>
 	</div>
 	<table id="passwordTb">

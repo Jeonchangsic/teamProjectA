@@ -249,3 +249,9 @@ footer #copy{color:#919191;}
 	font-size: 16px;
     font-weight: normal;
 }
+.star{
+	color:#FF8200;
+}
+#cursor_Style{
+	cursor:pointer;
+}

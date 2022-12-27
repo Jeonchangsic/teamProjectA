@@ -8,8 +8,17 @@ public class ReviewVO extends RoomVO{
 	private int ridx;
 	private String rvTitle;
 	private double rvSatisfaction;
+	private double[] rvSatisfactionAry;
 	private String rvContent;
 	private String rvDate;
+	
+	
+	public double[] getRvSatisfactionAry() {
+		return rvSatisfactionAry;
+	}
+	public void setRvSatisfactionAry(double[] rvSatisfactionAry) {
+		this.rvSatisfactionAry = rvSatisfactionAry;
+	}
 	private double avgrv;
 	
 	

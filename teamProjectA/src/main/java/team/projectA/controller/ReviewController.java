@@ -2,6 +2,7 @@ package team.projectA.controller;
 
 import java.io.PrintWriter;
 import java.text.DateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -60,9 +61,10 @@ public class ReviewController {
 	
 	//리뷰작성
 	@RequestMapping(value="/review.do", method= RequestMethod.POST)
-	public String review(int lidx, int ridx, int reserv_idx, String rvTitle, double rvSatisfaction, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
+	public String review(int lidx, int ridx, int reserv_idx, String rvTitle, ReviewVO reviewVO, String rvContent, HttpServletResponse response, HttpServletRequest req) throws Exception{
 		
-		System.out.println("rvSatisfaction:"+rvSatisfaction);
+		double rvSatisfaction = Arrays.stream(reviewVO.getRvSatisfactionAry()).max().getAsDouble();
+		
 		HttpSession session = req.getSession();
 		UserVO userVO = (UserVO)session.getAttribute("login"); 
 		
@@ -71,7 +73,7 @@ public class ReviewController {
 		hm.put("lidx",lidx);
 		hm.put("ridx",ridx);
 		hm.put("rvTitle", rvTitle);
-		hm.put("rvSatisfaction", rvSatisfaction);
+		hm.put("rvSatisfaction", rvSatisfaction); 
 		hm.put("rvContent", rvContent);
 		hm.put("reserv_idx", reserv_idx);
 		

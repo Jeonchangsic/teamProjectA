@@ -9,11 +9,19 @@ public class ReservVO extends RoomVO {
 	private String reserv_num;	//�����ȣ
 	private String reserv_date; //���೯¥
 	private String reserv_startDate; //���� ���۳�¥
+	private Date reserv_startDate2;
 	private String reserv_endDate; // ���� ���ᳯ¥
 	private String reviewCheck;
 	
 
 	
+	
+	public Date getReserv_startDate2() {
+		return reserv_startDate2;
+	}
+	public void setReserv_startDate2(Date reserv_startDate1) {
+		this.reserv_startDate2 = reserv_startDate1;
+	}
 	public String getReviewCheck() {
 		return reviewCheck;
 	}

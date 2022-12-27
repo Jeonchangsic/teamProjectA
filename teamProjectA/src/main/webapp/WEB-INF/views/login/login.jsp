@@ -28,7 +28,7 @@
     <header>
         <h2>
         	<a href="<%=request.getContextPath()%>/index/index.do">
-        	<img src="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg">
+        	<img id="img_Style" src="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg">
         	</a>
         </h2>
     </header>

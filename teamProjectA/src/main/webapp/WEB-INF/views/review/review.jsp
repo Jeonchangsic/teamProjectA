@@ -27,6 +27,35 @@
      		});
      	});
      </script>
+     
+     <!-- 만족도 별점처리 -->
+     <script>
+	     function Rating(){};
+	     Rating.prototype.rate = 0;
+	     Rating.prototype.setRate = function(newrate){
+	         //별점 마킹 - 클릭한 별 이하 모든 별 체크 처리
+	         this.rate = newrate;
+	         let items = document.querySelectorAll('.rate_radio');
+	         items.forEach(function(item, idx){
+	             if(idx < newrate){
+	                 item.checked = true;
+	             }else{
+	                 item.checked = false;
+	             }
+	         });
+	     }
+	     let rating = new Rating();
+	     
+	     document.addEventListener('DOMContentLoaded', function(){
+	    	    //별점선택 이벤트 리스너
+	    	    document.querySelector('.rating').addEventListener('click',function(e){
+	    	        let elem = e.target;
+	    	        if(elem.classList.contains('rate_radio')){
+	    	            rating.setRate(parseInt(elem.value));
+	    	        }
+	    	    })
+	    	});
+     </script>
 </head>
 <body>
     <header>
@@ -40,8 +69,8 @@
             <form name="frm" action="<%=request.getContextPath() %>/review/review.do?lidx=${lidx}&ridx=${ridx}&reserv_idx=${reserv_idx}" method="POST">
                 <table id="table1">
                 	<tr>
-                		<td class="td_vertical-align"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/> </td>
-                		<td class="td_vertical-align">
+                		<td class="td_vertical-align td_padding1"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/> </td>
+                		<td class="td_vertical-align td_padding2">
                 			<div id="lodgingText">${lodgingname}</div>
                 			<div id="rtypeText">[${rtype}]</div>
                 			<div id="dateText">[${reserv_startDate}~${reserv_endDate}]</div>
@@ -52,32 +81,32 @@
                 		<td class="tr_background"></td>
                 	</tr>
                     <tr>
-                        <td class="margin2">만족도</td>
-                        <td class="satisfactionStyle">
-                        	<select id="selectStyle" name="rvSatisfaction" required>
-                        		<option value="1.0">1.0점</option>
-                        		<option value="2.0">2.0점</option>
-                        		<option value="3.0">3.0점</option>
-                        		<option value="4.0">4.0점</option>
-                        		<option value="5.0">5.0점</option>
-                        	</select>
+                        <td class="margin2 vertical_middle">만족도</td>
+                        <td class="satisfactionStyle vertical_middle">
+                        	<div class="rating">
+				                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+				                <input type="checkbox"  name="rvSatisfactionAry" id="rating1" value="1.0" class="rate_radio" title="1.0" checked>
+				                <label for="rating1"></label>
+				                <input type="checkbox"  name="rvSatisfactionAry" id="rating2" value="2.0" class="rate_radio" title="2.0">
+				                <label for="rating2"></label>
+				                <input type="checkbox"  name="rvSatisfactionAry" id="rating3" value="3.0" class="rate_radio" title="3.0">
+				                <label for="rating3"></label>
+				                <input type="checkbox"  name="rvSatisfactionAry" id="rating4" value="4.0" class="rate_radio" title="4.0">
+				                <label for="rating4"></label>
+				                <input type="checkbox"  name="rvSatisfactionAry" id="rating5" value="5.0" class="rate_radio" title="5.0">
+				                <label for="rating5"></label>
+				            </div>
                         </td>
                     </tr>
                     <tr>
-                        <td class="margin2"></td>
-                        <td>
-                        	
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="margin1">제목</td>
-                        <td>
+                        <td class="margin1 vertical_middle">제목</td>
+                        <td class="vertical_middle">
                         	<input type="text" class="info" name="rvTitle" placeholder="10자 이내 제목을 입력하세요." maxlength="10" required>
                         </td> 
                     </tr>
                     <tr>
-                        <td id="margin1">리뷰 내용</td>
-                        <td>
+                        <td id="margin1" class="vertical_middle">리뷰 내용</td>
+                        <td class="vertical_middle reviewContentArea">
                             <textarea id="info" name="rvContent" cols="30" rows="10" placeholder="공백 포함 100자 이내 리뷰를 작성해주세요." required></textarea>
                         	<div id="content_cnt">(0/100)</div>
                         </td>

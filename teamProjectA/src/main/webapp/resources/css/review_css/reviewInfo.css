@@ -137,3 +137,10 @@ main .clearBtn:hover{
 .cursorStyle{
 	cursor:pointer;
 }    
+.star{
+	color:#FF8200;
+	font-size: 42px;
+}
+.vertical_middle{
+	vertical-align: middle;
+}	
