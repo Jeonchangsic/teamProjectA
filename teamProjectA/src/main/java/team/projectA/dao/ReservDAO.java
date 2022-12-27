@@ -19,4 +19,15 @@ public int reservInsert(HashMap hm)throws Exception{
 		int alist = sqlsession.insert("team.projectA.mapper.ReservMapper.reservInsert",hm);
 		return alist;
 	}
+
+public int reservMinus(int ridx) {
+	return sqlsession.update("team.projectA.mapper.ReservMapper.reservMinus", ridx);
+}
+	
+public List<ReservVO> ridxList(int ridx) {
+	return sqlsession.selectList("team.projectA.mapper.ReservMapper.ridxList", ridx);
+	
+}
+	
+
 }

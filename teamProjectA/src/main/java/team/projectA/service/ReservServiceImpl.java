@@ -13,6 +13,7 @@ import team.projectA.dao.ReviewDAO;
 import team.projectA.dao.SellerDao;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.QnaVO;
+import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
 import team.projectA.vo.UserVO;
 
@@ -24,6 +25,15 @@ public class ReservServiceImpl implements ReservService{
 	@Override
 	public int reservInsert(HashMap hm) throws Exception {
 		return reservDao.reservInsert(hm);
+	}
+	@Override
+	public int reservMinus(int ridx) {
+		return reservDao.reservMinus(ridx);
+	}
+	@Override
+	public List<ReservVO> ridxList(int ridx) {
+
+		return reservDao.ridxList(ridx);
 	}
 	
 
