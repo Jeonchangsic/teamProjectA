@@ -58,7 +58,7 @@
                     <tr>
                         <td>
                             <a href="<%=request.getContextPath()%>/manager/managerReview.do;"><button type="button" class="clearBtn cursorStyle" value="목록">목록</button></a>
-                            <button type="button" class="clearBtn cursorStyle" value="삭제" onclick="location.href='<%=request.getContextPath()%>/mypage/reviewDt.do?rvidx=${vo.rvidx}'">삭제</button>
+                            <button type="button" class="clearBtn cursorStyle" value="삭제" onclick="location.href='<%=request.getContextPath()%>/manager/Reviewdelete.do?rvidx=${vo.rvidx}'">삭제</button>
                         </td>
                     </tr>
                 </table>

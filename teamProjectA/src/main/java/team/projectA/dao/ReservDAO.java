@@ -25,9 +25,7 @@ public int reservMinus(int ridx) {
 }
 	
 public List<ReservVO> ridxList(int ridx) {
-	return sqlsession.selectList("team.projectA.mapper.ReservMapper.ridxList", ridx);
-	
+	return sqlsession.selectList("team.projectA.mapper.ReservMapper.ridxList", ridx);	
 }
-	
 
 }

@@ -112,7 +112,7 @@
             else $("#nofont2").show() 
          if($("#checkall").is(":checked")) $("#nofont3").css("display","none");
          else $("#nofont3").show() 
-        }              
+        }        
     </script>
    
 </head>

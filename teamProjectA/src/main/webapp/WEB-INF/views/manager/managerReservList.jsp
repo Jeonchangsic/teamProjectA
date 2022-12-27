@@ -77,15 +77,15 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
                 </tr>
             </thead>
             <tbody>
-				 <%for(ReservVO vo1 : list1) {%>
+				<c:forEach var ="vo1" items="${list1}">
                 <tr style="text-align:center;">
-                    <td><%=vo1.getUserID()%></td>
-                    <td><%=vo1.getUserName() %></td>
-                    <td><%=vo1.getLodgingname() %></td>
-                    <td><%=vo1.getReserv_num()%></td>
-                    <td><%=vo1.getReserv_date()%></td>
+                    <td>${vo1.userID }</td>
+                    <td>${vo1.userName }</td>
+                    <td>${vo1.lodgingname }</td>
+                    <td>${vo1.reserv_num }</td>
+                    <td>${vo1.reserv_date }</td>
                 </tr>
-              <%} %>
+              </c:forEach>
             </tbody>
         </table>
     </div>

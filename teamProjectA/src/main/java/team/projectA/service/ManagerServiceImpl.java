@@ -88,9 +88,9 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public List<ReviewVO> ReviewList(ReviewVO rev) {
+	public List<ReviewVO> ReviewList(SearchCriteria scri3) {
 		
-		return managerDAO.ReviewList(rev);
+		return managerDAO.ReviewList(scri3);
 	}
 
 	@Override
@@ -114,6 +114,30 @@ public class ManagerServiceImpl implements ManagerService {
 	public int qnacount() {
 		
 		return managerDAO.qnacount();
+	}
+
+	@Override
+	public List<LodgingVO> managerRoomList(SearchCriteria scri2) {
+		
+		return managerDAO.managerRoomList(scri2);
+	}
+
+	@Override
+	public int RoomListcount() {
+		
+		return managerDAO.RoomListcount();
+	}
+
+	@Override
+	public int reviewcount() {
+		
+		return managerDAO.reviewcount();
+	}
+
+	@Override
+	public int reservcount() {
+
+		return managerDAO.reservcount();
 	}
 
 }

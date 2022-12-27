@@ -87,7 +87,7 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
 					<td>
 					<c:choose>
 						<c:when test = "${list.qna_Acheck == '답변처리중'}" >
-						<button type="button" onclick="location.href='managerQnaView.do?qna_idx=${list.qna_idx}">답변등록</button>
+						<button type="button" onclick="location.href='managerQnaView.do?qna_idx=${list.qna_idx}'">답변등록</button>
 						</c:when>
 						<c:when test = "${list.qna_Acheck == '답변완료' and list.qna_Acheck == '답변완료'}" >
 						<button type="button" onclick="alert('이미 답변을 작성하였습니다.')">답변완료</button>

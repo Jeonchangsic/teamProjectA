@@ -45,6 +45,9 @@ public class ManagerDAO {
 	public List<ReservVO> reservlist(ReservVO vo1){
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.reservlist", vo1);
 	}
+	public int reservcount() {
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.reservcount");
+	}
 	public List<QnaVO> managerqnalist(){
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.managerqnalist");
 	}
@@ -57,9 +60,12 @@ public class ManagerDAO {
 	public List<UserVO> muserList(HashMap hm1){
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.muserList", hm1);
 	}
-	public List<ReviewVO> ReviewList(ReviewVO rev){
-		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.ReviewList",rev);
+	public List<ReviewVO> ReviewList(SearchCriteria scri3){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.ReviewList",scri3);
 		
+	}
+	public int reviewcount() {
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.reviewcount");
 	}
 	public int reviewDelete(int rvidx) {
 		return sqlSession.delete("team.projectA.mapper.ManagerMapper.reviewDelete", rvidx);
@@ -75,5 +81,10 @@ public class ManagerDAO {
 	public int qnacount() {
 		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.qnacount");
 	}
-
+	public List<LodgingVO> managerRoomList(SearchCriteria scri2){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.managerRoomList",scri2);
+	}
+	public int RoomListcount() {
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.RoomListcount");
+	}
 }

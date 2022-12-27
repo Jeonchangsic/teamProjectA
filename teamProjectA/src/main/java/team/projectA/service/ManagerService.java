@@ -20,14 +20,17 @@ public interface ManagerService {
 	public int requestDel(int lidx);
 	public int requestN(int uidx);
 	public List<ReservVO> reservlist(ReservVO vo1);
+	public int reservcount();
 	public List<QnaVO> managerqnalist();
 	public int qnaReply(HashMap hm);
 	int userlistCount();
 	List<UserVO> muserList(HashMap hm1);
-	List<ReviewVO> ReviewList(ReviewVO rev);
+	List<ReviewVO> ReviewList(SearchCriteria scri3);
+	public int reviewcount();
 	int reviewDelete(int rvidx);
 	ReviewVO reviewOne(int rvidx);
-	public List<QnaVO> qnaList(SearchCriteria scri);
+	public List<QnaVO> qnaList(SearchCriteria scri2);
 	public int qnacount();
-
+	public List<LodgingVO> managerRoomList(SearchCriteria scri2);
+	public int RoomListcount();
 }

@@ -53,7 +53,7 @@
 		   SET lodging = 'N'
 		 WHERE uidx = #{uidx}
 	</update>
-	<!-- 예약 리스트 -->
+	<!-- 예약 리스트 +페이징 -->
 		<select id="reservlist" parameterType="ReservVO" resultType="ReservVO">
 			SELECT 
 				 u.username
@@ -67,6 +67,14 @@
 					  and r.lidx = l.lidx
 					
 		</select>
+			<!--예약리스트  총 개수-->
+	<select id="reservcount" resultType="int">
+		<![CDATA[
+		SELECT count(reserv_idx)
+		FROM reservtb
+		WHERE reserv_idx > 0
+		]]>
+	</select>
 		<!-- 문의 리스트 -->
 		<select id="managerqnalist" resultType="qnaVO">
 			SELECT a.username
@@ -113,16 +121,29 @@
 					
 					ORDER BY uidx DESC
 	</select>
-	<select id="ReviewList" parameterType="ReviewVO" resultType="ReviewVO">
-			SELECT r.RVIDX
-				, u.uidx
-				, u.userID
-				, r.rvTitle
-				, u.userName
-				, r.rvdate
-				FROM REVIEWTB r, AUSERTB u
-				WHERE r.uidx = u.uidx
+	<!-- 리뷰리스트 + 페이징 -->
+	<select id="ReviewList" parameterType="SearchCriteria" resultType="ReviewVO">
+	SELECT u.userName, qe.rvidx, qe.rvTitle, u.userID, qe.rvdate FROM ausertb u
+	FULL OUTER JOIN
+	(SELECT u.userName, u.uidx, r.rvidx, r.rvTitle, u.userID, r.rvdate,
+		ROW_NUMBER() OVER(ORDER BY r.rvidx desc)AS rnum
+	FROM ausertb u
+	FULL OUTER JOIN reviewtb r
+	on u.uidx = r.uidx
+	WHERE u.uidx = r.uidx)qe
+	ON u.uidx = qe.uidx
+				
+				WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
+				ORDER BY qe.rvidx DESC
 		</select>
+		<!--리뷰 페이지 총 개수-->
+	<select id="reviewcount" resultType="int">
+		<![CDATA[
+		SELECT count(rvidx)
+		FROM reviewtb
+		WHERE rvidx > 0
+		]]>
+	</select>
 	<!--리뷰 삭제  -->
    <delete id="reviewDelete" parameterType="int">
 			DELETE FROM REVIEWTB 
@@ -157,6 +178,35 @@
 		SELECT count(qna_idx)
 		FROM qnatb
 		WHERE qna_idx > 0
+		]]>
+	</select>
+	<!-- 숙소리스트 + 페이징-->
+	<select id="managerRoomList" parameterType="SearchCriteria" resultType="LodgingVO">
+	SELECT lidx
+					, limagename
+					, lodgingname
+					, lodgingaddr
+					, lodgingkind
+				FROM (
+					SELECT lidx
+							, limagename
+							, lodgingname
+							, lodgingaddr
+							, lodgingkind
+							, row_number() over(ORDER BY lidx DESC)
+							 AS lnum
+					FROM lodgingtb
+					)
+					WHERE lnum BETWEEN #{rowStart} AND #{rowEnd}
+					
+					ORDER BY lidx DESC
+	</select>
+	<!--숙소 페이지 총 개수-->
+	<select id="RoomListcount" resultType="int">
+		<![CDATA[
+		SELECT count(lidx)
+		FROM lodgingtb
+		WHERE lidx > 0
 		]]>
 	</select>
 </mapper>

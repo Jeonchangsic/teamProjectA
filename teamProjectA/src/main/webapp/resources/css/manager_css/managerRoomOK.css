@@ -32,7 +32,7 @@ img,iframe{vertical-align:top;}
                         margin-right: 40px;
                       color:black;
                       position:relative;}
-               #roomList{font-weight:bold;}
+               #okList{font-weight:bold;}
               .nav li a::before{content:'';
                       height:5px;
                       width:0px;
@@ -48,7 +48,7 @@ img,iframe{vertical-align:top;}
                       margin-top:120px;
                       margin-bottom: 20px;
               }
-            main #paging ul li {display:inline-block;}
+              
               #roomChange{
               	width:243px;
               }

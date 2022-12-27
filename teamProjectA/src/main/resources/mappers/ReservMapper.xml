@@ -9,7 +9,8 @@
 		</insert>
 		<update id = "reservMinus" parameterType="int">
 			UPDATE roomtb
-     		SET spareroom  = spareroom  - 1
+     		SET spareroom  = spareroom  - 1,
+     			reservCheck = 'Y' 
 			WHERE ridx = #{ridx}
 		</update>		
 		<select id="ridxList" parameterType="int" resultType="reservVO">

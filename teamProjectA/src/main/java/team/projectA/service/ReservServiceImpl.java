@@ -36,6 +36,7 @@ public class ReservServiceImpl implements ReservService{
 		return reservDao.ridxList(ridx);
 	}
 	
+	
 
 	
 

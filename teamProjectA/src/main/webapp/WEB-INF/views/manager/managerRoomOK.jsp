@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>관리자 객실관리</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/reset.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerRoom.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerRoomOK.css">
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
 
@@ -32,49 +32,47 @@
     <main class="inner">
         <nav>
             <div class="nav">
-                <li id=roomList><a href="<%=request.getContextPath()%>/manager/managerRoom.do">숙소리스트</a></li>
-                <li id=okList><a href="<%=request.getContextPath()%>/manager/managerRoomOK.do">숙소승인</a></li>
+                <li id="roomList"><a href="<%=request.getContextPath()%>/manager/managerRoom.do">숙소리스트</a></li>
+                <li id="okList"><a href="<%=request.getContextPath()%>/manager/managerRoomOK.do">숙소승인</a></li>
             </div>
         </nav>
-        <div>
-            <h3>숙소목록</h3>
-        </div>     
-        <hr/>
-        <table>
-            <thead>
-                <tr style="text-align:center;">
-                    <th>이미지</th>
-                    <th>숙소명</th>
-                    <th>주소</th>
-                    <th>구분</th>
-                </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="rdv" items="${lodlist}" varStatus="status">
-                <tr style="text-align:center;">
-                    <td>${rdv.limagename }</td>
-                    <td>${rdv.lodgingname }</td>
-                    <td>${rdv.lodgingaddr }</td>
-                    <td>${rdv.lodgingkind }</td>
-                </tr>
-             </c:forEach>
-            </tbody>
-        </table>
-        <div id="paging" style="text-align:center;">
-				<ul>
-					<c:if test="${pageMaker.prev}">
-						<li><a href="<%=request.getContextPath() %>/manager/managerRoom.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
-					</c:if>   
-					    
-					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-						<li><a href="<%=request.getContextPath() %>/manager/managerRoom.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+		<section>
+			<h3>숙소요청목록</h3>
+			<hr/>
+				<table>
+					<thead>
+						<tr>
+							<th>이미지</th>
+							<th>숙소명</th>
+							<th>숙소종류</th>
+							<th>주소</th>
+							<th>판매자아이디</th>
+							<th>판매자이름</th>
+							<th>관리</th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="vo" items="${requestList}" varStatus="status">
+						<form method="post">
+							<input type="hidden" name="uidx" value="${vo.uidx}">							
+							<input type="hidden" name="lidx" value="${vo.lidx}">
+							<tr>
+								<td><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo.limagename}"></td>							
+								<td>${vo.lodgingname}</td>
+								<td style="text-align:center;">${vo.lodgingkind}</td>
+								<td>${vo.lodgingaddr}</td>
+								<td style="text-align:center;">${vo.userID}</td>
+								<td style="text-align:center;">${vo.userName}</td>
+								<td style="text-align:center;">
+									<button value="승인" formaction="<%=request.getContextPath()%>/manager/requestApproval.do">승인</button>
+									<button value="거부" formaction="<%=request.getContextPath()%>/manager/requestDel.do">거부</button>
+								</td>
+							</tr>
+						</form>
 					</c:forEach>
-					      
-					<c:if test="${pageMaker.next}">
-						<li><a href="<%=request.getContextPath() %>/manager/managerRoom.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
-					</c:if>   
-				</ul>
-			</div>
+					</tbody>					
+				</table>
+		</section>
     </main>
     <footer>
         <div id="foot">

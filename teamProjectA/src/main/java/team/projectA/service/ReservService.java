@@ -14,4 +14,5 @@ public interface ReservService {
 	int reservMinus(int ridx);
 	
 	List<ReservVO> ridxList(int ridx);
+	
 }
