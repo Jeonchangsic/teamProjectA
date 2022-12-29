@@ -15,12 +15,13 @@ public interface LodgingService {
 /*	List<LodgingVO> selectList1(String lodgingkind);
 	List<RoomVO> selectList2(String gubun);
 */
-	List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo);
+	List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men);
 	List<RoomVO> selectListSearch(String type);
 	Map<String,Object> selectLodging(int lidx); 
-	List<RoominVO> selectRoomList(int lidx); 
+	List<RoominVO> selectRoomList(int lidx, String men); 
 	RoomVO selectRoom(int ridx);
 	List<ReviewVO> selectReview(int lidx);
+	ReviewVO selectLodgingRV(int lidx);
 	List<RoomVO> listSearch(HashMap hm)throws Exception;
 	int countSearch(SearchCriteria scri)throws Exception;
 }

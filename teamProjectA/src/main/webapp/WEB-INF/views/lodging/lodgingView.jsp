@@ -108,6 +108,7 @@
 					$("#toDate").datepicker("option", "minDate", selectedDate);
 				}
 			});
+			$('#fromDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 	
 			//종료일
 			$('#toDate').datepicker({
@@ -123,6 +124,7 @@
 					$("#fromDate").datepicker("option", "maxDate", selectedDate);
 				}
 			});
+			$('#toDate').datepicker('setDate', '+1D');
 		});
         //인원
 		function count(type) {
@@ -130,7 +132,7 @@
 			const result = document.querySelector('#result');
 	
 			// 현재 화면에 표시된 값
-			let number = result.innerText;
+			let number = result.value;
 			
 			// 더하기/빼기
 			if (type === 'plus') {
@@ -140,7 +142,7 @@
 			}
 			
 			// 결과 출력
-			result.innerText = number;
+			result.value = number;
 		}
     </script>
 </head>
@@ -233,21 +235,23 @@
         <article class="room_contents">
         	<form name="frm" action="lodgingView.do" method="get">
 	            <div class="btn_datePsn">
+                   	<input type="hidden" name="lidx" value="<%=map.get("lidx")%>">
 	                <div class="date_btn">
-	                    <div class="date_view">
-	                    	<input type="hidden" name="lidx" value="<%=map.get("lidx")%>">
-	                        <input type="text" name="fromDate" id="fromDate" value="${fromDate}">
-							<input type="text" name="toDate" id="toDate" value="${toDate}">
-		                    <button>적용</button>
-	                    </div>
+		                <div>
+		                    <div class="date_view">
+		                        <input type="text" name="fromDate" id="fromDate" value="${fromDate}">
+								<input type="text" name="toDate" id="toDate" value="${toDate}">
+		                    </div>
+		                </div>
 	                </div>
 	                <div class="psn_btn">
 	                    <span class="psn_view">
 	                        <button type='button' onclick='count("minus")' value='-' class="updown">-</button>
-							<span id='result'>2</span>
+							<input id="result" name="men" value="<c:if test='${men == null || men == 0}'>2</c:if><c:if test='${men != null}'>${men}</c:if>" readonly />
 							<button type='button' onclick='count("plus")' value='+' class="updown">+</button>
 	                    </span>
 	                </div>
+                    <button>적용</button>
 	            </div><!--//btn_datePsn-->
 
 	            <div class="room_list">            
@@ -297,7 +301,7 @@
 		                    <div class="room_price">
 		                        <p>가격</p>
 		                        <div> 
-		                            <p class="room_amount"><c:if test="${vo2.rnum < 6}">남은 객실${vo2.rnum}개</c:if></p>
+		                            <p class="room_amount"><c:if test="${vo2.spareroom < 6}">남은 객실${vo2.spareroom}개</c:if></p>
 		                            <p><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</p>
 		                        </div>
 		                    </div><!--//room_price-->
@@ -357,9 +361,14 @@
 		                        </div>
 		                    </div><!--//modal-->
 		                    <button type="button" class="room_info">객실 이용 안내</button>
-		                    <a href="<%=request.getContextPath()%>/reserv/reserv.do?ridx=${vo2.ridx}&fromDate=${fromDate}&toDate=${toDate}" >
-		                    	<button type="button" class="room_booking">예약</button>
-	                    	</a>
+		                    <c:if test="${vo2.spareroom != 0 }">
+			                    <a href="<%=request.getContextPath()%>/reserv/reserv.do?ridx=${vo2.ridx}&fromDate=${fromDate}&toDate=${toDate}&men=${men}" >
+			                    	<button type="button" class="room_booking">예약</button>
+		                    	</a>
+		                    </c:if>
+		                    <c:if test="${vo2.spareroom == 0 }">
+		                    	<button type="button" class="none_booking">판매완료</button>
+		                    </c:if>
 		                </div><!--//room-->
 	                </c:forEach>
 	            </div><!--//room_list-->
@@ -449,10 +458,10 @@
 
         <article class="review">
             <div class="review_grade">
-                <h3>리뷰 (${map.get("reviewnum")})</h3>
+                <h3>리뷰 (${rvvo.countrv})</h3>
                 <div class="star_grade">
 					만족도
-                    <p><strong>${map.get("satis")}</strong> /10.0</p>
+                    <p><strong>${rvvo.avgrv}</strong> /10.0</p>
                 </div>
             </div><!--//review_grade-->
             <ul>

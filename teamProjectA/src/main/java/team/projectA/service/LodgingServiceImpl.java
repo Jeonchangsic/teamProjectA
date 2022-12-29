@@ -32,8 +32,8 @@ public class LodgingServiceImpl implements LodgingService {
 	}
 */
 	@Override
-	public List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
-		return lodgingDAO.selectLodgingList(lodgingkind, type, area, rvo, linvo, rinvo);
+	public List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
+		return lodgingDAO.selectLodgingList(lodgingkind, type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 	}
 
 	@Override
@@ -46,8 +46,8 @@ public class LodgingServiceImpl implements LodgingService {
 		return lodgingDAO.selectLodging(lidx);
 	}
 	@Override
-	public List<RoominVO> selectRoomList(int lidx) {
-		return lodgingDAO.selectRoomList(lidx);
+	public List<RoominVO> selectRoomList(int lidx, String men) {
+		return lodgingDAO.selectRoomList(lidx, men);
 	}
 
 	@Override
@@ -68,6 +68,11 @@ public class LodgingServiceImpl implements LodgingService {
 	@Override
 	public List<ReviewVO> selectReview(int lidx) {
 		return lodgingDAO.selectReview(lidx);
+	}
+
+	@Override
+	public ReviewVO selectLodgingRV(int lidx) {
+		return lodgingDAO.selectLodgingRV(lidx);
 	}
 
 

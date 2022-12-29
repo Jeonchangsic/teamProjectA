@@ -15,32 +15,71 @@
 		var maxAppend1 = 1;
 		var maxAppend2 = 1;
 		var maxAppend3 = 1;
-		var extcnt = 1;
+		var extcnt1 = 1;
+		var extcnt2 = 1;
+		var extcnt3 = 1;
 		
 		$(document).ready(function () {
-			
 			if(${hm.area2 != null}){
-				extcnt++;
-				$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' value='${hm.area2}' />");
+				$(".area").next().append("<br><br><input type='text' name='area2' class='plus2' value='${hm.area2}' />");
+				extcnt1++;
 				maxAppend1++;
 			}
 			if(${hm.area3 != null}){
-				extcnt++;
-				$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' value='${hm.area3}' />");
+				$(".area").next().append("<br><br><input type='text' name='area3' class='plus2' value='${hm.area3}' />");
+				extcnt1++;
 				maxAppend1++;
 			}
 			if(${hm.area4 != null}){
-				extcnt++;
-				$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' value='${hm.area4}' />");
+				$(".area").next().append("<br><br><input type='text' name='area4' class='plus2' value='${hm.area4}' />");
+				extcnt1++;
 				maxAppend1++;
 			}
 			if(${hm.area5 != null}){
-				extcnt++;
-				$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' value='${hm.area5}' />");
+				$(".area").next().append("<br><br><input type='text' name='area5' class='plus2' value='${hm.area5}' />");
+				extcnt1++;
 				maxAppend1++;
 			}
-			
-			clickplus();
+			if(${hm.basic2 != null}){
+				$(".basic").next().append("<br><br><input type='text' name='basic2' class='plus2' value='${hm.basic2}' />");
+				extcnt2++;
+				maxAppend2++;
+			}
+			if(${hm.basic3 != null}){
+				$(".basic").next().append("<br><br><input type='text' name='basic3' class='plus2' value='${hm.basic3}' />");
+				extcnt2++;
+				maxAppend2++;
+			}
+			if(${hm.basic4 != null}){
+				$(".basic").next().append("<br><br><input type='text' name='basic4' class='plus2' value='${hm.basic4}' />");
+				extcnt2++;
+				maxAppend2++;
+			}
+			if(${hm.basic5 != null}){
+				$(".basic").next().append("<br><br><input type='text' name='basic5' class='plus2' value='${hm.basic5}' />");
+				extcnt2++;
+				maxAppend2++;
+			}
+			if(${hm.odd2 != null}){
+				$(".odd").next().append("<br><br><input type='text' name='odd2' class='plus2' value='${hm.odd2}' />");
+				extcnt3++;
+				maxAppend3++;
+			}
+			if(${hm.odd3 != null}){
+				$(".odd").next().append("<br><br><input type='text' name='odd3' class='plus2' value='${hm.odd3}' />");
+				extcnt3++;
+				maxAppend3++;
+			}
+			if(${hm.odd4 != null}){
+				$(".odd").next().append("<br><br><input type='text' name='odd4' class='plus2' value='${hm.odd4}' />");
+				extcnt3++;
+				maxAppend3++;
+			}
+			if(${hm.odd5 != null}){
+				$(".odd").next().append("<br><br><input type='text' name='odd5' class='plus2' value='${hm.odd5}' />");
+				extcnt3++;
+				maxAppend3++;
+			}
 		});
 		
 	    function clickplus(type,obj){
@@ -48,26 +87,57 @@
 				if(maxAppend1 >= 5){
 					return;
 				}else{
-					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					extcnt1++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt1+"' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend1++;
 				}	
 	    	}else if(type == "2"){
 				if(maxAppend2 >= 5){
 					return;
 				}else{
-					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='basic"+extcnt+"' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					extcnt2++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='basic"+extcnt2+"' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend2++;
 				}
 	    	}else if(type == "3"){
 				if(maxAppend3 >= 5){
 					return;
 				}else{
-					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='odd"+extcnt+"' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)'/>");
+					extcnt3++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='odd"+extcnt3+"' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend3++;
 				}
+	    	}
+	    }
+	    
+	    function clickminus(type,obj){
+	    	if(type == "1"){
+	    		if(maxAppend1 <= 1){
+	    			return;
+	    		}else{
+					$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
+					$(obj).parents().next().children("br:last-of-type").remove();
+					maxAppend1--;
+					extcnt1--;
+	    		}
+	    	}else if(type == "2"){
+	    		if(maxAppend2 <= 1){
+	    			return;
+	    		}else{
+	    			$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
+					$(obj).parents().next().children("br:last-of-type").remove();
+					maxAppend2--;
+					extcnt2--;
+	    		}
+	    	}else if(type == "3"){
+	    		if(maxAppend3 <= 1){
+	    			return;
+	    		}else{					
+	    			$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
+					$(obj).parents().next().children("br:last-of-type").remove();
+					maxAppend3--;
+					extcnt3--;
+	    		}
 	    	}
 	    }
 	    
@@ -263,30 +333,29 @@
 		    				<div class="check_name">공용시설</div>
 		    				<div class="check_contents">
 		    					<ul>
-			    					<li><input type="checkbox" class="check" name="FITNESS">피트니스</li>
-			    					<li><input type="checkbox" class="check" name="SAUNA">사우나</li>
-			    					<li><input type="checkbox" class="check" name="RESTAURANT">레스토랑</li>
-			    					<li><input type="checkbox" class="check" name="LOUNGE">라운지</li>
-			    					<li><input type="checkbox" class="check" name="BBQ">BBQ</li>
-			    					<li><input type="checkbox" class="check" name="PUBLICSPA">공용스파</li>
-			    					<li><input type="checkbox" class="check" name="SEMINAR">세미나실</li>
-			    					<li><input type="checkbox" class="check" name="SINGING">노래방</li>
-			    					<li><input type="checkbox" class="check" name="WASHINGMACHINE">세탁기</li>
-			    					<li><input type="checkbox" class="check" name="DEHYDRATOR">탈수기</li>
-			    					<li><input type="checkbox" class="check" name="COOKING">취사가능</li>
-			    					<li><input type="checkbox" class="check" name="spa">온천</li>
-			    					<li><input type="checkbox" class="check" name="pool">수영장</li>
-			    					<li><input type="checkbox" class="check" name="golf">골프장</li>
-			    					<li><input type="checkbox" class="check" name="elevator">엘리베이터</li>
-			    					<li><input type="checkbox" class="check" name="pc">공용PC</li>
-			    					<li><input type="checkbox" class="check" name="cafe">카페</li>
-			    					<li><input type="checkbox" class="check" name="footvolleyball">족구장</li>
-			    					<li><input type="checkbox" class="check" name="store">편의점</li>
-			    					<li><input type="checkbox" class="check" name="dining">주방/식당</li>
-			    					<li><input type="checkbox" class="check" name="dryer">건조기</li>
-			    					<li><input type="checkbox" class="check" name="parking">주차장</li>
-			    					<li><input type="checkbox" class="check" name="publicshower">공용샤워실</li>
-			    					<li><input type="checkbox" class="check" name="ski">스키장</li>
+			    					<li><label><input type="checkbox" class="check" name="fitness" <c:if test="${hm.fitness eq 'Y'}">checked</c:if>>피트니스</label></li>
+			    					<li><label><input type="checkbox" class="check" name="sauna" <c:if test="${hm.sauna eq 'Y'}">checked</c:if>>사우나</label></li>
+			    					<li><label><input type="checkbox" class="check" name="restaurant" <c:if test="${hm.restaurant eq 'Y'}">checked</c:if>>레스토랑</label></li>
+			    					<li><label><input type="checkbox" class="check" name="lounge" <c:if test="${hm.lounge eq 'Y'}">checked</c:if>>라운지</label></li>
+			    					<li><label><input type="checkbox" class="check" name="bbq" <c:if test="${hm.bbq eq 'Y'}">checked</c:if>>BBQ</label></li>
+			    					<li><label><input type="checkbox" class="check" name="publicspa" <c:if test="${hm.publicspa eq 'Y'}">checked</c:if>>공용스파</label></li>
+			    					<li><label><input type="checkbox" class="check" name="seminar" <c:if test="${hm.seminar eq 'Y'}">checked</c:if>>세미나실</label></li>
+			    					<li><label><input type="checkbox" class="check" name="singing" <c:if test="${hm.singing eq 'Y'}">checked</c:if>>노래방</label></li>
+			    					<li><label><input type="checkbox" class="check" name="washingmachine" <c:if test="${hm.washingmachine eq 'Y'}">checked</c:if>>세탁기</label></li>
+			    					<li><label><input type="checkbox" class="check" name="dehydrator" <c:if test="${hm.dehydrator eq 'Y'}">checked</c:if>>탈수기</label></li>
+			    					<li><label><input type="checkbox" class="check" name="cooking" <c:if test="${hm.cooking eq 'Y'}">checked</c:if>>취사가능</label></li>
+			    					<li><label><input type="checkbox" class="check" name="spa" <c:if test="${hm.spa eq 'Y'}">checked</c:if>>온천</label></li>
+			    					<li><label><input type="checkbox" class="check" name="golf" <c:if test="${hm.golf eq 'Y'}">checked</c:if>>골프장</label></li>
+			    					<li><label><input type="checkbox" class="check" name="elevator" <c:if test="${hm.elevator eq 'Y'}">checked</c:if>>엘리베이터</label></li>
+			    					<li><label><input type="checkbox" class="check" name="pc" <c:if test="${hm.pc eq 'Y'}">checked</c:if>>공용PC</label></li>
+			    					<li><label><input type="checkbox" class="check" name="cafe" <c:if test="${hm.cafe eq 'Y'}">checked</c:if>>카페</label></li>
+			    					<li><label><input type="checkbox" class="check" name="footvolleyball" <c:if test="${hm.footvolleyball eq 'Y'}">checked</c:if>>족구장</label></li>
+			    					<li><label><input type="checkbox" class="check" name="store" <c:if test="${hm.store eq 'Y'}">checked</c:if>>편의점</label></li>
+			    					<li><label><input type="checkbox" class="check" name="dining" <c:if test="${hm.dining eq 'Y'}">checked</c:if>>주방/식당</label></li>
+			    					<li><label><input type="checkbox" class="check" name="dryer" <c:if test="${hm.dryer eq 'Y'}">checked</c:if>>건조기</label></li>
+			    					<li><label><input type="checkbox" class="check" name="parking" <c:if test="${hm.parking eq 'Y'}">checked</c:if>>주차장</label></li>
+			    					<li><label><input type="checkbox" class="check" name="publicshower" <c:if test="${hm.publicshower eq 'Y'}">checked</c:if>>공용샤워실</label></li>
+			    					<li><label><input type="checkbox" class="check" name="ski" <c:if test="${hm.ski eq 'Y'}">checked</c:if>>스키장</label></li>
 		    					</ul>
 		    				</div>
 		    			</div>
@@ -296,18 +365,18 @@
 		    				<div class="check_name">기타</div>
 		    				<div class="check_contents">
 		    					<ul>
-		    						<li><input type="checkbox" class="check" name="pickup">픽업가능</li>
-		    						<li><input type="checkbox" class="check" name="printer">프린터사용</li>
-		    						<li><input type="checkbox" class="check" name="locker">개인사물함</li>
-		    						<li><input type="checkbox" class="check" name="breakfast">조식포함</li>
-		    						<li><input type="checkbox" class="check" name="valetparking">발렛파킹</li>
-		    						<li><input type="checkbox" class="check" name="dog">반려견동반</li>    						
-		    						<li><input type="checkbox" class="check" name="inroomcooking">객실내취사</li>
-		    						<li><input type="checkbox" class="check" name="keepluggage">짐보관가능</li>
-		    						<li><input type="checkbox" class="check" name="freeparking">무료주차</li>    						
-		    						<li><input type="checkbox" class="check" name="inroomsmoking">객실내흡연</li>
-		    						<li><input type="checkbox" class="check" name="nosmoking">금연</li>
-		    						<li><input type="checkbox" class="check" name="creditcard">카드결제</li>
+		    						<li><label><input type="checkbox" class="check" name="pickup" <c:if test="${hm.pickup eq 'Y'}">checked</c:if>>픽업가능</label></li>
+		    						<li><label><input type="checkbox" class="check" name="printer" <c:if test="${hm.printer eq 'Y'}">checked</c:if>>프린터사용</label></li>
+		    						<li><label><input type="checkbox" class="check" name="locker" <c:if test="${hm.locker eq 'Y'}">checked</c:if>>개인사물함</label></li>
+		    						<li><label><input type="checkbox" class="check" name="breakfast" <c:if test="${hm.breakfast eq 'Y'}">checked</c:if>>조식포함</label></li>
+		    						<li><label><input type="checkbox" class="check" name="valetparking" <c:if test="${hm.valetparking eq 'Y'}">checked</c:if>>발렛파킹</label></li>
+		    						<li><label><input type="checkbox" class="check" name="dog" <c:if test="${hm.dog eq 'Y'}">checked</c:if>>반려견동반</label></li>    						
+		    						<li><label><input type="checkbox" class="check" name="inroomcooking" <c:if test="${hm.inroomcooking eq 'Y'}">checked</c:if>>객실내취사</label></li>
+		    						<li><label><input type="checkbox" class="check" name="keepluggage" <c:if test="${hm.keepluggage eq 'Y'}">checked</c:if>>짐보관가능</label></li>
+		    						<li><label><input type="checkbox" class="check" name="freeparking" <c:if test="${hm.freeparking eq 'Y'}">checked</c:if>>무료주차</label></li>    						
+		    						<li><label><input type="checkbox" class="check" name="inroomsmoking" <c:if test="${hm.inroomsmoking eq 'Y'}">checked</c:if>>객실내흡연</label></li>
+		    						<li><label><input type="checkbox" class="check" name="nosmoking" <c:if test="${hm.nosmoking eq 'Y'}">checked</c:if>>금연</label></li>
+		    						<li><label><input type="checkbox" class="check" name="creditcard" <c:if test="${hm.creditcard eq 'Y'}">checked</c:if>>카드결제</label></li>
 		    					</ul>
 		    				</div>
 		    			</div>
@@ -315,22 +384,25 @@
 	    		</div><!-- //middle -->   
 	    		<div class="bottom">
 	    			<div class="intro">- - - - 기본정보 - - - -</div>
-	    			<div class="info">
+	    			<div class="info area">
 	    				<p>주변정보</p>
 	    				<input type="text" name="area1" class="plus" placeholder="주변정보를 입력해주세요  (5개까지 입력 가능합니다)" value="${hm.area1}" />
 	    				<button type="button" name="plus" onclick="clickplus(1,this)">+</button>
+	    				<button type="button" name="minus" onclick="clickminus(1,this)">-</button>
 	    			</div>
 	    			<div class="space"></div>
-	    			<div class="info">
+	    			<div class="info basic">
 	    				<p>기본정보</p>
 	    				<input type="text" name="basic1" class="plus" placeholder="기본정보를 입력해주세요  (5개까지 입력 가능합니다)" value="${hm.basic1}" />
 	    				<button type="button" name="plus" onclick="clickplus(2,this)">+</button>
+	    				<button type="button" name="minus" onclick="clickminus(2,this)">-</button>
 	    			</div>
 	    			<div class="space"></div>
-	    			<div class="info">
+	    			<div class="info odd">
 	    				<p>확인사항 및 기타</p>
 	    				<input type="text" name="odd1" class="plus" placeholder="기타정보를 입력해주세요  (5개까지 입력 가능합니다)" value="${hm.odd1}" />
 	    				<button type="button" name="plus" onclick="clickplus(3,this)">+</button>
+	    				<button type="button" name="minus" onclick="clickminus(3,this)">-</button>
 	    			</div>   
 	    			<div class="space"></div> 			
 	    		</div> 	
