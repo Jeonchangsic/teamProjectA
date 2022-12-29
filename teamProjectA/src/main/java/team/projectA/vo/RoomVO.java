@@ -15,6 +15,8 @@ public class RoomVO extends LodgingVO{
 	private String bed;
 	private String[] bedArr;
 	private int stdmen;
+	
+
 	public int getStdmen() {
 		return stdmen;
 	}

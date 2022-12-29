@@ -35,6 +35,9 @@ public class MypageDAO {
 	 public int reserv_refund(ReservVO rvo){
 			return sqlsession.delete("team.projectA.mapper.MypageMapper.reserv_refund", rvo);
 		}
+	 public int reserv_Check(ReservVO rvo){
+			return sqlsession.update("team.projectA.mapper.MypageMapper.reserv_Check", rvo);
+		}
 	 public ReservVO reservListPop(HashMap hm)throws Exception {
 		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reservListPop",hm);
 	 }

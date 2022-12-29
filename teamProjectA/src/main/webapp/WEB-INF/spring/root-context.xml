@@ -48,11 +48,5 @@
 		 </property>
 		</bean>
 		
-		<!-- 스케줄러가 존재하는 패키지 경로 설정 -->
-		<!-- <context:component-scan base-package="team.projectA.scheduler"/> -->
 		
-		<context:component-scan base-package="team.projectA.scheduler" />
-		<!--  해당 태그들은 크론탭을 설정에 필요한 태그들 -->
-		<task:scheduler id="jobScheduler" pool-size="10"/>
-		<task:annotation-driven scheduler="jobScheduler"/>
 </beans>

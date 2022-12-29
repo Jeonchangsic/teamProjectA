@@ -14,6 +14,7 @@
 </head>
 <body>
 	<form action="refund.do" method="post">
+	<input type="hidden" name="ridx" value="${ridx}"/>
 	<h2>예약취소</h2>
 	<hr/>
 	<div id="divArea">

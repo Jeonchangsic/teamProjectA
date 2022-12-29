@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import team.projectA.dao.IndexDAO;
 import team.projectA.dao.UserDao;
+import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
 import team.projectA.vo.UserVO;
 
@@ -28,6 +29,21 @@ public class IndexServiceImpl implements IndexService{
 	public List<ReviewVO> popLodgingList2() throws Exception {
 		return indexDAO.popLodgingList2();
 	}
+
+	@Override
+	public List<ReservVO> roomCount() {
+		return indexDAO.roomCount();
+	}
+	@Override
+	public int roomPlus(HashMap hm){
+		return indexDAO.roomPlus(hm);
+	}
+
+	@Override
+	public int roomPlus2(int ridx) {
+		return indexDAO.roomPlus2(ridx);
+	}
+
 	
 
 }

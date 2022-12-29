@@ -86,10 +86,16 @@
 		</select>
 		
 		<!-- 예약취소 -->
-		<delete id="reserv_refund">
+		<delete id="reserv_refund" parameterType="ReservVO">
 			DELETE FROM reservtb
 				WHERE reserv_num = #{reserv_num}
 		</delete>
+		<!-- 예약취소 시 남은객실 수정시키기 -->
+		<update id="reserv_Check" parameterType="ReservVO">
+			UPDATE roomtb SET spareroom = spareroom+1 
+							WHERE ridx = #{ridx}
+			
+		</update>
 		
 		<!-- 리뷰 내역 -->
 		<select id="reviewList" parameterType="int" resultType="reviewVO">

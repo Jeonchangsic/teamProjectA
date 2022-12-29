@@ -178,7 +178,7 @@ public class MypageController {
 	  hm.put("ridx", ridx);
 	 ReservVO result = mypageService.reservListPop(hm);
 	 
-	 
+	 model.addAttribute("ridx",ridx);
 	 model.addAttribute("result",result);
 	 model.addAttribute("limagename",limagename);
 	 return "mypage/refund"; 
@@ -202,7 +202,7 @@ public class MypageController {
 	  }else {
 	  
 	  mypageService.reserv_refund(rvo);
-	  
+	  mypageService.reserv_Check(rvo);
 	  response.setContentType("text/html; charset=UTF-8");
 	  out.append("<script>alert('예약취소가 완료 되었습니다.'); opener.parent.location.reload(); window.close();</script>");
 	  out.flush();
