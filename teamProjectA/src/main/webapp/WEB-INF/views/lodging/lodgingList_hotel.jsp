@@ -126,6 +126,7 @@
 				$("#toDate").datepicker("option", "minDate", selectedDate);
 			}
 		});
+		$('#fromDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 
 		//종료일
 		$('#toDate').datepicker({
@@ -141,6 +142,7 @@
 				$("#fromDate").datepicker("option", "maxDate", selectedDate);
 			}
 		});
+		$('#toDate').datepicker('setDate', '+1D');
 	});
 
 	//필터선택
@@ -163,7 +165,7 @@
 
 			event.target.classList.add("active2");
 		}		
-		location.href="<%=request.getContextPath()%>/lodging/lodgingList_motel.do?area=${area}&type="+type;
+		location.href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area=${area}&type="+type;
 		
 		<%-- <%
 		String uri = request.getRequestURI();
@@ -216,10 +218,10 @@
 	//인원
 	function count(type) {
 		// 결과를 표시할 element
-		const resultElement = document.getElementById('result');
+		const result = document.querySelector('#result');
 
 		// 현재 화면에 표시된 값
-		let number = resultElement.innerText;
+		let number = result.value;
 		
 		// 더하기/빼기
 		if (type === 'plus') {
@@ -229,30 +231,15 @@
 		}
 		
 		// 결과 출력
-		resultElement.innerText = number;
+		result.value = number;
 	}
 </script>
 </head>
 <body>
-	<header>
-		<div class="inner" class="fixedclear">
-			<h1>
-				<a href="#"><img src="<%=request.getContextPath()%>/resources/images/lodgingList_images/logo.svg" alt="저긴어때"></a>
-			</h1>
-			<div id="room_val">호텔</div>
-			<ul>
-				<li>
-					<input type="search" class="search_bar"> 
-					<a href="#" class="search_btn"><i class="xi-search xi-1x search"></i></a>
-				</li>
-				<!-- **검색창 구현**-->
-				<li><a href="#" id="login">로그인</a></li>
-				<!-- 폰트 스타일 수정-->
-			</ul>
-
-		</div>
-	</header>
-	<!-- end header-->
+	<%@ include file="/WEB-INF/common/Header.jsp" %>
+	<div id="room_val">호텔</div>
+                <!-- end header-->
+			
 	<section id="body_inner" class="fixedclear">
 		<section id="inner" class="fixedclear">
 			<div id="select" class="fixedclear">
@@ -663,7 +650,7 @@
 						<div class="filter" id="filter_num">
 							인원
 							<button type='button' onclick='count("minus")' value='-' class="updown">-</button>
-							<span id='result'>2</span>
+							<input id="result" name="men" value="<c:if test='${men == null}'>2</c:if><c:if test='${men != null}'>${men}</c:if>" readonly />
 							<button type='button' onclick='count("plus")' value='+' class="updown">+</button>
 						</div>
 						<div id="reset">
@@ -779,7 +766,7 @@
 						<c:set var="doneLoop" value="false" />
 						<!-- doneLoop 논리값이 반대가 되면 break -->
 						<c:if test="${doneLoop ne true}">
-							<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}&fromDate=${fromDate}&toDate=${toDate}">
+							<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}&fromDate=${fromDate}&toDate=${toDate}&men=${men}">
 								<div class="imgbor">
 									<div class="img_left">
 										<ul>
@@ -791,7 +778,7 @@
 										</ul>
 									</div>
 									<div class="img_right">
-										<div><c:if test="${vo.rnum < 6}">남은 객실 ${vo.rnum}개</c:if></div>
+										<div><c:if test="${vo.spareroom < 6}">남은 객실 ${vo.spareroom}개</c:if></div>
 										<div>
 											<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.rprice}" />
 											원

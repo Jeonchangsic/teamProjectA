@@ -29,7 +29,7 @@ public class LodgingDAO {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectList2", gubun);
 	}
 */	
-	public List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo){
+	public List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men){
 		
 		HashMap<String, Object> hm = new HashMap<String, Object>();
 		hm.put("lodgingkind",lodgingkind);
@@ -84,6 +84,9 @@ public class LodgingDAO {
 		hm.put("inroomsmoking", linvo.getInroomsmoking());
 		hm.put("nosmoking", linvo.getNosmoking());
 		hm.put("creditcard", linvo.getCreditcard());
+		hm.put("fromDate", fromDate);
+		hm.put("toDate", toDate);
+		hm.put("men", men);
 		
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectLodgingList",hm);
 	}
@@ -96,8 +99,13 @@ public class LodgingDAO {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectLodging",lidx);
 	}
 	
-	public List<RoominVO> selectRoomList(int lidx){
-		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectRoomList",lidx);
+	public List<RoominVO> selectRoomList(int lidx, String men){
+		
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("lidx",lidx);
+		hm.put("men", men);		
+		
+		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectRoomList", hm);
 	}
 	
 	public RoomVO selectRoom(int ridx) {
@@ -106,6 +114,10 @@ public class LodgingDAO {
 	
 	public List<ReviewVO> selectReview(int lidx) {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectReview", lidx);
+	}
+	
+	public ReviewVO selectLodgingRV(int lidx) {
+		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectLodgingRV", lidx);
 	}
 	
 	public List<RoomVO> listSearch(HashMap hm)throws Exception{

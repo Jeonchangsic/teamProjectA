@@ -27,31 +27,33 @@
 		var maxAppend1 = 1;
 		var maxAppend2 = 1;
 		var maxAppend3 = 1;
-		var extcnt = 1;
+		var extcnt1 = 1;
+		var extcnt2 = 1;
+		var extcnt3 = 1;
 		
 	    function clickplus(type,obj){
 	    	if(type == "1"){
 				if(maxAppend1 >= 5){
 					return;
 				}else{
-					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt+"' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
+					extcnt1++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='area"+extcnt1+"' class='plus2' placeholder='주변정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend1++;
 				}	
 	    	}else if(type == "2"){
 				if(maxAppend2 >= 5){
 					return;
 				}else{
-					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='basic"+extcnt+"' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
+					extcnt2++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='basic"+extcnt2+"' class='plus2' placeholder='기본정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend2++;
 				}
 	    	}else if(type == "3"){
 				if(maxAppend3 >= 5){
 					return;
 				}else{
-					extcnt++;
-					$(obj).parents(".info").next().append("<br><br><input type='text' name='odd"+extcnt+"' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
+					extcnt3++;
+					$(obj).parents(".info").next().append("<br><br><input type='text' name='odd"+extcnt3+"' class='plus2' placeholder='기타정보를 입력해주세요  (5개까지 입력 가능합니다)' required />");
 					maxAppend3++;
 				}
 	    	}
@@ -65,6 +67,7 @@
 					$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
 					$(obj).parents().next().children("br:last-of-type").remove();
 					maxAppend1--;
+					extcnt1--;
 	    		}
 	    	}else if(type == "2"){
 	    		if(maxAppend2 <= 1){
@@ -73,6 +76,7 @@
 	    			$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
 					$(obj).parents().next().children("br:last-of-type").remove();
 					maxAppend2--;
+					extcnt2--;
 	    		}
 	    	}else if(type == "3"){
 	    		if(maxAppend3 <= 1){
@@ -81,6 +85,7 @@
 	    			$(obj).parents().next().children("br:last-of-type, .plus2:last-of-type").remove();
 					$(obj).parents().next().children("br:last-of-type").remove();
 					maxAppend3--;
+					extcnt3--;
 	    		}
 	    	}
 	    }

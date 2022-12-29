@@ -43,14 +43,14 @@ public class LodgingController {
 	private LodgingService lodgingService;
 	
 	@RequestMapping(value = "/lodgingList_gh.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_gh(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
+	public String list_gh(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
 		
 /*		 List<LodgingVO> list1= lodgingService.selectList1("GH");		 
 		 List<RoomVO> list2= lodgingService.selectList2(gubun);		 
 		 model.addAttribute("list1",list1); 
 		 model.addAttribute("list2",list2);
 */
-		 List<Map<String,Object>> list = lodgingService.selectLodgingList("GH", type, area, rvo, linvo, rinvo);
+		 List<Map<String,Object>> list = lodgingService.selectLodgingList("GH", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		 model.addAttribute("list",list);
 		 model.addAttribute("type", type);
 		 model.addAttribute("area", area);
@@ -62,9 +62,9 @@ public class LodgingController {
 	}
 	
 	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate) {
+	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
 		
-		List<Map<String,Object>> list = lodgingService.selectLodgingList("호텔", type, area, rvo, linvo, rinvo);
+		List<Map<String,Object>> list = lodgingService.selectLodgingList("호텔", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
@@ -73,14 +73,15 @@ public class LodgingController {
 		model.addAttribute("rinvo", rinvo);
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);
+		model.addAttribute("men", men);
 		
 		return "lodging/lodgingList_hotel"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
 	@RequestMapping(value = "/lodgingList_motel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_motel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
+	public String list_motel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
 
-		List<Map<String,Object>> list = lodgingService.selectLodgingList("모텔", type, area, rvo, linvo, rinvo);
+		List<Map<String,Object>> list = lodgingService.selectLodgingList("모텔", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
@@ -92,9 +93,9 @@ public class LodgingController {
 	}
 	
 	@RequestMapping(value = "/lodgingList_villa.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_villa(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo) {
+	public String list_villa(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
 
-		List<Map<String,Object>> list = lodgingService.selectLodgingList("펜션/풀빌라", type, area, rvo, linvo, rinvo);
+		List<Map<String,Object>> list = lodgingService.selectLodgingList("펜션/풀빌라", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
 		model.addAttribute("area", area);
@@ -145,19 +146,23 @@ public class LodgingController {
 //	}
 	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
-	public String lodgingView(int lidx, Model model, HttpServletRequest req, String fromDate, String toDate) {
+	public String lodgingView(int lidx, Model model, HttpServletRequest req, String fromDate, String toDate, String men) {
 			
 		Map<String,Object> map = lodgingService.selectLodging(lidx);
 		
-		List<RoominVO> list = lodgingService.selectRoomList(lidx);
+		List<RoominVO> list = lodgingService.selectRoomList(lidx, men);
 		
 		List<ReviewVO> list2 = lodgingService.selectReview(lidx);
+		
+		ReviewVO rvvo = lodgingService.selectLodgingRV(lidx);
 		
 		model.addAttribute("map", map);
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
+		model.addAttribute("rvvo", rvvo);
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);
+		model.addAttribute("men", men);
 		
 		//세션에 담기
 		HttpSession session = req.getSession();
