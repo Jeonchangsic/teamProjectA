@@ -128,13 +128,26 @@ main #mydel{width:80px;
         color:white;
         cursor:pointer;
         margin: 20px 0 0 480px;}
+        
+main .email_ok{
+    color:green; 
+	display:none;  
+	font-size:15px; 
+	font-weight:bold; 
+    }
+main .email_no{
+    color:red; 
+	display:none;  
+	font-size:15px; 
+	font-weight:bold; 
+    }
      
                 /*footer*/
-footer{ position : absolute;
-	bottom:0;
+footer{
 	width:100%; 
 	background-color:rgba(0,0,0,0.15);
 	font-family: 'Nanum Gothic', sans-serif;
+	margin-top:300px;
 	}
 footer #foot{
 	margin: 0 auto; 

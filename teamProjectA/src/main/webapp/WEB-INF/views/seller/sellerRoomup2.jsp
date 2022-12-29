@@ -37,19 +37,19 @@
 			var maxAppend = 1;
 			
 			if(${roomModify.addinfo2 != null}){
-				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo2" value = "${roomModify.addinfo2}"><br>');
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo2" value = "${roomModify.addinfo2}" required><br>');
 				maxAppend++;
 			}
 			if(${roomModify.addinfo3 != null}){
-				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo3" value = "${roomModify.addinfo3}"><br>');
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo3" value = "${roomModify.addinfo3}" required><br>');
 				maxAppend++;
 			}
 			if(${roomModify.addinfo4 != null}){
-				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo4" value = "${roomModify.addinfo4}"><br>');
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo4" value = "${roomModify.addinfo4}" required><br>');
 				maxAppend++;
 			}
 			if(${roomModify.addinfo5 != null}){
-				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}"><br>');
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}" required><br>');
 				maxAppend++;
 			}
 						
@@ -251,17 +251,14 @@
 						</ul>				
 				</div>		            
 			    <div id="bottom_info">
-			    	<p>추가정보<p>
-			    		
-				       	<input type="text" class="plus" name = "addinfo1" value = "${roomModify.addinfo1}"><br>
-
-
-			            <button type="button" name="plus" id="plus" class="btn">
-			            <img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerPlus_image.png" alt="추가버튼">
-			            </button>
-			           	<button type="button" name="minus" id="minus" class="btn">
-			           	<img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerMinus_image.png" alt="삭제버튼">
-			           	</button>		            	
+			    	<p>추가정보<p>			    		
+						<input type="text" class="plus2" name = "addinfo1" value = "${roomModify.addinfo1}">
+						<button type="button" name="plus" id="plus" class="btn">
+							<img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerPlus_image.png" alt="추가버튼">
+						</button>
+						<button type="button" name="minus" id="minus" class="btn">
+							<img src="<%=request.getContextPath()%>/resources/images/seller_images/sellerMinus_image.png" alt="삭제버튼">
+						</button>		            	            	
 			    </div>
 		        <div id="inner_bottom">
 		                <div>

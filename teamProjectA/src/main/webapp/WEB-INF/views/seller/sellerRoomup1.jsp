@@ -242,9 +242,7 @@
 								<label for="B4" id="ondol"></label>	
 							</li>
 						</ul>				
-				</div>
-	            
-		            
+				</div>           
 			    <div id="bottom_info">
 			    	<p>추가정보<p>
 			        	<input type="text" class="plus2" name = "addinfo1" placeholder="추가정보를 입력해주세요 (5개까지 입력 가능합니다.)"/>

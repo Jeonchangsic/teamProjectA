@@ -4,9 +4,6 @@
 <% LodgingVO lodging = (LodgingVO) request.getAttribute("lodging"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,23 +20,23 @@
 <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 
 <script>
-	//사업장이름         
+	//사업장이름 변경        
 	$(document).ready(function() {
 		$("#nameFn").on("click", function() {			
-			var lodgingname = ${lodging.lidx}
+			var lodgingname = ${lodging.lidx} //숙소없으면 등록먼저 유도
 			if( !lodgingname ){
 				alert("숙소를 먼저 등록하세요")
 			} else {alert("변경이 완료되었습니다");
-			var frm = document.nameform;
+			var frm = document.nameform; //<form name="nameform"> body에 정의
 			frm.action = "sellerInfo2.do";
-			frm.method = "POST";
+			frm.method = "POST"; //하나씩 변경하기 위해서 따로 post
 			frm.submit();
-
+			
 			console.log("성공");
 			}
 		})
-		//주소
-		$("#addrFn").on("click", function() {
+		//주소 변경
+		$("#addrFn").on("click", function() { //숙소없으면 등록먼저 유도
 			var lodgingaddr = ${lodging.lidx}
 			if( !lodgingaddr){
 				alert("숙소를 먼저 등록하세요")
@@ -53,7 +50,7 @@
 			console.log("성공");
 			}
 		})
-		//이메일
+		//이메일 변경
 		$("#mailFn").on("click", function() {
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
@@ -63,7 +60,7 @@
 
 			console.log("성공");
 		})
-		//비밀번호
+		//비밀번호 변경
 		$("#pwdFn").on("click", function() {
 			
 			 var password = $("#password").val();
@@ -86,7 +83,7 @@
 			console.log("성공");
 		  }
 		})
-		//전화번호
+		//전화번호 변경
 		$("#phoneFn").on("click", function() {
 			alert("변경이 완료되었습니다");
 			var frm = document.nameform;
@@ -98,7 +95,7 @@
 		})
 	});
 
-		/*회원탈퇴 페이지 이동  */
+		//회원탈퇴 페이지 이동 
 		function delFn() {
 			if (!confirm("회원탈퇴 페이지로 이동하시겠습니까?")) {
 				alert("이동이 취소되었습니다.");
@@ -106,8 +103,47 @@
 				location = "/A/mypage/userDt.do";
 			}
 		}
+		
+		//이메일인증
+		var codetemp ="";
+		$(function(){
+			$(".mail_check_button").click(function(){
+				var email = $(".mail_input").val(); //입력한 이메일 
+	    		var checkBox = $(".mail_check_input"); //인증번호 입력란
+	    		var boxWrap = $(".mail_check_input_box"); //인증번호 입력영역
+				var code = "";
+	    		
+	    		alert(email);
+	    		
+	    		$.ajax({
+		    		type:"GET",
+					url:"mailCheck2?email="+ email,
+					success:function(data){
+						alert("인증번호 전송이 완료되었습니다.");
+						checkBox.attr("disabled",false); // attr : cehckBox의 속성을 변경
+						boxWrap.attr("id","mail_check_input_box_true");
+						codetemp = data; //컨트롤러에서 받은 리턴값(난수)을 변수에 넣는다.
+					}
+				}); 
+			});
+			$(".mail_check_input").blur(function(){
+	    		var inputcode = $(".mail_check_input").val(); //입력결과
+	    		var checkResult = $("#mail_check_input_box_warn"); //비교결과
+	    		
+	    		if(inputcode == codetemp){ //인증번호가 일치하는 경우
+	    			$(".email_ok").css("display","inline-block");
+		    		$(".email_no").css("display","none");
+		    		$("#emailFormArea").css("display","none");
+	    		}else{						//인증번호가 일치하지 않는 경우
+	    			$(".email_ok").css("display","none");
+		    		$(".email_no").css("display","inline-block");
+		    		$("#emailFormArea").css("display","none");
+		    		$(".mail_check_input").val("");
+	    		}
+	    	});
+		})
+	
 
-	//비밀번호 체크
 </script>
 </head>
 
@@ -171,13 +207,29 @@
 					<td><input type='password' name="userPassword"  id="password" value="${lodging.userPassword}" ></td>
 					<td><button type="button" class="btn_size" id="pwdFn">변경</button></td>
 				</tr>
-
-
 				<tr>
 					<td>이메일</td>
-					<td><input type='text' name="userEmail" value="${lodging.userEmail}" autoComplete="off"></td>
+					<td><input type='text' name="userEmail" value="${lodging.userEmail}" autoComplete="off" class="mail_input"></td>
 					<td><button type="button" class="btn_size" id="mailFn">변경</button></td>
+				</tr>
+					<tr>
+					<td></td>
+					<td class="mail_check_input_box">
+						<input id="mail_check_input" class="mail_check_input" disabled="disabled" required>
+					</td>
+					<td id="mail_check_button" class="mail_check_button">
+						<span class="btn_size">인증번호 전송</span>
+					</td>
+				</tr>
 
+				<tr>
+					<td></td>
+					<td>
+						<span id="mail_check_input_box_warn"></span>
+						<span class="email_ok">인증번호가 일치합니다.</span>
+						<span class="email_no">인증번호가 다릅니다.</span>
+					</td>
+					<td></td>
 				</tr>
 
 

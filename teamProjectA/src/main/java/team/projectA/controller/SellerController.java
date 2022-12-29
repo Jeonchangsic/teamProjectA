@@ -9,20 +9,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import team.projectA.service.ReservService;
@@ -49,7 +54,9 @@ public class SellerController {
 	@Autowired
 	private SellerService sellerService;
 	@Autowired
-	private ReservService reservServcice;
+	private ReservService reservService;
+	@Autowired
+	private JavaMailSender mailSender;
 
 	
 	/**
@@ -100,6 +107,48 @@ public class SellerController {
 		
 	}
 
+	//이메일 변경 이메일 인증
+	@ResponseBody
+	@RequestMapping(value="/mailCheck2", method = RequestMethod.GET)
+	public String mailCheck(String email) throws Exception {
+
+		//화면에서 넘어온 데이터 확인
+				System.out.println("이메일"+email);
+				
+				//인증번호(난수) 생성
+				Random random = new Random();
+				int checkNum = random.nextInt(888888) + 111111; //111111 ~ 999999 의 수로 난수 생성하기 위함
+				System.out.println("인증번호"+checkNum); //인증번호가 난수로 잘 생성되고 있는지 확인
+				
+				//이메일 보내기
+				String setFrom = "teamproject_a2@naver.com"; //root-context.xml에 삽입한 자신의 이메일 계정 (메일 발신할 계정)
+				String toMail = email; //입력받은 메일값
+				String title = "저긴어때(주) 비밀번호 변경 인증 이메일 입니다."; //발신 시 사용되는 이메일 제목
+				String content = 								//발신 시 사용되는 이메일의 내용
+						"저긴어때(주) 비밀번호 변경 인증 이메일 입니다." +
+				        "<br><br>" + 
+		                "인증 번호는 " + checkNum + "입니다." + 
+		                "<br>" + 
+		                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+				
+				
+				
+				  try { MimeMessage message = mailSender.createMimeMessage(); MimeMessageHelper
+				  helper = new MimeMessageHelper(message,true,"utf-8");
+				  helper.setFrom(setFrom); //메일 발신할 계정 
+				  helper.setTo(toMail); //수신자 계정
+				  helper.setSubject(title); //발신 시 사용되는 이메일 제목 
+				  helper.setText(content,true); //발신 시 사용되는 이메일 내용 
+				  mailSender.send(message); 
+				  }catch(Exception e){
+				  e.printStackTrace(); 
+				  }
+				 
+				String num = Integer.toString(checkNum); //난수를 ajax를 통해 뷰로 다시 반환해야하는데 난수 생성 시 사용한 자료형은 int형이지만 ajax로 반환시에는 String형식만 가능하여 팟싱함
+				
+				return num;   //ResponseBody 어노테이션이 설정된 메소드는 반환값이 ajax의 success의 함수 매개변수로 들어간다. 그 값은 num.
+	}
+	
 		
 		
 	//문의글 리스트+페이징+검색
@@ -221,7 +270,7 @@ public class SellerController {
 	@RequestMapping(value = "/sellerRegi2.do", method = RequestMethod.POST)
 	public void Regi2(Locale locale, Model model, int ridx, HttpServletResponse res) throws IOException {
 		
-		List<ReservVO> delridx = reservServcice.ridxList(ridx);
+		List<ReservVO> delridx = reservService.ridxList(ridx);
 		
 		PrintWriter out = res.getWriter();
 		

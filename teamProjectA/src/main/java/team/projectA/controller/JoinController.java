@@ -103,7 +103,7 @@ public class JoinController {
 		System.out.println("인증번호"+checkNum); //인증번호가 난수로 잘 생성되고 있는지 확인
 		
 		//이메일 보내기
-		String setFrom = "teamproject_a@naver.com"; //root-context.xml에 삽입한 자신의 이메일 계정 (메일 발신할 계정)
+		String setFrom = "teamproject_a2@naver.com"; //root-context.xml에 삽입한 자신의 이메일 계정 (메일 발신할 계정)
 		String toMail = email; //입력받은 메일값
 		String title = "저긴어때(주) 회원가입 인증 이메일 입니다."; //발신 시 사용되는 이메일 제목
 		String content = 								//발신 시 사용되는 이메일의 내용

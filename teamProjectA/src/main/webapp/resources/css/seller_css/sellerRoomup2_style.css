@@ -125,6 +125,7 @@ input[type=radio]:checked + label{
 
 #bottom_info{clear:both; margin: 0 0 0 150px; padding-top: 80px; height: 200px;}
 #bottom_info p{font-weight:bold; font-size:20px; margin-bottom: 10px;}
+#bottom_info .plus2{width:500px;}
 #bottom_info .plus{width:500px;}
 #up_bottom2{display:flex; margin-left:148px; margin-top:70px;}
 #inner_bottom{clear:both;}
