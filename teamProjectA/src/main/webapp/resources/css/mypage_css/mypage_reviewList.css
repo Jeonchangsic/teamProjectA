@@ -86,18 +86,22 @@ main table{
 }
 main #memberInfo{
     border-right:1px solid #919191;
-    font-weight: bold;
     width:110px;
     padding-right:7px;
+    cursor:pointer;
 }
+
 main #conform{
     border-right:1px solid #919191;
     width:110px;
     padding: 0 7px 0 7px;
+    cursor:pointer;
 }
 main #reviewList{
     width:110px;
     padding-left:7px;
+    font-weight:bold;
+    cursor:pointer;
 }
 main #contentsArea1{
     border:1px solid #919191;

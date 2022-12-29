@@ -15,36 +15,6 @@
     <!---- jQuery ---->
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
      
-     <!-- js -->
-     <script>
-     	$(document).ready(function(){
-     		$("#change1").click(function(){
-     			$("#contentsArea").css("display","none");
-     			$("#contentsArea1").css("display","block");
-     			$("#contentsArea2").css("display","none");
-     			$("#memberInfo").css("font-weight","bold");
-     			$("#conform").css("font-weight","normal");
-     			$("#reviewList").css("font-weight","normal");
-     		});
-     		$("#change2").click(function(){
-     			$("#contentsArea1").css("display","none");
-     			$("#contentsArea").css("display","block");
-     			$("#contentsArea2").css("display","none");
-     			$("#memberInfo").css("font-weight","normal");
-     			$("#conform").css("font-weight","bold");
-     			$("#reviewList").css("font-weight","normal");
-     		});
-     		$("#change3").click(function(){
-     			$("#contentsArea1").css("display","none");
-     			$("#contentsArea").css("display","none");
-     			$("#contentsArea2").css("display","block");
-     			$("#memberInfo").css("font-weight","normal");
-     			$("#conform").css("font-weight","normal");
-     			$("#reviewList").css("font-weight","bold");
-     		});
-     	})
-     </script>
-     
      <!--회원탈퇴 팝업창 -->
      <script>
      function userDt(){
@@ -58,47 +28,7 @@
  		window.open(url,"",popupOption);
      };
      </script>
-     
-     <!--예약취소 팝업창  -->
-     <script>
-     function refund_pop(ridx,uidx,limagename){
-    	var url = "<%=request.getContextPath()%>/mypage/refundPop.do?ridx="+ridx+"&uidx="+uidx+"&limagename="+limagename;   //팝업창 페이지 URL
- 		var winWidth = 500;
- 	    var winHeight = 250;
- 	   var popupX = (window.screen.width / 2) - (500 / 2);
-	  	var popupY= (window.screen.height / 2) - (250 / 2);
-	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
- 		window.open(url,"",popupOption);
-     };
-     </script>
-     
-     
-     <!-- 리뷰 작성 팝업창 -->
-     <script>
-     function review(lidx,ridx,reserv_idx,lodgingname,rtype,reserv_startDate,reserv_endDate,limagename){
-    	var url = "<%=request.getContextPath()%>/review/review.do?lidx="+lidx+"&ridx="+ridx+"&reserv_idx="+reserv_idx+"&lodgingname="+lodgingname+"&rtype="+rtype+"&reserv_startDate="+reserv_startDate+"&reserv_endDate="+reserv_endDate+"&limagename="+limagename;   //팝업창 페이지 URL
- 		var winWidth = 550;
- 	    var winHeight = 450;
- 	  	var popupX = (window.screen.width / 2) - (550 / 2);
- 	  	var popupY= (window.screen.height / 2) - (450 / 2);
- 	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
- 		window.open(url,"",popupOption);
-     };
-     </script>
-     
-     <!-- 리뷰 상세페이지 팝업창 -->
-     <script>
-     function reviewInfoPop(rvidx,limagename){
-    	var url = "<%=request.getContextPath()%>/mypage/reviewInfo.do?rvidx="+rvidx+"&limagename="+limagename;   //팝업창 페이지 URL
- 		var winWidth = 550;
- 	    var winHeight = 470;
- 	  	var popupX = (window.screen.width / 2) - (550 / 2);
- 	  	var popupY= (window.screen.height / 2) - (470 / 2);
- 	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
- 		window.open(url,"",popupOption);
-     };
-     </script>
-     
+
      <!-- 비밀번호 변경 -->
      <script>
      function pwReset(){
@@ -118,7 +48,7 @@
 		    		 data: "password="+password,
 		    		 success:function(data){
 		    				  alert('비밀번호 수정이 완료되었습니다.');
-		    				  location.reload(); 
+		    				  //location.reload(); 
 		    		 }
 		    	 });	
 	    	};
@@ -141,13 +71,13 @@
 	    <main>
 	       	<h2 id="mypageArea">마이페이지</h2>
 	        <div id="nav">
-	            <a id="change1" href="#">
+	            <a id="change1" onclick="location.href='<%=request.getContextPath()%>/mypage/info.do'">
 	            	<div id="memberInfo">회원정보수정</div>
 	            </a>
-	            <a id="change2" href="#">
+	            <a id="change2" onclick="location.href='<%=request.getContextPath()%>/mypage/reservList.do'">
 	            	<div id="conform">예약내역확인</div>
 	            </a>
-	            <a id="change3" href="#">
+	            <a id="change3" onclick="location.href='<%=request.getContextPath()%>/mypage/reviewList.do'">
 	            	<div id="reviewList">리뷰내역</div>
 	            </a>
 	        </div>
@@ -159,7 +89,7 @@
 	                    </tr>
 	                    <tr>
 	                        <td class="margin1">비밀번호</td><td><input type="password" class="info" id="password" name="userPassword" placeholder="변경할 비밀번호를 입력하세요." required></td>
-	                        <td><button type="button" onclick="pwReset()" class="cursorStyle">변경하기</button></td>
+	                        <td><button type="button" onclick="pwReset()" class="cursorStyle btn_hover btn_height">변경하기</button></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="margin1">이메일</td><td><input type="text" class="info"  name="userEmail" value="${login.userEmail}" readonly></td>
@@ -171,92 +101,10 @@
 	                        <td class="margin1">생년월일</td><td><input type="text" class="info" name="userBirth" value="${login.userBirth}" readonly></td>
 	                    </tr>
 	                </table>
-	                <button id="btn_style" type="button" onclick="userDt()" class="cursorStyle">회원탈퇴</button>
+	                <button id="btn_style" type="button" onclick="userDt()" class="cursorStyle btn_hover">회원탈퇴</button>
 	            </form>
 	        </div>
-	        <div id="contentsArea">
-	                <table class="table10">
-	                    <tr class="tr_center tr_border">
-	                        <th>예약번호</th>
-	                        <th></th>
-	                        <th>숙소명</th>
-	                        <th>객실명</th>
-	                        <th>숙박일자</th>
-	                        <th>금액</th>
-	                        <th>비고</th>
-	                    </tr>
-	                    <c:forEach items="${list}" var="list">
-		                    <tr>
-		                        <td class="fontSize">${list.reserv_num}</td>
-		                        <td><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${list.limagename}"></td>
-		                        <td class="fontSize">${list.lodgingname}</td>
-		                        <td class="fontSize">${list.rtype}</td>
-		                        <td class="date_size1">${list.reserv_startDate} ~ ${list.reserv_endDate}</td>
-		                        <td class="fontSize">
-		                        	<fmt:formatNumber type="number" maxFractionDigits="3" value="${list.rprice}" />원
-		                        </td>
-		                        	<fmt:formatDate value="${list.reserv_startDate2}" pattern="yyyyMMdd" var="startDate"/>
-		                        	<fmt:formatDate value="${now}" pattern="yyyyMMdd" var="nowDate"/>
-		                        <td  class="button_Size">
-		                        	<c:choose>
-		                        		<c:when test="${startDate <= nowDate}">
-		                        			<input class="reservListBtn cursorStyle input_none" type="button" value="취소불가능"/>
-		                            	</c:when>
-		                            	<c:otherwise>
-		                            		<input class="reservListBtn cursorStyle" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}')" type="button" value="예약취소"/>
-		                            	</c:otherwise>
-		                            </c:choose>
-		                            <c:choose>
-			                            <c:when test="${list.reviewCheck eq 'N'}">
-			                           		<input class="reservListBtn cursorStyle" onclick="review(${list.lidx},${list.ridx},${list.reserv_idx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
-			                        	</c:when>
-			                        	<c:otherwise>
-			                        		<input class="reservListBtn cursorStyle btnFontSize" onclick="alert('이미 리뷰 작성을 완료하였습니다.');" type="button" value="리뷰작성완료"/>
-			                        	</c:otherwise>
-		                        	</c:choose>
-		                        </td>
-		                    </tr>
-	                    </c:forEach>
-	                </table>
-	            <div id="btnArea">
-	                <div id="btnArea2">
-	                    <ul>
-	                    	<c:if test="${pageMaker.prev}">
-	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
-	                    	</c:if>
-	                    	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
-	                    	</c:forEach>
-	                    	
-	                    	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/info.do${pageMaker.makeQuery(pageMaker.endPage +1)}">다음</a></li>
-	                    	</c:if>
-	                    </ul>
-	                </div>
-	            </div>
-	        </div>
-	        <div id="contentsArea2">
-	        	 <table class="table10">
-	                    <tr class="tr_center tr_border">
-	                   		<th ></th>
-	                        <th class="lodging_Style">숙소명</th>
-	                        <th class="lodging_Style">객실명</th>
-	                        <th class="review_style">리뷰제목</th>
-	                        <th>리뷰작성일</th>
-	                    </tr>
-	                    <c:forEach items="${reviewList}" var="reviewList">
-			                    <tr>
-			              		    <td class="td_padding lodging_Style1"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${reviewList.limagename}"/></td>
-			                    	<td class="td_padding lodging_Style">${reviewList.lodgingname}</td>
-			                    	<td class="td_padding lodging_Style">${reviewList.rtype}</td>
-			                    	<td class="td_padding review_style" id="titleHover" ><a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx},'${reviewList.limagename}')">${reviewList.rvTitle}</a></td>
-			                    	<td class="td_padding">${reviewList.rvDate}</td>
-			                    </tr>
-		               	</c:forEach>
-	             </table>
-	        </div>
-	    </main>
-	</div>
+        </main>
     <footer>
         <div id="foot">
             

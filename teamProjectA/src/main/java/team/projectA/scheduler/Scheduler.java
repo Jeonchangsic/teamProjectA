@@ -19,7 +19,7 @@ public class Scheduler {
 					
 	
 					//초 분 시 일 월 요일 연도(연도는 생략가능)
-	@Scheduled(cron="0 49 11 * * *")
+	@Scheduled(cron="0 10 11 * * *")
 	public void autoUpdate(){
 		List<ReservVO> list = indexService.roomCount(); //ridx count 값이 들어있는 리스트.
 		HashMap<String,Integer> hm = new HashMap<String,Integer>();
@@ -40,6 +40,6 @@ public class Scheduler {
 			indexService.roomPlus(hm); //업데이트.
 		}
 		
-		System.out.println("체크아웃된 객실추가 스케줄러 작동 완료!");
+		System.out.println("스케줄러 작동 완료!");
 	}
 }

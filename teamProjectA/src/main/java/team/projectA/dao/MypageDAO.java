@@ -41,15 +41,17 @@ public class MypageDAO {
 	 public ReservVO reservListPop(HashMap hm)throws Exception {
 		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reservListPop",hm);
 	 }
-	 public List<ReviewVO>reviewList(int uidx)throws Exception{
-			return sqlsession.selectList("team.projectA.mapper.MypageMapper.reviewList",uidx);
-	}
+	 //리뷰 리스트 페이징
+	 public List<ReviewVO>reviewList(HashMap hm2)throws Exception{
+			return sqlsession.selectList("team.projectA.mapper.MypageMapper.reviewList",hm2);
+	 }
+	 //리뷰리스트 개수
 	 public int review_count()throws Exception{
 		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.review_count");
 	 }
 	 public int reviewDt(int rvidx){
 			return sqlsession.delete("team.projectA.mapper.MypageMapper.reviewDt", rvidx);
-	}
+	 }
 	 public ReviewVO reviewList2(int rvidx)throws Exception{
 		return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reviewList2",rvidx);
 	 }

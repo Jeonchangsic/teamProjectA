@@ -98,7 +98,7 @@
 		</update>
 		
 		<!-- 리뷰 내역 -->
-		<select id="reviewList" parameterType="int" resultType="reviewVO">
+		<select id="reviewList" parameterType="HashMap" resultType="reviewVO">
 			SELECT lodgingname
 					,rvtitle
 					,rvdate
@@ -121,6 +121,7 @@
 								 AND r.ridx = rm.ridx
 								 AND r.uidx = #{uidx}
 								 )rtb  
+								 WHERE rNum BETWEEN #{rowStart2} AND #{rowEnd2}
 								ORDER BY rvidx DESC
 		</select>
 		

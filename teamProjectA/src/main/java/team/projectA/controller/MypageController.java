@@ -27,7 +27,9 @@ import team.projectA.service.MypageService;
 import team.projectA.service.ReservService;
 import team.projectA.service.UserService;
 import team.projectA.vo.Criteria;
+import team.projectA.vo.Criteria2;
 import team.projectA.vo.PageMaker;
+import team.projectA.vo.PageMaker2;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
 import team.projectA.vo.SearchCriteria;
@@ -51,65 +53,81 @@ public class MypageController {
 	
 	//마이페이지
 	@RequestMapping(value = "/info.do", method = RequestMethod.GET)
-	public String mypage(@ModelAttribute("scri") SearchCriteria scri, Model model,HttpServletRequest req)throws Exception {
+	public String mypage(Model model,HttpServletRequest req)throws Exception {
 		
 		//마이페이지 회원정보
 		  HttpSession session = req.getSession();
 		  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
 		 
-		//마이페이지 예약내역리스트,페이징
-		  List<ReservVO> list = null; 
-		  
-		  PageMaker pageMaker = new PageMaker();
-		  pageMaker.setCri(scri);
-		  pageMaker.setTotalCount(mypageService.reserv_count());
-		  
-		 
-		HashMap<String,Object> hm = new HashMap<String,Object>();
-		hm.put("uidx", userVO.getUidx());
-		hm.put("rowStart", scri.getRowStart());
-		hm.put("rowEnd", scri.getRowEnd());
-		list = mypageService.listPage(hm);
-		
-		
-		Date now = new Date();
-		
-		model.addAttribute("now",now);
-		model.addAttribute("list",list);
-		model.addAttribute("pageMaker",pageMaker);
-		
-		//마이페이지 리뷰내역
-		
-		 List<ReviewVO> reviewList = null;
-		  
-		  
-		  
-		  int uidx = userVO.getUidx();
-		  reviewList = mypageService.reviewList(uidx);
-		  
-		  model.addAttribute("reviewList",reviewList);
 		  
 		//마이페이지 
 		return "mypage/mypage";
 	}
+		//마이페이지 예약내역
+		@RequestMapping(value = "/reservList.do", method = RequestMethod.GET)
+		public String mypage_reservList(@ModelAttribute("scri") SearchCriteria scri, Model model,HttpServletRequest req)throws Exception {
+			
+
+			  HttpSession session = req.getSession();
+			  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
+			 
+			//마이페이지 예약내역리스트,페이징
+			  List<ReservVO> list = null; 
+			  
+			  PageMaker pageMaker = new PageMaker();
+			  pageMaker.setCri(scri);
+			  pageMaker.setTotalCount(mypageService.reserv_count());
+			  
+			 
+			HashMap<String,Object> hm = new HashMap<String,Object>();
+			hm.put("uidx", userVO.getUidx());
+			hm.put("rowStart", scri.getRowStart());
+			hm.put("rowEnd", scri.getRowEnd());
+			list = mypageService.listPage(hm);
+			
+			
+			Date now = new Date();
+			
+			model.addAttribute("now",now);
+			model.addAttribute("list",list);
+			model.addAttribute("pageMaker",pageMaker);
+			
+			
+			return "mypage/mypage_reservList";
+		}
+		
+		//마이페이지 리뷰내역
+		@RequestMapping(value = "/reviewList.do", method = RequestMethod.GET)
+		public String mypage_reviewList(@ModelAttribute("cri2") Criteria2 cri2, Model model,HttpServletRequest req)throws Exception {
+			
+
+			  HttpSession session = req.getSession();
+			  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
+			 
+			//마이페이지 리뷰내역,페이징
+			
+			 List<ReviewVO> reviewList = null;
+			  
+			 HashMap<String,Object> hm2 = new HashMap<String,Object>();
+				hm2.put("uidx", userVO.getUidx());
+				hm2.put("rowStart2", cri2.getRowStart2());
+				hm2.put("rowEnd2", cri2.getRowEnd2());
+			  
+			  
+			  reviewList = mypageService.reviewList(hm2);
+			  
+			  model.addAttribute("reviewList",reviewList);
+			  
+			  PageMaker2 pageMaker2 = new PageMaker2();
+			  pageMaker2.setCri2(cri2);
+			  pageMaker2.setTotalCount2(mypageService.review_count());
+			  model.addAttribute("pageMaker2",pageMaker2);
+			  
+			//마이페이지 
+			return "mypage/mypage_reviewList";
+		}
+		
 	
-	//예약내역 검색
-	/*
-	 * @RequestMapping(value = "/listSearch", method = RequestMethod.GET) public
-	 * void mypage(@ModelAttribute("scri") SearchCriteria scri, Model model)throws
-	 * Exception {
-	 * 
-	 * 
-	 * List<ReservVO> list = null; list = mypageService.listSearch(scri);
-	 * model.addAttribute("list",list);
-	 * 
-	 * PageMaker pageMaker = new PageMaker(); pageMaker.setCri(scri);
-	 * //pageMaker.setTotalCount(mypageService.reserv_count());
-	 * pageMaker.setTotalCount(mypageService.countSearch(scri));
-	 * model.addAttribute("pageMaker",pageMaker);
-	 * 
-	 * }
-	 */
 	
 
 	//비밀번호 수정
