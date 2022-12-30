@@ -392,7 +392,7 @@ public class SellerController {
 			//새로운 이미지가 등록 되어있는지 확인
 			if(files[i].getOriginalFilename() != null && files[i].getOriginalFilename() != "") {
 	             // 기존 이미지 삭제
-				new File(req.getParameter("rimage+'i+1'")).delete();
+				new File(req.getParameter("rimage"+(i+1))).delete();
 	             //이미지 등록
 	             String fileRealName = files[i].getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
 	             long size = files[i].getSize(); //파일 사이즈

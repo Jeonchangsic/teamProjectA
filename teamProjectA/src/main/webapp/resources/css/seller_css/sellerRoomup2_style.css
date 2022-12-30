@@ -58,10 +58,7 @@ body{background-color:aliceblue;}
 #main_left{float:left;
 		 	margin-left:150px; margin-top:80px;}
 #main_left label{font-weight:bold; font-size:20px;}
-#imgborder img {
-    width: 350px;
-    height: 300px;
-	}	
+#imgborder img{width: 100%; height: 100%;}
 #rimage1{margin:10px 0 10px 0;}
 #imgborder{border:1px solid black; width:350px; height:300px; }
 #border{height:384px;}
