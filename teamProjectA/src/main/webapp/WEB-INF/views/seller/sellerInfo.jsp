@@ -133,11 +133,10 @@
 	    		if(inputcode == codetemp){ //인증번호가 일치하는 경우
 	    			$(".email_ok").css("display","inline-block");
 		    		$(".email_no").css("display","none");
-		    		$("#emailFormArea").css("display","none");
+	    			$("#mailFn").show();
 	    		}else{						//인증번호가 일치하지 않는 경우
 	    			$(".email_ok").css("display","none");
 		    		$(".email_no").css("display","inline-block");
-		    		$("#emailFormArea").css("display","none");
 		    		$(".mail_check_input").val("");
 	    		}
 	    	});
@@ -210,7 +209,7 @@
 				<tr>
 					<td>이메일</td>
 					<td><input type='text' name="userEmail" value="${lodging.userEmail}" autoComplete="off" class="mail_input"></td>
-					<td><button type="button" class="btn_size" id="mailFn">변경</button></td>
+					<td><button type="button" class="btn_size mailFn" id="mailFn" >변경</button></td>
 				</tr>
 					<tr>
 					<td></td>

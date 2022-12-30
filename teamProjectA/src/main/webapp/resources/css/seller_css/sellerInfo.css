@@ -141,6 +141,7 @@ main .email_no{
 	font-size:15px; 
 	font-weight:bold; 
     }
+main #mailFn{display:none;}
      
                 /*footer*/
 footer{

@@ -24,6 +24,8 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <!--XE아이콘-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> 
+    <!--지도-->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=16ae71cd4551db2b12f4ba87ec120fc2&libraries=services"></script>
     
     <!---- js --->
     
@@ -58,9 +60,18 @@
     	})
     </script>
     <script>
-    	function callAlert(){
-    		alert("준비중인 서비스입니다.");
-    	};
+    
+		$(function(){
+			$(".btn-open-popup").click(function(){
+	       		document.getElementById("modal").style.display="block";
+	       		document.body.style.overflow = "hidden";
+			});
+			$(".odal_close_btn").click(function(){
+	       		document.getElementById("modal").style.display="none";
+	       		document.body.style.overflow = "auto";
+			});
+		})
+
     </script>
 </head>
 <body>
@@ -73,12 +84,20 @@
                 <li><a href="<%=request.getContextPath() %>/lodging/lodgingList_hotel.do"><i class="xi-city "></i><p>호텔</p></a></li>        
                 <li><a href="<%=request.getContextPath() %>/lodging/lodgingList_villa.do"><i class="xi-beach  "></i><p>펜션/풀빌라</p></a></li>             
                 <li><a href="<%=request.getContextPath() %>/lodging/lodgingList_gh.do"><i class="xi-home-o"></i><p>게스트하우스</p></a></li>        
-                <li><a onclick="callAlert();" id="cursor_Style"><i class="xi-maker-drop"></i><p>내주변</p></a></li>              
+                <li><button type="button" id="cursor_Style" class="btn-open-popup"><i class="xi-maker-drop"></i><p>내주변</p></button></li>              
             </ul>
         </nav>
         <section id="main_img">
             <img src="<%=request.getContextPath() %>/resources/images/index_images/Main_img.png">
         </section>
+        <div id="modal">
+     		<div class="modal_content">
+     		<%@ include file="/WEB-INF/views/index/map.jsp"%>
+     			<button type="button" class="odal_close_btn">창닫기</button>
+     		</div>
+     		<div class="modal_layer"></div>
+  		</div>
+
         <div class="white"></div>
         <section id="slide_list">                                           
             <h4>숙소추천</h4>
