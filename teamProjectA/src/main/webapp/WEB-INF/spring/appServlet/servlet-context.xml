@@ -69,7 +69,8 @@
 	<beans:bean id="MyPageInterceptor" class="team.projectA.interceptor.MyPageInterceptor"></beans:bean> 
 		<interceptors>
 			<interceptor>
-				<mapping path="/mypage/*.do"/>
+				<mapping path="/mypage/reservList.do"/>
+				<mapping path="/mypage/reviewList.do"/>
 				<beans:ref bean="MyPageInterceptor"/>
 			</interceptor>
 		</interceptors>
