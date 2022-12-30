@@ -130,25 +130,6 @@ public class MypageController {
 		
 	
 	
-
-	//비밀번호 수정
-  @ResponseBody
-  @RequestMapping(value="pwModify.do", method = RequestMethod.POST) 
-  public String pwModify(HttpSession session, String password, HttpServletRequest req, HttpServletResponse response) throws Exception{
-	  
-	  
-	  UserVO userVO = (UserVO)session.getAttribute("login");
-	  
-	  System.out.println("password:"+password);
-	  HashMap<String,Object> hm = new HashMap<String,Object>();
-	  hm.put("password", password);
-	  hm.put("userID", userVO.getUserID());
-	  	int result = mypageService.changePw(hm); 
-	  	
-	  	String num = Integer.toString(result);
-	  	
-	  	return num;
-  }
   
   
   //회원탈퇴 페이지로 이동

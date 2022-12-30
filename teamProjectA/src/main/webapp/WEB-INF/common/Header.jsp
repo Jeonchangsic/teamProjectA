@@ -15,7 +15,9 @@
                      	<option value="la"<c:out value="${searchType eq 'la' ? 'selected' : ''}"/>>지역</option>
                      </select>
                      <input type="text" name="keyword" id="keywordInput" value="${keyword}"/>
-                     <button type="button" id="searchBtn">검색</button>
+                     <div class="container">
+                	   	 <button class="btn-1" type="button" id="searchBtn">검색</button>
+                   	 </div>
                 </li>                
                 
                 <li>

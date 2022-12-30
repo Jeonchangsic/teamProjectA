@@ -43,12 +43,12 @@
 	    		alert("특수문자, 영문, 숫자를 조합하여주세요.");
 	    	}else{										//비밀번호 설정이 일치하는경우
 		    	 $.ajax({
-		    		 url:"pwModify.do",
+		    		 url:"<%=request.getContextPath()%>/ajax/pwModify.do",
 		    		 type:"post",
 		    		 data: "password="+password,
 		    		 success:function(data){
 		    				  alert('비밀번호 수정이 완료되었습니다.');
-		    				  //location.reload(); 
+		    				  location.reload(); 
 		    		 }
 		    	 });	
 	    	};
