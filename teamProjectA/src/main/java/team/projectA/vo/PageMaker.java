@@ -90,7 +90,14 @@ public class PageMaker{
 		    } catch(UnsupportedEncodingException e)
 		    { return ""; }
 		 }
-	 
+	 public String makeQuery2(int page){
+	    UriComponents uriComponents =
+	      UriComponentsBuilder.newInstance()
+	      .queryParam("page", page)
+	      .build();
+	      
+	    return uriComponents.toUriString();
+	 }
 
 	 
 	}

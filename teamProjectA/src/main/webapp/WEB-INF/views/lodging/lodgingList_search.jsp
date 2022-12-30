@@ -570,7 +570,7 @@
 					</li>
 				</ul>
 				<h2>인기추천</h2>					
-					<c:forEach var="vo" items="${roomList}" varStatus="status">
+					<c:forEach var="vo" items="${List}" varStatus="status">
 						<!-- break를 위한 boolean변수 doneLoop 선언 -->
 						<c:set var="doneLoop" value="false" />
 						<!-- doneLoop 논리값이 반대가 되면 break -->							

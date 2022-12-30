@@ -66,13 +66,18 @@ public class LodgingServiceImpl implements LodgingService {
 	}
 
 	@Override
-	public List<ReviewVO> selectReview(int lidx) {
-		return lodgingDAO.selectReview(lidx);
+	public List<ReviewVO> selectReview(HashMap hm) {
+		return lodgingDAO.selectReview(hm);
 	}
 
 	@Override
 	public ReviewVO selectLodgingRV(int lidx) {
 		return lodgingDAO.selectLodgingRV(lidx);
+	}
+
+	@Override
+	public int RVCount(int lidx) {
+		return lodgingDAO.RVCount(lidx);
 	}
 
 

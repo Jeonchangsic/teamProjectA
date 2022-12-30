@@ -625,7 +625,7 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		  AND r.ridx = #{ridx}
 	</select>
 	<!-- 리뷰 목록 -->
-	<select id="selectReview" parameterType="int" resultType="reviewVO">
+	<select id="selectReview" parameterType="HashMap" resultType="reviewVO">
 		SELECT rvtitle
 			 , rvcontent
 			 , rvsatisfaction
@@ -642,9 +642,10 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		 WHERE rvnum BETWEEN #{rowStart} and #{rowEnd}
 		 ORDER BY rvdate DESC
 	</select>
-	<select id="RVCount" resultType="int">
+	<select id="RVCount" parameterType="int" resultType="int">
 			SELECT count(rvidx)
 			  FROM reviewtb
+			 WHERE lidx = #{lidx}
 	</select> 
 	<!-- 숙소의 리뷰 총 갯수, 평균 -->
 	<select id="selectLodgingRV" parameterType="int" resultType="reviewVO">

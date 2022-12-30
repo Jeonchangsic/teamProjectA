@@ -60,15 +60,59 @@
 		$(document).ready(function(){
 			$("#rimage1").change(function(){
 				if(this.files && this.files[0]) {					
-					$("#imgborder").empty("<img src=''/>"); // 이미지 지우고
-					$("#imgborder").append("<img src=''/>");  // 이미지 추가
+					$("#border div:first-child").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:first-child").append("<img src=''/>");  // 이미지 추가
 					var reader = new FileReader;
 					reader.onload = function(data) {
-						$("#imgborder img").attr("src", data.target.result);              
+						$("#border div:first-child img").attr("src", data.target.result);              
 						}
 					reader.readAsDataURL(this.files[0]);
+				}
+				if(this.files && this.files[1]) {					
+					$("#border div:nth-child(2)").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:nth-child(2)").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:nth-child(2) img").attr("src", data.target.result);              
 					}
-				});
+					reader.readAsDataURL(this.files[1]);
+				}else{
+					$("#border div:nth-child(2)").empty("<img src=''/>");
+				}
+				if(this.files && this.files[2]) {					
+					$("#border div:nth-child(3)").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:nth-child(3)").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:nth-child(3) img").attr("src", data.target.result);              
+					}
+					reader.readAsDataURL(this.files[2]);
+				}else{
+					$("#border div:nth-child(3)").empty("<img src=''/>");
+				}
+				if(this.files && this.files[3]) {					
+					$("#border div:nth-child(4)").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:nth-child(4)").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:nth-child(4) img").attr("src", data.target.result);              
+					}
+					reader.readAsDataURL(this.files[3]);
+				}else{
+					$("#border div:nth-child(4)").empty("<img src=''/>");
+				}
+				if(this.files && this.files[4]) {					
+					$("#border div:nth-child(5)").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:nth-child(5)").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:nth-child(5) img").attr("src", data.target.result);              
+					}
+					reader.readAsDataURL(this.files[4]);
+				}else{
+					$("#border div:nth-child(5)").empty("<img src=''/>");
+				}
+			});
 			
 			//이미지 필수 등록 안내
 			$('#next').on("click",function() { 
@@ -120,8 +164,15 @@
 	        <!--이미지 업로드 -->
 		        <div class="inputArea" id="main_left">
 				 	<label id="rimage1_btn" for="rimage1" class="rimage1">사진등록</label>
-					<input multiple="multiple" type="file" id="rimage1" name="file"  class="rimage1" required />
-					<div id="imgborder"></div>			
+					<input multiple="multiple" type="file" id="rimage1" name="files"  class="rimage1" required />
+					<div id="border">
+						<div id="imgborder"></div>
+						<div class="imgborder"></div>
+						<div class="imgborder"></div>
+						<div class="imgborder"></div>
+						<div class="imgborder"></div>
+					</div>
+					<p>** ctrl키를 누르고 있으면 이미지를 여러개 클릭할 수 있습니다.</p>		
 				</div>	
 				
 				<input type="hidden" name="lidx" value="${lidxone.lidx}"> 

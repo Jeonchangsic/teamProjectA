@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import team.projectA.service.LodgingService;
+import team.projectA.vo.Criteria;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.LodginginVO;
 import team.projectA.vo.PageMaker;
@@ -123,10 +124,10 @@ public class LodgingController {
 		
 		
 		
-		 List<RoomVO> roomList = lodgingService.listSearch(hm);
+		 List<RoomVO> List = lodgingService.listSearch(hm);
 			/* System.out.println("Ȯ��"+roomList.get(0).getLodgingname()); */
-		 
-		 model.addAttribute("roomList",roomList);
+		 model.addAttribute("type",type);
+		 model.addAttribute("List",List);
 		 model.addAttribute("searchType",scri.getSearchType());
 		 model.addAttribute("keyword", scri.getKeyword());
 		/*
@@ -146,19 +147,33 @@ public class LodgingController {
 //	}
 	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
-	public String lodgingView(int lidx, Model model, HttpServletRequest req, String fromDate, String toDate, String men) {
+	public String lodgingView(int lidx, Model model, HttpServletRequest req, String fromDate, String toDate, String men, @ModelAttribute("cri") Criteria cri, String page) throws Exception {
 			
 		Map<String,Object> map = lodgingService.selectLodging(lidx);
 		
 		List<RoominVO> list = lodgingService.selectRoomList(lidx, men);
 		
-		List<ReviewVO> list2 = lodgingService.selectReview(lidx);
+		//<review paging
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(lodgingService.RVCount(lidx));
+		
+		List<ReviewVO> list2 = null;
+		
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("lidx", lidx);
+		hm.put("rowStart", cri.getRowStart());
+		hm.put("rowEnd", cri.getRowEnd());
+		
+		list2 = lodgingService.selectReview(hm);
 		
 		ReviewVO rvvo = lodgingService.selectLodgingRV(lidx);
-		
+		//>
 		model.addAttribute("map", map);
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("select", page);
 		model.addAttribute("rvvo", rvvo);
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);

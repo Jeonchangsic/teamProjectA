@@ -221,7 +221,7 @@
 	    			<div class="top_left">
 		    			<div class="limage">				
 	    					<div>이미지</div>
-	    					<input type="file" name="file">
+	    					<input type="file" name="file" required>
 	    					<input type="hidden" name="limagename" value="${hm.limagename}">
 	    					<div class="lodging_img">
 	    						<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${hm.limagename}" />

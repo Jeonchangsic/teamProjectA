@@ -112,8 +112,12 @@ public class LodgingDAO {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectRoom", ridx);
 	}
 	
-	public List<ReviewVO> selectReview(int lidx) {
-		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectReview", lidx);
+	public List<ReviewVO> selectReview(HashMap hm) {
+		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectReview", hm);
+	}
+	
+	public int RVCount(int lidx) {
+		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.RVCount", lidx);
 	}
 	
 	public ReviewVO selectLodgingRV(int lidx) {

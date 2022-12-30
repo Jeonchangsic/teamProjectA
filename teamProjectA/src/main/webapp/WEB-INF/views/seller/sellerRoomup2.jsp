@@ -80,16 +80,61 @@
 		
 		//이미지 업로드	
 		$(document).ready(function(){
-		  $("#rimage1").change(function(){
-			   if(this.files && this.files[0]) {
-			    var reader = new FileReader;
-			    reader.onload = function(data) {
-			     $("#imgborder img").attr("src", data.target.result);              
-			    }
-			    reader.readAsDataURL(this.files[0]);
-			   }
-			  });
-		  });
+			$("#rimage1").change(function(){
+				if(this.files && this.files[0]) {					
+					$("#border div:first-child").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:first-child").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:first-child img").attr("src", data.target.result);              
+						}
+					reader.readAsDataURL(this.files[0]);
+				}
+				if(this.files && this.files[1]) {					
+					$("#border div:nth-child(2)").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:nth-child(2)").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:nth-child(2) img").attr("src", data.target.result);              
+					}
+					reader.readAsDataURL(this.files[1]);
+				}else{
+					$("#border div:nth-child(2)").empty("<img src=''/>");
+				}
+				if(this.files && this.files[2]) {					
+					$("#border div:nth-child(3)").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:nth-child(3)").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:nth-child(3) img").attr("src", data.target.result);              
+					}
+					reader.readAsDataURL(this.files[2]);
+				}else{
+					$("#border div:nth-child(3)").empty("<img src=''/>");
+				}
+				if(this.files && this.files[3]) {					
+					$("#border div:nth-child(4)").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:nth-child(4)").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:nth-child(4) img").attr("src", data.target.result);              
+					}
+					reader.readAsDataURL(this.files[3]);
+				}else{
+					$("#border div:nth-child(4)").empty("<img src=''/>");
+				}
+				if(this.files && this.files[4]) {					
+					$("#border div:nth-child(5)").empty("<img src=''/>"); // 이미지 지우고
+					$("#border div:nth-child(5)").append("<img src=''/>");  // 이미지 추가
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$("#border div:nth-child(5) img").attr("src", data.target.result);              
+					}
+					reader.readAsDataURL(this.files[4]);
+				}else{
+					$("#border div:nth-child(5)").empty("<img src=''/>");
+				}
+			});
 		
 	    </script>
 </head>
@@ -120,11 +165,28 @@
 	        <!--이미지 업로드 -->
 		        <div class="inputArea" id="main_left">
 				 	<label for="rimage1">사진등록</label>
-					<input type="file" id="rimage1" name="file" />
-					<div id="imgborder">
-						<div class="select_img">
+					<input type="file" id="rimage1" name="files" multiple required />
+					<p>** ctrl키를 누르고 있으면 이미지를 여러개 클릭할 수 있습니다.</p>
+					<div id="border">
+						<div id="imgborder">
 							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage1}" />
 							<input type="hidden" name="rimage1" value="${roomModify.rimage1}">
+						</div>
+						<div class="imgborder">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage2}" />
+							<input type="hidden" name="rimage2" value="${roomModify.rimage2}">
+						</div>
+						<div class="imgborder">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage3}" />
+							<input type="hidden" name="rimage3" value="${roomModify.rimage3}">
+						</div>
+						<div class="imgborder">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage4}" />
+							<input type="hidden" name="rimage4" value="${roomModify.rimage4}">
+						</div>
+						<div class="imgborder">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage5}" />
+							<input type="hidden" name="rimage5" value="${roomModify.rimage5}">
 						</div>
 					</div>
 				</div>	

@@ -479,12 +479,24 @@
             </ul>
             <div id="pagination">
                 <div class="paging">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button class="next">다음</button>
+					<c:if test="${pageMaker.prev}">
+						<span><a href="<%=request.getContextPath() %>/lodging/lodgingView.do${pageMaker.makeQuery2(pageMaker.startPage - 1)}&lidx=${map.lidx}&fromDate=${fromDate}&toDate=${toDate}&men=${men}">이전</a></span>
+					</c:if>   
+					    
+					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+						<span>
+							<c:if test="${select != idx}">
+								<a href="<%=request.getContextPath() %>/lodging/lodgingView.do${pageMaker.makeQuery2(idx)}&lidx=${map.lidx}&fromDate=${fromDate}&toDate=${toDate}&men=${men}">${idx}</a>
+							</c:if>
+							<c:if test="${select == idx}">
+								<b>${idx}</b>
+							</c:if>
+						</span>
+					</c:forEach>
+					      
+					<c:if test="${pageMaker.next}">
+						<span><a href="<%=request.getContextPath() %>/lodging/lodgingView.do${pageMaker.makeQuery2(pageMaker.endPage + 1)}&lidx=${map.lidx}&fromDate=${fromDate}&toDate=${toDate}&men=${men}">다음</a></span>
+					</c:if>
                 </div>
             </div>
         </article><!--//review>-->

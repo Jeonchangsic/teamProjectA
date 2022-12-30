@@ -59,7 +59,7 @@ body{background-color:aliceblue;}
 #inner #up_nav img{width:20px;}
 
 /*왼쪽 이미지업로드 영역  */
-#main_left{width:300px; height:300px; float:left;
+#main_left{float:left;
 		 	margin-left:150px; margin-top:80px;}
 #main_left #rimage1_btn {
     width: 120px;
@@ -84,6 +84,10 @@ body{background-color:aliceblue;}
  
 
 }
+#border{height:384px;}
+.imgborder{float:left; border:1px solid black; width:86px; height:80px;}
+.imgborder img{width: 100%; height: 100%;}
+#main_left p{color:red; font-size:12px; margin-top:5px;}
 /*오른쪽 정보업로드 영역*/
 #main_right{height:300px; float:right;
 			margin:180px 150px 0 0;}

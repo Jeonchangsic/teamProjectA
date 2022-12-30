@@ -20,7 +20,8 @@ public interface LodgingService {
 	Map<String,Object> selectLodging(int lidx); 
 	List<RoominVO> selectRoomList(int lidx, String men); 
 	RoomVO selectRoom(int ridx);
-	List<ReviewVO> selectReview(int lidx);
+	List<ReviewVO> selectReview(HashMap hm);
+	int RVCount(int lidx);
 	ReviewVO selectLodgingRV(int lidx);
 	List<RoomVO> listSearch(HashMap hm)throws Exception;
 	int countSearch(SearchCriteria scri)throws Exception;

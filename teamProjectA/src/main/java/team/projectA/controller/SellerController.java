@@ -314,47 +314,58 @@ public class SellerController {
 	
 	//객실등록
 	@RequestMapping(value="/sellerRoomup1.do", method = RequestMethod.POST)
-	public String roomup1(RoomVO vo, MultipartFile file, RoominVO room, HttpServletRequest req) throws Exception {
+	public String roomup1(RoomVO vo, MultipartFile[] files, RoominVO room, HttpServletRequest req) throws Exception {
+		
+		for(int i=0; i<files.length; i++) {
+			String fileRealName = files[i].getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
+			long size = files[i].getSize(); //파일 사이즈
 			
-		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-		long size = file.getSize(); //파일 사이즈
-		
-		System.out.println("파일명 : "  + fileRealName);
-		System.out.println("용량크기(byte) : " + size);
-		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자 명을 구함
-		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-		String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
-		
-		
-		/*
-		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
-		  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
-		  타인어를 지원하지 않는 환경에서는 정산 동작이 되지 않습니다.(리눅스가 대표적인 예시)
-		  고유한 랜던 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
-		 */
-		
-		UUID uuid = UUID.randomUUID();
-		System.out.println(uuid.toString());
-		String[] uuids = uuid.toString().split("-");
-		
-		String uniqueName = uuids[0];
-		System.out.println("생성된 고유문자열" + uniqueName);
-		System.out.println("확장자명" + fileExtension);
-		
-		
-		
-		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
-		
-		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
-		try {
-			file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("파일명 : "  + fileRealName);
+			System.out.println("용량크기(byte) : " + size);
+			//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자 명을 구함
+			String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
+			String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+			
+			
+			/*
+			  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
+			  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
+			  타인어를 지원하지 않는 환경에서는 정산 동작이 되지 않습니다.(리눅스가 대표적인 예시)
+			  고유한 랜던 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
+			 */
+			
+			UUID uuid = UUID.randomUUID();
+			System.out.println(uuid.toString());
+			String[] uuids = uuid.toString().split("-");
+			
+			String uniqueName = uuids[0];
+			System.out.println("생성된 고유문자열" + uniqueName);
+			System.out.println("확장자명" + fileExtension);
+			
+			
+			
+			// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
+			
+			File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+			try {
+				files[i].transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(i==0) {
+				vo.setRimage1(uniqueName+fileExtension); //파일이름 + 확장자 vo 에 넣어줌 (db입력)				
+			}else if(i==1) {
+				vo.setRimage2(uniqueName+fileExtension);				
+			}else if(i==2) {
+				vo.setRimage3(uniqueName+fileExtension);				
+			}else if(i==3) {
+				vo.setRimage4(uniqueName+fileExtension);				
+			}else if(i==4) {
+				vo.setRimage5(uniqueName+fileExtension);			
+			}
 		}
-		
-		vo.setRimage1(uniqueName+fileExtension); //파일이름 + 확장자 vo 에 넣어줌 (db입력)
 		int maxridx = sellerService.roomup(vo);		
 		room.setRidx(maxridx);
 		
@@ -375,40 +386,60 @@ public class SellerController {
 	
 	//객실 수정
 	@RequestMapping (value = "/sellerRoomup2.do", method = RequestMethod.POST)
-	public String roomModify(Locale locale, Model model, MultipartFile file, HttpServletRequest req, RoomVO vo, RoominVO in) {
-
-		//새로운 이미지가 등록 되어있는지 확인
-		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-             // 기존 이미지 삭제
-			new File(req.getParameter("rimage1")).delete();
-             //이미지 등록
-             String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-             long size = file.getSize(); //파일 사이즈
-
-             String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-             String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
-                           
-             UUID uuid = UUID.randomUUID();
-
-             String[] uuids = uuid.toString().split("-");
-               
-             String uniqueName = uuids[0];
-               
-             File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
-             try {
-            	 file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
-             } catch (IllegalStateException e) {
-            	 e.printStackTrace();
-             } catch (IOException e) {
-            	 e.printStackTrace();
-             }
-               
-             vo.setRimage1(uniqueName+fileExtension); 
-		}else {
-               //새로운 이미지가 등록되지 않아다면 기본 이미지 그대로 
-			vo.setRimage1(req.getParameter("rimage1"));     
-		}
-             
+	public String roomModify(Locale locale, Model model, MultipartFile[] files, HttpServletRequest req, RoomVO vo, RoominVO in) {
+		
+		for(int i=0; i<files.length; i++) {
+			//새로운 이미지가 등록 되어있는지 확인
+			if(files[i].getOriginalFilename() != null && files[i].getOriginalFilename() != "") {
+	             // 기존 이미지 삭제
+				new File(req.getParameter("rimage+'i+1'")).delete();
+	             //이미지 등록
+	             String fileRealName = files[i].getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
+	             long size = files[i].getSize(); //파일 사이즈
+	
+	             String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
+	             String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+	                           
+	             UUID uuid = UUID.randomUUID();
+	
+	             String[] uuids = uuid.toString().split("-");
+	               
+	             String uniqueName = uuids[0];
+	               
+	             File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+	             try {
+	            	 files[i].transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+	             } catch (IllegalStateException e) {
+	            	 e.printStackTrace();
+	             } catch (IOException e) {
+	            	 e.printStackTrace();
+	             }
+	             if(i==0) {
+	 				vo.setRimage1(uniqueName+fileExtension); //파일이름 + 확장자 vo 에 넣어줌 (db입력)				
+	 			}else if(i==1) {
+	 				vo.setRimage2(uniqueName+fileExtension);				
+	 			}else if(i==2) {
+	 				vo.setRimage3(uniqueName+fileExtension);				
+	 			}else if(i==3) {
+	 				vo.setRimage4(uniqueName+fileExtension);				
+	 			}else if(i==4) {
+	 				vo.setRimage5(uniqueName+fileExtension);			
+	 			}
+			}else {
+	               //새로운 이미지가 등록되지 않아다면 기본 이미지 그대로 
+				if(i==0) {
+					vo.setRimage1(req.getParameter("rimage1"));  //파일이름 + 확장자 vo 에 넣어줌 (db입력)				
+	 			}else if(i==1) {
+	 				vo.setRimage2(req.getParameter("rimage2")); 		
+	 			}else if(i==2) {
+	 				vo.setRimage3(req.getParameter("rimage3")); 			
+	 			}else if(i==3) {
+	 				vo.setRimage4(req.getParameter("rimage4")); 			
+	 			}else if(i==4) {
+	 				vo.setRimage5(req.getParameter("rimage5")); 		
+	 			}   
+			}
+		}     
 		sellerService.roomModify(vo);
 		sellerService.roomModify2(in);
 		 

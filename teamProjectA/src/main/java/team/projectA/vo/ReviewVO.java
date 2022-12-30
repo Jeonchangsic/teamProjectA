@@ -11,16 +11,22 @@ public class ReviewVO extends RoomVO{
 	private double[] rvSatisfactionAry;
 	private String rvContent;
 	private String rvDate;
+	private double avgrv;
+	private int countrv;
 	
 	   
+	public int getCountrv() {
+		return countrv;
+	}
+	public void setCountrv(int countrv) {
+		this.countrv = countrv;
+	}
 	public double[] getRvSatisfactionAry() {
 		return rvSatisfactionAry;
 	}
 	public void setRvSatisfactionAry(double[] rvSatisfactionAry) {
 		this.rvSatisfactionAry = rvSatisfactionAry;
-	}
-	private double avgrv;
-	
+	}	
 	
 	public double getAvgrv() {
 		return avgrv;

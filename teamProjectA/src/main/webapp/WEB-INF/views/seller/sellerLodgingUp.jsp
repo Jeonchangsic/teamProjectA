@@ -153,7 +153,7 @@
 	    			<div class="top_left">
 		    			<div class="limage">				
 	    					<div>사진등록</div>
-	    					<input type="file" name="file">
+	    					<input type="file" name="file" required>
 	    					<div class="lodging_img">
 	    					</div>	 
 	    				</div>  					

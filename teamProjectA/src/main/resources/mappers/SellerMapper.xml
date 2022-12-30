@@ -165,6 +165,10 @@
 						, maxmen
 						, stdmen
 						, rimage1
+						, rimage2
+						, rimage3
+						, rimage4
+						, rimage5
 						, bed
 						, lidx  )
 					VALUES (
@@ -176,6 +180,10 @@
 						, #{maxmen}
 						, #{stdmen}
 						, #{rimage1}
+						, #{rimage2}
+						, #{rimage3}
+						, #{rimage4}
+						, #{rimage5}
 						, #{bed}
 						, #{lidx})
 						
@@ -226,6 +234,10 @@
 					, r.maxmen
 					, r.stdmen
 					, r.rimage1
+					, r.rimage2
+					, r.rimage3
+					, r.rimage4
+					, r.rimage5
 					, r.bed
 					, i.addinfo1
 					, i.addinfo2
@@ -248,6 +260,10 @@
 				, maxmen = #{maxmen}
 				, stdmen = #{stdmen}
 				, rimage1 = #{rimage1}
+				, rimage2 = #{rimage2}
+				, rimage3 = #{rimage3}
+				, rimage4 = #{rimage4}
+				, rimage5 = #{rimage5}
 				, bed = #{bed}
 				WHERE ridx = #{ridx} 
 	</update>
