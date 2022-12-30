@@ -118,15 +118,15 @@
 	            <div id="btnArea">
 	                <div id="btnArea2">
 	                    <ul>
-	                    	<c:if test="${pageMaker.prev}">
-	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/reservList.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+	                    	<c:if test="${pageMaker2.prev2}">
+	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/reservList.do?page2=${pageMaker2.startPage2 - 1}">이전</a></li>
 	                    	</c:if>
-	                    	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/reservList.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+	                    	<c:forEach begin="${pageMaker2.startPage2}" end="${pageMaker2.endPage2}" var="idx2">
+	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/reservList.do?page2=${idx2}">${idx2}</a></li>
 	                    	</c:forEach>
 	                    	
-	                    	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/reservList.do${pageMaker.makeQuery(pageMaker.endPage +1)}">다음</a></li>
+	                    	<c:if test="${pageMaker2.next2 && pageMaker2.endPage2 > 0}">
+	                    		<li class="float"><a class="a_margin" href="<%=request.getContextPath()%>/mypage/reservList.do?page2=${pageMaker2.endPage2 +1}">다음</a></li>
 	                    	</c:if>
 	                    </ul>
 	                </div>

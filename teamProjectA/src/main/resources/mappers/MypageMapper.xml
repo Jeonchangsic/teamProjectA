@@ -23,7 +23,7 @@
 				WHERE reserv_idx > 0	
 		</select>
 		
-		<!-- 게시물 목록 + 페이징 -->
+		<!-- 예약 목록 + 페이징 -->
 		<select id="listPage" parameterType="HashMap" resultType="reservVO">
 			SELECT reserv_idx
 				,username
@@ -67,7 +67,7 @@
 						   AND u.uidx = #{uidx}
 						   )rtb 
 							WHERE rNum 
-							BETWEEN #{rowStart} AND #{rowEnd} 
+							BETWEEN #{rowStart2} AND #{rowEnd2} 
 							ORDER BY reserv_idx DESC
 		</select>
 		

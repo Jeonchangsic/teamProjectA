@@ -89,15 +89,18 @@ main #memberInfo{
     font-weight: bold;
     width:110px;
     padding-right:7px;
+    cursor:pointer;
 }
 main #conform{
     border-right:1px solid #919191;
     width:110px;
+    cursor:pointer;
     padding: 0 7px 0 7px;
 }
 main #reviewList{
     width:110px;
     padding-left:7px;
+    cursor:pointer;
 }
 main #contentsArea1{
     border:1px solid #919191;
@@ -106,7 +109,7 @@ main #contentsArea1{
     border-radius: 3px;
 }
 main #table1{
-    margin:30px auto;
+    margin: 30px auto 20px 0;
     height:300px;
 }
 main .info{
@@ -118,7 +121,7 @@ main #table2{
     height:200px;
 }
 main .margin1{
-    padding-right:50px;
+   	padding: 0 30px 0 24px;
 }
 main #clearBtn{
     margin-left:200px;

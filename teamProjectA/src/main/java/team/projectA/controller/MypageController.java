@@ -60,72 +60,73 @@ public class MypageController {
 		  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
 		 
 		  
-		//마이페이지 
 		return "mypage/mypage";
 	}
-		//마이페이지 예약내역
-		@RequestMapping(value = "/reservList.do", method = RequestMethod.GET)
-		public String mypage_reservList(@ModelAttribute("scri") SearchCriteria scri, Model model,HttpServletRequest req)throws Exception {
-			
-
-			  HttpSession session = req.getSession();
-			  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
-			 
-			//마이페이지 예약내역리스트,페이징
-			  List<ReservVO> list = null; 
-			  
-			  PageMaker pageMaker = new PageMaker();
-			  pageMaker.setCri(scri);
-			  pageMaker.setTotalCount(mypageService.reserv_count());
-			  
-			 
-			HashMap<String,Object> hm = new HashMap<String,Object>();
-			hm.put("uidx", userVO.getUidx());
-			hm.put("rowStart", scri.getRowStart());
-			hm.put("rowEnd", scri.getRowEnd());
-			list = mypageService.listPage(hm);
-			
-			
-			Date now = new Date();
-			
-			model.addAttribute("now",now);
-			model.addAttribute("list",list);
-			model.addAttribute("pageMaker",pageMaker);
-			
-			
-			return "mypage/mypage_reservList";
-		}
+	//마이페이지 예약내역
+	@RequestMapping(value = "/reservList.do", method = RequestMethod.GET)
+	public String mypage_reservList(@ModelAttribute("cri2") Criteria2 cri2, Model model,HttpServletRequest req)throws Exception {
 		
-		//마이페이지 리뷰내역
-		@RequestMapping(value = "/reviewList.do", method = RequestMethod.GET)
-		public String mypage_reviewList(@ModelAttribute("cri2") Criteria2 cri2, Model model,HttpServletRequest req)throws Exception {
-			
 
-			  HttpSession session = req.getSession();
-			  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
-			 
-			//마이페이지 리뷰내역,페이징
-			
-			 List<ReviewVO> reviewList = null;
-			  
-			 HashMap<String,Object> hm2 = new HashMap<String,Object>();
-				hm2.put("uidx", userVO.getUidx());
-				hm2.put("rowStart2", cri2.getRowStart2());
-				hm2.put("rowEnd2", cri2.getRowEnd2());
-			  
-			  
-			  reviewList = mypageService.reviewList(hm2);
-			  
-			  model.addAttribute("reviewList",reviewList);
-			  
-			  PageMaker2 pageMaker2 = new PageMaker2();
-			  pageMaker2.setCri2(cri2);
-			  pageMaker2.setTotalCount2(mypageService.review_count());
-			  model.addAttribute("pageMaker2",pageMaker2);
-			  
-			//마이페이지 
-			return "mypage/mypage_reviewList";
-		}
+		  HttpSession session = req.getSession();
+		  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
+		 
+		//마이페이지 예약내역리스트,페이징
+		  List<ReservVO> list = null; 
+		  
+		  HashMap<String,Object> hm = new HashMap<String,Object>();
+		  hm.put("uidx", userVO.getUidx());
+		  hm.put("rowStart2", cri2.getRowStart2());
+		  hm.put("rowEnd2", cri2.getRowEnd2());
+		  
+		  list = mypageService.listPage(hm);
+		  
+		  model.addAttribute("list",list);
+		  
+		  
+		  PageMaker2 pageMaker2 = new PageMaker2();
+		  pageMaker2.setCri2(cri2);
+		  pageMaker2.setTotalCount2(mypageService.reserv_count());
+		  
+		  model.addAttribute("pageMaker2",pageMaker2);
+		  
+
+		Date now = new Date();
+		model.addAttribute("now",now);
+		
+		
+		return "mypage/mypage_reservList";
+	}
+		
+	//마이페이지 리뷰내역
+	@RequestMapping(value = "/reviewList.do", method = RequestMethod.GET)
+	public String mypage_reviewList(@ModelAttribute("cri2") Criteria2 cri2, Model model,HttpServletRequest req)throws Exception {
+		
+
+		  HttpSession session = req.getSession();
+		  UserVO userVO = (UserVO)session.getAttribute("login"); //오브젝트 타입이기 때문에 형변환을 하여 맞춰준다.
+		 
+		//마이페이지 리뷰내역,페이징
+		
+		 List<ReviewVO> reviewList = null;
+		  
+		 HashMap<String,Object> hm2 = new HashMap<String,Object>();
+			hm2.put("uidx", userVO.getUidx());
+			hm2.put("rowStart2", cri2.getRowStart2());
+			hm2.put("rowEnd2", cri2.getRowEnd2());
+		  
+		  
+		  reviewList = mypageService.reviewList(hm2);
+		  
+		  model.addAttribute("reviewList",reviewList);
+		  
+		  PageMaker2 pageMaker2 = new PageMaker2();
+		  pageMaker2.setCri2(cri2);
+		  pageMaker2.setTotalCount2(mypageService.review_count());
+		  model.addAttribute("pageMaker2",pageMaker2);
+		  
+		//마이페이지 
+		return "mypage/mypage_reviewList";
+	}
 		
 	
 	

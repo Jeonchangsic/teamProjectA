@@ -114,7 +114,10 @@ select{
 }
 
 #searchBtn{
-	width:40px;
+	vertical-align: middle;
+    width: 66px;
+    height: 24px;
+    cursor:pointer;
 	
 } 
 header .search{
