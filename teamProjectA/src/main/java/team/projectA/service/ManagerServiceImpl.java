@@ -58,9 +58,9 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public List<ReservVO> reservlist(ReservVO vo1) {
+	public List<ReservVO> reservlist(SearchCriteria scri4) {
 		
-		return managerDAO.reservlist(vo1);
+		return managerDAO.reservlist(scri4);
 	}
 
 	@Override

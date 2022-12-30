@@ -63,15 +63,11 @@ public class ManagerController {
 		pageMaker.setTotalCount(managerService.userlistCount());
 		List<UserVO> muserList = null;
 		HashMap<String, Object> hm1 = new HashMap<String, Object>();
-		List<ReservVO> list1 = managerService.reservlist(vo1);
 		List<UserVO> list = userService.userList(vo);
-		List<QnaVO> list2 = managerService.managerqnalist();
 		hm1.put("rowStart", scri.getRowStart());
 		hm1.put("rowEnd", scri.getRowEnd());
 		muserList = managerService.muserList(hm1);
 		model.addAttribute("list",list);
-		model.addAttribute("list1",list1);
-		model.addAttribute("list2",list2);
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("muserList",muserList);
 	
@@ -206,7 +202,7 @@ public class ManagerController {
 	@RequestMapping(value = "/managerReservList.do", method = RequestMethod.GET)
 	public String reservList(UserVO vo, Model model,ReservVO vo1,@ModelAttribute("scri") SearchCriteria scri4) {
 		
-		List<ReservVO> list1 = managerService.reservlist(vo1);
+		List<ReservVO> list1 = managerService.reservlist(scri4);
 		model.addAttribute("list1",list1);
 		
 		PageMaker pageMaker = new PageMaker();

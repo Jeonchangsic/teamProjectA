@@ -52,7 +52,7 @@
             <tbody>
             <c:forEach var="rdv" items="${lodlist}" varStatus="status">
                 <tr style="text-align:center;">
-                    <td>${rdv.limagename }</td>
+                    <td><img src ="<%=request.getContextPath() %>/resources/images/seller_images/${rdv.limagename }"></td>
                     <td>${rdv.lodgingname }</td>
                     <td>${rdv.lodgingaddr }</td>
                     <td>${rdv.lodgingkind }</td>

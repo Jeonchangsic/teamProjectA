@@ -19,7 +19,7 @@ public interface ManagerService {
 	public int approval(int uidx);
 	public int requestDel(int lidx);
 	public int requestN(int uidx);
-	public List<ReservVO> reservlist(ReservVO vo1);
+	public List<ReservVO> reservlist(SearchCriteria scri4);
 	public int reservcount();
 	public List<QnaVO> managerqnalist();
 	public int qnaReply(HashMap hm);

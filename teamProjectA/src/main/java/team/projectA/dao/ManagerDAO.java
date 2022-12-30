@@ -42,8 +42,8 @@ public class ManagerDAO {
 	public int requestN(int uidx) {
 		return sqlSession.update("team.projectA.mapper.ManagerMapper.requestN", uidx);
 	}
-	public List<ReservVO> reservlist(ReservVO vo1){
-		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.reservlist", vo1);
+	public List<ReservVO> reservlist(SearchCriteria scri4){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.reservlist", scri4);
 	}
 	public int reservcount() {
 		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.reservcount");
