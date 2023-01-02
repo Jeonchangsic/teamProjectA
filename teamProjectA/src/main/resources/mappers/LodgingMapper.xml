@@ -905,6 +905,7 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		<if test="men != null and men != ''">
 			AND r.maxmen <![CDATA[>=]]> ${men}
 		</if>
+		ORDER BY r.ridx
 	</select>
 	<select id="selectRoom" parameterType="int" resultType="roomVO">
 		SELECT r.ridx
