@@ -145,21 +145,20 @@
 			result.value = number;
 		}
     </script>
-    <script>
-		//검색창 출력 버튼
-		$(function(){
-			$(".searchBarOn").click(function() {
-			    $("#searchArea").animate({
-			        width: "toggle"}, 200, "linear");
-			    $(".search_background").toggle();
-			    $("#room_val").toggle();
-			})
-		})
-    </script>
 </head>
 <body>
-    <%@ include file="/WEB-INF/common/Header.jsp" %>
-                <!-- end header-->
+    <header>
+        <div class="inner">
+            <h1><a href="<%=request.getContextPath()%>/index/index.do"><img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/logo.svg" alt="저긴어때"></a></h1>
+            <ul>
+                <li>
+                    <input type="search" class="search_bar">
+                    <a href="#" class="search_btn"><i class="xi-search xi-1x search"></i></a>
+                </li><!-- **검색창 구현**-->
+                <li><a href="#" id="login">로그인</a></li><!-- 폰트 스타일 수정-->
+            </ul>
+        </div><!--//inner-->
+    </header><!--//header-->
 
     <main>
         <section class="lodging_view">

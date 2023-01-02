@@ -247,6 +247,7 @@ public class LodgingController {
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);
 		model.addAttribute("men", men);
+		System.out.println("Ddd"+list.get(1).getRefri());
 		//세션에 담기
 		HttpSession session = req.getSession();
 		
