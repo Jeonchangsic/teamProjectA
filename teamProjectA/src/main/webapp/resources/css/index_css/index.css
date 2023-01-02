@@ -213,6 +213,7 @@ main .slide_list { font-size:15px; font-weight:bold; line-height:2em;}
   position:relative;
   width:100%;
   height:100%;
+  vertical-align: middle;
   z-index:7;
 }
 
@@ -220,6 +221,9 @@ main .slide_list { font-size:15px; font-weight:bold; line-height:2em;}
   display:inline-block;
   width:100px;
   margin-left:calc(100% - 100px - 10px);
+  margin-top: 20px;
+  background: none;
+  border-radius: 3px;
 }
 #modal .modal_content {
 position: absolute;
@@ -369,4 +373,6 @@ footer #copy{color:#919191;}
 }
 #cursor_Style{
 	cursor:pointer;
+	border: 0px;
+    background: none;
 }

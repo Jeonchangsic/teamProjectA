@@ -65,6 +65,11 @@
 			$(".btn-open-popup").click(function(){
 	       		document.getElementById("modal").style.display="block";
 	       		document.body.style.overflow = "hidden";
+	       		//모달시 지도 안나오는 문제 해결
+	       		window.setTimeout(function() {
+	       		    map.relayout();
+	       			map.setCenter(new daum.maps.LatLng(35.84027668135863, 127.1324807871931))
+	       		}, 0);
 			});
 			$(".odal_close_btn").click(function(){
 	       		document.getElementById("modal").style.display="none";
