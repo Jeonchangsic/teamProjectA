@@ -280,7 +280,7 @@
 			</otherwise>
 		</choose>
 		<if test="men != null and men != ''">
-			AND r.maxmen [!(CDATA[>=])] ${men}
+			AND r.maxmen <![CDATA[>=]]> ${men}
 		</if>
 		<trim prefix="AND (" prefixOverrides="OR" suffix=")">
 			<if test="bedArr != null">
@@ -634,7 +634,7 @@
 			</otherwise>
 		</choose>
 		<if test="men != null and men != ''">
-			AND r.maxmen [!(CDATA[>=])] ${men}
+			AND r.maxmen <![CDATA[>=]]> ${men}
 		</if>
 		<trim prefix="AND (" prefixOverrides="OR" suffix=")">
 			<if test="bedArr != null">
