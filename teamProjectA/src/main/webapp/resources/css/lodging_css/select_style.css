@@ -1,7 +1,11 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
 a {text-decoration: none; color:black;}
 /*header */
+.font_Style{
+	font-family: 'Noto Sans KR', 산세리프;
+}
 header #inner{ 
 	width:1024px; 
 	height:100%; 
@@ -48,19 +52,22 @@ header li a{
    
 }
 select{
-	width:80px;
-	height:23px;
-	border-radius:5px;
+    width: 68px;
+    height: 25px;
+    border-radius: 5px;
+    vertical-align: middle;
 }
  #keywordInput{
-	height:20px;
+	width: 200px;
+    height: 21px;
+    vertical-align: middle;
 }
 
 #searchBtn{
 	vertical-align: middle;
-    width: 66px;
-    height: 24px;
-    cursor:pointer;
+    width: 60px;
+    height: 25px;
+    cursor: pointer;
 	
 } 
 header .search{
@@ -109,6 +116,36 @@ header #manager{
 }  
 header #manager:hover{
 	color:white;
+}
+.xi-search{
+	font-size:31px;
+	padding-right: 14px;
+}
+#searchArea{
+	position:relative;
+	overflow: hidden; 
+	display:none; 
+	z-index:998;
+	left:-1%;
+}
+.searchBarOn{
+	position:relative;
+	cursor:pointer;
+	color:rgba(255,255,255,0.8);
+	z-index:999;
+}
+.searchBarOn:hover{
+	color:white;
+}
+.search_background{
+	position:fixed;
+	top:0;
+	left:0; 
+	bottom:0;
+	right:0;
+	background:rgba(0,0,0,0.3);
+	display:none;
+	z-index:997;
 }
 header #room_val{float:left; position:absolute; left:50%; top:50%;
                 transform:translate(-50%,-50%);
