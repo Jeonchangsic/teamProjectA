@@ -44,20 +44,20 @@
 			
 			var maxAppend = 1;
 			
-			if(${roomModify.addinfo2 != null}){
-				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo2" value = "${roomModify.addinfo2}" required><br>');
+			if(${mo.addinfo2 != null}){
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo2" value = "${mo.addinfo2}" required><br>');
 				maxAppend++;
 			}
-			if(${roomModify.addinfo3 != null}){
-				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo3" value = "${roomModify.addinfo3}" required><br>');
+			if(${mo.addinfo3 != null}){
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo3" value = "${mo.addinfo3}" required><br>');
 				maxAppend++;
 			}
-			if(${roomModify.addinfo4 != null}){
-				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo4" value = "${roomModify.addinfo4}" required><br>');
+			if(${mo.addinfo4 != null}){
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo4" value = "${mo.addinfo4}" required><br>');
 				maxAppend++;
 			}
-			if(${roomModify.addinfo5 != null}){
-				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo5" value = "${roomModify.addinfo5}" required><br>');
+			if(${mo.addinfo5 != null}){
+				$("#bottom_info").append('<br><input type="text" class="plus" name = "addinfo5" value = "${mo.addinfo5}" required><br>');
 				maxAppend++;
 			}
 						
@@ -181,61 +181,61 @@
 					<p>** ctrl키를 누르고 있으면 이미지를 여러개 클릭할 수 있습니다.</p>
 					<div id="border">
 						<div id="imgborder">
-							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage1}" />
-							<input type="hidden" name="rimage1" value="${roomModify.rimage1}">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage1}" />
+							<input type="hidden" name="rimage1" value="${mo.rimage1}">
 						</div>
 						<div class="imgborder">
-							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage2}" />
-							<input type="hidden" name="rimage2" value="${roomModify.rimage2}">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage2}" />
+							<input type="hidden" name="rimage2" value="${mo.rimage2}">
 						</div>
 						<div class="imgborder">
-							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage3}" />
-							<input type="hidden" name="rimage3" value="${roomModify.rimage3}">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage3}" />
+							<input type="hidden" name="rimage3" value="${mo.rimage3}">
 						</div>
 						<div class="imgborder">
-							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage4}" />
-							<input type="hidden" name="rimage4" value="${roomModify.rimage4}">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage4}" />
+							<input type="hidden" name="rimage4" value="${mo.rimage4}">
 						</div>
 						<div class="imgborder">
-							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${roomModify.rimage5}" />
-							<input type="hidden" name="rimage5" value="${roomModify.rimage5}">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage5}" />
+							<input type="hidden" name="rimage5" value="${mo.rimage5}">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="ridx" value="${roomModify.ridx}">
+				<input type="hidden" name="ridx" value="${mo.ridx}">
 				<!--정보입력-->
 				<div id="main_right">
 					<table>
 						<tr>
 							<td>객실명</td>
 							<td><input type="text" name="rtype"
-								value="${roomModify.rtype}" required></td>
+								value="${mo.rtype}" required></td>
 						</tr>
 						<tr>
 							<td>가격</td>
 							<td><input type="text" name="rprice" pattern="[0-9]+"
-								placeholder="숫자를 입력해주세요" value="${roomModify.rprice}" required></td>
+								placeholder="숫자를 입력해주세요" value="${mo.rprice}" required></td>
 						</tr>
 						<tr>
 							<td>객실수</td>
 							<td><input type="text" name="rnum " pattern="[0-9]+"
-								placeholder="숫자를 입력해주세요" value="${roomModify.rnum}" required></td>
+								placeholder="숫자를 입력해주세요" value="${mo.rnum}" required></td>
 						</tr>
 						<tr>
 							<td>남은 객실수</td>
 							<td><input type="text" name="spareroom " pattern="[0-9]+"
-								placeholder="숫자를 입력해주세요" value="${roomModify.spareroom}"
+								placeholder="숫자를 입력해주세요" value="${mo.spareroom}"
 								required></td>
 						</tr>
 						<tr>
 							<td>기준인원</td>
 							<td><input type="text" name="stdmen" pattern="[0-9]+"
-								placeholder="숫자를 입력해주세요" value="${roomModify.stdmen}" required></td>
+								placeholder="숫자를 입력해주세요" value="${mo.stdmen}" required></td>
 						</tr>
 						<tr>
 							<td>최대인원</td>
 							<td><input type="text" name="maxmen" pattern="[0-9]+"
-								placeholder="숫자를 입력해주세요" value="${roomModify.maxmen}" required /></td>
+								placeholder="숫자를 입력해주세요" value="${mo.maxmen}" required /></td>
 						</tr>
 					</table>
 				</div>
@@ -250,33 +250,33 @@
 								<div class="public_in">
 									<ul id="in_left" class="filter_check">
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="roomspa"> <label>객실스파</label></li>
+											class="ch" name="roomspa" <c:if test="${mo.roomspa eq 'Y'}">checked</c:if>> <label>객실스파</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="wifi"> <label>와이파이</label></li>
+											class="ch" name="wifi" <c:if test="${mo.wifi eq 'Y'}">checked</c:if>> <label>와이파이</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="tv"> <label>TV</label></li>
+											class="ch" name="tv" <c:if test="${mo.tv eq 'Y'}">checked</c:if>> <label>TV</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="refri"> <label>냉장고</label></li>
+											class="ch" name="refri" <c:if test="${mo.refri eq 'Y'}">checked</c:if>> <label>냉장고</label></li>
 									</ul>
 									<ul id="in_middle" class="filter_check">
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="iron"> <label>다리미</label></li>
+											class="ch" name="iron" <c:if test="${mo.iron eq 'Y'}">checked</c:if>> <label>다리미</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="bath"> <label>욕조</label></li>
+											class="ch" name="bath" <c:if test="${mo.bath eq 'Y'}">checked</c:if>> <label>욕조</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="dryer"> <label>드라이기</label></li>
+											class="ch" name="dryer" <c:if test="${mo.dryer eq 'Y'}">checked</c:if>> <label>드라이기</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="ricecooker"> <label>전기밥솥</label></li>
+											class="ch" name="ricecooker" <c:if test="${mo.ricecooker eq 'Y'}">checked</c:if>> <label>전기밥솥</label></li>
 									</ul>
 									<ul id="in_right" class="filter_check">
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="minibar"> <label>미니바</label></li>
+											class="ch" name="minibar" <c:if test="${mo.minibar eq 'Y'}">checked</c:if>> <label>미니바</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="bathitem"> <label>욕실용품</label></li>
+											class="ch" name="bathitem" <c:if test="${mo.bathitem eq 'Y'}">checked</c:if>> <label>욕실용품</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="aircon"> <label>에어컨</label></li>
+											class="ch" name="aircon" <c:if test="${mo.aircon eq 'Y'}">checked</c:if>> <label>에어컨</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="shower"> <label>객실샤워실</label></li>
+											class="ch" name="shower" <c:if test="${mo.shower eq 'Y'}">checked</c:if>> <label>객실샤워실</label></li>
 									</ul>
 								</div>
 							</div>
@@ -287,18 +287,18 @@
 						<ul>
 							<li>
 								<p>싱글</p> <input id="B1" type="radio" name="bed"
-								value="single_bed" required /> <label for="B1" id="single"></label>
+								value="single_bed" required <c:if test="${mo.bed eq 'single_bed'}">checked</c:if> /> <label for="B1" id="single"></label>
 							</li>
 							<li>
 								<p>더블</p> <input id="B2" type="radio" name="bed"
-								value="double_bed" /> <label for="B2" id="double"></label>
+								value="double_bed" <c:if test="${mo.bed eq 'double_bed'}">checked</c:if> /> <label for="B2" id="double"></label>
 							<li>
 								<p>트윈</p> <input id="B3" type="radio" name="bed"
-								value="twin_bed" /> <label for="B3" id="twin"></label>
+								value="twin_bed" <c:if test="${mo.bed eq 'twin_bed'}">checked</c:if> /> <label for="B3" id="twin"></label>
 							</li>
 							<li>
 								<p>온돌</p> <input id="B4" type="radio" name="bed"
-								value="ondol_bed" /> <label for="B4" id="ondol"></label>
+								value="ondol_bed" <c:if test="${mo.bed eq 'ondol_bed'}">checked</c:if> /> <label for="B4" id="ondol"></label>
 							</li>
 						</ul>
 					</div>
@@ -306,7 +306,7 @@
 						<p>추가정보
 						<p>
 							<input type="text" class="plus2" name="addinfo1"
-								value="${roomModify.addinfo1}">
+								value="${mo.addinfo1}">
 							<button type="button" name="plus" id="plus" class="btn">
 								<img
 									src="<%=request.getContextPath()%>/resources/images/seller_images/sellerPlus_image.png"

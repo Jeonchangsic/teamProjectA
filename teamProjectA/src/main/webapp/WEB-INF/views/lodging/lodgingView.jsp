@@ -4,7 +4,7 @@
 <%@ page import="team.projectA.vo.*" %>
 <%
 	Map<String,Object> map = (Map<String,Object>)request.getAttribute("map");
-	List<RoomVO> list = (List<RoomVO>)request.getAttribute("list");
+	List<RoominVO> list = (List<RoominVO>)request.getAttribute("list");
 	//숙소 슬라이더에 객실 이미지 삽입하기 (for문 및 배열 사용) //for문으로 모든 이미지 담기
 	String total_img = (String)map.get("limagename"); 
 	for(int i=0; i<list.size(); i++){
@@ -52,12 +52,12 @@
         });//---info.detail
 
         //modal
-        $(document).on('click', '.room_info', function(e){            
-            $('.modal').css({'display':'block'});
+        $(document).on('click', '.room_info', function(){            
+            $(this).prev('.modal').css({'display':'block'});
             $('html, body').css({'overflow': 'hidden'}); //모달팝업 중 html,body의 scroll을 hidden시킴
             });
         
-        $(document).on('click', '.modal_close', function(e){            
+        $(document).on('click', '.modal_close', function(){            
             $('.modal').css({'display':'none'});
             $('html, body').css({'overflow': 'auto'}); //scroll hidden 해제
             });//---modal---

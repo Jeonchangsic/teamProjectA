@@ -58,6 +58,9 @@ public class LodgingController {
 		 model.addAttribute("rvo", rvo);
 		model.addAttribute("linvo", linvo);
 		model.addAttribute("rinvo", rinvo);
+		model.addAttribute("fromDate", fromDate);
+		model.addAttribute("toDate", toDate);
+		model.addAttribute("men", men);
 		 
 		return "lodging/lodgingList_gh"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
@@ -89,6 +92,9 @@ public class LodgingController {
 		model.addAttribute("rvo", rvo);
 		model.addAttribute("linvo", linvo);
 		model.addAttribute("rinvo", rinvo);
+		model.addAttribute("fromDate", fromDate);
+		model.addAttribute("toDate", toDate);
+		model.addAttribute("men", men);
 		
 		return "lodging/lodgingList_motel"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
@@ -103,12 +109,15 @@ public class LodgingController {
 		model.addAttribute("rvo", rvo);
 		model.addAttribute("linvo", linvo);
 		model.addAttribute("rinvo", rinvo);
+		model.addAttribute("fromDate", fromDate);
+		model.addAttribute("toDate", toDate);
+		model.addAttribute("men", men);
 		
 		return "lodging/lodgingList_villa"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
 	@RequestMapping(value = "/lodgingList_search.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
-	public String list_search(@ModelAttribute("scri") SearchCriteria scri, Model model, String type)throws Exception {
+	public String list_search(@ModelAttribute("scri") SearchCriteria scri, Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men)throws Exception {
 		
 		
 		/*
@@ -117,17 +126,77 @@ public class LodgingController {
 		 */
 		
 		
-		HashMap<String,String> hm = new HashMap<String,String>();
+		HashMap<String,Object> hm = new HashMap<String,Object>();
 		hm.put("type", type);
+		hm.put("area", area);
+		hm.put("fromDate", fromDate);
+		hm.put("toDate", toDate);
+		hm.put("men", men);
 		hm.put("keyword", scri.getKeyword());
 		hm.put("searchType", scri.getSearchType());
+		hm.put("bedArr", rvo.getBedArr());
+		hm.put("roomspa", rinvo.getRoomspa());
+		hm.put("wifi", rinvo.getWifi());
+		hm.put("tv", rinvo.getTv());
+		hm.put("refri", rinvo.getRefri());
+		hm.put("bath", rinvo.getBath());
+		hm.put("iron", rinvo.getIron());
+		hm.put("minibar", rinvo.getMinibar());
+		hm.put("bathitem", rinvo.getBathitem());
+		hm.put("aircon", rinvo.getAircon());
+		hm.put("shower", rinvo.getShower());
+		hm.put("dryer", rinvo.getDryer());
+		hm.put("ricecooker", rinvo.getRicecooker());
+		hm.put("fitness", linvo.getFitness());
+		hm.put("sauna", linvo.getSauna());
+		hm.put("restaurant", linvo.getRestaurant());
+		hm.put("lounge", linvo.getLounge());
+		hm.put("bbq", linvo.getBbq());
+		hm.put("publicspa", linvo.getPublicspa());
+		hm.put("seminar", linvo.getSeminar());
+		hm.put("singing", linvo.getSinging());
+		hm.put("washingmachine", linvo.getWashingmachine());
+		hm.put("dehydrator", linvo.getDehydrator());
+		hm.put("cooking", linvo.getCooking());
+		hm.put("spa", linvo.getSpa());
+		hm.put("pool", linvo.getPool());
+		hm.put("golf", linvo.getGolf());
+		hm.put("elevator", linvo.getElevator());
+		hm.put("pc", linvo.getPc());
+		hm.put("cafe", linvo.getCafe());
+		hm.put("footvolleyball", linvo.getFootvolleyball());
+		hm.put("store", linvo.getStore());
+		hm.put("dining", linvo.getDining());
+		hm.put("dryer", linvo.getDryer());
+		hm.put("parking", linvo.getParking());
+		hm.put("publicshower", linvo.getPublicshower());
+		hm.put("ski", linvo.getSki());
+		hm.put("pickup", linvo.getPickup());
+		hm.put("printer", linvo.getPrinter());
+		hm.put("locker", linvo.getLocker());
+		hm.put("breakfast", linvo.getBreakfast());
+		hm.put("valetparking", linvo.getValetparking());
+		hm.put("dog", linvo.getDog());
+		hm.put("inroomcooking", linvo.getInroomcooking());
+		hm.put("keepluggage", linvo.getKeepluggage());
+		hm.put("freeparking", linvo.getFreeparking());
+		hm.put("inroomsmoking", linvo.getInroomsmoking());
+		hm.put("nosmoking", linvo.getNosmoking());
+		hm.put("creditcard", linvo.getCreditcard());
 		
 		
 		
-		 List<RoomVO> List = lodgingService.listSearch(hm);
+		List<Map<String,Object>> List = lodgingService.listSearch(hm);
 			/* System.out.println("Ȯ��"+roomList.get(0).getLodgingname()); */
 		 model.addAttribute("type",type);
-		 model.addAttribute("List",List);
+		 model.addAttribute("area", area);
+		 model.addAttribute("rvo", rvo);
+		 model.addAttribute("linvo", linvo);
+		 model.addAttribute("rinvo", rinvo);
+		 model.addAttribute("fromDate", fromDate);
+		 model.addAttribute("toDate", toDate);
+		 model.addAttribute("men", men);
+		 model.addAttribute("list",List);
 		 model.addAttribute("searchType",scri.getSearchType());
 		 model.addAttribute("keyword", scri.getKeyword());
 		/*
@@ -178,7 +247,7 @@ public class LodgingController {
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);
 		model.addAttribute("men", men);
-		
+		System.out.println("Ddd"+list.get(1).getRefri());
 		//세션에 담기
 		HttpSession session = req.getSession();
 		

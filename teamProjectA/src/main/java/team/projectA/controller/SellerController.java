@@ -379,7 +379,7 @@ public class SellerController {
 	public String roomup2(Locale locale, Model model, int ridx) {
 		
 		RoominVO roomModify = sellerService.roomModiInfo(ridx);
-		model.addAttribute("roomModify", roomModify);
+		model.addAttribute("mo", roomModify);
 		
 		return "seller/sellerRoomup2";
 	}

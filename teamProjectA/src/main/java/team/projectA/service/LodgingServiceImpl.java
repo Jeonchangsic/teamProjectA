@@ -35,11 +35,6 @@ public class LodgingServiceImpl implements LodgingService {
 	public List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
 		return lodgingDAO.selectLodgingList(lodgingkind, type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 	}
-
-	@Override
-	public List<RoomVO> selectListSearch(String type) {
-		return lodgingDAO.selectListSearch(type);
-	}
 	
 	@Override
 	public Map<String,Object> selectLodging(int lidx) {
@@ -56,7 +51,7 @@ public class LodgingServiceImpl implements LodgingService {
 	}
 
 	@Override
-	public List<RoomVO> listSearch(HashMap hm) throws Exception {
+	public List<Map<String,Object>> listSearch(HashMap hm) throws Exception {
 		return lodgingDAO.listSearch(hm);
 	}
 	

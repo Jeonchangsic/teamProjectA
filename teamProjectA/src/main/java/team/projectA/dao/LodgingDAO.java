@@ -91,10 +91,6 @@ public class LodgingDAO {
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectLodgingList",hm);
 	}
 	
-	public List<RoomVO> selectListSearch(String type){
-		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectListSearch",type);
-	}
-	
 	public Map<String,Object> selectLodging(int lidx) {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectLodging",lidx);
 	}
@@ -124,9 +120,9 @@ public class LodgingDAO {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectLodgingRV", lidx);
 	}
 	
-	public List<RoomVO> listSearch(HashMap hm)throws Exception{
+	public List<Map<String,Object>> listSearch(HashMap hm)throws Exception{
 		
-		List<RoomVO> alist = sqlSession.selectList("team.projectA.mapper.lodgingMapper.listSearch",hm);
+		List<Map<String,Object>> alist = sqlSession.selectList("team.projectA.mapper.lodgingMapper.listSearch",hm);
 		return alist;
 	}
 	public int countSearch(SearchCriteria scri)throws Exception{

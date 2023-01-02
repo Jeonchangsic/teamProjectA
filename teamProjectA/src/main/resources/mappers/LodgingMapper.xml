@@ -449,63 +449,360 @@
 			</when>
 		</choose>
 	</select>
-	
-	<!-- 숙소 검색 리스트 -->
-	<select id="selectListSearch" parameterType="String" resultType="RoomVO">
-		SELECT *
- 		  FROM lodgingtb lg, roomtb r
- 		 WHERE lg.lidx = r.lidx
-  		   AND ridx IN (SELECT MIN(a.ridx)
-						 FROM (SELECT r.*
-								 FROM lodgingtb lg, roomtb r
-								WHERE lg.lidx = r.lidx
-								  AND r.spareroom > 0
-							 order BY r.ridx	   
-							  ) a 
-					 GROUP BY a.lidx)
-
-		<choose>
-			<when test ="value != null and value == 2">
-				order by rprice
-			</when>
-			<when test ="value != null and value == 3">
-				order by rprice desc
-			</when>
-			<otherwise>
-			</otherwise>
-		</choose>
-	</select>
-	
 		
 	
 	
 	<!-- 숙소 리스트 + 검색 -->
-	<select id="listSearch" parameterType="HashMap" resultType="RoomVO">
-		
-		SELECT *
- 		  FROM lodgingtb lg, roomtb r
- 		 WHERE lg.lidx = r.lidx
-  		   AND ridx IN (SELECT MIN(a.ridx)
+	<select id="listSearch" parameterType="HashMap" resultMap="lodgingList">
+		SELECT l.lidx
+			 , l.limagename
+			 , l.lodgingname
+			 , l.lodgingaddr
+			 , l.satis
+			 , r.spareroom
+			 , r.rprice
+ 		  FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
+ 		 WHERE l.lidx = r.lidx
+ 		   AND l.lidx = lin.lidx
+ 		   AND r.ridx = rin.ridx
+  		   AND r.ridx IN (SELECT MIN(a.ridx)
 						 FROM (SELECT r.*
-								 FROM lodgingtb lg, roomtb r
-								WHERE lg.lidx = r.lidx
+								 FROM lodgingtb l, roomtb r
+								WHERE l.lidx = r.lidx
 								  AND r.spareroom > 0
 							 order BY r.ridx	   
 							  ) a WHERE 1=1 <include refid="search"></include>
 					 GROUP BY a.lidx)
-		
 		<choose>
-			<when test ="value != null and value == 2">
-				order by rprice
+			<when test ="area != null and area == '서울 전체'">
+				AND local like '10%'
 			</when>
-			<when test ="value != null and value == 3">
-				order by rprice desc
+			<when test ="area != null and area == '홍대/신촌/마포'">
+				AND local = 1002
+			</when>
+			<when test ="area != null and area == '북촌/인사동/종로/동대문'">
+				AND local = 1003
+			</when>
+			<when test ="area != null and area == '명동/남산/중구'">
+				AND local = 1004
+			</when>
+			<when test ="area != null and area == '강남/잠실/삼성/서초'">
+				AND local = 1005
+			</when>
+			<when test ="area != null and area == '이태원/서울역/용산'">
+				AND local = 1006
+			</when>
+			<when test ="area != null and area == '영등포/신림/김포공항'">
+				AND local = 1007
+			</when>
+			<when test ="area != null and area == '부산 전체'">
+				AND local like '20%'
+			</when>
+			<when test ="area != null and area == '해운대/마린시티'">
+				AND local = 2002
+			</when>
+			<when test ="area != null and area == '광안리/경성대'">
+				AND local = 2003
+			</when>
+			<when test ="area != null and area == '부산역'">
+				AND local = 2004
+			</when>
+			<when test ="area != null and area == '송정/기장'">
+				AND local = 2005
+			</when>
+			<when test ="area != null and area == '자갈치/남포동/영도'">
+				AND local = 2006
+			</when>
+			<when test ="area != null and area == '제주 전체'">
+				AND local like '30%'
+			</when>
+			<when test ="area != null and area == '제주시/제주국제공항'">
+				AND local = 3002
+			</when>
+			<when test ="area != null and area == '서귀포시'">
+				AND local = 3003
+			</when>
+			<when test ="area != null and area == '애월/한림/협재'">
+				AND local = 3004
+			</when>
+			<when test ="area != null and area == '전라 전체'">
+				AND local like '40%'
+			</when>
+			<when test ="area != null and area == '전주/완주'">
+				AND local = 4002
+			</when>
+			<when test ="area != null and area == '광주/나주'">
+				AND local = 4003
+			</when>
+			<when test ="area != null and area == '여수'">
+				AND local = 4004
+			</when>
+			<when test ="area != null and area == '순천/광양/담양/보성/화순'">
+				AND local = 4005
+			</when>
+			<when test ="area != null and area == '군산/익산'">
+				AND local = 4006
+			</when>
+			<when test ="area != null and area == '목포/신안/영광/진도/고흥/영암/완도'">
+				AND local = 4007
+			</when>
+			<when test ="area != null and area == '경기 전체'">
+				AND local = 50%
+			</when>
+			<when test ="area != null and area == '수원/화성'">
+				AND local = 5002
+			</when>
+			<when test ="area != null and area == '남양주/구리/성남/분당'">
+				AND local = 5003
+			</when>
+			<when test ="area != null and area == '용인/동탄'">
+				AND local = 5004
+			</when>
+			<when test ="area != null and area == '이천/광주/여주/하남'">
+				AND local = 5005
+			</when>
+			<when test ="area != null and area == '가평/청평/양평'">
+				AND local = 5006
+			</when>
+			<when test ="area != null and area == '부천/광명/시흥/안산'">
+				AND local = 5007
+			</when>
+			<when test ="area != null and area == '인천 전체'">
+				AND local = 60%
+			</when>
+			<when test ="area != null and area == '송도/소래포구'">
+				AND local = 6002
+			</when>
+			<when test ="area != null and area == '구읍뱃터/월미'">
+				AND local = 6003
+			</when>
+			<when test ="area != null and area == '인천국제공항/강화/을왕리/영종'">
+				AND local = 6004
+			</when>
+			<when test ="area != null and area == '청라/계양/부평'">
+				AND local = 6005
+			</when>
+			<when test ="area != null and area == '강원 전체'">
+				AND local = 70%
+			</when>
+			<when test ="area != null and area == '속초/양양/고성'">
+				AND local = 7002
+			</when>
+			<when test ="area != null and area == '강릉'">
+				AND local = 7003
+			</when>
+			<when test ="area != null and area == '평창/정선/영월'">
+				AND local = 7004
+			</when>
+			<when test ="area != null and area == '동해/삼척/태백'">
+				AND local = 7005
+			</when>
+			<when test ="area != null and area == '경상 전체'">
+				AND local = 80%
+			</when>
+			<when test ="area != null and area == '경주'">
+				AND local = 8002
+			</when>
+			<when test ="area != null and area == '울산/양산'">
+				AND local = 8003
+			</when>
+			<when test ="area != null and area == '거제/통영'">
+				AND local = 8004
+			</when>
+			<when test ="area != null and area == '포항/영덕/울진/청송'">
+				AND local = 8005
+			</when>
+			<when test ="area != null and area == '창원/마산/진해/김해'">
+				AND local = 8006
+			</when>
+			<when test ="area != null and area == '충청 전체'">
+				AND local = 90%
+			</when>
+			<when test ="area != null and area == '대전/세종'">
+				AND local = 9002
+			</when>
+			<when test ="area != null and area == '천안/아산/도고'">
+				AND local = 9003
+			</when>
+			<when test ="area != null and area == '보령/대천/부여/공주/금산'">
+				AND local = 9004
+			</when>
+			<when test ="area != null and area == '청주/음성/진천'">
+				AND local = 9005
 			</when>
 			<otherwise>
 			</otherwise>
 		</choose>
+		<if test="men != null and men != ''">
+			AND r.maxmen [!(CDATA[>=])] ${men}
+		</if>
+		<trim prefix="AND (" prefixOverrides="OR" suffix=")">
+			<if test="bedArr != null">
+				bed IN
+				<foreach collection="bedArr" item="obj" open="(" close=")" separator=",">
+					#{obj}
+				</foreach>
+			</if>
+			<if test="fitness == 'on'">
+				OR lin.fitness = 'Y'
+			</if>
+			<if test="sauna == 'on'">
+				OR sauna = 'Y'
+			</if>
+			<if test="restaurant == 'on'">
+				OR restaurant = 'Y'
+			</if>
+			<if test="lounge == 'on'">
+				OR lounge = 'Y'
+			</if>
+			<if test="bbq == 'on'">
+				OR bbq = 'Y'
+			</if>
+			<if test="publicspa == 'on'">
+				OR publicspa = 'Y'
+			</if>
+			<if test="seminar == 'on'">
+				OR seminar = 'Y'
+			</if>
+			<if test="singing == 'on'">
+				OR singing = 'Y'
+			</if>
+			<if test="washingmachine == 'on'">
+				OR washingmachine = 'Y'
+			</if>
+			<if test="dehydrator == 'on'">
+				OR dehydrator = 'Y'
+			</if>
+			<if test="cooking == 'on'">
+				OR cooking = 'Y'
+			</if>
+			<if test="spa == 'on'">
+				OR spa = 'Y'
+			</if>
+			<if test="pool == 'on'">
+				OR pool = 'Y'
+			</if>
+			<if test="golf == 'on'">
+				OR golf = 'Y'
+			</if>
+			<if test="elevator == 'on'">
+				OR elevator = 'Y'
+			</if>
+			<if test="pc == 'on'">
+				OR pc = 'Y'
+			</if>
+			<if test="cafe == 'on'">
+				OR cafe = 'Y'
+			</if>
+			<if test="footvolleyball == 'on'">
+				OR footvolleyball = 'Y'
+			</if>
+			<if test="store == 'on'">
+				OR store = 'Y'
+			</if>
+			<if test="dining == 'on'">
+				OR dining = 'Y'
+			</if>
+			<if test="dryer == 'on'">
+				OR dryer = 'Y'
+			</if>
+			<if test="parking == 'on'">
+				OR parking = 'Y'
+			</if>
+			<if test="publicshower == 'on'">
+				OR publicshower = 'Y'
+			</if>
+			<if test="ski == 'on'">
+				OR ski = 'Y'
+			</if>
+			<if test="roomspa == 'on'">
+				OR roomspa = 'Y'
+			</if>
+			<if test="wifi == 'on'">
+				OR wifi = 'Y'
+			</if>
+			<if test="tv == 'on'">
+				OR tv = 'Y'
+			</if>
+			<if test="refri == 'on'">
+				OR refri = 'Y'
+			</if>
+			<if test="bath == 'on'">
+				OR bath = 'Y'
+			</if>
+			<if test="iron == 'on'">
+				OR iron = 'Y'
+			</if>
+			<if test="minibar == 'on'">
+				OR minibar = 'Y'
+			</if>
+			<if test="bathitem == 'on'">
+				OR bathitem = 'Y'
+			</if>
+			<if test="aircon == 'on'">
+				OR aircon = 'Y'
+			</if>
+			<if test="shower == 'on'">
+				OR shower = 'Y'
+			</if>
+			<if test="dryer == 'on'">
+				OR dryer = 'Y'
+			</if>
+			<if test="ricecooker == 'on'">
+				OR ricecooker = 'Y'
+			</if>
+			<if test="pickup == 'on'">
+				OR pickup = 'Y'
+			</if>
+			<if test="printer == 'on'">
+				OR printer = 'Y'
+			</if>
+			<if test="locker == 'on'"
+				>OR locker = 'Y'
+			</if>
+			<if test="breakfast == 'on'">
+				OR breakfast = 'Y'
+			</if>
+			<if test="valetparking == 'on'">
+				OR valetparking = 'Y'
+			</if>
+			<if test="dog == 'on'">
+				OR dog = 'Y'
+			</if>
+			<if test="inroomcooking == 'on'">
+				OR inroomcooking = 'Y'
+			</if>
+			<if test="keepluggage == 'on'">
+				OR keepluggage = 'Y'
+			</if>
+			<if test="freeparking == 'on'">
+				OR freeparking = 'Y'
+			</if>
+			<if test="inroomsmoking == 'on'">
+				OR inroomsmoking = 'Y'
+			</if>
+			<if test="nosmoking == 'on'">
+				OR creditcard = 'Y'
+			</if>
+		</trim>
+		<choose>
+			<when test ="type == 1">
+				order by lidx desc
+			</when>
+			<when test ="type == 2">
+				order by rprice
+			</when>
+			<when test ="type == 3">
+				order by rprice desc
+			</when>
+			<when test ="type == 4">
+				order by satis desc
+			</when>
+			<when test ="type == 5">
+				order by reviewnum desc
+			</when>
+		</choose>
 	</select>
-	
 	
 	
 	<!-- 검색된 숙소 개수  -->
