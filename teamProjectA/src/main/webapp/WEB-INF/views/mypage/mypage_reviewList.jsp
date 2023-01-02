@@ -57,8 +57,8 @@
 	        <div id="contentsArea2">
 	        	 <table class="table10">
 	                    <tr class="tr_center tr_border">
-	                   		<th ></th>
-	                        <th class="lodging_Style">숙소명</th>
+	                   		
+	                        <th colspan="2" class="lodging_Style">숙소명</th>
 	                        <th class="lodging_Style">객실명</th>
 	                        <th class="review_style">리뷰제목</th>
 	                        <th>리뷰작성일</th>

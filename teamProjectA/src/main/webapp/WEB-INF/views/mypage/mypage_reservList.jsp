@@ -75,8 +75,7 @@
 	                <table class="table10">
 	                    <tr class="tr_center tr_border">
 	                        <th>예약번호</th>
-	                        <th></th>
-	                        <th>숙소명</th>
+	                        <th colspan="2">숙소명</th>
 	                        <th>객실명</th>
 	                        <th>숙박일자</th>
 	                        <th>금액</th>

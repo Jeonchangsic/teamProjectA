@@ -41,17 +41,17 @@
         <table id="table1">
             <tr>
                 <td id="textArea">
-                    <input type="text" class="loginInputArea" name="userID" placeholder="아이디를 입력하세요.">
+                    <input type="text" class="loginInputArea font_Style" name="userID" placeholder="아이디를 입력하세요.">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="password" class="loginInputArea" name="userPassword" placeholder="비밀번호를 입력하세요.">
+                    <input type="password" class="loginInputArea font_Style" name="userPassword" placeholder="비밀번호를 입력하세요.">
                 </td>
             </tr>
             <tr>
                 <td id="loginbtn">
-                    <input type="submit" id="login" value="로그인"/>
+                    <input type="submit" id="login" class="font_Style" value="로그인"/>
                 </td>
             </tr>
         </table>
@@ -66,9 +66,9 @@
         </table>
         </form>
         <section id="join">
-            <span id="join3">저긴어때와 함께하기</span> 
-            <a href="<%=request.getContextPath() %>/join/join.do" id="join1">일반회원</a>
-            <a href="<%=request.getContextPath() %>/join/sellerJoin.do" id="join2">판매자회원</a>
+            <span id="join3" class="font_Style">저긴어때와 함께하기</span> 
+            <a href="<%=request.getContextPath() %>/join/join.do" id="join1" class="font_Style">일반회원</a>
+            <a href="<%=request.getContextPath() %>/join/sellerJoin.do" id="join2" class="font_Style">판매자회원</a>
         	<p id="p1">비밀번호가 기억나지 않으세요?</p>
         	<span id="span2" onclick="pwSearch()">비밀번호 찾기></span>
         </section>

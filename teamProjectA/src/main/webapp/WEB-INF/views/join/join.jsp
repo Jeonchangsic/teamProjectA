@@ -166,13 +166,15 @@
 		<img src="<%=request.getContextPath()%>/resources/images/index_images/loading.gif"/>
 	</div>
 	<div class="modal">
-      <div class="modal_body">
-      		저긴어때(주)에서 회원님의 개인정보에 접근합니다.<br>
-		       이용자 식별자 및 제공된 개인정보는 <br>
-		       이용자 식별, 통계, 계정 연동 및 CS 등을 위해 서비스 이용기간 동안 활용/보관됩니다. <br>
-		       본 제공 동의를 거부할 권리가 있으나,<br>
-		        동의를 거부하실 경우 회원가입이 제한됩니다.<br>
-		       동의하신다면 이전화면에서 동의함 체크를 해주세요.</div>
+      <div class="modal_body font_Style">
+      <p id="modal_Header" class="font_Style">저긴어때 약관내용</p>
+      	<ul class="font_Style">
+			<li>저긴어때(주)에서 회원님의 개인정보에 접근합니다.</li>
+        	<li>이용자 식별자 및 제공된 개인정보는 이용자 식별, 통계, <br>계정 연동 및 CS 등을 위해 서비스 이용 기간 동안 활용/보관됩니다.</li>
+       		<li>본 제공 동의를 거부할 권리가 있으나, 동의를 거부하실 경우 <br>회원가입이 제한됩니다.</li>
+		    <li>동의하신다면 이전 화면에서 동의함 체크 후 회원가입을 진행해 주세요.</li>
+        </ul>
+	  </div>
     </div>
     <header>
     	
@@ -188,12 +190,12 @@
 	        <form action="join.do" method="post">
 	            <table id="table1" class="joinBorder">
 	                <tr>
-	                    <td class="contentsArea1">아이디</td>
+	                    <td class="contentsArea1 font_Style font_StyleBold">아이디</td>
 	                    <td class="inputArea">
-	                        <input type="text" name="userID" id="id" class="inputArea" placeholder="아이디를 입력하세요." required>
-	                        <span class="id_ok">사용 가능한 아이디입니다.</span>
-	                        <span class="id_no">중복된  아이디입니다!</span>
-	                        <span class="id_no2">8자리 ~ 15자리 이내로 입력하여 주세요.</span>
+	                        <input type="text" name="userID" id="id" class="inputArea font_Style" placeholder="아이디를 입력하세요." required>
+	                        <span class="id_ok font_Style">사용 가능한 아이디입니다.</span>
+	                        <span class="id_no font_Style">중복된  아이디입니다!</span>
+	                        <span class="id_no2 font_Style">8자리 ~ 15자리 이내로 입력하여 주세요.</span>
 	                    </td>
 	                    <td></td>
 	                </tr>
@@ -207,12 +209,12 @@
 	                    <td></td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea" >비밀번호</td>
+	                    <td class="contentsArea font_Style font_StyleBold" >비밀번호</td>
 	                    <td class="inputArea">
-	                        <input type="password" name="userPassword" id="pwd" class="inputArea" placeholder="비밀번호를 입력하세요." required>
-	                        <span class="pw_no2">8자리 ~20자리 이내로 입력하여 주세요.</span>
-	                        <span class="pw_no3">영문,숫자,특수문자를 혼합하여 주세요.</span>
-	                        <span class="pw_no4">안전한 비밀번호 입니다.</span>
+	                        <input type="password" name="userPassword" id="pwd" class="inputArea font_Style" placeholder="비밀번호를 입력하세요." required>
+	                        <span class="pw_no2 font_Style">8자리 ~20자리 이내로 입력하여 주세요.</span>
+	                        <span class="pw_no3 font_Style">영문,숫자,특수문자를 혼합하여 주세요.</span>
+	                        <span class="pw_no4 font_Style">안전한 비밀번호 입니다.</span>
 	                    </td>
 	                </tr>
 	                <tr id="pwFormArea">
@@ -225,11 +227,11 @@
 	                    <td></td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea3">비밀번호확인</td>
+	                    <td class="contentsArea3 font_Style font_StyleBold">비밀번호확인</td>
 	                    <td class="inputArea">
-	                        <input type="password" id="repwd" class="inputArea" placeholder="비밀번호 확인" required>
-	                        <span class="pw_ok">비밀번호가 일치합니다.</span>
-	                        <span class="pw_no">비밀번호 불일치!</span>
+	                        <input type="password" id="repwd" class="inputArea font_Style" placeholder="비밀번호 확인" required>
+	                        <span class="pw_ok font_Style">비밀번호가 일치합니다.</span>
+	                        <span class="pw_no font_Style">비밀번호 불일치!</span>
 	                    </td>
 	                </tr>
 	                <tr id="repwFormArea">
@@ -242,15 +244,15 @@
 	                    <td></td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea4">이름</td>
+	                    <td class="contentsArea4 font_Style font_StyleBold">이름</td>
 	                    <td class="inputArea">
-	                        <input type="text" name="userName" id="name" class="inputArea" placeholder="이름을 입력하세요." required>
+	                        <input type="text" name="userName" id="name" class="inputArea font_Style" placeholder="이름을 입력하세요." required>
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea">이메일</td>
+	                    <td class="contentsArea font_Style font_StyleBold">이메일</td>
 	                    <td class="inputArea"> 
-	                        <input type="text" name="userEmail" id="email" class="inputArea mail_input" placeholder="이메일을 입력하세요." required><!-- 메일 입력란 -->
+	                        <input type="text" name="userEmail" id="email" class="inputArea mail_input font_Style" placeholder="이메일을 입력하세요." required><!-- 메일 입력란 -->
 	                    </td>
 	                    <td></td>
 	                </tr>
@@ -260,7 +262,7 @@
 		                	<input id="mail_check_input" class="mail_check_input" disabled="disabled" required><!-- 인증번호 입력란 -->
 		                </td>		
 		                <td id="mail_check_button" class="mail_check_button"><!-- 메일 체크 버튼 -->
-		                    	<span class="BtnStyle">인증번호 전송</span>
+		                    	<span class="BtnStyle Email_Btn font_Style">인증번호 전송</span>
 	                    </td>
 	                </tr>
 	                <tr id="emailFormArea">
@@ -276,44 +278,44 @@
 	                	<td></td>
 	                	<td>
 	                		<span id="mail_check_input_box_warn"></span>
-	                		<span class="email_ok">인증번호가 일치합니다.</span>
-	                		<span class="email_no">인증번호가 다릅니다.</span>
+	                		<span class="email_ok font_Style">인증번호가 일치합니다.</span>
+	                		<span class="email_no font_Style">인증번호가 다릅니다.</span>
 	                	</td>
 	                	<td></td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea">휴대전화</td>
+	                    <td class="contentsArea font_Style font_StyleBold">휴대전화</td>
 	                    <td class="inputArea">
-	                        <input type="tel" name="userPhone" id="phone" class="inputArea" placeholder="- 제외하고 입력하세요." maxlength="11" required>
+	                        <input type="tel" name="userPhone" id="phone" class="inputArea font_Style" placeholder="- 제외하고 입력하세요." maxlength="11" required>
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea5">성별</td>
+	                    <td class="contentsArea5 font_Style font_StyleBold">성별</td>
 	                    <td>
-	                        남성 <input type="radio" name="userGender" value="남자" id="man" required>
-	                        여성 <input type="radio" name="userGender" value="여자 " required>
+	                        남성 <input type="radio" name="userGender" class="font_Style" value="남자" id="man" required>
+	                        여성 <input type="radio" name="userGender" class="font_Style" value="여자 " required>
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea">생년월일</td>
+	                    <td class="contentsArea font_Style font_StyleBold">생년월일</td>
 	                    <td class="inputArea">
-	                        <input type="date" name="userBirth" id="birth" class="inputArea" required>
+	                        <input type="date" name="userBirth" id="birth" class="inputArea font_Style" required>
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <td class="contentsArea2">약관동의</td>
+	                    <td class="contentsArea2 font_Style font_StyleBold">약관동의</td>
 	                    <td class="inputArea">
-	                        <button class="btn-open-popup BtnStyle" type="button" >약관보기</button>
+	                        <button class="btn-open-popup BtnStyle font_Style" type="button" >약관보기</button>
 	                    </td>
-	                    <td>동의함
+	                    <td class="font_Style">동의함
 	                    	 <input type="radio" name="agree" required>
 	                    </td>
 	                </tr>
 	            </table>
 	            <table id="table2">
 	                <tr>
-	                    <td id="join"><button class="footBtn BtnStyle">가입하기</button></td>
-	            		 <td><input type="button" class="BtnStyle footBtn" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" value="취소"></td>
+	                    <td id="join"><button class="footBtn BtnStyle font_Style">가입하기</button></td>
+	            		 <td><input type="button" class="BtnStyle footBtn font_Style" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" value="취소"></td>
 	                </tr>
 	            </table>
 	        </form>

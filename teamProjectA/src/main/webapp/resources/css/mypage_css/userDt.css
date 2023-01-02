@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
             /*리셋코드*/
 * {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
@@ -56,7 +56,7 @@ header h2{
 	margin: 26px 57px 0 61px;
     padding-bottom: 5px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 21px;
     border-bottom: 3px solid #919191;
 }
 
@@ -109,6 +109,9 @@ input{
 #tr_border{
     border-top: 1px solid #919191;
     border-bottom: 1px solid #919191;
+}
+.font_Style{
+	font-family: 'Noto Sans KR', 산세리프;
 }
 
 

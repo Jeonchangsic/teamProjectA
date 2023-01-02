@@ -27,14 +27,14 @@
 		<!--  쿼리 실행하는 객체 -->       <!-- 실제 쿼리 실행 -->
 		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache"> <!--  -->
 			<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
-			
+				
 		</bean>
-		<!-- navermail설정 -->
+		<!-- gmail설정 -->
 		<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
-		 <property name="host" value="smtp.naver.com"/> <!-- 메이서버 호스트 -->
-		 <property name="port" value="465"/> <!-- 메이서버 포트번호 -->
-		 <property name="username" value="teamproject_a2"/> <!-- 자신의 이메일 아이디 -->
-		 <property name="password" value="javateam123^^"/> <!-- 자신의 비밀번호 -->
+		 <property name="host" value="smtp.gmail.com"/> <!-- 메이서버 호스트 -->
+		 <property name="port" value="587"/> <!-- 메이서버 포트번호 -->
+		 <property name="username" value="teamPjtA1"/> <!-- 자신의 이메일 아이디 -->
+		 <property name="password" value="emifjgvchwqlkgrd"/> <!-- 자신의 비밀번호 -->
 		   <!-- 보안연결 SSL과 관련된 설정 -->
 		 <property name="javaMailProperties">
 		  <props>

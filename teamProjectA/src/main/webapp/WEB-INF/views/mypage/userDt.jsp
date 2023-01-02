@@ -19,7 +19,7 @@
 </head>
 <body>
 	<header>
-		<h2>
+		<h2 class="font_Style">
 			회원탈퇴
 		</h2>
 	</header>
@@ -28,19 +28,19 @@
 	    <input type="hidden" name="uidx" value="${login.uidx}">
 	    	<table id="tableMargin">
 	    		<tr>
-	    			<td class="passwordMargin">아이디</td>
-	    			<td class="input_td">
-	    				<input type="text" id="userID" name="userID" value="${login.userID}" readonly/>
+	    			<td class="passwordMargin font_Style">아이디</td>
+	    			<td class="input_td font_Style">
+	    				<input type="text" id="userID" name="userID" class="font_Style" value="${login.userID}" readonly/>
 	    			</td>
 	    		</tr>
 	    		<tr id="tr_border">
-	    			<td class="passwordMargin">패스워드</td>
-	    			<td class="input_td">
-	    				<input class="trMargin" type="password" id="userPassword" name="userPassword" placeholder="비밀번호를 입력하세요."/>
+	    			<td class="passwordMargin font_Style">패스워드</td>
+	    			<td class="input_td font_Style">
+	    				<input class="trMargin font_Style" type="password" id="userPassword" name="userPassword" placeholder="비밀번호를 입력하세요."/>
 	    			</td>
 	    		</tr>
 	    	</table>
-	    	<button class="cursorStyle">회원탈퇴</button>
+	    	<button class="cursorStyle font_Style">회원탈퇴</button>
 	    </form>
     </main>
 </body>

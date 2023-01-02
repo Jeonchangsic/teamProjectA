@@ -82,7 +82,7 @@
 	            </a>
 	        </div>
 	        <div id="contentsArea1">
-	            <form>
+	            <form id="form_Style">
 	                <table id="table1">
 	                    <tr>
 	                        <td class="margin1">이름</td><td><input type="text" class="info" name="userName" value="${login.userName}" readonly></td> 

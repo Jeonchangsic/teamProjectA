@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
             /*리셋코드*/
 * {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
@@ -32,9 +32,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+/* ol, ul {
 	list-style: none;
-}
+} */
 blockquote, q {
 	quotes: none;
 }
@@ -49,7 +49,7 @@ table {
 }
 
 a{text-decoration:none; color: inherit;}
-UL,li{list-style:none;}
+/* UL,li{list-style:none;} */
             /*리셋코드*/
 
                              
@@ -93,7 +93,7 @@ main .contentsArea5{
 	padding: 23px 0 17px 0;	
 }
 main .inputArea{
-    width:170px;
+    width:180px;
     height:25px;
     padding: 0 5px 0 20px;
 }
@@ -182,6 +182,7 @@ main .pw_no3{
 	border:1px solid red; 
 	border-radius:5px; 
 	background-color:#ffcccc;
+	width: 206px;
 }
 main .pw_ok{
 	color:green; 
@@ -247,26 +248,33 @@ main .pw_no4{
 
 .modal_body {
         position: absolute;
-        top: 30%;
-        left: 50%;
-        width: 400px;
-        height: 250px;
-		line-height:35px;
-        padding: 40px;
-        text-align: center;
-        background-color: rgb(255, 255, 255);
-        border: 2px solid #000;
-        border-radius: 10px;
-        box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-        transform: translateX(-50%) translateY(-50%);
-        z-index: 999;
+	    top: 30%;
+	    left: 50%;
+	    width: 571px;
+	    height: 341px;
+	    line-height: 35px;
+	    /* padding: 10px 40px 40px 40px; */
+	    text-align: center;
+	    background-color: rgb(255, 255, 255);
+	    border-radius: 10px;
+	    border: 1px solid #000;
+	    box-shadow: 5px 5px 5px 5px gray;
+	    transform: translateX(-50%) translateY(-50%);
+	    z-index: 999;
       }
+#modal_Header{
+	border-bottom: 1px solid #919191;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    padding: 11px 0 11px 24px;
+}
 #joinText{
      	padding-top:20px;
      }
      
 #mail_check_input{
-     	width:180px;
+     	width:190px;
      	height:21px;
      	
      }
@@ -283,7 +291,7 @@ main .email_ok{
 	font-size:15px; 
 	font-weight:bold; 
 	padding:4px 0 2px 0; 
-	width:180px; 
+	width:190px; 
 	border:1px solid green; 
 	border-radius:5px; 
 	background-color:#ccffcc;
@@ -294,7 +302,7 @@ main .email_no{
 	font-size:15px; 
 	font-weight:bold; 
 	padding:4px 0 2px 0;  
-	width:180px; 
+	width:190px; 
 	border:1px solid red; 
 	border-radius:5px; 
 	background-color:#ffcccc;
@@ -371,4 +379,19 @@ main .email_no{
 }
 #emailFormArea{
 	 height:23px;
+}
+.font_Style{
+	font-family: 'Noto Sans KR', 산세리프;
+}
+.font_StyleBold{
+	font-weight:bold;
+}
+ul{
+	list-style: square;
+    text-align: left;
+    padding: 15px 40px 0 63px;
+    font-weight:bold;
+}
+li{
+	padding-bottom: 7px;
 }

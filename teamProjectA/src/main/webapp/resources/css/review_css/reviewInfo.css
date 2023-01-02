@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
             /*리셋코드*/
 * {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
@@ -59,6 +59,7 @@ header h2{
     font-size:25px;
     font-weight: bold;
     padding:20px 0 10px 0;
+    font-family: 'Noto Sans KR', 산세리프;
 }
 
             /*main*/
@@ -77,20 +78,26 @@ main #table1{
 main .info{
     width:200px;
     height:20px;
+    font-family: 'Noto Sans KR', 산세리프;
 }
 main #info{
     width:300px;
     height:90px;
+    font-family: 'Noto Sans KR', 산세리프;
 }
 main #table2{
     margin:30px auto;
 }
 main .margin1{
-    padding-right:50px;
+    padding-right: 50px;
+    font-family: 'Noto Sans KR', 산세리프;
+    font-weight: bold;
 }
 main .margin2{
 	padding: 15px 50px 0 0;
-	height:50px;
+    height: 50px;
+    font-family: 'Noto Sans KR', 산세리프;
+    font-weight: bold;
 }
 main .clearBtn{
     width: 100px;
@@ -100,6 +107,7 @@ main .clearBtn{
 	font-weight:bold;
 	border:0px solid #000;
 	border-radius:2px;
+	font-family: 'Noto Sans KR', 산세리프;
 }
 main .clearBtn:hover{
 	color:white;
@@ -115,6 +123,7 @@ main .clearBtn:hover{
 	color:#bbb;
 	margin: 3px 0 3px 0;
 	font-size:20px;
+	font-family: 'Noto Sans KR', 산세리프;
 }
 #selectStyle{
 	width:200px;
@@ -143,4 +152,10 @@ main .clearBtn:hover{
 }
 .vertical_middle{
 	vertical-align: middle;
+    font-family: 'Noto Sans KR', 산세리프;
+    font-weight: bold;
 }	
+#lodgingText{
+	font-family: 'Noto Sans KR', 산세리프;
+    font-weight: bold;
+}
