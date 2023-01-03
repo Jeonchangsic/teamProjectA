@@ -254,7 +254,7 @@
             		<img src="<%=request.getContextPath() %>/resources/images/index_images/logo.svg" alt="저긴어때">
             	</a>
             </h1>
-            <div id="room_val">호텔</div>
+            <div id="room_val">모텔</div>
             <ul>
 	            <div class="search_background">
 	            </div>
