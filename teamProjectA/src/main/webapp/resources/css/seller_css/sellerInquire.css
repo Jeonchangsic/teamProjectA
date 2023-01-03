@@ -157,7 +157,7 @@ ul{
 }
 button{cursor:pointer;}
 footer{
-    position:absolute;  width:100%; background-color:rgba(0,0,0,0.15);}
+    position:absolute; bottom:0; width:100%; background-color:rgba(0,0,0,0.15);}
 footer #foot{margin: 0 auto; width:1024px; height:100%; }
 footer #copy{color:#919191;}
                 /*end footer*/
