@@ -66,17 +66,16 @@
 					ORDER BY qna_idx DESC
 	</select>
 
-	<select id="listCount" parameterType = "SearchCriteria" resultType="int">
+	<select id="listCount" parameterType = "HashMap" resultType="int">
 			SELECT count(qna_idx)
 				FROM qnatb
 				WHERE qna_Qtitle LIKE '%' || #{keyword} || '%'
 				<![CDATA[
 					AND qna_idx > 0
 		        ]]>
+		        	AND uidx = #{uidx}
 
 	</select> 
-
-
 
 	
 	<!--문의하기 insert  -->

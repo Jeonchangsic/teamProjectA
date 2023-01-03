@@ -43,9 +43,9 @@ public class SellerDao {
         return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", hm);
 	 }
 	
-	public int listCount(SearchCriteria scri) {
+	public int listCount(HashMap hm) {
 
-		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount", scri);
+		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount", hm);
 		
 	}
 	    	

@@ -112,8 +112,7 @@
 	    		var checkBox = $(".mail_check_input"); //인증번호 입력란
 	    		var boxWrap = $(".mail_check_input_box"); //인증번호 입력영역
 				var code = "";
-	    		
-	    		alert(email);
+
 	    		
 	    		$.ajax({
 		    		type:"GET",

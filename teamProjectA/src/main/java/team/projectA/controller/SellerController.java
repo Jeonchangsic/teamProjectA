@@ -123,9 +123,9 @@ public class SellerController {
 				//이메일 보내기
 				String setFrom = "teamPjtA1@gmail.com"; //root-context.xml에 삽입한 자신의 이메일 계정 (메일 발신할 계정)
 				String toMail = email; //입력받은 메일값
-				String title = "저긴어때(주) 비밀번호 변경 인증 이메일 입니다."; //발신 시 사용되는 이메일 제목
+				String title = "저긴어때(주) 이메일 변경 인증 이메일 입니다."; //발신 시 사용되는 이메일 제목
 				String content = 								//발신 시 사용되는 이메일의 내용
-						"저긴어때(주) 비밀번호 변경 인증 이메일 입니다." +
+						"저긴어때(주) 이메일 변경 인증 이메일 입니다." +
 				        "<br><br>" + 
 		                "인증 번호는 " + checkNum + "입니다." + 
 		                "<br>" + 
@@ -158,10 +158,17 @@ public class SellerController {
                                                                         
 		HttpSession session = req.getSession();                                 
 		UserVO login = (UserVO) session.getAttribute("login");
-		 	        
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(sellerService.listCount(scri));
+
+		
+		HashMap<String, Object> hm2 = new HashMap<String,Object>();
+		hm2.put("uidx", login.getUidx());
+		hm2.put("keyword",scri.getKeyword());
+		
+		pageMaker.setTotalCount(sellerService.listCount(hm2));
+
 		
 		List<QnaVO> qnaList = null;
 		       

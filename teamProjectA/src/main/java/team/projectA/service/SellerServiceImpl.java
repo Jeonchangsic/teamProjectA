@@ -48,9 +48,9 @@ public class SellerServiceImpl implements SellerService{
     }
     	
 	@Override
-	public int listCount(SearchCriteria scri) {
+	public int listCount(HashMap hm) {
 
-		return SellerDao.listCount(scri);
+		return SellerDao.listCount(hm);
 	}
 
 	@Override
