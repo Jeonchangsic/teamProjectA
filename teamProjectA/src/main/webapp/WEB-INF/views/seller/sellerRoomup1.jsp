@@ -122,6 +122,16 @@
 						alert("사진을 등록해 주세요."); 
 						return false; 
 					} 
+				
+			//기준인원, 최대인원 수 조절	
+				var stdmen = $("#stdmen").val();
+				var maxmen = $("#maxmen").val();
+				
+				if(stdmen > maxmen){
+					alert("기준인원을 최대인원보다 적게 입력해주세요.")
+					return false;
+				}
+			
 				});
 			});
 		
@@ -131,6 +141,10 @@
 		        $('#spareroom').val($(this).val());
 		    });	
 		});
+		
+
+
+		
 		
 	   	
 	    </script>
@@ -193,11 +207,11 @@
 					</tr>
 					<tr>
 						<td>기준인원</td>
-						<td><input type="text" name="stdmen"  pattern="[0-9]+" placeholder="숫자를 입력해주세요" required></td>
+						<td><input type="text" name="stdmen"  pattern="[0-9]+" placeholder="숫자를 입력해주세요" id="stdmen" required></td>
 					</tr>
 					<tr>
 						<td>최대인원</td>
-						<td><input type="text" name="maxmen" pattern="[0-9]+" placeholder="숫자를 입력해주세요" required/></td>
+						<td><input type="text" name="maxmen" pattern="[0-9]+" placeholder="숫자를 입력해주세요" id="maxmen" required/></td>
 					</tr>
 				</table>
 					<input type="hidden" name="spareroom "  pattern="[0-9]+" placeholder="숫자를 입력해주세요" id="spareroom" required>

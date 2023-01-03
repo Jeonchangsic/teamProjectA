@@ -146,7 +146,7 @@
 		 					<tr>
 		 						<td></td>
 		 						<td></td>
-		 						<td>객실을 등록해 주세요</td>
+		 						<td colspan="2" style="text-align:center">객실을 등록해 주세요</td>
 		 						<td></td>
 		 						<td></td>
 		 					</tr>
