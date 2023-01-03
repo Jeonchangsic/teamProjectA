@@ -398,55 +398,69 @@ public class SellerController {
 		for(int i=0; i<files.length; i++) {
 			//새로운 이미지가 등록 되어있는지 확인
 			if(files[i].getOriginalFilename() != null && files[i].getOriginalFilename() != "") {
-	             // 기존 이미지 삭제
-				new File(req.getParameter("rimage"+(i+1))).delete();
-	             //이미지 등록
-	             String fileRealName = files[i].getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-	             long size = files[i].getSize(); //파일 사이즈
-	
-	             String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-	             String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
-	                           
-	             UUID uuid = UUID.randomUUID();
-	
-	             String[] uuids = uuid.toString().split("-");
-	               
-	             String uniqueName = uuids[0];
-	               
-	             File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
-	             try {
-	            	 files[i].transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
-	             } catch (IllegalStateException e) {
-	            	 e.printStackTrace();
-	             } catch (IOException e) {
-	            	 e.printStackTrace();
-	             }
-	             if(i==0) {
-	 				vo.setRimage1(uniqueName+fileExtension); //파일이름 + 확장자 vo 에 넣어줌 (db입력)				
-	 			}else if(i==1) {
-	 				vo.setRimage2(uniqueName+fileExtension);				
-	 			}else if(i==2) {
-	 				vo.setRimage3(uniqueName+fileExtension);				
-	 			}else if(i==3) {
-	 				vo.setRimage4(uniqueName+fileExtension);				
-	 			}else if(i==4) {
-	 				vo.setRimage5(uniqueName+fileExtension);			
-	 			}
-			}else {
-	               //새로운 이미지가 등록되지 않아다면 기본 이미지 그대로 
-				if(i==0) {
-					vo.setRimage1(req.getParameter("rimage1"));  //파일이름 + 확장자 vo 에 넣어줌 (db입력)				
-	 			}else if(i==1) {
-	 				vo.setRimage2(req.getParameter("rimage2")); 		
-	 			}else if(i==2) {
-	 				vo.setRimage3(req.getParameter("rimage3")); 			
-	 			}else if(i==3) {
-	 				vo.setRimage4(req.getParameter("rimage4")); 			
-	 			}else if(i==4) {
-	 				vo.setRimage5(req.getParameter("rimage5")); 		
-	 			}   
+				// 기존 이미지 삭제
+				new File(req.getParameter("rimage" + (i + 1))).delete();
+				// 이미지 등록
+				String fileRealName = files[i].getOriginalFilename(); // 파일명을 얻어낼 수 있는 메서드!
+				long size = files[i].getSize(); // 파일 사이즈
+
+				String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
+				String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+
+				UUID uuid = UUID.randomUUID();
+
+				String[] uuids = uuid.toString().split("-");
+
+				String uniqueName = uuids[0];
+
+				File saveFile = new File(uploadFolder + "\\" + uniqueName + fileExtension); // 적용 후
+				try {
+					files[i].transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				if (i == 0) {
+					vo.setRimage1(uniqueName + fileExtension); // 파일이름 + 확장자 vo 에 넣어줌 (db입력)
+				}else {
+					vo.setRimage1(req.getParameter("rimage1")); // 파일이름 + 확장자 vo 에 넣어줌 (db입력)
+				}
+				if (i == 1) {
+					vo.setRimage2(uniqueName + fileExtension);
+				}else {
+					vo.setRimage2(req.getParameter("rimage2"));
+				}
+				if (i == 2) {
+					vo.setRimage3(uniqueName + fileExtension);
+				}else {
+					vo.setRimage3(req.getParameter("rimage3"));
+				}
+				if (i == 3) {
+					vo.setRimage4(uniqueName + fileExtension);
+				}else {
+					vo.setRimage4(req.getParameter("rimage4"));
+				}
+				if (i == 4) {
+					vo.setRimage5(uniqueName + fileExtension);
+				}else {
+					vo.setRimage5(req.getParameter("rimage5"));
+				}
+			} else {
+				// 새로운 이미지가 등록되지 않아다면 기본 이미지 그대로
+				if (i == 0) {
+					vo.setRimage1(req.getParameter("rimage1")); // 파일이름 + 확장자 vo 에 넣어줌 (db입력)
+				} else if (i == 1) {
+					vo.setRimage2(req.getParameter("rimage2"));
+				} else if (i == 2) {
+					vo.setRimage3(req.getParameter("rimage3"));
+				} else if (i == 3) {
+					vo.setRimage4(req.getParameter("rimage4"));
+				} else if (i == 4) {
+					vo.setRimage5(req.getParameter("rimage5"));
+				}
 			}
-		}     
+		}
 		sellerService.roomModify(vo);
 		sellerService.roomModify2(in);
 		 
@@ -555,32 +569,32 @@ public class SellerController {
 			
 		//새로운 이미지가 등록 되어있나 확인
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-		// 기존 이미지 삭제
-		new File(req.getParameter("limagename")).delete();
-		
-		// 새로운 이미지 등록
-		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-		long size = file.getSize(); //파일 사이즈
+			// 기존 이미지 삭제
+			new File(req.getParameter("limagename")).delete();
 			
-		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-		String uploadFolder = "C:\\Users\\798\\Documents\\workspace-sts-3.9.13.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
-					
-		UUID uuid = UUID.randomUUID();
-		String[] uuids = uuid.toString().split("-");			
-		String uniqueName = uuids[0];
-		
-		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
-		try {
-			file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-			vo.setLimagename(uniqueName+fileExtension); 
+			// 새로운 이미지 등록
+			String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
+			long size = file.getSize(); //파일 사이즈
+				
+			String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
+			String uploadFolder = "C:\\Users\\798\\Documents\\workspace-sts-3.9.13.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+						
+			UUID uuid = UUID.randomUUID();
+			String[] uuids = uuid.toString().split("-");			
+			String uniqueName = uuids[0];
+			
+			File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+			try {
+				file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+				vo.setLimagename(uniqueName+fileExtension); 
 		}else {
 			//새로운 이미지가 등록되지 않았다면 기존 이미지 그대로 사용
-		vo.setLimagename(req.getParameter("limagename"));	 
+			vo.setLimagename(req.getParameter("limagename"));	 
 		}
 		
 		sellerService.lodgingModify(vo);
