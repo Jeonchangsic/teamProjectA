@@ -177,7 +177,7 @@
 				<!--이미지 업로드 -->
 				<div class="inputArea" id="main_left">
 					<label for="rimage1">사진등록</label> 
-					<input type="file" id="rimage1" name="files" multiple required />
+					<input type="file" id="rimage1" name="files" multiple />
 					<p>** ctrl키를 누르고 있으면 이미지를 여러개 클릭할 수 있습니다.</p>
 					<div id="border">
 						<div id="imgborder">

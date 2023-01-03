@@ -193,7 +193,7 @@
 				AND local = 4007
 			</when>
 			<when test ="area != null and area == '경기 전체'">
-				AND local = 50%
+				AND local like '50%'
 			</when>
 			<when test ="area != null and area == '수원/화성'">
 				AND local = 5002
@@ -214,7 +214,7 @@
 				AND local = 5007
 			</when>
 			<when test ="area != null and area == '인천 전체'">
-				AND local = 60%
+				AND local like '60%'
 			</when>
 			<when test ="area != null and area == '송도/소래포구'">
 				AND local = 6002
@@ -229,7 +229,7 @@
 				AND local = 6005
 			</when>
 			<when test ="area != null and area == '강원 전체'">
-				AND local = 70%
+				AND local like '70%'
 			</when>
 			<when test ="area != null and area == '속초/양양/고성'">
 				AND local = 7002
@@ -244,7 +244,7 @@
 				AND local = 7005
 			</when>
 			<when test ="area != null and area == '경상 전체'">
-				AND local = 80%
+				AND local like '80%'
 			</when>
 			<when test ="area != null and area == '경주'">
 				AND local = 8002
@@ -262,7 +262,7 @@
 				AND local = 8006
 			</when>
 			<when test ="area != null and area == '충청 전체'">
-				AND local = 90%
+				AND local like '90%'
 			</when>
 			<when test ="area != null and area == '대전/세종'">
 				AND local = 9002
