@@ -67,9 +67,9 @@
 		</select>
 			<!--예약리스트  총 개수-->
 	<select id="reservcount" resultType="int">
-		<![CDATA[
 		SELECT count(reserv_idx)
 		FROM reservtb
+		<![CDATA[
 		WHERE reserv_idx > 0
 		]]>
 	</select>
@@ -80,6 +80,7 @@
 					, q.qna_Qtitle
 					, q.qna_Qdate 
 					, q.qna_Acheck
+					, q.qna_Acontent
 				FROM ausertb a, QNATB q
 				WHERE a.uidx = q.uidx
 		</select>
@@ -136,12 +137,20 @@
 		</select>
 		<!--리뷰 페이지 총 개수-->
 	<select id="reviewcount" resultType="int">
-		<![CDATA[
 		SELECT count(rvidx)
 		FROM reviewtb
-		WHERE rvidx > 0
-		]]>
+		
+
 	</select>
+	 
+
+	<sql id="search">
+ <if test="searchType != null">
+  <if test="searchType == 't'.toString()">where title like '%' || #{keyword} || '%'</if>
+  <if test="searchType == 'w'.toString()">where writer like '%' || #{keyword} || '%'</if>
+ </if>
+</sql>
+
 	<!--리뷰 삭제  -->
    <delete id="reviewDelete" parameterType="int">
 			DELETE FROM REVIEWTB 
@@ -172,9 +181,9 @@
 	</select>
 	<!--문의 페이지 총 개수-->
 	<select id="qnacount" resultType="int">
-		<![CDATA[
 		SELECT count(qna_idx)
 		FROM qnatb
+		<![CDATA[
 		WHERE qna_idx > 0
 		]]>
 	</select>
@@ -201,9 +210,9 @@
 	</select>
 	<!--숙소 페이지 총 개수-->
 	<select id="RoomListcount" resultType="int">
-		<![CDATA[
 		SELECT count(lidx)
 		FROM lodgingtb
+		<![CDATA[
 		WHERE lidx > 0
 		]]>
 	</select>

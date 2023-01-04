@@ -57,12 +57,11 @@
 		    	<form action="managerQna.do?qna_idx=${qnaOne.qna_idx}" method="POST">
 			    	<div id="Atable">
 						<p>관리자 답변</p>
-								<div><input type="text" id="qna_Acontent" name="qna_Acontent"></div>
-								<input type="hidden" value="${qnaOne.qna_Acontent }">								
+								<div><input type="text" id="qna_Acontent" name="qna_Acontent" required></div>								
 					</div>		
 			    	<div id="btn">
 			    		<button type="submit" >답변등록</button>
-						<button type="button" onclick="location.href='managerQnaList.do'">목록</button>
+			    		<button type="button" onclick="history.go(-1)">목록</button>
 			    	</div>
 		    	</form>
 	

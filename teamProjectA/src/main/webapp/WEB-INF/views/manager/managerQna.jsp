@@ -51,7 +51,7 @@
 						<p>관리자 답변</p>
 						<input type="hidden" value="${qnaOne.qna_idx}" /> 
 								<div><input type="hidden" id="qna_Acontent" name="qna_Acontent"></div>
-								<input type="text" value="${qnaOne.qna_Acontent }">								
+								<input type="text" name="qna_Acontent" readonly value="${qnaOne.qna_Acontent }">								
 							
 					</div>		
 			    	<div id="btn">

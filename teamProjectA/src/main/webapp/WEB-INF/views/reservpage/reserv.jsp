@@ -144,7 +144,7 @@
             <h3>약관동의</h3>
             <table class="agree">
                  <tr>
-                     <td><input type="checkbox" id="checkall" onclick="check()"></td>
+                     <td><input type="checkbox" id="checkall" onclick="check()" required></td>
                      <td>전체동의</td>
                 </tr>
                 <tr>

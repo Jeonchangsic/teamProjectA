@@ -64,6 +64,7 @@ public class ManagerDAO {
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.ReviewList",scri3);
 		
 	}
+	
 	public int reviewcount() {
 		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.reviewcount");
 	}

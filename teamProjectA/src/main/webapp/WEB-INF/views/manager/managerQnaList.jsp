@@ -52,17 +52,17 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
             <tbody>
                 <tr>
                     <td>
-                        <select class="frm_select" name="searchType">
-                            <option value="title">제목</option>
-                            <option value="writer">작성자</option>
-                            <option value="Acheck">답변여부</option>
+                    <div class="search">
+                        <select class="frm_select" name="searchType">                                                
+                            <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>답변여부</option>
                         </select>
+                    </div>
                     </td>
                     <td>
                         <input type="text" name="searchName" size="30">
                     </td>
                     <td>
-                        <button class="btn" type="submit" name="submit">검색</button>
+                        <button id="searchBtn" class="btn"type="submit" >검색</button>
                     </td>
                 </tr>
             </tbody>
@@ -89,7 +89,7 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
 						<c:when test = "${list.qna_Acheck == '답변처리중'}" >
 						<button type="button" onclick="location.href='managerQnaView.do?qna_idx=${list.qna_idx}'">답변등록</button>
 						</c:when>
-						<c:when test = "${list.qna_Acheck == '답변완료' and list.qna_Acheck == '답변완료'}" >
+						<c:when test = "${list.qna_Acheck == '답변완료'}" >
 						<button type="button" onclick="alert('이미 답변을 작성하였습니다.')">답변완료</button>
 						</c:when>
 					</c:choose>

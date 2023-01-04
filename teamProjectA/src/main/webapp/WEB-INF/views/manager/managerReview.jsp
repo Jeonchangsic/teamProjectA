@@ -24,7 +24,18 @@
 
 
 </script>
-  
+   <script>
+ $(function(){
+  $('#searchBtn').click(function() {
+   self.location = "managerReview"
+     + '${pageMaker.makeQuery(1)}'
+     + "&searchType="
+     + $("select option:selected").val()
+     + "&keyword="
+     + encodeURIComponent($('#keywordInput').val());
+    });
+ });   
+ </script>
 </head>
     <body style="overflow-x: hidden">
         <div id="header">
@@ -49,16 +60,17 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select class="frm_select">
-                                <option value="nickname">제목</option>
-                                <option value="nickname">아이디</option>
+                            <select name="searchType" class="frm_select">
+                            	<option value="n"<c:out value="${scri3.searchType == null ? 'selected' : ''}"/>>-----</option>
+                                <option value="t"<c:out value="${scri3.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+                                <option value="w"<c:out value="${scri3.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
                             </select>
                         </td>
                         <td>
-                            <input type="text" name="keyword" size="30">
+                            <input type="text" name="keyword" value="${scri3.keyword}"id="keywordInput"size="30">
                         </td>
                         <td>
-                            <button class="btn" type="submit" name="submit">검색</button>
+                            <button class="btn" id="searchBtn">검색</button>
                         </td>
                     </tr>
                 </tbody>

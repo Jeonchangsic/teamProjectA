@@ -113,26 +113,25 @@ public class ManagerController {
 			
 		return "manager/managerQna";
 	}
-	//문의내역 답변등록
+	//문의내역 답변등록전 상세화면
 	@RequestMapping(value="/managerQnaView.do", method = RequestMethod.GET)
 	public String managerQnaView(Locale locale, Model model, int qna_idx,String qna_Acontent) {
 			
 			QnaVO qnaOne = (QnaVO)sellerService.qnaOne(qna_idx);
 			model.addAttribute("qnaOne",qnaOne);
-			HashMap<String,Object> hm = new HashMap<String,Object>();
-			hm.put("qna_idx",qna_idx);
-			hm.put("qna_Acontent",qna_Acontent);
-			managerService.qnaReply(hm);
+
 		return "manager/managerQnaView";
 	}
-	//문의내역 답변 update
+	//답변등록
 	@RequestMapping(value="/managerQna.do", method = RequestMethod.POST)
-	public String managerReply(int qna_idx,String qna_Acontent) {
+	public String managerReply(Model model,int qna_idx,String qna_Acontent) {
+		System.out.println("qna_Acontent"+qna_Acontent);
+
 		HashMap<String,Object> hm = new HashMap<String,Object>();
 		hm.put("qna_idx",qna_idx);
 		hm.put("qna_Acontent",qna_Acontent);
-		managerService.qnaReply(hm);	
-			
+		managerService.qnaReply(hm);
+		
 			
 		return "redirect:/manager/managerQnaList.do";
 	}
@@ -169,6 +168,7 @@ public class ManagerController {
 	
 	@RequestMapping(value = "/managerReview.do", method = RequestMethod.GET)
 	public String Review(Model model,ReviewVO rev,@ModelAttribute("scri") SearchCriteria scri3)throws Exception {  
+		logger .info("get list search");
 		List<ReviewVO> rlist = managerService.ReviewList(scri3);
 		model.addAttribute("rlist", rlist);        
 		
