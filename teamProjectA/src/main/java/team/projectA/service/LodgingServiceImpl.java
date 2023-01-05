@@ -40,9 +40,10 @@ public class LodgingServiceImpl implements LodgingService {
 	public Map<String,Object> selectLodging(int lidx) {
 		return lodgingDAO.selectLodging(lidx);
 	}
+	
 	@Override
-	public List<RoominVO> selectRoomList(int lidx, String men) {
-		return lodgingDAO.selectRoomList(lidx, men);
+	public List<RoominVO> selectRoomList(int lidx, String men, String fromDate) {
+		return lodgingDAO.selectRoomList(lidx, men, fromDate);
 	}
 
 	@Override

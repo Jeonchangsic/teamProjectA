@@ -95,11 +95,12 @@ public class LodgingDAO {
 		return sqlSession.selectOne("team.projectA.mapper.lodgingMapper.selectLodging",lidx);
 	}
 	
-	public List<RoominVO> selectRoomList(int lidx, String men){
+	public List<RoominVO> selectRoomList(int lidx, String men, String fromDate){
 		
 		HashMap<String, Object> hm = new HashMap<String, Object>();
 		hm.put("lidx",lidx);
 		hm.put("men", men);		
+		hm.put("fromDate", fromDate);		
 		
 		return sqlSession.selectList("team.projectA.mapper.lodgingMapper.selectRoomList", hm);
 	}

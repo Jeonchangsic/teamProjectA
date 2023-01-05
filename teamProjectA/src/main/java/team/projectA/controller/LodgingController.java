@@ -220,7 +220,10 @@ public class LodgingController {
 			
 		Map<String,Object> map = lodgingService.selectLodging(lidx);
 		
-		List<RoominVO> list = lodgingService.selectRoomList(lidx, men);
+		List<RoominVO> list = lodgingService.selectRoomList(lidx, men, fromDate);
+		System.out.println("lidx:" + lidx);
+		System.out.println("men:" + men);
+		System.out.println("fromDate:" + fromDate);
 		
 		//<review paging
 		PageMaker pageMaker = new PageMaker();

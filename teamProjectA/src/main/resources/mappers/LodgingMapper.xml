@@ -43,7 +43,6 @@
 		<id column="limagename" property="limagename" />
 		<id column="intro" property="intro" />
 		<id column="ridx" property="ridx" />
-		<id column="spareroom" property="spareroom" />
 		<id column="rprice" property="rprice" />
 		<id column="bed" property="bed" />
 		<id column="stdmen" property="stdmen" />
@@ -104,7 +103,6 @@
 			 , l.lodgingname
 			 , l.lodgingaddr
 			 , l.satis
-			 , r.spareroom
 			 , r.rprice
  		  FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
  		 WHERE l.lidx = r.lidx
@@ -115,7 +113,7 @@
 								 FROM lodgingtb l, roomtb r
 								WHERE l.lidx = r.lidx
 								  AND l.lodgingkind = #{lodgingkind}
-								  AND r.spareroom > 0
+								  AND r.rnum > 0
 							 order BY r.ridx	   
 							  ) a
 					 GROUP BY a.lidx)
@@ -459,7 +457,6 @@
 			 , l.lodgingname
 			 , l.lodgingaddr
 			 , l.satis
-			 , r.spareroom
 			 , r.rprice
  		  FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
  		 WHERE l.lidx = r.lidx
@@ -469,7 +466,7 @@
 						 FROM (SELECT r.*
 								 FROM lodgingtb l, roomtb r
 								WHERE l.lidx = r.lidx
-								  AND r.spareroom > 0
+								  AND r.rnum > 0
 							 order BY r.ridx	   
 							  ) a WHERE 1=1 <include refid="search"></include>
 					 GROUP BY a.lidx)
@@ -898,19 +895,19 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		  AND l.lidx = #{lidx}
 	</select>
 	<select id="selectRoomList" parameterType="HashMap" resultType="roominVO">
-		SELECT *
-		 FROM roomtb r, roomintb i
+		SELECT (r.rnum - (SELECT COUNT(ridx) FROM reservtb WHERE ridx = r.ridx AND reserv_startdate = #{fromDate})) AS spareroom , r.*, i.*
+		FROM roomtb r, roomintb i
 		WHERE r.ridx = i.ridx 
-		  AND r.lidx = #{lidx}
+			AND r.lidx = #{lidx}
 		<if test="men != null and men != ''">
 			AND r.maxmen <![CDATA[>=]]> ${men}
 		</if>
 		ORDER BY r.ridx
 	</select>
+	<!-- reserv -->
 	<select id="selectRoom" parameterType="int" resultType="roomVO">
 		SELECT r.ridx
 			 , r.rtype
-			 , r.spareroom
 			 , r.rprice		
 			 , l.lodgingname
 			 , u.username
