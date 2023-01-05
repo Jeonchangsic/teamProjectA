@@ -556,7 +556,8 @@
 								<input type="text" name="fromDate" id="fromDate" value="${fromDate}">
 								<input type="text" name="toDate" id="toDate" value="${toDate}">
 							</div>
-							
+							<input type="hidden" name="area" value="${area}" />
+							<input type="hidden" name="type" value="${type}" />
 							<div class="filter">베드 타입</div>
 							<ul class="btnsBox">
 								<%
