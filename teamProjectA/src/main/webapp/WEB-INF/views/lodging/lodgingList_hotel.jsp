@@ -708,18 +708,18 @@
 							</div>
 							<div class="public_in" class="fixedclear">
 								<ul id="public_left" class="filter_check">
-									<li><label><input type="checkbox" name="fitness" class="ck"<c:if test="${linvo.fitness eq 'on'}">checked</c:if>>피트니스</label></li>
-			    					<li><label><input type="checkbox" name="sauna" class="ck" <c:if test="${linvo.sauna eq 'on'}">checked</c:if>>사우나</label></li>
-			    					<li><label><input type="checkbox" name="restaurant" class="ck"<c:if test="${linvo.restaurant eq 'on'}">checked</c:if>>레스토랑</label></li>
-			    					<li><label><input type="checkbox" name="lounge" class="ck"<c:if test="${linvo.lounge eq 'on'}">checked</c:if>>라운지</label></li>
-			    					<li><label><input type="checkbox" name="bbq" class="ck"<c:if test="${linvo.bbq eq 'on'}">checked</c:if>>BBQ</label></li>
-			    					<li><label><input type="checkbox" name="publicspa" class="ck"<c:if test="${linvo.publicspa eq 'on'}">checked</c:if>>공용스파</label></li>
-			    					<li><label><input type="checkbox" name="seminar" class="ck"<c:if test="${linvo.seminar eq 'on'}">checked</c:if>>세미나실</label></li>
-			    					<li><label><input type="checkbox" name="singing" class="ck"<c:if test="${linvo.singing eq 'on'}">checked</c:if>>노래방</label></li>
-			    					<li><label><input type="checkbox" name="washingmachine" class="ck"<c:if test="${linvo.washingmachine eq 'on'}">checked</c:if>>세탁기</label></li>
-			    					<li><label><input type="checkbox" name="dehydrator" class="ck"<c:if test="${linvo.dehydrator eq 'on'}">checked</c:if>>탈수기</label></li>
-			    					<li><label><input type="checkbox" name="cooking" class="ck"<c:if test="${linvo.cooking eq 'on'}">checked</c:if>>취사가능</label></li>
-			    					<li><label><input type="checkbox" name="spa" class="ck"<c:if test="${linvo.spa eq 'on'}">checked</c:if>>온천</label></li>
+									<li><label><input type="checkbox" name="fitness" <c:if test="${linvo.fitness eq 'on'}">checked</c:if>>피트니스</label></li>
+			    					<li><label><input type="checkbox" name="sauna" <c:if test="${linvo.sauna eq 'on'}">checked</c:if>>사우나</label></li>
+			    					<li><label><input type="checkbox" name="restaurant" <c:if test="${linvo.restaurant eq 'on'}">checked</c:if>>레스토랑</label></li>
+			    					<li><label><input type="checkbox" name="lounge" <c:if test="${linvo.lounge eq 'on'}">checked</c:if>>라운지</label></li>
+			    					<li><label><input type="checkbox" name="bbq" <c:if test="${linvo.bbq eq 'on'}">checked</c:if>>BBQ</label></li>
+			    					<li><label><input type="checkbox" name="publicspa" <c:if test="${linvo.publicspa eq 'on'}">checked</c:if>>공용스파</label></li>
+			    					<li><label><input type="checkbox" name="seminar" <c:if test="${linvo.seminar eq 'on'}">checked</c:if>>세미나실</label></li>
+			    					<li><label><input type="checkbox" name="singing" <c:if test="${linvo.singing eq 'on'}">checked</c:if>>노래방</label></li>
+			    					<li><label><input type="checkbox" name="washingmachine"<c:if test="${linvo.washingmachine eq 'on'}">checked</c:if>>세탁기</label></li>
+			    					<li><label><input type="checkbox" name="dehydrator" <c:if test="${linvo.dehydrator eq 'on'}">checked</c:if>>탈수기</label></li>
+			    					<li><label><input type="checkbox" name="cooking" <c:if test="${linvo.cooking eq 'on'}">checked</c:if>>취사가능</label></li>
+			    					<li><label><input type="checkbox" name="spa" <c:if test="${linvo.spa eq 'on'}">checked</c:if>>온천</label></li>
 								</ul>
 								<ul id="public_right" class="filter_check">
 									<li><label><input type="checkbox" name="pool" class="ck"<c:if test="${linvo.pool eq 'on'}">checked</c:if>>수영장</label></li>
@@ -727,56 +727,56 @@
 									String str = request.getParameter("pool");
 									if (str == null) str = "";
 									if (str.equals("on")) {%> checked <%} %>>수영장</label></li> --%>
-			    					<li><label><input type="checkbox" name="golf" class="ck"<c:if test="${linvo.golf eq 'on'}">checked</c:if>>골프장</label></li>
-			    					<li><label><input type="checkbox" name="elevator" class="ck"<c:if test="${linvo.elevator eq 'on'}">checked</c:if>>엘리베이터</label></li>
-			    					<li><label><input type="checkbox" name="pc" class="ck"<c:if test="${linvo.pc eq 'on'}">checked</c:if>>공용PC</label></li>
-			    					<li><label><input type="checkbox" name="cafe" class="ck"<c:if test="${linvo.cafe eq 'on'}">checked</c:if>>카페</label></li>
-			    					<li><label><input type="checkbox" name="footvolleyball" class="ck"<c:if test="${linvo.footvolleyball eq 'on'}">checked</c:if>>족구장</label></li>
-			    					<li><label><input type="checkbox" name="store" class="ck"<c:if test="${linvo.store eq 'on'}">checked</c:if>>편의점</label></li>
-			    					<li><label><input type="checkbox" name="dining" class="ck"<c:if test="${linvo.dining eq 'on'}">checked</c:if>>주방/식당</label></li>
-			    					<li><label><input type="checkbox" name="dryer" class="ck"<c:if test="${linvo.dryer eq 'on'}">checked</c:if>>건조기</label></li>
-			    					<li><label><input type="checkbox" name="parking" class="ck"<c:if test="${linvo.parking eq 'on'}">checked</c:if>>주차장</label></li>
-			    					<li><label><input type="checkbox" name="publicshower" class="ck"<c:if test="${linvo.publicshower eq 'on'}">checked</c:if>>공용샤워실</label></li>
-			    					<li><label><input type="checkbox" name="ski" class="ck"<c:if test="${linvo.ski eq 'on'}">checked</c:if>>스키장</label></li>
+			    					<li><label><input type="checkbox" name="golf" <c:if test="${linvo.golf eq 'on'}">checked</c:if>>골프장</label></li>
+			    					<li><label><input type="checkbox" name="elevator" <c:if test="${linvo.elevator eq 'on'}">checked</c:if>>엘리베이터</label></li>
+			    					<li><label><input type="checkbox" name="pc" <c:if test="${linvo.pc eq 'on'}">checked</c:if>>공용PC</label></li>
+			    					<li><label><input type="checkbox" name="cafe"<c:if test="${linvo.cafe eq 'on'}">checked</c:if>>카페</label></li>
+			    					<li><label><input type="checkbox" name="footvolleyball"<c:if test="${linvo.footvolleyball eq 'on'}">checked</c:if>>족구장</label></li>
+			    					<li><label><input type="checkbox" name="store" <c:if test="${linvo.store eq 'on'}">checked</c:if>>편의점</label></li>
+			    					<li><label><input type="checkbox" name="dining" <c:if test="${linvo.dining eq 'on'}">checked</c:if>>주방/식당</label></li>
+			    					<li><label><input type="checkbox" name="dryer"<c:if test="${linvo.dryer eq 'on'}">checked</c:if>>건조기</label></li>
+			    					<li><label><input type="checkbox" name="parking" <c:if test="${linvo.parking eq 'on'}">checked</c:if>>주차장</label></li>
+			    					<li><label><input type="checkbox" name="publicshower" <c:if test="${linvo.publicshower eq 'on'}">checked</c:if>>공용샤워실</label></li>
+			    					<li><label><input type="checkbox" name="ski" <c:if test="${linvo.ski eq 'on'}">checked</c:if>>스키장</label></li>
 								</ul>
 							</div>
 		
 							<div id="filter_in" class="filter">객실 내 시설</div>
 							<div class="public_in">
 								<ul id="in_left" class="filter_check">
-									<li><label><input type=checkbox name="roomspa" class="ck"<c:if test="${rinvo.roomspa eq 'on'}">checked</c:if>> 객실스파</label></li>
-									<li><label><input type=checkbox name="wifi" class="ck" <c:if test="${rinvo.wifi eq 'on'}">checked</c:if>> 와이파이</label></li>
-									<li><label><input type=checkbox name="tv" class="ck"<c:if test="${rinvo.tv eq 'on'}">checked</c:if>> TV</label></li>
-									<li><label><input type=checkbox name="refri" class="ck"<c:if test="${rinvo.refri eq 'on'}">checked</c:if>> 냉장고</label></li>
-									<li><label><input type=checkbox name="bath" class="ck"<c:if test="${rinvo.bath eq 'on'}">checked</c:if>> 욕조</label></li>
-									<li><label><input type=checkbox name="iron" class="ck"<c:if test="${rinvo.iron eq 'on'}">checked</c:if>> 다리미</label></li>
+									<li><label><input type=checkbox name="roomspa" <c:if test="${rinvo.roomspa eq 'on'}">checked</c:if>> 객실스파</label></li>
+									<li><label><input type=checkbox name="wifi" <c:if test="${rinvo.wifi eq 'on'}">checked</c:if>> 와이파이</label></li>
+									<li><label><input type=checkbox name="tv"<c:if test="${rinvo.tv eq 'on'}">checked</c:if>> TV</label></li>
+									<li><label><input type=checkbox name="refri" <c:if test="${rinvo.refri eq 'on'}">checked</c:if>> 냉장고</label></li>
+									<li><label><input type=checkbox name="bath" "<c:if test="${rinvo.bath eq 'on'}">checked</c:if>> 욕조</label></li>
+									<li><label><input type=checkbox name="iron" <c:if test="${rinvo.iron eq 'on'}">checked</c:if>> 다리미</label></li>
 								</ul>
 								<ul id="in_right" class="filter_check">
-									<li><label><input type=checkbox name="minibar" class="ck"<c:if test="${rinvo.minibar eq 'on'}">checked</c:if>> 미니바</label></li>
-									<li><label><input type=checkbox name="bathitem" class="ck"<c:if test="${rinvo.bathitem eq 'on'}">checked</c:if>> 욕실용품</label></li>
-									<li><label><input type=checkbox name="aircon" class="ck"<c:if test="${rinvo.aircon eq 'on'}">checked</c:if>> 에어컨</label></li>
-									<li><label><input type=checkbox name="shower" class="ck"<c:if test="${rinvo.shower eq 'on'}">checked</c:if>> 객실샤워실</label></li>
-									<li><label><input type=checkbox name="dryer" class="ck"<c:if test="${rinvo.dryer eq 'on'}">checked</c:if>> 드라이기</label></li>
-									<li><label><input type=checkbox name="ricecooker" class="ck"<c:if test="${rinvo.ricecooker eq 'on'}">checked</c:if>> 전기밥솥</label></li>
+									<li><label><input type=checkbox name="minibar" <c:if test="${rinvo.minibar eq 'on'}">checked</c:if>> 미니바</label></li>
+									<li><label><input type=checkbox name="bathitem" <c:if test="${rinvo.bathitem eq 'on'}">checked</c:if>> 욕실용품</label></li>
+									<li><label><input type=checkbox name="aircon" <c:if test="${rinvo.aircon eq 'on'}">checked</c:if>> 에어컨</label></li>
+									<li><label><input type=checkbox name="shower" <c:if test="${rinvo.shower eq 'on'}">checked</c:if>> 객실샤워실</label></li>
+									<li><label><input type=checkbox name="dryer" <c:if test="${rinvo.dryer eq 'on'}">checked</c:if>> 드라이기</label></li>
+									<li><label><input type=checkbox name="ricecooker" <c:if test="${rinvo.ricecooker eq 'on'}">checked</c:if>> 전기밥솥</label></li>
 								</ul>
 							</div>
 							<div class="filter" id="odd">기타</div>
 							<div class="public_in">
 								<ul id="odd_left" class="filter_check">
-									<li><label><input type="checkbox" name="pickup" class="ck" <c:if test="${linvo.pickup eq 'on'}">checked</c:if>>픽업가능</label></li>
-		    						<li><label><input type="checkbox" name="printer" class="ck"<c:if test="${linvo.printer eq 'on'}">checked</c:if>>프린터사용</label></li>
-		    						<li><label><input type="checkbox" name="locker" class="ck"<c:if test="${linvo.locker eq 'on'}">checked</c:if>>개인사물함</label></li>
-		    						<li><label><input type="checkbox" name="breakfast" class="ck"<c:if test="${linvo.breakfast eq 'on'}">checked</c:if>>조식포함</label></li>
-		    						<li><label><input type="checkbox" name="valetparking" class="ck"<c:if test="${linvo.valetparking eq 'on'}">checked</c:if>>발렛파킹</label></li>
-		    						<li><label><input type="checkbox" name="dog" class="ck"<c:if test="${linvo.dog eq 'on'}">checked</c:if>>반려견동반</label></li>
+									<li><label><input type="checkbox" name="pickup"  <c:if test="${linvo.pickup eq 'on'}">checked</c:if>>픽업가능</label></li>
+		    						<li><label><input type="checkbox" name="printer" <c:if test="${linvo.printer eq 'on'}">checked</c:if>>프린터사용</label></li>
+		    						<li><label><input type="checkbox" name="locker" <c:if test="${linvo.locker eq 'on'}">checked</c:if>>개인사물함</label></li>
+		    						<li><label><input type="checkbox" name="breakfast" <c:if test="${linvo.breakfast eq 'on'}">checked</c:if>>조식포함</label></li>
+		    						<li><label><input type="checkbox" name="valetparking"<c:if test="${linvo.valetparking eq 'on'}">checked</c:if>>발렛파킹</label></li>
+		    						<li><label><input type="checkbox" name="dog"<c:if test="${linvo.dog eq 'on'}">checked</c:if>>반려견동반</label></li>
 								</ul>
 								<ul id="odd_right" class="filter_check">
-									<li><label><input type="checkbox" name="inroomcooking" class="ck"<c:if test="${linvo.inroomcooking eq 'on'}">checked</c:if>>객실내취사</label></li>
-		    						<li><label><input type="checkbox" name="keepluggage" class="ck"<c:if test="${linvo.keepluggage eq 'on'}">checked</c:if>>짐보관가능</label></li>
-		    						<li><label><input type="checkbox" name="freeparking" class="ck"<c:if test="${linvo.freeparking eq 'on'}">checked</c:if>>무료주차</label></li>    						
-		    						<li><label><input type="checkbox" name="inroomsmoking" class="ck"<c:if test="${linvo.inroomsmoking eq 'on'}">checked</c:if>>객실내흡연</label></li>
-		    						<li><label><input type="checkbox" name="nosmoking" class="ck"<c:if test="${linvo.nosmoking eq 'on'}">checked</c:if>>금연</label></li>
-		    						<li><label><input type="checkbox" name="creditcard" class="ck"<c:if test="${linvo.creditcard eq 'on'}">checked</c:if>>카드결제</label></li>
+									<li><label><input type="checkbox" name="inroomcooking"<c:if test="${linvo.inroomcooking eq 'on'}">checked</c:if>>객실내취사</label></li>
+		    						<li><label><input type="checkbox" name="keepluggage"<c:if test="${linvo.keepluggage eq 'on'}">checked</c:if>>짐보관가능</label></li>
+		    						<li><label><input type="checkbox" name="freeparking"<c:if test="${linvo.freeparking eq 'on'}">checked</c:if>>무료주차</label></li>    						
+		    						<li><label><input type="checkbox" name="inroomsmoking" <c:if test="${linvo.inroomsmoking eq 'on'}">checked</c:if>>객실내흡연</label></li>
+		    						<li><label><input type="checkbox" name="nosmoking"<c:if test="${linvo.nosmoking eq 'on'}">checked</c:if>>금연</label></li>
+		    						<li><label><input type="checkbox" name="creditcard"<c:if test="${linvo.creditcard eq 'on'}">checked</c:if>>카드결제</label></li>
 								</ul>
 							</div>
 						</form>
