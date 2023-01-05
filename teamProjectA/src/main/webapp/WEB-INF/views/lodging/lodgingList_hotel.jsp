@@ -224,15 +224,6 @@
 		$("#trueReset").on("click",function(){
 			history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
 			location.reload() //페이지 새로고침
-			/* let imck = $('.ck').prop('checked'); //체크안됨으로 뜸
-			let imck2 = $('.ck').is('ckecked'); //체크안됨으로 뜸
-		
-			if(imck2){
-				$(".ck").prop("checked",false);
-				alert("클릭!");
-				}else{
-					alert("체크안됨");
-				} */
 			})
 
 		})

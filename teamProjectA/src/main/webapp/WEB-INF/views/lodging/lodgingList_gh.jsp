@@ -233,6 +233,14 @@
 		// 결과 출력
 		result.value = number;
 	}
+	
+	$(document).ready(function(){
+		$("#trueReset").on("click",function(){
+			history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
+			location.reload() //페이지 새로고침
+			})
+
+		})
 </script>
 <script>
 	//검색창 출력 버튼
@@ -707,8 +715,8 @@
 								<input id="result" name="men" value="<c:if test='${men == null}'>2</c:if><c:if test='${men != null}'>${men}</c:if>" readonly />
 								<button type='button' onclick='count("plus")' value='+' class="updown">+</button>
 							</div>
-							<div id="reset">
-								<input type="reset">						
+							<div id="reset" >
+								<input type="reset" id = "trueReset">						
 								<input type="submit" value="적용">
 								
 							</div>
