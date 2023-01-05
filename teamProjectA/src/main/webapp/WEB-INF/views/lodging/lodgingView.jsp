@@ -49,6 +49,8 @@
                     $(this).next(".info_detail").css("display", "block");
                 }
             });
+            
+
         });//---info.detail
 
         //modal
@@ -64,7 +66,7 @@
             
     	//숙소메뉴버튼
         $(document).ready(function(){
-            $(".btn_room").click(function(){
+            $(".btn_room").click(function(){	   	
                 $(".review, .detail_info").css("display", "none");      
                 $(".room_contents").css("display", "block");
                 $(".btn_room").css({"border-bottom":"3px solid rgb(86, 19, 241)", "color":"rgb(86, 19, 241)","font-weight":"bold"});
@@ -77,12 +79,28 @@
                 $(".btn_room, .btn_review").css({"border":"none", "color":"rgba(0, 0, 0, 0.626)","font-weight":"normal"});         
             });
             $(".btn_review").click(function(){
+            	          	
                 $(".room_contents, .detail_info").css("display", "none");
                 $(".review").css("display", "block");                
                 $(".btn_review").css({"border-bottom":"3px solid rgb(86, 19, 241)", "color":"rgb(86, 19, 241)","font-weight":"bold"});
                 $(".btn_room, .btn_info").css({"border":"none", "color":"rgba(0, 0, 0, 0.626)","font-weight":"normal"});
+                
             });
-        })
+            
+            //다시 접속했을때 page에 번호가 있으면 css를 새롭게 보여준다 (a링크 누르는 순간 다시 접속되는 것)
+            let query = window.location.search; //주소를 얻고
+            let param = new URLSearchParams(query); //url에서파라미터를 찾아
+            let area = param.get('page'); //특정 파라미터만 구한다
+            
+            if(area >=1){
+            $(".room_contents, .detail_info").css("display", "none");
+            $(".review").css("display", "block");                
+            $(".btn_review").css({"border-bottom":"3px solid rgb(86, 19, 241)", "color":"rgb(86, 19, 241)","font-weight":"bold"});
+            $(".btn_room, .btn_info").css({"border":"none", "color":"rgba(0, 0, 0, 0.626)","font-weight":"normal"});
+            
+            }
+
+        });
         //캘린더
 		$(function(){
 			//오늘 날짜를 출력

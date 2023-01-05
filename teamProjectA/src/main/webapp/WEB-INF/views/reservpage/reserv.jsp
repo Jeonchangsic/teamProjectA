@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ page import="java.util.*" %>
+<%@ page import="java.util.*" %>
 <%@ page import="team.projectA.vo.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -26,6 +26,14 @@
     IMP.init("imp07081518"); 
 
     function requestPay() {
+    	
+ 		//약관동의 유도
+    	 var ch = $("#checkall").is(":checked");    
+         if(!ch){   //ch == false 도 가능
+          alert("약관에 동의해주세요");
+         }else{
+        	 
+  
     	var fromDate = $(".fromDate").val();
     	var toDate = $(".toDate").val();
         IMP.request_pay({
@@ -64,7 +72,7 @@
             alert(msg);
         });
         
-		
+         }
     }
 </script>
     <script>
@@ -99,10 +107,14 @@
 				var total = $("input[name=check]").length;
 				var checked = $("input[name=check]:checked").length;
 				
-				if(total != checked) $("#checkall").prop("checked", false);
-				else $("checkall").prop("checked", true); 
+				if(total != checked){
+					$("#checkall").prop("checked", false);
+					}else{
+					$("#checkall").prop("checked", true); 
+					}
 			});
 		});
+        
         function check(){
          if($("#checkall").is(":checked")) $("#nofont").css("display","none");
             else $("#nofont").show()       
@@ -172,20 +184,30 @@
         <div class="right">
             <section class="info">
                 <p class="name">
-                    <strong>숙소이름</strong><br>
-						<%=rvo.getLodgingname() %>
-                </p>
-                <p>
-                    <strong>객실타입/인원</strong><br>
-                    	<%=rvo.getRtype() %>/2인
+                     <strong>객실타입/인원</strong><br>
+                     <%=rvo.getRtype() %>/
+                     <c:if test="${men != null && men != '' }">${men}인</c:if>
+                     <c:if test="${men == null || men == ''}">2인</c:if>
                 </p>
                 <p>
                     <strong class="fromDate">체크인</strong><br>
-                    	${fromDate}
+                    <c:if test = "${fromDate == null || fromDate == ''}">
+                   	 <jsp:useBean id = "today" class="java.util.Date"/>
+						<fmt:formatDate value = "${today}" type = "DATE" pattern ="yyyy-MM-dd"/>
+                    </c:if>
+                    <c:if test = "${fromDate != null }">
+                         ${fromDate}
+                    </c:if>
                 </p>
                 <p>
                     <strong class="toDate">체크아웃</strong><br>
-                    	${toDate}
+                    <c:if test = "${toDate == null || toDate == ''}">
+                   		<c:set var = "tomorrow" value ="<%=new Date(new Date().getTime() + 60*60*24*1000)%>"/> <!--60초(분)*60분(시간)*24시간(일)*1000밀리초(초) => 1일(24시간)계산  -->
+						<fmt:formatDate value="${tomorrow}" type ="DATE" pattern="yyyy-MM-dd"/>
+                    </c:if>
+                    <c:if test = "${toDate != null}">
+                        ${toDate}
+                    </c:if>
                 </p>
             </section>
             <hr>

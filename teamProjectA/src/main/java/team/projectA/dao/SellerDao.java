@@ -39,12 +39,10 @@ public class SellerDao {
 	}
 	
 	public List<QnaVO> qnaList(HashMap hm){
-	
-        return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", hm);
+	    return sqlSession.selectList("team.projectA.mapper.sellerMapper.qnaList", hm);
 	 }
 	
 	public int listCount(HashMap hm) {
-
 		return sqlSession.selectOne("team.projectA.mapper.sellerMapper.listCount", hm);
 		
 	}
@@ -76,13 +74,11 @@ public class SellerDao {
 	
 	@Transactional
 	public int roomup(RoomVO vo) {
-		
 		sqlSession.insert("team.projectA.mapper.sellerMapper.roomup",vo);
 		return vo.getRidx();		
 	}
 	
 	public int roomInCh(RoominVO vo) {
-
 		return sqlSession.insert("team.projectA.mapper.sellerMapper.roomInCh",vo);
 		
 	}
@@ -93,7 +89,6 @@ public class SellerDao {
 	}
 	
 	public int lodgingUp(LodgingVO vo) {
-		
 		sqlSession.insert("team.projectA.mapper.sellerMapper.lodgingUp", vo);
 		return vo.getLidx();
 	}
