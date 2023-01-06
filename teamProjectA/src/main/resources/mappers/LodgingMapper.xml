@@ -43,6 +43,7 @@
 		<id column="limagename" property="limagename" />
 		<id column="intro" property="intro" />
 		<id column="ridx" property="ridx" />
+		<id column="spareroom" property="spareroom" />
 		<id column="rprice" property="rprice" />
 		<id column="bed" property="bed" />
 		<id column="stdmen" property="stdmen" />
@@ -104,19 +105,26 @@
 			 , l.lodgingaddr
 			 , l.satis
 			 , r.rprice
- 		  FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
- 		 WHERE l.lidx = r.lidx
- 		   AND l.lidx = lin.lidx
- 		   AND r.ridx = rin.ridx
-  		   AND r.ridx IN (SELECT MIN(a.ridx)
-						 FROM (SELECT r.*
-								 FROM lodgingtb l, roomtb r
-								WHERE l.lidx = r.lidx
-								  AND l.lodgingkind = #{lodgingkind}
-								  AND r.rnum > 0
-							 order BY r.ridx	   
-							  ) a
-					 GROUP BY a.lidx)
+			 , (r.rnum - (SELECT COUNT(ridx)
+					  				FROM reservtb
+								 		WHERE reserv_startdate = #{fromDate}
+								   		AND ridx = r.ridx)) AS spareroom
+ 		FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
+ 		WHERE l.lidx = r.lidx
+ 			AND l.lidx = lin.lidx
+ 			AND r.ridx = rin.ridx
+  			AND r.ridx IN (SELECT MIN(a.ridx) 
+							FROM (SELECT r.* 
+  									FROM lodgingtb l, roomtb r
+									WHERE l.lidx = r.lidx
+								  		AND l.lodgingkind = #{lodgingkind}
+								  		AND (r.rnum - (SELECT COUNT(ridx)
+													  	FROM reservtb
+														WHERE reserv_startdate = #{fromDate}
+														AND ridx = r.ridx)) > 0
+							 		ORDER BY r.ridx	   
+							  	) a
+					 		GROUP BY a.lidx)
 		<choose>
 			<when test ="area != null and area == '서울 전체'">
 				AND local like '10%'

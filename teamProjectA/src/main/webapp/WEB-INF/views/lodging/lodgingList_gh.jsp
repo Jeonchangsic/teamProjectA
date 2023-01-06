@@ -243,6 +243,18 @@
 		})
 </script>
 <script>
+	//검색기능
+	$(function(){
+		$("#searchBtn").click(function(){
+			var stype = $("select option:selected").val();
+		//	var kword = encodeURIcomponent($("#keywordInput").val());
+			var kword = $("#keywordInput").val();
+			var type =1;
+			
+			document.location.href = "<%=request.getContextPath()%>/lodging/lodgingList_search.do?searchType="+stype+"&keyword="+kword+"&type="+type;
+			return;
+		});
+	})
 	//검색창 출력 버튼
 	$(function(){
 		$(".searchBarOn").click(function() {
@@ -268,8 +280,7 @@
 	            </div>
 	                <li id="searchArea">
 	                    <select name="searchType" class="search_bar font_Style" id="search_bar">
-	                     	<option value="n"<c:out value="${searchType == null ? 'selected' : ''}"/>>-----</option>
-	                     	<option value="ln"<c:out value="${searchType eq 'ln' ? 'selected' : ''}"/>>숙소명</option>
+	                     	<option value="ln"<c:out value="${searchType eq 'ln' || searchType == null ? 'selected' : ''}"/>>숙소명</option>
 	                     	<option value="la"<c:out value="${searchType eq 'la' ? 'selected' : ''}"/>>지역</option>
 	                     </select>
 	                     <input type="text" name="keyword" id="keywordInput" class="font_Style" value="${keyword}"/>

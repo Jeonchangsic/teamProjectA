@@ -50,9 +50,9 @@ public class LodgingController {
 /*		 List<LodgingVO> list1= lodgingService.selectList1("GH");		 
 		 List<RoomVO> list2= lodgingService.selectList2(gubun);		 
 		 model.addAttribute("list1",list1); 
-		 model.addAttribute("list2",list2);
-		 
+		 model.addAttribute("list2",list2);		 
 */
+		//날짜
 		 if(fromDate == null || fromDate.equals(""))
 		 {
 			 fromDate = DateUtil.GetToday();
@@ -63,6 +63,7 @@ public class LodgingController {
 		 }		 
 		 System.out.println("fromDate:" + fromDate);
 		 System.out.println("toDate:" + toDate);
+		 
 		 List<Map<String,Object>> list = lodgingService.selectLodgingList("GH", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		 model.addAttribute("list",list);
 		 model.addAttribute("type", type);
@@ -80,6 +81,18 @@ public class LodgingController {
 	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
 	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
 		
+		//날짜
+		 if(fromDate == null || fromDate.equals(""))
+		 {
+			 fromDate = DateUtil.GetToday();
+		 }
+		 if(toDate == null || toDate.equals(""))
+		 {
+			 toDate = DateUtil.GetTomorrow();
+		 }		 
+		 System.out.println("fromDate:" + fromDate);
+		 System.out.println("toDate:" + toDate);
+		 
 		List<Map<String,Object>> list = lodgingService.selectLodgingList("호텔", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
@@ -96,7 +109,9 @@ public class LodgingController {
 	
 	@RequestMapping(value = "/lodgingList_motel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
 	public String list_motel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
-		 if(fromDate == null || fromDate.equals(""))
+		
+		//날짜
+		if(fromDate == null || fromDate.equals(""))
 		 {
 			 fromDate = DateUtil.GetToday();
 		 }
@@ -120,7 +135,19 @@ public class LodgingController {
 	
 	@RequestMapping(value = "/lodgingList_villa.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
 	public String list_villa(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
-
+		
+		//날짜
+		 if(fromDate == null || fromDate.equals(""))
+		 {
+			 fromDate = DateUtil.GetToday();
+		 }
+		 if(toDate == null || toDate.equals(""))
+		 {
+			 toDate = DateUtil.GetTomorrow();
+		 }		 
+		 System.out.println("fromDate:" + fromDate);
+		 System.out.println("toDate:" + toDate);
+		 
 		List<Map<String,Object>> list = lodgingService.selectLodgingList("펜션/풀빌라", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
@@ -144,7 +171,18 @@ public class LodgingController {
 		 * System.out.println("stype:"+scri.getSearchType());
 		 */
 		
-		
+		//날짜
+		 if(fromDate == null || fromDate.equals(""))
+		 {
+			 fromDate = DateUtil.GetToday();
+		 }
+		 if(toDate == null || toDate.equals(""))
+		 {
+			 toDate = DateUtil.GetTomorrow();
+		 }		 
+		 System.out.println("fromDate:" + fromDate);
+		 System.out.println("toDate:" + toDate);
+		 
 		HashMap<String,Object> hm = new HashMap<String,Object>();
 		hm.put("type", type);
 		hm.put("area", area);
@@ -236,22 +274,10 @@ public class LodgingController {
 	
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
 	public String lodgingView(int lidx, Model model, HttpServletRequest req, String fromDate, String toDate, String men, @ModelAttribute("cri") Criteria cri, String page) throws Exception {
-			
-		 if(fromDate == null || fromDate.equals(""))
-		 {
-			 fromDate = DateUtil.GetToday();
-		 }
-		 if(toDate == null || toDate.equals(""))
-		 {
-			 toDate = DateUtil.GetTomorrow();
-		 }
 		 
 		Map<String,Object> map = lodgingService.selectLodging(lidx);
 		
-		List<RoominVO> list = lodgingService.selectRoomList(lidx, men, fromDate);
-		
-
-		
+		List<RoominVO> list = lodgingService.selectRoomList(lidx, men, fromDate);		
 		
 		//<review paging
 		PageMaker pageMaker = new PageMaker();

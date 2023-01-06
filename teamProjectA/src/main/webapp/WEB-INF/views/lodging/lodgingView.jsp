@@ -127,7 +127,7 @@
 					$("#toDate").datepicker("option", "minDate", selectedDate);
 				}
 			});
-			$('#fromDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+			//$('#fromDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 	
 			//종료일
 			$('#toDate').datepicker({
@@ -143,7 +143,7 @@
 					$("#fromDate").datepicker("option", "maxDate", selectedDate);
 				}
 			});
-			$('#toDate').datepicker('setDate', '+1D');
+			//$('#toDate').datepicker('setDate', '+1D');
 		});
         //인원
 		function count(type) {
@@ -165,6 +165,18 @@
 		}
     </script>
     <script>
+	    //검색기능
+	    $(function(){
+			$("#searchBtn").click(function(){
+				var stype = $("select option:selected").val();
+			//	var kword = encodeURIcomponent($("#keywordInput").val());
+				var kword = $("#keywordInput").val();
+				var type =1;
+				
+				document.location.href = "<%=request.getContextPath()%>/lodging/lodgingList_search.do?searchType="+stype+"&keyword="+kword+"&type="+type;
+				return;
+			});
+		})
 		//검색창 출력 버튼
 		$(function(){
 			$(".searchBarOn").click(function() {
@@ -321,7 +333,7 @@
 		                    <div class="room_price">
 		                        <p>가격</p>
 		                        <div> 
-		                            <p class="room_amount"><c:if test="${vo2.spareroom < 6}">남은 객실${vo2.spareroom}개</c:if></p>
+		                            <p class="room_amount"><c:if test="${vo2.spareroom < 6 && vo2.spareroom > 0}">남은 객실${vo2.spareroom}개</c:if></p>
 		                            <p><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</p>
 		                        </div>
 		                    </div><!--//room_price-->

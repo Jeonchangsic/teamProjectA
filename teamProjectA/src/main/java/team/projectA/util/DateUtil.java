@@ -21,13 +21,9 @@ public class DateUtil
 	public static String GetTomorrow() //내일
 	{
 		
-		String today = "";
+		String tomorrow = LocalDate.now().plusDays(1).toString(); //오늘에 하루를 더하면 내일이 됨
 		
-		String now = LocalDate.now().plusDays(1).toString(); //오늘에 하루를 더하면 내일이 됨
-		
-		today = now;
-		
-		return today;
+		return tomorrow;
 	}	
 
 	//오늘을 기준으로 day 이후의 날짜를 얻는다.
