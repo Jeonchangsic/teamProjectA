@@ -1,21 +1,31 @@
 package team.projectA.util;
 
+import java.time.LocalDate;
+
 public class DateUtil
 {
-	public static String GetToday()
+	public static String GetToday() //오늘
 	{
+	
 		String today = "";
+
+        //LocalDate now = LocalDate.now(); 원래식
+		String now = LocalDate.now().toString(); //LocalDate 객체 생성(현재 시간)
 		
-		today = "2023-01-05";
+		today = now;
 		
 		return today;
+		
 	}
 
-	public static String GetTomorrow()
+	public static String GetTomorrow() //내일
 	{
+		
 		String today = "";
 		
-		today = "2023-01-06";
+		String now = LocalDate.now().plusDays(1).toString(); //오늘에 하루를 더하면 내일이 됨
+		
+		today = now;
 		
 		return today;
 	}	
