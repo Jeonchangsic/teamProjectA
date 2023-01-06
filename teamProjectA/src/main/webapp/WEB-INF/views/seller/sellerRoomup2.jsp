@@ -143,7 +143,22 @@
 					$("#border div:nth-child(5)").empty("<img src=''/>");
 				}
 			});
+			
+			//기준인원, 최대인원 수 조절
+			$('#next').on("click",function() { 
+				var stdmen = $("#stdmen").val();
+				var maxmen = $("#maxmen").val();
+				
+				if(stdmen > maxmen){
+					alert("기준인원을 최대인원보다 적게 입력해주세요.")
+					return false;
+				}
+			
+			});
 		});
+		
+	
+		
 	    </script>
 </head>
 <body>
@@ -229,12 +244,12 @@
 						</tr>
 						<tr>
 							<td>기준인원</td>
-							<td><input type="text" name="stdmen" pattern="[0-9]+"
+							<td><input type="text" name="stdmen" id="stdmen" pattern="[0-9]+"
 								placeholder="숫자를 입력해주세요" value="${mo.stdmen}" required></td>
 						</tr>
 						<tr>
 							<td>최대인원</td>
-							<td><input type="text" name="maxmen" pattern="[0-9]+"
+							<td><input type="text" name="maxmen" id="maxmen" pattern="[0-9]+"
 								placeholder="숫자를 입력해주세요" value="${mo.maxmen}" required /></td>
 						</tr>
 					</table>
@@ -250,7 +265,7 @@
 								<div class="public_in">
 									<ul id="in_left" class="filter_check">
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="roomspa" <c:if test="${mo.roomspa eq 'Y'}">checked</c:if>> <label>객실스파</label></li>
+											class="ch" name="roomspa" <c:if test="${mo.roomspa eq 'Y'}">checked</c:if>> <label>${mo.roomspa}객실스파</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
 											class="ch" name="wifi" <c:if test="${mo.wifi eq 'Y'}">checked</c:if>> <label>와이파이</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
@@ -320,7 +335,7 @@
 					</div>
 					<div id="inner_bottom">
 						<div>
-							<button type="submit" name="next"
+							<button type="submit" name="next" id="next"
 								style="color: white; border: 1px solid rgb(86, 19, 241);">완료</button>
 						</div>
 					</div>

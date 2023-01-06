@@ -123,7 +123,9 @@
 			onClose : function(selectedDate) {
 				// 시작일(fromDate) datepicker가 닫힐때
 				// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-				$("#toDate").datepicker("option", "minDate", selectedDate);
+			var curDate = $("#fromDate").datepicker("getDate"); //선택한 날짜를 변수에 담기
+			curDate.setDate( curDate.getDate() + 1 ); //얻은 날짜에 +1
+			$("#toDate").datepicker("option", "minDate", curDate); //종료일의 최소날짜를 curDate로 설정
 			}
 		});
 		//$('#fromDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
@@ -139,7 +141,7 @@
 			onClose : function(selectedDate) {
 				// 종료일(toDate) datepicker가 닫힐때
 				// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
-				$("#fromDate").datepicker("option", "maxDate", selectedDate);
+				
 			}
 		});
 		//$('#toDate').datepicker('setDate', '+1D');
@@ -236,11 +238,19 @@
 	
 	$(document).ready(function(){
 		$("#trueReset").on("click",function(){
+			
+			var search = location.search		
+
+			var params = new URLSearchParams(search);
+			var parea= params.get('area');
+			var ptype= params.get('type');
+				
 			history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
 			location.reload() //페이지 새로고침
-			})
-
-		})
+			location.href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area="+parea+"&type="+ptype; 
+			
+		});
+	});
 </script>
 <script>
 	//검색기능
