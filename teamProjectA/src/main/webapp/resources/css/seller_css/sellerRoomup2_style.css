@@ -50,7 +50,8 @@ body{background-color:aliceblue;}
 
 #up_nav li:nth-child(odd){border:1px solid rgb(86,19,241);
                           padding:10px 20px 10px 20px;
-                          border-radius:8px; }
+                          border-radius:8px;
+                          margin-left: 23px }
 #up_nav li:nth-child(even){margin-top:60px;}
 #inner #up_nav img{width:20px;}
 
@@ -68,7 +69,7 @@ body{background-color:aliceblue;}
 
 /*오른쪽 정보업로드 영역*/
 #main_right{height:300px; float:right;
-			margin:180px 150px 0 0;}
+			margin:220px 150px 0 0;}
 #main_right input{margin-bottom:20px; margin-left:15px;}
 #main_right ul li{float:left; margin-left: 25px;}
 

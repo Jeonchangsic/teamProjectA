@@ -234,6 +234,18 @@
 					, r.rimage4
 					, r.rimage5
 					, r.bed
+					, i.roomspa
+					, i.wifi
+					, i.tv
+					, i.refri
+					, i.bath
+					, i.iron
+					, i.minibar
+					, i.bathitem
+					, i.aircon
+					, i.shower
+					, i.dryer
+					, i.ricecooker
 					, i.addinfo1
 					, i.addinfo2
 					, i.addinfo3

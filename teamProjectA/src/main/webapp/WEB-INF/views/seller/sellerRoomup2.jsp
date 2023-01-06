@@ -237,12 +237,6 @@
 								placeholder="숫자를 입력해주세요" value="${mo.rnum}" required></td>
 						</tr>
 						<tr>
-							<td>남은 객실수</td>
-							<td><input type="text" name="spareroom " pattern="[0-9]+"
-								placeholder="숫자를 입력해주세요" value="${mo.spareroom}"
-								required></td>
-						</tr>
-						<tr>
 							<td>기준인원</td>
 							<td><input type="text" name="stdmen" id="stdmen" pattern="[0-9]+"
 								placeholder="숫자를 입력해주세요" value="${mo.stdmen}" required></td>
