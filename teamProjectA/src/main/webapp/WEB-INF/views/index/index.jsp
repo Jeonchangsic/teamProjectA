@@ -421,7 +421,7 @@
 		                        <ul>
 	                    </c:if>
                             <li class="border">
-                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${list.lidx}" class="lod">
+                                <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${list.lidx}&fromDate=${fromDate}&toDate=${toDate}" class="lod">
                                     <img src="<%=request.getContextPath() %>/resources/images/index_images/${list.limagename}" alt="숙소이미지">
                                     <div class="text_left">
                                         <p class="lod_name font_Style">${list.lodgingname}</p>

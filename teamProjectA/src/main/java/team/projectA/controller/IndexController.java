@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import team.projectA.service.IndexService;
 import team.projectA.service.UserService;
+import team.projectA.util.DateUtil;
 import team.projectA.vo.ReviewVO;
 
 /**
@@ -52,14 +53,27 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value = "/index/index.do", method = RequestMethod.GET)  // index�������� �̵�
-	public String backIndex(Locale locale, Model model)throws Exception {
+	public String backIndex(Locale locale, Model model, String fromDate, String toDate)throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		
+		//날짜
+		 if(fromDate == null || fromDate.equals(""))
+		 {
+			 fromDate = DateUtil.GetToday();
+		 }
+		 if(toDate == null || toDate.equals(""))
+		 {
+			 toDate = DateUtil.GetTomorrow();
+		 }		 
+		 
+		 System.out.println("index날짜"+fromDate);
+		 System.out.println("index날짜"+toDate);
 		List<ReviewVO> list = indexService.popLodgingList2();
 
 		
 		model.addAttribute("list",list);
+		model.addAttribute("fromDate",fromDate);
+		model.addAttribute("toDate",toDate);
 		
 		return "index/index";
 	}

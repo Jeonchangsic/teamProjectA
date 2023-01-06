@@ -42,6 +42,7 @@
     <script>
         //info_detail
         $(document).ready(function(){
+        	
             $(".category").click(function(){
                 if($(this).next(".info_detail").is(":visible")){
                     $(this).next(".info_detail").css("display", "none");
@@ -124,7 +125,9 @@
 				onClose : function(selectedDate) {
 					// 시작일(fromDate) datepicker가 닫힐때
 					// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-					$("#toDate").datepicker("option", "minDate", selectedDate);
+				var curDate = $("#fromDate").datepicker("getDate"); //선택한 날짜를 변수에 담기
+				curDate.setDate( curDate.getDate() + 1 ); //얻은 날짜에 +1
+				$("#toDate").datepicker("option", "minDate", curDate); //종료일의 최소날짜를 curDate로 설정
 				}
 			});
 			//$('#fromDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
