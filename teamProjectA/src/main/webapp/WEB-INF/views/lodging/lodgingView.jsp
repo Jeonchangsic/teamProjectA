@@ -87,6 +87,7 @@
                 
             });
             
+            
             //다시 접속했을때 page에 번호가 있으면 css를 새롭게 보여준다 (a링크 누르는 순간 다시 접속되는 것)
             let query = window.location.search; //주소를 얻고
             let param = new URLSearchParams(query); //url에서파라미터를 찾아

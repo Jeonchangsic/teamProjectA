@@ -126,7 +126,7 @@
 				$("#toDate").datepicker("option", "minDate", selectedDate);
 			}
 		});
-		$('#fromDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+		//$('#fromDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 
 		//종료일
 		$('#toDate').datepicker({
@@ -142,7 +142,7 @@
 				$("#fromDate").datepicker("option", "maxDate", selectedDate);
 			}
 		});
-		$('#toDate').datepicker('setDate', '+1D');
+		//$('#toDate').datepicker('setDate', '+1D');
 	});
 
 	//필터선택
@@ -828,31 +828,61 @@
 							<!-- break를 위한 boolean변수 doneLoop 선언 -->
 							<c:set var="doneLoop" value="false" />
 							<!-- doneLoop 논리값이 반대가 되면 break -->
-							<c:if test="${doneLoop ne true}">
-								<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}&fromDate=${fromDate}&toDate=${toDate}&men=${men}">
-									<div class="imgbor">
-										<div class="img_left">
-											<ul>
-												<li class="up_img">
-													<h3>${vo.lodgingname}</h3>
-													<p>${vo.satis}</p>
-													<p>${vo.lodgingaddr}</p>
-												</li>
-											</ul>
-										</div>
-										<div class="img_right">
-											<div><c:if test="${vo.spareroom < 6}">남은 객실 ${vo.spareroom}개</c:if></div>
-											<div>
-												<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.rprice}" />
-												원
+							<c:if test="${doneLoop ne true}">				
+								<c:if test = "${fromDate == null || fromDate == ''}">
+									<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}
+									&fromDate= <jsp:useBean id = "today" class="java.util.Date"/>
+												<fmt:formatDate value = "${fromDate}" type = "DATE" pattern ="yyyy-MM-dd"/>
+									&toDate=<c:set var = "tomorrow" value ="<%=new Date(new Date().getTime() + 60*60*24*1000)%>"/>
+											<fmt:formatDate value="${toDate}" type ="DATE" pattern="yyyy-MM-dd"/>
+									&men=2">
+										<div class="imgbor">
+											<div class="img_left">
+												<ul>
+													<li class="up_img">
+														<h3>${vo.lodgingname}</h3>
+														<p>${vo.satis}</p>
+														<p>${vo.lodgingaddr}</p>
+													</li>
+												</ul>
 											</div>
+											<div class="img_right">
+												<div><c:if test="${vo.spareroom < 6}">남은 객실 ${vo.spareroom}개</c:if></div>
+												<div>
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.rprice}" />
+													원
+												</div>
+											</div>
+											<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo.limagename}">
 										</div>
-										<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo.limagename}">
-									</div>
-								</a>
+									</a>
+								</c:if>
+								<c:if test = "${fromDate != null && fromDate != ''}">
+									<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}&fromDate=${fromDate}&toDate=${toDate}&men=${men}">
+										<div class="imgbor">
+											<div class="img_left">
+												<ul>
+													<li class="up_img">
+														<h3>${vo.lodgingname}</h3>
+														<p>${vo.satis}</p>
+														<p>${vo.lodgingaddr}</p>
+													</li>
+												</ul>
+											</div>
+											<div class="img_right">
+												<div><c:if test="${vo.spareroom < 6}">남은 객실 ${vo.spareroom}개</c:if></div>
+												<div>
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.rprice}" />
+													원
+												</div>
+											</div>
+											<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo.limagename}">
+										</div>
+									</a>
+								</c:if>
+							</c:if>
 								<!-- doneLoop 논리값 반대 설정 = break -->
-								<c:set var="doneLoop" value="true" />
-							</c:if>						
+							<c:set var="doneLoop" value="true" />				
 						</c:forEach>
 				</div>
 			</section>

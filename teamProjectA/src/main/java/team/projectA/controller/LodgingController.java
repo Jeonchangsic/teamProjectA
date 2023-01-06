@@ -30,6 +30,7 @@ import team.projectA.vo.RoomVO;
 import team.projectA.vo.RoominVO;
 import team.projectA.vo.SearchCriteria;
 import team.projectA.vo.UserVO;
+import team.projectA.util.*;
 
 /**
  * Handles requests for the application home page.
@@ -50,7 +51,18 @@ public class LodgingController {
 		 List<RoomVO> list2= lodgingService.selectList2(gubun);		 
 		 model.addAttribute("list1",list1); 
 		 model.addAttribute("list2",list2);
+		 
 */
+		 if(fromDate == null || fromDate.equals(""))
+		 {
+			 fromDate = DateUtil.GetToday();
+		 }
+		 if(toDate == null || toDate.equals(""))
+		 {
+			 toDate = DateUtil.GetTomorrow();
+		 }		 
+		 System.out.println("fromDate:" + fromDate);
+		 System.out.println("toDate:" + toDate);
 		 List<Map<String,Object>> list = lodgingService.selectLodgingList("GH", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		 model.addAttribute("list",list);
 		 model.addAttribute("type", type);
@@ -84,7 +96,14 @@ public class LodgingController {
 	
 	@RequestMapping(value = "/lodgingList_motel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
 	public String list_motel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
-
+		 if(fromDate == null || fromDate.equals(""))
+		 {
+			 fromDate = DateUtil.GetToday();
+		 }
+		 if(toDate == null || toDate.equals(""))
+		 {
+			 toDate = DateUtil.GetTomorrow();
+		 }
 		List<Map<String,Object>> list = lodgingService.selectLodgingList("모텔", type, area, rvo, linvo, rinvo, fromDate, toDate, men);
 		model.addAttribute("list",list);
 		model.addAttribute("type", type);
@@ -218,12 +237,21 @@ public class LodgingController {
 	@RequestMapping(value = "/lodgingView.do", method = RequestMethod.GET)
 	public String lodgingView(int lidx, Model model, HttpServletRequest req, String fromDate, String toDate, String men, @ModelAttribute("cri") Criteria cri, String page) throws Exception {
 			
+		 if(fromDate == null || fromDate.equals(""))
+		 {
+			 fromDate = DateUtil.GetToday();
+		 }
+		 if(toDate == null || toDate.equals(""))
+		 {
+			 toDate = DateUtil.GetTomorrow();
+		 }
+		 
 		Map<String,Object> map = lodgingService.selectLodging(lidx);
 		
 		List<RoominVO> list = lodgingService.selectRoomList(lidx, men, fromDate);
-		System.out.println("lidx:" + lidx);
-		System.out.println("men:" + men);
-		System.out.println("fromDate:" + fromDate);
+		
+
+		
 		
 		//<review paging
 		PageMaker pageMaker = new PageMaker();
@@ -257,6 +285,7 @@ public class LodgingController {
 		
 		session.setAttribute("lodging", lodging);
 		
+		System.out.println("lidx"+lidx);
 		
 		return "lodging/lodgingView"; 
 	}
