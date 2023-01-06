@@ -493,7 +493,7 @@
                 <h3>리뷰 (${rvvo.countrv})</h3>
                 <div class="star_grade">
 					만족도
-                    <p><strong>${rvvo.avgrv}</strong> /10.0</p>
+                    <p><strong>${rvvo.avgrv}</strong> /5.0</p>
                 </div>
             </div><!--//review_grade-->
             <ul>
@@ -502,7 +502,7 @@
                     <div class="guest">
                         <img src="<%= request.getContextPath() %>/resources/images/lodgingView_images/ico_21.png">
                         <strong>${vo3.rvTitle}</strong>
-                        <div class="review_star"><p>만족도 ${vo3.rvSatisfaction} /10.0</p></div>
+                        <div class="review_star"><p>만족도 ${vo3.rvSatisfaction} /5.0</p></div>
                         <div class="review_txt">${vo3.rvContent}</div>
                         <div class="review_date">${vo3.rvDate}</div>
                     </div><!--//guest-->
