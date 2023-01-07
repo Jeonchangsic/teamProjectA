@@ -156,29 +156,11 @@
 		// 콘솔창을 보면 둘다 동일한 값이 나온다
 		
 
-		console.log(event.target.classList[1]);
+		
+		//$("input[name=type]").val(type);
+		document.frm.type.value = type; //frm:formName / name:Type
+		document.frm.submit();
 
-		if (event.target.classList[1] === "active2") {
-			event.target.classList.remove("active2");
-		} else {
-			for (var i = 0; i < div2.length; i++) {
-				div2[i].classList.remove("active2");
-			}
-
-			event.target.classList.add("active2");
-		}		
-		location.href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area=${area}&type="+type;
-		
-		<%-- <%
-		String uri = request.getRequestURI();
-		
-		%>
-		
-		var uri  = "<%=uri%>";
-		
-		var btnnn = document.frm.dddd.value;
-		
-		location.href = uri + "ddd="+btnnn --%>
 	}
 
 	function init() {
@@ -247,7 +229,7 @@
 				
 			history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
 			location.reload() //페이지 새로고침
-			location.href="<%=request.getContextPath()%>/lodging/lodgingList_hotel.do?area="+parea+"&type="+ptype; 
+			location.href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area="+parea+"&type="+ptype; 
 			
 		});
 	});
