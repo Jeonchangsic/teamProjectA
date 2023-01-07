@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/reserv_css/reserv.css">
     <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> <!--XE아이콘-->
+
 	 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	 
 
@@ -148,7 +149,7 @@
             <p>휴대폰 번호<p>
             <a>${login.userPhone}</a>
             
-            <div class="login">
+            <div class="logo">
                 <a>
 					<img src="<%=request.getContextPath() %>/resources/images/login_images/logo.svg" alt="저긴어때" >      
                 </a>
@@ -156,7 +157,7 @@
             <h3>약관동의</h3>
             <table class="agree">
                  <tr>
-                     <td><input type="checkbox" id="checkall" onclick="check()" required></td>
+                     <td><input type="checkbox" id="checkall" onclick="check()"></td>
                      <td>전체동의</td>
                 </tr>
                 <tr>
@@ -184,6 +185,8 @@
         <div class="right">
             <section class="info">
                 <p class="name">
+                	 <strong>숙소이름</strong><br>
+                	 <%=rvo.getLodgingname() %><br>
                      <strong>객실타입/인원</strong><br>
                      <%=rvo.getRtype() %>/
                      <c:if test="${men != null && men != '' }">${men}인</c:if>

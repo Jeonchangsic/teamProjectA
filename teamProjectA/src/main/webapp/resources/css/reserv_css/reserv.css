@@ -1,14 +1,12 @@
 @charset "utf-8";
 
-*{margin:0; padding:0;}
 li{list-style:none;}
 img,iframe{vertical-align:top;}        
-           
-           
+               
            
 
 i{font-size:50px}
-header .inner{ width:1024px; height:100%; margin:0 auto; position:relative;}header{position:fixed; top:0; left:0; width:100%; height: 100px; background-color:rgb(86, 19, 241); z-index:999;} /*헤더 상단 고정을 위해 줬음*/
+header .inner{ width:1024px; height:100%; margin: auto; position:relative;}header{position:fixed; top:0; left:0; width:100%; height: 100px; background-color:rgb(86, 19, 241); z-index:999;} /*헤더 상단 고정을 위해 줬음*/
 header h1 { float: left; margin-top: 10px; }
 header h1 img{width:130px; height:80px;}
 header ul{float:right; display: flex; align-items: center;  height: 100%;}  
@@ -32,7 +30,7 @@ header li:not(:first-child){ margin-left: 20px;}
 }
 header .search{font-size:30px; color:rgba(255,255,255,0.8);}   
 header .search:hover{color:white;} 
-
+body{line-height:1;}
 main{
     width:1024px; 
     height:1000px; 
@@ -51,9 +49,9 @@ main p {font-size:25px;
     margin-top:10px;
     margin-bottom: 10px;
     width:100%;}
-.left {margin-top:30px; float:left; width:512px;}
+.left {margin-top:30px; float:left; width:512px; height:600px;}
 .agree{margin-top:30px;}
-.login{font-size: 15px;
+.logo{font-size: 15px;
     width:100%;
     line-height: 40px;
     height:80px;
