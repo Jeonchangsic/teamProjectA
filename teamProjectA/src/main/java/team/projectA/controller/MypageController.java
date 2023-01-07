@@ -169,15 +169,17 @@ public class MypageController {
   }
   }
   
-  //환불처리 팝업창
+  //예약취소 팝업창
   @RequestMapping(value="/refundPop.do", method = RequestMethod.GET)
-  public String refundPop(int uidx ,int ridx, String limagename,Model model)throws Exception{
+  public String refundPop(int uidx ,int ridx, String limagename,String startDate,String endDate,Model model)throws Exception{
 	  
 	  HashMap<String,Integer> hm = new HashMap<String,Integer>();
 	  hm.put("uidx", uidx);
 	  hm.put("ridx", ridx);
 	 ReservVO result = mypageService.reservListPop(hm);
 	 
+	 model.addAttribute("startDate",startDate);
+	 model.addAttribute("endDate",endDate);
 	 model.addAttribute("ridx",ridx);
 	 model.addAttribute("result",result);
 	 model.addAttribute("limagename",limagename);
@@ -214,11 +216,13 @@ public class MypageController {
   
   //리뷰 상세보기
   @RequestMapping(value="/reviewInfo.do", method = RequestMethod.GET)
-  public String reviewInfo(int rvidx, String limagename, Model model,HttpServletResponse response)throws Exception{
+  public String reviewInfo(int rvidx, String limagename, Model model,String startDate,String endDate,HttpServletResponse response)throws Exception{
 	  	
 		ReviewVO vo = mypageService.reviewList2(rvidx);
 		model.addAttribute("vo",vo);
 		model.addAttribute("limagename",limagename);
+		model.addAttribute("startDate",startDate);
+		model.addAttribute("endDate",endDate);
 	  return "review/reviewInfo"; 
   }
   //리뷰 삭제

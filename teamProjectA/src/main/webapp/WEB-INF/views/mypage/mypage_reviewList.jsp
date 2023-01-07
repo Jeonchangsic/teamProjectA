@@ -17,8 +17,8 @@
      
      <!-- 리뷰 상세페이지 팝업창 -->
      <script>
-     function reviewInfoPop(rvidx,limagename){
-    	var url = "<%=request.getContextPath()%>/mypage/reviewInfo.do?rvidx="+rvidx+"&limagename="+limagename;   //팝업창 페이지 URL
+     function reviewInfoPop(rvidx,limagename,startDate,endDate){
+    	var url = "<%=request.getContextPath()%>/mypage/reviewInfo.do?rvidx="+rvidx+"&limagename="+limagename+"&startDate="+startDate+"&endDate="+endDate;   //팝업창 페이지 URL
  		var winWidth = 550;
  	    var winHeight = 470;
  	  	var popupX = (window.screen.width / 2) - (550 / 2);
@@ -68,7 +68,7 @@
 			              		    <td class="td_padding lodging_Style1"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${reviewList.limagename}"/></td>
 			                    	<td class="td_padding lodging_Style">${reviewList.lodgingname}</td>
 			                    	<td class="td_padding lodging_Style">${reviewList.rtype}</td>
-			                    	<td class="td_padding review_style" id="titleHover" ><a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx},'${reviewList.limagename}')">${reviewList.rvTitle}</a></td>
+			                    	<td class="td_padding review_style" id="titleHover" ><a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx},'${reviewList.limagename}','${reviewList.reserv_startDate}','${reviewList.reserv_endDate}')">${reviewList.rvTitle}</a></td>
 			                    	<td class="td_padding">${reviewList.rvDate}</td>
 			                    </tr>
 		               	</c:forEach>

@@ -105,6 +105,8 @@
 					,rvidx
 					,rtype
 					,limagename
+					,reserv_startDate
+					,reserv_endDate
 					FROM ( 
 						SELECT lodgingname
 						,rvtitle
@@ -112,13 +114,16 @@
 						,rvidx
 						,rtype
 						,limagename
+						,reserv_startDate
+						,reserv_endDate
 						, ROW_NUMBER() 
 							OVER(
 								ORDER BY rvidx desc
 								) 
-								AS rNum FROM reviewtb r, LODGINGTB l,roomtb rm
+								AS rNum FROM reviewtb r, LODGINGTB l,roomtb rm,reservtb rv
 								 WHERE l.lidx = r.lidx
 								 AND r.ridx = rm.ridx
+								 AND rv.ridx = r.ridx
 								 AND r.uidx = #{uidx}
 								 )rtb  
 								 WHERE rNum BETWEEN #{rowStart2} AND #{rowEnd2}

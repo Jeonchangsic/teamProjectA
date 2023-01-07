@@ -59,7 +59,7 @@
 </head>
 <body>
     <header>
-        <h2>리뷰쓰기</h2>
+        <h2 class="font_Style">리뷰쓰기</h2>
     </header>
     <div id="headLine"></div>
                 <!--end header-->
@@ -71,9 +71,9 @@
                 	<tr>
                 		<td class="td_vertical-align td_padding1"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/> </td>
                 		<td class="td_vertical-align td_padding2">
-                			<div id="lodgingText">${lodgingname}</div>
-                			<div id="rtypeText">[${rtype}]</div>
-                			<div id="dateText">[${reserv_startDate}~${reserv_endDate}]</div>
+                			<div id="lodgingText" class="font_Style font_StyleBold">${lodgingname}</div>
+                			<div id="rtypeText" class="font_Style">[${rtype}]</div>
+                			<div id="dateText" class="font_Style">[${reserv_startDate}~${reserv_endDate}]</div>
                 		</td>
                 	</tr>
                 	<tr>
@@ -81,7 +81,7 @@
                 		<td class="tr_background"></td>
                 	</tr>
                     <tr>
-                        <td class="margin2 vertical_middle">만족도</td>
+                        <td class="margin2 vertical_middle font_Style font_StyleBold">만족도</td>
                         <td class="satisfactionStyle vertical_middle">
                         	<div class="rating">
 				                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
@@ -99,15 +99,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="margin1 vertical_middle">제목</td>
+                        <td class="margin1 vertical_middle font_Style font_StyleBold">제목</td>
                         <td class="vertical_middle">
-                        	<input type="text" class="info" name="rvTitle" placeholder="10자 이내 제목을 입력하세요." maxlength="10" required>
+                        	<input type="text" class="info font_Style" name="rvTitle" placeholder="10자 이내 제목을 입력하세요." maxlength="10" required>
                         </td> 
                     </tr>
                     <tr>
-                        <td id="margin1" class="vertical_middle">리뷰 내용</td>
+                        <td id="margin1" class="vertical_middle font_Style font_StyleBold">리뷰 내용</td>
                         <td class="vertical_middle reviewContentArea">
-                            <textarea id="info" name="rvContent" cols="30" rows="10" placeholder="공백 포함 100자 이내 리뷰를 작성해주세요." required></textarea>
+                            <textarea id="info" class="font_Style" name="rvContent" cols="30" rows="10" placeholder="공백 포함 100자 이내 리뷰를 작성해주세요." required></textarea>
                         	<div id="content_cnt">(0/100)</div>
                         </td>
                     </tr>
@@ -115,7 +115,7 @@
                 <table id="table2">
                     <tr>
                         <td>
-                            <input class="cursorStyle" type="submit" id="clearBtn" value="작성"/>
+                            <input class="cursorStyle font_Style" type="submit" id="clearBtn" value="작성"/>
                         </td>
                     </tr>
                 </table>

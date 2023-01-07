@@ -35,7 +35,7 @@
                             <!--end main-->
     
     <footer>
-        <a href="http://www.chunhyang.org/"><span>춘향제 구경하러 가기</span></a>
+        <a href="http://www.chunhyang.org"><span>춘향제 구경하러 가기</span></a>
     </footer>
                             <!-- end footer-->
 </body>

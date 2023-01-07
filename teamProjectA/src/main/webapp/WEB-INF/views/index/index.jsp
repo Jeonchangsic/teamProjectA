@@ -66,57 +66,11 @@
 			    $("#searchArea").animate({
 			        width: "toggle"}, 200, "linear");
 			    $(".search_background").toggle();
-			    $(".lodgingKind").toggle();
 			})
 		})
     </script>
-</head>
-<body>
-   	<%@ include file="/WEB-INF/common/Header.jsp" %>
-                <!-- end header-->
-    <main>
-        <nav id="gnb">
-            <ul>
-                <li>
-                	<a href="<%=request.getContextPath() %>/lodging/lodgingList_motel.do" class="aTag_Hover">
-                		<i class="xi-building"></i>
-                		<p>모텔</p>
-                	</a>
-                </li>               
-                <li>
-               		<a href="<%=request.getContextPath() %>/lodging/lodgingList_hotel.do" class="aTag_Hover">
-               			<i class="xi-city"></i>
-               			<p>호텔</p>
-           			</a>
-       			</li>        
-                <li>
-                	<a href="<%=request.getContextPath() %>/lodging/lodgingList_villa.do" class="aTag_Hover">
-	                	<i class="xi-beach"></i>
-	                	<p>펜션/풀빌라</p>
-                	</a>
-                </li>             
-                <li>
-                	<a href="<%=request.getContextPath() %>/lodging/lodgingList_gh.do" class="aTag_Hover">
-	                	<i class="xi-home-o"></i>
-	                	<p>게스트하우스</p>
-                	</a>
-               	</li>        
-                <li>
-                	<button type="button" id="cursor_Style" class="btn-open-popup aTag_Hover" >
-	                	<i class="xi-maker-drop"></i>
-	                	<p>내주변</p>
-                	</button>
-                </li>              
-            </ul>
-        </nav>
-        <section id="main_img">
-            <img src="<%=request.getContextPath() %>/resources/images/index_images/Main_img.png">
-        </section>
-        <div id="modal">
-     		<div class="modal_content">
-     		<div id="map" style="width:100%;height:500px;"></div>
-     		    <script>
-    
+    <script>
+    	window.onload = function(){
 					$(function(){
 						$(".btn-open-popup").click(function(){
 				       		document.getElementById("modal").style.display="block";
@@ -403,8 +357,54 @@
 				       		document.body.style.overflow = "auto";
 						});
 					})
-			
+    	};
 			    </script>
+</head>
+<body>
+   	<%@ include file="/WEB-INF/common/Header.jsp" %>
+                <!-- end header-->
+    <main>
+        <nav id="gnb">
+            <ul>
+                <li>
+                	<a href="<%=request.getContextPath() %>/lodging/lodgingList_motel.do" class="aTag_Hover">
+                		<i class="xi-building"></i>
+                		<p>모텔</p>
+                	</a>
+                </li>               
+                <li>
+               		<a href="<%=request.getContextPath() %>/lodging/lodgingList_hotel.do" class="aTag_Hover">
+               			<i class="xi-city"></i>
+               			<p>호텔</p>
+           			</a>
+       			</li>        
+                <li>
+                	<a href="<%=request.getContextPath() %>/lodging/lodgingList_villa.do" class="aTag_Hover">
+	                	<i class="xi-beach"></i>
+	                	<p>펜션/풀빌라</p>
+                	</a>
+                </li>             
+                <li>
+                	<a href="<%=request.getContextPath() %>/lodging/lodgingList_gh.do" class="aTag_Hover">
+	                	<i class="xi-home-o"></i>
+	                	<p>게스트하우스</p>
+                	</a>
+               	</li>        
+                <li>
+                	<button type="button" id="cursor_Style" class="btn-open-popup aTag_Hover" >
+	                	<i class="xi-maker-drop"></i>
+	                	<p>내주변</p>
+                	</button>
+                </li>              
+            </ul>
+        </nav>
+        <section id="main_img">
+            <img src="<%=request.getContextPath() %>/resources/images/index_images/Main_img.png">
+        </section>
+        <div id="modal">
+     		<div class="modal_content">
+     		<div id="map" style="width:100%;height:500px;"></div>
+     		    
      			<button type="button" class="odal_close_btn">창닫기</button>
      		</div>
      		<div class="modal_layer"></div>
@@ -432,16 +432,16 @@
 			                                      	<p class="star font_Style">&#9733;&#9733;&#9733;&#9733;&#9733;</p> 
 					                        	</c:when>
 					                        	<c:when test="${list.avgrv == 4.9 ||list.avgrv == 4.8||list.avgrv == 4.7||list.avgrv == 4.6||list.avgrv == 4.5||list.avgrv == 4.4||list.avgrv == 4.3||list.avgrv == 4.2||list.avgrv == 4.1||list.avgrv == 4.0}">
-			                                      	<p class="star font_Style">&#9733;&#9733;&#9733;&#9733;</p> 
+			                                      	<p class="star font_Style">&#9733;&#9733;&#9733;&#9733;&#9734;</p> 
 					                        	</c:when>
 					                        	<c:when test="${list.avgrv == 3.9 ||list.avgrv == 3.8||list.avgrv == 3.7||list.avgrv == 3.6||list.avgrv == 3.5||list.avgrv == 3.4||list.avgrv == 3.3||list.avgrv == 3.2||list.avgrv == 3.1||list.avgrv == 3.0}">
-			                                      	<p class="star font_Style">&#9733;&#9733;&#9733;</p> 
+			                                      	<p class="star font_Style">&#9733;&#9733;&#9733;&#9734;&#9734;</p> 
 					                        	</c:when>
 					                        	<c:when test="${list.avgrv == 2.9 ||list.avgrv == 2.8||list.avgrv == 2.7||list.avgrv == 2.6||list.avgrv == 2.5||list.avgrv == 2.4||list.avgrv == 2.3||list.avgrv == 2.2||list.avgrv == 2.1||list.avgrv == 2.0}">
-			                                      	<p class="star font_Style">&#9733;&#9733;</p> 
+			                                      	<p class="star font_Style">&#9733;&#9733;&#9734;&#9734;&#9734;</p> 
 					                        	</c:when>
 					                        	<c:otherwise>
-					                        		<p class="star font_Style">&#9733;</p> 
+					                        		<p class="star font_Style">&#9733;&#9734;&#9734;&#9734;&#9734;</p> 
 					                        	</c:otherwise>
 			                        		</c:choose>               	
 	                                    <p class="lod_satisfaction font_Style" >(${list.avgrv}점)</p>
@@ -465,68 +465,68 @@
         </section>
         <div id="bg_w1"class="white"></div>
         <section class="slide_list">                                                    
-            <h4>Festival</h4>
+            <h4 class="font_Style font_StyleBold">Festival</h4>
             <div id="festival_content" class="swiper mySwiper">  
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
 	                    <ul>
 	                        <li>
-	                           <a href="<%=request.getContextPath() %>/festival/NamgangYudeung.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival1.jpg" alt="축제이미지">
-	                                <div class="description">
+	                           <div class="description">
+		                           <a href="<%=request.getContextPath() %>/festival/NamgangYudeung.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival1.jpg" alt="축제이미지">
 	                                    <p id="hover1" class="festival_name">[진주]남강유등축제</p>
 	                                    <p class="festival_text">"역사가 담긴 빛축제"</p>
-	                                </div>
-	                            </a>
+		                            </a>
+                                </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath() %>/festival/YeosuFireworks.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival2.jpg" alt="축제이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath() %>/festival/YeosuFireworks.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival2.jpg" alt="축제이미지">
 		                                <p class="festival_name">[여수]밤바다불꽃축제</p>
 		                                <p class="festival_text">"밤바다 야경과 불꽃축제의 조화"</p>
-	                                </div>
-	                            </a>
+		                            </a>
+                                </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath() %>/festival/Chunhyang.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival3.jpg" alt="축제이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath() %>/festival/Chunhyang.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival3.jpg" alt="축제이미지">
 		                                <p class="festival_name">[남원]춘향제</p>
 		                                <p class="festival_text">"역사를 자랑하는 전통축제"</p>
-		                            </div>
-	                            </a>
+		                            </a>
+	                            </div>
 	                        </li> 
 	                    </ul>
                     </div>
                     <div class="swiper-slide">
 	                    <ul>
 	                        <li>
-	                            <a href="<%=request.getContextPath() %>/festival/Chunhyang.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival3.jpg" alt="축제이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath() %>/festival/Chunhyang.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival3.jpg" alt="축제이미지">
 	                                    <p class="festival_name">[남원]춘향제</p>
 	                                    <p class="festival_text">"역사를 자랑하는 전통축제"</p>
-	                                </div>
-	                            </a>
+		                            </a>
+                                </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath() %>/festival/YeosuFireworks.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival2.jpg" alt="축제이미지">
-	                                <div class="description">
-		                                <p class="festival_name">[여수]밤바다불꽃축제</p>
-		                                <p class="festival_text">"밤바다 야경과 불꽃축제의 조화"</p>
-	                                </div>
-	                            </a>
+	                            <div class="description">
+		                           <a href="<%=request.getContextPath() %>/festival/YeosuFireworks.do">
+		                               <img src="<%=request.getContextPath() %>/resources/images/index_images/festival2.jpg" alt="축제이미지">
+		                               <p class="festival_name">[여수]밤바다불꽃축제</p>
+		                               <p class="festival_text">"밤바다 야경과 불꽃축제의 조화"</p>
+		                           </a>
+                                </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath() %>/festival/NamgangYudeung.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival1.jpg" alt="축제이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath() %>/festival/NamgangYudeung.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival1.jpg" alt="축제이미지">
 		                                <p class="festival_name">[진주]남강유등축제</p>
 		                                <p class="festival_text">"역사가 담긴 빛축제"</p>
-	                                </div>
-	                            </a>
+		                            </a>
+                                </div>
 	                        </li> 
 	                    </ul>
                     </div>
@@ -540,68 +540,68 @@
         <div id="bg_w2"class="white bg_w"></div>
 
         <section id="best_item" class="slide_list">                                                        
-            <h4>인기 여행지</h4>
+            <h4 class="font_Style font_StyleBold">인기 여행지</h4>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
 	                    <ul>
 	                        <li>
-	                            <a href="<%=request.getContextPath()%>/trip/Nature.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip1.jpg" alt="즐길거리 이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath()%>/trip/Nature.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip1.jpg" alt="즐길거리 이미지">
 		                                <p class="trip_name">[청주]자연휴양림</p>
 		                                <p class="trip_text">"캠핑과 휴양을 동시에!"</p>
-		                            </div>
-	                            </a>
+		                            </a>
+	                            </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath()%>/trip/HanokVillage.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip2.jpg" alt="즐길거리 이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath()%>/trip/HanokVillage.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip2.jpg" alt="즐길거리 이미지">
 		                                <p class="trip_name">[전주]한옥마을</p>
 		                                <p class="trip_text">"전주 여행에 빠질 수 없는 코스"</p>
-	                                </div>
-	                            </a>
+		                            </a>
+                                </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath()%>/trip/DeokjinPark.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip3.jpg" alt="즐길거리 이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath()%>/trip/DeokjinPark.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip3.jpg" alt="즐길거리 이미지">
 		                                <p class="trip_name">[전주]덕진공원</p>
 		                                <p class="trip_text">"수많은 연꽃을 보고싶을때"</p>
-	                                </div>
-	                            </a>
+		                            </a>
+                                </div>
 	                        </li> 
 	                    </ul>
                     </div>
                     <div class="swiper-slide">
 	                    <ul>
 	                        <li>
-	                            <a href="<%=request.getContextPath()%>/trip/DeokjinPark.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip3.jpg"alt="즐길거리 이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath()%>/trip/DeokjinPark.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip3.jpg"alt="즐길거리 이미지">
 		                                <p class="trip_name">[전주]덕진공원</p>
 		                                <p class="trip_text">"수많은 연꽃을 보고싶을때"</p>
-		                            </div>
-	                            </a>
+		                            </a>
+	                            </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath()%>/trip/Nature.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip1.jpg" alt="즐길거리 이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath()%>/trip/Nature.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip1.jpg" alt="즐길거리 이미지">
 		                                <p class="trip_name">[청주]자연휴양림</p>
 		                                <p class="trip_text">"캠핑과 휴양을 동시에!"</p>
-		                            </div>
-	                            </a>
+		                            </a>
+	                            </div>
 	                        </li>
 	                        <li>
-	                            <a href="<%=request.getContextPath()%>/trip/HanokVillage.do">
-	                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip2.jpg"alt="즐길거리 이미지">
-	                                <div class="description">
+	                            <div class="description">
+		                            <a href="<%=request.getContextPath()%>/trip/HanokVillage.do">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip2.jpg"alt="즐길거리 이미지">
 		                                <p class="trip_name">[전주]한옥마을</p>
 		                                <p class="trip_text">"전주 여행에 빠질 수 없는 코스"</p>
-	                                </div>
-	                            </a>
+		                            </a>
+                                </div>
 	                        </li>
 	                    </ul>
                     </div>

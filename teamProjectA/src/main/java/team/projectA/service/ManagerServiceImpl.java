@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import team.projectA.dao.LodgingDAO;
 import team.projectA.dao.ManagerDAO;
+import team.projectA.vo.FestivalVO;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.PagingVO;
 import team.projectA.vo.QnaVO;
@@ -15,6 +16,7 @@ import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.SearchCriteria;
+import team.projectA.vo.TripVO;
 import team.projectA.vo.UserVO;
 
 @Service
@@ -139,5 +141,57 @@ public class ManagerServiceImpl implements ManagerService {
 
 		return managerDAO.reservcount();    
 	}
+
+	@Override
+	public List<FestivalVO> festivalList() {
+		return managerDAO.festivalList();
+	}
+
+	@Override
+	public List<TripVO> tripList() {
+		return managerDAO.tripList();
+	}
+
+	@Override
+	public int festivalPlus(HashMap hm) {
+		return managerDAO.festivalPlus(hm);
+	}
+
+	@Override
+	public int tripPlus(HashMap hm) {
+		return managerDAO.tripPlus(hm);
+	}
+
+	@Override
+	public int festivalDt(int ftidx) {
+		return managerDAO.festivalDt(ftidx);
+	}
+
+	@Override
+	public int tripDt(int tidx) {
+		return managerDAO.tripDt(tidx);
+	}
+
+	@Override
+	public FestivalVO festivalInfo(int ftidx) {
+		return managerDAO.festivalInfo(ftidx);
+	}
+
+	@Override
+	public TripVO tripInfo(int tidx) {
+		return managerDAO.tripInfo(tidx);
+	}
+
+	@Override
+	public int festivalUt(FestivalVO festivalVO) {
+		return managerDAO.festivalUt(festivalVO);
+	}
+
+	@Override
+	public int tripUt(TripVO tripVO) {
+		return managerDAO.tripUt(tripVO);
+	}
+
+	
 
 }

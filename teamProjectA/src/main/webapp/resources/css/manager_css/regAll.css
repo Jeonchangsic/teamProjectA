@@ -54,24 +54,86 @@ UL,li{list-style:none;}
             /*리셋코드*/
 
                /*header */
-    header #header_view{background-color:rgb(86, 19, 241); position:relative; width: 1024px; height:100px; margin:0 auto;}
-    header a{color:#fff; position:absolute; top:10%; left:1%; font-size:50px;}
-    header span{ color:#fff; position:absolute; top:21%; left:39%;font-size:40px;}
-                            /*end header */
+header #header_view{
+	background-color:rgb(86, 19, 241);
+	position:relative; 
+	width: 1024px; 
+	height:100px; 
+	margin:0 auto;
+ }
+header a{
+	color:#fff; 
+	position:absolute; 
+	top:10%; 
+	left:1%; 
+	font-size:50px;
+}
+header span{ 
+	color:#fff; 
+	position:absolute; 
+	top:21%; 
+	left:39%;
+	font-size:40px;
+}
+               /*end header */
 
-                            /*main*/
-    main{background-color:#fff; width:1024px;  margin:0 auto;}
-    main img{width:100%; height:600px;}
-    main h4{margin:15px; font-size:25px;}
-    main p{margin-left:20px; padding-top:10px; font-size:15px; line-height: 3em;}
-    main #map{height:140px; border:1px solid #000; box-sizing:border-box;}
-                            /*end main*/
+               /*main*/
+main{
+	background-color:#fff; 
+	width:1024px;  
+	margin:0 auto;
+}
+main img{
+	width:100%; 
+	height:600px;
+}
+main h4{
+ margin:15px;
+ font-size:25px;
+}
+main p{
+	margin-left:20px; 
+	padding-top:10px; 
+	font-size:15px; 
+	line-height: 3em;
+}
+main #map{
+	height:140px; 
+	box-sizing:border-box;
+	width:100%; 
+	height:143px;
+}
+                 /*end main*/
 
-                            /*footer*/
-    footer{position:relative; border-top:1px solid #919191; width:1024px; height:100px; background:#fff; margin:0 auto;}
-    footer a{ color:rgba(255,255,255,0.8); font-size:25px; font-weight:bold; position:absolute; left:21%; top: 27%; background:rgb(86, 19, 241); border-radius:10px; width:600px; height:50px;}
-    footer a:hover{color:white;}
-    footer span{position:absolute; left:30%; top:5px;}
+                 /*footer*/
+footer{
+	position:relative; 
+	border-top:1px solid #919191; 
+	width:1024px; 
+	height:100px; 
+	background:#fff;
+	margin:0 auto;
+}
+footer a{ 
+	color:rgba(255,255,255,0.8); 
+	font-size:25px; 
+	font-weight:bold; 
+	position:absolute; 
+	left:21%; 
+	top:27%; 
+	background:rgb(86, 19, 241); 
+	border-radius:10px; 
+	width:600px; 
+	height:50px;
+	}
+footer a:hover{
+	color:white;
+}
+footer span{
+	position:absolute; 
+	left:30%; 
+	top:5px;
+}
 
-    /*end footer*/
+    				/*end footer*/
 

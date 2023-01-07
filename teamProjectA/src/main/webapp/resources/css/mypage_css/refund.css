@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
             /*리셋코드*/
 * {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
@@ -74,12 +74,14 @@ h2{
 #passwordArea{
 	width:70px;
 	padding-left: 8px;
+	font-size:17px;
 }
 #passwordTb{
 	margin: 19px 0 0 10px;
 }
 #passwordInput{
 	height:20px;
+	width: 166px;
 }
 .inputArea{
 	margin-left:5px;
@@ -97,6 +99,7 @@ button{
 	border:0px solid #000;
 	border-radius:5px;
 	width:100px;
+	letter-spacing: 1px;
 }
 button:hover{
 	color:white;
@@ -117,7 +120,11 @@ button:hover{
 }
 #lodgingname{
 	font-size:24px;
-	padding-top: 29px;
+	padding-top: 12px;
+}
+#reservDate{
+	color: #bbb;
+	font-size:17px;
 }
 #rtype{
 	color: #bbb;
@@ -127,4 +134,10 @@ button:hover{
 #rprice{
 	font-size: 24px;
     margin-left: 208px;
+}
+.font_Style{
+	font-family: 'Noto Sans KR', 산세리프;
+}
+.font_StyleBold{
+	font-weight:bold;
 }

@@ -30,6 +30,7 @@
                 		<td class="td_vertical-align td_padding">
                 			<div id="lodgingText">${vo.lodgingname}</div>
                 			<div id="rtypeText">[${vo.rtype}]</div>
+                			<div id="reservDate">[${startDate}~${endDate}]</div>
                 		</td>
                 	</tr>
                 	<tr>

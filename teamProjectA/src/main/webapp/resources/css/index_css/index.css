@@ -2,7 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
             /*리셋코드*/
-* {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
+* {
+	MARGIN:0; 
+	PADDING:0;
+}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -48,8 +51,13 @@ table {
 	border-spacing: 0;
 }
 
-a{text-decoration:none; color: inherit;}
-UL,li{list-style:none;}
+a{
+	text-decoration:none; 
+	color: inherit;
+}
+UL,li{
+	list-style:none;
+}
             /*리셋코드*/
 
 
@@ -178,100 +186,174 @@ header #manager:hover{
 
             /*main*/
 main .description:hover{
-      color:blue;
-      
+    color:rgb(86, 19, 241);
 }
-main{width:1024px; margin: 0 auto; background-color:white;}
-main .white{height:10px; background-color:aliceblue;}
-main nav{ HEIGHT: 120PX; padding-top:100px;}
-main nav UL {DISPLAY: FLEX; WIDTH: 100%; HEIGHT: 100%; ALIGN-ITEMS: CENTER; JUSTIFY-CONTENT: SPACE-BETWEEN;} /*display:flex를 주면 수평정렬. align-items는 수평위치 /justify는 수직위치.*/
-main nav li{PADDING:0 50PX; text-align: center; }
-main nav i{color:rgb(86, 19, 241);}
-main nav p{font-weight:bold; font-size:18px; color:black;}
-main #main_img{height:500px;}
-main #main_img img{height:500px; width:1024px;}
-#gnb a { display: inline-block; position: relative;}
-/* #gnb a::after{content:''; display:block; background:rgb(86, 19, 241); width:100%; height:0; transition:all .2s ease-out; position: absolute;} */
-#gnb p:hover{color:rgb(86, 19, 241);}
+main{
+	width:1024px; 
+	margin: 0 auto; 
+	background-color:white;
+}
+main .white{
+	height:10px; 
+	background-color:aliceblue;
+}
+main nav{ 
+	HEIGHT:120PX; 
+	padding-top:100px;
+}
+main nav UL {
+	DISPLAY:FLEX; 
+	WIDTH: 100%; 
+	HEIGHT: 100%; 
+	ALIGN-ITEMS:CENTER; 
+	JUSTIFY-CONTENT: SPACE-BETWEEN;
+} /*display:flex를 주면 수평정렬. align-items는 수평위치 /justify는 수직위치.*/
+main nav li{
+	PADDING:0 50PX; 
+	text-align: center; 
+}
+main nav i{
+	color:rgb(86, 19, 241);
+}
+main nav p{
+	font-weight:bold; 
+	font-size:18px; 
+	color:black;
+}
+main #main_img{
+	height:500px;
+}
+main #main_img img{
+	height:500px; 
+	width:1024px;
+}
+#gnb a { 
+	display:inline-block; 
+	position:relative;
+}
+#gnb p:hover{
+	color:rgb(86, 19, 241);
+} 
 
 
-main #slide_list{margin-top:10px; padding-bottom: 50px;}
-main #slide_list h4{display:inline-block; border-bottom:5px solid rgb(86, 19, 241); margin:20px; padding-bottom: 7px;font-size:25px;}
-main #slide_list img{width:270px; height:180px;}
-main #slide_list ul{display:flex; align-items:center; JUSTIFY-CONTENT: SPACE-BETWEEN; flex-wrap:wrap;}
-main #slide_list li{width:50%; padding-left: 120px; box-sizing:border-box; padding-bottom: 30px;}
-main .slide_list{margin-top:10px; padding-bottom: 20px;}
-main .slide_list h4{display:inline-block; border-bottom:5px solid rgb(86, 19, 241); margin:20px; font-size:25px; padding-bottom:10px;}
-main .slide_list img{width:230px; height:180px;}
-main .slide_list ul{display:flex; align-items:center; JUSTIFY-CONTENT: SPACE-BETWEEN;}
-main .slide_list li{padding: 0 50px;}
-main .slide_list a{padding-bottom:20px;}
-main .slide_list .lod_name{ font-size:18px; line-height:2em;}
-main .slide_list { font-size:15px; font-weight:bold; line-height:2em;}
-
+main #slide_list{
+	margin-top:10px; 
+	padding-bottom: 50px;
+}
+main #slide_list h4{
+	display:inline-block; 
+	border-bottom:5px solid rgb(86, 19, 241); 
+	margin:20px; 
+	padding-bottom:7px;
+	font-size:25px;
+}
+main #slide_list img{
+	width:270px; 
+	height:180px;
+}
+main #slide_list ul{
+	display:flex; 
+	align-items:center; 
+	JUSTIFY-CONTENT: SPACE-BETWEEN; 
+	flex-wrap:wrap;
+}
+main #slide_list li{
+	width:50%; 
+	padding-left: 120px; 
+	box-sizing:border-box; 
+	padding-bottom:30px;
+}
+main .slide_list{
+	margin-top:10px; 
+	padding-bottom: 20px;
+}
+main .slide_list h4{
+	display:inline-block; 
+	border-bottom:5px solid rgb(86, 19, 241); 
+	margin:20px; 
+	font-size:25px; 
+	padding-bottom:10px;
+}
+main .slide_list img{
+	width:230px; 
+	height:180px;
+}
+main .slide_list ul{
+	display:flex; 
+	align-items:center; 
+	JUSTIFY-CONTENT: SPACE-BETWEEN;
+}
+main .slide_list li{
+	padding: 0 50px;
+}
+main .slide_list a{
+	padding-bottom:20px;
+}
+main .slide_list .lod_name{ 
+	font-size:18px; 
+	line-height:2em;
+}
+main .slide_list { 
+	font-size:15px; 
+	font-weight:bold; 
+	line-height:2em;
+}
 /*모달*/
-
 #modal {
-  display:none;
-  position:relative;
-  top:-150px;   
-  width:100%;
-  height:100%;
-  vertical-align: middle;
-  z-index:7;
+	display:none;
+	position:relative;
+	top:-150px;   
+	width:100%;
+	height:100%;
+	vertical-align: middle;
+	z-index:7;
 }
 
 #modal button {
-  display:inline-block;
-  width:100px;
-  margin-left:calc(100% - 100px - 10px);
-  margin-top: 20px;
-  background: none;
-  border-radius: 3px;
-  cursor:pointer;
+	display:inline-block;
+	width:100px;
+	margin-left:calc(100% - 100px - 10px);
+	margin-top: 20px;
+	background: none;
+	border-radius: 3px;
+	cursor:pointer;
 }
 #modal .modal_content {
-position: absolute;
-  top: 50%;
-  left: 50%;
-
-  width: 800px;
-  height: 600px;
-
-  padding: 40px;
-
-  text-align: center;
-
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
-  transform: translateX(-50%) translateY(-50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 800px;
+	height: 600px;
+	padding: 40px;
+	text-align: center;
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px;
+	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+	transform: translateX(-50%) translateY(-50%);
 }
 #modal .modal_layer {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0, 0, 0, 0.5);
-  z-index:-1;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0, 0, 0, 0.5);
+	z-index:-1;
 } 
-
-#modalImg img{width:80px; height:80px;}
-#modalImg{float:left;}
-#modalR{float:right; padding-top:10px;}
-.modalinfo{color:blue;}  
-/* main #bg_w2{height:100px;}  */
-                /*end main*/
-
-                /*footer*/
-footer{height:100%; width:100%; background-color:rgba(0,0,0,0.15);}
-footer #foot{margin: 0 auto; width:1024px; height:100%;}
-footer #copy{color:#919191;}
-                /*end footer*/
-
-
+#modalImg img{
+	width:80px; 
+	height:80px;
+}
+#modalImg{
+	float:left;
+}
+#modalR{
+	float:right; 
+	padding-top:10px;
+}
+.modalinfo{
+	color:blue;
+}  
 /*스와이퍼*/
 .swiper {
     width: 100%;
@@ -282,9 +364,6 @@ footer #copy{color:#919191;}
     text-align: center;
     font-size: 18px;
     background: #fff;
-    /*border-top:1px solid rgba(0,0,0,0.15);*/
-
-    /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -306,10 +385,6 @@ footer #copy{color:#919191;}
     object-fit: cover;
 }
 /*end 스와이퍼*/
-
-
-/* 수정 내용 */
-
 
 .lod_rtype .sale i {
     font-size: 15px;
@@ -389,8 +464,12 @@ footer #copy{color:#919191;}
 .font_Style{
 	font-family: 'Noto Sans KR', 산세리프;
 }
+.font_StyleBold{
+	font-weight:bold;
+}
 .lod:hover{
 	color:rgb(86, 19, 241);
+	font-weight:bold;
 }
 .border{
 	border-right: 1px solid rgba(0,0,0,0.15);
@@ -425,4 +504,24 @@ footer #copy{color:#919191;}
 	display:none;
 	z-index:997;
 }
-lodgingKind
+#map{
+	width:100%;
+	height:500px;
+}
+                /*end main*/
+
+                /*footer*/
+footer{
+	height:100%; 
+	width:100%; 
+	background-color:rgba(0,0,0,0.15);
+}
+footer #foot{
+	margin: 0 auto; 
+	width:1024px; 
+	height:100%;
+}
+footer #copy{
+	color:#919191;
+}
+                /*end footer*/

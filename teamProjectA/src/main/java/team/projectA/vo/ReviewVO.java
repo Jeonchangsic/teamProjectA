@@ -13,8 +13,22 @@ public class ReviewVO extends RoomVO{
 	private String rvDate;
 	private double avgrv;
 	private int countrv;
+	private String reserv_startDate;
+	private String reserv_endDate;
 	
 	   
+	public String getReserv_startDate() {
+		return reserv_startDate;
+	}
+	public void setReserv_startDate(String reserv_startDate) {
+		this.reserv_startDate = reserv_startDate;
+	}
+	public String getReserv_endDate() {
+		return reserv_endDate;
+	}
+	public void setReserv_endDate(String reserv_endDate) {
+		this.reserv_endDate = reserv_endDate;
+	}
 	public int getCountrv() {
 		return countrv;
 	}

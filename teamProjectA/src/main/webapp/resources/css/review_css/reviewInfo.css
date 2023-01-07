@@ -159,3 +159,8 @@ main .clearBtn:hover{
 	font-family: 'Noto Sans KR', 산세리프;
     font-weight: bold;
 }
+#reservDate{
+	font-size: 20px;
+    font-family: 'Noto Sans KR', 산세리프;
+    color: #bbb;
+}

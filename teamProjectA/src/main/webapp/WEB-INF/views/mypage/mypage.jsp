@@ -89,7 +89,7 @@
 	                    </tr>
 	                    <tr>
 	                        <td class="margin1">비밀번호</td><td><input type="password" class="info" id="password" name="userPassword" placeholder="변경할 비밀번호를 입력하세요." required></td>
-	                        <td><button type="button" onclick="pwReset()" class="cursorStyle btn_hover btn_height">변경하기</button></td>
+	                        <td><button type="button" onclick="pwReset()" class="cursorStyle btn_hover btn_height font_Style">변경하기</button></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="margin1">이메일</td><td><input type="text" class="info"  name="userEmail" value="${login.userEmail}" readonly></td>
@@ -101,7 +101,7 @@
 	                        <td class="margin1">생년월일</td><td><input type="text" class="info" name="userBirth" value="${login.userBirth}" readonly></td>
 	                    </tr>
 	                </table>
-	                <button id="btn_style" type="button" onclick="userDt()" class="cursorStyle btn_hover">회원탈퇴</button>
+	                <button id="btn_style" type="button" onclick="userDt()" class="cursorStyle btn_hover font_Style">회원탈퇴</button>
 	            </form>
 	        </div>
         </main>

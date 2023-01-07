@@ -15,7 +15,7 @@
 <body>
 	<form action="refund.do" method="post">
 	<input type="hidden" name="ridx" value="${ridx}"/>
-	<h2>예약취소</h2>
+	<h2 class="font_Style">예약취소</h2>
 	<hr/>
 	<div id="divArea">
 		<table>
@@ -25,15 +25,15 @@
 					<img id="lodging_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/>
 				</td>
 				<td class="lodging_Info">
-					<div id="lodgingname">${result.lodgingname}</div>
-					<div id="rtype">[${result.rtype}]</div>
-					
+					<div id="lodgingname" class="font_Style font_StyleBold">${result.lodgingname}</div>
+					<div id="rtype" class="font_Style">[${result.rtype}]</div>
+					<div id="reservDate" class="font_Style">[${startDate}~${endDate}]</div>
 				</td>
 			</tr>
 			<tr class="tr_height">
 				<td></td>
 				<td>
-					<div id="rprice">
+					<div id="rprice" class="font_Style font_StyleBold">
 							<fmt:formatNumber type="number" maxFractionDigits="3" value="${result.rprice}" />원
 					</div>
 				</td>
@@ -43,12 +43,12 @@
 	<table id="passwordTb">
 	<div id="headLine"></div>
 			<tr>
-				<td id="passwordArea">비밀번호:
+				<td id="passwordArea" class="font_Style font_StyleBold">비밀번호:
 					<td>
-						<input class="inputArea" id="passwordInput" type="password" name="userPassword" placeholder="회원 비밀번호를 입력하세요."/>
+						<input class="inputArea font_Style" id="passwordInput" type="password" name="userPassword" placeholder="회원 비밀번호를 입력하세요."/>
 					</td>
 					<td>
-						<button class="cursorStyle">예약취소</button>
+						<button class="cursorStyle font_Style">예약취소</button>
 					</td>
 				</td>
 			</tr>

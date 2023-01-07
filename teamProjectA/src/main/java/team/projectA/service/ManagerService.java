@@ -3,6 +3,7 @@ package team.projectA.service;
 import java.util.HashMap;
 import java.util.List;
 
+import team.projectA.vo.FestivalVO;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.PagingVO;
 import team.projectA.vo.QnaVO;
@@ -10,6 +11,7 @@ import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.SearchCriteria;
+import team.projectA.vo.TripVO;
 import team.projectA.vo.UserVO;
 
 public interface ManagerService {
@@ -33,4 +35,16 @@ public interface ManagerService {
 	public int qnacount();
 	public List<LodgingVO> managerRoomList(SearchCriteria scri2);
 	public int RoomListcount();  
+	
+	List<FestivalVO> festivalList();
+	int festivalPlus(HashMap hm);
+	int festivalDt(int ftidx);
+	FestivalVO festivalInfo(int ftidx);
+	int festivalUt(FestivalVO festivalVO);
+	
+	List<TripVO> tripList();
+	int tripPlus(HashMap hm);
+	int tripDt(int tidx);
+	TripVO tripInfo(int tidx);
+	int tripUt(TripVO tripVO);
 }

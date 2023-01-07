@@ -216,8 +216,104 @@
 		WHERE lidx > 0
 		]]>
 	</select>
+	
+	
+	
+	<!-- 페스티발 페이지 리스트 출력 -->
+	<select id="festivalList" resultType="festivalVO">
+		SELECT * FROM festivaltb
+	</select>
+	<!-- 페스티발 등록 -->
+	<insert id="festivalPlus" parameterType="HashMap">
+		INSERT INTO festivaltb 
+			VALUES(
+			FTIDX_SEQ.NEXTVAL
+			,#{ftAddr}
+			,#{ftName}
+			,#{ftSubContent}
+			,#{ftMainContent}
+			,#{ftLink}
+			,#{ftLatitude}
+			,#{ftLongitude}
+			,#{ftImgName}
+			,'N'
+			,SYSDATE
+			)
+	</insert>
+	<!-- 페스티발 삭제 -->
+	<delete id="festivalDt" parameterType="int">
+		DELETE FROM festivaltb 
+			WHERE ftidx = #{ftidx}
+	</delete>
+	<!-- 페스티발 상세 페이지 -->
+	<select id="festivalInfo" parameterType="int" resultType="festivalVO">
+		SELECT * FROM festivaltb 
+			WHERE ftidx = #{ftidx}
+	</select>
+	<!-- 페스티발 상세 페이지 -->
+	<select id="festivalMf" parameterType="int" resultType="festivalVO">
+		SELECT * FROM festivaltb 
+			WHERE ftidx = #{ftidx}
+	</select>
+	<!-- 페스티발 수정 -->
+	<update id="festivalUt" parameterType="FestivalVO">
+		UPDATE festivaltb 
+			SET ftAddr = #{ftAddr}
+			, ftName = #{ftName}
+			, ftSubContent = #{ftSubContent}
+			, ftMainContent = #{ftMainContent}
+			, ftLink = #{ftLink}
+			, ftLatitude = #{ftLatitude}
+			, ftLongitude = #{ftLongitude}
+			, ftImgName = #{ftImgName}
+			WHERE ftidx = #{ftidx}
+	</update>
+	
+	<!-- 여행지 페이지 리스트 출력 -->
+	<select id="tripList" resultType="tripVO">
+		SELECT * FROM triptb
+	</select>
+	<!-- 여행지 등록 -->
+	<insert id="tripPlus" parameterType="HashMap">
+		INSERT INTO triptb 
+			VALUES(
+			TIDX_SEQ.NEXTVAL
+			,#{tAddr}
+			,#{tName}
+			,#{tSubContent}
+			,#{tMainContent}
+			,#{tLink}
+			,#{tLatitude}
+			,#{tLongitude}
+			,#{tImgName}
+			,'N'
+			,SYSDATE
+			)
+	</insert>
+	<!-- 여행지 삭제 -->
+	<delete id="tripDt" parameterType="int">
+		DELETE FROM triptb 
+			WHERE tidx = #{tidx}
+	</delete>
+	<!-- 여행지 상세 페이지 -->
+	<select id="tripInfo" parameterType="int" resultType="tripVO">
+		SELECT * FROM triptb 
+			WHERE tidx = #{tidx}
+	</select>
+	<!-- 여행지 수정 -->
+	<update id="tripUt" parameterType="TripVO">
+		UPDATE triptb 
+			SET tAddr = #{tAddr}
+			, tName = #{tName}
+			, tSubContent = #{tSubContent}
+			, tMainContent = #{tMainContent}
+			, tLink = #{tLink}
+			, tLatitude = #{tLatitude}
+			, tLongitude = #{tLongitude}
+			, tImgName = #{tImgName}
+			WHERE tidx = #{tidx}
+	</update>
 </mapper>
-
 
 
 

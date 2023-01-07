@@ -19,6 +19,8 @@
 		<typeAlias type="team.projectA.vo.RoominVO" alias="roominVO"/>
 		<typeAlias type="team.projectA.vo.LodginginVO" alias="lodginginVO"/>
 		<typeAlias type="team.projectA.vo.LodginginfoVO" alias="lodginginfoVO"/>
+		<typeAlias type="team.projectA.vo.FestivalVO" alias="festivalVO"/>
+		<typeAlias type="team.projectA.vo.TripVO" alias="tripVO"/>
 		<!-- <typeAlias type="edu.board.vo.BoardVO" alias="boardVO"/>
 		<typeAlias type="edu.board.vo.MemberVO" alias="memberVO"/>
 		<typeAlias type="edu.board.vo.SearchVO" alias="searchVO"/> -->

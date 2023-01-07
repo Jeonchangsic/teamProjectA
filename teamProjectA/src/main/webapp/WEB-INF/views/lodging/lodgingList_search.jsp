@@ -223,18 +223,6 @@
 		// 결과 출력
 		result.value = number;
 	}
-	//검색	
-	$(function(){
-		$("#searchBtn").click(function(){
-			var stype = $("select option:selected").val();
-		//	var kword = encodeURIcomponent($("#keywordInput").val());
-			var kword = $("#keywordInput").val();
-			var type =1;
-			
-			document.location.href = "<%=request.getContextPath()%>/lodging/lodgingList_search.do?searchType="+stype+"&keyword="+kword+"&type="+type;
-			return;
-		});
-	})
 </script>
 <script>
 //검색기능

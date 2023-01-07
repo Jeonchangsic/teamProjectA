@@ -1,0 +1,214 @@
+@charset "UTF-8";
+@charset "UTF-8";
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+
+            /*리셋코드*/
+* {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+header {
+	line-height: 1;
+	font-family: 'Do Hyeon', sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{text-decoration:none; color: inherit;}
+UL,li{list-style:none;}
+            /*리셋코드*/
+
+                         /*header*/
+
+.clearfix::after{
+	content:""; 
+	display:block; 
+	clear:both;
+}
+.inner{
+	width:1024px; 
+	margin:0 auto; 
+	font-family: 'Noto Sans KR', 산세리프;
+}
+#header{ 
+	margin:0 auto;
+    height: 100px;
+    overflow: hidden;
+    background-color: rgb(86,19,241);
+}
+#header h3{
+	color: white;
+    float: left;
+    font-size: 25px;
+    margin: 26px 0 0 50px;
+}
+
+#header #manager{
+	color:white;
+}
+#header #manager li{
+	display: inline-block; 
+    margin: 40px 100px 40px;
+    }
+.top li a{
+		text-decoration: none;
+        color:white;
+        font-size:20px;
+        font-family: 'Do Hyeon', sans-serif
+}
+ul{
+    text-align: center;
+    margin-top:10px;
+}
+#festival{
+	font-weight: bold;
+    font-size: 20px;
+    margin: 20px 0 20px 20px;
+    text-align:center;
+    display:inline-block;
+}
+#trip{
+
+    font-size: 20px;
+    margin-top:20px;
+    margin-bottom: 20px;
+    text-align:center;
+    display:inline-block;
+}
+#festival::after{
+	content: "l";
+    color: #ccc;
+    padding-left: 10px;
+}
+ul{
+	text-align: center;
+    margin-top:10px;
+}
+.inner{
+	margin: 0 auto;
+    width: 303px;
+}
+table{
+	margin:37px auto 0 auto;
+	font-family: 'Noto Sans KR', 산세리프;
+}
+table th{
+	width: 332px;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    font-size: 19px;
+}
+table td{
+	text-align:center;	
+	padding: 10px 0 10px 12px;
+	border-bottom: 1px solid #919191;
+}
+
+.th_width{
+    width: 165px;
+}
+#th_Style{
+	width: 157px;
+}
+
+#btn_Style{
+	width: 16px;
+    height: 16px;
+    border: 0px solid #919193;
+    background-color: white;
+    cursor: pointer;
+    float: right;
+    margin: 0 7px 10px 0;
+}
+.border_reset{
+	border:0px;
+}
+.border_reset button{
+	width:125px;
+}
+.td_text{
+	padding-top: 20px;
+}
+.inner p{
+	font-family: 'Noto Sans KR', 산세리프;
+    font-weight: bold;
+    margin-top: 67px;
+    text-align: center;
+    font-size: 27px;
+}
+.bottom_btn{
+	width: 100px;
+    height: 30px;
+    color: rgba(255,255,255,0.8);
+    background-color: rgb(86, 19, 241);
+    font-weight: bold;
+    border: 0px solid #000;
+    border-radius: 2px;
+	cursor:pointer;
+}
+.bottom_btn:hover{
+	color:white;
+}
+#a_Hover{
+	cursor:pointer;
+}
+#a_Hover:hover{
+	color:blue;
+	font-weight:bold;
+}
+.btn_th{
+	width:0px;
+}
+#modify_Btn{
+	width: 70px;
+    height: 20px;
+	color: rgba(255,255,255,0.8);
+    background-color: #696969;
+    font-weight: bold;
+    border: 0px solid #000;
+    border-radius: 2px;
+	cursor:pointer;
+}
+#modify_Btn:hover{
+	color:white;
+}

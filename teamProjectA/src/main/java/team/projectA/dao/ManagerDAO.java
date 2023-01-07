@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.projectA.vo.FestivalVO;
 import team.projectA.vo.LodgingVO;
 import team.projectA.vo.PagingVO;
 import team.projectA.vo.QnaVO;
@@ -15,6 +16,7 @@ import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
 import team.projectA.vo.RoomVO;
 import team.projectA.vo.SearchCriteria;
+import team.projectA.vo.TripVO;
 import team.projectA.vo.UserVO;
 
 @Repository
@@ -88,4 +90,36 @@ public class ManagerDAO {
 	public int RoomListcount() {
 		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.RoomListcount");
 	}    
+	
+	public List<FestivalVO> festivalList(){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.festivalList");
+	}
+	public int festivalPlus(HashMap hm){
+		return sqlSession.insert("team.projectA.mapper.ManagerMapper.festivalPlus",hm);
+	}
+	public int festivalDt(int ftidx){
+		return sqlSession.delete("team.projectA.mapper.ManagerMapper.festivalDt",ftidx);
+	}
+	public FestivalVO festivalInfo(int ftidx){
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.festivalInfo",ftidx);
+	}
+	public int festivalUt(FestivalVO festivalVO){
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.festivalUt",festivalVO);
+	}
+	
+	public List<TripVO> tripList(){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.tripList");
+	}
+	public int tripPlus(HashMap hm){
+		return sqlSession.insert("team.projectA.mapper.ManagerMapper.tripPlus",hm);
+	}
+	public int tripDt(int tidx){
+		return sqlSession.delete("team.projectA.mapper.ManagerMapper.tripDt",tidx);
+	}
+	public TripVO tripInfo(int tidx){
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.tripInfo",tidx);
+	}
+	public int tripUt(TripVO tripVO){
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.tripUt",tripVO);
+	}
 }

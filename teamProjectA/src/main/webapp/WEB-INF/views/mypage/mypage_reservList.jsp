@@ -19,8 +19,8 @@
      
      <!--예약취소 팝업창  -->
      <script>
-     function refund_pop(ridx,uidx,limagename){
-    	var url = "<%=request.getContextPath()%>/mypage/refundPop.do?ridx="+ridx+"&uidx="+uidx+"&limagename="+limagename;   //팝업창 페이지 URL
+     function refund_pop(ridx,uidx,limagename,startDate,endDate){
+    	var url = "<%=request.getContextPath()%>/mypage/refundPop.do?ridx="+ridx+"&uidx="+uidx+"&limagename="+limagename+"&startDate="+startDate+"&endDate="+endDate;   //팝업창 페이지 URL
  		var winWidth = 500;
  	    var winHeight = 250;
  	   var popupX = (window.screen.width / 2) - (500 / 2);
@@ -99,15 +99,15 @@
 		                        			<input class="reservListBtn cursorStyle input_none" type="button" value="취소불가능"/>
 		                            	</c:when>
 		                            	<c:otherwise>
-		                            		<input class="reservListBtn cursorStyle" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}')" type="button" value="예약취소"/>
+		                            		<input class="reservListBtn cursorStyle font_Style" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}','${list.reserv_startDate}','${list.reserv_endDate}')" type="button" value="예약취소"/>
 		                            	</c:otherwise>
 		                            </c:choose>
 		                            <c:choose>
 			                            <c:when test="${list.reviewCheck eq 'N'}">
-			                           		<input class="reservListBtn cursorStyle" onclick="review(${list.lidx},${list.ridx},${list.reserv_idx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
+			                           		<input class="reservListBtn cursorStyle font_Style" onclick="review(${list.lidx},${list.ridx},${list.reserv_idx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
 			                        	</c:when>
 			                        	<c:otherwise>
-			                        		<input class="reservListBtn cursorStyle btnFontSize" onclick="alert('이미 리뷰 작성을 완료하였습니다.');" type="button" value="리뷰작성완료"/>
+			                        		<input class="reservListBtn cursorStyle btnFontSize font_Style" onclick="alert('이미 리뷰 작성을 완료하였습니다.');" type="button" value="리뷰작성완료"/>
 			                        	</c:otherwise>
 		                        	</c:choose>
 		                        </td>

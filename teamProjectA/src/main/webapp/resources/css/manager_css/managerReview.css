@@ -85,7 +85,7 @@ UL,li{list-style:none;}
 }
 #header #manager li{
 	display: inline-block; 
-    margin:40px 150px 40px;
+    margin: 40px 100px 40px;
     }
 .top li a{
 		text-decoration: none;
