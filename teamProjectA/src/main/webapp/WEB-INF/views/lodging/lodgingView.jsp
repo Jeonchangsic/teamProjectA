@@ -337,7 +337,7 @@
 		                        <p>가격</p>
 		                        <div> 
 		                            <p class="room_amount"><c:if test="${vo2.spareroom < 6 && vo2.spareroom > 0}">남은 객실${vo2.spareroom}개</c:if></p>
-		                            <p><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.rprice}" />원</p>
+		                            <p><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo2.allprice}" />원</p>
 		                        </div>
 		                    </div><!--//room_price-->
 		                    <div class="modal">

@@ -44,7 +44,7 @@
 		<id column="intro" property="intro" />
 		<id column="ridx" property="ridx" />
 		<id column="spareroom" property="spareroom" />
-		<id column="rprice" property="rprice" />
+		<id column="allprice" property="allprice" />
 		<id column="bed" property="bed" />
 		<id column="stdmen" property="stdmen" />
 		<id column="maxmen" property="maxmen" />
@@ -104,7 +104,7 @@
 			 , l.lodgingname
 			 , l.lodgingaddr
 			 , l.satis
-			 , r.rprice
+			 , (r.rprice * (SELECT TO_DATE(#{toDate}) - TO_DATE(#{fromDate}) FROM dual)) AS allprice
 			 , (r.rnum - (SELECT COUNT(ridx)
 					  				FROM reservtb
 								 		WHERE reserv_startdate = #{fromDate}
@@ -903,7 +903,10 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		  AND l.lidx = #{lidx}
 	</select>
 	<select id="selectRoomList" parameterType="HashMap" resultType="roominVO">
-		SELECT (r.rnum - (SELECT COUNT(ridx) FROM reservtb WHERE ridx = r.ridx AND reserv_startdate = #{fromDate})) AS spareroom , r.*, i.*
+		SELECT (r.rnum - (SELECT COUNT(ridx) FROM reservtb WHERE ridx = r.ridx AND reserv_startdate = #{fromDate})) AS spareroom
+			, (r.rprice * (SELECT TO_DATE(#{toDate}) - TO_DATE(#{fromDate}) FROM dual)) AS allprice
+			, r.*
+			, i.*
 		FROM roomtb r, roomintb i
 		WHERE r.ridx = i.ridx 
 			AND r.lidx = #{lidx}

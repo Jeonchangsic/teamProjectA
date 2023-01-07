@@ -17,7 +17,7 @@ public interface LodgingService {
 */
 	List<Map<String,Object>> selectLodgingList(String lodgingkind, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men);
 	Map<String,Object> selectLodging(int lidx); 
-	List<RoominVO> selectRoomList(int lidx, String men, String fromDate); 
+	List<RoominVO> selectRoomList(int lidx, String men, String fromDate, String toDate); 
 	RoomVO selectRoom(int ridx);
 	List<ReviewVO> selectReview(HashMap hm);
 	int RVCount(int lidx);

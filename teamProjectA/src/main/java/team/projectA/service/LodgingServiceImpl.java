@@ -42,8 +42,8 @@ public class LodgingServiceImpl implements LodgingService {
 	}
 	
 	@Override
-	public List<RoominVO> selectRoomList(int lidx, String men, String fromDate) {
-		return lodgingDAO.selectRoomList(lidx, men, fromDate);
+	public List<RoominVO> selectRoomList(int lidx, String men, String fromDate, String toDate) {
+		return lodgingDAO.selectRoomList(lidx, men, fromDate, toDate);
 	}
 
 	@Override

@@ -7,6 +7,7 @@ public class RoomVO extends LodgingVO{
 	private int rnum;
 	private int spareroom;
 	private int rprice;
+	private int allprice;
 	private String rimage1;
 	private String rimage2;
 	private String rimage3;
@@ -26,15 +27,7 @@ public class RoomVO extends LodgingVO{
 	private int maxmen; 
 	
 
-	private String gdsThumbImg;
 	
-	
-	public String getGdsThumbImg() {
-		return gdsThumbImg;
-	}
-	public void setGdsThumbImg(String gdsThumbImg) {
-		this.gdsThumbImg = gdsThumbImg;
-	}
 	public int getMaxmen() {
 		return maxmen;
 	}
@@ -70,6 +63,12 @@ public class RoomVO extends LodgingVO{
 	}
 	public void setRprice(int rprice) {
 		this.rprice = rprice;
+	}
+	public int getAllprice() {
+		return allprice;
+	}
+	public void setAllprice(int allprice) {
+		this.allprice = allprice;
 	}
 	public String getRimage1() {
 		return rimage1;
