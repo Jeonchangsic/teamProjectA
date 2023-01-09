@@ -142,7 +142,9 @@ public class SellerDao {
 		return sqlSession.update("team.projectA.mapper.sellerMapper.roomModify2", vo);
 	}
 
-
+	public List<RoomVO> ridxOnelist(int uidx) {		
+		return sqlSession.selectList("team.projectA.mapper.sellerMapper.ridxOnelist", uidx);
+	}
 }
 
 

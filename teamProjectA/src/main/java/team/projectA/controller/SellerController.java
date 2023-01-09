@@ -70,8 +70,9 @@ public class SellerController {
 		  //uidx가 ?값인 사용자의 정보가 필요v
 		HttpSession session = req.getSession(); 								//session불러냄
 		UserVO login = (UserVO) session.getAttribute("login"); 				//session에 저장되어있는 login값 불러옴
+		
 		LodgingVO lodging = sellerService.SellerOne(login.getUidx());			//SellerOne에 uidx저장
-  	  
+  	  	
 		model.addAttribute("lodging",lodging);								
 		
 		return "seller/sellerInfo";
@@ -261,13 +262,14 @@ public class SellerController {
 		HttpSession session = req.getSession();
 		UserVO login = (UserVO)session.getAttribute("login");   
 		List<RoomVO> roomlist = sellerService.roomlist(login.getUidx());
-	      
+		List<RoomVO> ridxone = sellerService.ridxOnelist(login.getUidx());      
 		LodgingVO lodging2 = sellerService.SellerOne(login.getUidx());
-		
 		
 		model.addAttribute("roomlist",roomlist);
 		model.addAttribute("lodging2",lodging2);
-			      
+		model.addAttribute("ridxone", ridxone);
+		
+		
 		return "seller/sellerRegi";
 	   }
 	   
@@ -279,7 +281,6 @@ public class SellerController {
 		List<ReservVO> delridx = reservService.ridxList(ridx);
 		
 		PrintWriter out = res.getWriter();
-		
 		
 		if(delridx == null || delridx.isEmpty()) {
 			sellerService.roomdel(ridx);

@@ -39,6 +39,10 @@
 		}
 	}
 	
+	function lodelFn2(){
+		alert("객실을 보유한 상태로 삭제할 수 없습니다.")
+	}
+	
 </script>
 </head>
 <body style="overflow-x: hidden">
@@ -77,9 +81,13 @@
 					<div><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${lodging2.limagename}"/></div>
 					<div id="lodgingName">${lodging2.lodgingname}</div>
 					<div><button type="button" value="숙소수정" onclick="location.href='sellerLodgingModify.do?lidx=${lodging2.lidx}'">수정</button></div>
-					<div><button type="button" onclick="lodelFn()">삭제</button></div>
+						<c:if test = "${ridxone[0].ridx == null || ridxone[0].ridx == ''}"> <!--foreach쓰면 객실수대로 삭제버튼이 늘어남 -->
+							<div><button type="button" onclick="lodelFn()">삭제</button></div> 
+						</c:if>
+						<c:if test = "${ridxone[0].ridx != null && ridxone[0].ridx != ''}">
+							<div><button type="button" onclick="lodelFn2()">삭제</button></div>
+						</c:if> 
 				</div>
-				
             </div>
         </nav>
         <div>
@@ -115,8 +123,7 @@
 							</tr>
 							<script>
 								//객실 삭제 안내	 vo. 를 써야하기 때문에 jsp안에서 스크립트씀
-								function delFn(ridx2) {
-									
+								function delFn(ridx2) {					
 									if (!confirm("해당 객실을 삭제하시겠습니까?")) {
 										alert("삭제가 취소되었습니다.");
 									} else {

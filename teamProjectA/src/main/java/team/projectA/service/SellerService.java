@@ -69,5 +69,6 @@ public interface SellerService {
 	
 	int roomModify2(RoominVO vo);
 
+	List<RoomVO> ridxOnelist(int uidx);
 
 }

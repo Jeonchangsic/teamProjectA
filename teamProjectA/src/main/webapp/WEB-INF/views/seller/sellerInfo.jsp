@@ -104,6 +104,10 @@
 			}
 		}
 		
+		function delFn2(){
+			alert("숙소 삭제 후 탈퇴 가능합니다.")
+		};
+		
 		//이메일인증
 		var codetemp ="";
 		$(function(){
@@ -259,7 +263,12 @@
 			</table>
 		</form>
 		<div id="delrow">
-			<button id="mydel" type="button" onclick="delFn()">회원탈퇴</button>
+			<c:if test = "${lodging.lidx == null || lodging.lidx == ''}">
+				<button id="mydel" type="button" onclick="delFn()">회원탈퇴</button>
+			</c:if>
+			<c:if test = "${lodging.lidx != null || lodging.lidx != ''}">
+				<button id="mydel" type="button" onclick="delFn2()">회원탈퇴</button>
+			</c:if>
 		</div>
 
 	</main>

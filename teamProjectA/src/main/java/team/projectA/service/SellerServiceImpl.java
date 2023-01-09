@@ -177,6 +177,12 @@ public class SellerServiceImpl implements SellerService{
 	      return SellerDao.lodginginfoModify(vo);
 	   }
 
+	@Override
+	public List<RoomVO> ridxOnelist(int uidx) {
+
+		return SellerDao.ridxOnelist(uidx);
+	}
+
 
 
 
