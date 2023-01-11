@@ -51,24 +51,6 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
             <h3>예약내역</h3>
              
         <hr/>
-        <form>
-            <tbody>
-                <tr>
-                    <td>
-                        <select class="frm_select">
-                            <option value="id">아이디</option>
-                            <option value="reservNum">예약번호</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="keyword" size="30">
-                    </td>
-                    <td>
-                        <button class="btn" type="submit" name="submit">검색</button>
-                    </td>
-                </tr>
-            </tbody>
-        </form>
         <table>
             <thead>
                 <tr style="text-align:center;">

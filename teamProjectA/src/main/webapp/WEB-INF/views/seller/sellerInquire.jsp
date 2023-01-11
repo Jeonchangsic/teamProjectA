@@ -143,4 +143,8 @@
         </div>
     </footer>
 </body>
+<script>
+$("td:contains('답변처리중')").css({color:"red"});
+$("td:contains('답변완료')").css({color:"blue"});
+</script>
 </html>

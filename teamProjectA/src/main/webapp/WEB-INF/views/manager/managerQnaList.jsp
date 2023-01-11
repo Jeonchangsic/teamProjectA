@@ -51,25 +51,6 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
             <h3>문의내역</h3>
              
         <hr/>
-        <form>
-            <tbody>
-                <tr>
-                    <td>
-                    <div class="search">
-                        <select class="frm_select" name="searchType">                                                
-                            <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>답변여부</option>
-                        </select>
-                    </div>
-                    </td>
-                    <td>
-                        <input type="text" name="searchName" size="30">
-                    </td>
-                    <td>
-                        <button id="searchBtn" class="btn"type="submit" >검색</button>
-                    </td>
-                </tr>
-            </tbody>
-        </form>
         <table>
             <thead>
                 <tr style="text-align:center;">

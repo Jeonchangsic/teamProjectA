@@ -115,17 +115,7 @@
 					}
 			});
 		});
-        
-        function check(){
-         if($("#checkall").is(":checked")) $("#nofont").css("display","none");
-            else $("#nofont").show()       
-         if($("#checkall").is(":checked")) $("#nofont1").css("display","none");
-            else $("#nofont1").show() 
-         if($("#checkall").is(":checked")) $("#nofont2").css("display","none");
-            else $("#nofont2").show() 
-         if($("#checkall").is(":checked")) $("#nofont3").css("display","none");
-         else $("#nofont3").show() 
-        }        
+              
     </script>
    
 </head>
@@ -163,22 +153,18 @@
                 <tr>
                     <td><input type="checkbox" name="check" onclick="check()"></td>
                     <td>숙소이용규칙 및 취소/환불규정동의</td>
-                    <td id="nofont">필수!</td>
                </tr>
                <tr>
                     <td><input type="checkbox" name="check" onclick="check()"></td>
                     <td>개인정보 수집 및 이용 동의</td>
-                    <td id="nofont1">필수!</td>
                </tr>
                <tr>
                     <td><input type="checkbox" name="check" onclick="check()"></td>
                     <td>개인정보 제 3자 제공 동의</td>
-                    <td id="nofont2">필수!</td>
                </tr>
                <tr>
                     <td><input type="checkbox" name="check" onclick="check()"></td>
                     <td>만 14세 이상 확인</td>
-                    <td id="nofont3">필수!</td>
                </tr>
             </table>
         </div>

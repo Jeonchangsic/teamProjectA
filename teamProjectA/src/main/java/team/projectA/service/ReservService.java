@@ -11,8 +11,6 @@ import team.projectA.vo.SearchCriteria;
 public interface ReservService {
 	int reservInsert(HashMap hm)throws Exception;
 	
-	int reservMinus(int ridx);
-	
 	List<ReservVO> ridxList(int ridx);
 	
 }

@@ -52,26 +52,6 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
             <h3>회원목록</h3>
            
         <hr/>
-     
-        <form>
-            <tbody>
-                <tr>
-                    <td>
-                        <select class="frm_select" name="searchType">
-                            <option value="id">아이디</option>
-                            <option value="nickname">이름</option>
-                            <option value="type">구분</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="keyword" id="keywordInput" value="" size="30">
-                    </td>
-                    <td>
-                        <button class="btn" type="submit" id="searchBtn">검색</button>
-                    </td>
-                </tr>
-            </tbody>
-        </form>
         <table>
             <thead>
                 <tr style="text-align:center;">

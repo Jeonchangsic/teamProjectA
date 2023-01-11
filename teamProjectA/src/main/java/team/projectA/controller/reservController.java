@@ -71,8 +71,6 @@ public class reservController {
 		hm.put("reserv_startDate", fromDate);
 		hm.put("reserv_endDate", toDate);
 		
-		reservService.reservMinus(ridx);
-		
 		int vo = reservService.reservInsert(hm);
 		String result = Integer.toString(vo);
 		

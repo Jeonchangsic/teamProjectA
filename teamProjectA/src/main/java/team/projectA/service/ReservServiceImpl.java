@@ -27,10 +27,6 @@ public class ReservServiceImpl implements ReservService{
 		return reservDao.reservInsert(hm);
 	}
 	@Override
-	public int reservMinus(int ridx) {
-		return reservDao.reservMinus(ridx);
-	}
-	@Override
 	public List<ReservVO> ridxList(int ridx) {
 
 		return reservDao.ridxList(ridx);

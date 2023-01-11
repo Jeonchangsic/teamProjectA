@@ -57,25 +57,7 @@
                 <h3>리뷰관리</h3>
             </div>     
             <hr/>
-            <form>
-                <tbody>
-                    <tr>
-                        <td>
-                            <select name="searchType" class="frm_select">
-                            	<option value="n"<c:out value="${scri3.searchType == null ? 'selected' : ''}"/>>-----</option>
-                                <option value="t"<c:out value="${scri3.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-                                <option value="w"<c:out value="${scri3.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="text" name="keyword" value="${scri3.keyword}"id="keywordInput"size="30">
-                        </td>
-                        <td>
-                            <button class="btn" id="searchBtn">검색</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </form>
+         
             <table>
                 <thead>	
                     <tr style="text-align:center;">
