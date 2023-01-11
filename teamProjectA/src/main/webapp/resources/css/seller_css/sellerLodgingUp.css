@@ -1,22 +1,27 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 .clearfix::after{content:""; display:block; clear:both;}
 
 #header{ margin:0 auto;
         height: 100px;
         overflow: hidden;
-        background-color: rgb(86,19,241);}
+        background-color: rgb(86,19,241);
+        font-family: 'Do Hyeon', sans-serif;}
 #header h3{color:white; 
-            float:left; 
-            font-size: 30px;
-            margin:30px 30px 30px;}
-#header #manager{color:white;}
+       	float:left; 
+        font-size: 30px;
+		margin: 40px 150px 0 80px;}
+#header #manager{color:white;
+				margin-left:430px;}		
 #header #manager li{display: inline-block; 
-                    margin:40px 150px 40px;}
-.header li a{text-decoration: none;
-          color:white;}
-
-          
+                    margin: 50px 160px 40px;}   
+.top1 li a{
+		text-decoration: none;
+        color:white;
+        font-size:20px;
+        font-family: 'Do Hyeon', sans-serif;
+        }       
 main {width:1024px; margin:0 auto;}    
 #lodgingtb > h2{margin:50px 30px; 
 				font-weight:bold; font-size:25px;}

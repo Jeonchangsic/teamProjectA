@@ -27,20 +27,21 @@
 
 <script>	    
 				    
-	  	//체크박스 선택시 ny주기
-
-		function checkBox(obj){
-			var checked = obj.checked;
-			if(checked){
-				obj.value = "Y";
-			}else{
-				obj.value= "N";
-			}
-		};
-		
 				
 		//추가정보입력			    
 		$(document).ready(function () {
+			
+			$(".ch:checked").val("Y");
+			
+			//체크박스 선택시 ny주기
+			$(".ch").change(function(){
+				
+				if(this.checked){
+					$(this).val("Y");
+				}
+				
+			});
+			
 			
 			var maxAppend = 1;
 			

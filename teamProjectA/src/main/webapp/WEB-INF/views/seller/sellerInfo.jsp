@@ -266,7 +266,7 @@
 			<c:if test = "${lodging.lidx == null || lodging.lidx == ''}">
 				<button id="mydel" type="button" onclick="delFn()">회원탈퇴</button>
 			</c:if>
-			<c:if test = "${lodging.lidx != null || lodging.lidx != ''}">
+			<c:if test = "${lodging.lidx != null && lodging.lidx != ''}">
 				<button id="mydel" type="button" onclick="delFn2()">회원탈퇴</button>
 			</c:if>
 		</div>

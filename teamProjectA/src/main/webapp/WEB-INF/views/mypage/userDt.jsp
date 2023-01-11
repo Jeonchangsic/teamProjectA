@@ -27,7 +27,7 @@
 	    <form action="userDt.do" method="post">
 	    <input type="hidden" name="uidx" value="${login.uidx}">
 	    	<table id="tableMargin">
-	    		<tr>
+	    		<tr style="border-top: 3px solid #919191;">
 	    			<td class="passwordMargin font_Style">아이디</td>
 	    			<td class="input_td font_Style">
 	    				<input type="text" id="userID" name="userID" class="font_Style" value="${login.userID}" readonly/>
@@ -40,7 +40,9 @@
 	    			</td>
 	    		</tr>
 	    	</table>
-	    	<button class="cursorStyle font_Style">회원탈퇴</button>
+	    	<div id="btnCss">
+	    		<button class="cursorStyle font_Style" id="btnbar">회원탈퇴</button>
+	    	</div>
 	    </form>
     </main>
 </body>

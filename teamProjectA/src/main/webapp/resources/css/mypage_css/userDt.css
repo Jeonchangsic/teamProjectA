@@ -51,13 +51,14 @@ table {
 a{text-decoration:none; color: inherit;}
 UL,li{list-style:none;}
             /*리셋코드*/
-
+header {
+    text-align: center;
+}
 header h2{
 	margin: 26px 57px 0 61px;
     padding-bottom: 5px;
     font-weight: bold;
     font-size: 21px;
-    border-bottom: 3px solid #919191;
 }
 
 
@@ -66,7 +67,7 @@ main table tr{
 }
 
 button{
-	margin: 10px 0 0 142px;
+	margin: 10px 0 0 0px;
     color: rgba(255,255,255,0.8);
     background-color: rgb(86, 19, 241);
     font-weight: bold;
@@ -113,7 +114,8 @@ input{
 .font_Style{
 	font-family: 'Noto Sans KR', 산세리프;
 }
-
+#btnCss {
+    text-align: center;}
 
                 /*footer*/
 footer{position:absolute; bottom:0;height:137px; width:100%; background-color:rgba(0,0,0,0.15);}

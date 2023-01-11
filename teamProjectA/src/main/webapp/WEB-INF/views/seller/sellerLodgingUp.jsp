@@ -120,7 +120,7 @@
 <body>
 	<header>
 		<div id="header">
-			<div id="top">
+			<div id="top" class="top1">
 				<h3>판매자페이지</h3>
 				<div id="manager">
 					<ul>

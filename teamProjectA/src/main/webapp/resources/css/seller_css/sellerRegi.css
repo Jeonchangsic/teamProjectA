@@ -17,13 +17,14 @@ img,iframe{vertical-align:top;}
             margin: 30px 0 0 80px;}
 #header #manager{color:white;}
 #header #manager li{display: inline-block; 
-                    margin:40px 150px 40px;}
+                    margin:50px 150px 40px;}
 .top li a{
 		text-decoration: none;
         color:white;
         font-size:20px;
         font-family: 'Do Hyeon', sans-serif;
         }
+        
 .nav{margin-top:80px;}
 .nav img{width:350px; height: 300px;}
 .nav #info{display:flex;}

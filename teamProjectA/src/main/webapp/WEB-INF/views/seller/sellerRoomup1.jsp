@@ -20,14 +20,27 @@
 				    
 	  	//체크박스 선택시 ny주기
 
-		function checkBox(obj){
-			var checked = obj.checked;
-			if(checked){
-				obj.value = "Y";
-			}else{
-				obj.value= "N";
-			}
-		};
+	  	$(document).ready(function(){
+	  		$("#checkAll").click(function() {
+				if($("#checkAll").is(":checked")) {
+					$(".ch").prop("checked", true);
+					$(".ch").val("Y");
+				}else {
+					$(".ch").prop("checked", false);
+					$(".ch").val("N");
+				}
+	  	  	});
+				
+			function checkBox(obj){
+				var checked = obj.checked;
+				if(checked){
+					obj.value = "Y";
+				}else{
+					obj.value= "N";
+				}
+			};
+  	});
+
 		
 
 		//추가정보입력			    
@@ -219,22 +232,22 @@
 			<div id="bottom">
 				<!-- 체크박스 -->
 				<div id="bottom_left">
-				        <div id="up_bottom2">
-							 <div class="filter1" >
-				                <div id="filter_in" class="filter" >
+					<div id="up_bottom2">
+						<div class="filter1" >
+							<div id="filter_in" class="filter" >
 				             		       객실 내 시설
-				                </div>
-				              	  <div class="public_in"> 
-					                <ul id="in_left" class="filter_check" >
-					                    <li>
-					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="roomspa">
-					                        <label>객실스파</label>
-					                    </li>   
-					                    <li>
-					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="wifi">
+							</div>
+					            <div class="public_in"> 
+									<ul id="in_left" class="filter_check" >
+										<li>
+											<input type="checkbox" onchange="checkBox(this)" class="ch" name="roomspa">
+											<label>객실스파</label>
+										</li>   
+										<li>
+											<input type="checkbox" onchange="checkBox(this)" class="ch" name="wifi">
 					                        <label>와이파이</label>
 					                    </li>   
-					                    <li>
+										<li>
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="tv">
 					                        <label>TV</label>
 					                    </li>   
@@ -242,7 +255,7 @@
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="refri">
 					                        <label>냉장고</label>
 					                    </li>   					
-					                </ul>
+									</ul>
 					                <ul id="in_middle" class="filter_check">
 				                  		<li>
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="iron">
@@ -260,7 +273,7 @@
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="ricecooker">
 					                        <label>전기밥솥</label>
 					                    </li>    
-					                </ul>
+									</ul>
 					                <ul id="in_right" class="filter_check">
 					                    <li>
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="minibar">
@@ -278,8 +291,11 @@
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="shower">
 					                        <label>객실샤워실</label>
 					                    </li>   					
-					                </ul>
-					              </div>
+									</ul>
+									</div>
+									<div>
+										<input type="checkbox" id="checkAll">전체선택
+									</div>
 				            	</div>
 				           </div>
 	            </div>

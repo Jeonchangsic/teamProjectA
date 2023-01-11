@@ -293,7 +293,7 @@ public class SellerController {
 		}else {			
 			res.setContentType("text/html; charset=UTF-8");
 			PrintWriter pw = res.getWriter();
-			pw.append("<script>alert('예약이 있는 객실입니다.'); history.go(-1);</script>");
+			pw.append("<script>alert('예약이 있는 객실은 삭제할 수 없습니다.'); history.go(-1);</script>");
 			out.flush();
 			out.close();
 		}
