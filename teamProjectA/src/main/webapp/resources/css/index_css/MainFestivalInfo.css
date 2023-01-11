@@ -70,7 +70,6 @@ header #header_view{
 header a{
 	color:#fff; 
 	position:absolute; 
-	top:10%; 
 	left:1%; 
 	font-size:50px;
 }

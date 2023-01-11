@@ -41,7 +41,7 @@
  		window.open(url,"",popupOption);
      };
      </script>
-     <!-- 여행지 상세페이지 팝업창 -->
+     <!-- 여행지 수정페이지 팝업창 -->
      <script>
      function tripMf(tidx){
     	var url = "<%=request.getContextPath()%>/manager/tripMf.do?tidx="+tidx;
@@ -53,10 +53,22 @@
  		window.open(url,"",popupOption);
      };
      </script>
+     <!-- 여행지 메인 등록 페이지 팝업창 -->
+     <script>
+     function listRegPage(){
+    	var url = "<%=request.getContextPath()%>/manager/tripRegPage.do;"
+ 		var winWidth = 620;
+ 	    var winHeight = 670;
+ 	  	var popupX = (window.screen.width / 2) - (620 / 2);
+ 	  	var popupY= (window.screen.height / 2) - (670 / 2);
+ 	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
+ 		window.open(url,"",popupOption);
+     };
+     </script>
      <script>
 	     function tripDt(tidx) {
 	 		
-	 		if(!confirm("해당 여행지를 삭제하시겠습니까?")){
+	 		if(!confirm("해당 여행지가 메인 리스트에 등록되어 있다면 등록 리스트에서도 삭제됩니다. 해당 여행지를 삭제하시겠습니까?")){
 	 			alert("삭제가 취소되었습니다.");
 	 		}else{
 	 			location.href="<%=request.getContextPath()%>/manager/tripDt.do?tidx="+tidx;
@@ -105,25 +117,33 @@
 	        			<td>
 	        				<button type="button" id="modify_Btn" onclick="tripMf(${list.tidx})">수정</button>
 	        			</td>
-	        			<td>
+	        			<td class="delete_Btn">
 	        				<button onclick="tripDt(${list.tidx})" id="btn_Style">
 	        					<i class="xi-close"></i>
 	        				</button>
 	        			</td>
 	        		</tr>
         		</c:forEach>
-        		<tr>
-        			<td class="border_reset"></td>
-        			<td class="border_reset"></td>
-        			<td class="border_reset"></td>
-        			<td class="border_reset td_text">
-        				<button class="bottom_btn" type="button" onclick="tripPlus()">여행지추가</button>
-        			</td>
-        			<td class="border_reset">
-        				<button class="bottom_btn" >메인리스트관리</button>
-        			</td>
-        		</tr>
         	</table>
+        	<ul id="pageUl">
+       			<c:if test="${pageMaker.prev}">
+       				<li><a href="<%=request.getContextPath()%>/manager/managerTrip.do?page=${pageMaker.startPage - 1}">이전</a></td>
+       			</c:if>
+       			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+        			<li><a href="<%=request.getContextPath()%>/manager/managerTrip.do?page=${idx}">${idx}</a></td>
+        		</c:forEach>
+        		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+        			<li><a href="<%=request.getContextPath()%>/manager/managerTrip.do?page=${pageMaker.endPage + 1}">다음</a></td>
+        		</c:if>
+        	</ul>
+        	<div>
+	        	<ul id="btnUl">
+        			<li class="border_reset">
+        				<button class="bottom_btn" type="button" onclick="tripPlus()">축제추가</button>
+        				<button type="button" class="bottom_btn" onclick="listRegPage()">메인리스트관리</button>
+        			</li>
+        		</ul>
+       		</div>
        	</main>
     </body>
 </html>

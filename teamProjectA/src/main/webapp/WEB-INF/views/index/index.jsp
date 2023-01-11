@@ -27,7 +27,6 @@
     <!--지도-->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=16ae71cd4551db2b12f4ba87ec120fc2&libraries=services"></script>
     
-    <!---- js --->
      
        <script>
         $(document).ready(function(){
@@ -468,68 +467,28 @@
             <h4 class="font_Style font_StyleBold">Festival</h4>
             <div id="festival_content" class="swiper mySwiper">  
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-	                    <ul>
+                   	<c:forEach items="${festivalList}" var="festivalList" varStatus="cnt">
+                   		<c:if test="${cnt.count % 3 == 1}">
+	                    	<div class="swiper-slide">
+		                   	<ul>
+                   		</c:if> 
 	                        <li>
 	                           <div class="description">
-		                           <a href="<%=request.getContextPath() %>/festival/NamgangYudeung.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival1.jpg" alt="축제이미지">
-	                                    <p id="hover1" class="festival_name">[진주]남강유등축제</p>
-	                                    <p class="festival_text">"역사가 담긴 빛축제"</p>
+		                           <a href="<%=request.getContextPath()%>/index/festivalInfo.do?ftidx=${festivalList.ftidx}">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/${festivalList.ftImgName}" alt="축제이미지">
+	                                    <p id="hover1" class="festival_name">
+	                                    	<span>[${festivalList.ftAddr}]</span>
+	                                    ${festivalList.ftName}
+	                                    </p>
+	                                    <p class="festival_text">"${festivalList.ftSubContent}"</p>
 		                            </a>
                                 </div>
 	                        </li>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath() %>/festival/YeosuFireworks.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival2.jpg" alt="축제이미지">
-		                                <p class="festival_name">[여수]밤바다불꽃축제</p>
-		                                <p class="festival_text">"밤바다 야경과 불꽃축제의 조화"</p>
-		                            </a>
-                                </div>
-	                        </li>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath() %>/festival/Chunhyang.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival3.jpg" alt="축제이미지">
-		                                <p class="festival_name">[남원]춘향제</p>
-		                                <p class="festival_text">"역사를 자랑하는 전통축제"</p>
-		                            </a>
-	                            </div>
-	                        </li> 
-	                    </ul>
-                    </div>
-                    <div class="swiper-slide">
-	                    <ul>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath() %>/festival/Chunhyang.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival3.jpg" alt="축제이미지">
-	                                    <p class="festival_name">[남원]춘향제</p>
-	                                    <p class="festival_text">"역사를 자랑하는 전통축제"</p>
-		                            </a>
-                                </div>
-	                        </li>
-	                        <li>
-	                            <div class="description">
-		                           <a href="<%=request.getContextPath() %>/festival/YeosuFireworks.do">
-		                               <img src="<%=request.getContextPath() %>/resources/images/index_images/festival2.jpg" alt="축제이미지">
-		                               <p class="festival_name">[여수]밤바다불꽃축제</p>
-		                               <p class="festival_text">"밤바다 야경과 불꽃축제의 조화"</p>
-		                           </a>
-                                </div>
-	                        </li>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath() %>/festival/NamgangYudeung.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/festival1.jpg" alt="축제이미지">
-		                                <p class="festival_name">[진주]남강유등축제</p>
-		                                <p class="festival_text">"역사가 담긴 빛축제"</p>
-		                            </a>
-                                </div>
-	                        </li> 
-	                    </ul>
-                    </div>
+                        <c:if test="${cnt.count % 3 == 0}">
+	                    	</ul>
+	                    	</div>
+                    	</c:if>
+                    </c:forEach>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -543,68 +502,28 @@
             <h4 class="font_Style font_StyleBold">인기 여행지</h4>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-	                    <ul>
+                    <c:forEach items="${tripList}" var="tripList" varStatus="cnt">
+                    	<c:if test="${cnt.count % 3 == 1}">
+	                    	<div class="swiper-slide">
+		                    <ul>
+	                    </c:if>
 	                        <li>
 	                            <div class="description">
-		                            <a href="<%=request.getContextPath()%>/trip/Nature.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip1.jpg" alt="즐길거리 이미지">
-		                                <p class="trip_name">[청주]자연휴양림</p>
-		                                <p class="trip_text">"캠핑과 휴양을 동시에!"</p>
-		                            </a>
-	                            </div>
-	                        </li>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath()%>/trip/HanokVillage.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip2.jpg" alt="즐길거리 이미지">
-		                                <p class="trip_name">[전주]한옥마을</p>
-		                                <p class="trip_text">"전주 여행에 빠질 수 없는 코스"</p>
+		                            <a href="<%=request.getContextPath() %>/index/tripInfo.do?tidx=${tripList.tidx}">
+		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/${tripList.tImgName}" alt="축제이미지">
+	                                    <p class="festival_name">
+	                                    	<span>[${tripList.tAddr}]</span>
+	                                    ${tripList.tName}	
+	                                    </p>
+	                                    <p class="festival_text">"${tripList.tSubContent}"</p>
 		                            </a>
                                 </div>
 	                        </li>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath()%>/trip/DeokjinPark.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip3.jpg" alt="즐길거리 이미지">
-		                                <p class="trip_name">[전주]덕진공원</p>
-		                                <p class="trip_text">"수많은 연꽃을 보고싶을때"</p>
-		                            </a>
-                                </div>
-	                        </li> 
+                    <c:if test="${cnt.count % 3 == 0}">
 	                    </ul>
-                    </div>
-                    <div class="swiper-slide">
-	                    <ul>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath()%>/trip/DeokjinPark.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip3.jpg"alt="즐길거리 이미지">
-		                                <p class="trip_name">[전주]덕진공원</p>
-		                                <p class="trip_text">"수많은 연꽃을 보고싶을때"</p>
-		                            </a>
-	                            </div>
-	                        </li>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath()%>/trip/Nature.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip1.jpg" alt="즐길거리 이미지">
-		                                <p class="trip_name">[청주]자연휴양림</p>
-		                                <p class="trip_text">"캠핑과 휴양을 동시에!"</p>
-		                            </a>
-	                            </div>
-	                        </li>
-	                        <li>
-	                            <div class="description">
-		                            <a href="<%=request.getContextPath()%>/trip/HanokVillage.do">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/trip2.jpg"alt="즐길거리 이미지">
-		                                <p class="trip_name">[전주]한옥마을</p>
-		                                <p class="trip_text">"전주 여행에 빠질 수 없는 코스"</p>
-		                            </a>
-                                </div>
-	                        </li>
-	                    </ul>
-                    </div>
+	                    </div>
+                    </c:if>
+                    </c:forEach>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>

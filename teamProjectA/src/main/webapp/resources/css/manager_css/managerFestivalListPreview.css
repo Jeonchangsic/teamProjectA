@@ -1,5 +1,9 @@
+@charset "UTF-8";
+@charset "UTF-8";
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
 
             /*리셋코드*/
 * {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
@@ -29,8 +33,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
+header {
 	line-height: 1;
+	font-family: 'Do Hyeon', sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -52,94 +57,79 @@ a{text-decoration:none; color: inherit;}
 UL,li{list-style:none;}
             /*리셋코드*/
 
-              /*header*/
-
-header h2{
-    text-align: center;
-    font-size:25px;
-    font-weight: bold;
-    padding:15px 0 15px 0;
+body{
+	background-color:aliceblue;
+}
+#slide_list{
+	margin-top:10px; 
+	padding-bottom: 50px;
+}
+#slide_list h4{
+	display:inline-block; 
+	border-bottom:5px solid rgb(86, 19, 241); 
+	margin:20px; 
+	padding-bottom:7px;
+	font-size:25px;
+}
+#slide_list img{
+	width:270px; 
+	height:180px;
+}
+#slide_list ul{
+	display:flex; 
+	align-items:center; 
+	JUSTIFY-CONTENT: SPACE-BETWEEN; 
+	flex-wrap:wrap;
+}
+#slide_list li{
+	width:50%; 
+	padding-left: 120px; 
+	box-sizing:border-box; 
+	padding-bottom:30px;
+}
+.slide_list{
+	font-size: 12px;
+	font-weight:bold; 
+	line-height:2em;
+	text-align: center;
+	margin-top: 20px;
 }
 
-            /*main*/
-#headLine{
-	width:100%;
-	height:1px;
-	background-color:#919191;
-	margin-bottom:10px;
+.slide_list img{
+	width: 130px;
+    height: 90px;
 }
-table{
-	margin:0 auto;
+.slide_list ul{
+	display:flex; 
+	align-items:center; 
+	JUSTIFY-CONTENT: SPACE-BETWEEN;
 }
-table td{
-	height: 45px;
-    width: 142px;
+.slide_list li{
+	padding: 0 50px;
 }
-table input{
-	height:20px;
-	width:229px;
+.slide_list a{
+	padding-bottom:20px;
 }
-.font_Style{
-	font-family: 'Noto Sans KR', 산세리프;
+.slide_list .lod_name{ 
+	font-size:18px; 
+	line-height:2em;
 }
-.font_StyleBold{
-	font-weight:bold;
-	font-size: 17px;
+#festival_content{
+	background-color:white;
+	padding: 45px 0px 10px 0;
+	width: 860px;
 }
-#middle{
-	vertical-align:middle;
+#festival_content .swiper-slide,
+#best_item .swiper-slide {
+    padding-bottom: 20px;
 }
-#first_td{
-	padding-top: 19px;
+.festival_text{
+	width: 195px;
 }
-#textarea_Style{
-	padding-bottom:10px;
-}
-#btn_Area{
-	margin: 20px auto 0 auto;
-    width: 94px;
-}
-#btn_Style{
-	width: 120px;
-	height: 24px;
-	color: rgba(255,255,255,0.8);
-    background-color: #696969;
-    font-weight: bold;
-    border: 0px solid #000;
-    border-radius: 2px;
-    cursor: pointer;
-}
-#btn_Style:hover{
-	color:white;
-}
-optgroup{
-	text-align: left;
-    font-size: 15px;
-}
-option{
-	font-size: 15px;
-    text-align: center;
-}
-#select_Style{
-	width: 233px;
-    height: 24px;
-}
-#file_Input{
-	height:30px;
-}
-button{
+a{
 	cursor:pointer;
 }
-#content_cnt{
-	text-align: right;
+a:hover{
+	color:blue;
 }
-#map_Input{
-	margin-bottom:10px;
-}
-#map_Input2{
-	margin-bottom: 6px;
-}
-#map_Btn{
-	margin-bottom: 15px;
-    float: right;
-}
+	

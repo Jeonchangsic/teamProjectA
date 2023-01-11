@@ -37,7 +37,7 @@
 
     
     <main>
-        <form action="login.do" method="post">
+        <form name="frm" action="login.do" method="post">
         <table id="table1">
             <tr>
                 <td id="textArea">

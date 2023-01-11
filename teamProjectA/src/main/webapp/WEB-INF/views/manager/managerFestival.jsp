@@ -53,10 +53,22 @@
  		window.open(url,"",popupOption);
      };
      </script>
+     <!-- 페스티발 메인 등록 페이지  팝업창 -->
+     <script>
+     function listRegPage(){
+    	var url = "<%=request.getContextPath()%>/manager/festivalRegPage.do;"
+ 		var winWidth = 630;
+ 	    var winHeight = 670;
+ 	  	var popupX = (window.screen.width / 2) - (630 / 2);
+ 	  	var popupY= (window.screen.height / 2) - (670 / 2);
+ 	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
+ 		window.open(url,"",popupOption);
+     };
+     </script>
      <script>
 	     function festivalDt(ftidx) {
 	 		
-	 		if(!confirm("해당 페스티발을 삭제하시겠습니까?")){
+	 		if(!confirm("해당 페스티발이 메인 리스트에 등록되어 있다면 등록 리스트에서도 삭제됩니다. 해당 페스티발을 삭제하시겠습니까?")){
 	 			alert("삭제가 취소되었습니다.");
 	 		}else{
 	 			location.href="<%=request.getContextPath()%>/manager/festivalDt.do?ftidx="+ftidx;
@@ -85,47 +97,53 @@
                 <h3 id="festival"><a href="<%=request.getContextPath() %>/manager/managerFestival.do">페스티발 관리</a></h3>
                 <h3 id="trip"><a href="<%=request.getContextPath() %>/manager/managerTrip.do">인기 여행지 관리</a></h3>
             </div>  
-            <form>   
-	        	<table>
-	        		<tr>
-	        			<th class="th_width">NO</th>
-	        			<th class="th_width">지역</th>
-	        			<th>축제명</th>
-	        			<th id="th_Style">등록일</th>
-	        			<th class="btn_th"></th>
-	        			<th class="btn_th"></th>
-	        		</tr>
-	        		<c:forEach var ="list" items="${festivalList}">
-		       			<tr>
-		        			<td>${list.ftidx}</td>
-		        			<td>${list.ftAddr}</td>
-		        			<td>
-		        				<a onclick="festivalInfo(${list.ftidx})" id="a_Hover">${list.ftName}</a>
-		        			</td>
-		        			<td>${list.ftRegDate}</td>
-		        			<td>
-	        					<button type="button" id="modify_Btn" onclick="festivalMf(${list.ftidx})">수정</button>
-	        				</td>
-		        			<td>
-		        				<button type="button" onclick="festivalDt(${list.ftidx})" id="btn_Style">
-		        					<i class="xi-close"></i>
-		        				</button>
-		        			</td>
-		        		</tr>
-	        		</c:forEach>
-	        		<tr>
-	        			<td class="border_reset"></td>
-	        			<td class="border_reset"></td>
-	        			<td class="border_reset"></td>
-	        			<td class="border_reset td_text">
-	        				<button class="bottom_btn" type="button" onclick="festivalPlus()">축제추가</button>
+        	<table>
+        		<tr>
+        			<th class="th_width">NO</th>
+        			<th class="th_width">지역</th>
+        			<th>축제명</th>
+        			<th id="th_Style">등록일</th>
+        			<th class="btn_th"></th>
+        			<th class="btn_th"></th>
+        		</tr>
+        		<c:forEach var ="list" items="${festivalList}">
+	       			<tr>
+	        			<td>${list.ftidx}</td>
+	        			<td>${list.ftAddr}</td>
+	        			<td>
+	        				<a onclick="festivalInfo(${list.ftidx})" id="a_Hover">${list.ftName}</a>
 	        			</td>
-	        			<td class="border_reset">
-	        				<button class="bottom_btn">메인리스트관리</button>
+	        			<td>${list.ftRegDate}</td>
+	        			<td>
+        					<button type="button" id="modify_Btn" onclick="festivalMf(${list.ftidx})">수정</button>
+        				</td>
+	        			<td class="delete_Btn">
+	        				<button type="button" onclick="festivalDt(${list.ftidx})" id="btn_Style">
+	        					<i class="xi-close"></i>
+	        				</button>
 	        			</td>
 	        		</tr>
-	        	</table>
-	        </form>
+        		</c:forEach>
+        	</table>
+        	<ul id="pageUl">
+       			<c:if test="${pageMaker.prev}">
+       				<li><a href="<%=request.getContextPath()%>/manager/managerFestival.do?page=${pageMaker.startPage - 1}">이전</a></td>
+       			</c:if>
+       			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+        			<li><a href="<%=request.getContextPath()%>/manager/managerFestival.do?page=${idx}">${idx}</a></td>
+        		</c:forEach>
+        		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+        			<li><a href="<%=request.getContextPath()%>/manager/managerFestival.do?page=${pageMaker.endPage + 1}">다음</a></td>
+        		</c:if>
+        	</ul>
+        	<div>
+	        	<ul id="btnUl">
+        			<li class="border_reset">
+        				<button class="bottom_btn" type="button" onclick="festivalPlus()">축제추가</button>
+        				<button type="button" onclick="listRegPage()" class="bottom_btn">메인리스트관리</button>
+        			</li>
+        		</ul>
+       		</div>
         </main>
 	</body>
 </html>

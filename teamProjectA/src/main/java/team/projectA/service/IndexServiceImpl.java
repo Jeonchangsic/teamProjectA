@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import team.projectA.dao.IndexDAO;
 import team.projectA.dao.UserDao;
+import team.projectA.vo.FestivalVO;
 import team.projectA.vo.ReservVO;
 import team.projectA.vo.ReviewVO;
+import team.projectA.vo.TripVO;
 import team.projectA.vo.UserVO;
 
 @Service
@@ -42,6 +44,26 @@ public class IndexServiceImpl implements IndexService{
 	@Override
 	public int roomPlus2(int ridx) {
 		return indexDAO.roomPlus2(ridx);
+	}
+
+	@Override
+	public List<FestivalVO> mainFestivalList() {
+		return indexDAO.mainFestivalList();
+	}
+
+	@Override
+	public List<TripVO> mainTripList() {
+		return indexDAO.mainTripList();
+	}
+
+	@Override
+	public FestivalVO mainFestivalPage(int ftidx) {
+		return indexDAO.mainFestivalPage(ftidx);
+	}
+
+	@Override
+	public TripVO mainTripPage(int tidx) {
+		return indexDAO.mainTripPage(tidx);
 	}
 
 	

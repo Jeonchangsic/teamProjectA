@@ -62,9 +62,10 @@ public class LoginController {
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+			out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1); </script>");
 			out.flush();
 			out.close();
+			
 			
 		}
 		return "redirect:/index/index.do";

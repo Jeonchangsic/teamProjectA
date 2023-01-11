@@ -62,8 +62,12 @@ UL,li{
 
 
 
-body{background-color:aliceblue;}
-i{font-size:50px}
+body{
+	background-color:aliceblue;
+}
+i{
+	font-size:50px
+}
 
 
 				/*header */
@@ -182,8 +186,6 @@ header #manager:hover{
 
             	/*end header */
 
-
-
             /*main*/
 main .description:hover{
     color:rgb(86, 19, 241);
@@ -207,7 +209,7 @@ main nav UL {
 	HEIGHT: 100%; 
 	ALIGN-ITEMS:CENTER; 
 	JUSTIFY-CONTENT: SPACE-BETWEEN;
-} /*display:flex를 주면 수평정렬. align-items는 수평위치 /justify는 수직위치.*/
+}
 main nav li{
 	PADDING:0 50PX; 
 	text-align: center; 
@@ -275,7 +277,7 @@ main .slide_list h4{
 	padding-bottom:10px;
 }
 main .slide_list img{
-	width:230px; 
+	width: 100%; 
 	height:180px;
 }
 main .slide_list ul{
@@ -284,10 +286,13 @@ main .slide_list ul{
 	JUSTIFY-CONTENT: SPACE-BETWEEN;
 }
 main .slide_list li{
-	padding: 0 50px;
+	width: calc(100% / 3);
+	padding: 0 33px;
+	box-sizing: border-box;
 }
 main .slide_list a{
-	padding-bottom:20px;
+	margin-bottom:20px;
+	display: inline-block;
 }
 main .slide_list .lod_name{ 
 	font-size:18px; 
@@ -297,6 +302,10 @@ main .slide_list {
 	font-size:15px; 
 	font-weight:bold; 
 	line-height:2em;
+}
+.description {
+	width: 100%;
+	margin-bottom: 16px;
 }
 /*모달*/
 #modal {
@@ -411,7 +420,8 @@ main .slide_list {
 }
 #festival_content .swiper-slide,
 #best_item .swiper-slide {
-    padding-bottom: 30px;
+   padding: 0 33px;
+   box-sizing: border-box;
 }
 .lod_name{
 	font-weight: bold;

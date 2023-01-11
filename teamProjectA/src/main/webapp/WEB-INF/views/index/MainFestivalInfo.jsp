@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>저긴어때</title>
-    <link href="<%=request.getContextPath() %>/resources/css/manager_css/regAll.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath() %>/resources/css/index_css/MainFestivalInfo.css" rel="stylesheet"/>
     <!-- 파비콘 -->
     <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b23836480d7dc75442616ec6a0c8f5be"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b23836480d7dc75442616ec6a0c8f5be"></script>
         <script>
 	        window.onload = function () {
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -37,8 +36,13 @@
 </head>
 <body>
     <header>
-        <div id="header_view">${vo.ftName}</div>
+        <div id="header_view">
+            <a href="<%=request.getContextPath()%>/index/index.do">&#60;</a>
+            ${vo.ftName}
+        </div>
     </header>
+                            <!--end header-->
+
     <main>
         <img src="<%=request.getContextPath() %>/resources/images/index_images/${vo.ftImgName}"/>
         <h4>${vo.ftName}</h4>
@@ -48,8 +52,10 @@
         <br>
         <div id="map"></div>
     </main>
+                            <!--end main-->
     <footer>
-        <a href="${vo.ftLink}">${vo.ftName}&nbsp;구경하러 가기</a>
+        <a href="${vo.ftLink}" target="_blank">${vo.ftName}&nbsp;구경하러 가기</a>
     </footer>
+                            <!-- end footer-->
 </body>
 </html>

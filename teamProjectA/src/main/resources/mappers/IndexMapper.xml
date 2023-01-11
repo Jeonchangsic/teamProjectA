@@ -40,4 +40,55 @@
 					SET schedulerCheck = 'Y'
 					WHERE ridx = #{ridx}
 		</update>
+		
+		<!-- 메인페이지 페스티발 리스트 상위 1~6개 리스트-->
+		<select id="mainFestivalList" resultType="festivalVO">
+			SELECT ftidx
+				,ftname
+				,ftAddr
+				,ftSubContent
+				,ftImgName 
+					FROM festivaltb 
+					 <![CDATA[	WHERE ROWNUM <=6 ]]>
+						AND FTREGISTRATION = 'Y' 
+						ORDER BY ftUpdate asc
+		</select>
+		
+		
+		<!-- 메인페이지 페스티발 페이지 -->
+		<select id="mainFestivalPage" parameterType="int" resultType="festivalVO">
+			SELECT ftName
+				,ftMainContent
+				,ftLink
+				,ftLatitude
+				,ftLongitude
+				,ftImgName 
+					FROM FESTIVALTB 
+					WHERE ftidx = #{ftidx}
+		</select>
+		
+		<!-- 메인페이지 인기 여행지 리스트 상위 1~6개 리스트-->
+		<select id="mainTripList" resultType="tripVO">
+			SELECT tidx
+				,tname
+				,tAddr
+				,tSubContent
+				,tImgName 
+					FROM triptb 
+					 <![CDATA[	WHERE ROWNUM <=6 ]]>
+						AND TREGISTRATION = 'Y' 
+						ORDER BY tUpdate asc
+		</select>
+		<!-- 메인페이지 인기 여행지 페이지 -->
+		<select id="mainTripPage" parameterType="int" resultType="tripVO">
+			SELECT tName
+				,tMainContent
+				,tLink
+				,tLatitude
+				,tLongitude
+				,tImgName 
+					FROM TRIPTB 
+					WHERE tidx = #{tidx}
+		</select>
+		<!-- 메인페이지 인기 여행지 리스트 4~6-->
 </mapper>

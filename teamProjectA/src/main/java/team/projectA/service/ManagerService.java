@@ -36,15 +36,25 @@ public interface ManagerService {
 	public List<LodgingVO> managerRoomList(SearchCriteria scri2);
 	public int RoomListcount();  
 	
-	List<FestivalVO> festivalList();
+	List<FestivalVO> festivalList(SearchCriteria scri);
+	int festivalCnt();
 	int festivalPlus(HashMap hm);
 	int festivalDt(int ftidx);
 	FestivalVO festivalInfo(int ftidx);
 	int festivalUt(FestivalVO festivalVO);
+	List<FestivalVO> festivalNotRegList();
+	List<FestivalVO> festivalRegList();
+	int festivalReg(int ftidx);
+	int festivalRegDt(int ftidx);
 	
-	List<TripVO> tripList();
+	List<TripVO> tripList(SearchCriteria TripScri);
+	int tripCnt();
 	int tripPlus(HashMap hm);
 	int tripDt(int tidx);
 	TripVO tripInfo(int tidx);
 	int tripUt(TripVO tripVO);
+	List<TripVO> tripNotRegList();
+	List<TripVO> tripRegList();
+	int tripReg(int tidx);
+	int tripRegDt(int tidx);
 }

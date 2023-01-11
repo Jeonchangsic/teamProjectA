@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.sf.json.JSONArray;
+import team.projectA.service.IndexService;
 import team.projectA.service.LodgingService;
 import team.projectA.service.ManagerService;
 import team.projectA.service.MypageService;
@@ -45,6 +46,8 @@ import team.projectA.vo.UserVO;
 public class ManagerController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
+	@Autowired
+	private IndexService indexService;
 	@Autowired
 	private LodgingService lodgingService;
 	@Autowired
@@ -152,20 +155,38 @@ public class ManagerController {
 	}
 	//���ҽ���
 	@RequestMapping(value="/requestApproval.do", method = RequestMethod.POST)
-	public String requestApproval(int uidx) {
+	public String requestApproval(int uidx,HttpServletResponse response, HttpServletRequest req)throws Exception {
+		
+		
+		
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter out = response.getWriter();
+		
+		out.append("<script>alert('숙소 승인이 완료되었습니다.');  location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
+		out.flush(); 
+		out.close();
 		
 		managerService.approval(uidx);
 		
-		return "redirect:managerRoomOK.do";
+		
+		return "";
 	}
 	//���ҽ��ΰź�
 	@RequestMapping(value="/requestDel.do", method = RequestMethod.POST)
-	public String requestDel(int uidx, int lidx) {
+	public String requestDel(int uidx, int lidx,HttpServletResponse response,HttpServletRequest req)throws Exception{
+		
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter out = response.getWriter();
+		
+		out.append("<script>alert('숙소 승인이 거부되었습니다.'); location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
+														
+		out.flush(); 
+		out.close();
 		
 		managerService.requestDel(lidx);
 		managerService.requestN(uidx);
 		
-		return "redirect:managerRoomOK.do";
+		return "";
 	}
 	
 	@RequestMapping(value = "/managerReview.do", method = RequestMethod.GET)
@@ -241,15 +262,19 @@ public class ManagerController {
 	}
 	
 	
-	// --관리자 페스티발 --
+					// --관리자 페스티발 --
 	
 	//관리자 페스티발 리스트 페이지
 	@RequestMapping(value="managerFestival.do", method = RequestMethod.GET)
-	public String managerFestival(Model model) throws Exception{
+	public String managerFestival(@ModelAttribute("scri")SearchCriteria scri,Model model) throws Exception{
 		
-			List<FestivalVO> festivalList = managerService.festivalList();
-			
+			List<FestivalVO> festivalList = managerService.festivalList(scri);
 			model.addAttribute("festivalList", festivalList);
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(managerService.festivalCnt());
+			model.addAttribute("pageMaker",pageMaker);
 		return "manager/managerFestival";
 	}
 	
@@ -335,16 +360,41 @@ public class ManagerController {
 		
 		return "";
 	}
-
-	// --관리자 인기여행지 --
+	//관리자 페스티발 메인 등록페이지
+	@RequestMapping(value="festivalRegPage.do", method = RequestMethod.GET)
+	public String festivalRegPage(Model model){
+		
+		List<FestivalVO> notVO = managerService.festivalNotRegList();
+		List<FestivalVO> vo = managerService.festivalRegList();
+		
+		model.addAttribute("notVO",notVO);
+		model.addAttribute("vo",vo);
+		
+		return "manager/managerFestivalMainReg";
+	}
+	//관리자 페스티발 리스트 미리보기 페이지
+	@RequestMapping(value="festivalListPreview.do", method = RequestMethod.GET)
+	public String festivalListPreview(Model model){
+		
+		List<FestivalVO> festivalList = indexService.mainFestivalList();
+		model.addAttribute("festivalList",festivalList);
+		
+		return "manager/managerFestivalListPreview";
+	}
+					// --관리자 인기여행지 --
 	
 	//관리자 인기여행지 리스트 페이지
 	@RequestMapping(value="managerTrip.do", method = RequestMethod.GET)
-	public String managerTrip(Model model) throws Exception{
+	public String managerTrip(@ModelAttribute("TripScri")SearchCriteria TripScri,Model model) throws Exception{
 		
-		List<TripVO> tripList = managerService.tripList();
-		
+		List<TripVO> tripList = managerService.tripList(TripScri);
 		model.addAttribute("tripList",tripList);
+		
+		PageMaker pageMaker2 = new PageMaker();
+		pageMaker2.setCri(TripScri);
+		pageMaker2.setTotalCount(managerService.festivalCnt());
+		model.addAttribute("pageMaker",pageMaker2);
+		
 		return "manager/managerTrip";
 	}
 	//관리자 인기여행지 등록 페이지
@@ -412,7 +462,7 @@ public class ManagerController {
 		
 		return "manager/managerTripMf";
 	}
-	//관리자 페스티발 수정 
+	//관리자 인기여행지 수정 
 	@RequestMapping(value="tripMf.do", method = RequestMethod.POST)
 	public String tripMf(TripVO tripVO,HttpServletResponse response)throws Exception{
 		
@@ -428,6 +478,29 @@ public class ManagerController {
 		
 		return "";
 	}
+	//관리자 인기여행지 메인등록페이지
+	@RequestMapping(value="tripRegPage.do", method = RequestMethod.GET)
+	public String tripRegPage(Model model){
+		
+		List<TripVO> notVO = managerService.tripNotRegList();
+		List<TripVO> vo = managerService.tripRegList();
+		
+		model.addAttribute("notVO",notVO);
+		model.addAttribute("vo",vo);
+		
+		return "manager/managerTripMainReg";
+	}
+	//관리자 인기여행지 리스트 미리보기 페이지
+	@RequestMapping(value="tripListPreview.do", method = RequestMethod.GET)
+	public String tripListPreview(Model model){
+		
+		List<TripVO> tripList = indexService.mainTripList();
+		model.addAttribute("tripList",tripList);
+		
+		return "manager/managerTripListPreview";
+	}
+	
+	
 	//위도,경도 추출을 위한 지도 팝업창
 	@RequestMapping(value="mapOn.do", method = RequestMethod.GET)
 	public String mapOn(){

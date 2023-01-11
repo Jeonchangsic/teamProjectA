@@ -75,11 +75,12 @@ UL,li{list-style:none;}
     overflow: hidden;
     background-color: rgb(86,19,241);
 }
-#header h3{color:white; 
-            float:left; 
-            font-size: 30px;
-            margin: 30px 0 0 80px;}
-
+#header h3{
+	color: white;
+    float: left;
+    font-size: 25px;
+    margin: 26px 0 0 50px;
+}
 #header #manager{
 	color:white;
 }

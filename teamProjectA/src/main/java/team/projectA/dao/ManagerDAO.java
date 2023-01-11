@@ -91,8 +91,13 @@ public class ManagerDAO {
 		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.RoomListcount");
 	}    
 	
-	public List<FestivalVO> festivalList(){
-		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.festivalList");
+	
+	
+	public List<FestivalVO> festivalList(SearchCriteria scri){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.festivalList",scri);
+	}
+	public int festivalCnt() {
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.festivalCnt");
 	}
 	public int festivalPlus(HashMap hm){
 		return sqlSession.insert("team.projectA.mapper.ManagerMapper.festivalPlus",hm);
@@ -106,9 +111,25 @@ public class ManagerDAO {
 	public int festivalUt(FestivalVO festivalVO){
 		return sqlSession.update("team.projectA.mapper.ManagerMapper.festivalUt",festivalVO);
 	}
+	public List<FestivalVO> festivalNotRegList(){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.festivalNotRegList");
+	}
+	public List<FestivalVO> festivalRegList(){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.festivalRegList");
+	} 
+	public int festivalReg(int ftidx){
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.festivalReg",ftidx);
+	}
+	public int festivalRegDt(int ftidx){
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.festivalRegDt",ftidx);
+	}
 	
-	public List<TripVO> tripList(){
-		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.tripList");
+	
+	public List<TripVO> tripList(SearchCriteria TripScri){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.tripList",TripScri);
+	}
+	public int tripCnt() {
+		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.tripCnt");
 	}
 	public int tripPlus(HashMap hm){
 		return sqlSession.insert("team.projectA.mapper.ManagerMapper.tripPlus",hm);
@@ -121,5 +142,17 @@ public class ManagerDAO {
 	}
 	public int tripUt(TripVO tripVO){
 		return sqlSession.update("team.projectA.mapper.ManagerMapper.tripUt",tripVO);
+	}
+	public List<TripVO> tripNotRegList(){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.tripNotRegList");
+	}
+	public List<TripVO> tripRegList(){
+		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.tripRegList");
+	}
+	public int tripReg(int tidx){
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.tripReg",tidx);
+	}
+	public int tripRegDt(int tidx){
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.tripRegDt",tidx);
 	}
 }

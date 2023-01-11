@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import team.projectA.service.IndexService;
 import team.projectA.service.UserService;
 import team.projectA.util.DateUtil;
+import team.projectA.vo.FestivalVO;
 import team.projectA.vo.ReviewVO;
+import team.projectA.vo.TripVO;
 
 /**
  * Handles requests for the application home page.
@@ -36,6 +38,8 @@ public class IndexController {
 	public String index(Locale locale, Model model)throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
+		
+		//숙소추천 리스트
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
@@ -48,6 +52,15 @@ public class IndexController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		
+		//페스티발 리스트
+		List<FestivalVO> festivalList = indexService.mainFestivalList();
+		
+		model.addAttribute("festivalList",festivalList);
+		
+		//인기 여행지 리스트
+		List<TripVO> tripList = indexService.mainTripList();
+		
+		model.addAttribute("tripList",tripList);
 		
 		return "index/index";
 	}
@@ -75,7 +88,33 @@ public class IndexController {
 		model.addAttribute("fromDate",fromDate);
 		model.addAttribute("toDate",toDate);
 		
+		//페스티발 리스트
+		List<FestivalVO> festivalList = indexService.mainFestivalList();
+		
+		model.addAttribute("festivalList",festivalList);
+				
+		//인기 여행지 리스트
+		List<TripVO> tripList = indexService.mainTripList();
+		
+		model.addAttribute("tripList",tripList);
+		
 		return "index/index";
 	}
 	
+	@RequestMapping(value = "/index/festivalInfo.do", method = RequestMethod.GET)  // index�������� �̵�
+	public String indexFestivalInfo(int ftidx, Model model)throws Exception {
+		
+			FestivalVO vo = indexService.mainFestivalPage(ftidx);
+			model.addAttribute("vo",vo);
+			
+		return "index/MainFestivalInfo";
+	}
+	@RequestMapping(value = "/index/tripInfo.do", method = RequestMethod.GET)  // index�������� �̵�
+	public String indexTripInfo(int tidx, Model model)throws Exception {
+		
+			TripVO vo = indexService.mainTripPage(tidx);
+			model.addAttribute("vo",vo);
+			
+		return "index/MainTripInfo";
+	}
 }

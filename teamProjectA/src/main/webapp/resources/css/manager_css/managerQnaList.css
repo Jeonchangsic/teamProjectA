@@ -74,11 +74,12 @@ UL,li{list-style:none;}
     overflow: hidden;
     background-color: rgb(86,19,241);
 }
-#header h3{color:white; 
-            float:left; 
-            font-size: 30px;
-            margin: 30px 0 0 80px;}
-
+#header h3{
+	color: white;
+    float: left;
+    font-size: 25px;
+    margin: 26px 0 0 50px;
+}
 #header #manager{
 	color:white;
 }
@@ -107,10 +108,6 @@ img,iframe{vertical-align:top;}
         height: 100px;
         overflow: hidden;
         background-color: rgb(86,19,241);}
-#header h3{color:white; 
-            float:left; 
-            font-size: 30px;
-            margin:30px 30px 30px;}
 #header #manager{color:white;}
 #header #manager li{display: inline-block; 
                     margin: 40px 100px 40px;}

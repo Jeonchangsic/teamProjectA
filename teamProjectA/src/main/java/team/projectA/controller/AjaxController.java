@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import team.projectA.service.ManagerService;
 import team.projectA.service.MypageService;
 import team.projectA.vo.UserVO;
 
@@ -30,6 +31,8 @@ public class AjaxController {
 	
 	@Autowired
 	private MypageService mypageService;
+	@Autowired
+	private ManagerService managerService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AjaxController.class);
 	
@@ -51,6 +54,53 @@ public class AjaxController {
 		  	
 		  	return num;
 	  }
-	
+	//관리자 페스티발 메인등록 
+		@ResponseBody
+		@RequestMapping(value="festivalReg.do", method = RequestMethod.GET)
+		public String festivalReg(int ftidx){
+			
+			
+			int resultFtidx = managerService.festivalReg(ftidx);
+			
+			String result = Integer.toString(resultFtidx);
+			
+			return "result";
+		}
+		//관리자 페스티발 메인삭제
+		@ResponseBody
+		@RequestMapping(value="festivalRegDt.do", method = RequestMethod.GET)
+		public String festivalRegDt(int ftidx){
+			
+			
+			int resultFtidx = managerService.festivalRegDt(ftidx);
+			
+			String result = Integer.toString(resultFtidx);
+			
+			return "result";
+		}
+		//관리자 여행지 메인등록 
+		@ResponseBody
+		@RequestMapping(value="tripReg.do", method = RequestMethod.GET)
+		public String tripReg(int tidx){
+			
+			
+			int resultTidx = managerService.tripReg(tidx);
+			
+			String result = Integer.toString(resultTidx);
+			
+			return "result";
+		}
+		//관리자 페스티발 메인삭제
+		@ResponseBody
+		@RequestMapping(value="tripRegDt.do", method = RequestMethod.GET)
+		public String tripRegDt(int tidx){
+			
+			
+			int resultTidx = managerService.tripRegDt(tidx);
+			
+			String result = Integer.toString(resultTidx);
+			
+			return "result";
+		}
 	
 }

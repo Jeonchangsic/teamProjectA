@@ -28,11 +28,13 @@ List<QnaVO> list2 = (List<QnaVO>)request.getAttribute("list2");
         <div class="top">
             <h3>관리자페이지</h3>
             <div id="manager">
+            	<ul>
                     <li><a href="<%=request.getContextPath() %>/index/index.do">home</a></li>
                     <li><a href="<%=request.getContextPath() %>/manager/managerUser.do">회원관리</a></li>
                     <li><a href="<%=request.getContextPath() %>/manager/managerRoom.do">숙소관리</a></li>
                     <li><a href="<%=request.getContextPath() %>/manager/managerReview.do">리뷰관리</a></li>
                     <li><a href="<%=request.getContextPath() %>/manager/managerFestival.do">등록관리</a></li> 
+            	</ul>
             </div>
         </div>
     </div>

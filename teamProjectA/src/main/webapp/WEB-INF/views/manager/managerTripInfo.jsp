@@ -37,10 +37,7 @@
 </head>
 <body>
     <header>
-        <div id="header_view">
-            <a></a>
-            <span>${vo.tName}</span>
-        </div>
+        <div id="header_view">${vo.tName}</div>
     </header>
                             <!--end header-->
 
@@ -56,7 +53,7 @@
                             <!--end main-->
     
     <footer>
-        <a href="${vo.tLink}"><span>${vo.tName} 구경하러 가기</span></a>
+        <a href="${vo.tLink}">${vo.tName} 구경하러 가기</a>
     </footer>
                             <!-- end footer-->
 </body>

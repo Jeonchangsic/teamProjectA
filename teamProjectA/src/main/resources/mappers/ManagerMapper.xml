@@ -220,8 +220,22 @@
 	
 	
 	<!-- 페스티발 페이지 리스트 출력 -->
-	<select id="festivalList" resultType="festivalVO">
-		SELECT * FROM festivaltb
+	<select id="festivalList" resultType="festivalVO" parameterType="searchCriteria">
+		SELECT * 
+			FROM (SELECT ftidx
+				, ftAddr
+				, ftName
+				,ftRegDate
+				, ROW_NUMBER() OVER(ORDER BY ftidx DESC)AS rNum 
+					FROM festivaltb) 
+				WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
+				ORDER BY ftidx DESC
+	</select>
+	<!-- 페스티발 페이지 리스트 개수 -->
+	<select id="festivalCnt" resultType="int">
+		SELECT count(ftidx)
+			FROM festivaltb
+				<![CDATA[WHERE ftidx > 0]]>
 	</select>
 	<!-- 페스티발 등록 -->
 	<insert id="festivalPlus" parameterType="HashMap">
@@ -237,6 +251,7 @@
 			,#{ftLongitude}
 			,#{ftImgName}
 			,'N'
+			,SYSDATE
 			,SYSDATE
 			)
 	</insert>
@@ -256,7 +271,7 @@
 			WHERE ftidx = #{ftidx}
 	</select>
 	<!-- 페스티발 수정 -->
-	<update id="festivalUt" parameterType="FestivalVO">
+	<update id="festivalUt" parameterType="festivalVO">
 		UPDATE festivaltb 
 			SET ftAddr = #{ftAddr}
 			, ftName = #{ftName}
@@ -268,10 +283,51 @@
 			, ftImgName = #{ftImgName}
 			WHERE ftidx = #{ftidx}
 	</update>
+	<!-- 페스티발 메인 등록 페이지 (등록 안된 리스트)-->
+	<select id="festivalNotRegList" resultType="festivalVO">
+	SELECT ftidx,ftAddr,ftName 
+		FROM festivaltb 
+		WHERE FTREGISTRATION = 'N'
+	</select>
+	<!-- 페스티발 메인 등록 페이지 (등록된 리스트)-->
+	<select id="festivalRegList" resultType="festivalVO">
+	SELECT ftidx,ftAddr,ftName 
+		FROM festivaltb 
+		WHERE FTREGISTRATION = 'Y' ORDER BY ftUpdate ASC
+	</select>
+	<!-- 페스티발 메인 등록 -->
+	<update id="festivalReg" parameterType="int">
+		UPDATE festivaltb 
+			SET ftregistration = 'Y'
+				, ftUpdate = SYSDATE 
+			WHERE  ftidx = #{ftidx}
+	</update>
+	<!-- 페스티발 메인 삭제 -->
+	<update id="festivalRegDt" parameterType="int">
+		UPDATE festivaltb 
+			SET ftregistration = 'N' 
+			WHERE  ftidx = #{ftidx}
+	</update>
+	
+	
 	
 	<!-- 여행지 페이지 리스트 출력 -->
-	<select id="tripList" resultType="tripVO">
-		SELECT * FROM triptb
+	<select id="tripList" resultType="tripVO" parameterType="searchCriteria">
+		SELECT * 
+			FROM (SELECT tidx
+				, tAddr
+				, tName
+				,tRegDate
+				, ROW_NUMBER() OVER(ORDER BY tidx DESC)AS rNum 
+					FROM triptb) 
+				WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
+				ORDER BY tidx DESC
+	</select>
+	<!-- 여행지 페이지 리스트 개수 -->
+	<select id="tripCnt" resultType="int">
+		SELECT count(tidx)
+			FROM triptb
+				<![CDATA[WHERE tidx > 0]]>
 	</select>
 	<!-- 여행지 등록 -->
 	<insert id="tripPlus" parameterType="HashMap">
@@ -288,6 +344,7 @@
 			,#{tImgName}
 			,'N'
 			,SYSDATE
+			,SYSDATE
 			)
 	</insert>
 	<!-- 여행지 삭제 -->
@@ -301,7 +358,7 @@
 			WHERE tidx = #{tidx}
 	</select>
 	<!-- 여행지 수정 -->
-	<update id="tripUt" parameterType="TripVO">
+	<update id="tripUt" parameterType="tripVO">
 		UPDATE triptb 
 			SET tAddr = #{tAddr}
 			, tName = #{tName}
@@ -312,6 +369,31 @@
 			, tLongitude = #{tLongitude}
 			, tImgName = #{tImgName}
 			WHERE tidx = #{tidx}
+	</update>
+	<!-- 여행지 메인 등록 페이지 (등록 안된 리스트)-->
+	<select id="tripNotRegList" resultType="tripVO">
+	SELECT tidx,tAddr,tName 
+		FROM triptb 
+		WHERE TREGISTRATION = 'N'
+	</select>
+	<!-- 여행지 메인 등록 페이지 (등록된 리스트)-->
+	<select id="tripRegList" resultType="tripVO">
+	SELECT tidx,tAddr,tName 
+		FROM triptb 
+		WHERE TREGISTRATION = 'Y' ORDER BY tUpdate ASC
+	</select>
+	<!-- 여행지 메인 등록 -->
+	<update id="tripReg" parameterType="int">
+		UPDATE triptb 
+			SET tregistration = 'Y' 
+				,tUpdate = SYSDATE
+			WHERE  tidx = #{tidx}
+	</update>
+	<!-- 여행지 메인 삭제 -->
+	<update id="tripRegDt" parameterType="int">
+		UPDATE triptb 
+			SET tregistration = 'N' 
+			WHERE  tidx = #{tidx}
 	</update>
 </mapper>
 

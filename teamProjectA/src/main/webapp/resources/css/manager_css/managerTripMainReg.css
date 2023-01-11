@@ -32,9 +32,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
-	list-style: none;
-}
+
 blockquote, q {
 	quotes: none;
 }
@@ -49,7 +47,7 @@ table {
 }
 
 a{text-decoration:none; color: inherit;}
-UL,li{list-style:none;}
+
             /*리셋코드*/
 
               /*header*/
@@ -63,22 +61,15 @@ header h2{
 
             /*main*/
 #headLine{
-	width:100%;
-	height:1px;
-	background-color:#919191;
-	margin-bottom:10px;
+	width: 100%;
+    height: 1px;
+    background-color: #919191;
+    margin-bottom: 70px;
 }
 table{
 	margin:0 auto;
 }
-table td{
-	height: 45px;
-    width: 142px;
-}
-table input{
-	height:20px;
-	width:229px;
-}
+
 .font_Style{
 	font-family: 'Noto Sans KR', 산세리프;
 }
@@ -86,60 +77,105 @@ table input{
 	font-weight:bold;
 	font-size: 17px;
 }
-#middle{
-	vertical-align:middle;
+.list_Style{
+	overflow: scroll;
+    border: 1px solid #000;
+    display: inline-block;
+    width: 243px;
+    font-family: 'Noto Sans KR', 산세리프;
+    height: 200px;
+    vertical-align:middle;
 }
-#first_td{
-	padding-top: 19px;
+#btn_div{
+	width: 70px;
+    display: inline-block;
+    height: 101px;
+    vertical-align:middle;
+    text-align: center;
 }
-#textarea_Style{
-	padding-bottom:10px;
+#main_Area{
+    width: 577px;
+    margin: 0 auto;
 }
-#btn_Area{
-	margin: 20px auto 0 auto;
-    width: 94px;
-}
-#btn_Style{
-	width: 120px;
-	height: 24px;
-	color: rgba(255,255,255,0.8);
+button{
+	width: 48px;
+    height: 25px;
+    color: rgba(255,255,255,0.8);
     background-color: #696969;
     font-weight: bold;
     border: 0px solid #000;
     border-radius: 2px;
     cursor: pointer;
 }
-#btn_Style:hover{
+button:hover{
 	color:white;
 }
-optgroup{
-	text-align: left;
-    font-size: 15px;
-}
-option{
-	font-size: 15px;
-    text-align: center;
-}
-#select_Style{
-	width: 233px;
-    height: 24px;
-}
-#file_Input{
-	height:30px;
-}
-button{
+.first_btn{
+	margin-bottom: 51px;
 	cursor:pointer;
 }
-#content_cnt{
-	text-align: right;
+.last_btn{
+	cursor:pointer;
 }
-#map_Input{
-	margin-bottom:10px;
+p{
+	color:#bbb;
+	display: inline-block;
+	cursor:pointer;
 }
-#map_Input2{
-	margin-bottom: 6px;
+.select_Div{
+	margin:2px;
+	font-size: 17px;
+	cursor:pointer;
 }
-#map_Btn{
-	margin-bottom: 15px;
-    float: right;
+span{
+	display: inline-block;
+    width: 100%;
+    background-color: #bbb;
+    text-align: center;
+    height: 22px;
+    line-height: 20px;
+    color: white;
+}
+.changeColor{
+	background-color:#1E90FF;
+	color:white;
+}
+.guide_Area{
+	margin: 60px auto 10px auto;
+    width: 574px;
+}
+.guide_Area h3{
+	border-top: 1px solid #919191;
+    padding: 18px 0 8px 8px;
+    font-size: 19px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR', 산세리프;
+}
+ul{
+	list-style: square;
+    margin: 10px 0 0 36px;
+    font-family: 'Noto Sans KR', 산세리프;
+}
+ul li{
+	padding: 10px 0 2px 0;
+    font-size: 15px;
+    color: #919191;
+}
+#btn_Area{
+	text-align:center;
+}
+#clear_btn{
+	margin-top: 32px;
+    width: 133px;
+    cursor:pointer;
+}
+#test_btnArea{
+	width: 574px;
+    margin: 0 auto;
+}
+#test_btnArea button{
+	float: right;
+    width: 108px;
+    margin: 15px 2px 0 0;
+    cursor:pointer;	
 }

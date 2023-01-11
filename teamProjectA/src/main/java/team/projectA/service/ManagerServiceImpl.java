@@ -143,16 +143,6 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public List<FestivalVO> festivalList() {
-		return managerDAO.festivalList();
-	}
-
-	@Override
-	public List<TripVO> tripList() {
-		return managerDAO.tripList();
-	}
-
-	@Override
 	public int festivalPlus(HashMap hm) {
 		return managerDAO.festivalPlus(hm);
 	}
@@ -190,6 +180,66 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int tripUt(TripVO tripVO) {
 		return managerDAO.tripUt(tripVO);
+	}
+
+	@Override
+	public List<FestivalVO> festivalNotRegList() {
+		return managerDAO.festivalNotRegList();
+	}
+
+	@Override
+	public List<FestivalVO> festivalRegList() {
+		return managerDAO.festivalRegList();
+	}
+
+	@Override
+	public List<TripVO> tripNotRegList() {
+		return managerDAO.tripNotRegList();
+	}
+
+	@Override
+	public List<TripVO> tripRegList() {
+		return managerDAO.tripRegList();
+	}
+
+	@Override
+	public int festivalReg(int ftidx) {
+		return managerDAO.festivalReg(ftidx);
+	}
+
+	@Override
+	public int tripReg(int tidx) {
+		return managerDAO.tripReg(tidx);
+	}
+
+	@Override
+	public int festivalRegDt(int ftidx) {
+		return managerDAO.festivalRegDt(ftidx);
+	}
+
+	@Override
+	public int tripRegDt(int tidx) {
+		return managerDAO.tripRegDt(tidx);
+	}
+
+	@Override
+	public List<FestivalVO> festivalList(SearchCriteria scri) {
+		return managerDAO.festivalList(scri);
+	}
+
+	@Override
+	public int festivalCnt() {
+		return managerDAO.festivalCnt();
+	}
+
+	@Override
+	public List<TripVO> tripList(SearchCriteria TripScri) {
+		return managerDAO.tripList(TripScri);
+	}
+
+	@Override
+	public int tripCnt() {
+		return managerDAO.tripCnt();
 	}
 
 	
