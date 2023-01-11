@@ -28,15 +28,6 @@ public class IndexDAO {
 	public List<ReviewVO> popLodgingList2() throws Exception{
 		return sqlSession.selectList("team.projectA.mapper.IndexMapper.popLodgingList");
 	}
-	public List<ReservVO> roomCount(){
-		return sqlSession.selectList("team.projectA.mapper.IndexMapper.roomCount");
-	}
-	public int roomPlus(HashMap hm){
-		return sqlSession.update("team.projectA.mapper.IndexMapper.roomPlus",hm);
-	}
-	public int roomPlus2(int ridx){
-		return sqlSession.update("team.projectA.mapper.IndexMapper.roomPlus2",ridx);
-	}
 	public List<FestivalVO> mainFestivalList(){
 		return sqlSession.selectList("team.projectA.mapper.IndexMapper.mainFestivalList");
 	}

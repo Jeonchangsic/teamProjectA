@@ -52,9 +52,11 @@ a{text-decoration:none; color: inherit;}
 /* UL,li{list-style:none;} */
             /*리셋코드*/
 body{
-	background:url("../../images/index_images/bgimg1.jpg")center no-repeat;
-	background-size:cover;
-	}
+	background-size: cover;
+    height: 1050px;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(../../images/index_images/bgimg11.jpg);
+}
+
                              
                   /*header*/
 header h2{
@@ -72,8 +74,8 @@ main{
 main #table1{
     margin:0 auto 10px auto;
     text-align:center;
-    border: 3px groove #5613f1;
     background-color:white;
+    box-shadow: 2px 2px 6px 2px grey;
 }
 main .contentsArea{
     padding-top:10px;
@@ -119,8 +121,8 @@ main #join{
     padding-right:30px;
 }
 main .footBtn{
-    width:70px;
-    height:30px; 
+    width: 107px;
+    height: 30px;
 }
 main #provisionArea{
     width:80px;
@@ -247,7 +249,7 @@ main .pw_no4{
 	background-color: rgb(255, 255, 255);
 	border-radius: 10px;
 	border: 1px solid #000;
-	box-shadow: 5px 5px 5px 5px gray;
+	box-shadow: 5px 5px 5px -4px grey;
 	transform: translateX(-50%) translateY(-50%);
 	z-index: 999;
 }
@@ -384,4 +386,10 @@ ul{
 }
 li{
 	padding-bottom: 7px;
+}
+#joinText{
+	padding: 17px 0px 29px 0px;
+    font-size: 31px;
+    font-family: 'Noto Sans KR', 산세리프;
+    font-weight: bold;
 }

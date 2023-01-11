@@ -83,6 +83,7 @@
 						   AND v.uidx = u.uidx
 						   AND v.ridx = #{ridx}
 						   AND v.uidx = #{uidx}
+						   AND v.reserv_num = #{reserv_num}
 		</select>
 		
 		<!-- 예약취소 -->
@@ -90,12 +91,6 @@
 			DELETE FROM reservtb
 				WHERE reserv_num = #{reserv_num}
 		</delete>
-		<!-- 예약취소 시 남은객실 수정시키기 -->
-		<update id="reserv_Check" parameterType="ReservVO">
-			UPDATE roomtb SET spareroom = spareroom+1 
-							WHERE ridx = #{ridx}
-			
-		</update>
 		
 		<!-- 리뷰 내역 -->
 		<select id="reviewList" parameterType="HashMap" resultType="reviewVO">

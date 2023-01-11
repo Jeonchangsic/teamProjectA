@@ -20,27 +20,7 @@
 								AND l.lidx = rm.lidx
 								<![CDATA[AND ROWNUM <= 18]]>
 							 	ORDER by rv.avgrv DESC))
-		</select>
-		
-		<select id="roomCount" resultType="reservVO">
-			SELECT ridx ,COUNT(*) as cnt
-		  				FROM (SELECT ridx
-						  FROM reservtb
-						 WHERE schedulerCheck = 'N'
-						  <![CDATA[ AND TO_DATE(reserv_endDate) < SYSDATE) a]]>
-			GROUP BY ridx
-		</select>
-		<update id="roomPlus" parameterType="HashMap">
-			UPDATE roomtb 
-					SET spareroom = spareroom + #{cnt}
-					WHERE ridx = #{ridx}
-		</update>
-		<update id="roomPlus2" parameterType="int">
-			UPDATE reservtb 
-					SET schedulerCheck = 'Y'
-					WHERE ridx = #{ridx}
-		</update>
-		
+		</select>		
 		<!-- 메인페이지 페스티발 리스트 상위 1~6개 리스트-->
 		<select id="mainFestivalList" resultType="festivalVO">
 			SELECT ftidx

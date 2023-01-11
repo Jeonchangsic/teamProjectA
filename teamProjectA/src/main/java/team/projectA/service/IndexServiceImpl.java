@@ -33,20 +33,6 @@ public class IndexServiceImpl implements IndexService{
 	}
 
 	@Override
-	public List<ReservVO> roomCount() {
-		return indexDAO.roomCount();
-	}
-	@Override
-	public int roomPlus(HashMap hm){
-		return indexDAO.roomPlus(hm);
-	}
-
-	@Override
-	public int roomPlus2(int ridx) {
-		return indexDAO.roomPlus2(ridx);
-	}
-
-	@Override
 	public List<FestivalVO> mainFestivalList() {
 		return indexDAO.mainFestivalList();
 	}

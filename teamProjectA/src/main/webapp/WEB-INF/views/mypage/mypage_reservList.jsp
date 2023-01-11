@@ -19,8 +19,8 @@
      
      <!--예약취소 팝업창  -->
      <script>
-     function refund_pop(ridx,uidx,limagename,startDate,endDate){
-    	var url = "<%=request.getContextPath()%>/mypage/refundPop.do?ridx="+ridx+"&uidx="+uidx+"&limagename="+limagename+"&startDate="+startDate+"&endDate="+endDate;   //팝업창 페이지 URL
+     function refund_pop(ridx,uidx,limagename,startDate,endDate,reserv_num){
+    	var url = "<%=request.getContextPath()%>/mypage/refundPop.do?ridx="+ridx+"&uidx="+uidx+"&limagename="+limagename+"&startDate="+startDate+"&endDate="+endDate+"&reserv_num="+reserv_num;   //팝업창 페이지 URL
  		var winWidth = 500;
  	    var winHeight = 250;
  	   var popupX = (window.screen.width / 2) - (500 / 2);
@@ -99,7 +99,7 @@
 		                        			<input class="reservListBtn cursorStyle input_none" type="button" value="취소불가능"/>
 		                            	</c:when>
 		                            	<c:otherwise>
-		                            		<input class="reservListBtn cursorStyle font_Style" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}','${list.reserv_startDate}','${list.reserv_endDate}')" type="button" value="예약취소"/>
+		                            		<input class="reservListBtn cursorStyle font_Style" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}','${list.reserv_startDate}','${list.reserv_endDate}','${list.reserv_num}')" type="button" value="예약취소"/>
 		                            	</c:otherwise>
 		                            </c:choose>
 		                            <c:choose>

@@ -183,14 +183,18 @@
     <main>
     	<div id="logoArea">
 	       	<a href="<%=request.getContextPath()%>/index/index.do">
-	   			<img  id="main_logo"src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>
 	   		</a>
    		</div>
     	<div id="border1">
 	        <form action="join.do" method="post">
 	            <table id="table1" class="joinBorder">
+		            <tr>
+		            	<td></td>
+		            	<td id="joinText">회원가입</td>
+		            	<td></td>
+		            </tr>
 	                <tr>
-	                    <td class="contentsArea1 font_Style font_StyleBold">아이디</td>
+	                    <td class="contentsArea1 font_Style font_StyleBold" style="padding:0px;">아이디</td>
 	                    <td class="inputArea">
 	                        <input type="text" name="userID" id="id" class="inputArea font_Style" placeholder="아이디를 입력하세요." required>
 	                        <span class="id_ok font_Style">사용 가능한 아이디입니다.</span>
@@ -311,13 +315,16 @@
 	                    	 <input type="radio" name="agree" required>
 	                    </td>
 	                </tr>
-	            </table>
-	            <table id="table2">
 	                <tr>
-	                    <td id="join"><button class="footBtn BtnStyle font_Style">가입하기</button></td>
-	            		 <td><input type="button" class="BtnStyle footBtn font_Style" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" value="취소"></td>
+	                    <td id="join"></td>
+	            		 <td style="padding-bottom: 10px; padding-top: 22px;">
+	            		 	<button class="footBtn BtnStyle font_Style">가입하기</button>
+	            		 	<input type="button" class="BtnStyle footBtn font_Style" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" value="취소">
+	            		 </td>
+	                	<td></td>
 	                </tr>
 	            </table>
+
 	        </form>
      	</div>   	
     </main>

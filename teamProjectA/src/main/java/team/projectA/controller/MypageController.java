@@ -171,11 +171,12 @@ public class MypageController {
   
   //예약취소 팝업창
   @RequestMapping(value="/refundPop.do", method = RequestMethod.GET)
-  public String refundPop(int uidx ,int ridx, String limagename,String startDate,String endDate,Model model)throws Exception{
+  public String refundPop(int uidx ,int ridx, String limagename,String startDate,String endDate,String reserv_num,Model model)throws Exception{
 	  
-	  HashMap<String,Integer> hm = new HashMap<String,Integer>();
+	  HashMap<String,Object> hm = new HashMap<String,Object>();
 	  hm.put("uidx", uidx);
 	  hm.put("ridx", ridx);
+	  hm.put("reserv_num", reserv_num);
 	 ReservVO result = mypageService.reservListPop(hm);
 	 
 	 model.addAttribute("startDate",startDate);
@@ -204,7 +205,6 @@ public class MypageController {
 	  }else {
 	  
 	  mypageService.reserv_refund(rvo);
-	  mypageService.reserv_Check(rvo);
 	  response.setContentType("text/html; charset=UTF-8");
 	  out.append("<script>alert('예약취소가 완료 되었습니다.'); opener.parent.location.reload(); window.close();</script>");
 	  out.flush();
