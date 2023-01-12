@@ -19,10 +19,10 @@
 					, l.lodgingaddr
 					, l.lidx
 					, l.limagename
-					FROM ausertb u
-					FULL OUTER JOIN lodgingtb l
-					ON u.uidx = l.uidx 
-					WHERE u.uidx= #{uidx}
+				FROM ausertb u
+				LEFT OUTER JOIN lodgingtb l
+				on u.uidx = l.uidx 
+				where u.uidx= #{uidx}
 	</select>
 	
 	<!--회원정보 수정 update는 inner join이 안되서 두개의 테이블로 함 -->
@@ -58,10 +58,10 @@
 							, row_number() over(ORDER BY qna_idx DESC) <!--row_num() over :정렬된 순서 기준으로 고유한 값 반환  -->
 							 AS qnum
 					FROM qnatb
-					WHERE qna_Qtitle LIKE '%' || #{keyword} || '%'
+					WHERE qna_Qtitle LIKE CONCAT('%',#{keyword},'%')
 					AND uidx = #{uidx} 
 
-					)
+					)ab
 					WHERE qnum BETWEEN #{rowStart} and #{rowEnd} 
 					ORDER BY qna_idx DESC
 	</select>
@@ -69,7 +69,7 @@
 	<select id="listCount" parameterType = "HashMap" resultType="int">
 			SELECT count(qna_idx)
 				FROM qnatb
-				WHERE qna_Qtitle LIKE '%' || #{keyword} || '%'
+				WHERE qna_Qtitle LIKE CONCAT('%',#{keyword},'%')
 				<![CDATA[
 					AND qna_idx > 0
 		        ]]>
@@ -91,12 +91,12 @@
 						, usertype 
 						)
 					VALUES(
-						qna_idx_seq.nextval 
+						null,
 					    , #{uidx} 
 					    , #{qna_Qcontent}
 						, #{qna_Qtitle}
-					 	, sysdate
-					 	, sysdate
+					 	, now()
+					 	, now()
 					 	, #{usertype}
 					 	)	
 	]]>			
@@ -104,16 +104,17 @@
 	
 	<!--문의 글 보기 -->
 	<select id = "qnaOne" resultType="QnaVO" parameterType = "integer">
-			SELECT q.qna_idx
+				SELECT q.qna_idx
 					, u.uidx
 					, u.userName
 					, q.qna_Qcontent
 					, q.qna_Qtitle
 					, q.qna_Qdate
 					, q.qna_Acontent					
-					FROM qnatb q , ausertb u
+					FROM qnatb q 
+					LEFT OUTER JOIN ausertb u
+					on q.uidx = u.uidx
 					WHERE qna_idx = #{qna_idx}
-					AND q.uidx = u.uidx
 	</select>
 	<!--문의 글 삭제  -->
    <delete id="qnaDelete" parameterType="int">
@@ -131,7 +132,7 @@
 
 	<!--판매자 객실목록  -->
 	<select id="roomlist"  parameterType="int" resultType="RoomVO">
-			SELECT l.uidx
+						SELECT l.uidx
 				, l.lidx
 				, r.ridx
 				, r.rimage1
@@ -139,9 +140,9 @@
 				, r.rprice
 				, r.rnum 
 			FROM lodgingtb l
-			FULL OUTER JOIN roomtb r
-			ON l.lidx = r.lidx 
-			WHERE l.uidx =#{uidx}
+			LEFT OUTER JOIN roomtb r
+			on l.lidx = r.lidx 
+			WHERE l.uidx = #{uidx}
 			ORDER BY r.ridx DESC
 	</select>
 	
@@ -169,7 +170,7 @@
 						, bed
 						, lidx  )
 					VALUES (
-						ridx_seq.nextval
+						null
 						, #{rtype}
 						, #{rnum}
 						, #{rprice}
@@ -191,7 +192,7 @@
 	<!--체크박스 등록-->	
 	<insert id = "roomInCh" parameterType="RoominVO">
 				INSERT INTO ROOMINTB VALUES(
-				ROOMIN_IDX_SEQ.NEXTVAL
+				null
 				,#{ridx}
 				,#{roomspa}
 				,#{wifi}
@@ -209,7 +210,7 @@
 				,#{addinfo2}
 				,#{addinfo3}
 				,#{addinfo4}
-				,#{addinfo5})
+				,#{addinfo5})	
 	
 	</insert>
 	
@@ -251,10 +252,9 @@
 					, i.addinfo3
 					, i.addinfo4
 					, i.addinfo5
-					FROM roomtb r
-					LEFT OUTER JOIN roomintb i
-					ON r.ridx = i.ridx 
-					WHERE r.ridx= #{ridx}
+					FROM roomtb r, roomintb i
+					where r.ridx = i.ridx 
+					and r.ridx= #{ridx}
 	</select>
 	
 	<!--객실수정-->
@@ -302,7 +302,7 @@
 	-->
 	<!-- 숙소 등록 -->
 	<insert id="lodgingUp" parameterType="lodgingVO">
-	INSERT INTO LODGINGTB (
+		INSERT INTO LODGINGTB (
 					  lidx
 					, lodgingkind
 					, lodgingname
@@ -313,7 +313,7 @@
 					, intro
 				)		
 				VALUES (
-					lidx_seq.nextval
+					null
 					, #{lodgingkind}
 					, #{lodgingname}
 					, #{lodgingaddr}
@@ -333,9 +333,9 @@
 		 WHERE uidx = #{uidx}
 	</update>
 	<insert id="lodginginUp" parameterType="lodginginVO">
-		INSERT INTO LODGINGINTB
+			INSERT INTO LODGINGINTB
 						VALUES(
-							  lodgingin_idx_seq.nextval
+							  null
 							, #{lidx}
 							, #{fitness}
 							, #{sauna}
@@ -378,7 +378,7 @@
 	<insert id="lodginginfoUp" parameterType="lodginginfoVO">
 		INSERT INTO LODGINGINFOTB
 						VALUES(
-							  lodginginfo_idx_seq.nextval
+							  null
 							, #{lidx}
 							, #{area1}
 							, #{area2}
