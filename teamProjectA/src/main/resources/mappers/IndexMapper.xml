@@ -4,22 +4,21 @@
 		<mapper namespace="team.projectA.mapper.IndexMapper">
 		
 		<select id="popLodgingList" resultType="reviewVO">
-			SELECT *
-				FROM (SELECT ridx,rtype,rprice,lidx,lodgingname,limagename,avgrv 
+			SELECT * FROM (SELECT ridx,rtype,rprice,lidx,lodgingname,limagename,avgrv 
 					FROM (SELECT rm.ridx
 							,rm.rtype
 							,rm.rprice
 							,l.lidx
 							,l.lodgingname
 							,l.limagename
-							,TRUNC (rv.avgrv,1) AS avgrv
+							,TRUNCATE(rv.avgrv,1) AS avgrv
 						FROM roomtb rm
 						,(SELECT ridx, AVG(rvsatisfaction) AS avgrv 
 							FROM reviewtb GROUP BY ridx) rv,lodgingtb l 
 							WHERE rm.ridx = rv.ridx
 								AND l.lidx = rm.lidx
-								<![CDATA[AND ROWNUM <= 18]]>
-							 	ORDER by rv.avgrv DESC))
+							 	ORDER by rv.avgrv DESC
+LIMIT 18) A)B
 		</select>		
 		<!-- 메인페이지 페스티발 리스트 상위 1~6개 리스트-->
 		<select id="mainFestivalList" resultType="festivalVO">
@@ -29,9 +28,9 @@
 				,ftSubContent
 				,ftImgName 
 					FROM festivaltb 
-					 <![CDATA[	WHERE ROWNUM <=6 ]]>
-						AND FTREGISTRATION = 'Y' 
+					 WHERE FTREGISTRATION = 'Y' 
 						ORDER BY ftUpdate asc
+						LIMIT 6
 		</select>
 		
 		
@@ -55,9 +54,10 @@
 				,tSubContent
 				,tImgName 
 					FROM triptb 
-					 <![CDATA[	WHERE ROWNUM <=6 ]]>
-						AND TREGISTRATION = 'Y' 
-						ORDER BY tUpdate asc
+					 	WHERE 
+						TREGISTRATION = 'Y' 
+						ORDER BY tUpdate asc 
+						LIMIT 6
 		</select>
 		<!-- 메인페이지 인기 여행지 페이지 -->
 		<select id="mainTripPage" parameterType="int" resultType="tripVO">

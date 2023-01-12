@@ -4,8 +4,7 @@
 		<mapper namespace="team.projectA.mapper.UserMapper">
 		<insert id="userInsert" parameterType="userVO">
 			INSERT INTO ausertb(
-						  uidx
-						, userID
+						userID
 						, userPassword
 						, userName
 						, userEmail
@@ -13,8 +12,7 @@
 						, userGender
 						, userBirth
 						) VALUES(
-						  auidx_seq.nextval
-						, #{userID}
+						  #{userID}
 						, #{userPassword}
 						, #{userName}
 						, #{userEmail}
@@ -26,8 +24,7 @@
 		<!-- 판매자 회원가입 -->
 		<insert id="sellerUserInsert" parameterType="userVO">
 			INSERT INTO AUSERTB (
-					uidx
-					,userID
+					userID
 					,userPassword
 					,userName
 					,userEmail
@@ -36,8 +33,7 @@
 					,userBirth
 					,userType)
 				VALUES(
-					AUIDX_SEQ.NEXTVAL
-					, #{userID}
+					 #{userID}
 					, #{userPassword}
 					, #{userName}
 					, #{userEmail}
