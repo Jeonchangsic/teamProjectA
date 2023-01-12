@@ -182,8 +182,6 @@
     </header>
     <main>
     	<div id="logoArea">
-	       	<a href="<%=request.getContextPath()%>/index/index.do">
-	   		</a>
    		</div>
     	<div id="border1">
 	        <form action="join.do" method="post">
@@ -194,7 +192,7 @@
 		            	<td></td>
 		            </tr>
 	                <tr>
-	                    <td class="contentsArea1 font_Style font_StyleBold" style="padding:0px;">아이디</td>
+	                    <td id="td_Padding" class="contentsArea1 font_Style font_StyleBold">아이디</td>
 	                    <td class="inputArea">
 	                        <input type="text" name="userID" id="id" class="inputArea font_Style" placeholder="아이디를 입력하세요." required>
 	                        <span class="id_ok font_Style">사용 가능한 아이디입니다.</span>
@@ -317,14 +315,13 @@
 	                </tr>
 	                <tr>
 	                    <td id="join"></td>
-	            		 <td style="padding-bottom: 10px; padding-top: 22px;">
+	            		 <td id="join_Btn">
 	            		 	<button class="footBtn BtnStyle font_Style">가입하기</button>
 	            		 	<input type="button" class="BtnStyle footBtn font_Style" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" value="취소">
 	            		 </td>
 	                	<td></td>
 	                </tr>
 	            </table>
-
 	        </form>
      	</div>   	
     </main>

@@ -55,10 +55,12 @@ header {
     text-align: center;
 }
 header h2{
-	margin: 26px 57px 0 61px;
+	width: 379px;
+	margin: 9px auto 0px auto;
     padding-bottom: 5px;
     font-weight: bold;
     font-size: 21px;
+    text-align: left;
 }
 
 

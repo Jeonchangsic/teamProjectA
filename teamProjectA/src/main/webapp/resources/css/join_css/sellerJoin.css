@@ -52,6 +52,11 @@ a{text-decoration:none; color: inherit;}
 /* UL,li{list-style:none;} */
             /*리셋코드*/
 
+body{
+	background-size: cover;
+    height: 1050px;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(../../images/index_images/bgimg14.jpg);
+}
                              
                   /*header*/
 header h2{
@@ -71,7 +76,8 @@ main{
 main #table1{
     margin:0 auto 10px auto;
     text-align:center;
-    border: 3px groove #5613f1;
+    background-color:white;
+    box-shadow: 0px -1px 5px 4px grey
 }
 main .contentsArea{
     padding-top:10px;
@@ -244,8 +250,8 @@ main .pw_no4{
 }
 .modal_body {
     position: absolute;
-	top: 30%;
- 	left: 50%;
+	top: 20%;
+    left: 35%;
 	width: 571px;
 	height: 341px;
 	line-height: 35px;
@@ -254,7 +260,7 @@ main .pw_no4{
 	background-color: rgb(255, 255, 255);
 	border-radius: 10px;
 	border: 1px solid #000;
-	box-shadow: 5px 5px 5px 5px gray;
+	box-shadow: 0px -1px 5px 5px grey
 	transform: translateX(-50%) translateY(-50%);
 	z-index: 999;
 }
@@ -350,7 +356,7 @@ main .email_no{
 }
 #loading > img {
   	position: absolute;
-  	top: 36.6%;
+	top: 39.2%;
   	left: 49.4%;
   	width:23px;
   	z-index: 100;
@@ -387,4 +393,17 @@ ul{
 }
 li{
 	padding-bottom: 7px;
+}
+#joinText{
+	padding: 17px 0px 29px 0px;
+    font-size: 28px;
+    font-family: 'Noto Sans KR', 산세리프;
+    font-weight: bold;
+}
+#td_Padding{
+	padding:0px;
+}
+#join_Btn{
+	padding-bottom:10px; 
+	padding-top:22px;
 }

@@ -184,17 +184,19 @@
     </header>
     <main>
    		<div id="logoArea">
-	       	<a href="<%=request.getContextPath()%>/index/index.do">
-	   			<img  id="main_logo"src="<%=request.getContextPath()%>/resources/images/login_images/logo2.svg"/>
-	   		</a>
    		</div>
     	<div id="border1">
 	        <form action="sellerJoin.do" method="post">
 	            <table id="table1">
+	            	<tr>
+		            	<td></td>
+		            	<td id="joinText">회원가입</td>
+		            	<td></td>
+		            </tr>
 	                <tr>
-	                    <td class="contentsArea1 font_Style font_StyleBold">아이디</td>
+	                    <td id="td_Padding" class="contentsArea1 font_Style font_StyleBold" >아이디</td>
 	                    <td class="inputArea">
-	                        <input type="text" name="userID" id="id" class="inputArea font_Style" placeholder="아이디를 입력하세요." required oninput="idForm()">
+	                        <input type="text" name="userID" id="id" class="inputArea font_Style" placeholder="아이디를 입력하세요." required>
 	                        <span class="id_ok font_Style">사용 가능한 아이디입니다.</span>
 	                        <span class="id_no font_Style">중복된  아이디입니다!</span>
 	                        <span class="id_no2 font_Style">8자리 ~ 15자리 이내로 입력하여 주세요.</span>
@@ -313,11 +315,13 @@
 	                    	 <input type="radio" name="agree" required>
 	                    </td>
 	                </tr>
-	            </table>
-	            <table id="table2">
 	                <tr>
-	                    <td id="join"><button class="footBtn btnStyle font_Style">가입하기</button></td>
-	            		 <td><input type="button" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" class="footBtn btnStyle font_Style" value="취소"></td>
+	                    <td id="join"></td>
+	            		 <td id="join_Btn">
+	            		 	<button class="footBtn btnStyle font_Style">가입하기</button>
+	            		 	<input type="button" onclick="location.href='<%=request.getContextPath()%>/index/index.do'" class="footBtn btnStyle font_Style" value="취소">
+	            		 </td>
+	            		 <td></td>
 	                </tr>
 	            </table>
 	        </form>
