@@ -99,32 +99,41 @@
 	</resultMap> 
 	<!-- 숙소리스트 -->
 	<select id="selectLodgingList" parameterType="HashMap" resultMap="lodgingList">
+		<![CDATA[
 		SELECT l.lidx
-			 , l.limagename
-			 , l.lodgingname
-			 , l.lodgingaddr
-			 , l.satis
-			 , (r.rprice * (SELECT TO_DATE(#{toDate}) - TO_DATE(#{fromDate}) FROM dual)) AS allprice
-			 , (r.rnum - (SELECT COUNT(ridx)
-					  				FROM reservtb
-								 		WHERE reserv_startdate = #{fromDate}
-								   		AND ridx = r.ridx)) AS spareroom
- 		FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
- 		WHERE l.lidx = r.lidx
- 			AND l.lidx = lin.lidx
- 			AND r.ridx = rin.ridx
-  			AND r.ridx IN (SELECT MIN(a.ridx) 
-							FROM (SELECT r.* 
-  									FROM lodgingtb l, roomtb r
-									WHERE l.lidx = r.lidx
-								  		AND l.lodgingkind = #{lodgingkind}
-								  		AND (r.rnum - (SELECT COUNT(ridx)
-													  	FROM reservtb
-														WHERE reserv_startdate = #{fromDate}
-														AND ridx = r.ridx)) > 0
-							 		ORDER BY r.ridx	   
-							  	) a
-					 		GROUP BY a.lidx)
+				, l.limagename
+				, l.lodgingname
+				, l.lodgingaddr
+				, l.satis
+				, (r.rprice * (SELECT TO_DATE(#{toDate}) - TO_DATE(#{fromDate}) FROM dual)) AS allprice
+				, rm.spareroom
+		FROM (SELECT r.ridx
+					, r.RNUM - (SELECT MAX(NVL((SELECT COUNT(rs.ridx)
+												FROM reservtb rs
+												WHERE rs.ridx = r.ridx
+													AND rs.reserv_startDate = days.day
+													OR (rs.reserv_startDate < days.day and rs.reserv_endDate > days.day)
+													OR (rs.reserv_startDate > days.day and rs.reserv_endDate < days.day)
+								),0)) AS cnt
+								FROM (SELECT to_char(to_date(#{fromDate},'YYYY-MM-DD')+(LEVEL-1),'YYYY-MM-DD') AS day
+										FROM dual
+										CONNECT BY LEVEL <= to_date(#{toDate},'YYYY-MM-DD') - to_date(#{fromDate},'YYYY-MM-DD')) days
+					) AS spareroom
+				FROM roomtb r) rm, lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
+				WHERE l.lidx = r.lidx
+					AND l.lidx = lin.lidx
+					AND r.ridx = rin.ridx
+					AND rm.ridx = r.ridx
+					AND r.ridx IN (SELECT MIN(a.ridx)
+									FROM (SELECT r.*
+											FROM lodgingtb l, roomtb r
+											WHERE l.lidx = r.lidx
+												AND l.lodgingkind = #{lodgingkind}
+												AND rm.spareroom > 0
+												ORDER BY r.ridx
+											) a
+									GROUP BY a.lidx)
+		]]>
 		<choose>
 			<when test ="area != null and area == '서울 전체'">
 				AND local like '10%'
@@ -903,17 +912,36 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		  AND l.lidx = #{lidx}
 	</select>
 	<select id="selectRoomList" parameterType="HashMap" resultType="roominVO">
-		SELECT (r.rnum - (SELECT COUNT(ridx) FROM reservtb WHERE ridx = r.ridx AND reserv_startdate = #{fromDate})) AS spareroom
-			, (r.rprice * (SELECT TO_DATE(#{toDate}) - TO_DATE(#{fromDate}) FROM dual)) AS allprice
-			, r.*
-			, i.*
-		FROM roomtb r, roomintb i
-		WHERE r.ridx = i.ridx 
-			AND r.lidx = #{lidx}
+		<![CDATA[
+		SELECT r2.*
+			 , rm.spareroom
+			 , i.*
+			 , (r2.rprice * (SELECT TO_DATE(#{toDate}) - TO_DATE(#{fromDate}) FROM dual)) AS allprice
+		FROM (SELECT r.ridx
+					, r.RNUM - (SELECT MAX(NVL((SELECT COUNT(rs.ridx)
+												FROM reservtb rs
+												WHERE rs.ridx =  r.ridx
+													AND rs.reserv_startDate = days.day 
+													OR (rs.reserv_startDate < days.day and rs.reserv_endDate > days.day)
+													OR (rs.reserv_startDate > days.day and rs.reserv_endDate < days.day)
+            							),0)) AS cnt
+            					FROM (SELECT to_char(to_date(#{fromDate},'YYYY-MM-DD')+(LEVEL-1),'YYYY-MM-DD') AS day
+                          				FROM dual
+                          				CONNECT BY LEVEL <= to_date(#{toDate},'YYYY-MM-DD') - to_date(#{fromDate},'YYYY-MM-DD')) days
+            					) 
+            		AS spareroom
+			FROM roomtb r) rm 
+			, ROOMTB r2
+			, roomintb i
+		WHERE rm.ridx = r2.ridx
+		  AND r2.ridx = i.ridx
+		  AND rm.ridx = i.ridx
+		  AND r2.lidx = #{lidx}
+		]]>
 		<if test="men != null and men != ''">
-			AND r.maxmen <![CDATA[>=]]> ${men}
+			AND r2.maxmen <![CDATA[>=]]> ${men}
 		</if>
-		ORDER BY r.ridx
+		ORDER BY r2.ridx
 	</select>
 	<!-- reserv -->
 	<select id="selectRoom" parameterType="int" resultType="roomVO">

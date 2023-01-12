@@ -142,8 +142,10 @@
 	    }
 	    
 		$(document).ready(function(){
+			
+			$("input:checkbox:checked").val("Y");
 	    	
-		    //체크박스 value 변경
+			//체크박스 value 변경
 			$("input:checkbox").change(function(){
 				if(this.checked){
 					$(this).attr('value', 'Y');
@@ -152,6 +154,15 @@
 				}
 			});
 	    
+// 			//체크박스 checked
+// 	    	$("input:checkbox").each(function(){
+// 	    		if($(this).val().equals("Y")){
+// 	    			$(this).checked = true;
+// 	    		}else{
+// 	    			$(this).checked = false;
+// 	    		}
+// 	    	});
+			
 	    	//썸네일 이미지
 		    $("input:file").change(function(){
 				if(this.files && this.files[0]) {
@@ -173,14 +184,6 @@
 	    		}
 	    	});
 	    	
-	    	//체크박스 checked
-	    	$("input:checkbox").each(function(){
-	    		if($(this).val().equals("Y")){
-	    			$(this).checked = true;
-	    		}else{
-	    			$(this).checked = false;
-	    		}
-	    	});
 	    	
 	    });
     </script>
@@ -408,7 +411,7 @@
 	    		</div> 	
 	    	</section>
 	    	<div class="btn_submit">
-	    		<button>등록</button>
+	    		<button>수정</button>
 	    	</div>
 	    </form>
     </main><!-- //main -->
