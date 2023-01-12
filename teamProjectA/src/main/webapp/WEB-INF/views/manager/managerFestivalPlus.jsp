@@ -147,6 +147,7 @@
 							<option value="영동">영동</option>
 						</optgroup>
 						<optgroup label="경상도">
+							<option value="부산">부산</option>
 							<option value="문경">문경</option>
 							<option value="예천">예천</option>
 							<option value="영주">영주</option>

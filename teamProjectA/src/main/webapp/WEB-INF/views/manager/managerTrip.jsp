@@ -103,8 +103,8 @@
         			<th class="th_width">지역</th>
         			<th>여행지명</th>
         			<th id="th_Style">등록일</th>
-        			<th class="btn_th"></th>
-        			<th class="btn_th"></th>
+        			<th class="btn_th default_width"></th>
+        			<th class="btn_th default_width2"></th>
         		</tr>
         		<c:forEach var ="list" items="${tripList}">
 	        		<tr>
