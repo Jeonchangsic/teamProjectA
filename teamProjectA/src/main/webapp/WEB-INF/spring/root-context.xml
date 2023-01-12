@@ -12,10 +12,10 @@
 	
 		<!-- 오라클과 연결하는 객체 -->
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-			<property name="username" value="c##study1"></property>
-			<property name="password" value="1234"></property>
+			<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+			<property name="url" value="jdbc:mysql://jjezen.cafe24.com:3307/teamprojecta?useSSL=false&amp;serverTimezone=UTC"></property>
+			<property name="username" value="teamprojectA"></property>
+			<property name="password" value="teamprojectA1234!!"></property>
 		</bean>
 		
 		<!-- 마이바티스와 소통할 객체 (마이바티스 연결) getConnection 역할--> <!-- close open 역할 -->
