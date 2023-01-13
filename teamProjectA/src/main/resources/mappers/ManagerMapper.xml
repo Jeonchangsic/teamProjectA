@@ -60,7 +60,7 @@
 			FROM ausertb a, lodgingtb l, reservtb v, roomtb r
 			WHERE a.uidx= v.UIDX
 			AND v.ridx = r.ridx
-			AND r.lidx = l.lidx)
+			AND r.lidx = l.lidx)AS mm
 			WHERE qnum BETWEEN #{rowStart} and #{rowEnd}
 			ORDER BY username desc
 					
