@@ -5,7 +5,7 @@
 		
 		<insert id="reservInsert" parameterType="HashMap">
 			INSERT INTO reservtb
-				VALUES(reserv_seq.NEXTVAL,#{uidx},#{ridx},#{reserv_startDate},#{reserv_endDate},#{merchant_uid},SYSDATE,'N','N')
+				VALUES(null,#{uidx},#{ridx},#{reserv_startDate},#{reserv_endDate},#{merchant_uid},now(),'N','N')
 		</insert>	
 		<select id="ridxList" parameterType="int" resultType="reservVO">
 			SELECT ridx 

@@ -115,7 +115,7 @@
 							, row_number() over(ORDER BY uidx DESC)
 							 AS unum
 					FROM ausertb
-					)
+					)AS mm
 					WHERE unum BETWEEN #{rowStart} AND #{rowEnd}
 					
 					ORDER BY uidx DESC
@@ -203,7 +203,7 @@
 							, row_number() over(ORDER BY lidx DESC)
 							 AS lnum
 					FROM lodgingtb
-					)
+					)AS mm
 					WHERE lnum BETWEEN #{rowStart} AND #{rowEnd}
 					
 					ORDER BY lidx DESC
