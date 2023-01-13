@@ -82,8 +82,7 @@
 	<insert id="qnaInsert" parameterType="QnaVO">
 	<![CDATA[
 			INSERT INTO qnatb (
-						 qna_idx
-						, uidx 
+						  uidx 
 						, qna_Qcontent
 						, qna_Qtitle
 						, qna_Qdate
@@ -91,8 +90,7 @@
 						, usertype 
 						)
 					VALUES(
-						null,
-					    , #{uidx} 
+						  #{uidx} 
 					    , #{qna_Qcontent}
 						, #{qna_Qtitle}
 					 	, now()
