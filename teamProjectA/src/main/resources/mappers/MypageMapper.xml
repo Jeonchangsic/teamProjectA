@@ -46,7 +46,7 @@
 								,lodgingname
 								,reserv_date
 								,reserv_startDate
-								,TO_DATE(reserv_startDate,'YYYY-MM-DD')AS reserv_startDate2
+								,STR_TO_DATE(reserv_startDate,'%Y-%m-%d')AS reserv_startDate2
 								,reserv_endDate
 								,reserv_num
 								,rtype
@@ -119,6 +119,7 @@
 								 WHERE l.lidx = r.lidx
 								 AND r.ridx = rm.ridx
 								 AND rv.ridx = r.ridx
+								 AND rv.reviewcheck = 'Y'
 								 AND r.uidx = #{uidx}
 								 )rtb  
 								 WHERE rNum BETWEEN #{rowStart2} AND #{rowEnd2}

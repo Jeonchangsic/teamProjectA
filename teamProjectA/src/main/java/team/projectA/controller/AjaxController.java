@@ -1,5 +1,6 @@
 package team.projectA.controller;
 
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -51,7 +52,8 @@ public class AjaxController {
 		  	int result = mypageService.changePw(hm); 
 		  	
 		  	String num = Integer.toString(result);
-		  	
+
+		  	session.invalidate();
 		  	return num;
 	  }
 	//관리자 페스티발 메인등록 
