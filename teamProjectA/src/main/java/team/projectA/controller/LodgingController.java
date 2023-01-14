@@ -103,6 +103,7 @@ public class LodgingController {
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);
 		model.addAttribute("men", men);
+		
 		return "lodging/lodgingList_hotel"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
@@ -223,7 +224,7 @@ public class LodgingController {
 		hm.put("footvolleyball", linvo.getFootvolleyball());
 		hm.put("store", linvo.getStore());
 		hm.put("dining", linvo.getDining());
-		hm.put("dryer", linvo.getDryer());
+		hm.put("dryingmachine", linvo.getDryingmachine());
 		hm.put("parking", linvo.getParking());
 		hm.put("publicshower", linvo.getPublicshower());
 		hm.put("ski", linvo.getSki());

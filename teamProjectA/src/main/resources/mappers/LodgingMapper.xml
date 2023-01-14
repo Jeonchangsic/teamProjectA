@@ -80,7 +80,7 @@
 		<id column="footvolleyball" property="footvolleyball" />
 		<id column="store" property="store" />
 		<id column="dining" property="dining" />
-		<id column="dryer" property="dryer" />
+		<id column="dryingmachine" property="dryingmachine" />
 		<id column="parking" property="parking" />
 		<id column="publicshower" property="publicshower" />
 		<id column="ski" property="ski" />
@@ -369,8 +369,8 @@
 			<if test="dining == 'on'">
 				OR dining = 'Y'
 			</if>
-			<if test="dryer == 'on'">
-				OR dryer = 'Y'
+			<if test="dryingmachine == 'on'">
+				OR dryingmachine = 'Y'
 			</if>
 			<if test="parking == 'on'">
 				OR parking = 'Y'
@@ -722,8 +722,8 @@
 			<if test="dining == 'on'">
 				OR dining = 'Y'
 			</if>
-			<if test="dryer == 'on'">
-				OR dryer = 'Y'
+			<if test="dryingmachine == 'on'">
+				OR dryingmachine = 'Y'
 			</if>
 			<if test="parking == 'on'">
 				OR parking = 'Y'
@@ -874,7 +874,7 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		<id column="footvolleyball" property="footvolleyball" />
 		<id column="store" property="store" />
 		<id column="dining" property="dining" />
-		<id column="dryer" property="dryer" />
+		<id column="dryingmachine" property="dryingmachine" />
 		<id column="parking" property="parking" />
 		<id column="publicshower" property="publicshower" />
 		<id column="ski" property="ski" />

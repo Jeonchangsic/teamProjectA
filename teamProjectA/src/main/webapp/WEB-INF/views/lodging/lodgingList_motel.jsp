@@ -752,7 +752,7 @@
 			    					<li><label><input type="checkbox" name="footvolleyball" <c:if test="${linvo.footvolleyball eq 'on'}">checked</c:if>>족구장</label></li>
 			    					<li><label><input type="checkbox" name="store" <c:if test="${linvo.store eq 'on'}">checked</c:if>>편의점</label></li>
 			    					<li><label><input type="checkbox" name="dining" <c:if test="${linvo.dining eq 'on'}">checked</c:if>>주방/식당</label></li>
-			    					<li><label><input type="checkbox" name="dryer" <c:if test="${linvo.dryer eq 'on'}">checked</c:if>>건조기</label></li>
+			    					<li><label><input type="checkbox" name="dryingmachine" <c:if test="${linvo.dryingmachine eq 'on'}">checked</c:if>>건조기</label></li>
 			    					<li><label><input type="checkbox" name="parking" <c:if test="${linvo.parking eq 'on'}">checked</c:if>>주차장</label></li>
 			    					<li><label><input type="checkbox" name="publicshower" <c:if test="${linvo.publicshower eq 'on'}">checked</c:if>>공용샤워실</label></li>
 			    					<li><label><input type="checkbox" name="ski" <c:if test="${linvo.ski eq 'on'}">checked</c:if>>스키장</label></li>

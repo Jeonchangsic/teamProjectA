@@ -24,7 +24,7 @@ public class LodginginVO {
 	private String footvolleyball;
 	private String store;
 	private String dining;
-	private String dryer;
+	private String dryingmachine;
 	private String parking;
 	private String publicshower;
 	private String ski;
@@ -173,11 +173,11 @@ public class LodginginVO {
 	public void setDining(String dining) {
 		this.dining = dining;
 	}
-	public String getDryer() {
-		return dryer;
+	public String getDryingmachine() {
+		return dryingmachine;
 	}
-	public void setDryer(String dryer) {
-		this.dryer = dryer;
+	public void setDryingmachine(String dryingmachine) {
+		this.dryingmachine = dryingmachine;
 	}
 	public String getParking() {
 		return parking;

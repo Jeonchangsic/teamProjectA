@@ -286,7 +286,7 @@
 			    					<li><input type="checkbox" class="check" name="footvolleyball">족구장</li>
 			    					<li><input type="checkbox" class="check" name="store">편의점</li>
 			    					<li><input type="checkbox" class="check" name="dining">주방/식당</li>
-			    					<li><input type="checkbox" class="check" name="dryer">건조기</li>
+			    					<li><input type="checkbox" class="check" name="dryingmachine">건조기</li>
 			    					<li><input type="checkbox" class="check" name="parking">주차장</li>
 			    					<li><input type="checkbox" class="check" name="publicshower">공용샤워실</li>
 			    					<li><input type="checkbox" class="check" name="ski">스키장</li>

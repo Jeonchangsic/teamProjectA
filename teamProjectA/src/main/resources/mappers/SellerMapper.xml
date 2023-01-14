@@ -366,7 +366,7 @@
 					 ,footvolleyball
 					 ,STORE
 					 ,dining
-					 ,dryer
+					 ,dryingmachine
 					 ,parking
 					 ,publicshower
 					 ,ski
@@ -403,7 +403,7 @@
 					, #{footvolleyball}
 					, #{store}
 					, #{dining}
-					, #{dryer}
+					, #{dryingmachine}
 					, #{parking}
 					, #{publicshower}
 					, #{ski}
@@ -490,7 +490,7 @@
 		<id column="footvolleyball" property="footvolleyball" />
 		<id column="store" property="store" />
 		<id column="dining" property="dining" />
-		<id column="dryer" property="dryer" />
+		<id column="dryingmachine" property="dryingmachine" />
 		<id column="parking" property="parking" />
 		<id column="publicshower" property="publicshower" />
 		<id column="ski" property="ski" />
@@ -565,7 +565,7 @@
 			 , footvolleyball = #{footvolleyball}
 			 , store = #{store}
 			 , dining = #{dining}
-			 , dryer = #{dryer}
+			 , dryingmachine = #{dryingmachine}
 			 , parking = #{parking}
 			 , publicshower = #{publicshower}
 			 , ski = #{ski}

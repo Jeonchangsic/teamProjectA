@@ -68,7 +68,7 @@ public class LodgingDAO {
 		hm.put("footvolleyball", linvo.getFootvolleyball());
 		hm.put("store", linvo.getStore());
 		hm.put("dining", linvo.getDining());
-		hm.put("dryer", linvo.getDryer());
+		hm.put("dryingmachine", linvo.getDryingmachine());
 		hm.put("parking", linvo.getParking());
 		hm.put("publicshower", linvo.getPublicshower());
 		hm.put("ski", linvo.getSki());

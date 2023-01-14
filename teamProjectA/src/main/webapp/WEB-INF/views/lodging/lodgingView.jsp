@@ -471,7 +471,7 @@
                     <c:if test="${map.footvolleyball == 'Y'}"><li>족구장</li></c:if> 
                     <c:if test="${map.store == 'Y'}"><li>편의점</li></c:if> 
                     <c:if test="${map.dining == 'Y'}"><li>주방/식당</li></c:if> 
-                    <c:if test="${map.dryer == 'Y'}"><li>건조기</li></c:if> 
+                    <c:if test="${map.dryingmachine == 'Y'}"><li>건조기</li></c:if> 
                     <c:if test="${map.parking == 'Y'}"><li>주차장</li></c:if> 
                     <c:if test="${map.publicshower == 'Y'}"><li>공용샤워실</li></c:if> 
                     <c:if test="${map.ski == 'Y'}"><li>스키장</li></c:if> 

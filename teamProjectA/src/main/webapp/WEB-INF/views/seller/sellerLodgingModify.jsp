@@ -355,7 +355,7 @@
 			    					<li><label><input type="checkbox" class="check" name="footvolleyball" <c:if test="${hm.footvolleyball eq 'Y'}">checked</c:if>>족구장</label></li>
 			    					<li><label><input type="checkbox" class="check" name="store" <c:if test="${hm.store eq 'Y'}">checked</c:if>>편의점</label></li>
 			    					<li><label><input type="checkbox" class="check" name="dining" <c:if test="${hm.dining eq 'Y'}">checked</c:if>>주방/식당</label></li>
-			    					<li><label><input type="checkbox" class="check" name="dryer" <c:if test="${hm.dryer eq 'Y'}">checked</c:if>>건조기</label></li>
+			    					<li><label><input type="checkbox" class="check" name="dryingmachine" <c:if test="${hm.dryingmachine eq 'Y'}">checked</c:if>>건조기</label></li>
 			    					<li><label><input type="checkbox" class="check" name="parking" <c:if test="${hm.parking eq 'Y'}">checked</c:if>>주차장</label></li>
 			    					<li><label><input type="checkbox" class="check" name="publicshower" <c:if test="${hm.publicshower eq 'Y'}">checked</c:if>>공용샤워실</label></li>
 			    					<li><label><input type="checkbox" class="check" name="ski" <c:if test="${hm.ski eq 'Y'}">checked</c:if>>스키장</label></li>
