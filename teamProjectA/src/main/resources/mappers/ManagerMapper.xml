@@ -123,7 +123,7 @@
 	<!-- 리뷰리스트 + 페이징 -->
 	<select id="ReviewList" parameterType="SearchCriteria" resultType="ReviewVO">
 	SELECT u.userName, qe.rvidx, qe.rvTitle, u.userID, qe.rvdate FROM ausertb u
-	LEFT OUTER JOIN
+	LEFT OUTER JOIN   
 	(SELECT u.userName, u.uidx, r.rvidx, r.rvTitle, u.userID, r.rvdate,
 		ROW_NUMBER() OVER(ORDER BY r.rvidx desc)AS rnum
 	FROM ausertb u
