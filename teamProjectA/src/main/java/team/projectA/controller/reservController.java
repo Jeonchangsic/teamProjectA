@@ -39,7 +39,7 @@ public class reservController {
 	 
 	
 	@RequestMapping(value = "/reserv/reserv.do", method = RequestMethod.GET)
-	public String reserv(Model model,int ridx, HttpServletRequest req, String fromDate, String toDate) {
+	public String reserv(Model model,int ridx, HttpServletRequest req, String fromDate, String toDate,String men) {
 		
 				
 		RoomVO rvo = lodgingService.selectRoom(ridx);
@@ -47,7 +47,7 @@ public class reservController {
 		
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);
-		
+		model.addAttribute("men", men);
 		
 		HttpSession session = req.getSession();
 		

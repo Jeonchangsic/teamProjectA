@@ -103,7 +103,6 @@ public class LodgingController {
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);
 		model.addAttribute("men", men);
-		
 		return "lodging/lodgingList_hotel"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
@@ -304,6 +303,7 @@ public class LodgingController {
 		model.addAttribute("fromDate", fromDate);
 		model.addAttribute("toDate", toDate);
 		model.addAttribute("men", men);
+		System.out.println("men:"+men);
 		//세션에 담기
 		HttpSession session = req.getSession();
 		
