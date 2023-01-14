@@ -137,8 +137,7 @@
 												AND rm.spareroom > 0
 												ORDER BY r.ridx
 											) a
-									GROUP BY a.lidx);
-
+									GROUP BY a.lidx)
 		]]>
 		<choose>
 			<when test ="area != null and area == '서울 전체'">
@@ -922,7 +921,7 @@ and lodgingaddr like  '%'||#{keyword}||'%'
 		SELECT r2.*
 			 , rm.spareroom
 			 , i.*
-			 , (r2.rprice * (SELECT CAST(#{toDate} AS DATETIME) - CAST(#{fromDate} AS DATETIME) FROM dual)) AS allprice
+			 , (r2.rprice * (SELECT STR_TO_DATE(#{toDate},'%Y-%m-%d') - STR_TO_DATE(#{fromDate},'%Y-%m-%d') FROM dual)) AS allprice
 		FROM (SELECT r.ridx
 					, r.RNUM - (SELECT MAX(IFNULL((SELECT COUNT(rs.ridx)
 												FROM reservtb rs
