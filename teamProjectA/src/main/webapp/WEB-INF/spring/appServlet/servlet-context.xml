@@ -65,6 +65,14 @@
 				<beans:ref bean="SellerInterceptor"/>
 			</interceptor>
 		</interceptors>
+		<!-- 판매자 숙소등록 중복 못하게하기 -->
+	<beans:bean id="SellerInterceptor2" class="team.projectA.interceptor.SellerInterceptor2"></beans:bean> 
+		<interceptors>
+			<interceptor>
+				<mapping path="/seller/sellerLodgingUp.do"/>
+				<beans:ref bean="SellerInterceptor2"/>
+			</interceptor>
+		</interceptors>
 	<!-- 마이페이지 인터셉터 --><!-- 일반회원만 접근가능 -->
 	<beans:bean id="MyPageInterceptor" class="team.projectA.interceptor.MyPageInterceptor"></beans:bean> 
 		<interceptors>
