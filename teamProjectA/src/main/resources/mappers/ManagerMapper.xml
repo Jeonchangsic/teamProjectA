@@ -123,11 +123,11 @@
 	<!-- 리뷰리스트 + 페이징 -->
 	<select id="ReviewList" parameterType="SearchCriteria" resultType="ReviewVO">
 	SELECT u.userName, qe.rvidx, qe.rvTitle, u.userID, qe.rvdate FROM ausertb u
-	FULL OUTER JOIN
+	LEFT OUTER JOIN   
 	(SELECT u.userName, u.uidx, r.rvidx, r.rvTitle, u.userID, r.rvdate,
 		ROW_NUMBER() OVER(ORDER BY r.rvidx desc)AS rnum
 	FROM ausertb u
-	FULL OUTER JOIN reviewtb r
+	RIGHT OUTER JOIN reviewtb r
 	on u.uidx = r.uidx
 	WHERE u.uidx = r.uidx)qe
 	ON u.uidx = qe.uidx
@@ -168,11 +168,11 @@
    <!--문의내역 페이징 -->
 	<select id="qnaList" parameterType="SearchCriteria" resultType="qnaVO">	
 		 SELECT a.userName, qe.qna_idx, qe.qna_Qtitle, qe.qna_Acheck, qe.qna_Qdate FROM ausertb a
-   FULL OUTER JOIN
+   LEFT OUTER JOIN
      (SELECT a.userName, a.uidx, q.qna_idx, q.qna_Qtitle, q.qna_Acheck, q.qna_Qdate, 
 								ROW_NUMBER() OVER(ORDER BY q.qna_idx desc) AS qnum
         FROM ausertb a 
-        FULL OUTER JOIN qnatb q 
+        RIGHT OUTER JOIN qnatb q 
         on a.uidx = q.uidx
         WHERE a.uidx = q.uidx )qe
         ON a.uidx = qe.uidx
