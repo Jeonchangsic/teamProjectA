@@ -227,7 +227,7 @@
 				, ftName
 				,ftRegDate
 				, ROW_NUMBER() OVER(ORDER BY ftidx DESC)AS rNum 
-					FROM festivaltb) 
+					FROM festivaltb)as aa 
 				WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
 				ORDER BY ftidx DESC
 	</select>
@@ -241,7 +241,7 @@
 	<insert id="festivalPlus" parameterType="HashMap">
 		INSERT INTO festivaltb 
 			VALUES(
-			FTIDX_SEQ.NEXTVAL
+			null
 			,#{ftAddr}
 			,#{ftName}
 			,#{ftSubContent}
@@ -251,8 +251,8 @@
 			,#{ftLongitude}
 			,#{ftImgName}
 			,'N'
-			,SYSDATE
-			,SYSDATE
+			,now()
+			,now()
 			)
 	</insert>
 	<!-- 페스티발 삭제 -->
@@ -265,7 +265,7 @@
 		SELECT * FROM festivaltb 
 			WHERE ftidx = #{ftidx}
 	</select>
-	<!-- 페스티발 상세 페이지 -->
+	<!-- 페스티발 수정 페이지 -->
 	<select id="festivalMf" parameterType="int" resultType="festivalVO">
 		SELECT * FROM festivaltb 
 			WHERE ftidx = #{ftidx}
@@ -299,7 +299,7 @@
 	<update id="festivalReg" parameterType="int">
 		UPDATE festivaltb 
 			SET ftregistration = 'Y'
-				, ftUpdate = SYSDATE 
+				, ftUpdate = now() 
 			WHERE  ftidx = #{ftidx}
 	</update>
 	<!-- 페스티발 메인 삭제 -->
@@ -319,7 +319,7 @@
 				, tName
 				,tRegDate
 				, ROW_NUMBER() OVER(ORDER BY tidx DESC)AS rNum 
-					FROM triptb) 
+					FROM triptb)as aa 
 				WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
 				ORDER BY tidx DESC
 	</select>
@@ -333,7 +333,7 @@
 	<insert id="tripPlus" parameterType="HashMap">
 		INSERT INTO triptb 
 			VALUES(
-			TIDX_SEQ.NEXTVAL
+			null
 			,#{tAddr}
 			,#{tName}
 			,#{tSubContent}
@@ -343,8 +343,8 @@
 			,#{tLongitude}
 			,#{tImgName}
 			,'N'
-			,SYSDATE
-			,SYSDATE
+			,now()
+			,now()
 			)
 	</insert>
 	<!-- 여행지 삭제 -->
@@ -386,7 +386,7 @@
 	<update id="tripReg" parameterType="int">
 		UPDATE triptb 
 			SET tregistration = 'Y' 
-				,tUpdate = SYSDATE
+				,tUpdate = now()
 			WHERE  tidx = #{tidx}
 	</update>
 	<!-- 여행지 메인 삭제 -->

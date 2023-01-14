@@ -139,7 +139,7 @@
         	<div>
 	        	<ul id="btnUl">
         			<li class="border_reset">
-        				<button class="bottom_btn" type="button" onclick="tripPlus()">축제추가</button>
+        				<button class="bottom_btn" type="button" onclick="tripPlus()">여행지추가</button>
         				<button type="button" class="bottom_btn" onclick="listRegPage()">메인리스트관리</button>
         			</li>
         		</ul>

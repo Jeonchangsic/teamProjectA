@@ -47,8 +47,8 @@
 		    		 type:"post",
 		    		 data: "password="+password,
 		    		 success:function(data){
-		    				  alert('비밀번호 수정이 완료되었습니다.');
-		    				  location.reload(); 
+		    				  alert('비밀번호 수정이 완료되었습니다. 변경된 비밀번호로 다시 로그인 해주세요.');
+							  location.href="<%=request.getContextPath()%>/login/login.do";
 		    		 }
 		    	 });	
 	    	};
