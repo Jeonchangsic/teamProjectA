@@ -529,13 +529,13 @@ public class SellerController {
 		vo.setLimagename(uniqueName+fileExtension); // (파라미터로 받아온 file을) 위에서 처리해서 나온 파일명을 (db에 넣어줄) vo변수(칼럼)에 담아준다
 		
 		//insert, update
+	
 		int maxlidx = sellerService.lodgingUp(vo);
 		invo.setLidx(maxlidx);
 		infovo.setLidx(maxlidx);
 		sellerService.lodginginUp(invo);
 		sellerService.lodginginfoUp(infovo);
-		sellerService.waiting(uidx);
-		
+		sellerService.waiting(uidx);		
 		//Waiting으로 변경된 user데이터 session에 담기
 		HttpSession session = req.getSession();
 		UserVO login = (UserVO)session.getAttribute("login");

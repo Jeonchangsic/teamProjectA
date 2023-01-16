@@ -221,15 +221,19 @@
 	$(document).ready(function(){
 		$("#trueReset").on("click",function(){
 			
-			var search = location.search		
+			var search = location.search//추소창 추출	
 
-			var params = new URLSearchParams(search);
-			var parea= params.get('area');
-			var ptype= params.get('type');
+			var params = new URLSearchParams(search); //파라미터를 추출 할 수 있게 함 
+			var parea= params.get('area'); //파라미터 area를 변수화
+			var ptype= params.get('type'); //파라미터 type을 변수화
 				
-			history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
-			location.reload() //페이지 새로고침
-			location.href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area="+parea+"&type="+ptype; 
+			if(parea==null || ptype==null){
+				return;	
+			}else{
+				history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
+				location.reload() //페이지 새로고침
+				location.href="<%=request.getContextPath()%>/lodging/lodgingList_villa.do?area="+parea+"&type="+ptype;
+			}
 			
 		});
 	});

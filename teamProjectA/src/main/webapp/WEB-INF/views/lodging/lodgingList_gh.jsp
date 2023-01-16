@@ -227,9 +227,13 @@
 			var parea= params.get('area'); //파라미터 area를 변수화
 			var ptype= params.get('type'); //파라미터 type을 변수화
 				
-			history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
-			location.reload() //페이지 새로고침
-			location.href="<%=request.getContextPath()%>/lodging/lodgingList_gh.do?area="+parea+"&type="+ptype; 
+			if(parea==null || ptype==null){
+				return;	
+			}else{
+				history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
+				location.reload() //페이지 새로고침
+				location.href="<%=request.getContextPath()%>/lodging/lodgingList_gh.do?area="+parea+"&type="+ptype;
+			}
 			
 		});
 	});

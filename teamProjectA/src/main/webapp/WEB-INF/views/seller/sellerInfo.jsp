@@ -193,7 +193,7 @@
 							<td><input type='text' name="lodgingname" id="lodgingname" value="${lodging.lodgingname}"></td>
 							<td><button type="button" id="nameFn" value="상세변경" class="btn_size">변경</button></td>
 						</c:when>
-						<c:when test = "${lodging.lodging == 'N'}">
+						<c:when test = "${lodging.lodging == 'N' || lodging.lodging == null}">
 							<td>사업장 명</td>
 							<td >숙소를 등록해 주세요.</td>
 						</c:when>
