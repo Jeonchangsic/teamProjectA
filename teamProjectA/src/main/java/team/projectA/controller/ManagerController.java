@@ -1,11 +1,14 @@
 package team.projectA.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import net.sf.json.JSONArray;
 import team.projectA.service.IndexService;
@@ -287,9 +291,44 @@ public class ManagerController {
 	}
 	//관리자 페스티발 등록 
 	@RequestMapping(value="festivalPlus.do", method = RequestMethod.POST)
-	public String festivalPlus(HttpServletResponse response,String ftName,String ftAddr,String ftSubContent,String ftMainContent,String ftLink,String ftLatitude,String ftLongitude,String ftImgName) throws Exception{
-
-		HashMap<String,String> hm = new HashMap<String,String>();
+	public String festivalPlus(HttpServletRequest req,HttpServletResponse response,String ftName,String ftAddr,String ftSubContent,String ftMainContent,String ftLink,String ftLatitude,String ftLongitude, MultipartFile ftImgName) throws Exception{
+		
+		
+				String fileRealName = ftImgName.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드
+				long size = ftImgName.getSize(); //파일 사이즈
+				
+				System.out.println("파일명 : "  + fileRealName);
+				System.out.println("용량크기(byte) : " + size);
+				//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자명을 구함
+				String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
+				String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
+				
+				/*
+				  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
+				  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
+				  타인어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
+				  고유한 랜덤 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
+				 */
+				
+				UUID uuid = UUID.randomUUID();
+				System.out.println(uuid.toString());
+				String[] uuids = uuid.toString().split("-");
+				
+				String uniqueName = uuids[0];
+				System.out.println("생성된 고유문자열" + uniqueName);
+				System.out.println("확장자명" + fileExtension);
+				
+				// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
+				File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+				try {
+					ftImgName.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		
+		HashMap<String,Object> hm = new HashMap<String,Object>();
 		hm.put("ftName", ftName);
 		hm.put("ftAddr", ftAddr);
 		hm.put("ftSubContent", ftSubContent);
@@ -297,7 +336,7 @@ public class ManagerController {
 		hm.put("ftLink", ftLink);
 		hm.put("ftLatitude", ftLatitude);
 		hm.put("ftLongitude", ftLongitude);
-		hm.put("ftImgName", ftImgName);
+		hm.put("ftImgName", uniqueName+fileExtension); // (파라미터로 받아온 file을) 위에서 처리해서 나온 파일명을 (db에 넣어줄) vo변수(칼럼)에 담아준다
 		
 		managerService.festivalPlus(hm);
 		
@@ -346,9 +385,39 @@ public class ManagerController {
 	}
 	//관리자 페스티발 수정 
 	@RequestMapping(value="festivalMf.do", method = RequestMethod.POST)
-	public String festivalMf(FestivalVO festivalVO,HttpServletResponse response)throws Exception{
+	public String festivalMf(int ftidx,String ftName,String ftAddr,String ftSubContent,String ftMainContent,String ftLink,String ftLatitude,String ftLongitude,HttpServletResponse response,HttpServletRequest req, MultipartFile ftImgName)throws Exception{
+
+		// 새로운 이미지 등록
+		String fileRealName = ftImgName.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
+		long size = ftImgName.getSize(); //파일 사이즈
+			
+		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
+		String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
+					
+		UUID uuid = UUID.randomUUID();
+		String[] uuids = uuid.toString().split("-");			
+		String uniqueName = uuids[0];
 		
-		managerService.festivalUt(festivalVO);
+		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+		try {
+			ftImgName.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		HashMap<String,Object> hm = new HashMap<String,Object>();
+		hm.put("ftidx", ftidx);
+		hm.put("ftName", ftName);
+		hm.put("ftAddr", ftAddr);
+		hm.put("ftSubContent", ftSubContent);
+		hm.put("ftMainContent", ftMainContent);
+		hm.put("ftLink", ftLink);
+		hm.put("ftLatitude", ftLatitude);
+		hm.put("ftLongitude", ftLongitude);
+		hm.put("ftImgName", uniqueName+fileExtension); // (파라미터로 받아온 file을) 위에서 처리해서 나온 파일명을 (db에 넣어줄) vo변수(칼럼)에 담아준다
+
+		managerService.festivalUt(hm);
 		
 		
 		response.setContentType("text/html; charset=UTF-8"); 
@@ -406,8 +475,42 @@ public class ManagerController {
 	}
 	//관리자 인기여행지 등록 
 	@RequestMapping(value="tripPlus.do", method = RequestMethod.POST)
-	public String tripPlus(HttpServletResponse response,String tName,String tAddr,String tSubContent,String tMainContent,String tLink,String tLatitude,String tLongitude,String tImgName) throws Exception{
+	public String tripPlus(HttpServletRequest req, HttpServletResponse response,String tName,String tAddr,String tSubContent,String tMainContent,String tLink,String tLatitude,String tLongitude,MultipartFile tImgName) throws Exception{
 
+		String fileRealName = tImgName.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드
+		long size = tImgName.getSize(); //파일 사이즈
+		
+		System.out.println("파일명 : "  + fileRealName);
+		System.out.println("용량크기(byte) : " + size);
+		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자명을 구함
+		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
+		String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
+		
+		/*
+		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
+		  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
+		  타인어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
+		  고유한 랜덤 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
+		 */
+		
+		UUID uuid = UUID.randomUUID();
+		System.out.println(uuid.toString());
+		String[] uuids = uuid.toString().split("-");
+		
+		String uniqueName = uuids[0];
+		System.out.println("생성된 고유문자열" + uniqueName);
+		System.out.println("확장자명" + fileExtension);
+		
+		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
+		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+		try {
+			tImgName.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		HashMap<String,String> hm = new HashMap<String,String>();
 		hm.put("tName", tName);
 		hm.put("tAddr", tAddr);
@@ -416,7 +519,7 @@ public class ManagerController {
 		hm.put("tLink", tLink);
 		hm.put("tLatitude", tLatitude);
 		hm.put("tLongitude", tLongitude);
-		hm.put("tImgName", tImgName);
+		hm.put("tImgName", uniqueName+fileExtension);
 		
 		managerService.tripPlus(hm);
 		
@@ -426,7 +529,8 @@ public class ManagerController {
 		out.append("<script>alert('여행지 등록이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
-			return "";
+		
+		return "";
 	}
 	//관리자 인기여행지 삭제 
 	@RequestMapping(value="tripDt.do", method = RequestMethod.GET)
@@ -464,9 +568,40 @@ public class ManagerController {
 	}
 	//관리자 인기여행지 수정 
 	@RequestMapping(value="tripMf.do", method = RequestMethod.POST)
-	public String tripMf(TripVO tripVO,HttpServletResponse response)throws Exception{
+	public String tripMf(int tidx,String tName,String tAddr,String tSubContent,String tMainContent,String tLink,String tLatitude,String tLongitude,HttpServletResponse response,HttpServletRequest req, MultipartFile tImgName)throws Exception{
 		
-		managerService.tripUt(tripVO);
+		// 새로운 이미지 등록
+				String fileRealName = tImgName.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
+				long size = tImgName.getSize(); //파일 사이즈
+					
+				String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
+				String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
+							
+				UUID uuid = UUID.randomUUID();
+				String[] uuids = uuid.toString().split("-");			
+				String uniqueName = uuids[0];
+				
+				File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+				try {
+					tImgName.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				HashMap<String,Object> hm = new HashMap<String,Object>();
+				hm.put("tidx", tidx);
+				hm.put("tName", tName);
+				hm.put("tAddr", tAddr);
+				hm.put("tSubContent", tSubContent);
+				hm.put("tMainContent", tMainContent);
+				hm.put("tLink", tLink);
+				hm.put("tLatitude", tLatitude);
+				hm.put("tLongitude", tLongitude);
+				hm.put("tImgName", uniqueName+fileExtension); // (파라미터로 받아온 file을) 위에서 처리해서 나온 파일명을 (db에 넣어줄) vo변수(칼럼)에 담아준다
+
+				
+		managerService.tripUt(hm);
 		
 		
 		response.setContentType("text/html; charset=UTF-8"); 

@@ -32,6 +32,7 @@
 				,reserv_startDate
 				,reserv_startDate2
 				,reserv_endDate
+				,reserv_endDate2
 				,reserv_num
 				,rtype
 				,ridx
@@ -48,6 +49,7 @@
 								,reserv_startDate
 								,STR_TO_DATE(reserv_startDate,'%Y-%m-%d')AS reserv_startDate2
 								,reserv_endDate
+								,STR_TO_DATE(reserv_endDate,'%Y-%m-%d')AS reserv_endDate2
 								,reserv_num
 								,rtype
 								,v.ridx
@@ -91,7 +93,11 @@
 			DELETE FROM reservtb
 				WHERE reserv_num = #{reserv_num}
 		</delete>
-		
+		<!-- 예약리스트 내역 삭제 -->
+		<delete id="reservListDt" parameterType="int">
+			DELETE FROM reservtb
+				WHERE reserv_idx = #{reserv_idx}
+		</delete>
 		<!-- 리뷰 내역 -->
 		<select id="reviewList" parameterType="HashMap" resultType="reviewVO">
 			SELECT lodgingname
@@ -119,7 +125,7 @@
 								 WHERE l.lidx = r.lidx
 								 AND r.ridx = rm.ridx
 								 AND rv.ridx = r.ridx
-								 AND rv.reviewcheck = 'Y'
+								 AND r.reserv_idx = rv.reserv_idx
 								 AND r.uidx = #{uidx}
 								 )rtb  
 								 WHERE rNum BETWEEN #{rowStart2} AND #{rowEnd2}

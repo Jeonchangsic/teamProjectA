@@ -11,10 +11,18 @@ public class FestivalVO{
 	private String ftLatitude;
 	private String ftLongitude;
 	private String ftImgName;
+	private String file;
 	private String ftRegistration;
 	private String ftRegDate;
 	
 	
+	
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
 	public String getFtName() {
 		return ftName;
 	}

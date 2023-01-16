@@ -69,7 +69,9 @@
             <form name="frm" action="<%=request.getContextPath() %>/review/review.do?lidx=${lidx}&ridx=${ridx}&reserv_idx=${reserv_idx}" method="POST">
                 <table id="table1">
                 	<tr>
-                		<td class="td_vertical-align td_padding1"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/> </td>
+                		<td class="td_vertical-align td_padding1">
+                			<img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/> 
+                		</td>
                 		<td class="td_vertical-align td_padding2">
                 			<div id="lodgingText" class="font_Style font_StyleBold">${lodgingname}</div>
                 			<div id="rtypeText" class="font_Style">[${rtype}]</div>

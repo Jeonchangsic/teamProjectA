@@ -65,10 +65,14 @@
 	                    </tr>
 	                    <c:forEach items="${reviewList}" var="reviewList">
 			                    <tr>
-			              		    <td class="td_padding lodging_Style1"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/${reviewList.limagename}"/></td>
+			              		    <td class="td_padding lodging_Style1">
+			              		    	<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${reviewList.limagename}"/>
+			              		    </td>
 			                    	<td class="td_padding lodging_Style">${reviewList.lodgingname}</td>
 			                    	<td class="td_padding lodging_Style">${reviewList.rtype}</td>
-			                    	<td class="td_padding review_style" id="titleHover" ><a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx},'${reviewList.limagename}','${reviewList.reserv_startDate}','${reviewList.reserv_endDate}')">${reviewList.rvTitle}</a></td>
+			                    	<td class="td_padding review_style" id="titleHover" >
+			                    		<a class="cursorStyle" onclick="reviewInfoPop(${reviewList.rvidx},'${reviewList.limagename}','${reviewList.reserv_startDate}','${reviewList.reserv_endDate}')">${reviewList.rvTitle}</a>
+			                    	</td>
 			                    	<td class="td_padding">${reviewList.rvDate}</td>
 			                    </tr>
 		               	</c:forEach>

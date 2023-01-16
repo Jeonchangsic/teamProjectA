@@ -47,7 +47,7 @@
     </header>
     <div id="headLine"></div>
                 <!--end header-->
-    <form action="festivalPlus.do" method="POST">
+    <form action="festivalPlus.do" method="POST" enctype="multipart/form-data">
 	    <table>
 	    	<tr>
 	    		<td id="first_td" class="font_Style font_StyleBold">축제명</td>

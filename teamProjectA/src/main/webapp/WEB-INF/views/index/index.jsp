@@ -421,7 +421,7 @@
 	                    </c:if>
                             <li class="border">
                                 <a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${list.lidx}&fromDate=${fromDate}&toDate=${toDate}" class="lod">
-                                    <img src="<%=request.getContextPath() %>/resources/images/index_images/${list.limagename}" alt="숙소이미지">
+                                    <img src="<%=request.getContextPath() %>/resources/images/lodging_images/${list.limagename}" alt="숙소이미지">
                                     <div class="text_left">
                                         <p class="lod_name font_Style">${list.lodgingname}</p>
                                        	<p class="lod_rtype font_Style">[${list.rtype}]</p>
@@ -475,7 +475,7 @@
 	                        <li>
 	                           <div class="description">
 		                           <a href="<%=request.getContextPath()%>/index/festivalInfo.do?ftidx=${festivalList.ftidx}">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/${festivalList.ftImgName}" alt="축제이미지">
+		                                <img src="<%=request.getContextPath() %>/resources/images/manager_images/${festivalList.ftImgName}" alt="축제이미지">
 	                                    <p id="hover1" class="festival_name">
 	                                    	<span>[${festivalList.ftAddr}]</span>
 	                                    ${festivalList.ftName}
@@ -510,7 +510,7 @@
 	                        <li>
 	                            <div class="description">
 		                            <a href="<%=request.getContextPath() %>/index/tripInfo.do?tidx=${tripList.tidx}">
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/${tripList.tImgName}" alt="축제이미지">
+		                                <img src="<%=request.getContextPath() %>/resources/images/manager_images/${tripList.tImgName}" alt="축제이미지">
 	                                    <p class="festival_name">
 	                                    	<span>[${tripList.tAddr}]</span>
 	                                    ${tripList.tName}	

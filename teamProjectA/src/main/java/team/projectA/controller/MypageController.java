@@ -211,9 +211,16 @@ public class MypageController {
 	  out.close();
 	  
 	  return ""; //printWriter append를 사용해서 alert을 띄우면 무조건 location.href로 페이지 이동을 시켜야한다. 이때 메소드 자료형은 void로 변경해야하고 return타입은 없어야하는데 이를 방지하기위해 리턴을 빈문자로 하였다.
+	  }
   }
+  //예약리스트 내역 삭제
+  @RequestMapping(value="/reservListDt.do", method = RequestMethod.GET)
+  public String reservListDt(int reserv_idx) {
+	  
+	  mypageService.reservListDt(reserv_idx);
+	  
+	  return "redirect:/mypage/reservList.do";
   }
-  
   //리뷰 상세보기
   @RequestMapping(value="/reviewInfo.do", method = RequestMethod.GET)
   public String reviewInfo(int rvidx, String limagename, Model model,String startDate,String endDate,HttpServletResponse response)throws Exception{

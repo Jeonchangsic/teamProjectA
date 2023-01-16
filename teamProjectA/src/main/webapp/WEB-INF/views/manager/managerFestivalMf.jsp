@@ -37,7 +37,7 @@
     </header>
     <div id="headLine"></div>
                 <!--end header-->
-    <form action="festivalMf.do" method="POST">
+    <form action="festivalMf.do" method="POST" enctype="multipart/form-data">
     	<input type="hidden" name="ftidx" value="${vo.ftidx}"/>
 	    <table>
 	    	<tr>

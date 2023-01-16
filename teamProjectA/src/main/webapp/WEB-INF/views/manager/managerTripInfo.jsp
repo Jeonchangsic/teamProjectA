@@ -42,7 +42,7 @@
                             <!--end header-->
 
     <main>
-        <img src="<%=request.getContextPath() %>/resources/images/index_images/${vo.tImgName}"/>
+        <img src="<%=request.getContextPath() %>/resources/images/manager_images/${vo.tImgName}"/>
         <h4>${vo.tName}</h4>
         <p>${vo.tMainContent}</p>
             <br>

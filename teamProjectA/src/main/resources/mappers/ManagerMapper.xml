@@ -271,7 +271,7 @@
 			WHERE ftidx = #{ftidx}
 	</select>
 	<!-- 페스티발 수정 -->
-	<update id="festivalUt" parameterType="festivalVO">
+	<update id="festivalUt" parameterType="HashMap">
 		UPDATE festivaltb 
 			SET ftAddr = #{ftAddr}
 			, ftName = #{ftName}
@@ -358,7 +358,7 @@
 			WHERE tidx = #{tidx}
 	</select>
 	<!-- 여행지 수정 -->
-	<update id="tripUt" parameterType="tripVO">
+	<update id="tripUt" parameterType="HashMap">
 		UPDATE triptb 
 			SET tAddr = #{tAddr}
 			, tName = #{tName}

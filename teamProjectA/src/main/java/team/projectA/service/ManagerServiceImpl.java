@@ -173,13 +173,13 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public int festivalUt(FestivalVO festivalVO) {
-		return managerDAO.festivalUt(festivalVO);
+	public int festivalUt(HashMap hm) {
+		return managerDAO.festivalUt(hm);
 	}
 
 	@Override
-	public int tripUt(TripVO tripVO) {
-		return managerDAO.tripUt(tripVO);
+	public int tripUt(HashMap hm) {
+		return managerDAO.tripUt(hm);
 	}
 
 	@Override

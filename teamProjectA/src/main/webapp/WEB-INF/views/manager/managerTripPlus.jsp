@@ -46,7 +46,7 @@
     </header>
     <div id="headLine"></div>
                 <!--end header-->
-    <form action="tripPlus.do" method="POST">
+    <form action="tripPlus.do" method="POST" enctype="multipart/form-data">
 	    <table>
 	    	<tr>
 	    		<td id="first_td" class="font_Style font_StyleBold">여행지명</td>

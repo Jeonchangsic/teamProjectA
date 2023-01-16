@@ -45,7 +45,7 @@
     </header>
     <div id="headLine"></div>
                 <!--end header-->
-    <form action="tripMf.do" method="POST">
+    <form action="tripMf.do" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="tidx" value="${vo.tidx}"/>
 	    <table>
 	    	<tr>

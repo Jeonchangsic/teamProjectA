@@ -49,7 +49,7 @@
 	                        <li>
 	                           <div class="description">
 		                           <a>
-		                                <img src="<%=request.getContextPath() %>/resources/images/index_images/${festivalList.ftImgName}" alt="축제이미지">
+		                                <img src="<%=request.getContextPath() %>/resources/images/manager_images/${festivalList.ftImgName}" alt="축제이미지">
 	                                    <p id="hover1" class="festival_name">
 	                                    	<span>[${festivalList.ftAddr}]</span>
 	                                    ${festivalList.ftName}

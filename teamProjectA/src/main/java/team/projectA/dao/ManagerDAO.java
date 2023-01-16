@@ -108,8 +108,8 @@ public class ManagerDAO {
 	public FestivalVO festivalInfo(int ftidx){
 		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.festivalInfo",ftidx);
 	}
-	public int festivalUt(FestivalVO festivalVO){
-		return sqlSession.update("team.projectA.mapper.ManagerMapper.festivalUt",festivalVO);
+	public int festivalUt(HashMap hm){
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.festivalUt",hm);
 	}
 	public List<FestivalVO> festivalNotRegList(){
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.festivalNotRegList");
@@ -140,8 +140,8 @@ public class ManagerDAO {
 	public TripVO tripInfo(int tidx){
 		return sqlSession.selectOne("team.projectA.mapper.ManagerMapper.tripInfo",tidx);
 	}
-	public int tripUt(TripVO tripVO){
-		return sqlSession.update("team.projectA.mapper.ManagerMapper.tripUt",tripVO);
+	public int tripUt(HashMap hm){
+		return sqlSession.update("team.projectA.mapper.ManagerMapper.tripUt",hm);
 	}
 	public List<TripVO> tripNotRegList(){
 		return sqlSession.selectList("team.projectA.mapper.ManagerMapper.tripNotRegList");

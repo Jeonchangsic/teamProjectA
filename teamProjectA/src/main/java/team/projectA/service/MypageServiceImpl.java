@@ -60,6 +60,10 @@ public class MypageServiceImpl implements MypageService{
 	public int review_count() throws Exception {
 		return mypageDao.review_count();
 	}
+	@Override
+	public int reservListDt(int reserv_idx) {
+		return mypageDao.reservListDt(reserv_idx);
+	}
 
 	
 	

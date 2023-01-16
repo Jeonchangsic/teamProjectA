@@ -41,7 +41,7 @@ public interface ManagerService {
 	int festivalPlus(HashMap hm);
 	int festivalDt(int ftidx);
 	FestivalVO festivalInfo(int ftidx);
-	int festivalUt(FestivalVO festivalVO);
+	int festivalUt(HashMap hm);
 	List<FestivalVO> festivalNotRegList();
 	List<FestivalVO> festivalRegList();
 	int festivalReg(int ftidx);
@@ -52,7 +52,7 @@ public interface ManagerService {
 	int tripPlus(HashMap hm);
 	int tripDt(int tidx);
 	TripVO tripInfo(int tidx);
-	int tripUt(TripVO tripVO);
+	int tripUt(HashMap hm);
 	List<TripVO> tripNotRegList();
 	List<TripVO> tripRegList();
 	int tripReg(int tidx);

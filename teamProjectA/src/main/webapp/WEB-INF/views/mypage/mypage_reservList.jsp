@@ -14,6 +14,8 @@
     <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
     <!---- jQuery ---->
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+     <!--XE아이콘-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> 	
      
    
      
@@ -43,7 +45,18 @@
  		window.open(url,"",popupOption);
      };
      </script>
-     
+     <!-- 예약 내역 삭제 -->
+     <script>
+     	function reservDt(reserv_idx){
+     		
+     		if(!confirm("예약 내역을 삭제하시면 리뷰 내역도 함께 삭제됩니다. 그래도 삭제하시겠습니까?")){
+	 			alert("삭제가 취소되었습니다.");
+	 		}else{
+	 			alert("삭제가 완료되었습니다.");
+	 			location.href="<%=request.getContextPath()%>/mypage/reservListDt.do?reserv_idx="+reserv_idx;
+	 		}
+     	}
+     </script>
      
 </head>
 <body>
@@ -80,6 +93,7 @@
 	                        <th>숙박일자</th>
 	                        <th>금액</th>
 	                        <th>비고</th>
+	                        <th></th>
 	                    </tr>
 	                    <c:forEach items="${list}" var="list">
 		                    <tr>
@@ -92,24 +106,42 @@
 		                        	<fmt:formatNumber type="number" maxFractionDigits="3" value="${list.rprice}" />원
 		                        </td>
 		                        	<fmt:formatDate value="${list.reserv_startDate2}" pattern="yyyyMMdd" var="startDate"/>
+		                        	<fmt:formatDate value="${list.reserv_endDate2}" pattern="yyyyMMdd" var="endDate"/>
 		                        	<fmt:formatDate value="${now}" pattern="yyyyMMdd" var="nowDate"/>
 		                        <td  class="button_Size">
 		                        	<c:choose>
 		                        		<c:when test="${startDate <= nowDate}">
-		                        			<input class="reservListBtn cursorStyle input_none" type="button" value="취소불가능"/>
+		                        			<input class="cursorStyle reservDt_noneBtn" type="button" value="예약취소"/>
 		                            	</c:when>
 		                            	<c:otherwise>
-		                            		<input class="reservListBtn cursorStyle font_Style" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}','${list.reserv_startDate}','${list.reserv_endDate}','${list.reserv_num}')" type="button" value="예약취소"/>
+		                            		<input class="reservListBtn cursorStyle font_Style reservDtValue" onclick="refund_pop(${list.ridx},${list.uidx},'${list.limagename}','${list.reserv_startDate}','${list.reserv_endDate}','${list.reserv_num}')" type="button" value="예약취소"/>
 		                            	</c:otherwise>
 		                            </c:choose>
 		                            <c:choose>
-			                            <c:when test="${list.reviewCheck eq 'N'}">
-			                           		<input class="reservListBtn cursorStyle font_Style" onclick="review(${list.lidx},${list.ridx},${list.reserv_idx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
-			                        	</c:when>
-			                        	<c:otherwise>
+			                            <c:when test="${list.reviewCheck eq 'Y'}">
 			                        		<input class="reservListBtn cursorStyle btnFontSize font_Style" onclick="alert('이미 리뷰 작성을 완료하였습니다.');" type="button" value="리뷰작성완료"/>
-			                        	</c:otherwise>
+			                        	</c:when>
+			                        	<c:when test="${endDate <= nowDate}">
+			                           		<input class="reservListBtn cursorStyle font_Style" onclick="review(${list.lidx},${list.ridx},${list.reserv_idx},'${list.lodgingname}','${list.rtype}','${list.reserv_startDate}','${list.reserv_endDate}','${list.limagename}')" type="button" value="리뷰쓰기"/>
+		                        		</c:when>
+		                        		<c:otherwise>
+		                        			<input class="cursorStyle reservDt_noneBtn" type="button" value="리뷰쓰기"/>
+		                        		</c:otherwise>
 		                        	</c:choose>
+		                        </td>
+		                        <td>
+		                        	<c:choose>
+		                        		<c:when test="${startDate <= nowDate}">
+		                        			<button type="button" onclick="reservDt(${list.reserv_idx})" class="reservDt">
+												<i class="xi-close"></i>
+				                        	</button>
+		                        		</c:when>
+		                        		<c:otherwise>
+				                        	<button type="button" onclick="alert('체크아웃 되지 않은 내역은 삭제할 수 없습니다.')" class="reservDt">
+												<i class="xi-close"></i>
+				                        	</button>
+				                        </c:otherwise>
+				                    </c:choose>
 		                        </td>
 		                    </tr>
 	                    </c:forEach>

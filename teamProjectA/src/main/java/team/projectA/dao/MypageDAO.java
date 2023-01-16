@@ -38,6 +38,10 @@ public class MypageDAO {
 	 public ReservVO reservListPop(HashMap hm)throws Exception {
 		 return sqlsession.selectOne("team.projectA.mapper.MypageMapper.reservListPop",hm);
 	 }
+	 public int reservListDt(int reserv_idx) {
+		 return sqlsession.delete("team.projectA.mapper.MypageMapper.reservListDt", reserv_idx);
+	 }
+	 
 	 //리뷰 리스트 페이징
 	 public List<ReviewVO>reviewList(HashMap hm2)throws Exception{
 			return sqlsession.selectList("team.projectA.mapper.MypageMapper.reviewList",hm2);

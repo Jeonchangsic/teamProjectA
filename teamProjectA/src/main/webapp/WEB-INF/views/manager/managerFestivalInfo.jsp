@@ -40,7 +40,7 @@
         <div id="header_view">${vo.ftName}</div>
     </header>
     <main>
-        <img src="<%=request.getContextPath() %>/resources/images/index_images/${vo.ftImgName}"/>
+        <img src="<%=request.getContextPath() %>/resources/images/manager_images/${vo.ftImgName}"/>
         <h4>${vo.ftName}</h4>
         <p>${vo.ftMainContent}</p>
         <br>

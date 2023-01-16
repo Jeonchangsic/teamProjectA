@@ -20,4 +20,5 @@ public interface MypageService {
 	int reviewDt(int rvidx);
 	ReviewVO reviewList2(int rvidx)throws Exception;
 	int review_count()throws Exception;
+	int reservListDt(int reserv_idx);
 }
