@@ -331,7 +331,7 @@ public class SellerController {
 			System.out.println("용량크기(byte) : " + size);
 			//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자 명을 구함
 			String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-			String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+			String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/lodging_images");
 			
 			
 			/*
@@ -400,7 +400,7 @@ public class SellerController {
 			//새로운 이미지가 등록 되어있는지 확인
 				if(files[i].getOriginalFilename() != null && files[i].getOriginalFilename() != "") {
 					
-					String uploadFolder = "D:\\eclipse\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+					String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/lodging_images");
 					
 					// 기존 이미지 삭제 //uploadPath없으면 삭제가안됨
 					new File(uploadFolder + req.getParameter("rimage" + (i+1))).delete();
@@ -499,7 +499,7 @@ public class SellerController {
 		System.out.println("용량크기(byte) : " + size);
 		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자명을 구함
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
-		String uploadFolder = "C:\\Users\\798\\Documents\\workspace-sts-3.9.13.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+		String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/lodging_images");
 		
 		/*
 		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
@@ -571,7 +571,7 @@ public class SellerController {
 			long size = file.getSize(); //파일 사이즈
 				
 			String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-			String uploadFolder = "C:\\Users\\798\\Documents\\workspace-sts-3.9.13.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\teamProjectA\\resources\\images\\lodging_images";
+			String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/lodging_images");
 						
 			UUID uuid = UUID.randomUUID();
 			String[] uuids = uuid.toString().split("-");			
