@@ -793,7 +793,7 @@
 										<div class="img_right">
 											<div><c:if test="${vo.spareroom < 6}">남은 객실 ${vo.spareroom}개</c:if></div>
 											<div>
-												<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.rprice}" />
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.allprice}" />
 												원
 											</div>
 										</div>
