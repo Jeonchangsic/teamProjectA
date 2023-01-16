@@ -474,24 +474,47 @@
 	
 	<!-- 숙소 리스트 + 검색 -->
 	<select id="listSearch" parameterType="HashMap" resultMap="lodgingList">
+		<![CDATA[
 		SELECT l.lidx
-			 , l.limagename
-			 , l.lodgingname
-			 , l.lodgingaddr
-			 , l.satis
-			 , r.rprice
- 		  FROM lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
- 		 WHERE l.lidx = r.lidx
- 		   AND l.lidx = lin.lidx
- 		   AND r.ridx = rin.ridx
-  		   AND r.ridx IN (SELECT MIN(a.ridx)
-						 FROM (SELECT r.*
-								 FROM lodgingtb l, roomtb r
-								WHERE l.lidx = r.lidx
-								  AND r.rnum > 0
-							 order BY r.ridx	   
-							  ) a WHERE 1=1 <include refid="search"></include>
-					 GROUP BY a.lidx)
+				, l.limagename
+				, l.lodgingname
+				, l.lodgingaddr
+				, l.satis
+				, (r.rprice * (SELECT STR_TO_DATE(#{toDate},'%Y-%m-%d') - STR_TO_DATE(#{fromDate},'%Y-%m-%d') FROM dual)) AS allprice
+				, rm.spareroom
+		FROM (SELECT r.ridx
+					, r.RNUM - (SELECT MAX(IFNULL((SELECT COUNT(rs.ridx)
+												FROM reservtb rs
+												WHERE rs.ridx = r.ridx
+													AND rs.reserv_startDate = days.day
+													OR (rs.reserv_startDate < days.day and rs.reserv_endDate > days.day)
+													OR (rs.reserv_startDate > days.day and rs.reserv_endDate < days.day)
+								),0)) AS cnt
+								FROM (WITH RECURSIVE CTE_CONNECT_BY AS (
+				SELECT 1 AS LEVEL
+				UNION ALL
+				SELECT LEVEL + 1 AS LEVEL FROM CTE_CONNECT_BY WHERE LEVEL <= str_to_date(#{toDate},'%Y-%m-%d') - str_to_date(#{fromDate},'%Y-%m-%d')-1
+				)
+				SELECT date_format(date_add(str_to_date(#{fromDate},'%Y-%m-%d'), interval ((LEVEL-1)) * 86400 second),'%Y-%m-%d') AS day
+														FROM cte_connect_by
+				) days
+					) AS spareroom
+				FROM roomtb r) rm, lodgingtb l, roomtb r, roomintb rin, lodgingintb lin
+				WHERE l.lidx = r.lidx
+					AND l.lidx = lin.lidx
+					AND r.ridx = rin.ridx
+					AND rm.ridx = r.ridx
+					AND r.ridx IN (SELECT MIN(a.ridx)
+									FROM (SELECT r.*
+											FROM lodgingtb l, roomtb r
+											WHERE l.lidx = r.lidx
+												AND rm.spareroom > 0
+												]]>
+												ORDER BY r.ridx
+											) a
+									WHERE 1=1
+									<include refid="search"></include>
+									GROUP BY a.lidx)
 		<choose>
 			<when test ="area != null and area == '서울 전체'">
 				AND local like '10%'
@@ -837,10 +860,10 @@
 		
 <sql id="search">
 <if test="searchType != null and searchType.equals('ln')">
-and lodgingname like  '%'||#{keyword}||'%'
+and lodgingname like concat('%',#{keyword},'%')
 </if>
 <if test="searchType != null and searchType.equals('la')">
-and lodgingaddr like  '%'||#{keyword}||'%'
+and lodgingaddr like concat('%',#{keyword},'%')
 </if>
 </sql>
 	

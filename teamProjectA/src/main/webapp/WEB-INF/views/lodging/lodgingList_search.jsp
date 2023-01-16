@@ -143,19 +143,22 @@
 		// console.log(this);
 		// 콘솔창을 보면 둘다 동일한 값이 나온다
 		
+		
+		document.frm.type.value = type; //frm:formName / name:Type
+		document.frm.submit();
 
-		console.log(event.target.classList[1]);
+// 		console.log(event.target.classList[1]);
 
-		if (event.target.classList[1] === "active2") {
-			event.target.classList.remove("active2");
-		} else {
-			for (var i = 0; i < div2.length; i++) {
-				div2[i].classList.remove("active2");
-			}
+// 		if (event.target.classList[1] === "active2") {
+// 			event.target.classList.remove("active2");
+// 		} else {
+// 			for (var i = 0; i < div2.length; i++) {
+// 				div2[i].classList.remove("active2");
+// 			}
 
-			event.target.classList.add("active2");
-		}		
-		location.href="<%=request.getContextPath()%>/lodging/lodgingList_search.do?area=${area}&type="+type;
+// 			event.target.classList.add("active2");
+// 		}		
+<%-- 		location.href="<%=request.getContextPath()%>/lodging/lodgingList_search.do?area=${area}&type="+type; --%>
 		
 		<%-- <%
 		String uri = request.getRequestURI();
@@ -223,6 +226,26 @@
 		// 결과 출력
 		result.value = number;
 	}
+	
+	$(document).ready(function(){
+		$("#trueReset").on("click",function(){
+			
+			var search = location.search//추소창 추출	
+
+			var params = new URLSearchParams(search); //파라미터를 추출 할 수 있게 함 
+			var parea= params.get('area'); //파라미터 area를 변수화
+			var ptype= params.get('type'); //파라미터 type을 변수화
+				
+			if(parea==null || ptype==null){
+				return;	
+			}else{
+				history.replaceState({}, null, location.pathname); //파라미터 전부 지우고 
+				location.reload() //페이지 새로고침
+				location.href="<%=request.getContextPath()%>/lodging/lodgingList_gh.do?area="+parea+"&type="+ptype;
+			}
+			
+		});
+	});
 </script>
 <script>
 //검색기능
@@ -699,7 +722,7 @@
 			    					<li><label><input type="checkbox" name="footvolleyball" <c:if test="${linvo.footvolleyball eq 'on'}">checked</c:if>>족구장</label></li>
 			    					<li><label><input type="checkbox" name="store" <c:if test="${linvo.store eq 'on'}">checked</c:if>>편의점</label></li>
 			    					<li><label><input type="checkbox" name="dining" <c:if test="${linvo.dining eq 'on'}">checked</c:if>>주방/식당</label></li>
-			    					<li><label><input type="checkbox" name="dryer" <c:if test="${linvo.dryer eq 'on'}">checked</c:if>>건조기</label></li>
+			    					<li><label><input type="checkbox" name="dryingmachine" <c:if test="${linvo.dryingmachine eq 'on'}">checked</c:if>>건조기</label></li>
 			    					<li><label><input type="checkbox" name="parking" <c:if test="${linvo.parking eq 'on'}">checked</c:if>>주차장</label></li>
 			    					<li><label><input type="checkbox" name="publicshower" <c:if test="${linvo.publicshower eq 'on'}">checked</c:if>>공용샤워실</label></li>
 			    					<li><label><input type="checkbox" name="ski" <c:if test="${linvo.ski eq 'on'}">checked</c:if>>스키장</label></li>
