@@ -252,7 +252,7 @@
 							'<div id="modalImg"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/busan_5.jpg"></div>'+
 							'<div id="modalR">'+
 								'<div>부산 기장군<br> 일광읍 문동리 4</div>'+
-								'<a class="modalinfo" href="http://localhost:8080/A/lodging/lodgingView.do?lidx=261&fromDate=${fromDate}&toDate=${toDate}" target="_blank">부산 씨앤트리풀빌라</a>'+
+								'<a class="modalinfo" href="http://jjezen.cafe24.com/teamProjectA/lodging/lodgingView.do?lidx=12&fromDate=${fromDate}&toDate=${toDate}&men=${men}" target="_blank">부산 씨앤트리풀빌라</a>'+
 							'</div>'+
 						'</div>',
 			    latlng: new kakao.maps.LatLng(35.177038946625096, 129.19686768887712)
