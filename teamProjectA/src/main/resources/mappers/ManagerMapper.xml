@@ -189,11 +189,11 @@
 	</select>
 	<!-- 숙소리스트 + 페이징-->
 	<select id="managerRoomList" parameterType="SearchCriteria" resultType="LodgingVO">
-	SELECT lidx
-					, limagename
-					, lodgingname
-					, lodgingaddr
-					, lodgingkind
+	SELECT mm.lidx
+					, mm.limagename
+					, mm.lodgingname
+					, mm.lodgingaddr
+					, mm.lodgingkind
 				FROM (
 					SELECT lidx
 							, limagename
@@ -202,11 +202,13 @@
 							, lodgingkind
 							, row_number() over(ORDER BY lidx DESC)
 							 AS lnum
+							, uidx
 					FROM lodgingtb
-					)AS mm
+					)AS mm, ausertb u
 					WHERE lnum BETWEEN #{rowStart} AND #{rowEnd}
-					
-					ORDER BY lidx DESC
+					AND mm.uidx = u.uidx
+					AND u.lodging = 'Y'
+					ORDER BY mm.lidx DESC
 	</select>
 	<!--숙소 페이지 총 개수-->
 	<select id="RoomListcount" resultType="int">
