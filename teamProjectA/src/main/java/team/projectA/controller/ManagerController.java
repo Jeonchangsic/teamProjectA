@@ -83,7 +83,7 @@ public class ManagerController {
 		return "manager/managerUser";
 	
 	}
-	//QnA리스트 
+	//QnA由ъ뒪�듃 
 	/*@RequestMapping(value = "/managerQnaList.do", method = RequestMethod.GET)
 	public String qna(UserVO vo, Model model,ReservVO vo1) {
 		
@@ -96,7 +96,7 @@ public class ManagerController {
 		
 		return "manager/managerQnaList";
 	}*/
-	//QnA리스트 
+	//QnA由ъ뒪�듃 
 		@RequestMapping(value = "/managerQnaList.do", method = RequestMethod.GET)
 		public String qna(Model model,  @ModelAttribute("scri") SearchCriteria scri) {
 			
@@ -113,7 +113,7 @@ public class ManagerController {
 			return "manager/managerQnaList";
 		}
 
-	//문의내역 상세화면
+	//臾몄쓽�궡�뿭 �긽�꽭�솕硫�
 	@RequestMapping(value="/managerQna.do", method = RequestMethod.GET)
 	public String sellerInquireView(Locale locale, Model model, int qna_idx) {
 			
@@ -122,7 +122,7 @@ public class ManagerController {
 			
 		return "manager/managerQna";
 	}
-	//문의내역 답변등록전 상세화면
+	//臾몄쓽�궡�뿭 �떟蹂��벑濡앹쟾 �긽�꽭�솕硫�
 	@RequestMapping(value="/managerQnaView.do", method = RequestMethod.GET)
 	public String managerQnaView(Locale locale, Model model, int qna_idx,String qna_Acontent) {
 			
@@ -131,7 +131,7 @@ public class ManagerController {
 
 		return "manager/managerQnaView";
 	}
-	//답변등록
+	//�떟蹂��벑濡�
 	@RequestMapping(value="/managerQna.do", method = RequestMethod.POST)
 	public String managerReply(Model model,int qna_idx,String qna_Acontent) {
 		System.out.println("qna_Acontent"+qna_Acontent);
@@ -157,7 +157,7 @@ public class ManagerController {
 
 		return "manager/managerRoom";
 	}
-	//���ҽ���
+	//占쏙옙占쌀쏙옙占쏙옙
 	@RequestMapping(value="/requestApproval.do", method = RequestMethod.POST)
 	public String requestApproval(int uidx,HttpServletResponse response, HttpServletRequest req)throws Exception {
 		
@@ -166,7 +166,7 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('숙소 승인이 완료되었습니다.');  location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
+		out.append("<script>alert('�닕�냼 �듅�씤�씠 �셿猷뚮릺�뿀�뒿�땲�떎.');  location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
 		out.flush(); 
 		out.close();
 		
@@ -175,14 +175,14 @@ public class ManagerController {
 		
 		return "";
 	}
-	//���ҽ��ΰź�
+	//占쏙옙占쌀쏙옙占싸거븝옙
 	@RequestMapping(value="/requestDel.do", method = RequestMethod.POST)
 	public String requestDel(int uidx, int lidx,HttpServletResponse response,HttpServletRequest req)throws Exception{
 		
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('숙소 승인이 거부되었습니다.'); location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
+		out.append("<script>alert('�닕�냼 �듅�씤�씠 嫄곕��릺�뿀�뒿�땲�떎.'); location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
 														
 		out.flush(); 
 		out.close();
@@ -208,16 +208,15 @@ public class ManagerController {
 		
 		return "manager/managerReview";
 	}
-	 //리뷰 상세보기
+	 //由щ럭 �긽�꽭蹂닿린
 	  @RequestMapping(value="/managerRinfo.do", method = RequestMethod.GET)
 	  public String reviewInfo(int rvidx, String limagename, Model model,HttpServletResponse response)throws Exception{
 		  	
 			ReviewVO vo = mypageService.reviewList2(rvidx);
 			model.addAttribute("vo",vo);
-			model.addAttribute("limagename",limagename);
 		  return "manager/managerRinfo"; 
 	  }
-	//리뷰 삭제
+	//由щ럭 �궘�젣
 		@RequestMapping (value = "/Reviewdelete.do" , method = RequestMethod.GET)
 		public String reviewdelete(Locale locale, Model model, int rvidx){
 			
@@ -255,7 +254,7 @@ public class ManagerController {
 		List<LodgingVO> requestList = managerService.requestList();
 		model.addAttribute("requestList", requestList);
 		
-		//���� �α���õ
+		//占쏙옙占쏙옙 占싸깍옙占쏙옙천
 		List<LodgingVO> lodgingCategory = null;
 		lodgingCategory = managerService.lodgingCategory();
 		model.addAttribute("lodgingCategory",lodgingCategory);
@@ -266,9 +265,9 @@ public class ManagerController {
 	}
 	
 	
-					// --관리자 페스티발 --
+					// --愿�由ъ옄 �럹�뒪�떚諛� --
 	
-	//관리자 페스티발 리스트 페이지
+	//愿�由ъ옄 �럹�뒪�떚諛� 由ъ뒪�듃 �럹�씠吏�
 	@RequestMapping(value="managerFestival.do", method = RequestMethod.GET)
 	public String managerFestival(@ModelAttribute("scri")SearchCriteria scri,Model model) throws Exception{
 		
@@ -282,32 +281,32 @@ public class ManagerController {
 		return "manager/managerFestival";
 	}
 	
-	//관리자 페스티발 등록 페이지
+	//愿�由ъ옄 �럹�뒪�떚諛� �벑濡� �럹�씠吏�
 	@RequestMapping(value="festivalPlus.do", method = RequestMethod.GET)
 	public String festivalPlusPage(Model model) throws Exception{
 		
 			
 		return "manager/managerFestivalPlus";
 	}
-	//관리자 페스티발 등록 
+	//愿�由ъ옄 �럹�뒪�떚諛� �벑濡� 
 	@RequestMapping(value="festivalPlus.do", method = RequestMethod.POST)
 	public String festivalPlus(HttpServletRequest req,HttpServletResponse response,String ftName,String ftAddr,String ftSubContent,String ftMainContent,String ftLink,String ftLatitude,String ftLongitude, MultipartFile ftImgName) throws Exception{
 		
 		
-				String fileRealName = ftImgName.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드
-				long size = ftImgName.getSize(); //파일 사이즈
+				String fileRealName = ftImgName.getOriginalFilename(); //�뙆�씪紐낆쓣 �뼸�뼱�궪 �닔 �엳�뒗 硫붿꽌�뱶
+				long size = ftImgName.getSize(); //�뙆�씪 �궗�씠利�
 				
-				System.out.println("파일명 : "  + fileRealName);
-				System.out.println("용량크기(byte) : " + size);
-				//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자명을 구함
+				System.out.println("�뙆�씪紐� : "  + fileRealName);
+				System.out.println("�슜�웾�겕湲�(byte) : " + size);
+				//�꽌踰꾩뿉 ���옣�븷 �뙆�씪�씠由� fileextension�쑝濡� .jsp�씠�윴�떇�쓽  �솗�옣�옄紐낆쓣 援ы븿
 				String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
 				String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
 				
 				/*
-				  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
-				  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
-				  타인어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
-				  고유한 랜덤 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
+				  �뙆�씪 �뾽濡쒕뱶�떆 �뙆�씪紐낆씠 �룞�씪�븳 �뙆�씪�씠 �씠誘� 議댁옱�븷 �닔�룄 �엳怨� �궗�슜�옄媛� 
+				  �뾽濡쒕뱶 �븯�뒗 �뙆�씪紐낆씠 �뼵�뼱 �씠�쇅�쓽 �뼵�뼱濡� �릺�뼱�엳�쓣 �닔 �엳�뒿�땲�떎. 
+				  ���씤�뼱瑜� 吏��썝�븯吏� �븡�뒗 �솚寃쎌뿉�꽌�뒗 �젙�긽 �룞�옉�씠 �릺吏� �븡�뒿�땲�떎.(由щ늼�뒪媛� ���몴�쟻�씤 �삁�떆)
+				  怨좎쑀�븳 �옖�뜡 臾몄옄瑜� �넻�빐 db�� �꽌踰꾩뿉 ���옣�븷 �뙆�씪紐낆쓣 �깉濡�寃� 留뚮뱾�뼱 以��떎.
 				 */
 				
 				UUID uuid = UUID.randomUUID();
@@ -315,13 +314,13 @@ public class ManagerController {
 				String[] uuids = uuid.toString().split("-");
 				
 				String uniqueName = uuids[0];
-				System.out.println("생성된 고유문자열" + uniqueName);
-				System.out.println("확장자명" + fileExtension);
+				System.out.println("�깮�꽦�맂 怨좎쑀臾몄옄�뿴" + uniqueName);
+				System.out.println("�솗�옣�옄紐�" + fileExtension);
 				
-				// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
-				File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+				// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid �쟻�슜 �쟾
+				File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // �쟻�슜 �썑
 				try {
-					ftImgName.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+					ftImgName.transferTo(saveFile); // �떎�젣 �뙆�씪 ���옣硫붿꽌�뱶(filewriter �옉�뾽�쓣 �넀�돺寃� �븳諛⑹뿉 泥섎━�빐以��떎.)
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -336,19 +335,19 @@ public class ManagerController {
 		hm.put("ftLink", ftLink);
 		hm.put("ftLatitude", ftLatitude);
 		hm.put("ftLongitude", ftLongitude);
-		hm.put("ftImgName", uniqueName+fileExtension); // (파라미터로 받아온 file을) 위에서 처리해서 나온 파일명을 (db에 넣어줄) vo변수(칼럼)에 담아준다
+		hm.put("ftImgName", uniqueName+fileExtension); // (�뙆�씪誘명꽣濡� 諛쏆븘�삩 file�쓣) �쐞�뿉�꽌 泥섎━�빐�꽌 �굹�삩 �뙆�씪紐낆쓣 (db�뿉 �꽔�뼱以�) vo蹂��닔(移쇰읆)�뿉 �떞�븘以��떎
 		
 		managerService.festivalPlus(hm);
 		
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('축제 등록이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
+		out.append("<script>alert('異뺤젣 �벑濡앹씠 �셿猷뚮릺�뿀�뒿�땲�떎.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
 			return "";
 	}
-	//관리자 페스티발 삭제 
+	//愿�由ъ옄 �럹�뒪�떚諛� �궘�젣 
 	@RequestMapping(value="festivalDt.do", method = RequestMethod.GET)
 	public String festivalDt(int ftidx,HttpServletResponse response,HttpServletRequest req)throws Exception {
 			
@@ -357,13 +356,13 @@ public class ManagerController {
 			response.setContentType("text/html; charset=UTF-8"); 
 			PrintWriter out = response.getWriter();
 			
-			out.append("<script>alert('삭제가 완료되었습니다.'); location.href='"+req.getContextPath()+"/manager/managerFestival.do';</script>"); 
+			out.append("<script>alert('�궘�젣媛� �셿猷뚮릺�뿀�뒿�땲�떎.'); location.href='"+req.getContextPath()+"/manager/managerFestival.do';</script>"); 
 			out.flush(); 
 			out.close();
 
 		return "";
 	}
-	//관리자 페스티발 상세페이지 
+	//愿�由ъ옄 �럹�뒪�떚諛� �긽�꽭�럹�씠吏� 
 	@RequestMapping(value="festivalInfo.do", method = RequestMethod.GET)
 	public String festivalInfo(int ftidx, Model model) {
 		
@@ -373,7 +372,7 @@ public class ManagerController {
 		
 		return "manager/managerFestivalInfo";
 	}
-	//관리자 페스티발 수정페이지 
+	//愿�由ъ옄 �럹�뒪�떚諛� �닔�젙�럹�씠吏� 
 	@RequestMapping(value="festivalMf.do", method = RequestMethod.GET)
 	public String festivalMf(int ftidx, Model model) {
 		
@@ -383,13 +382,13 @@ public class ManagerController {
 		
 		return "manager/managerFestivalMf";
 	}
-	//관리자 페스티발 수정 
+	//愿�由ъ옄 �럹�뒪�떚諛� �닔�젙 
 	@RequestMapping(value="festivalMf.do", method = RequestMethod.POST)
 	public String festivalMf(int ftidx,String ftName,String ftAddr,String ftSubContent,String ftMainContent,String ftLink,String ftLatitude,String ftLongitude,HttpServletResponse response,HttpServletRequest req, MultipartFile ftImgName)throws Exception{
 
-		// 새로운 이미지 등록
-		String fileRealName = ftImgName.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-		long size = ftImgName.getSize(); //파일 사이즈
+		// �깉濡쒖슫 �씠誘몄� �벑濡�
+		String fileRealName = ftImgName.getOriginalFilename(); //�뙆�씪紐낆쓣 �뼸�뼱�궪 �닔 �엳�뒗 硫붿꽌�뱶!
+		long size = ftImgName.getSize(); //�뙆�씪 �궗�씠利�
 			
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
 		String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
@@ -398,9 +397,9 @@ public class ManagerController {
 		String[] uuids = uuid.toString().split("-");			
 		String uniqueName = uuids[0];
 		
-		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // �쟻�슜 �썑
 		try {
-			ftImgName.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+			ftImgName.transferTo(saveFile); // �떎�젣 �뙆�씪 ���옣硫붿꽌�뱶(filewriter �옉�뾽�쓣 �넀�돺寃� �븳諛⑹뿉 泥섎━�빐以��떎.)
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -415,7 +414,7 @@ public class ManagerController {
 		hm.put("ftLink", ftLink);
 		hm.put("ftLatitude", ftLatitude);
 		hm.put("ftLongitude", ftLongitude);
-		hm.put("ftImgName", uniqueName+fileExtension); // (파라미터로 받아온 file을) 위에서 처리해서 나온 파일명을 (db에 넣어줄) vo변수(칼럼)에 담아준다
+		hm.put("ftImgName", uniqueName+fileExtension); // (�뙆�씪誘명꽣濡� 諛쏆븘�삩 file�쓣) �쐞�뿉�꽌 泥섎━�빐�꽌 �굹�삩 �뙆�씪紐낆쓣 (db�뿉 �꽔�뼱以�) vo蹂��닔(移쇰읆)�뿉 �떞�븘以��떎
 
 		managerService.festivalUt(hm);
 		
@@ -423,13 +422,13 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('수정이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
+		out.append("<script>alert('�닔�젙�씠 �셿猷뚮릺�뿀�뒿�땲�떎.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
 		
 		return "";
 	}
-	//관리자 페스티발 메인 등록페이지
+	//愿�由ъ옄 �럹�뒪�떚諛� 硫붿씤 �벑濡앺럹�씠吏�
 	@RequestMapping(value="festivalRegPage.do", method = RequestMethod.GET)
 	public String festivalRegPage(Model model){
 		
@@ -441,7 +440,7 @@ public class ManagerController {
 		
 		return "manager/managerFestivalMainReg";
 	}
-	//관리자 페스티발 리스트 미리보기 페이지
+	//愿�由ъ옄 �럹�뒪�떚諛� 由ъ뒪�듃 誘몃━蹂닿린 �럹�씠吏�
 	@RequestMapping(value="festivalListPreview.do", method = RequestMethod.GET)
 	public String festivalListPreview(Model model){
 		
@@ -450,9 +449,9 @@ public class ManagerController {
 		
 		return "manager/managerFestivalListPreview";
 	}
-					// --관리자 인기여행지 --
+					// --愿�由ъ옄 �씤湲곗뿬�뻾吏� --
 	
-	//관리자 인기여행지 리스트 페이지
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� 由ъ뒪�듃 �럹�씠吏�
 	@RequestMapping(value="managerTrip.do", method = RequestMethod.GET)
 	public String managerTrip(@ModelAttribute("TripScri")SearchCriteria TripScri,Model model) throws Exception{
 		
@@ -466,31 +465,31 @@ public class ManagerController {
 		
 		return "manager/managerTrip";
 	}
-	//관리자 인기여행지 등록 페이지
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� �벑濡� �럹�씠吏�
 	@RequestMapping(value="tripPlus.do", method = RequestMethod.GET)
 	public String tripPlusPage(Model model) throws Exception{
 		
 			
 		return "manager/managerTripPlus";
 	}
-	//관리자 인기여행지 등록 
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� �벑濡� 
 	@RequestMapping(value="tripPlus.do", method = RequestMethod.POST)
 	public String tripPlus(HttpServletRequest req, HttpServletResponse response,String tName,String tAddr,String tSubContent,String tMainContent,String tLink,String tLatitude,String tLongitude,MultipartFile tImgName) throws Exception{
 
-		String fileRealName = tImgName.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드
-		long size = tImgName.getSize(); //파일 사이즈
+		String fileRealName = tImgName.getOriginalFilename(); //�뙆�씪紐낆쓣 �뼸�뼱�궪 �닔 �엳�뒗 硫붿꽌�뱶
+		long size = tImgName.getSize(); //�뙆�씪 �궗�씠利�
 		
-		System.out.println("파일명 : "  + fileRealName);
-		System.out.println("용량크기(byte) : " + size);
-		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자명을 구함
+		System.out.println("�뙆�씪紐� : "  + fileRealName);
+		System.out.println("�슜�웾�겕湲�(byte) : " + size);
+		//�꽌踰꾩뿉 ���옣�븷 �뙆�씪�씠由� fileextension�쑝濡� .jsp�씠�윴�떇�쓽  �솗�옣�옄紐낆쓣 援ы븿
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
 		String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
 		
 		/*
-		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
-		  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
-		  타인어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
-		  고유한 랜덤 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
+		  �뙆�씪 �뾽濡쒕뱶�떆 �뙆�씪紐낆씠 �룞�씪�븳 �뙆�씪�씠 �씠誘� 議댁옱�븷 �닔�룄 �엳怨� �궗�슜�옄媛� 
+		  �뾽濡쒕뱶 �븯�뒗 �뙆�씪紐낆씠 �뼵�뼱 �씠�쇅�쓽 �뼵�뼱濡� �릺�뼱�엳�쓣 �닔 �엳�뒿�땲�떎. 
+		  ���씤�뼱瑜� 吏��썝�븯吏� �븡�뒗 �솚寃쎌뿉�꽌�뒗 �젙�긽 �룞�옉�씠 �릺吏� �븡�뒿�땲�떎.(由щ늼�뒪媛� ���몴�쟻�씤 �삁�떆)
+		  怨좎쑀�븳 �옖�뜡 臾몄옄瑜� �넻�빐 db�� �꽌踰꾩뿉 ���옣�븷 �뙆�씪紐낆쓣 �깉濡�寃� 留뚮뱾�뼱 以��떎.
 		 */
 		
 		UUID uuid = UUID.randomUUID();
@@ -498,13 +497,13 @@ public class ManagerController {
 		String[] uuids = uuid.toString().split("-");
 		
 		String uniqueName = uuids[0];
-		System.out.println("생성된 고유문자열" + uniqueName);
-		System.out.println("확장자명" + fileExtension);
+		System.out.println("�깮�꽦�맂 怨좎쑀臾몄옄�뿴" + uniqueName);
+		System.out.println("�솗�옣�옄紐�" + fileExtension);
 		
-		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
-		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid �쟻�슜 �쟾
+		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // �쟻�슜 �썑
 		try {
-			tImgName.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+			tImgName.transferTo(saveFile); // �떎�젣 �뙆�씪 ���옣硫붿꽌�뱶(filewriter �옉�뾽�쓣 �넀�돺寃� �븳諛⑹뿉 泥섎━�빐以��떎.)
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -526,13 +525,13 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('여행지 등록이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
+		out.append("<script>alert('�뿬�뻾吏� �벑濡앹씠 �셿猷뚮릺�뿀�뒿�땲�떎.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
 		
 		return "";
 	}
-	//관리자 인기여행지 삭제 
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� �궘�젣 
 	@RequestMapping(value="tripDt.do", method = RequestMethod.GET)
 	public String tripDt(int tidx,HttpServletResponse response,HttpServletRequest req)throws Exception {
 			
@@ -541,13 +540,13 @@ public class ManagerController {
 			response.setContentType("text/html; charset=UTF-8"); 
 			PrintWriter out = response.getWriter();
 			
-			out.append("<script>alert('삭제가 완료되었습니다.'); location.href='"+req.getContextPath()+"/manager/managerTrip.do';</script>"); 
+			out.append("<script>alert('�궘�젣媛� �셿猷뚮릺�뿀�뒿�땲�떎.'); location.href='"+req.getContextPath()+"/manager/managerTrip.do';</script>"); 
 			out.flush(); 
 			out.close();
 
 		return "";
 	}
-	//관리자 인기여행지 상세페이지 
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� �긽�꽭�럹�씠吏� 
 	@RequestMapping(value="tripInfo.do", method = RequestMethod.GET)
 	public String tripInfo(int tidx, Model model) {
 		
@@ -556,7 +555,7 @@ public class ManagerController {
 		
 		return "manager/managerTripInfo";
 	}
-	//관리자 인기여행지 수정페이지 
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� �닔�젙�럹�씠吏� 
 	@RequestMapping(value="tripMf.do", method = RequestMethod.GET)
 	public String tiprMf(int tidx, Model model) {
 		
@@ -566,13 +565,13 @@ public class ManagerController {
 		
 		return "manager/managerTripMf";
 	}
-	//관리자 인기여행지 수정 
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� �닔�젙 
 	@RequestMapping(value="tripMf.do", method = RequestMethod.POST)
 	public String tripMf(int tidx,String tName,String tAddr,String tSubContent,String tMainContent,String tLink,String tLatitude,String tLongitude,HttpServletResponse response,HttpServletRequest req, MultipartFile tImgName)throws Exception{
 		
-		// 새로운 이미지 등록
-				String fileRealName = tImgName.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-				long size = tImgName.getSize(); //파일 사이즈
+		// �깉濡쒖슫 �씠誘몄� �벑濡�
+				String fileRealName = tImgName.getOriginalFilename(); //�뙆�씪紐낆쓣 �뼸�뼱�궪 �닔 �엳�뒗 硫붿꽌�뱶!
+				long size = tImgName.getSize(); //�뙆�씪 �궗�씠利�
 					
 				String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
 				String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
@@ -581,9 +580,9 @@ public class ManagerController {
 				String[] uuids = uuid.toString().split("-");			
 				String uniqueName = uuids[0];
 				
-				File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
+				File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // �쟻�슜 �썑
 				try {
-					tImgName.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+					tImgName.transferTo(saveFile); // �떎�젣 �뙆�씪 ���옣硫붿꽌�뱶(filewriter �옉�뾽�쓣 �넀�돺寃� �븳諛⑹뿉 泥섎━�빐以��떎.)
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -598,7 +597,7 @@ public class ManagerController {
 				hm.put("tLink", tLink);
 				hm.put("tLatitude", tLatitude);
 				hm.put("tLongitude", tLongitude);
-				hm.put("tImgName", uniqueName+fileExtension); // (파라미터로 받아온 file을) 위에서 처리해서 나온 파일명을 (db에 넣어줄) vo변수(칼럼)에 담아준다
+				hm.put("tImgName", uniqueName+fileExtension); // (�뙆�씪誘명꽣濡� 諛쏆븘�삩 file�쓣) �쐞�뿉�꽌 泥섎━�빐�꽌 �굹�삩 �뙆�씪紐낆쓣 (db�뿉 �꽔�뼱以�) vo蹂��닔(移쇰읆)�뿉 �떞�븘以��떎
 
 				
 		managerService.tripUt(hm);
@@ -607,13 +606,13 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('수정이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
+		out.append("<script>alert('�닔�젙�씠 �셿猷뚮릺�뿀�뒿�땲�떎.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
 		
 		return "";
 	}
-	//관리자 인기여행지 메인등록페이지
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� 硫붿씤�벑濡앺럹�씠吏�
 	@RequestMapping(value="tripRegPage.do", method = RequestMethod.GET)
 	public String tripRegPage(Model model){
 		
@@ -625,7 +624,7 @@ public class ManagerController {
 		
 		return "manager/managerTripMainReg";
 	}
-	//관리자 인기여행지 리스트 미리보기 페이지
+	//愿�由ъ옄 �씤湲곗뿬�뻾吏� 由ъ뒪�듃 誘몃━蹂닿린 �럹�씠吏�
 	@RequestMapping(value="tripListPreview.do", method = RequestMethod.GET)
 	public String tripListPreview(Model model){
 		
@@ -636,7 +635,7 @@ public class ManagerController {
 	}
 	
 	
-	//위도,경도 추출을 위한 지도 팝업창
+	//�쐞�룄,寃쎈룄 異붿텧�쓣 �쐞�븳 吏��룄 �뙘�뾽李�
 	@RequestMapping(value="mapOn.do", method = RequestMethod.GET)
 	public String mapOn(){
 		
