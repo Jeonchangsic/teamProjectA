@@ -65,7 +65,10 @@
                 	 method:"post",
                 	 data:{
                 		 "merchant_uid": rsp.merchant_uid
-                	 } 
+                	 },
+                	 success:function(){
+                		 alert(1);
+                	 }
                  });
                  location.href ="<%=request.getContextPath()%>/mypage/info.do";
             } else {//결제실패시

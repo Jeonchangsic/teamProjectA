@@ -62,6 +62,8 @@ public class reservController {
 	@RequestMapping(value = "/reserv/reserv_pay.do", method = RequestMethod.POST)
 	public String reserv_pay(String merchant_uid,String fromDate,String toDate,int ridx,HttpServletResponse response, HttpServletRequest req)throws Exception {
 		
+		System.out.println("success pay!!");
+		
 		HttpSession session = req.getSession();
 		UserVO userVO = (UserVO)session.getAttribute("login");
 		HashMap<String,Object> hm = new HashMap<String,Object>();
