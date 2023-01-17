@@ -128,8 +128,8 @@
 			});
 			
 			//이미지 필수 등록 안내
-			$('#next').on("click",function() { 
-				var imgVal = $('#rimage1').val(); 
+			$('#next').on("click",function() {  
+				var imgVal = $('#rimage1').val();  
 				if(imgVal=='') 
 					{ 
 						alert("사진을 등록해 주세요."); 
@@ -144,12 +144,12 @@
 					alert("기준인원을 최대인원보다 적게 입력해주세요.")
 					return false;
 				}
-			
+
 				});
 			});
 		
 		//남은객실수 val값 추가
-		$(document).ready(function(){
+		$(document).ready(function(){ 
 			$("#rnum").change(function(){
 		        $('#spareroom').val($(this).val());
 		    });	

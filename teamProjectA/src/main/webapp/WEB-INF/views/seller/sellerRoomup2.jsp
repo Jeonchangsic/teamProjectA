@@ -31,7 +31,7 @@
 		//추가정보입력			    
 		$(document).ready(function () {
 			
-			$(".ch:checked").val("Y");
+			$(".ch:checked").val("Y"); 
 			
 			//체크박스 선택시 ny주기
 			$(".ch").change(function(){
