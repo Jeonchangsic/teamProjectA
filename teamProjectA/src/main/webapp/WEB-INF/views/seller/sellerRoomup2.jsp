@@ -269,7 +269,7 @@
 								<div class="public_in">
 									<ul id="in_left" class="filter_check">
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="roomspa" <c:if test="${mo.roomspa eq 'Y'}">checked</c:if>> <label>${mo.roomspa}객실스파</label></li>
+											class="ch" name="roomspa" <c:if test="${mo.roomspa eq 'Y'}">checked</c:if>> <label>객실스파</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
 											class="ch" name="wifi" <c:if test="${mo.wifi eq 'Y'}">checked</c:if>> <label>와이파이</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
