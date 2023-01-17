@@ -122,7 +122,7 @@
 							'<div id="modalImg"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/jeolla_2.jpg"></div>'+
 							'<div id="modalR">'+
 								'<div>전북 전주시<br> 완산구 대성동 1-1</div>'+
-								'<a class="modalinfo" href=http://jjezen.cafe24.com/teamProjectA/lodging/lodgingView.do?lidx=4&fromDate=${fromDate}&toDate=${toDate}&men=${men}" target="_blank">전주 한옥호텔 <br> 왕의지밀</a>'+
+								'<a class="modalinfo" href="http://jjezen.cafe24.com/teamProjectA/lodging/lodgingView.do?lidx=4&fromDate=${fromDate}&toDate=${toDate}&men=${men}" target="_blank">전주 한옥호텔 <br> 왕의지밀</a>'+
 							'</div>'+
 						'</div>',
 			    latlng: new kakao.maps.LatLng(35.800146169437156, 127.17763723339829)
@@ -238,14 +238,14 @@
 			    latlng: new kakao.maps.LatLng(35.18216565099639, 129.2085469232981)
 			},
 			{
-			    content: '<div style="padding:5px; width: 200px">'+
+			    content: '<div style="padding:5px; width: 250px">'+
 							'<div id="modalImg"><img src="<%=request.getContextPath()%>/resources/images/lodging_images/busan_4.jpg"></div>'+
 							'<div id="modalR">'+
 								'<div>부산 해운대구<br> 송정동 437-1</div>'+
 								'<a class="modalinfo" href="http://jjezen.cafe24.com/teamProjectA/lodging/lodgingView.do?lidx=10&fromDate=${fromDate}&toDate=${toDate}&men=${men}" target="_blank">해운대 송정 오셔너스</a>'+
 							'</div>'+
 						'</div>',
-			    latlng: new kakao.maps.LatLng(35.177038946625096, 129.19686768887712)
+			    latlng: new kakao.maps.LatLng(35.1773594,129.1961884)
 			},
 			{
 			    content: '<div style="padding:5px; width: 230px">'+
@@ -255,7 +255,7 @@
 								'<a class="modalinfo" href="http://jjezen.cafe24.com/teamProjectA/lodging/lodgingView.do?lidx=12&fromDate=${fromDate}&toDate=${toDate}&men=${men}" target="_blank">부산 씨앤트리풀빌라</a>'+
 							'</div>'+
 						'</div>',
-			    latlng: new kakao.maps.LatLng(35.177038946625096, 129.19686768887712)
+			    latlng: new kakao.maps.LatLng(35.3128132,129.2614539)
 			},
 			{
 			    content: '<div style="padding:5px; width: 200px">'+
