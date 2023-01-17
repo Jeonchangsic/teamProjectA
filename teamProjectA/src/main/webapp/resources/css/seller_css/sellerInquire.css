@@ -1,8 +1,6 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
-
-
             /*리셋코드*/
 * {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
 
@@ -32,8 +30,10 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 header {
-	line-height: 1;
 	font-family: 'Do Hyeon', sans-serif;
+}
+body {
+	line-height: 1;
 }
 ol, ul {
 	list-style: none;
@@ -55,8 +55,8 @@ a{text-decoration:none; color: inherit;}
 UL,li{list-style:none;}
             /*리셋코드*/
 
-                         /*header*/
-
+		
+				/*header*/
 .clearfix::after{
 	content:""; 
 	display:block; 
@@ -64,8 +64,8 @@ UL,li{list-style:none;}
 }
 .inner{
 	width:1024px; 
-	margin:0 auto; 
-	font-family: 'Nanum Gothic', sans-serif;
+	margin:0 auto;
+	height:800px; 
 }
 #header{ 
 	margin:0 auto;
@@ -77,94 +77,6 @@ UL,li{list-style:none;}
             float:left; 
             font-size: 30px;
             margin: 30px 0 0 80px;}
-
-#header #manager{
-	color:white;
-}
-#header #manager li{
-	display: inline-block; 
-    margin:40px 150px 40px;
-    }
-.top li a{@charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-
-
-
-            /*리셋코드*/
-* {MARGIN:0; PADDING:0;}                                        /*헤더 높이 수정, nav 아래 글자 위치 수정, 숙소 리스트 텍스트 줄 간격 수정. footer영역 사이즈 바뀌는것 수정 */
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-header {
-	line-height: 1;
-	font-family: 'Do Hyeon', sans-serif;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-a{text-decoration:none; color: inherit;}
-UL,li{list-style:none;}
-            /*리셋코드*/
-
-                         /*header*/
-
-.clearfix::after{
-	content:""; 
-	display:block; 
-	clear:both;
-}
-.inner{
-	width:1024px; 
-	margin:0 auto; 
-	font-family: 'Nanum Gothic', sans-serif;
-}
-#header{ 
-	margin:0 auto;
-    height: 100px;
-    overflow: hidden;
-    background-color: rgb(86,19,241);
-}
-#header h3{color:white; 
-            float:left; 
-            font-size: 30px;
-            margin: 30px 0 0 80px;}
-
 #header #manager{
 	color:white;
 }
@@ -176,12 +88,32 @@ UL,li{list-style:none;}
 		text-decoration: none;
         color:white;
         font-size:20px;
-        font-family: 'Do Hyeon', sans-serif;
-        }
-ul{
-    text-align: center;
-    margin-top:10px;
-}
+        font-family: 'Do Hyeon', sans-serif;}
+.nav{
+	width:100vw;
+    height: 30px;
+    list-style: none;
+    display: flex;
+    margin-top:80px;}
+.nav li a{
+        font-size: 20px;
+        text-decoration:none;
+        margin-right: 40px;
+       	color:black;
+        position:relative;}
+.nav li a::before{
+		content:'';
+        height:5px;
+        width:0px;
+        background-color: rgb(86,19,241);
+        border-radius: 10px;
+        transition:0.3s;
+        position:absolute;
+        bottom: 0;
+        left:0;}
+.nav li a:hover::before{
+	width:100%;
+	}
 				/*main*/
 main  h3{font-weight: bold;
         font-size: 25px;
