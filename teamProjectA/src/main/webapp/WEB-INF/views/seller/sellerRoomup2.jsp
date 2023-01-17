@@ -89,20 +89,7 @@
 		
 		//이미지 업로드	
 		$(document).ready(function(){
-			//이미지선택을 안했을시 나머지 이미지 태그 없애기
-			if($("${rimage2}" == null)){
-				$("#border div:nth-child(2)").empty("<img src=''/>"); // 이미지 지우고
-			}
-			if($("${rimage3}" == null)){
-				$("#border div:nth-child(3)").empty("<img src=''/>"); // 이미지 지우고
-			}
-			if($("${rimage4}" == null)){
-				$("#border div:nth-child(4)").empty("<img src=''/>"); // 이미지 지우고
-			}
-			if($("${rimage5}" == null)){
-				$("#border div:nth-child(5)").empty("<img src=''/>"); // 이미지 지우고
-			}
-
+			
 			$("#rimage1").change(function(){
 				if(this.files && this.files[0]) {					
 					$("#border div:first-child").empty("<img src=''/>"); // 이미지 지우고
@@ -215,20 +202,28 @@
 							<input type="hidden" name="rimage1" value="${mo.rimage1}">
 						</div>
 						<div class="imgborder">
+						<c:if test="${mo.rimage2 != null}">
 							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage2}" />
 							<input type="hidden" name="rimage2" value="${mo.rimage2}">
+						</c:if>
 						</div>
 						<div class="imgborder">
+						<c:if test="${mo.rimage3 != null}">
 							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage3}" />
 							<input type="hidden" name="rimage3" value="${mo.rimage3}">
+						</c:if>
 						</div>
 						<div class="imgborder">
+						<c:if test="${mo.rimage4 != null}">
 							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage4}" />
 							<input type="hidden" name="rimage4" value="${mo.rimage4}">
+						</c:if>
 						</div>
 						<div class="imgborder">
-							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage5}" />
+						<c:if test="${mo.rimage5 != null}">
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage5}>" />
 							<input type="hidden" name="rimage5" value="${mo.rimage5}">
+						</c:if>
 						</div>
 					</div>
 				</div>
@@ -274,7 +269,7 @@
 								<div class="public_in">
 									<ul id="in_left" class="filter_check">
 										<li><input type="checkbox" onchange="checkBox(this)"
-											class="ch" name="roomspa" <c:if test="${mo.roomspa eq 'Y'}">checked</c:if>> <label>${mo.roomspa}객실스파</label></li>
+											class="ch" name="roomspa" <c:if test="${mo.roomspa eq 'Y'}">checked</c:if>> <label>객실스파</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
 											class="ch" name="wifi" <c:if test="${mo.wifi eq 'Y'}">checked</c:if>> <label>와이파이</label></li>
 										<li><input type="checkbox" onchange="checkBox(this)"
