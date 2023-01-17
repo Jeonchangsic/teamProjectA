@@ -95,15 +95,22 @@
 		})
 	});
 
+     </script>
+     <script>
 		//회원탈퇴 페이지 이동 
-		function delFn() {
-			if (!confirm("회원탈퇴 페이지로 이동하시겠습니까?")) {
-				alert("이동이 취소되었습니다.");
-			} else {
-				location = "/A/mypage/userDt.do";
-			}
-		}
-		
+		<!--예약취소 팝업창  -->
+   
+     function delFn(){
+    	var url = "<%=request.getContextPath()%>/mypage/userDt.do?";  //팝업창 페이지 URL
+ 		var winWidth = 500;
+ 	    var winHeight = 250;
+ 	   var popupX = (window.screen.width / 2) - (500 / 2);
+	  	var popupY= (window.screen.height / 2) - (250 / 2);
+	  	var popupOption= "width="+winWidth+", height="+winHeight+",left="+popupX+",top="+popupY;    //팝업창 옵션(optoin)
+ 		window.open(url,"",popupOption);
+     };
+     </script>
+     <script>
 		function delFn2(){
 			alert("숙소 삭제 후 탈퇴 가능합니다.")
 		};
@@ -264,10 +271,10 @@
 		</form>
 		<div id="delrow">
 			<c:if test = "${lodging.lidx == null || lodging.lidx == ''}">
-				<button id="mydel" type="button" onclick="delFn()">회원탈퇴</button>
+				<button class="mydel" type="button" onclick="delFn()">회원탈퇴</button>
 			</c:if>
 			<c:if test = "${lodging.lidx != null && lodging.lidx != ''}">
-				<button id="mydel" type="button" onclick="delFn2()">회원탈퇴</button>
+				<button class="mydel" type="button" onclick="delFn2()">회원탈퇴</button>
 			</c:if>
 		</div>
 

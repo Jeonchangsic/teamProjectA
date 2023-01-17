@@ -120,7 +120,7 @@ input{padding:3px; width:200px;}
         color:white;
         cursor:pointer        
 }
-main #mydel{width:80px;
+main .mydel{width:80px;
         height:30px;
         border:0px solid #555;
         background-color:#555;
