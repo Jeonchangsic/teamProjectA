@@ -89,6 +89,20 @@
 		
 		//이미지 업로드	
 		$(document).ready(function(){
+			//이미지선택을 안했을시 나머지 이미지 태그 없애기
+			if($("${rimage2}" == null)){
+				$("#border div:nth-child(2)").empty("<img src=''/>"); // 이미지 지우고
+			}
+			if($("${rimage3}" == null)){
+				$("#border div:nth-child(3)").empty("<img src=''/>"); // 이미지 지우고
+			}
+			if($("${rimage4}" == null)){
+				$("#border div:nth-child(4)").empty("<img src=''/>"); // 이미지 지우고
+			}
+			if($("${rimage5}" == null)){
+				$("#border div:nth-child(5)").empty("<img src=''/>"); // 이미지 지우고
+			}
+
 			$("#rimage1").change(function(){
 				if(this.files && this.files[0]) {					
 					$("#border div:first-child").empty("<img src=''/>"); // 이미지 지우고
