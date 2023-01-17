@@ -14,7 +14,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>저긴어때</title>
+    <!-- 파비콘 -->
+    <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
     <link href="<%=request.getContextPath()%>/resources/css/lodging_css/reset.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/css/lodging_css/select_style.css" rel="stylesheet">
     <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>

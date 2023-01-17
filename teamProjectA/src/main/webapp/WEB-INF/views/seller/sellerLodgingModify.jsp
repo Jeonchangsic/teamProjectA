@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>저긴어때</title>
+<!-- 파비콘 -->
+<link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 	<link href="<%=request.getContextPath()%>/resources/css/lodging_css/lodging_reset.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/css/seller_css/sellerLodgingUp.css" rel="stylesheet">
-    <link href="<%= request.getContextPath() %>/resources/images/lodgingView_images/favicon.jpg" rel="shortcut icon">
     <script src="<%= request.getContextPath() %>/resources/css/jquery-3.6.1.min.js"></script>
     <script>
 		//숙소정보입력

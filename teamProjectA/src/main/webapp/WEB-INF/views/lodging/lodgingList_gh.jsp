@@ -14,7 +14,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>저긴어때</title>
+    <!-- 파비콘 -->
+    <link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
     <link href="<%=request.getContextPath()%>/resources/css/lodging_css/reset.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/css/lodging_css/select_style.css" rel="stylesheet">
     <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
@@ -843,7 +845,7 @@
 								<c:if test = "${fromDate == null || fromDate == ''}">
 									<a href="<%=request.getContextPath() %>/lodging/lodgingView.do?lidx=${vo.lidx}
 									&fromDate= <jsp:useBean id = "today" class="java.util.Date"/>
-												<fmt:formatDate value = "${fromDate}" type = "DATE" pattern ="yyyy-MM-dd"/>
+												<fmt:formatDate value = "${fromDate}, ${vo.allprice}" type = "DATE" pattern ="yyyy-MM-dd"/>
 									&toDate=<c:set var = "tomorrow" value ="<%=new Date(new Date().getTime() + 60*60*24*1000)%>"/>
 											<fmt:formatDate value="${toDate}" type ="DATE" pattern="yyyy-MM-dd"/>
 									&men=2">

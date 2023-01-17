@@ -8,7 +8,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 객실관리</title>
+<title>저긴어때</title>
+<!-- 파비콘 -->
+<link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/manager_css/managerRoomOK.css">
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>

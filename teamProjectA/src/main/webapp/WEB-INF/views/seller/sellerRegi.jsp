@@ -2,11 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>저긴어때</title>
+<!-- 파비콘 -->
+<link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/reset.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/seller_css/sellerRegi.css">
 <script src="https://ajax.googleapis.com/resources/css/3.6.1/jquery.min.js"></script>
@@ -114,7 +117,9 @@
 							<tr style="text-align:center;">
 								<td><img src="<%= request.getContextPath()%>/resources/images/lodging_images/${vo.rimage1}" alt="숙소 이미지"></td>
 								<td>${vo.rtype}</td>
-								<td>${vo.rprice}</td>
+								<td>
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.rprice}" />원
+								</td>
 								<td>${vo.rnum}</td>
 								<td>
 									<button type="button" value="수정" onclick="location.href='sellerRoomup2.do?ridx=${vo.ridx}'">수정</button>

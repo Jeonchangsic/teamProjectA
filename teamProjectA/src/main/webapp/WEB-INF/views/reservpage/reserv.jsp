@@ -13,7 +13,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예약화면</title>
+	<title>저긴어때</title>
+	<!-- 파비콘 -->
+	<link href="<%=request.getContextPath() %>/resources/images/login_images/logo2.svg" rel="shortcut icon">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/reserv_css/reset.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/reserv_css/reserv.css">
     <script src="<%=request.getContextPath()%>/resources/css/jquery-3.6.1.min.js"></script>
@@ -152,19 +154,31 @@
                 </tr>
                 <tr>
                     <td><input type="checkbox" name="check" onclick="check()"></td>
-                    <td>숙소이용규칙 및 취소/환불규정동의</td>
+                    <td>
+                    	<p class="p_Style">[필수]</p>
+                    	숙소이용규칙 및 취소/환불규정동의
+                    </td>
                </tr>
                <tr>
                     <td><input type="checkbox" name="check" onclick="check()"></td>
-                    <td>개인정보 수집 및 이용 동의</td>
+                    <td>
+                    	<p class="p_Style">[필수]</p>
+                    	개인정보 수집 및 이용 동의
+                    </td>
                </tr>
                <tr>
                     <td><input type="checkbox" name="check" onclick="check()"></td>
-                    <td>개인정보 제 3자 제공 동의</td>
+                    <td>
+                    	<p class="p_Style">[필수]</p>
+                    	개인정보 제 3자 제공 동의
+                    </td>
                </tr>
                <tr>
                     <td><input type="checkbox" name="check" onclick="check()"></td>
-                    <td>만 14세 이상 확인</td>
+                    <td>
+                    	<p class="p_Style">[필수]</p>
+                    	만 14세 이상 확인
+                    </td>
                </tr>
             </table>
         </div>
