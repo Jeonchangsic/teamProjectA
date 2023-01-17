@@ -106,7 +106,7 @@ UL,li{list-style:none;}
         height:5px;
         width:0px;
         background-color: rgb(86,19,241);
-        border-radius: 10px;
+         border-radius: 10px;
         transition:0.3s;
         position:absolute;
         bottom: 0;
