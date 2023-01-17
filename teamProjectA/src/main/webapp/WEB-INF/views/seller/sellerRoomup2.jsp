@@ -151,7 +151,7 @@
 				var stdmen = $("#stdmen").val();
 				var maxmen = $("#maxmen").val();
 				
-				if(stdmen > maxmen){
+				if(parseInt(stdmen) > parseInt(maxmen)){
 					alert("기준인원을 최대인원보다 적게 입력해주세요.")
 					return false;
 				}
