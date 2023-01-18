@@ -302,153 +302,153 @@
 		<if test="men != null and men != ''">
 			AND r.maxmen <![CDATA[>=]]> ${men}
 		</if>
-		<trim prefix="AND (" prefixOverrides="OR" suffix=")">
+		<trim> <!-- prefix="AND (" prefixOverrides="OR" suffix=")"> -->
 			<if test="bedArr != null">
-				bed IN
+				AND bed IN
 				<foreach collection="bedArr" item="obj" open="(" close=")" separator=",">
 					#{obj}
 				</foreach>
 			</if>
 			<if test="fitness == 'on'">
-				OR lin.fitness = 'Y'
+				AND lin.fitness = 'Y'
 			</if>
 			<if test="sauna == 'on'">
-				OR sauna = 'Y'
+				AND sauna = 'Y'
 			</if>
 			<if test="restaurant == 'on'">
-				OR restaurant = 'Y'
+				AND restaurant = 'Y'
 			</if>
 			<if test="lounge == 'on'">
-				OR lounge = 'Y'
+				AND lounge = 'Y'
 			</if>
 			<if test="bbq == 'on'">
-				OR bbq = 'Y'
+				AND bbq = 'Y'
 			</if>
 			<if test="publicspa == 'on'">
-				OR publicspa = 'Y'
+				AND publicspa = 'Y'
 			</if>
 			<if test="seminar == 'on'">
-				OR seminar = 'Y'
+				AND seminar = 'Y'
 			</if>
 			<if test="singing == 'on'">
-				OR singing = 'Y'
+				AND singing = 'Y'
 			</if>
 			<if test="washingmachine == 'on'">
-				OR washingmachine = 'Y'
+				AND washingmachine = 'Y'
 			</if>
 			<if test="dehydrator == 'on'">
-				OR dehydrator = 'Y'
+				AND dehydrator = 'Y'
 			</if>
 			<if test="cooking == 'on'">
-				OR cooking = 'Y'
+				AND cooking = 'Y'
 			</if>
 			<if test="spa == 'on'">
-				OR spa = 'Y'
+				AND spa = 'Y'
 			</if>
 			<if test="pool == 'on'">
-				OR pool = 'Y'
+				AND pool = 'Y'
 			</if>
 			<if test="golf == 'on'">
-				OR golf = 'Y'
+				AND golf = 'Y'
 			</if>
 			<if test="elevator == 'on'">
-				OR elevator = 'Y'
+				AND elevator = 'Y'
 			</if>
 			<if test="pc == 'on'">
-				OR pc = 'Y'
+				AND pc = 'Y'
 			</if>
 			<if test="cafe == 'on'">
-				OR cafe = 'Y'
+				AND cafe = 'Y'
 			</if>
 			<if test="footvolleyball == 'on'">
-				OR footvolleyball = 'Y'
+				AND footvolleyball = 'Y'
 			</if>
 			<if test="store == 'on'">
-				OR store = 'Y'
+				AND store = 'Y'
 			</if>
 			<if test="dining == 'on'">
-				OR dining = 'Y'
+				AND dining = 'Y'
 			</if>
 			<if test="dryingmachine == 'on'">
-				OR dryingmachine = 'Y'
+				AND dryingmachine = 'Y'
 			</if>
 			<if test="parking == 'on'">
-				OR parking = 'Y'
+				AND parking = 'Y'
 			</if>
 			<if test="publicshower == 'on'">
-				OR publicshower = 'Y'
+				AND publicshower = 'Y'
 			</if>
 			<if test="ski == 'on'">
-				OR ski = 'Y'
+				AND ski = 'Y'
 			</if>
 			<if test="roomspa == 'on'">
-				OR roomspa = 'Y'
+				AND roomspa = 'Y'
 			</if>
 			<if test="wifi == 'on'">
-				OR wifi = 'Y'
+				AND wifi = 'Y'
 			</if>
 			<if test="tv == 'on'">
-				OR tv = 'Y'
+				AND tv = 'Y'
 			</if>
 			<if test="refri == 'on'">
-				OR refri = 'Y'
+				AND refri = 'Y'
 			</if>
 			<if test="bath == 'on'">
-				OR bath = 'Y'
+				AND bath = 'Y'
 			</if>
 			<if test="iron == 'on'">
-				OR iron = 'Y'
+				AND iron = 'Y'
 			</if>
 			<if test="minibar == 'on'">
-				OR minibar = 'Y'
+				AND minibar = 'Y'
 			</if>
 			<if test="bathitem == 'on'">
-				OR bathitem = 'Y'
+				AND bathitem = 'Y'
 			</if>
 			<if test="aircon == 'on'">
-				OR aircon = 'Y'
+				AND aircon = 'Y'
 			</if>
 			<if test="shower == 'on'">
-				OR shower = 'Y'
+				AND shower = 'Y'
 			</if>
 			<if test="dryer == 'on'">
-				OR dryer = 'Y'
+				AND dryer = 'Y'
 			</if>
 			<if test="ricecooker == 'on'">
-				OR ricecooker = 'Y'
+				AND ricecooker = 'Y'
 			</if>
 			<if test="pickup == 'on'">
-				OR pickup = 'Y'
+				AND pickup = 'Y'
 			</if>
 			<if test="printer == 'on'">
-				OR printer = 'Y'
+				AND printer = 'Y'
 			</if>
 			<if test="locker == 'on'"
-				>OR locker = 'Y'
+				>AND locker = 'Y'
 			</if>
 			<if test="breakfast == 'on'">
-				OR breakfast = 'Y'
+				AND breakfast = 'Y'
 			</if>
 			<if test="valetparking == 'on'">
-				OR valetparking = 'Y'
+				AND valetparking = 'Y'
 			</if>
 			<if test="dog == 'on'">
-				OR dog = 'Y'
+				AND dog = 'Y'
 			</if>
 			<if test="inroomcooking == 'on'">
-				OR inroomcooking = 'Y'
+				AND inroomcooking = 'Y'
 			</if>
 			<if test="keepluggage == 'on'">
-				OR keepluggage = 'Y'
+				AND keepluggage = 'Y'
 			</if>
 			<if test="freeparking == 'on'">
-				OR freeparking = 'Y'
+				AND freeparking = 'Y'
 			</if>
 			<if test="inroomsmoking == 'on'">
-				OR inroomsmoking = 'Y'
+				AND inroomsmoking = 'Y'
 			</if>
 			<if test="nosmoking == 'on'">
-				OR creditcard = 'Y'
+				AND creditcard = 'Y'
 			</if>
 		</trim>
 		<choose>
