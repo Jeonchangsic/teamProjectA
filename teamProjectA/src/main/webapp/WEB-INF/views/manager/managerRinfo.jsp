@@ -25,7 +25,7 @@
         <div id="contentsArea">
                 <table id="table1">
                 	<tr>
-                		<td class="td_vertical-align"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${limagename}"/> </td>
+                		<td class="td_vertical-align"><img id="review_Img" src="<%=request.getContextPath()%>/resources/images/lodging_images/${vo.limagename}"/> </td>
                 		<td class="td_vertical-align td_padding">
                 			<div id="lodgingText">${vo.lodgingname}</div>
                 			<div id="rtypeText">[${vo.rtype}]</div>

@@ -142,6 +142,7 @@
 		<!-- 리뷰 상세 출력 -->
 		<select id="reviewList2" parameterType="int" resultType="reviewVO">
 			SELECT u.USERID
+					,l.limagename
 			 	    ,l.lodgingname
 					,rvtitle
 					,rvdate
