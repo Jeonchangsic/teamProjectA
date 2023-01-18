@@ -221,7 +221,7 @@
 						</div>
 						<div class="imgborder">
 						<c:if test="${mo.rimage5 != null}">
-							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage5}>" />
+							<img src="<%=request.getContextPath()%>/resources/images/lodging_images/${mo.rimage5}" />
 							<input type="hidden" name="rimage5" value="${mo.rimage5}">
 						</c:if>
 						</div>
