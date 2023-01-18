@@ -78,7 +78,7 @@ public class LodgingController {
 		return "lodging/lodgingList_gh"; //��ιٲ�� ���⼭(servlet-context.xml�� ���ִ� �⺻��θ� �������) �߰� ��θ� ���ָ� �� ex) main/home
 	}
 	
-	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET) // value : ������  // "/":����������(��������)
+	@RequestMapping(value = "/lodgingList_hotel.do", method = RequestMethod.GET)
 	public String list_hotel(Model model, String type, String area, RoomVO rvo, LodginginVO linvo, RoominVO rinvo, String fromDate, String toDate, String men) {
 		
 		//날짜
