@@ -31,14 +31,13 @@
 				}
 	  	  	});
 				
-			function checkBox(obj){
-				var checked = obj.checked;
-				if(checked){
-					obj.value = "Y";
+	  		$("input:checkbox").change(function(){
+				if(this.checked){
+					$(this).attr('value', 'Y');
 				}else{
-					obj.value= "N";
+					$(this).attr('value', 'N');
 				}
-			};
+			});
   	});
 
 		
