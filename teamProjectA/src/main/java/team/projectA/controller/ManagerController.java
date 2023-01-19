@@ -166,7 +166,7 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('�닕�냼 �듅�씤�씠 �셿猷뚮릺�뿀�뒿�땲�떎.');  location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
+		out.append("<script>alert('숙소 승인이 완료되었습니다.');  location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
 		out.flush(); 
 		out.close();
 		
@@ -182,7 +182,7 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('�닕�냼 �듅�씤�씠 嫄곕��릺�뿀�뒿�땲�떎.'); location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
+		out.append("<script>alert('숙소 승인이 거부되었습니다.'); location.href='"+req.getContextPath()+"/manager/managerRoomOK.do';</script>"); 
 														
 		out.flush(); 
 		out.close();
@@ -296,8 +296,6 @@ public class ManagerController {
 				String fileRealName = ftImgName.getOriginalFilename(); //�뙆�씪紐낆쓣 �뼸�뼱�궪 �닔 �엳�뒗 硫붿꽌�뱶
 				long size = ftImgName.getSize(); //�뙆�씪 �궗�씠利�
 				
-				System.out.println("�뙆�씪紐� : "  + fileRealName);
-				System.out.println("�슜�웾�겕湲�(byte) : " + size);
 				//�꽌踰꾩뿉 ���옣�븷 �뙆�씪�씠由� fileextension�쑝濡� .jsp�씠�윴�떇�쓽  �솗�옣�옄紐낆쓣 援ы븿
 				String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
 				String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/manager_images");
@@ -314,8 +312,7 @@ public class ManagerController {
 				String[] uuids = uuid.toString().split("-");
 				
 				String uniqueName = uuids[0];
-				System.out.println("�깮�꽦�맂 怨좎쑀臾몄옄�뿴" + uniqueName);
-				System.out.println("�솗�옣�옄紐�" + fileExtension);
+
 				
 				// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid �쟻�슜 �쟾
 				File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // �쟻�슜 �썑
@@ -342,7 +339,7 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('異뺤젣 �벑濡앹씠 �셿猷뚮릺�뿀�뒿�땲�떎.'); opener.parent.location.reload(); window.close();</script>"); 
+		out.append("<script>alert('축제 등록이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
 			return "";
@@ -356,7 +353,7 @@ public class ManagerController {
 			response.setContentType("text/html; charset=UTF-8"); 
 			PrintWriter out = response.getWriter();
 			
-			out.append("<script>alert('�궘�젣媛� �셿猷뚮릺�뿀�뒿�땲�떎.'); location.href='"+req.getContextPath()+"/manager/managerFestival.do';</script>"); 
+			out.append("<script>alert('삭제가 완료되었습니다.'); location.href='"+req.getContextPath()+"/manager/managerFestival.do';</script>"); 
 			out.flush(); 
 			out.close();
 
@@ -422,7 +419,7 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('�닔�젙�씠 �셿猷뚮릺�뿀�뒿�땲�떎.'); opener.parent.location.reload(); window.close();</script>"); 
+		out.append("<script>alert('수정이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
 		
@@ -525,7 +522,7 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('�뿬�뻾吏� �벑濡앹씠 �셿猷뚮릺�뿀�뒿�땲�떎.'); opener.parent.location.reload(); window.close();</script>"); 
+		out.append("<script>alert('여행지 등록이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
 		
@@ -540,7 +537,7 @@ public class ManagerController {
 			response.setContentType("text/html; charset=UTF-8"); 
 			PrintWriter out = response.getWriter();
 			
-			out.append("<script>alert('�궘�젣媛� �셿猷뚮릺�뿀�뒿�땲�떎.'); location.href='"+req.getContextPath()+"/manager/managerTrip.do';</script>"); 
+			out.append("<script>alert('삭제가 완료되었습니다.'); location.href='"+req.getContextPath()+"/manager/managerTrip.do';</script>"); 
 			out.flush(); 
 			out.close();
 
@@ -606,7 +603,7 @@ public class ManagerController {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		
-		out.append("<script>alert('�닔�젙�씠 �셿猷뚮릺�뿀�뒿�땲�떎.'); opener.parent.location.reload(); window.close();</script>"); 
+		out.append("<script>alert('수정이 완료되었습니다.'); opener.parent.location.reload(); window.close();</script>"); 
 		out.flush(); 
 		out.close();
 		

@@ -36,7 +36,7 @@
      <!-- 리뷰 작성 팝업창 -->
      <script>
      function review(lidx,ridx,reserv_idx,lodgingname,rtype,reserv_startDate,reserv_endDate,limagename){
-    	var url = "<%=request.getContextPath()%>/review/review.do?lidx="+lidx+"&ridx="+ridx+"&reserv_idx="+reserv_idx+"&lodgingname="+lodgingname+"&rtype="+rtype+"&reserv_startDate="+reserv_startDate+"&reserv_endDate="+reserv_endDate+"&limagename="+limagename;   //팝업창 페이지 URL
+    	var url = "<%=request.getContextPath()%>/review/review.do?lidx="+lidx+"&ridx="+ridx+"&reserv_idx="+reserv_idx+"&lodgingname="+lodgingname+"&rtype="+rtype.replaceAll("]","%5D").replaceAll("[","%5B")+"&reserv_startDate="+reserv_startDate+"&reserv_endDate="+reserv_endDate+"&limagename="+limagename;   //팝업창 페이지 URL
  		var winWidth = 550;
  	    var winHeight = 450;
  	  	var popupX = (window.screen.width / 2) - (550 / 2);
