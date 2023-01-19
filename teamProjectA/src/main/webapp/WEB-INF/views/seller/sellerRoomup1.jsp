@@ -255,7 +255,7 @@
 					                        <label>냉장고</label>
 					                    </li>   					
 									</ul>
-					                <ul id="in_middle" class="filter_check">
+					                <ul id="in_middle" class="filter_check"> 
 				                  		<li>
 					                        <input type="checkbox" onchange="checkBox(this)" class="ch" name="iron">
 					                        <label>다리미</label>
