@@ -35,9 +35,21 @@ public class IndexController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET) //���� �� ����������.
-	public String index(Locale locale, Model model)throws Exception {
+	public String index(Locale locale, Model model, String fromDate, String toDate)throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
+		//날짜
+		 if(fromDate == null || fromDate.equals(""))
+		 {
+			 fromDate = DateUtil.GetToday();
+		 }
+		 if(toDate == null || toDate.equals(""))
+		 {
+			 toDate = DateUtil.GetTomorrow();
+		 }
+		 
+		model.addAttribute("fromDate",fromDate);
+		model.addAttribute("toDate",toDate);
 		
 		//숙소추천 리스트
 		Date date = new Date();
