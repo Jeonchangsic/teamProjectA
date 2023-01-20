@@ -527,8 +527,8 @@
 						<form name="frm" action="lodgingList_search.do" method="get">
 							<div class="filter" id="filter_day">날짜</div>
 							<div>
-								<input type="text" name="fromDate" id="fromDate" value="${fromDate}">
-								<input type="text" name="toDate" id="toDate" value="${toDate}">
+								<input type="text" name="fromDate" id="fromDate" value="${fromDate}" readonly>
+								<input type="text" name="toDate" id="toDate" value="${toDate}" readonly>
 							</div>
 							
 							<div class="filter">베드 타입</div>

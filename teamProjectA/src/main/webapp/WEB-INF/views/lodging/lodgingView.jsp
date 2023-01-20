@@ -274,8 +274,8 @@
 	                <div class="date_btn">
 		                <div>
 		                    <div class="date_view">
-		                        <input type="text" name="fromDate" id="fromDate" value="${fromDate}">
-								<input type="text" name="toDate" id="toDate" value="${toDate}">
+		                        <input type="text" name="fromDate" id="fromDate" value="${fromDate}" readonly>
+								<input type="text" name="toDate" id="toDate" value="${toDate}" readonly>
 		                    </div>
 		                </div>
 	                </div>
